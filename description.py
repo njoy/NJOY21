@@ -4,7 +4,7 @@ A script to generate a serialized project description for build script generatio
 import os
 import glob
 import json
-from compiler_configurations.py import *
+from compiler_configuration import *
 
 def serialize( state ):
   with open (".metaconfigure/description.json", "w") as json_file:
@@ -17,7 +17,7 @@ def serialize( state ):
     state['project_path'] = project_path
     state['implementation_extensions'] = implementation_extensions
     state['header_extensions'] = header_extensions
-    
+
 def deserialize():
   with open (".metaconfigure/description.json", "r") as json_file:
     state = json.loads( json_file.read() )
@@ -38,6 +38,7 @@ def collect_subprojects( state ):
         state['subprojects'][name] = subproject
         os.chdir( root )
     os.chdir('..')
+
 
 def reconstruct_dependency_graph( state ):
   dependencies = { state['name'] : state['subprojects'].keys() }
@@ -74,7 +75,7 @@ def set_extensions( state ) :
 
 def relative_path( state ):
   return os.path.relpath( os.getcwd(), state['project_path'] )
-  
+
 def implementation_files( state ):
   path = relative_path( state )
   files = []
@@ -91,7 +92,7 @@ def header_files( state ):
     filenames = glob.glob( '*.' + extension )
     file_paths = [ os.path.join( path, filename ) for filename in filenames ]
     files.extend( file_paths )
-  return files  
+  return files
 
 def evaluate_test_leaf( state ):
   os.chdir('test')
