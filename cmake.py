@@ -23,7 +23,7 @@ def set_build_type( state ):
              set ( build_type "debug" )
          endif()
       """)
-      if state['type'] == 'include':
+      if state['target'] == 'include':
           contents += textwrap.dedent("""
               if( NOT DEFINED {name}_build_type )
                   set( {name}_build_type "${{build_type}}" )
@@ -42,7 +42,7 @@ def set_library_type( state ):
             endif()
             """)
         
-    if  state['type'] != 'include':
+    if  state['target'] != 'include':
         contents += textwrap.dedent( """
             if( NOT DEFINED static_{name} )
                 set( static_{name} ${{build_static_libraries}} )
@@ -78,10 +78,10 @@ def traverse_subprojects( state ):
 def configure_compiler( state ):
     contents = ''
     name = state['name']
-    if not ( state['is_external_project'] and ( state['type'] == 'include' ) ):
+    if not ( state['is_external_project'] and ( state['target'] == 'include' ) ):
         language = language_string[ state['language'] ]
         block = ''
-        if ( state['type'] == 'include' ):
+        if ( state['target'] == 'include' ):
           contents += 'if( NOT DEFINED is_subproject )'
           block = '    '
         contents += textwrap.dedent( """
@@ -145,7 +145,7 @@ def configure_compiler( state ):
           {block}    set( {name}_compiler_flags "${{{name}_compiler_flags}} ${{{name}_appended_flags}}" )
           {block}endif()
           """).format(**state, block=block)
-        if ( state['type'] == 'include' ):
+        if ( state['target'] == 'include' ):
           contents += 'endif()\n'
 
     return contents
@@ -176,15 +176,15 @@ def print_banner( state ):
         message( STATUS "Git commit hash: ${{GIT_HASH}}" )
         message( STATUS "" )
         """.format(**state))
-    if not ( state['is_external_project'] and ( state['type'] == 'include' ) ):
+    if not ( state['is_external_project'] and ( state['target'] == 'include' ) ):
         block = ''
-        if state['type'] == 'include' :
+        if state['target'] == 'include' :
             contents += 'if( NOT DEFINED is_subproject ) \n'
             block = '    '
             
         contents += '{}message( STATUS "{name} flags: ${{{name}_compiler_flags}}" ) \n'.format(block, **state)
         contents += '{}message( STATUS "" ) \n'.format(block)
-        if ( state['type'] == 'include' ):
+        if ( state['target'] == 'include' ):
             contents += 'endif() \n'
             
     contents += 'message( STATUS "-----------------------------------------------------------" ) \n'
@@ -195,7 +195,7 @@ def add_targets( state ):
     contents = ""
     language_s = language_string[ state['language'] ]
 
-    if state['type'] == 'executable' or state['type'] == 'library' :
+    if state['target'] == 'executable' or state['target'] == 'library' :
         sources = '\n             '.join( state['implementation_files'] )
         contents += textwrap.dedent("""
             add_library( {name} ${{{name}_policy}}
@@ -213,7 +213,7 @@ def add_targets( state ):
                 """
                 target_include_directories( {name} PUBLIC {include_path} ) """).format(**state)
 
-        if state['type'] == 'executable' :
+        if state['target'] == 'executable' :
             contents += textwrap.dedent("""
                 
                 add_executable( {name}_executable {driver} )
@@ -232,13 +232,13 @@ def add_targets( state ):
                     """
                     target_include_directories( {name}_executable PUBLIC {include_path} ) """).format(**state)
 
-    elif state['type'] == 'include' :
+    elif state['target'] == 'include' :
         contents += '\nadd_library( {name} INTERFACE )'.format(**state)
         if 'include_path' in state and state['include_path']:
             contents += '\ntarget_include_directories( {name} INTERFACE {include_path} )'.format(**state)
             
     else :
-        raise RuntimeError( 'Unrecognized target type: {}'.format( state['type'] ) )
+        raise RuntimeError( 'Unrecognized target type: {}'.format( state['target'] ) )
 
     contents += '\n'
     return contents
@@ -249,7 +249,7 @@ def link_dependencies( state ):
   if len( state['subprojects'] ) > 0 :
     contents += 'target_link_libraries( {}'.format(name)
     for name, subproject in state['subprojects'].items():
-      if state['type'] == 'include':
+      if state['target'] == 'include':
         contents += ' INTERFACE {}'.format(name)
       else:
         contents += ' PUBLIC {}'.format(name)
