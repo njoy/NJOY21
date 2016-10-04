@@ -60,19 +60,18 @@ def project_statement( state ):
     language = language_string[ state['language'] ]
     contents = textwrap.dedent( """
         project( {name} VERSION {version} LANGUAGES {language_s} )
-    
     """).format(**state, language_s=language)
     return contents
 
 def traverse_subprojects( state ):
     contents = ''
     if state['subprojects'] and not state['is_external_project']:
-        contents += 'if( NOT DEFINED is_subproject )\n    set( is_subproject )\n'
+        contents += '\nif( NOT DEFINED is_subproject )\n    set( is_subproject )\n'
         build_queue = description.reconstruct_build_queue( state )
         build_queue.pop()
         for subproject in build_queue:
             contents += '    add_subdirectory( subprojects/{} )\n'.format(subproject)
-        contents += '    unset( is_subproject )\nendif()\n\n'
+        contents += '    unset( is_subproject )\nendif()\n'
     return contents
   
 def configure_compiler( state ):
@@ -82,7 +81,7 @@ def configure_compiler( state ):
         language = language_string[ state['language'] ]
         block = ''
         if ( state['target'] == 'include' ):
-          contents += 'if( NOT DEFINED is_subproject )'
+          contents += '\nif( NOT DEFINED is_subproject )'
           block = '    '
         contents += textwrap.dedent( """
             {block}if( DEFINED {language_s}_compiler_flags )
