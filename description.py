@@ -39,7 +39,6 @@ def collect_subprojects( state ):
         os.chdir( root )
     os.chdir('..')
 
-
 def reconstruct_dependency_graph( state ):
   dependencies = { state['name'] : state['subprojects'].keys() }
   for name in state['subprojects'].keys():
@@ -125,7 +124,6 @@ def generate( project_name,
               project_version,
               is_external_project = False,
               **kwargs ):
-
   state = { 'name' : project_name,
             'version' : project_version,
             'type' : project_type,
