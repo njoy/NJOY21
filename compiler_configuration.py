@@ -58,13 +58,13 @@ def revision_flag( language, revision, compiler ):
 for language in languages:
     assert( language in compilers )
 
-warning_flags = { 'gcc' : '-Wall -Wextra -Wpedantic',
-                  'g++' : '-Wall -Wextra -Wpedantic',
-                  'clang' : '-Wall -Wextra -Wpedantic',
-                  'clang++' : '-Wall -Wextra -Wpedantic',
-                  'apple clang' : '-Wall -Wextra -Wpedantic',
-                  'apple clang++' : '-Wall -Wextra -Wpedantic',
-                  'gfortran' : '-Wall -Wextra -Wpedantic' }
+warning_flags = { 'gcc' : '-Wall -Wextra -Wpedantic -Werror',
+                  'g++' : '-Wall -Wextra -Wpedantic -Werror',
+                  'clang' : '-Wall -Wextra -Wpedantic -Werror',
+                  'clang++' : '-Wall -Wextra -Wpedantic -Werror',
+                  'apple clang' : '-Wall -Wextra -Wpedantic -Werror',
+                  'apple clang++' : '-Wall -Wextra -Wpedantic -Werror',
+                  'gfortran' : '-Wall -Wextra -Wpedantic -Werror' }
 
 for language, compiler_list in compilers.items():
     for compiler in compiler_list:
@@ -94,13 +94,13 @@ for language, compiler_list in compilers.items():
     for compiler in compiler_list:
         assert( compiler in coverage_flags )
 
-optimization_flags = { 'gcc' : '-O3',
-                       'g++' : '-O3',
-                       'clang' : '-O3',
-                       'clang++' : '-O3',
-                       'apple clang' : '-O3',
-                       'apple clang++' : '-O3',
-                       'gfortran' : '-O3' }
+optimization_flags = { 'gcc' : '-O3 -DNDEBUG',
+                       'g++' : '-O3 -DNDEBUG',
+                       'clang' : '-O3 -DNDEBUG',
+                       'clang++' : '-O3 -DNDEBUG',
+                       'apple clang' : '-O3 -DNDEBUG',
+                       'apple clang++' : '-O3 -DNDEBUG',
+                       'gfortran' : '-O3 -DNDEBUG' }
 
 for language, compiler_list in compilers.items():
     for compiler in compiler_list:

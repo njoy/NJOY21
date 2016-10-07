@@ -6,6 +6,8 @@ import glob
 import json
 from compiler_configuration import *
 
+root = None
+
 def serialize( state ):
     with open (".metaconfigure/description.json", "w") as json_file:
         subprojects = state.pop('subprojects')
@@ -27,18 +29,19 @@ def deserialize():
         return state
 
 def collect_subprojects( state ):
+    global root
     if os.path.isdir( os.path.join( os.getcwd(), 'dependencies' ) ):
         os.chdir('dependencies')
-        root = os.getcwd()
+        anchor = os.getcwd()
         for name in os.listdir( os.getcwd() ) :
             if os.path.isdir( os.path.join( os.getcwd(), name ) ) :
-                os.chdir( os.path.join( state['project_path'],
+                os.chdir( os.path.join( root,
                                         'subprojects',
                                         name ) )
                 subproject = deserialize()
                 collect_subprojects( subproject )
                 state['subprojects'][name] = subproject
-                os.chdir( root )
+                os.chdir( anchor )
             
         os.chdir('..')
 
@@ -142,7 +145,9 @@ def generate( name, target, language, version, is_external_project = False,
               'subprojects' : {},
               'project_path' : os.getcwd() }
     state.update( args )
-    
+
+    global root
+    root = os.getcwd()
     set_extensions( state )              
     os.chdir( 'src' )
     evaluate_branch( state )
