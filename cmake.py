@@ -199,8 +199,10 @@ def add_targets( state ):
         contents += textwrap.dedent("""
             add_library( {name} ${{{name}_policy}}
                          {sources} )
-            
-            target_compile_options( {name} ${{{name}_compiler_flags}} )""").format(**state, sources=sources)
+            foreach( flag IN LISTS ${name}_compiler_flags )
+                target_compile_options( {name} PUBLIC ${{flag}} )
+            endforeach( flag )           
+            set_target_properties( {name} PROPERTIES LINK_FLAGS "${{{name}_compiler_flags}}" )""").format(**state, sources=sources)
 
         if state['language'] == 'fortran':
             contents += textwrap.dedent(
@@ -218,7 +220,10 @@ def add_targets( state ):
                 add_executable( {name}_executable {driver} )
                 
                 target_link_libraries( {name}_executable PUBLIC {name} )
-                target_compile_options( {name}_executable ${{{name}_compiler_flags}} )
+                foreach( flag IN LISTS ${name}_compiler_flags )
+                    target_compile_options( {name}_executable PUBLIC ${{flag}} )
+                endforeach( flag )           
+                set_target_properties( {name}_executable PROPERTIES LINK_FLAGS "${{{name}_compiler_flags}}" )
                 set_target_properties( {name}_executable PROPERTIES OUTPUT_NAME {name} )""").format(**state)
         
             if state['language'] == 'fortran':
@@ -279,6 +284,7 @@ def add_unit_tests( state ):
                 foreach( flag IN LISTS test_flags )
                     target_compile_options( {executable_name} PUBLIC ${{flag}} )
                 endforeach( flag )
+                set_target_properties( {executable_name} PROPERTIES LINK_FLAGS "${{{name}_compiler_flags}}" )
                 target_link_libraries( {executable_name} PUBLIC {name} )
                 """.format(name=name, executable_name=executable_name))
             if os.path.isdir( os.path.join( directory, 'resources' ) ):
