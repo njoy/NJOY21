@@ -82,13 +82,13 @@ for language, compiler_list in compilers.items():
     for compiler in compiler_list:
         assert( compiler in debug_flags )
 
-coverage_flags = { 'gcc' : '-fprofile-arcs -ftest-coverage',
-                   'g++' : '-fprofile-arcs -ftest-coverage',
-                   'clang' : '-fprofile-arcs -ftest-coverage',
-                   'clang++' : '-fprofile-arcs -ftest-coverage',
-                   'apple clang' : '-fprofile-arcs -ftest-coverage',
-                   'apple clang++' : '-fprofile-arcs -ftest-coverage',
-                   'gfortran' : '-fprofile-arcs -ftest-coverage' }
+coverage_flags = { 'gcc' : '-fprofile-arcs -ftest-coverage -fno-inline',
+                   'g++' : '-fprofile-arcs -ftest-coverage -fno-inline',
+                   'clang' : '-fprofile-arcs -ftest-coverage -fno-inline',
+                   'clang++' : '-fprofile-arcs -ftest-coverage -fno-inline',
+                   'apple clang' : '-fprofile-arcs -ftest-coverage -fno-inline',
+                   'apple clang++' : '-fprofile-arcs -ftest-coverage -fno-inline',
+                   'gfortran' : '-fprofile-arcs -ftest-coverage -fno-inline' }
 
 for language, compiler_list in compilers.items():
     for compiler in compiler_list:
