@@ -20,12 +20,20 @@ def set_build_type( state ):
   if not state['is_external_project']:
       contents += textwrap.dedent("""
          if( NOT DEFINED build_type )
+             if( VERBOSE )
+                 message( STATUS "build_type variable not specified")
+                 message( STATUS "build_type defaulted to debug")
+             endif()
              set ( build_type "debug" )
          endif()
       """)
       if state['target'] == 'include':
           contents += textwrap.dedent("""
               if( NOT DEFINED {name}_build_type )
+                  if( VERBOSE )
+                      message( STATUS "{name}_build_type not specified")
+                      message( STATUS "{name}_build_type defaulted to value of build_type variable")
+                  endif()
                   set( {name}_build_type "${{build_type}}" )
               endif()
           """).format(**state)
@@ -36,15 +44,23 @@ def set_library_type( state ):
     if not state['is_external_project']:
         contents += textwrap.dedent( """
             if( NOT DEFINED static_libraries )
+                if( VERBOSE )
+                    message( STATUS "static_libraries variable not specified")
+                    message( STATUS "static_libraries defaulted to FALSE")
+                endif()
                 set( build_static_libraries FALSE )
             else()
-                set( build_static_libraries TRUE )
+                set( build_static_libraries ${static_libraries} )
             endif()
             """)
         
     if  state['target'] != 'include':
         contents += textwrap.dedent( """
             if( NOT DEFINED static_{name} )
+                if( VERBOSE )
+                    message( STATUS "static_{name} variable not specified")
+                    message( STATUS "static_{name} defaulted to value of static_libraries variable")
+                endif()
                 set( static_{name} ${{build_static_libraries}} )
             endif()
 
@@ -90,9 +106,6 @@ def configure_compiler( state ):
             {block}    endif()
             {block}endif()
             {block}if( NOT DEFINED {name}_compiler_flags )
-            {block}    if( DEFINED no_link_time_optimization )
-            {block}        set( no_link_time_optimization TRUE )
-            {block}    endif()
             """).format(**state, language_s=language, block=block)
 
         contents += block + '    '
@@ -105,18 +118,18 @@ def configure_compiler( state ):
               compiler_string=compiler_string[compiler], language=language
             )
             contents += textwrap.dedent("""
-                {block}        if( ${{{name}_build_type}} STREQUAL "debug" )
-                {block}            set( {name}_compiler_flags "{warning_flags} {debug_flags} {version_flag}" )
-                {block}        elseif( ${{{name}_build_type}} STREQUAL "coverage" )
-                {block}            set( {name}_compiler_flags "{warning_flags} {debug_flags} {coverage_flags} {version_flag}" )
-                {block}        elseif( ${{{name}_build_type}} STREQUAL "release" )
-                {block}            set( {name}_compiler_flags "{warning_flags} {optimization_flags} {version_flag}" )
-                {block}            if( NOT DEFINED no_link_time_optimization )
+                {block}        if( {name}_build_type STREQUAL "debug" )
+                {block}            set( {name}_compiler_flags "{version_flag} {warning_flags} {debug_flags}" )
+                {block}        elseif( {name}_build_type STREQUAL "coverage" )
+                {block}            set( {name}_compiler_flags "{version_flag} {warning_flags} {debug_flags} {coverage_flags}" )
+                {block}        elseif( {name}_build_type STREQUAL "release" )
+                {block}            set( {name}_compiler_flags "{version_flag} {warning_flags} {optimization_flags}" )
+                {block}            if( NOT no_link_time_optimization )
                 {block}                set( {name}_compiler_flags "${{{name}_compiler_flags}} {link_time_optimization_flags}" )
                 {block}            endif()
-                {block}        elseif( ${{{name}_build_type}} STREQUAL "native" )
-                {block}            set( {name}_compiler_flags "{warning_flags} {optimization_flags} {native_flags} {version_flag}" )
-                {block}            if( NOT DEFINED no_link_time_optimization )
+                {block}        elseif( {name}_build_type STREQUAL "native" )
+                {block}            set( {name}_compiler_flags "{version_flag} {warning_flags} {optimization_flags} {native_flags}" )
+                {block}            if( NOT no_link_time_optimization )
                 {block}                set( {name}_compiler_flags "${{{name}_compiler_flags}} {link_time_optimization_flags}" )
                 {block}            endif()
                 {block}        endif()
