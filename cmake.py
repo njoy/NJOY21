@@ -15,6 +15,23 @@ compiler_string = { 'gcc' : 'GNU',
                     'apple clang' : 'AppleClang',
                     'apple clang++' : 'AppleClang' }
 
+def fetch_subprojects( state ):
+  contents = ""
+  if state['subprojects']:
+    contents += textwrap.dedent(
+      """
+      if( NOT ROOT_DIRECTORY )
+          set( ROOT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
+          if ( NOT fetched_subprojects )
+              set( fetched_subprojects TRUE CACHE BOOL "fetch script ran")
+              execute_process( COMMAND python "./fetch_subprojects.py"
+                               WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
+          endif()
+      endif()
+      """)
+    
+  return contents
+
 def set_build_type( state ):
   contents = ''
   if not state['is_external_project']:
@@ -82,12 +99,15 @@ def project_statement( state ):
 def traverse_subprojects( state ):
     contents = ''
     if state['subprojects'] and not state['is_external_project']:
-        contents += '\nif( NOT DEFINED is_subproject )\n    set( is_subproject )\n'
+        contents += '\nget_directory_property( is_subproject PARENT_DIRECTORY )'
         build_queue = description.reconstruct_build_queue( state )
         build_queue.pop()
         for subproject in build_queue:
-            contents += '    add_subdirectory( subprojects/{} )\n'.format(subproject)
-        contents += '    unset( is_subproject )\nendif()\n'
+            contents += textwrap.dedent("""
+            if( NOT TARGET {subproject} )
+                add_subdirectory( ${{ROOT_DIRECTORY}}/subprojects/{subproject} )
+            endif()""".format(subproject = subproject))
+        contents += '\n'
     return contents
   
 def configure_compiler( state ):
@@ -97,7 +117,7 @@ def configure_compiler( state ):
         language = language_string[ state['language'] ]
         block = ''
         if ( state['target'] == 'include' ):
-          contents += '\nif( NOT DEFINED is_subproject )'
+          contents += '\nif( NOT is_subproject )'
           block = '    '
         contents += textwrap.dedent( """
             {block}if( DEFINED {language_s}_compiler_flags )
@@ -191,7 +211,7 @@ def print_banner( state ):
     if not ( state['is_external_project'] and ( state['target'] == 'include' ) ):
         block = ''
         if state['target'] == 'include' :
-            contents += 'if( NOT DEFINED is_subproject ) \n'
+            contents += 'if( NOT is_subproject ) \n'
             block = '    '
             
         contents += '{}message( STATUS "{name} flags: ${{{name}_compiler_flags}}" ) \n'.format(block, **state)
@@ -278,7 +298,7 @@ def add_unit_tests( state ):
     contents = ''
     if not state['is_external_project'] and state['unit_tests']:
         name = state['name']
-        contents += 'if( NOT DEFINED is_subproject ) \n    enable_testing() \n'
+        contents += 'if( NOT is_subproject ) \n    enable_testing() \n'
         for test_name, sources in state['unit_tests'].items():
             executable_name = test_name + '.test'
             directory = os.path.split( sources[0] )[0]
@@ -313,6 +333,7 @@ def generate():
   state = description.deserialize()
   description.collect_subprojects( state )
   contents = "cmake_minimum_required( VERSION 3.2 ) \n"
+  contents += fetch_subprojects( state )
   contents += set_build_type( state )
   contents += set_library_type( state )
   contents += project_statement( state )
