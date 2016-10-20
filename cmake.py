@@ -3,8 +3,7 @@ generate cmake files for a project from a serialized project description
 """
 import os
 import textwrap
-import description
-from compiler_configuration import *
+from .compiler_configuration import *
 
 language_string = { 'c' : 'C', 'c++' : 'CXX', 'fortran' : 'Fortran' }
 compiler_string = { 'gcc' : 'GNU',
@@ -24,7 +23,7 @@ def fetch_subprojects( state ):
           set( ROOT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
           if ( NOT fetched_subprojects )
               set( fetched_subprojects TRUE CACHE BOOL "fetch script ran")
-              execute_process( COMMAND python "./fetch_subprojects.py"
+              execute_process( COMMAND python "./metaconfigure/fetch_subprojects.py"
                                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
           endif()
       endif()
