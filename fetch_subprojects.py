@@ -33,8 +33,7 @@ def update_repository():
     """
     A function to update a submodule to lastest commit of the master branch
     """
-    print("Updating to master branch...")
-    print("")
+    print("Updating to master branch...\n")
     invocation = ["git", "pull", "-q", "origin", "master"]
     if os.name == "nt":
         invocation.insert( 0, "powershell" )
