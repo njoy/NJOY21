@@ -4,12 +4,12 @@ A script to generate a serialized project description for build script generatio
 import os
 import glob
 import json
-from compiler_configuration import *
+from .compiler_configuration import *
 
 root = None
 
 def serialize( state ):
-    with open (".metaconfigure/description.json", "w") as json_file:
+    with open ("metaconfigure/description.json", "w") as json_file:
         subprojects = state.pop('subprojects')
         project_path = state.pop('project_path')
         implementation_extensions = state.pop('implementation_extensions')
@@ -21,7 +21,7 @@ def serialize( state ):
         state['header_extensions'] = header_extensions
 
 def deserialize():
-    with open (".metaconfigure/description.json", "r") as json_file:
+    with open ("metaconfigure/description.json", "r") as json_file:
         state = json.loads( json_file.read() )
         state['subprojects'] = {}
         state['project_path'] = os.getcwd()
@@ -168,7 +168,7 @@ def generate( name, target, language, version, is_external_project = False,
     if 'include_path' in state:
         assert os.path.isdir( state['include_path'] )
   
-    if not os.path.exists('.metaconfigure'):
-        os.makedirs('.metaconfigure')
+    if not os.path.exists('metaconfigure'):
+        os.makedirs('metaconfigure')
       
     serialize( state )
