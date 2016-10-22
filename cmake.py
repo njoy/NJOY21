@@ -3,6 +3,7 @@ generate cmake files for a project from a serialized project description
 """
 import os
 import textwrap
+from . import description
 from .compiler_configuration import *
 
 language_string = { 'c' : 'C', 'c++' : 'CXX', 'fortran' : 'Fortran' }
