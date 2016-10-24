@@ -21,6 +21,7 @@ def serialize( state ):
         state['header_extensions'] = header_extensions
 
 def deserialize():
+    global root
     if root is None:
         root = os.getcwd()
     
