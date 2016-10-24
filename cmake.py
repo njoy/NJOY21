@@ -243,7 +243,7 @@ def add_targets( state ):
                 target_include_directories( {name} PUBLIC ${{PROJECT_BINARY_DIRECTORY}} ) """).format(**state)
 
         if 'include_path' in state and state['include_path']:
-            contents += texwrap.dedent(
+            contents += textwrap.dedent(
                 """
                 target_include_directories( {name} PUBLIC {include_path} ) """).format(**state)
 
