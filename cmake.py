@@ -43,16 +43,13 @@ def set_build_type( state ):
              endif()
              set ( build_type "debug" )
          endif()
-      """)
-      if state['target'] == 'include':
-          contents += textwrap.dedent("""
-              if( NOT DEFINED {name}_build_type )
-                  if( VERBOSE )
-                      message( STATUS "{name}_build_type not specified")
-                      message( STATUS "{name}_build_type defaulted to value of build_type variable")
-                  endif()
-                  set( {name}_build_type "${{build_type}}" )
-              endif()
+         if( NOT DEFINED {name}_build_type )
+             if( VERBOSE )
+                 message( STATUS "{name}_build_type not specified")
+                 message( STATUS "{name}_build_type defaulted to value of build_type variable")
+             endif()
+             set( {name}_build_type "${{build_type}}" )
+          endif()
           """).format(**state)
   return contents
 
