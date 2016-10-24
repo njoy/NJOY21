@@ -21,6 +21,9 @@ def serialize( state ):
         state['header_extensions'] = header_extensions
 
 def deserialize():
+    if root is None:
+        root = os.getcwd()
+    
     with open ("metaconfigure/description.json", "r") as json_file:
         state = json.loads( json_file.read() )
         state['subprojects'] = {}
