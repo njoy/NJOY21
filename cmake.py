@@ -229,7 +229,8 @@ def add_targets( state ):
         contents += textwrap.dedent("""
             add_library( {name} ${{{name}_policy}}
                          {sources} )
-            foreach( flag IN LISTS ${name}_compiler_flags )
+            separate_arguments( {name}_compiler_flags )
+            foreach( flag IN LISTS {name}_compiler_flags )
                 target_compile_options( {name} PUBLIC ${{flag}} )
             endforeach( flag )           
             set_target_properties( {name} PROPERTIES LINK_FLAGS "${{{name}_compiler_flags}}" )""").format(**state, sources=sources)
