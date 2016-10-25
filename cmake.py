@@ -229,7 +229,7 @@ def add_targets( state ):
         contents += textwrap.dedent("""
             add_library( {name} ${{{name}_policy}}
                          {sources} )
-            separate_argument( ${name}_compiler_flags_list "${{{name}_compiler_flags}}" )
+            separate_argument( {name}_compiler_flags_list "${{{name}_compiler_flags}}" )
             foreach( flag IN LISTS {name}_compiler_flags_list )
                 target_compile_options( {name} PUBLIC ${{flag}} )
             endforeach( flag )           
