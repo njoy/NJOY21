@@ -229,8 +229,8 @@ def add_targets( state ):
         contents += textwrap.dedent("""
             add_library( {name} ${{{name}_policy}}
                          {sources} )
-            separate_arguments( {name}_compiler_flags )
-            foreach( flag IN LISTS {name}_compiler_flags )
+            separate_argument( ${name}_compiler_flags_list "${{{name}_compiler_flags}}" )
+            foreach( flag IN LISTS {name}_compiler_flags_list )
                 target_compile_options( {name} PUBLIC ${{flag}} )
             endforeach( flag )           
             set_target_properties( {name} PROPERTIES LINK_FLAGS "${{{name}_compiler_flags}}" )""").format(**state, sources=sources)
@@ -251,7 +251,7 @@ def add_targets( state ):
                 add_executable( {name}_executable {driver} )
                 
                 target_link_libraries( {name}_executable PUBLIC {name} )
-                foreach( flag IN LISTS ${name}_compiler_flags )
+                foreach( flag IN LISTS ${name}_compiler_flags_list )
                     target_compile_options( {name}_executable PUBLIC ${{flag}} )
                 endforeach( flag )           
                 set_target_properties( {name}_executable PROPERTIES LINK_FLAGS "${{{name}_compiler_flags}}" )
@@ -311,11 +311,11 @@ def add_unit_tests( state ):
             test_contents += textwrap.dedent(
                 """
                 set( test_flags ${{{name}_compiler_flags}} )
-                separate_arguments( test_flags )
-                foreach( flag IN LISTS test_flags )
+                separate_arguments( test_flags_list "${{test_flags}}" )
+                foreach( flag IN LISTS test_flags_list )
                     target_compile_options( {executable_name} PUBLIC ${{flag}} )
                 endforeach( flag )
-                set_target_properties( {executable_name} PROPERTIES LINK_FLAGS "${{{name}_compiler_flags}}" )
+                set_target_properties( {executable_name} PROPERTIES LINK_FLAGS "${{test_flags}}" )
                 target_link_libraries( {executable_name} PUBLIC {name} )
                 """.format(name=name, executable_name=executable_name))
             if os.path.isdir( os.path.join( directory, 'resources' ) ):
