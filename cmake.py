@@ -229,7 +229,7 @@ def add_targets( state ):
         contents += textwrap.dedent("""
             add_library( {name} ${{{name}_policy}}
                          {sources} )
-            separate_arguments( {name}_compiler_flags_list "${{{name}_compiler_flags}}" )
+            separate_arguments( {name}_compiler_flags_list UNIX_COMMAND "${{{name}_compiler_flags}}" )
             foreach( flag IN LISTS {name}_compiler_flags_list )
                 target_compile_options( {name} PUBLIC ${{flag}} )
             endforeach( flag )           
@@ -311,7 +311,7 @@ def add_unit_tests( state ):
             test_contents += textwrap.dedent(
                 """
                 set( test_flags ${{{name}_compiler_flags}} )
-                separate_arguments( test_flags_list "${{test_flags}}" )
+                separate_arguments( test_flags_list UNIX_COMMAND "${{test_flags}}" )
                 foreach( flag IN LISTS test_flags_list )
                     target_compile_options( {executable_name} PUBLIC ${{flag}} )
                 endforeach( flag )
