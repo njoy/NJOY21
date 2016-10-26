@@ -5,6 +5,11 @@ A script to generate a flat subproject directory from a tree of dependency direc
 import os
 import subprocess
 import textwrap
+import json
+import sys
+
+def project_name():
+    return os.path.split( os.getcwd() )[1]
 
 def dependency_directory():
     """
@@ -29,18 +34,22 @@ def clone_submodule( relative_path ):
     clone = subprocess.Popen( invocation )
     clone.communicate()
 
-def update_repository():
+def update_repository( git ):
     """
     A function to update a submodule to lastest commit of the master branch
     """
-    print("Updating to master branch...\n")
-    invocation = ["git", "pull", "-q", "origin", "master"]
+    if project_name() not in git:
+        print("Updating to master branch...\n")
+        invocation = ["git", "pull", "-q", "origin", "master"]
+    else:
+        print("Checking out revision {}...\n".format( git[ project_name() ] ) )
+        invocation = ["git", "pull", "-q", "origin", git[ project_name() ] ]
     if os.name == "nt":
         invocation.insert( 0, "powershell" )
     update = subprocess.Popen( invocation )
     update.communicate()
   
-def traverse_dependencies( destination, traversed ):
+def traverse_dependencies( destination, traversed, git ):
     """
     Clone and update dependencies uniquely and collect links to dependency projects
     in a destination folder
@@ -50,25 +59,34 @@ def traverse_dependencies( destination, traversed ):
     
     os.chdir( dependency_directory() )
 
-    for dependency in os.listdir(os.getcwd()) :
+    for dependency in os.listdir( os.getcwd() ) :
         if os.path.isdir( dependency ) and not dependency in traversed :
             traversed.add( dependency )
             clone_submodule( dependency )
             os.chdir( dependency )
-            update_repository()
+            update_repository( git )
             if not os.path.isdir( os.path.join( destination, dependency ) ):
                 os.symlink( os.getcwd(), os.path.join( destination, dependency ) )
                 
-            traverse_dependencies( destination, traversed )
+            traverse_dependencies( destination, traversed, git )
             os.chdir( ".." )
             
     os.chdir( os.path.join( ".." ) )
 
-def collect_subprojects():
+def collect_subprojects( git ):
+    if git:
+        update_repository( git )
+    
     destination = os.path.join( os.getcwd(), "subprojects" )
     if not os.path.isdir( destination ):
         os.makedirs( destination )
         
-    traverse_dependencies( destination, set() )
+    traverse_dependencies( destination, set(), git )
 
-collect_subprojects()
+git = {}
+if len(sys.argv) > 1:
+    with open ( sys.argv[1], "r" ) as json_file:
+        signature = json.loads( json_file.read() )
+        git = signature['git']
+
+collect_subprojects( git )
