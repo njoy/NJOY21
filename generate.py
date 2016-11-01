@@ -2,8 +2,11 @@
 
 import sys
 
-from . import cmake
-from . import description
+import os.path
+sys.path.append( os.path.abspath( os.getcwd() ) )
+print(sys.path)
+import metaconfigure.description as description
+import metaconfigure.cmake as cmake
 
 previous = description.deserialize()
 keyword_arguments = {}
