@@ -5,6 +5,7 @@
 import os
 import json
 import subprocess
+import sys
 import time
 
 def project_signature( git ):
@@ -36,3 +37,8 @@ def generate( name = None ):
 
     with open ( name + ".json", "w" ) as json_file:
         json_file.write( json.dumps( { 'git' : git }, indent=0 ) )
+
+if len(sys.argv) > 1:
+    generate( sys.argv[1] )
+else:
+    generate()

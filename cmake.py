@@ -22,9 +22,9 @@ def fetch_subprojects( state ):
       """
       if( NOT ROOT_DIRECTORY )
           set( ROOT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
-          if ( NOT fetched_subprojects )
-              set( fetched_subprojects TRUE CACHE BOOL "fetch script ran")
-              execute_process( COMMAND python "./metaconfigure/fetch_subprojects.py"
+          if ( NOT no_fetched_subprojects )
+              set( no_fetched_subprojects TRUE CACHE BOOL "fetch script ran")
+              execute_process( COMMAND python3 "./metaconfigure/fetch_subprojects.py"
                                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
           endif()
       endif()
