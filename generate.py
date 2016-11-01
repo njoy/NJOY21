@@ -4,7 +4,6 @@ import sys
 
 import os.path
 sys.path.append( os.path.abspath( os.getcwd() ) )
-print(sys.path)
 import metaconfigure.description as description
 import metaconfigure.cmake as cmake
 
