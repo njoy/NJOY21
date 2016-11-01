@@ -27,11 +27,12 @@ def generate( name = None ):
     project_signature( git )
     if os.path.isdir( os.path.join( os.getcwd(), 'subprojects' ) ):
         os.chdir( 'subprojects' )
+        root = os.getcwd()
         for subproject in os.listdir( os.getcwd() ):
             if os.path.isdir( os.path.join( os.getcwd(), subproject ) ):
                 os.chdir( subproject )
                 project_signature( git )
-                os.chdir( '..' )
+                os.chdir( root )
         
         os.chdir( '..' )
 
