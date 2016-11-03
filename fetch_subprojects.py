@@ -6,7 +6,9 @@ import os
 import subprocess
 import textwrap
 import json
+import shutil
 import sys
+import warnings
 
 def project_name():
     return os.path.split( os.getcwd() )[1]
@@ -66,8 +68,14 @@ def traverse_dependencies( destination, traversed, git ):
             os.chdir( dependency )
             update_repository( git )
             if not os.path.isdir( os.path.join( destination, dependency ) ):
-                os.symlink( os.getcwd(), os.path.join( destination, dependency ) )
-                
+                try:
+                    os.symlink( os.getcwd(), os.path.join( destination, dependency ) )
+
+                except OSError:
+                    warnings.warn( "Could not create symbolic link from {} to subprojects directory.".format( os.getcwd() ) )
+                    warnings.warn( "Copying directory contents instead" )
+                    shutil.copytree( os.getcwd(), destination, ignore = shutil.ignore_patterns("dependencies") )
+
             traverse_dependencies( destination, traversed, git )
             os.chdir( ".." )
             

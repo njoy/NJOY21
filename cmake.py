@@ -22,10 +22,21 @@ def fetch_subprojects( state ):
       """
       if( NOT ROOT_DIRECTORY )
           set( ROOT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
-          if ( NOT no_fetched_subprojects )
-              set( no_fetched_subprojects TRUE CACHE BOOL "fetch script ran")
-              execute_process( COMMAND python3 "./metaconfigure/fetch_subprojects.py"
-                               WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
+          if ( NOT fetched_subprojects )
+              if ( NOT PYTHON_EXECUTABLE )
+                  find_package( PythonInterp )
+                  if ( NOT PYTHONINTERP_FOUND )
+                      message( FATAL_ERROR "Python interpeter installation was not found." )
+                  endif()
+              endif()
+              execute_process( COMMAND ${PYTHON_EXECUTABLE} "./metaconfigure/fetch_subprojects.py"
+                               WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} 
+                               RESULT_VARIABLE fetch_failure )
+              if ( not fetch_failure )
+                  set( fetched_subprojects TRUE CACHE BOOL "fetch script ran" )
+              else()
+                  message( FATAL_ERROR "Failed to fetch dependencies" )
+              endif()
           endif()
       endif()
       """)
