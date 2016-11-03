@@ -32,7 +32,7 @@ def fetch_subprojects( state ):
               execute_process( COMMAND ${PYTHON_EXECUTABLE} "./metaconfigure/fetch_subprojects.py"
                                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} 
                                RESULT_VARIABLE fetch_failure )
-              if ( not fetch_failure )
+              if ( NOT fetch_failure )
                   set( fetched_subprojects TRUE CACHE BOOL "fetch script ran" )
               else()
                   message( FATAL_ERROR "Failed to fetch dependencies" )
