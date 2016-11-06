@@ -113,7 +113,14 @@ def header_files( state ):
 
 def evaluate_test_leaf( state ):
     os.chdir('test')
-    name = os.path.split( os.path.split( os.getcwd() )[0] )[1]
+    path, name = os.path.split( os.path.split( os.getcwd() )[0] )
+    while True:
+        path, directory = os.path.split( path )
+        if not directory == "src":
+            name = '.'.join( directory, name )
+        else:
+            break
+        
     state['unit_tests'][name] = implementation_files( state )
     os.chdir('..')
 
