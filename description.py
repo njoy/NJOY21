@@ -117,7 +117,7 @@ def evaluate_test_leaf( state ):
     while True:
         path, directory = os.path.split( path )
         if not directory == "src":
-            name = '.'.join( directory, name )
+            name = '.'.join( [directory, name] )
         else:
             break
         
