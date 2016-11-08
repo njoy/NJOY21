@@ -1,0 +1,15 @@
+[submodule "dependencies/utility"]
+	path = dependencies/utility
+	url = https://github.com/njoy/utility.git
+[submodule "dependencies/DimensionalAnalysis"]
+	path = dependencies/DimensionalAnalysis
+	url = https://github.com/njoy/DimensionalAnalysis.git
+[submodule "dependencies/Log"]
+	path = dependencies/Log
+	url = https://github.com/njoy/Log.git
+[submodule "dependencies/tclap-adapter"]
+	path = dependencies/tclap-adapter
+	url = https://github.com/apmccartney/tclap-adapter.git
+[submodule "dependencies/catch-adapter"]
+	path = dependencies/catch-adapter
+	url = https://github.com/apmccartney/catch-adapter.git
