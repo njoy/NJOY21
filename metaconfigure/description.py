@@ -64,6 +64,10 @@ def reconstruct_build_queue( state ):
         found_next = False
         next_node = None
         for node, edges in graph.items():
+            print(node)
+            print(edges)
+            print(queue)
+            print()
             queueable = True
             for edge in edges:
                 if not edge in queue :
