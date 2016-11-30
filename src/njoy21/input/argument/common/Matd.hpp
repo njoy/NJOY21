@@ -11,5 +11,5 @@ struct Matd {
       "a positive value and less than 10000.";
   }
 
-  static bool verify( const Value_t& i ){ return i > 0; }
+  static bool verify( const Value_t& i ){ return (i > 0) and (i < 10000); }
 };
