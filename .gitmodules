@@ -10,3 +10,6 @@
 [submodule "dependencies/catch-adapter"]
 	path = dependencies/catch-adapter
 	url = https://github.com/apmccartney/catch-adapter.git
+[submodule "dependencies/dimwits"]
+	path = dependencies/dimwits
+	url = https://github.com/njoy/DimensionalAnalysis.git

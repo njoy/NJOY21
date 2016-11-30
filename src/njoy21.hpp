@@ -1,6 +1,7 @@
 #ifndef NJOY21
 #define NJOY21
 
+#include <experimental/optional>
 #include <sstream>
 
 #include "dimwits.hpp"
@@ -9,10 +10,12 @@
 
 namespace njoy{
 
+namespace njoy21{
+
 template< typename T >
 using optional = std::experimental::optional< T >;
 
-namespace njoy21{
+using namespace dimwits;
 
 struct CommandLine;
 
