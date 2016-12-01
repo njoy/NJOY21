@@ -2,7 +2,7 @@ class BROADR {
 public:
   /* nested types */
   #include "njoy21/input/BROADR/Card1.hpp"
-  #include "njoy21/input/BROADR/Card2.hpp"
+//#include "njoy21/input/BROADR/Card2.hpp"
   // #include "njoy21/input/BROADR/Card3.hpp"
   // #include "njoy21/input/BROADR/Card4.hpp"
   // #include "njoy21/input/BROADR/Card5.hpp"

@@ -9,6 +9,8 @@ using namespace njoy::njoy21::input;
 SCENARIO( "errint input values",
          "[Card4], [Errint]"){
 
+  Argument< RECONR::Card4::Err > err;
+  err.value = 0.01;
   GIVEN( "valid errint values" ){
     std::vector<double> validErrint{0.1, 1.0, 1E6};
 
@@ -17,7 +19,7 @@ SCENARIO( "errint input values",
         long ln(0);
         std::istringstream issErrint(std::to_string(errint));
         REQUIRE( errint*dimwits::barn == argument::extract<
-                           RECONR::Card4::Errint >(issErrint, ln).value );
+                           RECONR::Card4::Errint >(issErrint, ln, err).value );
       }
     }
   }
@@ -28,7 +30,7 @@ SCENARIO( "errint input values",
       double errint(0.0);
       std::istringstream issErrint(std::to_string(errint));
       REQUIRE_THROWS( argument::extract<
-                         RECONR::Card4::Errint >(issErrint, ln) );
+                         RECONR::Card4::Errint >(issErrint, ln, err) );
     }
   }
 }
