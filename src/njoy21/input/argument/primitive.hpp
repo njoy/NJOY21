@@ -7,9 +7,16 @@ Istream& operator>>( Istream& is, Quantity< Unit, MagnitudeType >& q ){
 
 template< typename Istream, typename Value >
 Istream& operator>>( Istream& is, std::vector< Value >& v ){
+  /*
   std::copy( std::istream_iterator< Value >(is),
 	     std::istream_iterator< Value >(),
 	     std::back_inserter(v) );
+  */
+  Value value;
+  while ( not ( is.fail() or is.eof() ) ){
+    is >> value;
+    v.push_back( value );
+  }
   if ( is.eof() ){
     is.clear();
     is.setstate( std::ios_base::eofbit );
