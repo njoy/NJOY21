@@ -1,19 +1,27 @@
 namespace primitive {
 
+template< typename Istream, typename Unit, typename MagnitudeType >
+Istream& operator>>( Istream& is, Quantity< Unit, MagnitudeType >& q ){
+  is >> q.value; return is;
+}
+
+template< typename Istream, typename Value >
+Istream& operator>>( Istream& is, std::vector< Value >& v ){
+  std::copy( std::istream_iterator< Value >(is),
+	     std::istream_iterator< Value >(),
+	     std::back_inserter(v) );
+  if ( is.eof() ){
+    is.clear();
+    is.setstate( std::ios_base::eofbit );
+  }
+  return is;
+}
+
 template< typename T >
 struct Type {
   using Data_t = T;
   template< typename Istream >
   static bool read( Istream& is, T& i );
-};
-
-template< typename Unit, typename MagnitudeType >
-struct Type< Quantity< Unit, MagnitudeType > > {
-  using Data_t = Quantity< Unit, MagnitudeType >;
-  template< typename Istream >
-  static bool read( Istream& is, Data_t& i ){
-    is >> i.value; return true;
-  }
 };
 
 template< typename T >
