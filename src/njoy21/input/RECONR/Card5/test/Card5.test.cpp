@@ -9,13 +9,14 @@ SCENARIO( "bugless" ){
   std::string value("012345678901234567890123456789012345678901234567890123456789012345");
   std::istringstream iss( "'" + value + "'" );
   long lineNumber = 1;
-  RECONR::Card2 card2( iss, lineNumber );
-  REQUIRE( card2.tlabel.value == value );
+  RECONR::Card5 card5( iss, lineNumber );
+  REQUIRE( card5.cards.value == value );
 }
 
 SCENARIO( "bugged" ){
   std::string value("'0123456789012345678901234567890123456789012345678901234567890123456'");
   std::istringstream iss(value);
   long lineNumber = 1;
-  REQUIRE_THROWS( RECONR::Card2( iss, lineNumber ) );
+  REQUIRE_THROWS( RECONR::Card5( iss, lineNumber ) );
 }
+
