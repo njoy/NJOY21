@@ -34,5 +34,10 @@ SCENARIO( "RECONR Card1 input" ){
     std::vector<std::istringstream> invalidCard1;
     invalidCard1.emplace_back("   -20 21");
     invalidCard1.emplace_back("   -20 -20");
+
+    long ln{0};
+    for( auto& card1 : invalidCard1 ){
+      REQUIRE_THROWS( RECONR::Card1(card1, ln) );
+    }
   }
 } // SCENARIO

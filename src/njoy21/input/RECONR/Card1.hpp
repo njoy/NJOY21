@@ -20,7 +20,7 @@ private:
       nendf( argument::extract< Nendf >( is, lineNumber ) ),
       npend( argument::extract< Npend >( is, lineNumber, this->nendf ) ){}
     catch( std::exception& e ){
-      Log::info( "Trouble validing Card1");
+      Log::info( "Trouble validating Card1");
       throw e;
     }
 };
