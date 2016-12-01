@@ -12,7 +12,7 @@ SCENARIO( "errint input values",
   GIVEN( "valid errint values" ){
     std::vector<double> validErrint{0.1, 1.0, 1E6};
 
-    THEN( "the returned class has the correct tape value" ){
+    THEN( "the returned class has the correct value" ){
       for( auto errint : validErrint ){
         long ln(0);
         std::istringstream issErrint(std::to_string(errint));
@@ -21,10 +21,15 @@ SCENARIO( "errint input values",
       }
     }
   }
-//RECONR::Card4::Errint errint;
-//REQUIRE( errint.verify(0.1*dimwits::barn) );
-//REQUIRE( errint.verify(1.0*dimwits::barn) );
-//REQUIRE( errint.verify(1E6*dimwits::barn) );
-//REQUIRE( not errint.verify(0.0*dimwits::barn) );
+
+  GIVEN( "invalid errint values:" ){
+    THEN( "an exception is thrown" ){
+      long ln(0);
+      double errint(0.0);
+      std::istringstream issErrint(std::to_string(errint));
+      REQUIRE_THROWS( argument::extract<
+                         RECONR::Card4::Errint >(issErrint, ln) );
+    }
+  }
 }
 
