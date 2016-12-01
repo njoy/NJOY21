@@ -20,7 +20,7 @@ private:
       ntemp2( argument::extract< Ntemp2 >( is, lineNumber ) ),
       istart( argument::extract< Istart >( is, lineNumber ) ),
       istrap( argument::extract< Istrap >( is, lineNumber ) ),
-      temp1( argument::extract< Temp1 >( is, lineNumber, this->istart ) ){}
+      temp1( argument::extract< Temp1 >( is, lineNumber ) ){}
     catch( std::exception& e ){
       Log::info("Trouble while validating Card 2");
       throw e;
