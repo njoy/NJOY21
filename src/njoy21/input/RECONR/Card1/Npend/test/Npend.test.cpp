@@ -5,7 +5,8 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "npend output values" ){
+SCENARIO( "npend output values",
+         "[Card1], [Npend]"){
   long ln = 1;
   GIVEN( "valid npend tape values" ){
     std::vector<int> validValues{-20, 20, 42, 99, -99};
