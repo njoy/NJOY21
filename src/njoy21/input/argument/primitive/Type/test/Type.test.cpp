@@ -35,3 +35,11 @@ SCENARIO( "Quantity" ){
 	         < dimwits::Meter > >::read( iss, sink ) );
   REQUIRE( sink == 10 * dimwits::meter );
 }
+
+SCENARIO( "Vector" ){
+  std::vector< int > sink;
+  std::vector< int > reference{10, 20, 30};
+  std::istringstream iss("   10 20 30");
+  REQUIRE( Type< std::vector< int > >::read( iss, sink ) );
+  REQUIRE( sink == reference );
+}

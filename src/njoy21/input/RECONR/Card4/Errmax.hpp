@@ -12,7 +12,8 @@ struct Errmax {
   }
 
   static Value_t defaultValue( const Argument< Err >& err ){ 
-    return err.value*10; }
+    return err.value*10; 
+  }
 
   static bool verify( const Value_t& v, const Argument< Err >& err ){
     return v >= err.value;
