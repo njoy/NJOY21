@@ -11,7 +11,7 @@ struct Enode {
                       const Argument< Card3::Ngrid >& ngrid){
 
     auto found = std::find_if(node.begin(), node.end(), 
-                              [](auto& E){ return E > 0.0*electronVolt; });
+                              [](auto& E){ return E < 0.0*electronVolt; });
     if (found != node.end()){
       Log::warning("Negative energy grid point ({}) found at index {}",
                    *found, std::distance(node.begin(), found));
