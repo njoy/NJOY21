@@ -5,10 +5,7 @@ struct Ncards {
   static std::string description(){
     return 
         "The ncards argument is an integer indicating the number of Card 5\n"
-        "entries, each of which are descriptive ENDF TEXT records.\n"
-        "\n"
-        "(The absolute limit of ncards is 99999999999, but the practical \n"
-        "limit is much, much smaller.)";
+        "entries, each of which are descriptive ENDF TEXT records.";
   }
   
   static Value_t defaultValue(){ return 0; }

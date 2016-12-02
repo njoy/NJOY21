@@ -17,7 +17,7 @@ SCENARIO( "Verifying RECONR Card3 input",
         std::istringstream issCard3( std::to_string(material) + " 1 2 " );
         RECONR::Card3 card3(issCard3, ln);
 
-        REQUIRE( 9228 == card3.material.value );
+        REQUIRE( 9228 == card3.mat.value );
         REQUIRE( 1 == card3.ncards.value );
         REQUIRE( 2 == card3.ngrid.value );
         REQUIRE( 1 == ln );
@@ -39,7 +39,7 @@ SCENARIO( "Verifying RECONR Card3 input",
       std::istringstream issCard3( std::to_string(material) + " 1 " );
       RECONR::Card3 card3(issCard3, ln);
 
-      REQUIRE( 9228 == card3.material.value );
+      REQUIRE( 9228 == card3.mat.value );
       REQUIRE( 1 == card3.ncards.value );
       REQUIRE( 0 == card3.ngrid.value );
       REQUIRE( 1 == ln );
@@ -50,7 +50,7 @@ SCENARIO( "Verifying RECONR Card3 input",
       std::istringstream issCard3( std::to_string(material) );
       RECONR::Card3 card3(issCard3, ln);
 
-      REQUIRE( 9228 == card3.material.value );
+      REQUIRE( 9228 == card3.mat.value );
       REQUIRE( 0 == card3.ncards.value );
       REQUIRE( 0 == card3.ngrid.value );
       REQUIRE( 1 == ln );

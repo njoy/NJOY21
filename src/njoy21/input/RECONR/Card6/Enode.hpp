@@ -4,7 +4,8 @@ struct Enode {
 
   static std::string description() {
     return 
-        "The enode argument is ";
+        "The enode argument is a list of energy grid points with units of \n"
+        "electron volt.";
   }
 
   static bool verify( const Value_t& node, 
