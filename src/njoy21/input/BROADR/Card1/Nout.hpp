@@ -11,12 +11,12 @@ struct Nout : public argument::common::Nout {
       "The signedness of the argument implies the formatting of the tape in\n"
       "question. Positive argument values indicate formatted input i.e.\n"
       "ascii text files. Negative values indicate unformatted input i.e.\n"
-      "Fortran-style block binary\n"
+      "Fortran-style block binary.\n"
       "\n"
       "nout values are restricted to an absolute value between 20 and 99,\n"
       "inclusively, and are required to\n"
       " + have an absolute value distinct from the corresponding nendf value\n"
-      " + have an value distinct from the corresponding nin value\n"
+      " + have a value distinct from the corresponding nin value\n"
       " + share signedness with the corresponding nin value";
   }
   

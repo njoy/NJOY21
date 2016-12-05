@@ -35,6 +35,10 @@ public:
     const auto end = std::end( line );
     try {
       standard( position, end );
+      position =
+	std::find_if_not( std::make_reverse_iterator(position),
+			  std::make_reverse_iterator(begin),
+			  []( auto c ){ return std::isspace(c); } ).base();
       return std::basic_istringstream< char_type >
 	( std::basic_string< char_type >( begin, position ) );
     } catch ( std::exception& e ){

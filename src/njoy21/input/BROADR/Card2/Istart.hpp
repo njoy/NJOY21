@@ -7,8 +7,8 @@ struct Istart {
       "flag. As such, only values of zero or one are permitted. When unspecified\n"
       "this argument defaults to zero.\n"
       "\n"
-      "Then istart value is one, all temperatures which exist on the input PENDF\n"
-      "tape are copied to the output tape (in addition to any temperatures\n"
+      "When the istart value is one, all temperatures which exist on the input\n"
+      "PENDF tape are copied to the output tape (in addition to any temperatures\n"
       "specified in BROADR command). Additional final temperatures are added\n"
       "by starting with the data at the BROADR card2 temp1 argument.";
   }

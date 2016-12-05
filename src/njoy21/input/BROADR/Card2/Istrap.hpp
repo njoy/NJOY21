@@ -7,7 +7,7 @@ struct Istrap {
       "boolean flag. As such, only values of zero or one are permitted. When\n"
       "unspecified this argument defaults to zero.\n"
       "\n"
-      "Then istrap value is one, bootstrapping is permitted. In the default\n"
+      "When the istrap value is one, bootstrapping is permitted. In the default\n"
       "behavior, each final temperature is computed by broadening directly\n"
       "from temp1. When bootstrapping is permitted, a given final temperature\n"
       "is computed from the previously computed final temperature.\n"

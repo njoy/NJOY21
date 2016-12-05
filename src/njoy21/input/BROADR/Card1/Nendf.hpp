@@ -7,7 +7,7 @@ struct Nendf {
       "Fortran routine and the ENDF-format tape to be read in, e.g. setting\n"
       "nendf to 21 or -21 implies a endf tape named 'tape21' is available in\n"
       "the working directory. BROADR extracts values for the average number\n"
-      "of neutrons emitted from thermal fission from this tape."
+      "of neutrons emitted from thermal fission from this tape.\n"
       "\n"
       "The signedness of the argument implies the formatting of the tape in\n"
       "question. Positive argument values indicate formatted input i.e.\n"
