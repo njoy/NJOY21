@@ -6,5 +6,6 @@ namespace input {
 
 #include "njoy21/input/MODER.hpp"
 #include "njoy21/input/RECONR.hpp"
+#include "njoy21/input/BROADR.hpp"
 
 }
