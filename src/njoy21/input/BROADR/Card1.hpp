@@ -3,7 +3,6 @@ public:
   #include "njoy21/input/BROADR/Card1/Nendf.hpp"
   #include "njoy21/input/BROADR/Card1/Nin.hpp"
   #include "njoy21/input/BROADR/Card1/Nout.hpp"
-
   
   Argument< Nendf > nendf;
   Argument< Nin > nin;
