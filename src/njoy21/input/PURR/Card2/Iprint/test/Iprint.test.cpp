@@ -1,0 +1,44 @@
+#define CATCH_CONFIG_MAIN
+
+#include "catch.hpp"
+
+#include "njoy21.hpp"
+
+using namespace njoy::njoy21::input;
+
+SCENARIO( "Iprint input values",
+          "[Card2], [Iprint]" ){
+  long ln(0);
+  GIVEN( "valid iprint values" ){
+    std::vector<int> validValues{0, 1, 2};
+
+    THEN( "the returned class has the correct value" ){
+      for( auto& iprint : validValues ){
+        std::istringstream iss( std::to_string(iprint) );
+
+        REQUIRE( 
+          iprint == argument::extract< PURR::Card2::Iprint >( iss, ln ).value );
+      }
+    }
+  }
+  GIVEN( "no iprint values" ){
+    THEN( "the default value is returned" ){
+      std::istringstream iss("");
+      REQUIRE( PURR::Card2::Iprint::defaultValue() == 
+                argument::extract< PURR::Card2::Iprint >( iss, ln ).value );
+    }
+  }
+  
+  GIVEN( "invalid iprint values" ){
+    std::vector<int> invalidValues{-1};
+
+    THEN( "an exception is thrown" ){
+      for( auto& iprint : invalidValues ){
+        std::istringstream iss( std::to_string(iprint) );
+
+        REQUIRE_THROWS( argument::extract< PURR::Card2::Iprint >( iss, ln ) );
+      }
+    }
+  }
+} // SCENARIO
+
