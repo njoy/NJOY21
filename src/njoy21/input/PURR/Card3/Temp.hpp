@@ -14,12 +14,11 @@ struct Temp {
                                [](auto& E){ return E < 0.0*kelvin; });
 
     if ( found != temps.end() ){
-      Log::warning( "Negative temperature ({}) found at index{}",
+      Log::warning( "Negative temperature ({}) found at index {}",
                     *found, std::distance(temps.begin(), found));
       return false;
     } else {
       return ( long(temps.size()) == ntemp.value );
     }
   }
-  
 };
