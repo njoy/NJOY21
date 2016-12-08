@@ -17,7 +17,6 @@ struct Enode {
       Log::warning("Negative energy grid point ({}) found at index {}",
                    *found, std::distance(node.begin(), found));
       return false;
-
     } else {
       return (long(node.size()) == ngrid.value);
     }

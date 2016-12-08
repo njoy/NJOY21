@@ -9,7 +9,7 @@ public:
 	   && line[0] == '-' && line[1] == '-' && line[2] == ' ' ){
 	return true;
       }
-      return "" == utility::trim(line);
+      return "" == utility::string::trim(line);
     };
     
     try {
@@ -17,7 +17,7 @@ public:
 	std::getline( is, line );
 	++lineNumber;
       } while( continueReading( line ) );
-      if ( is.fail() ) ){
+      if ( is.fail() ) {
 	throw std::ios::failure("");
       }
     } catch ( std::ios::failure& f ){
