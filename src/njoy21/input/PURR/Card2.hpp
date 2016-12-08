@@ -9,7 +9,7 @@ public:
   #include "njoy21/input/PURR/Card2/Iprint.hpp"
   #include "njoy21/input/PURR/Card2/Nunx.hpp"
 
-  Argument< argument::common::Matd > matd;
+  Argument< RECONR::Card3::Mat > matd;
   Argument< Ntemp > ntemp;
   Argument< Nsigz > nsigz;
   Argument< Nbin > nbin;
@@ -25,13 +25,13 @@ private:
   template< typename Char >
   Card2( std::basic_istringstream< Char >&& is, const long& lineNumber )
     try:
-      matd( argument::extract< argument::common::Matd >( is, lineNumber ) ),
+      matd( argument::extract< RECONR::Card3::Mat >( is, lineNumber ) ),
       ntemp( argument::extract< Ntemp >( is, lineNumber ) ),
       nsigz( argument::extract< Nsigz >( is, lineNumber ) ),
       nbin( argument::extract< Nbin >( is, lineNumber ) ),
       nladr( argument::extract< Nladr >( is, lineNumber ) ),
       iprint( argument::extract< Iprint >( is, lineNumber ) ),
-      nunx( argument::extract< nunx >( is, lineNumber ) )
+      nunx( argument::extract< Nunx >( is, lineNumber ) )
       {   }
     catch( std::exception& e ){
       Log::info( "Trouble while validating card 2" );
