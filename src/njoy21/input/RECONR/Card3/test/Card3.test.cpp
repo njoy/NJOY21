@@ -7,7 +7,7 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "Verifying RECONR Card3 input",
-         "[Card3]"){
+         "[RECONR], [Card3]"){
   GIVEN( "valid Material" ){
     int material{9228};
 

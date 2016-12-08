@@ -7,7 +7,7 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "Verifying RECONR Card6 input",
-         "[Card6]"){
+         "[RECONR],[Card6]"){
   Argument< RECONR::Card3::Ngrid > ngrid;
   ngrid.value = 3;
   GIVEN( "valid enode" ){
