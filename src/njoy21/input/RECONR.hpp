@@ -1,4 +1,3 @@
-
 class RECONR {
 public:
   /* nested types */

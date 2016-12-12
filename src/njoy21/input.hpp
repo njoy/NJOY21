@@ -9,6 +9,7 @@ namespace input {
 #include "njoy21/input/BROADR.hpp"
 #include "njoy21/input/PURR.hpp"
 #include "njoy21/input/UNRESR.hpp"
+#include "njoy21/input/ACER.hpp"
 //#include "njoy21/input/GASPR.hpp"
 //#include "njoy21/input/HEATR.hpp"
 

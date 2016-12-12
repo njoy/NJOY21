@@ -5,8 +5,9 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "RECONR Card1 input" ){
-  GIVEN( "valid Card1 inputs" ){
+SCENARIO( "RECONR Card1 input",
+          "[RECONR], [Card1]" ){
+  GIVEN( "valid inputs" ){
     std::vector<std::pair<int, int>> validCard1Pairs{
       {20, 21},
       {21, 22},
