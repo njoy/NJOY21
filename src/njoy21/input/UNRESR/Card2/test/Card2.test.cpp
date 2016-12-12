@@ -46,7 +46,7 @@ SCENARIO( "Verifying PURR Card2 input",
     }
 
     material = 0;
-    WHEN( "material = 0" ){
+    WHEN( "none of the optional values are given" ){
       THEN( "the Card2 values can be verified" ){
         long ln(0);
         std::istringstream issCard2( std::to_string(material) + " /\n" );
