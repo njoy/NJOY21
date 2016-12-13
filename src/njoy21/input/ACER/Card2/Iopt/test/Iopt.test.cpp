@@ -1,0 +1,37 @@
+#define CATCH_CONFIG_MAIN
+
+#include "catch.hpp"
+
+#include "njoy21.hpp"
+
+using namespace njoy::njoy21::input;
+
+SCENARIO( "ndir output values",
+         "[ACER],[Card2], [Iopt]"){
+
+  long ln{0};
+  GIVEN( "valid Iopt parameters" ){
+    std::vector<int> validValues{1,2,3,4,5,7,8};
+
+    THEN( "the returned class has the correct value" ){
+      for( auto iopt : validValues ){
+        std::istringstream issIopt( std::to_string( iopt ) );
+
+        REQUIRE( iopt == argument::extract< ACER::Card2::Iopt >( 
+                          issIopt, ln ).value );
+      }
+    }
+  } // GIVEN
+  GIVEN( "invalid Iopt parameters" ){
+    std::vector<int> invalidValues{-1, 0, 6, 9, 10};
+
+    THEN( "the returned class has the correct value" ){
+      for( auto iopt : invalidValues ){
+        std::istringstream issIopt( std::to_string( iopt ) );
+
+        REQUIRE_THROWS( argument::extract< ACER::Card2::Iopt >( issIopt, ln ) );
+      }
+    }
+  } // GIVEN
+} // SCENARIO
+
