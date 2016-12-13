@@ -8,9 +8,7 @@ public:
   
   template< typename Istream >
   Card1( Istream& is, long& lineNumber ) : 
-    Card1( Card::extract( is, lineNumber ), lineNumber ){
-      ++lineNumber;
-  }
+    Card1( Card::extract( is, lineNumber ), lineNumber ){ ++lineNumber; }
 
 private:
 

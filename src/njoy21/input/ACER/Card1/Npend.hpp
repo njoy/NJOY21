@@ -17,11 +17,17 @@ struct Npend : public argument::common::Nout {
       "\n"
       "npend values are restricted to an absolute value between 20 and 99,\n"
       "inclusively, and are required to have the same signedness as\n"
-      "(and different absolute value than) the corresponding nendf argument.";
+      "(and different absolute value than) the corresponding nendf argument.\n"
+      "\n"
+      "ACE extracts the unionized and linearized cross sections from npend.\n"
+      "npend should have been processed through RECONR. Additionally, if \n"
+      "npend has not been processed through BROADR, the energy grids may not\n"
+      "be correct.";
   }
 
   static bool verify( const Value_t v, const Argument<Nendf>& nendf ){
     return argument::common::Nout::verify( v, nendf );
   }
 };
+
 
