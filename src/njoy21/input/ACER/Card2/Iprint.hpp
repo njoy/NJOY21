@@ -18,7 +18,7 @@ struct Iprint {
         "header information for the library that was generated.";
   }
 
-  static int defaultValue(){ return 1; }
+  static Value_t defaultValue(){ return 1; }
   static bool verify( Value_t i ){ return i >= 0; }
 };
 
