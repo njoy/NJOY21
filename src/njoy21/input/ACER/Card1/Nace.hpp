@@ -25,7 +25,7 @@ struct Nace : public argument::common::Nout {
                       const Argument<Ngend>& ngend
                       ){
 
-    return argument::common::Nin::verify( v ) and
+    return ( (v == 0) or( std::abs(v) > 19 && std::abs(v) < 100 ) ) and
         ( Ngend::verify(ngend.value, nendf, npend) ) and // nendf, npend, ngend are valid 
         /* Make sure the nace is not equal to other input tape numbers */
         ( std::abs(nendf.value) != std::abs( v ) ) and

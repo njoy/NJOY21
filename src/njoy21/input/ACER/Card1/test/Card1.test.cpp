@@ -22,10 +22,10 @@ SCENARIO( "Validating card1 inputs",
       REQUIRE( 24 == card1.ndir.value );
     }
 
-    issCard1.str( "20 21 22 0 24" );
-    card1 = ACER::Card1(issCard1, ln);
+    std::istringstream issCard2( "20 21 22 0 24" );
+    card1 = ACER::Card1(issCard2, ln);
     THEN( "the members can be tested" ){
-      REQUIRE( 23 == card1.nace.value );
+      REQUIRE( 0 == card1.nace.value );
     }
 
   }
