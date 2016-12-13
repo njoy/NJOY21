@@ -15,12 +15,12 @@ struct Iopt {
   }
 
   static bool verify( const Value_t v ){
-    return ( v == 1 ) or // fast data
-           ( v == 2 ) or // thermal data
-           ( v == 3 ) or // dosimetry data
-           ( v == 4 ) or // photo-atomic data
-           ( v == 5 ) or // photo-nuclear data
-           ( v == 7 ) or // read type 1 ace files to print or edit
-           ( v == 8 );   // read type 2 ace files to print or edit
+    return ( std::abs( v ) == 1 ) or // fast data
+           ( std::abs( v ) == 2 ) or // thermal data
+           ( std::abs( v ) == 3 ) or // dosimetry data
+           ( std::abs( v ) == 4 ) or // photo-atomic data
+           ( std::abs( v ) == 5 ) or // photo-nuclear data
+           ( std::abs( v ) == 7 ) or // read type 1 ace files to print or edit
+           ( std::abs( v ) == 8 );   // read type 2 ace files to print or edit
   }
 };

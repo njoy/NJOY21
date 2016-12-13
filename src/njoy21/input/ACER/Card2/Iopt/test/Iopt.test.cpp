@@ -11,7 +11,7 @@ SCENARIO( "ndir output values",
 
   long ln{0};
   GIVEN( "valid Iopt parameters" ){
-    std::vector<int> validValues{1,2,3,4,5,7,8};
+    std::vector<int> validValues{-8,-7,-5,-4,-3,-2,-1, 1,2,3,4,5,7,8};
 
     THEN( "the returned class has the correct value" ){
       for( auto iopt : validValues ){
@@ -23,7 +23,7 @@ SCENARIO( "ndir output values",
     }
   } // GIVEN
   GIVEN( "invalid Iopt parameters" ){
-    std::vector<int> invalidValues{-1, 0, 6, 9, 10};
+    std::vector<int> invalidValues{-10, -9, -6, 0, 6, 9, 10};
 
     THEN( "the returned class has the correct value" ){
       for( auto iopt : invalidValues ){
