@@ -1,16 +1,36 @@
 namespace primitive {
 
+template< typename Istream >
+void validate( Istream& is ){
+  if ( is.good() and not is.eof() ){
+    const auto character = is.peek();
+    if ( std::isspace( character ) or character == '/' ){ return; }
+    is.setstate( std::ios_base::failbit );
+  }
+}
+
 template< typename Istream, typename Unit, typename MagnitudeType >
-Istream& operator>>( Istream& is, Quantity< Unit, MagnitudeType >& q ){
-  is >> q.value; return is;
+Istream& operator>>( Istream& is, Quantity< Unit, MagnitudeType >& quantity ){
+  is >> quantity.value; return is;
+}
+
+template< typename Istream, typename First, typename Second >
+Istream& operator>>( Istream& is, std::pair< First, Second >& pair ){
+  is >> pair.first;
+  validate(is);
+  if ( is.good() ){ is >> pair.second; }
+  return is;
 }
 
 template< typename Istream, typename Value >
-Istream& operator>>( Istream& is, std::vector< Value >& v ){
-  Value value;
-  while ( not ( is.fail() or is.eof() ) ){
-    is >> value;
-    if ( not is.fail() ){ v.push_back( value ); }
+Istream& operator>>( Istream& is, std::vector< Value >& vector ){
+  for ( auto& entry : vector ){
+    is >> entry;
+    validate(is);
+    if ( is.fail() ){
+      vector.pop_back();
+      break;
+    }
   }
   return is;
 }
@@ -18,21 +38,41 @@ Istream& operator>>( Istream& is, std::vector< Value >& v ){
 template< typename T >
 struct Type {
   using Data_t = T;
+  
   template< typename Istream, typename... Args >
-  static bool read( Istream& is, T& i, Args&&... );
+  static bool read( Istream&, T&, Args&&... );
 };
 
 template< typename T >
 template< typename Istream, typename... Args >
 bool Type<T>::read( Istream& is, T& i, Args&&... ){
-  is >> i; return true;
+  is >> i; validate(is); return true;
 }
 
 template<>
 template< typename Istream, typename... Args >
-inline bool Type< std::string >::read( Istream& is, std::string& i, Args&&... ){
-  is >> std::quoted( i, '\'', char(33) ); return true;
+inline bool
+Type< std::string >::read( Istream& is, std::string& string, Args&&... ){
+  is >> std::quoted( string, '\'', char(33) );
+  validate(is);
+  if ( not is.fail() ){
+    string.erase( std::remove( std::begin(string), std::end(string), '\n' ),
+                  std::end(string) );
+  }
+  return true;
 }
+
+template< typename T >
+struct Type< std::vector<T> > {
+  using Data_t = std::vector<T>;
+  
+  template< typename Istream, typename Arg, typename... Args >
+  static bool read( Istream& is , Data_t& vector, const Arg& size, Args&&... ){
+    vector.resize( size.value );
+    is >> vector;
+    return true;
+  }
+};
 
 template< typename Core >
 struct Required : protected Core {
@@ -52,7 +92,6 @@ struct Optional : protected Core {
   using Data_t = typename Core::Data_t;
   template< typename Istream, typename... Args >
   static bool read( Istream& is, Data_t& d , Args&&... args ){
-    is.exceptions( std::ios_base::goodbit );
     Core::read( is, d, std::forward<Args>(args)... );
     return is.fail() ? is.eof() ? false : throw std::domain_error("") : true;
   }
