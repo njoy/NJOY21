@@ -7,81 +7,65 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "special values" ){
   {
-    std::istringstream iss("   0");
-    long lineNumber = 1;
-    REQUIRE_THROWS( argument::extract< MODER::Card1::Nin >( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("   0") );
+    REQUIRE_THROWS( argument::extract< MODER::Card1::Nin >( iss ) );
   }{
-    std::istringstream iss("   1");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   1") );
     REQUIRE( argument::extract
-	     < MODER::Card1::Nin >( iss, lineNumber ).value == 1 );
+	     < MODER::Card1::Nin >( iss ).value == 1 );
   }{
-    std::istringstream iss("   2");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   2") );
     REQUIRE( argument::extract
-	     < MODER::Card1::Nin >( iss, lineNumber ).value == 2 );
+	     < MODER::Card1::Nin >( iss ).value == 2 );
   }{
-    std::istringstream iss("   3");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   3") );
     REQUIRE( argument::extract
-	     < MODER::Card1::Nin >( iss, lineNumber ).value == 3 );
+	     < MODER::Card1::Nin >( iss ).value == 3 );
   }{
-    std::istringstream iss("   4");
-    long lineNumber = 1;
-    REQUIRE_THROWS( argument::extract< MODER::Card1::Nin >( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("   4") );
+    REQUIRE_THROWS( argument::extract< MODER::Card1::Nin >( iss ) );
   }
 }
 
 SCENARIO( "typical values" ){
   {
-    std::istringstream iss("   19");
-    long lineNumber = 1;
-    REQUIRE_THROWS( argument::extract< MODER::Card1::Nin >( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("   19") );
+    REQUIRE_THROWS( argument::extract< MODER::Card1::Nin >( iss ) );
   }{
-    std::istringstream iss("   -19");
-    long lineNumber = 1;
-    REQUIRE_THROWS( argument::extract< MODER::Card1::Nin >( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("   -19") );
+    REQUIRE_THROWS( argument::extract< MODER::Card1::Nin >( iss ) );
   }{
-    std::istringstream iss("   20");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   20") );
     REQUIRE( argument::extract
-	     < MODER::Card1::Nin >( iss, lineNumber ).value == 20 );
+	     < MODER::Card1::Nin >( iss ).value == 20 );
   }{
-    std::istringstream iss("   -20");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   -20") );
     REQUIRE( argument::extract
-	     < MODER::Card1::Nin >( iss, lineNumber ).value == -20 );
+	     < MODER::Card1::Nin >( iss ).value == -20 );
   }{
-    std::istringstream iss("   50");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   50") );
     REQUIRE( argument::extract
-	     < MODER::Card1::Nin >( iss, lineNumber ).value == 50 );
+	     < MODER::Card1::Nin >( iss ).value == 50 );
   }{
-    std::istringstream iss("   -50");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   -50") );
     REQUIRE( argument::extract
-	     < MODER::Card1::Nin >( iss, lineNumber ).value == -50 );
+	     < MODER::Card1::Nin >( iss ).value == -50 );
   }{
-    std::istringstream iss("   99");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   99") );
     REQUIRE( argument::extract
-	     < MODER::Card1::Nin >( iss, lineNumber ).value == 99 );
+	     < MODER::Card1::Nin >( iss ).value == 99 );
   }{
-    std::istringstream iss("   -99");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   -99") );
     REQUIRE( argument::extract
-	     < MODER::Card1::Nin >( iss, lineNumber ).value == -99 );
+	     < MODER::Card1::Nin >( iss ).value == -99 );
   }{
-    std::istringstream iss("   100");
-    long lineNumber = 1;
-    REQUIRE_THROWS( argument::extract< MODER::Card1::Nin >( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("   100") );
+    REQUIRE_THROWS( argument::extract< MODER::Card1::Nin >( iss ) );
   }{
-    std::istringstream iss("   -100");
-    long lineNumber = 1;
-    REQUIRE_THROWS( argument::extract< MODER::Card1::Nin >( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("   -100") );
+    REQUIRE_THROWS( argument::extract< MODER::Card1::Nin >( iss ) );
   }{
-    std::istringstream iss("   ");
-    long lineNumber = 1;
-    REQUIRE_THROWS( argument::extract< MODER::Card1::Nin >( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("   ") );
+    REQUIRE_THROWS( argument::extract< MODER::Card1::Nin >( iss ) );
   }
 }

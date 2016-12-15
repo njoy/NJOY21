@@ -16,7 +16,7 @@ public:
       do {
 	std::getline( is, line );
 	++lineNumber;
-      } while( continueReading( line ) );
+      } while( ( not is.eof() ) and continueReading( line ) );
       if ( is.fail() ) {
 	throw std::ios::failure("");
       }

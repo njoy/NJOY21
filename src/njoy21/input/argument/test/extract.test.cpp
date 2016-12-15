@@ -17,15 +17,15 @@ struct DefaultZero {
 
 SCENARIO
 ( "Argument is present and valid for field with default when extracted" ){
-  std::istringstream iss("   101");
-  long lineNumber = 1;
-  auto defaultor = extract<DefaultZero>( iss, lineNumber );
+  njoy::utility::stream::iRecordOrientedStream
+    iss( std::istringstream("   101") );
+  auto defaultor = extract<DefaultZero>( iss );
   REQUIRE( defaultor.value == 101 );
   REQUIRE( defaultor.defaulted == false );
 }
 
 SCENARIO( "Argument has wrong type when extracted" ){
-  long lineNumber = 1;
-  std::istringstream iss("  alphabet");
-  REQUIRE_THROWS( extract<DefaultZero>( iss, lineNumber ) );
+  njoy::utility::stream::iRecordOrientedStream
+    iss( std::istringstream("  alphabet") );
+  REQUIRE_THROWS( extract<DefaultZero>( iss ) );
 }

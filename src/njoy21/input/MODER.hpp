@@ -11,14 +11,14 @@ public:
   optional< std::vector< Card3 > > card3List;
 
   /* ctor */
-  template< typename Istream >
-  MODER( Istream& is, long& lineNumber )
+  template< typename Char >
+  MODER( iRecordStream<Char>& is )
     try :
-      card1( is, lineNumber ){
+      card1( is  ){
         if ( std::abs( this->card1.nin.value ) < 4 ){
-          this->card2 = Card2( is, lineNumber );
+          this->card2 = Card2( is );
           this->card3List = std::vector<Card3>();
-          card3List->emplace_back( is, lineNumber, this->card1.nout );
+          card3List->emplace_back( is, this->card1.nout );
           if ( not card3List->back().nin.value ){
             Log::error
               ("Zero input tape / material identification pairs specified");
@@ -34,7 +34,7 @@ public:
             throw std::exception();
           }
           while ( card3List->back().nin.value ){
-            card3List->emplace_back( is, lineNumber, this->card1.nout );
+            card3List->emplace_back( is, this->card1.nout );
           }
           card3List->pop_back();
         }
