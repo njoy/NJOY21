@@ -8,9 +8,9 @@ public:
   template< typename Char >
   static void
   clear( IStream< Char >& is ){
-    const auto& line = is.buffer();
+    const auto& line = is.buffer;
     const auto position = line.size();
-    std::ignore( is, std::numeric_limits<std::streamsize>::max(), '\n' );
+    is.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
     auto it = std::find_if_not( std::next( std::begin( line ), position ),
 				std::end( line ),
 			        []( auto c ){ return std::isspace(c); } );

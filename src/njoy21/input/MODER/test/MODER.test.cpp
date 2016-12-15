@@ -7,22 +7,20 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "bugless" ){
   {
-    std::istringstream iss( "21 -22" );
-    long lineNumber = 1;
-    MODER moder( iss, lineNumber );
+    iRecordStream<char> iss( std::istringstream( "21 -22" ) );
+    MODER moder( iss );
     REQUIRE( moder.card1.nin.value == 21 );
     REQUIRE( moder.card1.nout.value == -22 );
     REQUIRE( not moder.card2 );
     REQUIRE( not moder.card3List );
   }{
-    std::istringstream iss(
+    iRecordStream<char> iss( std::istringstream(
       "1 -22 \n"
       "'my simple pendf tape'\n"
       "21 125\n"
       "0/"
-      );
-    long lineNumber = 1;
-    MODER moder( iss, lineNumber );
+      ) );
+    MODER moder( iss );
     REQUIRE( moder.card1.nin.value == 1 );
     REQUIRE( moder.card1.nout.value == -22 );
     REQUIRE( moder.card2 );
@@ -36,16 +34,14 @@ SCENARIO( "bugless" ){
 
 SCENARIO( "bugged" ){
   {
-    std::istringstream iss( "21 -21" );
-    long lineNumber = 1;
-    REQUIRE_THROWS( MODER( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream( "21 -21" ) );
+    REQUIRE_THROWS( MODER moder( iss ) );
   }{
-    std::istringstream iss(
+    iRecordStream<char> iss( std::istringstream(
       "1 -22 \n"
       "'my simple pendf tape'\n"
       "0 /"
-      );
-    long lineNumber = 1;
-    REQUIRE_THROWS( MODER( iss, lineNumber ) );
+      ) );
+    REQUIRE_THROWS( MODER moder( iss ) );
   }
 }

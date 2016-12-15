@@ -7,14 +7,11 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "special values" ){
   {
-    std::istringstream iss("   0");
-    long lineNumber = 1;
-    REQUIRE_THROWS( argument::extract< MODER::Card3::Matd >( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("   0") );
+    REQUIRE_THROWS( argument::extract< MODER::Card3::Matd >( iss ) );
   }{
-    std::istringstream iss("   125");
-    long lineNumber = 1;
-    REQUIRE( argument::extract< MODER::Card3::Matd >
-	     ( iss, lineNumber ).value == 125 );
+      iRecordStream<char> iss( std::istringstream("   125") );
+    REQUIRE( argument::extract< MODER::Card3::Matd >( iss ).value == 125 );
   }
   REQUIRE( argument::primitive::HasDefault< MODER::Card3::Matd >::value );
 }

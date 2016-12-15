@@ -7,38 +7,32 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "bugless" ){
   {
-    std::istringstream iss("   1 21\n");
-    long lineNumber = 1;
-    MODER::Card1 card1( iss, lineNumber );
+    iRecordStream<char> iss( std::istringstream("   1 21\n") );
+    MODER::Card1 card1( iss );
     REQUIRE( card1.nin.value == 1 );
     REQUIRE( card1.nout.value == 21 );
-    REQUIRE( lineNumber == 2 );
   }{
-    std::istringstream iss("   20 21\n");
-    long lineNumber = 1;
-    MODER::Card1 card1( iss, lineNumber );
+    iRecordStream<char> iss( std::istringstream("   20 21\n") );
+    MODER::Card1 card1( iss );
     REQUIRE( card1.nin.value == 20 );
     REQUIRE( card1.nout.value == 21 );
-    REQUIRE( lineNumber == 2 );
   }{
-    std::istringstream iss("   20 -21\n");
-    long lineNumber = 1;
-    MODER::Card1 card1( iss, lineNumber );
+    iRecordStream<char> iss( std::istringstream("   20 -21\n") );
+    MODER::Card1 card1( iss );
     REQUIRE( card1.nin.value == 20 );
     REQUIRE( card1.nout.value == -21 );
-    REQUIRE( lineNumber == 2 );
   }
 }
 
 SCENARIO( "bugged" ){
   {
-    std::istringstream iss("   0 21\n");
-    long lineNumber = 1;
-    REQUIRE_THROWS( MODER::Card1( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("   0 21\n") );
+    REQUIRE_THROWS( MODER::Card1 card1( iss ) );
   }{
-    std::istringstream iss("   20 10\n");
-    long lineNumber = 1;
-    REQUIRE_THROWS( MODER::Card1( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("   20 10\n") );
+    REQUIRE_THROWS( MODER::Card1 card1( iss ) );
+  }{
+    iRecordStream<char> iss( std::istringstream("   20 21 30\n") );
+    REQUIRE_THROWS( MODER::Card1 card1( iss ) );
   }
 }
-
