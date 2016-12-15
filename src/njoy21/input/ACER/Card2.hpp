@@ -12,20 +12,14 @@ public:
   Argument< Suff > suff;
   Argument< Nxtra > nxtra;
 
-  template< typename Istream >
-  Card2( Istream& is, long& lineNumber ) : 
-    Card2( Card::extract( is, lineNumber ), lineNumber ){ ++lineNumber; }
-
-private:
-
   template< typename Char >
-  Card2( std::basic_istringstream< Char >&& is, const long& lineNumber )
+  Card2( iRecordStream< Char >& is )
     try:
-      iopt( argument::extract< Iopt >( is, lineNumber ) ),
-      iprint( argument::extract< Iprint >( is, lineNumber ) ),
-      itype( argument::extract< Itype >( is, lineNumber ) ),
-      suff( argument::extract< Suff >( is, lineNumber ) ),
-      nxtra( argument::extract< Nxtra >( is, lineNumber ) )
+      iopt( argument::extract< Iopt >( is ) ),
+      iprint( argument::extract< Iprint >( is ) ),
+      itype( argument::extract< Itype >( is ) ),
+      suff( argument::extract< Suff >( is ) ),
+      nxtra( argument::extract< Nxtra >( is ) )
     {   }
     catch( std::exception& e ){
       Log::info( "Trouble validating Card2");

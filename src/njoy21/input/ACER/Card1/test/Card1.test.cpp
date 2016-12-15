@@ -8,11 +8,10 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "Validating card1 inputs",
           "[ACER], [Card1]" ){
-  long ln{0};
 
   GIVEN( "valid ACE Card1 inputs" ){
-    std::istringstream issCard1( "20 21 22 23 24" );
-    ACER::Card1 card1(issCard1, ln);
+    iRecordStream<char> issCard1( std::istringstream("20 21 22 23 24" ) );
+    ACER::Card1 card1(issCard1);
 
     THEN( "the members can be tested" ){
       REQUIRE( 20 == card1.nendf.value );
@@ -22,8 +21,8 @@ SCENARIO( "Validating card1 inputs",
       REQUIRE( 24 == card1.ndir.value );
     }
 
-    std::istringstream issCard2( "20 21 22 0 24" );
-    card1 = ACER::Card1(issCard2, ln);
+    iRecordStream<char> issCard2( std::istringstream("20 21 22 0 24" ) );
+    card1 = ACER::Card1(issCard2);
     THEN( "the members can be tested" ){
       REQUIRE( 0 == card1.nace.value );
     }
@@ -31,10 +30,10 @@ SCENARIO( "Validating card1 inputs",
   }
 
   GIVEN( "invalid inputs" ){
-    std::istringstream issCard1( "20 20 22 23 24" );
+    iRecordStream<char> issCard1( std::istringstream("20 20 22 23 24" ) );
     
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( ACER::Card1 card1(issCard1, ln) );
+      REQUIRE_THROWS( ACER::Card1 card1(issCard1) );
     }
   }
 }

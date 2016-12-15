@@ -12,26 +12,16 @@ public:
   Argument< Nace > nace;
   Argument< Ndir > ndir;
 
-  template< typename Istream >
-  Card1( Istream& is, long& lineNumber ) : 
-    Card1( Card::extract( is, lineNumber ), lineNumber ){ ++lineNumber; }
-
-private:
-
   template< typename Char >
-  Card1( std::basic_istringstream< Char >&& is, const long& lineNumber )
+  Card1( iRecordStream< Char >& is )
     try:
-      nendf( argument::extract< Nendf >( is, lineNumber ) ),
-      npend( argument::extract< Npend >( is, lineNumber, this->nendf ) ),
-      ngend( argument::extract< Ngend >( is, lineNumber, 
-                                         this->nendf, 
-                                         this->npend ) ),
-      nace( argument::extract< Nace >( is, lineNumber, 
-                                         this->nendf, 
+      nendf( argument::extract< Nendf >( is ) ),
+      npend( argument::extract< Npend >( is, this->nendf ) ),
+      ngend( argument::extract< Ngend >( is, this->nendf, this->npend ) ),
+      nace( argument::extract< Nace >( is, this->nendf, 
                                          this->npend,
                                          this->ngend ) ),
-      ndir( argument::extract< Ndir >( is, lineNumber, 
-                                         this->nendf, 
+      ndir( argument::extract< Ndir >( is, this->nendf, 
                                          this->npend,
                                          this->ngend,
                                          this->nace ) )
