@@ -15,10 +15,11 @@ SCENARIO( "ndir output values",
 
     THEN( "the returned class has the correct value" ){
       for( auto iopt : validValues ){
-        std::istringstream issIopt( std::to_string( iopt ) );
+        iRecordStream<char> issIopt( 
+            std::istringstream( std::to_string( iopt ) ) );
 
         REQUIRE( iopt == argument::extract< ACER::Card2::Iopt >( 
-                          issIopt, ln ).value );
+                          issIopt ).value );
       }
     }
   } // GIVEN
@@ -27,9 +28,10 @@ SCENARIO( "ndir output values",
 
     THEN( "the returned class has the correct value" ){
       for( auto iopt : invalidValues ){
-        std::istringstream issIopt( std::to_string( iopt ) );
+        iRecordStream<char> issIopt( 
+            std::istringstream( std::to_string( iopt ) ) );
 
-        REQUIRE_THROWS( argument::extract< ACER::Card2::Iopt >( issIopt, ln ) );
+        REQUIRE_THROWS( argument::extract< ACER::Card2::Iopt >( issIopt ) );
       }
     }
   } // GIVEN

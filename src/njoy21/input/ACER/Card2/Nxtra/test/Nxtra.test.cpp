@@ -15,19 +15,21 @@ SCENARIO( "Nxtra input values",
 
     THEN( "the returned class has the correct value" ){
       for( auto& nxtra : validValues ){
-        std::istringstream iss( std::to_string(nxtra) );
+        iRecordStream<char> iss(
+            std::istringstream( std::to_string(nxtra) ) );
 
         REQUIRE( 
-          nxtra == argument::extract< ACER::Card2::Nxtra >( iss, ln ).value );
+          nxtra == argument::extract< ACER::Card2::Nxtra >( iss ).value );
       }
     }
   }
 
   GIVEN( "no nxtra values" ){
     THEN( "the default value is returned" ){
-      std::istringstream iss("");
+      iRecordStream<char> iss(
+          std::istringstream( " /" ) );
       REQUIRE( ACER::Card2::Nxtra::defaultValue() == 
-                argument::extract< ACER::Card2::Nxtra >( iss, ln ).value );
+                argument::extract< ACER::Card2::Nxtra >( iss ).value );
     }
   }
   
@@ -36,9 +38,10 @@ SCENARIO( "Nxtra input values",
 
     THEN( "an exception is thrown" ){
       for( auto& nxtra : invalidValues ){
-        std::istringstream iss( std::to_string(nxtra) );
+        iRecordStream<char> iss(
+            std::istringstream( std::to_string(nxtra) ) );
 
-        REQUIRE_THROWS( argument::extract< ACER::Card2::Nxtra >( iss, ln ) );
+        REQUIRE_THROWS( argument::extract< ACER::Card2::Nxtra >( iss ) );
       }
     }
   }

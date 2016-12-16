@@ -15,26 +15,28 @@ SCENARIO( "ndir output values",
 
     THEN( "the returned class has the correct value" ){
       for( auto& suff : validValues ){
-        std::istringstream iss( std::to_string(suff) );
+        iRecordStream<char> iss(
+            std::istringstream( std::to_string(suff) ) );
 
         REQUIRE( 
-          suff == argument::extract< ACER::Card2::Suff >( iss, ln ).value );
+          suff == argument::extract< ACER::Card2::Suff >( iss ).value );
       }
     }
   }
   GIVEN( "no suff values" ){
     THEN( "the default value is returned" ){
-      std::istringstream iss("");
+      iRecordStream<char> iss(
+          std::istringstream( " /" ) );
       REQUIRE( ACER::Card2::Suff::defaultValue() == 
-                argument::extract< ACER::Card2::Suff >( iss, ln ).value );
+                argument::extract< ACER::Card2::Suff >( iss ).value );
     }
   }
   
   GIVEN( "invalid suff values" ){
     THEN( "an exception is thrown" ){
-      std::istringstream iss( "abc" );
-      njoy::Log::info("iss: {}", iss.str() );
-      REQUIRE_THROWS( argument::extract< ACER::Card2::Suff >( iss, ln ) );
+      iRecordStream<char> iss(
+          std::istringstream( "abc" ) );
+      REQUIRE_THROWS( argument::extract< ACER::Card2::Suff >( iss ) );
     }
   }
 

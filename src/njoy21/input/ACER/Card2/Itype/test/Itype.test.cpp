@@ -15,18 +15,20 @@ SCENARIO( "ndir output values",
 
     THEN( "the returned class has the correct value" ){
       for( auto& itype : validValues ){
-        std::istringstream iss( std::to_string(itype) );
+        iRecordStream<char> iss(
+            std::istringstream( std::to_string(itype) ) );
 
         REQUIRE( 
-          itype == argument::extract< ACER::Card2::Itype >( iss, ln ).value );
+          itype == argument::extract< ACER::Card2::Itype >( iss ).value );
       }
     }
   }
   GIVEN( "no itype values" ){
     THEN( "the default value is returned" ){
-      std::istringstream iss("");
+      iRecordStream<char> iss(
+          std::istringstream( "/") );
       REQUIRE( ACER::Card2::Itype::defaultValue() == 
-                argument::extract< ACER::Card2::Itype >( iss, ln ).value );
+                argument::extract< ACER::Card2::Itype >( iss ).value );
     }
   }
   
@@ -35,9 +37,10 @@ SCENARIO( "ndir output values",
 
     THEN( "an exception is thrown" ){
       for( auto& itype : invalidValues ){
-        std::istringstream iss( std::to_string(itype) );
+        iRecordStream<char> iss(
+            std::istringstream( std::to_string(itype) ) );
 
-        REQUIRE_THROWS( argument::extract< ACER::Card2::Itype >( iss, ln ) );
+        REQUIRE_THROWS( argument::extract< ACER::Card2::Itype >( iss ) );
       }
     }
   }
