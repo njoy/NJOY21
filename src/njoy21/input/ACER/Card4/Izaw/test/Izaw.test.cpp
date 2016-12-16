@@ -7,9 +7,9 @@
 using namespace njoy::njoy21::input;
 
 std::vector< std::pair<int,double> > pairs{
-  {1001, 0.99916733},
-  {2003, 2.99012018},
-  {92235, 233.02478975} };
+  {1001, 0.999167},
+  {2003, 2.990120},
+  {92235, 233.02479} };
 
 
 SCENARIO( "Validating iz,aw input values",
