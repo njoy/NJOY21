@@ -4,27 +4,16 @@ public:
   
   Argument< Temp2 > temp2;
 
-private:
   template< typename Char >
-  Card4( std::basic_istringstream< Char >&& is,
-	 const long& lineNumber,
+  Card4( iRecordStream< Char >& is,
 	 const Argument< Card2::Ntemp2 >& ntemp2,
 	 const Argument< Card2::Istrap >& istrap,
          const Argument< Card2::Temp1 >& temp1 )
     try:
-      temp2( argument::extract< Temp2 >
-	     ( is, lineNumber, ntemp2, istrap, temp1 ) ){}
-    catch( std::exception& e ){
+      temp2( argument::extract< Temp2 >( is, ntemp2, istrap, temp1 ) ){
+	Card::clear( is);
+    } catch( std::exception& e ) {
       Log::info("Trouble while validating Card 4");
       throw e;
     }
-  
-public:
-  template< typename Istream >
-  Card4( Istream& is, long& lineNumber,
-	 const Argument< Card2::Ntemp2 >& ntemp2,
-	 const Argument< Card2::Istrap >& istrap,
-	 const Argument< Card2::Temp1 >& temp1 ) :
-    Card4( Card::extract( is, lineNumber ),
-	   lineNumber, ntemp2, istrap, temp1 ){ ++lineNumber; }
 };
