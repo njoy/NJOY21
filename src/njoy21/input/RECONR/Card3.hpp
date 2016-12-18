@@ -9,7 +9,7 @@ public:
   Argument< Ngrid > ngrid;
 
   template< typename Char >
-  Card3( std::iRecordStream< Char >& is )
+  Card3( iRecordStream< Char >& is )
     try:
       mat( argument::extract< Mat >( is ) ),
       ncards( argument::extract< Ncards >( is ) ),

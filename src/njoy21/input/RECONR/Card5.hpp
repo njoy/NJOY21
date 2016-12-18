@@ -5,7 +5,7 @@ public:
   Argument< Cards > cards;
 
   template< typename Char >
-  Card5( std::iRecordStream< Char >& is )
+  Card5( iRecordStream< Char >& is )
     try:
       cards( argument::extract< Cards >( is ) ){ Card::clear(is); }
     catch( std::exception& e ){

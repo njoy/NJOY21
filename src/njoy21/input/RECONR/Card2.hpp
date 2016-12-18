@@ -5,7 +5,7 @@ public:
   Argument< Tlabel > tlabel;
 
   template< typename Char >
-  Card2( std::iRecordStream< Char >& is )
+  Card2( iRecordStream< Char >& is )
     try:
       tlabel( argument::extract< Tlabel >( is ) ){
 	Card::clear(is);

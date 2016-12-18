@@ -7,13 +7,13 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "bugless" ){
   std::string value("012345678901234567890123456789012345678901234567890123456789012345");
-  iRecordStream<Char> iss( std::istringstream( "'" + value + "'" ) );
+  iRecordStream<char> iss( std::istringstream( "'" + value + "'" ) );
   RECONR::Card2 card2( iss );
   REQUIRE( card2.tlabel.value == value );
 }
 
 SCENARIO( "bugged" ){
   std::string value("'0123456789012345678901234567890123456789012345678901234567890123456'");
-  iRecordStream<Char> iss( std::istringstream(value) );
-  REQUIRE_THROWS( RECONR::Card2( iss ) );
+  iRecordStream<char> iss( (std::istringstream(value)) );
+  REQUIRE_THROWS( RECONR::Card2 card2( iss ) );
 }

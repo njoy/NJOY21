@@ -11,7 +11,7 @@ public:
   Argument< Errint > errint;
 
   template< typename Char >
-  Card4( std::iRecordStream< Char >& is )
+  Card4( iRecordStream< Char >& is )
     try:
       err( argument::extract< Err >( is ) ),
       tempr( argument::extract< Tempr >( is ) ),
