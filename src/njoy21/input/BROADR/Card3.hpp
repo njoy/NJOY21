@@ -9,23 +9,17 @@ public:
   Argument< Thnmax > thnmax;
   Argument< Errmax > errmax;
   Argument< Errint > errint;
-  
-private:
+
   template< typename Char >
-  Card3( std::basic_istringstream< Char >&& is,
-	 const long& lineNumber )
+  Card3( iRecordStream< Char >& is )
     try:
-      errthn( argument::extract< Errthn >( is, lineNumber ) ),
-      thnmax( argument::extract< Thnmax >( is, lineNumber ) ),
-      errmax( argument::extract< Errmax >( is, lineNumber, this->errthn ) ),
-      errint( argument::extract< Errint >( is, lineNumber, this->errthn ) ){}
-    catch( std::exception& e ){
+      errthn( argument::extract< Errthn >( is ) ),
+      thnmax( argument::extract< Thnmax >( is ) ),
+      errmax( argument::extract< Errmax >( is, this->errthn ) ),
+      errint( argument::extract< Errint >( is, this->errthn ) ){
+	Card::clear( is);
+    } catch( std::exception& e ){
       Log::info("Trouble while validating Card 3");
       throw e;
     }
-  
-public:
-  template< typename Istream >
-  Card3( Istream& is, long& lineNumber ) :
-    Card3( Card::extract( is, lineNumber ), lineNumber ){ ++lineNumber; }
 };
