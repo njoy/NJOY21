@@ -6,19 +6,13 @@ public:
   Argument< Nendf > nendf;
   Argument< Npend > npend;
   
-  template< typename Istream >
-  Card1( Istream& is, long& lineNumber ) : 
-    Card1( Card::extract( is, lineNumber ), lineNumber ){
-      ++lineNumber;
-  }
-
-private:
-
   template< typename Char >
-  Card1( std::basic_istringstream< Char >&& is, const long& lineNumber )
+  Card1( iRecordStream< Char >& is )
     try:
-      nendf( argument::extract< Nendf >( is, lineNumber ) ),
-      npend( argument::extract< Npend >( is, lineNumber, this->nendf ) ){}
+      nendf( argument::extract< Nendf >( is ) ),
+      npend( argument::extract< Npend >( is, this->nendf ) ){
+	Card::clear(is);
+      }
     catch( std::exception& e ){
       Log::info( "Trouble validating Card1");
       throw e;

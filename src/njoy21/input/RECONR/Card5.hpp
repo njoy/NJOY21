@@ -4,18 +4,12 @@ public:
 
   Argument< Cards > cards;
 
-  template< typename Istream >
-  Card5( Istream& is, long& lineNumber ) :
-    Card5( Card::extract( is, lineNumber ), lineNumber ){ ++lineNumber; }
-
-private:
   template< typename Char >
-  Card5( std::basic_istringstream< Char >&& is, const long& lineNumber )
+  Card5( std::iRecordStream< Char >& is )
     try:
-      cards( argument::extract< Cards >( is, lineNumber ) ){}
+      cards( argument::extract< Cards >( is ) ){ Card::clear(is); }
     catch( std::exception& e ){
       Log::info("Trouble while validating Card 5");
       throw e;
     }
-
 };

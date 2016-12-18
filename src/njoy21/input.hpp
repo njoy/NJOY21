@@ -10,7 +10,7 @@ using iRecordStream =
 #include "njoy21/input/argument.hpp"
 
 #include "njoy21/input/MODER.hpp"
-//#include "njoy21/input/RECONR.hpp"
+#include "njoy21/input/RECONR.hpp"
 //#include "njoy21/input/BROADR.hpp"
 //#include "njoy21/input/PURR.hpp"
 //#include "njoy21/input/UNRESR.hpp"
