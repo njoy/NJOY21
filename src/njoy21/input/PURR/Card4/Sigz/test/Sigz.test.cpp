@@ -13,12 +13,11 @@ SCENARIO( "Sigz input values",
     nsigz.value = 3;
 
     WHEN( "there are the correct number of temperatures and they are valid" ){
-      std::istringstream issPoints(" 1.0 2.0 3.0");
+      iRecordStream< char> issPoints( std::istringstream(" 1.0 2.0 3.0") );
 
       THEN( "the grid points can be extracted correctly" ){
-        long ln(0);
         auto sigz = argument::extract< 
-                    PURR::Card4::Sigz >(issPoints, ln, nsigz);
+                    PURR::Card4::Sigz >(issPoints, nsigz);
         std::vector< dimwits::Quantity< dimwits::Barn > > refSigzs{
                       1.0*dimwits::barn, 
                       2.0*dimwits::barn, 
@@ -28,42 +27,38 @@ SCENARIO( "Sigz input values",
     }
 
     WHEN( "the grid points are invalid" ){
-      std::istringstream issPoints(" 1.0 -2.0 3.0");
+      iRecordStream< char> issPoints( std::istringstream(" 1.0 -2.0 3.0") );
 
       THEN( "an exception is thrown" ){
-        long ln(0);
         REQUIRE_THROWS(
-            argument::extract< PURR::Card4::Sigz >(issPoints, ln, nsigz) );
+            argument::extract< PURR::Card4::Sigz >(issPoints, nsigz) );
       }
     }
 
     WHEN( "commas are used to separate values" ){
-      std::istringstream issPoints(" 1.0, 2.0, 3.0");
+      iRecordStream< char> issPoints( std::istringstream(" 1.0, 2.0, 3.0") );
 
       THEN( "an exception is thrown" ){
-        long ln(0);
         REQUIRE_THROWS(
-            argument::extract< PURR::Card4::Sigz >(issPoints, ln, nsigz) );
+            argument::extract< PURR::Card4::Sigz >(issPoints, nsigz) );
       }
     }
 
     WHEN( "there are too many grid points" ){
-      std::istringstream issPoints(" 1.0 2.0 3.0 4.0");
+      iRecordStream< char> issPoints( std::istringstream(" 1.0 2.0 3.0 4.0 /") );
 
       THEN( "an exception is thrown" ){
-        long ln(0);
         REQUIRE_THROWS(
-            argument::extract< PURR::Card4::Sigz >(issPoints, ln, nsigz) );
+            argument::extract< PURR::Card4::Sigz >(issPoints, nsigz) );
       }
     }
 
     WHEN( "there are not enough many grid points" ){
-      std::istringstream issPoints(" 1.0 2.0");
+      iRecordStream< char> issPoints( std::istringstream(" 1.0 2.0") );
 
       THEN( "an exception is thrown" ){
-        long ln(0);
         REQUIRE_THROWS(
-            argument::extract< PURR::Card4::Sigz >(issPoints, ln, nsigz) );
+            argument::extract< PURR::Card4::Sigz >(issPoints, nsigz) );
       }
     }
   }

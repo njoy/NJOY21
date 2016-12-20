@@ -15,19 +15,19 @@ SCENARIO( "Nladr input values",
 
     THEN( "the returned class has the correct value" ){
       for( auto& nladr : validValues ){
-        std::istringstream iss( std::to_string(nladr) );
+        iRecordStream< char> iss( std::istringstream( std::to_string(nladr) ) );
 
         REQUIRE( 
-          nladr == argument::extract< PURR::Card2::Nladr >( iss, ln ).value );
+          nladr == argument::extract< PURR::Card2::Nladr >( iss ).value );
       }
     }
   }
 
   GIVEN( "no nladr values" ){
     THEN( "the default value is returned" ){
-      std::istringstream iss("");
+      iRecordStream< char> iss( std::istringstream(" /") );
       REQUIRE( PURR::Card2::Nladr::defaultValue() == 
-                argument::extract< PURR::Card2::Nladr >( iss, ln ).value );
+                argument::extract< PURR::Card2::Nladr >( iss ).value );
     }
   }
   
@@ -36,9 +36,9 @@ SCENARIO( "Nladr input values",
 
     THEN( "an exception is thrown" ){
       for( auto& nladr : invalidValues ){
-        std::istringstream iss( std::to_string(nladr) );
+        iRecordStream< char> iss( std::istringstream( std::to_string(nladr) ) );
 
-        REQUIRE_THROWS( argument::extract< PURR::Card2::Nladr >( iss, ln ) );
+        REQUIRE_THROWS( argument::extract< PURR::Card2::Nladr >( iss ) );
       }
     }
   }

@@ -17,21 +17,16 @@ public:
   Argument< Iprint > iprint;
   Argument< Nunx > nunx;
 
-  template< typename Istream >
-  Card2( Istream& is, long& lineNumber ) :
-      Card2( Card::extract( is, lineNumber ), lineNumber ){ ++lineNumber; }
-
-private:
   template< typename Char >
-  Card2( std::basic_istringstream< Char >&& is, const long& lineNumber )
+  Card2( iRecordStream< Char >& is )
     try:
-      matd( argument::extract< RECONR::Card3::Mat >( is, lineNumber ) ),
-      ntemp( argument::extract< Ntemp >( is, lineNumber ) ),
-      nsigz( argument::extract< Nsigz >( is, lineNumber ) ),
-      nbin( argument::extract< Nbin >( is, lineNumber ) ),
-      nladr( argument::extract< Nladr >( is, lineNumber ) ),
-      iprint( argument::extract< Iprint >( is, lineNumber ) ),
-      nunx( argument::extract< Nunx >( is, lineNumber ) )
+      matd( argument::extract< RECONR::Card3::Mat >( is ) ),
+      ntemp( argument::extract< Ntemp >( is ) ),
+      nsigz( argument::extract< Nsigz >( is ) ),
+      nbin( argument::extract< Nbin >( is ) ),
+      nladr( argument::extract< Nladr >( is ) ),
+      iprint( argument::extract< Iprint >( is ) ),
+      nunx( argument::extract< Nunx >( is ) )
       {   }
     catch( std::exception& e ){
       Log::info( "Trouble while validating card 2" );

@@ -15,19 +15,19 @@ SCENARIO( "Nbin input values",
 
     THEN( "the returned class has the correct value" ){
       for( auto& nbin : validValues ){
-        std::istringstream iss( std::to_string(nbin) );
+        iRecordStream< char> iss( std::istringstream( std::to_string(nbin) ) );
 
         REQUIRE( 
-          nbin == argument::extract< PURR::Card2::Nbin >( iss, ln ).value );
+          nbin == argument::extract< PURR::Card2::Nbin >( iss ).value );
       }
     }
   }
 
   GIVEN( "no nbin values" ){
     THEN( "the default value is returned" ){
-      std::istringstream iss("");
+      iRecordStream< char> iss( std::istringstream(" /") );
       REQUIRE( PURR::Card2::Nbin::defaultValue() == 
-                argument::extract< PURR::Card2::Nbin >( iss, ln ).value );
+                argument::extract< PURR::Card2::Nbin >( iss ).value );
     }
   }
   
@@ -36,9 +36,9 @@ SCENARIO( "Nbin input values",
 
     THEN( "an exception is thrown" ){
       for( auto& nbin : invalidValues ){
-        std::istringstream iss( std::to_string(nbin) );
+        iRecordStream< char> iss( std::istringstream( std::to_string(nbin) ) );
 
-        REQUIRE_THROWS( argument::extract< PURR::Card2::Nbin >( iss, ln ) );
+        REQUIRE_THROWS( argument::extract< PURR::Card2::Nbin >( iss ) );
       }
     }
   }

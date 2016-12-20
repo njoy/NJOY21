@@ -12,9 +12,9 @@ SCENARIO( "Nsigz input values",
 
   GIVEN( "no nsigz values" ){
     THEN( "the default value is returned" ){
-      std::istringstream iss("");
+      iRecordStream< char> iss( std::istringstream(" /") );
       REQUIRE( PURR::Card2::Nsigz::defaultValue() == 
-                argument::extract< PURR::Card2::Nsigz >( iss, ln ).value );
+                argument::extract< PURR::Card2::Nsigz >( iss ).value );
     }
   }
 
@@ -23,10 +23,11 @@ SCENARIO( "Nsigz input values",
 
     THEN( "the returned class has the correct value" ){
       for( auto& nsigz : validValues ){
-        std::istringstream iss( std::to_string(nsigz) );
+        iRecordStream< char> iss( std::istringstream( std::to_string(nsigz)  
+                                                     + " /") );
 
         REQUIRE( 
-          nsigz == argument::extract< PURR::Card2::Nsigz >( iss, ln ).value );
+          nsigz == argument::extract< PURR::Card2::Nsigz >( iss ).value );
       }
     }
   }
@@ -35,9 +36,9 @@ SCENARIO( "Nsigz input values",
 
     THEN( "an exception is thrown" ){
       for( auto& nsigz : invalidValues ){
-        std::istringstream iss( std::to_string(nsigz) );
+        iRecordStream< char> iss( std::istringstream( std::to_string(nsigz) ) );
 
-        REQUIRE_THROWS( argument::extract< PURR::Card2::Nsigz >( iss, ln ) );
+        REQUIRE_THROWS( argument::extract< PURR::Card2::Nsigz >( iss ) );
       }
     }
   }

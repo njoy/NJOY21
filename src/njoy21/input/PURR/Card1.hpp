@@ -8,18 +8,12 @@ public:
   Argument< Nin > nin;
   Argument< Nout > nout;
 
-  template< typename Istream >
-  Card1( Istream& is, long& lineNumber ) :
-    Card1( Card::extract( is, lineNumber ), lineNumber ){ ++lineNumber; }
-
-private:
   template< typename Char >
-  Card1( std::basic_istringstream< Char >&& is, const long& lineNumber )
+  Card1( iRecordStream< Char >& is )
     try:
-      nendf( argument::extract< Nendf >( is, lineNumber ) ),
-      nin( argument::extract< Nin >( is, lineNumber, this->nendf ) ),
-      nout( argument::extract< Nout >
-	    ( is, lineNumber, this->nendf, this->nin ) ){}
+      nendf( argument::extract< Nendf >( is ) ),
+      nin( argument::extract< Nin >( is, this->nendf ) ),
+      nout( argument::extract< Nout > ( is, this->nendf, this->nin ) ){}
     catch( std::exception& e ){
       Log::info("Trouble while validating Card 1");
       throw e;

@@ -14,10 +14,10 @@ SCENARIO( "Verifying PURR Card2 input",
     WHEN( "all optional values are given" ){
       THEN( "the Card2 values can be verified" ){
         long ln(0);
-        std::istringstream issCard2( 
-            std::to_string(material) + " 3 2 16 85 0 5 /\n");
+        iRecordStream< char > issCard2( std::istringstream(  
+            std::to_string(material) + " 3 2 16 85 0 5 /\n" ) );
 
-        PURR::Card2 card2( issCard2, ln );
+        PURR::Card2 card2( issCard2 );
 
         REQUIRE( material == card2.matd.value );
         REQUIRE( 3 == card2.ntemp.value );
@@ -31,9 +31,10 @@ SCENARIO( "Verifying PURR Card2 input",
     WHEN( "none of the optional values are given" ){
       THEN( "the Card2 values can be verified" ){
         long ln(0);
-        std::istringstream issCard2( std::to_string(material) + " /\n" );
+        iRecordStream< char > issCard2( 
+            std::istringstream(  std::to_string(material) + " /\n"  ) );
 
-        PURR::Card2 card2( issCard2, ln );
+        PURR::Card2 card2( issCard2 );
 
         REQUIRE( material == card2.matd.value );
         REQUIRE( 1 == card2.ntemp.value );
@@ -49,11 +50,10 @@ SCENARIO( "Verifying PURR Card2 input",
     WHEN( "material = 0" ){
       THEN( "the Card2 values can be verified" ){
         long ln(0);
-        std::istringstream issCard2( std::to_string(material) + " /\n" );
+        iRecordStream< char > issCard2( 
+            std::istringstream(  std::to_string(material) + " /\n"  ) );
 
-        njoy::Log::info(issCard2.str());
-
-        PURR::Card2 card2( issCard2, ln );
+        PURR::Card2 card2( issCard2 );
 
         REQUIRE( material == card2.matd.value );
       }
@@ -64,9 +64,9 @@ SCENARIO( "Verifying PURR Card2 input",
     int material{-1};
 
     THEN( "an exception is thrown when reading PURR Card2 input" ){
-      std::istringstream issCard2( std::to_string(material) );
-      long ln{1};
-      REQUIRE_THROWS( PURR::Card2(issCard2, ln ) );
+      iRecordStream< char > issCard2( 
+          std::istringstream(  std::to_string(material)  ) );
+      REQUIRE_THROWS( PURR::Card2 card2(issCard2 ) );
     }
   }
 } // SCENARIO

@@ -15,13 +15,12 @@ std::string sCard3(" 293.6 600 800 /\n");
 std::string sCard4(" 1 2 /\n");
 
 SCENARIO( "Parsing valid PURR input" ){
-  std::istringstream iss;
-  long ln(0);
   WHEN( "all optional values are given" ){
-    iss.str( sCard1 + sCard2_full + sCard3 + sCard4 + sCard2_0 );
+    iRecordStream< char> iss(
+        std::istringstream( sCard1 + sCard2_full + sCard3 + sCard4 + sCard2_0 ) );
 
     THEN( "the read values can ve verified" ){
-      PURR purr( iss, ln );
+      PURR purr( iss );
       REQUIRE( 21 == purr.card1.nendf.value );
       REQUIRE( 22 == purr.card1.nin.value );
       REQUIRE( 23 == purr.card1.nout.value );
@@ -50,10 +49,11 @@ SCENARIO( "Parsing valid PURR input" ){
     }
   }
   WHEN( "no optional values are given" ){
-    iss.str( sCard1 + sCard2_empty + sCard3 + sCard4 + sCard2_0 );
+    iRecordStream< char> iss(
+        std::istringstream( sCard1 + sCard2_empty + sCard3 + sCard4 + sCard2_0 ) );
 
     THEN( "the read values can ve verified" ){
-      PURR purr( iss, ln );
+      PURR purr( iss );
       REQUIRE( 21 == purr.card1.nendf.value );
       REQUIRE( 22 == purr.card1.nin.value );
       REQUIRE( 23 == purr.card1.nout.value );
@@ -69,11 +69,12 @@ SCENARIO( "Parsing valid PURR input" ){
     }
   }
   WHEN( "two materials are given" ){
-    iss.str( sCard1 + sCard2_empty + sCard3 + sCard4 +
-                      sCard2_full + sCard3 + sCard4 + sCard2_0 );
+    iRecordStream< char> iss(
+        std::istringstream( sCard1 + sCard2_empty + sCard3 + sCard4 +
+                      sCard2_full + sCard3 + sCard4 + sCard2_0  ) );
 
     THEN( "the read values can ve verified" ){
-      PURR purr( iss, ln );
+      PURR purr( iss );
 
       REQUIRE( 2 == purr.cardSequence.size() );
     }
@@ -81,58 +82,60 @@ SCENARIO( "Parsing valid PURR input" ){
 } // SCENARIO
 
 SCENARIO( "Parsing invlaid PURR input" ){
-  std::istringstream iss;
-  long ln(0);
-
   WHEN( "Only terminating Card2" ){
-    iss.str( sCard1 + sCard2_0 );
-    njoy::Log::info(iss.str() );
+    iRecordStream< char> iss(
+        std::istringstream( sCard1 + sCard2_0 ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( PURR( iss, ln ) );
+      REQUIRE_THROWS( PURR purr( iss ) );
     }
   }
   WHEN( "Cards with non-terminating-Card2" ){
-    iss.str( sCard1 + sCard2_full + sCard3 + sCard4);
+    iRecordStream< char> iss(
+        std::istringstream( sCard1 + sCard2_full + sCard3 + sCard4) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( PURR( iss, ln ) );
+      REQUIRE_THROWS( PURR purr( iss ) );
     }
   }
   WHEN( "Card3 has too few entries" ){
     njoy::Log::info(
         "\nTesting failure when Card3 has too few entries.\n" );
-    iss.str( sCard1 + "9228 4 2 /\n" + sCard3 + sCard4 + sCard2_0 );
+    iRecordStream< char> iss(
+        std::istringstream( sCard1 + "9228 4 2 /\n" + sCard3 + sCard4 + sCard2_0 ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( PURR( iss, ln ) );
+      REQUIRE_THROWS( PURR purr( iss ) );
     }
   }
   WHEN( "Card3 has too many entries" ){
     njoy::Log::info(
         "\nTesting failure when Card3 has too many entries.\n" );
-    iss.str( sCard1 + "9228 2 2 /\n" + sCard3 + sCard4 + sCard2_0 );
+    iRecordStream< char> iss(
+        std::istringstream( sCard1 + "9228 2 2 /\n" + sCard3 + sCard4 + sCard2_0 ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( PURR( iss, ln ) );
+      REQUIRE_THROWS( PURR purr( iss ) );
     }
   }
   WHEN( "Card4 has too few entries" ){
     njoy::Log::info(
         "\nTesting failure when Card4 has too few entries.\n" );
-    iss.str( sCard1 + "9228 3 3 /\n" + sCard3 + sCard4 + sCard2_0 );
+    iRecordStream< char> iss(
+        std::istringstream( sCard1 + "9228 3 3 /\n" + sCard3 + sCard4 + sCard2_0 ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( PURR( iss, ln ) );
+      REQUIRE_THROWS( PURR purr( iss ) );
     }
   }
   WHEN( "Card4 has too many entries" ){
     njoy::Log::info(
         "\nTesting failure when Card4 has too many entries.\n" );
-    iss.str( sCard1 + "9228 3 1 /\n" + sCard3 + sCard4 + sCard2_0 );
+    iRecordStream< char> iss(
+        std::istringstream( sCard1 + "9228 3 1 /\n" + sCard3 + sCard4 + sCard2_0 ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( PURR( iss, ln ) );
+      REQUIRE_THROWS( PURR purr( iss ) );
     }
   }
 }
