@@ -7,15 +7,14 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "bugless" ){
   {
-    std::istringstream multipleTemperature(
+    iRecordStream<char> multipleTemperature( std::istringstream(
     " 20 21 22\n"
     " 9228 2 0 0 0\n"
     " 0.001 1 0.02 1e-07\n"
     " 300 1200\n"
-    " 0/\n");
+    " 0/\n") );
     
-    long lineNumber = 1;
-    BROADR broadr( multipleTemperature, lineNumber );
+    BROADR broadr( multipleTemperature );
 
     REQUIRE( broadr.card1.nendf.value == 20 );
     REQUIRE( broadr.card1.nin.value == 21 );
@@ -37,7 +36,7 @@ SCENARIO( "bugless" ){
 
     REQUIRE( not broadr.card5List );
   }{
-    std::istringstream multipleMaterial(
+    iRecordStream<char> multipleMaterial( std::istringstream(
     " 20 21 22\n"
     " 9228 2 0 0 0\n"
     " 0.001 1 0.02 1e-07\n"
@@ -45,10 +44,9 @@ SCENARIO( "bugless" ){
     " 9225 \n"
     " 125\n"
     " 825\n"
-    " 0/\n");
+    " 0/\n") );
     
-    long lineNumber = 1;
-    BROADR broadr( multipleMaterial, lineNumber );
+    BROADR broadr( multipleMaterial );
 
     REQUIRE( broadr.card5List );
     REQUIRE( broadr.card5List->size() == 3 );
@@ -60,13 +58,11 @@ SCENARIO( "bugless" ){
 }
 
 SCENARIO("bugged"){
-  std::istringstream multipleTemperature(
+  iRecordStream<char> multipleTemperature( std::istringstream(
     " 20 21 22\n"
     " 9228 3 0 0 0\n"
     " 0.001 1 0.02 1e-07\n"
     " 300 1200\n"
-    " 0/\n");
-    
-  long lineNumber = 1;
-  REQUIRE_THROWS( BROADR( multipleTemperature, lineNumber ) );
+    " 0/\n") );
+  REQUIRE_THROWS( BROADR broadr( multipleTemperature ) );
 }

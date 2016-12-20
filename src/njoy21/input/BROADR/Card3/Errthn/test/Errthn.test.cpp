@@ -7,24 +7,16 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "value range" ){
   {
-    std::istringstream iss("   -1.0");
-    long lineNumber = 1;
-    REQUIRE_THROWS( argument::extract
-		    < BROADR::Card3::Errthn >( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("   -1.0") );
+    REQUIRE_THROWS( argument::extract< BROADR::Card3::Errthn >( iss ) );
   }{
-    std::istringstream iss("   0.0");
-    long lineNumber = 1;
-    REQUIRE_THROWS( argument::extract
-		    < BROADR::Card3::Errthn >( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("   0.0") );
+    REQUIRE_THROWS( argument::extract< BROADR::Card3::Errthn >( iss ) );
   }{
-    std::istringstream iss("   1.0");
-    long lineNumber = 1;
-    REQUIRE( argument::extract
-	     < BROADR::Card3::Errthn >( iss, lineNumber ).value == 1.0 );
+    iRecordStream<char> iss( std::istringstream("   1.0") );
+    REQUIRE( argument::extract< BROADR::Card3::Errthn >( iss ).value == 1.0 );
   }{
-    std::istringstream iss("   ");
-    long lineNumber = 1;
-    REQUIRE_THROWS( argument::extract
-		    < BROADR::Card3::Errthn >( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("   ") );
+    REQUIRE_THROWS( argument::extract< BROADR::Card3::Errthn >( iss ) );
   }
 }

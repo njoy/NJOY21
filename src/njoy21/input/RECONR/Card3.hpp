@@ -8,17 +8,14 @@ public:
   Argument< Ncards > ncards;
   Argument< Ngrid > ngrid;
 
-  template< typename Istream >
-  Card3( Istream& is, long& lineNumber ) :
-      Card3( Card::extract( is, lineNumber ), lineNumber ){ ++lineNumber; }
-
-private:
   template< typename Char >
-  Card3( std::basic_istringstream< Char > && is, const long& lineNumber )
+  Card3( iRecordStream< Char >& is )
     try:
-      mat( argument::extract< Mat >( is, lineNumber ) ),
-      ncards( argument::extract< Ncards >( is, lineNumber ) ),
-      ngrid( argument::extract< Ngrid >( is, lineNumber ) ){}
+      mat( argument::extract< Mat >( is ) ),
+      ncards( argument::extract< Ncards >( is ) ),
+      ngrid( argument::extract< Ngrid >( is ) ){
+	Card::clear(is);
+      }
   catch( std::exception& e ){
     Log::info( "Trouble validating Card3" );
     throw e;

@@ -7,23 +7,16 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "value range" ){
   {
-    std::istringstream iss("   -1.0");
-    long lineNumber = 1;
-    REQUIRE_THROWS( argument::extract< BROADR::Card2::Temp1 >( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("   -1.0") );
+    REQUIRE_THROWS( argument::extract< BROADR::Card2::Temp1 >( iss ) );
   }{
-    std::istringstream iss("   0.0");
-    long lineNumber = 1;
-    REQUIRE( argument::extract
-	     < BROADR::Card2::Temp1 >( iss, lineNumber ).value == 0.0 * dimwits::kelvin );
+    iRecordStream<char> iss( std::istringstream("   0.0") );
+    REQUIRE( argument::extract< BROADR::Card2::Temp1 >( iss ).value == 0.0 * dimwits::kelvin );
   }{
-    std::istringstream iss("   1.0");
-    long lineNumber = 1;
-    REQUIRE( argument::extract
-	     < BROADR::Card2::Temp1 >( iss, lineNumber ).value == 1.0 * dimwits::kelvin );
+    iRecordStream<char> iss( std::istringstream("   1.0") );
+    REQUIRE( argument::extract< BROADR::Card2::Temp1 >( iss ).value == 1.0 * dimwits::kelvin );
   }{
-    std::istringstream iss("   ");
-    long lineNumber = 1;
-    REQUIRE( argument::extract
-	     < BROADR::Card2::Temp1 >( iss, lineNumber ).value == 0.0 * dimwits::kelvin );
+    iRecordStream<char> iss( std::istringstream("   /") );
+    REQUIRE( argument::extract< BROADR::Card2::Temp1 >( iss ).value == 0.0 * dimwits::kelvin );
   }
 }

@@ -10,28 +10,23 @@ SCENARIO( "value range" ){
   Argument< BROADR::Card2::Istrap > istrap; istrap.value = 1;
   Argument< BROADR::Card2::Temp1 > temp1; temp1.value = 10.0 * dimwits::kelvin;
   {
-    std::istringstream iss("   9.0\n");
-    long lineNumber = 1;
-    REQUIRE_THROWS( BROADR::Card4( iss, lineNumber, ntemp2, istrap, temp1 ) );
+    iRecordStream<char> iss( std::istringstream("   9.0\n") );
+    REQUIRE_THROWS( BROADR::Card4( iss, ntemp2, istrap, temp1 ) );
   }{
-    std::istringstream iss("   10.0\n");
-    long lineNumber = 1;
-    REQUIRE( BROADR::Card4( iss, lineNumber, ntemp2, istrap, temp1 ).temp2.value.front()
+    iRecordStream<char> iss( std::istringstream("   10.0\n") );
+    REQUIRE( BROADR::Card4( iss, ntemp2, istrap, temp1 ).temp2.value.front()
 	     == 10.0 * dimwits::kelvin );
   }{
-    std::istringstream iss("   11.0\n");
-    long lineNumber = 1;
-    REQUIRE( BROADR::Card4( iss, lineNumber, ntemp2, istrap, temp1 ).temp2.value.front()
+    iRecordStream<char> iss( std::istringstream("   11.0\n") );
+    REQUIRE( BROADR::Card4( iss, ntemp2, istrap, temp1 ).temp2.value.front()
 	     == 11.0 * dimwits::kelvin );
   }{
-    std::istringstream iss("   \n");
-    long lineNumber = 1;
-    REQUIRE_THROWS( BROADR::Card4( iss, lineNumber, ntemp2, istrap, temp1 ) );
+    iRecordStream<char> iss( std::istringstream("   \n") );
+    REQUIRE_THROWS( BROADR::Card4( iss, ntemp2, istrap, temp1 ) );
   }{
-    std::istringstream iss("  20.0 30.0 40.0 \n");
+    iRecordStream<char> iss( std::istringstream("  20.0 30.0 40.0 \n") );
     ntemp2.value = 3;
-    long lineNumber = 1;
-    BROADR::Card4 card4( iss, lineNumber, ntemp2, istrap, temp1 );
+    BROADR::Card4 card4( iss, ntemp2, istrap, temp1 );
     REQUIRE( card4.temp2.value.front() == 20.0 * dimwits::kelvin );
     REQUIRE( card4.temp2.value.at(1) == 30.0 * dimwits::kelvin );
     REQUIRE( card4.temp2.value.back() == 40.0 * dimwits::kelvin );

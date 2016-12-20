@@ -7,28 +7,20 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "value range" ){
   {
-    std::istringstream iss("   -1.0");
-    long lineNumber = 1;
-    REQUIRE( argument::extract
-	     < BROADR::Card3::Thnmax >( iss, lineNumber ).value
+    iRecordStream<char> iss( std::istringstream("   -1.0") );
+    REQUIRE( argument::extract< BROADR::Card3::Thnmax >( iss ).value
 	     == -1.0 * dimwits::electronVolt );
   }{
-    std::istringstream iss("   0.0");
-    long lineNumber = 1;
-    REQUIRE( argument::extract
-	     < BROADR::Card3::Thnmax >( iss, lineNumber ).value
+    iRecordStream<char> iss( std::istringstream("   0.0") );
+    REQUIRE( argument::extract< BROADR::Card3::Thnmax >( iss ).value
 	     == 0.0 * dimwits::electronVolt );
   }{
-    std::istringstream iss("   1.0");
-    long lineNumber = 1;
-    REQUIRE( argument::extract
-	     < BROADR::Card3::Thnmax >( iss, lineNumber ).value
+    iRecordStream<char> iss( std::istringstream("   1.0") );
+    REQUIRE( argument::extract< BROADR::Card3::Thnmax >( iss ).value
 	     == 1.0 * dimwits::electronVolt );
   }{
-    std::istringstream iss("   ");
-    long lineNumber = 1;
-    REQUIRE( argument::extract
-	     < BROADR::Card3::Thnmax >( iss, lineNumber ).value
+    iRecordStream<char> iss( std::istringstream(" / ") );
+    REQUIRE( argument::extract< BROADR::Card3::Thnmax >( iss ).value
 	     == 1.0 * dimwits::mega( dimwits::electronVolt ) );
   }
 }

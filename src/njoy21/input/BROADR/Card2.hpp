@@ -12,22 +12,17 @@ public:
   Argument< Istrap > istrap;
   Argument< Temp1 > temp1;
 
-private:
   template< typename Char >
-  Card2( std::basic_istringstream< Char >&& is, const long& lineNumber )
+  Card2( iRecordStream< Char >& is )
     try:
-      mat1( argument::extract< Mat1 >( is, lineNumber ) ),
-      ntemp2( argument::extract< Ntemp2 >( is, lineNumber ) ),
-      istart( argument::extract< Istart >( is, lineNumber ) ),
-      istrap( argument::extract< Istrap >( is, lineNumber ) ),
-      temp1( argument::extract< Temp1 >( is, lineNumber ) ){}
-    catch( std::exception& e ){
+      mat1( argument::extract< Mat1 >( is ) ),
+      ntemp2( argument::extract< Ntemp2 >( is ) ),
+      istart( argument::extract< Istart >( is ) ),
+      istrap( argument::extract< Istrap >( is ) ),
+      temp1( argument::extract< Temp1 >( is ) ){
+	Card::clear(is);
+    } catch( std::exception& e ){
       Log::info("Trouble while validating Card 2");
       throw e;
     }
-  
-public:
-  template< typename Istream >
-  Card2( Istream& is, long& lineNumber ) :
-    Card2( Card::extract( is, lineNumber ), lineNumber ){ ++lineNumber; }
 };

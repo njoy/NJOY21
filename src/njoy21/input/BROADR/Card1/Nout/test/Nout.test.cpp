@@ -9,76 +9,58 @@ SCENARIO( "value range" ){
   Argument< BROADR::Card1::Nendf > nendf; nendf.value = 21;
   Argument< BROADR::Card1::Nin > nin;
   {
-    std::istringstream iss("   19");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   19") );
     nin.value = 22;
-    REQUIRE_THROWS( argument::extract< BROADR::Card1::Nout >
-		    ( iss, lineNumber, nendf, nin ) );
+    REQUIRE_THROWS( argument::extract< BROADR::Card1::Nout >( iss, nendf, nin ) );
   }{
-    std::istringstream iss("   -19");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   -19") );
     nin.value = -22;
-    REQUIRE_THROWS( argument::extract< BROADR::Card1::Nout >
-		    ( iss, lineNumber, nendf, nin ) );
+    REQUIRE_THROWS( argument::extract< BROADR::Card1::Nout >( iss, nendf, nin ) );
   }{
-    std::istringstream iss("   -20");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   -20") );
     nin.value = 22;
-    REQUIRE_THROWS( argument::extract< BROADR::Card1::Nout >
-		    ( iss, lineNumber, nendf, nin ) );
+    REQUIRE_THROWS( argument::extract< BROADR::Card1::Nout >( iss, nendf, nin ) );
   }{
-    std::istringstream iss("   20");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   20") );
     nin.value = 22;
-    REQUIRE( argument::extract< BROADR::Card1::Nout >
-	     ( iss, lineNumber, nendf, nin ).value == 20 );
+    REQUIRE( argument::extract< BROADR::Card1::Nout >( iss, nendf, nin ).value
+	     == 20 );
   }{
-    std::istringstream iss("   -20");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   -20") );
     nin.value = -22;
-    REQUIRE( argument::extract< BROADR::Card1::Nout >
-	     ( iss, lineNumber, nendf, nin ).value == -20 );
+    REQUIRE( argument::extract< BROADR::Card1::Nout >( iss, nendf, nin ).value
+	     == -20 );
   }{
-    std::istringstream iss("   50");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   50") );
     nin.value = 22;
-    REQUIRE( argument::extract< BROADR::Card1::Nout >
-	     ( iss, lineNumber, nendf, nin ).value == 50 );
+    REQUIRE( argument::extract< BROADR::Card1::Nout >( iss, nendf, nin ).value
+	     == 50 );
   }{
-    std::istringstream iss("   -50");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   -50") );
     nin.value = -22;
-    REQUIRE( argument::extract< BROADR::Card1::Nout >
-	     ( iss, lineNumber, nendf, nin ).value == -50 );
+    REQUIRE( argument::extract< BROADR::Card1::Nout >( iss, nendf, nin ).value
+	     == -50 );
   }{
-    std::istringstream iss("   99");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   99") );
     nin.value = 22;
-    REQUIRE( argument::extract< BROADR::Card1::Nout >
-	     ( iss, lineNumber, nendf, nin ).value == 99 );
+    REQUIRE( argument::extract< BROADR::Card1::Nout >( iss, nendf, nin ).value
+	     == 99 );
   }{
-    std::istringstream iss("   -99");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   -99") );
     nin.value = -22;
-    REQUIRE( argument::extract< BROADR::Card1::Nout >
-	     ( iss, lineNumber, nendf, nin ).value == -99 );
+    REQUIRE( argument::extract< BROADR::Card1::Nout >( iss, nendf, nin ).value
+	     == -99 );
   }{
-    std::istringstream iss("   100");
-    long lineNumber = 1;
+    iRecordStream<char> iss( std::istringstream("   100") );
     nin.value = 22;
-    REQUIRE_THROWS( argument::extract< BROADR::Card1::Nout >
-		    ( iss, lineNumber, nendf, nin ) );
+    REQUIRE_THROWS( argument::extract< BROADR::Card1::Nout >( iss, nendf, nin ) );
   }{
-    std::istringstream iss("   -100");
+    iRecordStream<char> iss( std::istringstream("   -100") );
     nin.value = -22;
-    long lineNumber = 1;
-    REQUIRE_THROWS( argument::extract< BROADR::Card1::Nout >
-		    ( iss, lineNumber, nendf, nin ) );
+    REQUIRE_THROWS( argument::extract< BROADR::Card1::Nout >( iss, nendf, nin ) );
   }{
-    std::istringstream iss("   ");
+    iRecordStream<char> iss( std::istringstream("   ") );
     nin.value = 22;
-    long lineNumber = 1;
-    REQUIRE_THROWS( argument::extract< BROADR::Card1::Nout >
-		    ( iss, lineNumber, nendf, nin ) );
+    REQUIRE_THROWS( argument::extract< BROADR::Card1::Nout >( iss, nendf, nin ) );
   }
 }

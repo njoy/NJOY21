@@ -7,13 +7,14 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "Ncards input values" ){
-
-  RECONR::Card3::Ncards ncards;
-
-  REQUIRE( ncards.verify(0) );
-  REQUIRE( ncards.verify(1) );
-  REQUIRE( not ncards.verify(-1) );
-
-  REQUIRE( "ncards" == ncards.name() );
+  std::vector<int> validNcards{ 0, 1, 100 };
+  for( auto ncards : validNcards ){
+    iRecordStream<char> iss( std::istringstream( std::to_string( ncards ) ) );
+    REQUIRE( argument::extract< RECONR::Card3::Ncards >(iss).value == ncards );
+  }
+  std::vector<int> invalidNcards{ -1 };
+  for( auto ncards : invalidNcards ){
+    iRecordStream<char> iss( std::istringstream( std::to_string( ncards ) ) );
+    REQUIRE_THROWS( argument::extract< RECONR::Card3::Ncards >(iss) );
+  }
 }
-
