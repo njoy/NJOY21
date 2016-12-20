@@ -22,7 +22,7 @@ SCENARIO( "Validating card2 inputs",
     }
   }
   WHEN( "none of the optional values are given" ){
-    iRecordStream<char> issCard2( std::istringstream( "-2" ) );
+    iRecordStream<char> issCard2( std::istringstream( "-2 /" ) );
     ACER::Card2 card2( issCard2 );
 
     THEN( "the card2 values can be verified" ){
@@ -36,15 +36,15 @@ SCENARIO( "Validating card2 inputs",
 
   GIVEN( "invalid Card2 input" ){
     WHEN( "input is empty, i.e., no iopt parameter" ){
-      iRecordStream<char> issCard2( std::istringstream( " \n" ) );
+      iRecordStream<char> issCard2( std::istringstream( " /" ) );
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( ACER::Card2(issCard2 ) );
+        REQUIRE_THROWS( ACER::Card2 card2(issCard2 ) );
       }
     }
     WHEN( "parameters are incorrect" ){
-      iRecordStream<char> issCard2( std::istringstream( " 3 -1\n" ) );
+      iRecordStream<char> issCard2( std::istringstream( " 3 -1 /" ) );
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( ACER::Card2(issCard2 ) );
+        REQUIRE_THROWS( ACER::Card2 card2(issCard2 ) );
       }
     }
   }
