@@ -10,18 +10,13 @@ public:
   Argument< PURR::Card2::Nsigz > nsigz;
   Argument< Iprint > iprint;
 
-  template< typename Istream >
-  Card2( Istream& is, long& lineNumber ) :
-      Card2( Card::extract( is, lineNumber ), lineNumber ){ ++lineNumber; }
-
-private:
   template< typename Char >
-  Card2( std::basic_istringstream< Char >&& is, const long& lineNumber )
+  Card2( iRecordStream< Char >& is )
     try:
-      matd( argument::extract< RECONR::Card3::Mat >( is, lineNumber ) ),
-      ntemp( argument::extract< PURR::Card2::Ntemp >( is, lineNumber ) ),
-      nsigz( argument::extract< PURR::Card2::Nsigz >( is, lineNumber ) ),
-      iprint( argument::extract< Iprint >( is, lineNumber ) )
+      matd( argument::extract< RECONR::Card3::Mat >( is ) ),
+      ntemp( argument::extract< PURR::Card2::Ntemp >( is ) ),
+      nsigz( argument::extract< PURR::Card2::Nsigz >( is ) ),
+      iprint( argument::extract< Iprint >( is ) )
       {   }
     catch( std::exception& e ){
       Log::info( "Trouble while validating card 2" );
