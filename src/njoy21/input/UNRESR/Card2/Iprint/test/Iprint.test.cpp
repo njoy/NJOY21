@@ -17,15 +17,15 @@ SCENARIO( "Iprint input values",
         iRecordStream< char > iss(std::istringstream(  std::to_string(iprint)  ));
 
         REQUIRE( 
-          iprint == argument::extract< PURR::Card2::Iprint >( iss ).value );
+          iprint == argument::extract< UNRESR::Card2::Iprint >( iss ).value );
       }
     }
   }
   GIVEN( "no iprint values" ){
     THEN( "the default value is returned" ){
       iRecordStream< char > iss(std::istringstream( " /" ));
-      REQUIRE( PURR::Card2::Iprint::defaultValue() == 
-                argument::extract< PURR::Card2::Iprint >( iss ).value );
+      REQUIRE( UNRESR::Card2::Iprint::defaultValue() == 
+                argument::extract< UNRESR::Card2::Iprint >( iss ).value );
     }
   }
   
@@ -36,7 +36,7 @@ SCENARIO( "Iprint input values",
       for( auto& iprint : invalidValues ){
         iRecordStream< char > iss(std::istringstream(  std::to_string(iprint)  ));
 
-        REQUIRE_THROWS( argument::extract< PURR::Card2::Iprint >( iss ) );
+        REQUIRE_THROWS( argument::extract< UNRESR::Card2::Iprint >( iss ) );
       }
     }
   }

@@ -29,14 +29,34 @@ SCENARIO( "Validating iz,aw input values",
         auto values = argument::extract< ACER::Card4::Izaw >(
                             issIzaw, nxtra ).value;
         for( size_t i=0; i<values.size(); i++ ){
-          njoy::Log::info("i: {}", i);
-          njoy::Log::info("values: {},{}", values[i].first, values[i].second);
-          njoy::Log::info("pairs: {},{}", pairs[i].first, pairs[i].second);
           REQUIRE( values[i].first == pairs[i].first );
           REQUIRE( values[i].second == pairs[i].second );
         }
       }
+    } // WHEN
+
+    WHEN( "there are too few pairs" ){
+      iRecordStream<char> issIzaw( std::istringstream( 
+        std::to_string( pairs[0].first ) + " " + std::to_string( pairs[0].second ) + " " +
+        std::to_string( pairs[1].first ) + " " + std::to_string( pairs[1].second ) + " /" )
+        );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( 
+            argument::extract< ACER::Card4::Izaw >( issIzaw, nxtra ) );
+      }
     }
-  }
+    WHEN( "there are invalid values" ){
+      iRecordStream<char> issIzaw( std::istringstream( 
+        std::to_string( pairs[0].first ) + " " + std::to_string( pairs[0].second ) + " " +
+        std::to_string( pairs[1].first ) + " " + std::to_string( -pairs[1].second ) + " " +
+        std::to_string( pairs[2].first ) + " " + std::to_string( pairs[2].second ) + " /" )
+        );
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( 
+            argument::extract< ACER::Card4::Izaw >( issIzaw, nxtra ) );
+      }
+    }
+  } // GIVEN
 }
 
