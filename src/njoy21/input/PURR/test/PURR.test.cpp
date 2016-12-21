@@ -7,7 +7,7 @@
 using namespace njoy::njoy21::input;
 
 std::string sCard1(" 21 22 23\n");
-std::string sCard2_full(" 9228 3 2 16 90 0 3/\n");
+std::string sCard2_full(" 9228 3 2 16 90 0 3 /\n");
 std::string sCard2_empty(" 9228 3 2 /\n"); // Optional values excluded
 std::string sCard2_0(" 0 /");
 
@@ -16,11 +16,12 @@ std::string sCard4(" 1 2 /\n");
 
 SCENARIO( "Parsing valid PURR input" ){
   WHEN( "all optional values are given" ){
-    iRecordStream< char> iss(
-        std::istringstream( sCard1 + sCard2_full + sCard3 + sCard4 + sCard2_0 ) );
+    std::istringstream iss( sCard1 + sCard2_full + sCard3 + sCard4 + sCard2_0 );
+    njoy::Log::info( "\n{}\n", iss.str() );
+    iRecordStream< char> iRS( std::move( iss ) );
 
     THEN( "the read values can ve verified" ){
-      PURR purr( iss );
+      PURR purr( iRS );
       REQUIRE( 21 == purr.card1.nendf.value );
       REQUIRE( 22 == purr.card1.nin.value );
       REQUIRE( 23 == purr.card1.nout.value );
@@ -49,11 +50,12 @@ SCENARIO( "Parsing valid PURR input" ){
     }
   }
   WHEN( "no optional values are given" ){
-    iRecordStream< char> iss(
-        std::istringstream( sCard1 + sCard2_empty + sCard3 + sCard4 + sCard2_0 ) );
+    std::istringstream iss(sCard1 + sCard2_empty + sCard3 + sCard4 + sCard2_0 );
+    njoy::Log::info( "\n{}\n", iss.str() );
+    iRecordStream< char > iRS( std::move(iss) );
 
     THEN( "the read values can ve verified" ){
-      PURR purr( iss );
+      PURR purr( iRS );
       REQUIRE( 21 == purr.card1.nendf.value );
       REQUIRE( 22 == purr.card1.nin.value );
       REQUIRE( 23 == purr.card1.nout.value );
@@ -69,12 +71,13 @@ SCENARIO( "Parsing valid PURR input" ){
     }
   }
   WHEN( "two materials are given" ){
-    iRecordStream< char> iss(
-        std::istringstream( sCard1 + sCard2_empty + sCard3 + sCard4 +
-                      sCard2_full + sCard3 + sCard4 + sCard2_0  ) );
+    std::istringstream iss( sCard1 + sCard2_empty + sCard3 + sCard4 +
+                      sCard2_full + sCard3 + sCard4 + sCard2_0  );
+    njoy::Log::info( "\n{}\n", iss.str() );
+    iRecordStream< char > iRS( std::move(iss) );
 
     THEN( "the read values can ve verified" ){
-      PURR purr( iss );
+      PURR purr( iRS );
 
       REQUIRE( 2 == purr.cardSequence.size() );
     }

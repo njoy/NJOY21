@@ -14,18 +14,18 @@ SCENARIO( "Iprint input values",
 
     THEN( "the returned class has the correct value" ){
       for( auto& iprint : validValues ){
-        std::istringstream iss( std::to_string(iprint) );
+        iRecordStream< char > iss(std::istringstream(  std::to_string(iprint)  ));
 
         REQUIRE( 
-          iprint == argument::extract< PURR::Card2::Iprint >( iss, ln ).value );
+          iprint == argument::extract< PURR::Card2::Iprint >( iss ).value );
       }
     }
   }
   GIVEN( "no iprint values" ){
     THEN( "the default value is returned" ){
-      std::istringstream iss("");
+      iRecordStream< char > iss(std::istringstream( " /" ));
       REQUIRE( PURR::Card2::Iprint::defaultValue() == 
-                argument::extract< PURR::Card2::Iprint >( iss, ln ).value );
+                argument::extract< PURR::Card2::Iprint >( iss ).value );
     }
   }
   
@@ -34,9 +34,9 @@ SCENARIO( "Iprint input values",
 
     THEN( "an exception is thrown" ){
       for( auto& iprint : invalidValues ){
-        std::istringstream iss( std::to_string(iprint) );
+        iRecordStream< char > iss(std::istringstream(  std::to_string(iprint)  ));
 
-        REQUIRE_THROWS( argument::extract< PURR::Card2::Iprint >( iss, ln ) );
+        REQUIRE_THROWS( argument::extract< PURR::Card2::Iprint >( iss ) );
       }
     }
   }

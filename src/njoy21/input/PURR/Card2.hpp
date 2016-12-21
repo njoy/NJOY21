@@ -27,7 +27,9 @@ public:
       nladr( argument::extract< Nladr >( is ) ),
       iprint( argument::extract< Iprint >( is ) ),
       nunx( argument::extract< Nunx >( is ) )
-      {   }
+  { 
+    Card::clear( is );
+  }
     catch( std::exception& e ){
       Log::info( "Trouble while validating card 2" );
       throw e;

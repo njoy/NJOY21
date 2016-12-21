@@ -17,7 +17,9 @@ public:
       ntemp( argument::extract< PURR::Card2::Ntemp >( is ) ),
       nsigz( argument::extract< PURR::Card2::Nsigz >( is ) ),
       iprint( argument::extract< Iprint >( is ) )
-      {   }
+      { 
+  Card::clear( is );
+      }
     catch( std::exception& e ){
       Log::info( "Trouble while validating card 2" );
       throw e;

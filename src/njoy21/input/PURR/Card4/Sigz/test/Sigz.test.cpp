@@ -48,7 +48,7 @@ SCENARIO( "Sigz input values",
       iRecordStream< char> issPoints( std::istringstream(" 1.0 2.0 3.0 4.0 /") );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS(
+        REQUIRE_NOTHROW(
             argument::extract< PURR::Card4::Sigz >(issPoints, nsigz) );
       }
     }
