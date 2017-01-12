@@ -102,6 +102,15 @@ def project_statement( state ):
     contents = textwrap.dedent( """
         project( {name} VERSION {version} LANGUAGES {language_s} )
     """).format(**state, language_s=language)
+    if state['language'] == 'fortran':
+        contents += textwrap.dedent( """
+            if( NOT DEFINED Fortran_module_directory )
+                set( Fortran_module_directory "${CMAKE_BINARY_DIR}/modules"
+                     CACHE PATH "directory for fortran modules" )
+                file( MAKE_DIRECTORY "${Fortran_module_directory}" )
+            endif()
+        """)
+        
     return contents
 
 def traverse_subprojects( state ):
@@ -255,7 +264,8 @@ def add_targets( state ):
         if state['language'] == 'fortran':
             contents += textwrap.dedent(
                 """
-                target_include_directories( {name} PUBLIC ${{PROJECT_BINARY_DIRECTORY}} ) """).format(**state)
+                set_target_properties( {name} PROPERTIES Fortran_MODULE_DIRECTORY "${{Fortran_module_directory}}" )
+                target_include_directories( {name} PUBLIC "${{Fortran_module_directory}}" ) """).format(**state)
 
         if 'include_path' in state and state['include_path']:
             contents += textwrap.dedent(
@@ -277,7 +287,8 @@ def add_targets( state ):
             if state['language'] == 'fortran':
                 contents += textwrap.dedent(
                     """
-                    target_include_directories( {name}_executable PUBLIC ${{PROJECT_BINARY_DIRECTORY}} )""").format(**state)
+                    set_target_properties( {name}_executable PROPERTIES Fortran_MODULE_DIRECTORY "${{Fortran_module_directory}}" )
+                    target_include_directories( {name}_executable PUBLIC "${{Fortran_module_directory}}" )""").format(**state)
 
             if 'include_path' in state and state['include_path']:
                 contents += texwrap.dedent(
