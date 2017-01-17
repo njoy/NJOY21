@@ -19,8 +19,6 @@ struct Izaw {
                    std::distance( izaw.begin(), found ) );
       return false;
     } else {
-      Log::info( "izaw size: {}", izaw.size() );
-      Log::info( "nxtra: {}", nxtra.value );
       return ( long( izaw.size() ) == nxtra.value );
     }
   }

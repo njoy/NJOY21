@@ -5,9 +5,10 @@ public:
   Argument< Izaw > izaw;
 
   template< typename Char >
-  Card4( iRecordStream< Char >& is )
+  Card4( iRecordStream< Char >& is,
+         Argument< ACER::Card2::Nxtra >& nxtra )
     try:
-      izaw( argument::extract< Izaw >( is ) ){}
+      izaw( argument::extract< Izaw >( is, nxtra ) ){}
     catch( std::exception& e ){
       Log::info("Trouble while validating Card 4");
       throw e;
