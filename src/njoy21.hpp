@@ -3,27 +3,34 @@
 
 #include <experimental/optional>
 #include <sstream>
+#include <unordered_set>
 
 #include "dimwits.hpp"
 #include "Log.hpp"
 #include "utility.hpp"
 
-namespace njoy{
+#include "njoy_c.h"
 
+namespace njoy{
 namespace njoy21{
 
-template< typename T >
-using optional = std::experimental::optional< T >;
-
+using namespace std::experimental;
 using namespace dimwits;
+
+namespace legacy{ class Sequence; }
+namespace modern{ class Sequence; }
 
 struct CommandLine;
 
+#include "njoy21/banner.hpp"
 #include "njoy21/input.hpp"
+#include "njoy21/io.hpp"
+#include "njoy21/interface.hpp"
+#include "njoy21/legacy.hpp"
 
 }
 }
 
-// #include "njoy21/CommandLine.hpp"
+#include "njoy21/CommandLine.hpp"
 
 #endif

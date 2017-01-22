@@ -14,7 +14,7 @@ using iRecordStream =
 #include "njoy21/input/BROADR.hpp"
 //#include "njoy21/input/PURR.hpp"
 //#include "njoy21/input/UNRESR.hpp"
-//#include "njoy21/input/GASPR.hpp"
-//#include "njoy21/input/HEATR.hpp"
+#include "njoy21/input/GASPR.hpp"
+#include "njoy21/input/HEATR.hpp"
 
 }

@@ -6,55 +6,42 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "Screamcase label" ){
-  long lineNumber = 1;
-  std::istringstream iss("MODER");
-  REQUIRE( "MODER" == Label::extract( iss, lineNumber ) );
-  REQUIRE( lineNumber == 2 );
+  iRecordStream<char> iss( std::istringstream("MODER") );
+  REQUIRE( "MODER" == Label::extract( iss ) );
 }
 
 SCENARIO( "lowercase label" ){
-  long lineNumber = 1;
-  std::istringstream iss("moder");
-  REQUIRE( "MODER" == Label::extract( iss, lineNumber ) );
-  REQUIRE( lineNumber == 2 );
+  iRecordStream<char> iss( std::istringstream("moder") );
+  REQUIRE( "MODER" == Label::extract( iss ) );
 }
 
 SCENARIO( "mixed-case label" ){
-  long lineNumber = 1;
-  std::istringstream iss("MoDEr");
-  REQUIRE( "MODER" == Label::extract( iss, lineNumber ) );
-  REQUIRE( lineNumber == 2 );
+  iRecordStream<char> iss( std::istringstream("MoDEr") );
+  REQUIRE( "MODER" == Label::extract( iss ) );
 }
 
 SCENARIO( "with whitespace" ){
-  long lineNumber = 1;
-  std::istringstream iss("  MODER  ");
-  REQUIRE( "MODER" == Label::extract( iss, lineNumber ) );
-  REQUIRE( lineNumber == 2 );
+  iRecordStream<char> iss( std::istringstream("  MODER  ") );
+  REQUIRE( "MODER" == Label::extract( iss ) );
 }
 
 SCENARIO( "label with comments" ){
-  long lineNumber = 1;
-  std::istringstream iss(
+  iRecordStream<char> iss( std::istringstream(
     "-- This a comment line\n"
     "-- This another comment line\n"
-    "MoDEr");
-  REQUIRE( "MODER" == Label::extract( iss, lineNumber ) );
-  REQUIRE( lineNumber == 4 );
+    "MoDEr") );
+  REQUIRE( "MODER" == Label::extract( iss ) );
 }
 
 SCENARIO( "missing label" ){
   {
-    long lineNumber = 1;
-    std::istringstream iss("");
-    iss.exceptions( std::ios_base::failbit | std::ios_base::badbit );
-    REQUIRE_THROWS( Label::extract( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream("") );
+    REQUIRE_THROWS( Label::extract( iss ) );
   }
   {
-    long lineNumber = 1;
-    std::istringstream iss(
+    iRecordStream<char> iss( std::istringstream(
       "-- This a comment line\n"
-      "-- This another comment line\n" );
-    REQUIRE_THROWS( Label::extract( iss, lineNumber ) );
+      "-- This another comment line\n" ) );
+    REQUIRE_THROWS( Label::extract( iss ) );
   }
 }
