@@ -13,7 +13,7 @@ SCENARIO( "Tempd input values", "[ACER], [Card4], [Tempd]" ){
     THEN( "the returned class has the correct value" ){
       for( auto tempd : validTempd ){
 	iRecordStream<char> issTempd( std::istringstream( std::to_string(tempd) ) );
-        auto tempdArg = argument::extract< RECONR::Card4::Tempd >(issTempd );
+        auto tempdArg = argument::extract< ACER::Card5::Tempd >(issTempd );
         REQUIRE( tempd * dimwits::kelvin == tempdArg.value );
       }
     }
@@ -22,7 +22,7 @@ SCENARIO( "Tempd input values", "[ACER], [Card4], [Tempd]" ){
     double tempd(-0.01);
     THEN( "an exception is thrown" ){
       iRecordStream<char> issTempd( std::istringstream( std::to_string(tempd) ) );
-      REQUIRE_THROWS( argument::extract< RECONR::Card4::Tempd >(issTempd) );
+      REQUIRE_THROWS( argument::extract< ACER::Card5::Tempd >(issTempd) );
     }
   }
 }
