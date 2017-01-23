@@ -1,0 +1,15 @@
+
+ moder...change the mode of an endf tape or njoy output tape              0.0s
+
+ moder...                                                                 0.0s
+
+ input unit (+ for coded, - for bb) ...         20
+ output unit (+ for coded, - for bb) ..         21
+
+ tape label
+ --------------------------------------
+  endf/b-v tape 511 (standards materials)                             
+
+ using endf-5 format
+                                                                          0.0s
+ *****************************************************************************
