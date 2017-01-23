@@ -1,11 +1,13 @@
 #define CATCH_CONFIG_MAIN
 
+#include <iostream>
+
 #include "catch.hpp"
 #include "njoy21.hpp"
 
 using namespace njoy::njoy21;
 
-SCENARIO( "Screamcase label" ){
+SCENARIO( "Sequence can be constructed" ){
 
   std::string moderInput(
     "1 -22 \n"
@@ -19,17 +21,28 @@ SCENARIO( "Screamcase label" ){
     " 1306 0 0\n"
     "0.005 0 0.1 5e-07\n"
     "0/\n" );
+
+  std::istringstream mockInput( moderInput
+                                + "RECONR\n"
+                                + reconrInput 
+                                + "GROUPR\n" );
+
+  auto cin_buffer = std::cin.rdbuf();
+  std::cin.rdbuf( mockInput.rdbuf() );
   
-  input::iRecordStream<char> iss( std::istringstream(
-				    moderInput
-				    + "RECONR\n"
-                                    + reconrInput 
-                                    + "GROUPR\n" ) );
+  auto manager = io::Manager::Builder().construct();
+
+  std::ostringstream mockBuffer;
+  auto buffer_buffer = manager.buffer().rdbuf();
+  manager.buffer().rdbuf( mockBuffer.rdbuf() );
+    
   std::unordered_set< std::string > permittedRoutines = { "MODER", "RECONR" };
-  std::ostringstream sink;
   std::string label("MODER");
-  legacy::Sequence::Factory myFactory( sink, permittedRoutines );
-  auto mySequence = myFactory( label, iss );
+  legacy::Sequence::Factory myFactory( manager, permittedRoutines );
+  auto mySequence = myFactory( label );
   REQUIRE( label == "GROUPR" );
-  REQUIRE( sink.str() == moderInput + reconrInput );
+  REQUIRE( mockBuffer.str() == moderInput + reconrInput );
+
+  std::cin.rdbuf( cin_buffer );
+  manager.buffer().rdbuf( buffer_buffer );
 }
