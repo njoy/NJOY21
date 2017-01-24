@@ -274,15 +274,16 @@ def add_targets( state ):
 
         if state['target'] == 'executable' :
             contents += textwrap.dedent("""
+                if( NOT is_subproject )
+                    add_executable( {name}_executable {driver} )
                 
-                add_executable( {name}_executable {driver} )
-                
-                target_link_libraries( {name}_executable PUBLIC {name} )
-                foreach( flag IN LISTS ${name}_compiler_flags_list )
-                    target_compile_options( {name}_executable PUBLIC ${{flag}} )
-                endforeach( flag )           
-                set_target_properties( {name}_executable PROPERTIES LINK_FLAGS "${{{name}_compiler_flags}}" )
-                set_target_properties( {name}_executable PROPERTIES OUTPUT_NAME {name} )""").format(**state)
+                    target_link_libraries( {name}_executable PUBLIC {name} )
+                    foreach( flag IN LISTS ${name}_compiler_flags_list )
+                        target_compile_options( {name}_executable PUBLIC ${{flag}} )
+                    endforeach( flag )           
+                    set_target_properties( {name}_executable PROPERTIES LINK_FLAGS "${{{name}_compiler_flags}}" )
+                    set_target_properties( {name}_executable PROPERTIES OUTPUT_NAME {name} )
+                endif()""").format(**state)
         
             if state['language'] == 'fortran':
                 contents += textwrap.dedent(
@@ -291,7 +292,7 @@ def add_targets( state ):
                     target_include_directories( {name}_executable PUBLIC "${{Fortran_module_directory}}" )""").format(**state)
 
             if 'include_path' in state and state['include_path']:
-                contents += texwrap.dedent(
+                contents += textwrap.dedent(
                     """
                     target_include_directories( {name}_executable PUBLIC {include_path} ) """).format(**state)
 
@@ -351,8 +352,9 @@ def add_tests( state ):
                 """.format(name=name, executable_name=executable_name))
             if os.path.isdir( os.path.join( directory, 'resources' ) ):
                 test_contents += 'file( GLOB resources "resources/*" ) \n'
-                test_contents += 'file( COPY "${resources}" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}" ) \n'
-                
+                test_contents += 'foreach( resource ${resources} )\n'
+                test_contents += '    file( COPY "${resource}" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}" ) \n'
+                test_contents += 'endforeach( resource )\n'
             test_contents += 'add_test( NAME {} COMMAND {} ) \n'.format(test_name, executable_name)
             with open( os.path.join( directory, 'CMakeLists.txt' ), 'w') as TestCMakeFile:
                 TestCMakeFile.write( test_contents )
