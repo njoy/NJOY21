@@ -4,6 +4,7 @@
 #include <experimental/optional>
 #include <sstream>
 #include <unordered_set>
+#include <queue>
 
 #include "dimwits.hpp"
 #include "Log.hpp"
@@ -32,5 +33,13 @@ struct CommandLine;
 }
 
 #include "njoy21/CommandLine.hpp"
+
+namespace njoy{
+namespace njoy21{
+
+#include "njoy21/Driver.hpp"
+
+}
+}
 
 #endif

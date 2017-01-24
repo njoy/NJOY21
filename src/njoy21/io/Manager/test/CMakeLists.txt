@@ -8,6 +8,6 @@ set_target_properties( njoy21.io.Manager.test PROPERTIES LINK_FLAGS "${test_flag
 target_link_libraries( njoy21.io.Manager.test PUBLIC njoy21 )
 file( GLOB resources "resources/*" ) 
 foreach( resource ${resources} )
-  file( COPY "${resource}" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}" )
+    file( COPY "${resource}" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}" ) 
 endforeach( resource )
 add_test( NAME njoy21.io.Manager COMMAND njoy21.io.Manager.test ) 
