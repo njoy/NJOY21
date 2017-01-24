@@ -1,0 +1,392 @@
+{
+"language": "c++",
+"language_revision": "C++14",
+"is_external_project": false,
+"include_path": "src",
+"implementation_files": [],
+"version": "0.0.1",
+"header_files": [
+"src/njoy21.hpp",
+"src/njoy21.hpp",
+"src/njoy21/banner.hpp",
+"src/njoy21/CommandLine.hpp",
+"src/njoy21/Driver.hpp",
+"src/njoy21/input.hpp",
+"src/njoy21/interface.hpp",
+"src/njoy21/io.hpp",
+"src/njoy21/legacy.hpp",
+"src/njoy21/Sequence.hpp",
+"src/njoy21/Driver/Factory.hpp",
+"src/njoy21/input/argument.hpp",
+"src/njoy21/input/BROADR.hpp",
+"src/njoy21/input/Card.hpp",
+"src/njoy21/input/GASPR.hpp",
+"src/njoy21/input/HEATR.hpp",
+"src/njoy21/input/Label.hpp",
+"src/njoy21/input/MODER.hpp",
+"src/njoy21/input/PURR.hpp",
+"src/njoy21/input/RECONR.hpp",
+"src/njoy21/input/UNRESR.hpp",
+"src/njoy21/input/argument/common.hpp",
+"src/njoy21/input/argument/primitive.hpp",
+"src/njoy21/input/argument/common/Matd.hpp",
+"src/njoy21/input/argument/common/Nin.hpp",
+"src/njoy21/input/argument/common/Nout.hpp",
+"src/njoy21/input/BROADR/Card1.hpp",
+"src/njoy21/input/BROADR/Card2.hpp",
+"src/njoy21/input/BROADR/Card3.hpp",
+"src/njoy21/input/BROADR/Card4.hpp",
+"src/njoy21/input/BROADR/Card5.hpp",
+"src/njoy21/input/BROADR/Card1/Nendf.hpp",
+"src/njoy21/input/BROADR/Card1/Nin.hpp",
+"src/njoy21/input/BROADR/Card1/Nout.hpp",
+"src/njoy21/input/BROADR/Card2/Istart.hpp",
+"src/njoy21/input/BROADR/Card2/Istrap.hpp",
+"src/njoy21/input/BROADR/Card2/Mat1.hpp",
+"src/njoy21/input/BROADR/Card2/Ntemp2.hpp",
+"src/njoy21/input/BROADR/Card2/Temp1.hpp",
+"src/njoy21/input/BROADR/Card3/Errint.hpp",
+"src/njoy21/input/BROADR/Card3/Errmax.hpp",
+"src/njoy21/input/BROADR/Card3/Errthn.hpp",
+"src/njoy21/input/BROADR/Card3/Thnmax.hpp",
+"src/njoy21/input/BROADR/Card4/Temp2.hpp",
+"src/njoy21/input/BROADR/Card5/Mat1.hpp",
+"src/njoy21/input/GASPR/Card1.hpp",
+"src/njoy21/input/GASPR/Card1/Nendf.hpp",
+"src/njoy21/input/GASPR/Card1/Nin.hpp",
+"src/njoy21/input/GASPR/Card1/Nout.hpp",
+"src/njoy21/input/HEATR/Card1.hpp",
+"src/njoy21/input/HEATR/Card2.hpp",
+"src/njoy21/input/HEATR/Card3.hpp",
+"src/njoy21/input/HEATR/Card4.hpp",
+"src/njoy21/input/HEATR/Card5.hpp",
+"src/njoy21/input/HEATR/Card1/Nendf.hpp",
+"src/njoy21/input/HEATR/Card1/Nin.hpp",
+"src/njoy21/input/HEATR/Card1/Nout.hpp",
+"src/njoy21/input/HEATR/Card1/Nplot.hpp",
+"src/njoy21/input/HEATR/Card2/Iprint.hpp",
+"src/njoy21/input/HEATR/Card2/Local.hpp",
+"src/njoy21/input/HEATR/Card2/Npk.hpp",
+"src/njoy21/input/HEATR/Card2/Nqa.hpp",
+"src/njoy21/input/HEATR/Card2/Ntemp.hpp",
+"src/njoy21/input/MODER/Card1.hpp",
+"src/njoy21/input/MODER/Card2.hpp",
+"src/njoy21/input/MODER/Card3.hpp",
+"src/njoy21/input/MODER/Card1/Nin.hpp",
+"src/njoy21/input/MODER/Card1/Nout.hpp",
+"src/njoy21/input/MODER/Card2/Tapeid.hpp",
+"src/njoy21/input/MODER/Card3/Matd.hpp",
+"src/njoy21/input/MODER/Card3/Nin.hpp",
+"src/njoy21/input/PURR/Card1.hpp",
+"src/njoy21/input/PURR/Card2.hpp",
+"src/njoy21/input/PURR/Card3.hpp",
+"src/njoy21/input/PURR/Card4.hpp",
+"src/njoy21/input/PURR/Card1/Nendf.hpp",
+"src/njoy21/input/PURR/Card2/Iprint.hpp",
+"src/njoy21/input/PURR/Card2/Nbin.hpp",
+"src/njoy21/input/PURR/Card2/Nladr.hpp",
+"src/njoy21/input/PURR/Card2/Nsigz.hpp",
+"src/njoy21/input/PURR/Card2/Ntemp.hpp",
+"src/njoy21/input/PURR/Card2/Nunx.hpp",
+"src/njoy21/input/PURR/Card3/Temp.hpp",
+"src/njoy21/input/PURR/Card4/Sigz.hpp",
+"src/njoy21/input/RECONR/Card1.hpp",
+"src/njoy21/input/RECONR/Card2.hpp",
+"src/njoy21/input/RECONR/Card3.hpp",
+"src/njoy21/input/RECONR/Card4.hpp",
+"src/njoy21/input/RECONR/Card5.hpp",
+"src/njoy21/input/RECONR/Card6.hpp",
+"src/njoy21/input/RECONR/Card1/Nendf.hpp",
+"src/njoy21/input/RECONR/Card1/Npend.hpp",
+"src/njoy21/input/RECONR/Card2/Tlabel.hpp",
+"src/njoy21/input/RECONR/Card3/Mat.hpp",
+"src/njoy21/input/RECONR/Card3/Ncards.hpp",
+"src/njoy21/input/RECONR/Card3/Ngrid.hpp",
+"src/njoy21/input/RECONR/Card4/Err.hpp",
+"src/njoy21/input/RECONR/Card4/Errint.hpp",
+"src/njoy21/input/RECONR/Card4/Errmax.hpp",
+"src/njoy21/input/RECONR/Card4/Tempr.hpp",
+"src/njoy21/input/RECONR/Card5/Cards.hpp",
+"src/njoy21/input/RECONR/Card6/Enode.hpp",
+"src/njoy21/input/UNRESR/Card2.hpp",
+"src/njoy21/input/UNRESR/Card2/Iprint.hpp",
+"src/njoy21/io/Manager.hpp",
+"src/njoy21/io/Manager/Builder.hpp",
+"src/njoy21/io/Manager/FileGaurd.hpp",
+"src/njoy21/io/Manager/FortranOutput.hpp",
+"src/njoy21/legacy/Sequence.hpp",
+"src/njoy21/legacy/Sequence/Factory.hpp",
+"src/njoy21/legacy/Sequence/routines.hpp"
+],
+"unit_tests": {
+"njoy21.input.PURR.Card2.Nladr": [
+"src/njoy21/input/PURR/Card2/Nladr/test/Nladr.test.cpp"
+],
+"njoy21.input.RECONR.Card1.Npend": [
+"src/njoy21/input/RECONR/Card1/Npend/test/Npend.test.cpp"
+],
+"njoy21.input.argument.primitive.Defaulted": [
+"src/njoy21/input/argument/primitive/Defaulted/test/Defaulted.test.cpp"
+],
+"njoy21.input.argument.Type": [
+"src/njoy21/input/argument/Type/test/Type.test.cpp"
+],
+"njoy21.input.argument.primitive.Type": [
+"src/njoy21/input/argument/primitive/Type/test/Type.test.cpp"
+],
+"njoy21.input.RECONR.Card3.Ngrid": [
+"src/njoy21/input/RECONR/Card3/Ngrid/test/Ngrid.test.cpp"
+],
+"njoy21.input.RECONR.Card2": [
+"src/njoy21/input/RECONR/Card2/test/Card2.test.cpp"
+],
+"njoy21.input.BROADR": [
+"src/njoy21/input/BROADR/test/BROADR.test.cpp"
+],
+"njoy21.input.argument.primitive.Required": [
+"src/njoy21/input/argument/primitive/Required/test/Required.test.cpp"
+],
+"njoy21.input.RECONR.Card4.Tempr": [
+"src/njoy21/input/RECONR/Card4/Tempr/test/Tempr.test.cpp"
+],
+"njoy21.input.BROADR.Card5": [
+"src/njoy21/input/BROADR/Card5/test/Card5.test.cpp"
+],
+"njoy21.input.BROADR.Card2.Temp1": [
+"src/njoy21/input/BROADR/Card2/Temp1/test/Temp1.test.cpp"
+],
+"njoy21.input.RECONR.Card5.Cards": [
+"src/njoy21/input/RECONR/Card5/Cards/test/Cards.test.cpp"
+],
+"njoy21.input.RECONR.Card3.Ncards": [
+"src/njoy21/input/RECONR/Card3/Ncards/test/Ncards.test.cpp"
+],
+"njoy21.input.RECONR.Card4.Errmax": [
+"src/njoy21/input/RECONR/Card4/Errmax/test/Errmax.test.cpp"
+],
+"njoy21.input.MODER.Card1": [
+"src/njoy21/input/MODER/Card1/test/Card.test.cpp"
+],
+"njoy21.input.PURR.Card3": [
+"src/njoy21/input/PURR/Card3/test/Card3.test.cpp"
+],
+"njoy21.input.GASPR": [
+"src/njoy21/input/GASPR/test/GASPR.test.cpp"
+],
+"njoy21.input.BROADR.Card2.Ntemp2": [
+"src/njoy21/input/BROADR/Card2/Ntemp2/test/Ntemp2.test.cpp"
+],
+"njoy21.input.RECONR.Card1": [
+"src/njoy21/input/RECONR/Card1/test/Card1.test.cpp"
+],
+"njoy21.input.GASPR.Card1.Nin": [
+"src/njoy21/input/GASPR/Card1/Nin/test/Nin.test.cpp"
+],
+"njoy21.input.MODER.Card2": [
+"src/njoy21/input/MODER/Card2/test/Card2.test.cpp"
+],
+"njoy21.input.BROADR.Card2.Mat1": [
+"src/njoy21/input/BROADR/Card2/Mat1/test/Mat1.test.cpp"
+],
+"njoy21.input.GASPR.Card1.Nendf": [
+"src/njoy21/input/GASPR/Card1/Nendf/test/Nendf.test.cpp"
+],
+"njoy21.input.MODER.Card2.Tapeid": [
+"src/njoy21/input/MODER/Card2/Tapeid/test/Tapeid.test.cpp"
+],
+"njoy21.input.PURR.Card2.Ntemp": [
+"src/njoy21/input/PURR/Card2/Ntemp/test/Ntemp.test.cpp"
+],
+"njoy21.input.BROADR.Card3.Errmax": [
+"src/njoy21/input/BROADR/Card3/Errmax/test/Errmax.test.cpp"
+],
+"njoy21.input.BROADR.Card5.Mat1": [
+"src/njoy21/input/BROADR/Card5/Mat1/test/Mat1.test.cpp"
+],
+"njoy21.input.RECONR.Card4.Err": [
+"src/njoy21/input/RECONR/Card4/Err/test/Err.test.cpp"
+],
+"njoy21.input.BROADR.Card2": [
+"src/njoy21/input/BROADR/Card2/test/Card2.test.cpp"
+],
+"njoy21.input.BROADR.Card1.Nout": [
+"src/njoy21/input/BROADR/Card1/Nout/test/Nout.test.cpp"
+],
+"njoy21.input.MODER.Card1.Nout": [
+"src/njoy21/input/MODER/Card1/Nout/test/Nout.test.cpp"
+],
+"njoy21.input.GASPR.Card1.Nout": [
+"src/njoy21/input/GASPR/Card1/Nout/test/Nout.test.cpp"
+],
+"njoy21.input.RECONR.Card6": [
+"src/njoy21/input/RECONR/Card6/test/Card6.test.cpp"
+],
+"njoy21.input.PURR.Card2.Nbin": [
+"src/njoy21/input/PURR/Card2/Nbin/test/Nbin.test.cpp"
+],
+"njoy21.input.PURR": [
+"src/njoy21/input/PURR/test/PURR.test.cpp"
+],
+"njoy21.Driver": [
+"src/njoy21/Driver/test/Driver.test.cpp"
+],
+"njoy21.input.UNRESR.Card2": [
+"src/njoy21/input/UNRESR/Card2/test/Card2.test.cpp"
+],
+"njoy21.input.UNRESR": [
+"src/njoy21/input/UNRESR/test/UNRESR.test.cpp"
+],
+"njoy21.input.RECONR.Card6.Enode": [
+"src/njoy21/input/RECONR/Card6/Enode/test/Enode.test.cpp"
+],
+"njoy21.input.Label": [
+"src/njoy21/input/Label/test/Label.test.cpp"
+],
+"njoy21.input.GASPR.Card1": [
+"src/njoy21/input/GASPR/Card1/test/Card1.test.cpp"
+],
+"njoy21.CommandLine": [
+"src/njoy21/CommandLine/test/CommandLine.test.cpp"
+],
+"njoy21.input.BROADR.Card2.Istrap": [
+"src/njoy21/input/BROADR/Card2/Istrap/test/Istrap.test.cpp"
+],
+"njoy21.legacy.Sequence": [
+"src/njoy21/legacy/Sequence/test/Sequence.test.cpp"
+],
+"njoy21.input.MODER.Card3.Matd": [
+"src/njoy21/input/MODER/Card3/Matd/test/Matd.test.cpp"
+],
+"njoy21.input.HEATR.Card1.Nplot": [
+"src/njoy21/input/HEATR/Card1/Nplot/test/Nplot.test.cpp"
+],
+"njoy21.input.HEATR.Card1": [
+"src/njoy21/input/HEATR/Card1/test/Card1.test.cpp"
+],
+"njoy21.input.BROADR.Card4": [
+"src/njoy21/input/BROADR/Card4/test/Card4.test.cpp"
+],
+"njoy21.input.RECONR.Card5": [
+"src/njoy21/input/RECONR/Card5/test/Card5.test.cpp"
+],
+"njoy21.input.BROADR.Card3.Thnmax": [
+"src/njoy21/input/BROADR/Card3/Thnmax/test/Thnmax.test.cpp"
+],
+"njoy21.io.Manager": [
+"src/njoy21/io/Manager/test/Manager.test.cpp"
+],
+"njoy21.input.BROADR.Card1": [
+"src/njoy21/input/BROADR/Card1/test/Card1.test.cpp"
+],
+"njoy21.input.HEATR.Card1.Nendf": [
+"src/njoy21/input/HEATR/Card1/Nendf/test/Nendf.test.cpp"
+],
+"njoy21.input.MODER.Card3.Nin": [
+"src/njoy21/input/MODER/Card3/Nin/test/Nin.test.cpp"
+],
+"njoy21.input.HEATR.Card1.Nin": [
+"src/njoy21/input/HEATR/Card1/Nin/test/Nin.test.cpp"
+],
+"njoy21.input.BROADR.Card2.Istart": [
+"src/njoy21/input/BROADR/Card2/Istart/test/Istart.test.cpp"
+],
+"njoy21.input.BROADR.Card3.Errint": [
+"src/njoy21/input/BROADR/Card3/Errint/test/Errint.test.cpp"
+],
+"njoy21.input.PURR.Card4": [
+"src/njoy21/input/PURR/Card4/test/Card4.test.cpp"
+],
+"njoy21.input.RECONR": [
+"src/njoy21/input/RECONR/test/RECONR.test.cpp"
+],
+"njoy21.input.PURR.Card2": [
+"src/njoy21/input/PURR/Card2/test/Card2.test.cpp"
+],
+"njoy21.input.PURR.Card2.Nsigz": [
+"src/njoy21/input/PURR/Card2/Nsigz/test/Nsigz.test.cpp"
+],
+"njoy21.input.HEATR.Card1.Nout": [
+"src/njoy21/input/HEATR/Card1/Nout/test/Nout.test.cpp"
+],
+"njoy21.input.BROADR.Card3": [
+"src/njoy21/input/BROADR/Card3/test/Card3.test.cpp"
+],
+"njoy21.input.RECONR.Card3": [
+"src/njoy21/input/RECONR/Card3/test/Card3.test.cpp"
+],
+"njoy21.input.BROADR.Card4.Temp2": [
+"src/njoy21/input/BROADR/Card4/Temp2/test/Temp2.test.cpp"
+],
+"njoy21.input.BROADR.Card3.Errthn": [
+"src/njoy21/input/BROADR/Card3/Errthn/test/Errthn.test.cpp"
+],
+"njoy21.input.PURR.Card1": [
+"src/njoy21/input/PURR/Card1/test/Card1.test.cpp"
+],
+"njoy21.input.argument.primitive.Discriminating": [
+"src/njoy21/input/argument/primitive/Discriminating/test/Discriminating.test.cpp"
+],
+"njoy21.input.PURR.Card3.Temp": [
+"src/njoy21/input/PURR/Card3/Temp/test/Temp.test.cpp"
+],
+"njoy21.input.PURR.Card2.Iprint": [
+"src/njoy21/input/PURR/Card2/Iprint/test/Iprint.test.cpp"
+],
+"njoy21.input.argument": [
+"src/njoy21/input/argument/test/argument.test.cpp",
+"src/njoy21/input/argument/test/extract.test.cpp",
+"src/njoy21/input/argument/test/read.test.cpp"
+],
+"njoy21.input.RECONR.Card3.Mat": [
+"src/njoy21/input/RECONR/Card3/Mat/test/Mat.test.cpp"
+],
+"njoy21.input.MODER": [
+"src/njoy21/input/MODER/test/MODER.test.cpp"
+],
+"njoy21.input.RECONR.Card2.Tlabel": [
+"src/njoy21/input/RECONR/Card2/Tlabel/test/Tlabel.test.cpp"
+],
+"njoy21.input.RECONR.Card4.Errint": [
+"src/njoy21/input/RECONR/Card4/Errint/test/Errint.test.cpp"
+],
+"njoy21.input.BROADR.Card1.Nendf": [
+"src/njoy21/input/BROADR/Card1/Nendf/test/Nendf.test.cpp"
+],
+"njoy21.input.argument.primitive.Optional": [
+"src/njoy21/input/argument/primitive/Optional/test/Optional.test.cpp"
+],
+"njoy21.input.PURR.Card2.Nunx": [
+"src/njoy21/input/PURR/Card2/Nunx/test/Nunx.test.cpp"
+],
+"njoy21.input.BROADR.Card1.Nin": [
+"src/njoy21/input/BROADR/Card1/Nin/test/Nin.test.cpp"
+],
+"njoy21.input.MODER.Card3": [
+"src/njoy21/input/MODER/Card3/test/Card3.test.cpp"
+],
+"njoy21.input.RECONR.Card1.Nendf": [
+"src/njoy21/input/RECONR/Card1/Nendf/test/Nendf.test.cpp"
+],
+"njoy21.input.MODER.Card1.Nin": [
+"src/njoy21/input/MODER/Card1/Nin/test/Nin.test.cpp"
+],
+"njoy21.input.UNRESR.Card2.Iprint": [
+"src/njoy21/input/UNRESR/Card2/Iprint/test/Iprint.test.cpp"
+],
+"njoy21.input.Card": [
+"src/njoy21/input/Card/test/Card.test.cpp"
+],
+"njoy21.input.RECONR.Card4": [
+"src/njoy21/input/RECONR/Card4/test/Card4.test.cpp"
+],
+"njoy21.input.PURR.Card4.Sigz": [
+"src/njoy21/input/PURR/Card4/Sigz/test/Sigz.test.cpp"
+],
+"njoy21.input.PURR.Card1.Nendf": [
+"src/njoy21/input/PURR/Card1/Nendf/test/Nendf.test.cpp"
+]
+},
+"target": "executable",
+"driver": "src/main.cpp",
+"name": "njoy21"
+}
