@@ -352,7 +352,7 @@ def add_tests( state ):
             if os.path.isdir( os.path.join( directory, 'resources' ) ):
                 test_contents += 'file( GLOB resources "resources/*" ) \n'
                 test_contents += 'foreach( resource ${resources} )\n'
-                test_contents += '    file( COPY "${resources}" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}" ) \n'
+                test_contents += '    file( COPY "${resource}" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}" ) \n'
                 test_contents += 'endforeach( resource )\n'
             test_contents += 'add_test( NAME {} COMMAND {} ) \n'.format(test_name, executable_name)
             with open( os.path.join( directory, 'CMakeLists.txt' ), 'w') as TestCMakeFile:
