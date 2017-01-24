@@ -22,13 +22,17 @@ public:
   }
 
   Manager construct() {
-    auto inputStream = []( auto& input ){
-      return ( not input ) ?
-      input::iRecordStream< char >( std::cin ) :
-      input::iRecordStream< char >( std::ifstream( input->c_str() ) );
+    auto input = []( auto& input ){
+      if ( not input ){ return input::iRecordStream< char >( std::cin ); }
+      auto stream = std::ifstream( input->c_str() );
+      if ( not stream.good() ){
+        Log::error( "Could not open input file" );
+        Log::info( "Specified input path: {}", *(input) );
+        throw std::exception();
+      }
+      return input::iRecordStream< char >( std::move(stream) );
     };
 
-    return Manager( inputStream( this->inputPath ),
-		    std::move( this->outputPath ) );
+    return Manager( input( this->inputPath ), std::move( this->outputPath ) );
   }
 };

@@ -292,7 +292,7 @@ def add_targets( state ):
                     target_include_directories( {name}_executable PUBLIC "${{Fortran_module_directory}}" )""").format(**state)
 
             if 'include_path' in state and state['include_path']:
-                contents += texwrap.dedent(
+                contents += textwrap.dedent(
                     """
                     target_include_directories( {name}_executable PUBLIC {include_path} ) """).format(**state)
 

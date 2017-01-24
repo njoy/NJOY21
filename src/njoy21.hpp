@@ -5,6 +5,7 @@
 #include <sstream>
 #include <unordered_set>
 #include <queue>
+#include <iomanip>
 
 #include "dimwits.hpp"
 #include "Log.hpp"

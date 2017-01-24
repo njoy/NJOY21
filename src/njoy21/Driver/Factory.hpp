@@ -40,6 +40,12 @@ public:
     modern( setupModernDirectory( this->commandLine ) ){}
 
   Driver operator()(){
+    {
+      auto output =
+	this->manager->output( static_cast<modern::Sequence*>(nullptr) );
+      (*output) << banner;
+      output->flush();
+    }
     legacy::Sequence::Factory legacyFactory( *(this->manager), this->legacy );
     legacy::Sequence::Factory modernFactory( *(this->manager), this->modern ); //placeholder    
 

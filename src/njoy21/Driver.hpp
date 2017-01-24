@@ -16,7 +16,6 @@ public:
     Driver( Factory( argc, argv )() ){}
 
   void operator()(){
-    *( manager->output( static_cast<modern::Sequence*>(nullptr) ) ) << banner;
     while ( this->queue.size() ){
       auto& routine = *( this->queue.front() );
       routine();
