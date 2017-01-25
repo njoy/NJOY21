@@ -1,8 +1,8 @@
 class Card3 {
 public:
   
-#include "njoy21/input/Moder/Card3/Nin.hpp"
-#include "njoy21/input/Moder/Card3/Matd.hpp"
+#include "njoy21/input/MODER/Card3/Nin.hpp"
+#include "njoy21/input/MODER/Card3/Matd.hpp"
 
   Argument< Nin > nin;
   Argument< Matd > matd;
