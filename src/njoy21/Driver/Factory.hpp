@@ -18,8 +18,8 @@ class Factory {
 
   static Directory setupLegacyDirectory( CommandLine& commandLine ){
     return ( commandLine.legacySwitch ) ?
-      Directory( { "MODER", "RECONR", "BROADR" } ) :
-      Directory( { "MODER", "RECONR", "BROADR" } );
+      Directory( { "BROADR", "GASPR", "MODER", "PURR", "RECONR", "UNRESR" } ) :
+      Directory( { "BROADR", "GASPR", "MODER", "PURR", "RECONR", "UNRESR" } );
   }
 
   static Directory setupModernDirectory( CommandLine& commandLine ){

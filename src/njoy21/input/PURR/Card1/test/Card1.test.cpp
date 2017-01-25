@@ -8,40 +8,31 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "bugless" ){
   {
-    std::istringstream iss("   20 21 22\n");
-    long lineNumber = 1;
-    PURR::Card1 card1( iss, lineNumber );
+    iRecordStream<char> iss( std::istringstream("   20 21 22\n") );
+    PURR::Card1 card1( iss );
     REQUIRE( card1.nendf.value == 20 );
     REQUIRE( card1.nin.value == 21 );
     REQUIRE( card1.nout.value == 22 );
-    REQUIRE( lineNumber == 2 );
   }{
-    std::istringstream iss("   -20 21 22\n");
-    long lineNumber = 1;
-    PURR::Card1 card1( iss, lineNumber );
+    iRecordStream<char> iss( std::istringstream( "   -20 21 22\n") );
+    PURR::Card1 card1( iss );
     REQUIRE( card1.nendf.value == -20 );
     REQUIRE( card1.nin.value == 21 );
-    REQUIRE( card1.nout.value == 22 );
-    REQUIRE( lineNumber == 2 );
   }
 }
 
 SCENARIO( "bugged" ){
   {
-    std::istringstream iss("   20 20 21\n");
-    long lineNumber = 1;
-    REQUIRE_THROWS( PURR::Card1( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream( "   20 20 21\n") );
+    REQUIRE_THROWS( PURR::Card1 card1( iss ) );
   }{
-    std::istringstream iss("   20 21 20\n");
-    long lineNumber = 1;
-    REQUIRE_THROWS( PURR::Card1( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream( "   20 21 20\n") );
+    REQUIRE_THROWS( PURR::Card1 card1( iss ) );
   }{
-    std::istringstream iss("   20 21 21\n");
-    long lineNumber = 1;
-    REQUIRE_THROWS( PURR::Card1( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream( "   20 21 21\n") );
+    REQUIRE_THROWS( PURR::Card1 card1( iss ) );
   }{
-    std::istringstream iss("   20 -21 22\n");
-    long lineNumber = 1;
-    REQUIRE_THROWS( PURR::Card1( iss, lineNumber ) );
+    iRecordStream<char> iss( std::istringstream( "   20 -21 22\n") );
+    REQUIRE_THROWS( PURR::Card1 card1( iss ) );
   }
 }

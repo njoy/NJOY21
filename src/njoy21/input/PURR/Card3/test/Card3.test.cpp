@@ -13,8 +13,7 @@ SCENARIO( "Verifying PURR Card3 input",
   ntemp.value = 3;
 
   GIVEN( "valid temp" ){
-    std::istringstream issTemps( " 293.6 600 1200" );
-    long ln(0);
+    iRecordStream< char> issTemps( std::istringstream( " 293.6 600 1200" ) );
 
     THEN( "the temperatures can be extracted and verified" ){
       std::vector< dimwits::Quantity< dimwits::Kelvin > > refTemps{
@@ -22,24 +21,22 @@ SCENARIO( "Verifying PURR Card3 input",
         600*dimwits::kelvin,
         1200*dimwits::kelvin};
 
-      PURR::Card3 card3( issTemps, ln, ntemp );
+      PURR::Card3 card3( issTemps, ntemp );
       REQUIRE( refTemps == card3.temp.value );
     }
   }
   GIVEN( "invalid temp---not enough temperatures" ){
-    std::istringstream issTemps( " 293.6 600 " );
-    long ln(0);
+    iRecordStream< char> issTemps( std::istringstream( " 293.6 600 " ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( PURR::Card3 card3( issTemps, ln, ntemp ) );
+      REQUIRE_THROWS( PURR::Card3 card3( issTemps, ntemp ) );
     }
   }
   GIVEN( "invalid temp---too many temperatures" ){
-    std::istringstream issTemps( " 293.6 600 900 1200" );
-    long ln(0);
+    iRecordStream< char> issTemps( std::istringstream( " 293.6 600 900 1200" ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( PURR::Card3 card3( issTemps, ln, ntemp ) );
+      REQUIRE_THROWS( PURR::Card3 card3( issTemps, ntemp ) );
     }
   }
 } // SCENARIO

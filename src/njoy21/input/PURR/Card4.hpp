@@ -5,18 +5,14 @@ public:
 
   Argument< Sigz > sigz;
 
-  template< typename Istream >
-  Card4( Istream& is, long& lineNumber,
-         Argument< PURR::Card2::Nsigz >& nsigz) :
-      Card4( Card::extract( is, lineNumber ), lineNumber, nsigz ){ ++lineNumber; }
-
-private:
   template< typename Char >
-  Card4( std::basic_istringstream< Char >&& is, const long& lineNumber,
+  Card4( iRecordStream< Char >& is,
          Argument< PURR::Card2::Nsigz >& nsigz )
     try:
-      sigz( argument::extract< Sigz >( is, lineNumber, nsigz ) )
-      {   }
+      sigz( argument::extract< Sigz >( is, nsigz ) )
+  {   
+    Card::clear( is );
+  }
     catch( std::exception& e ){
       Log::info( "Trouble while validating card 4" );
       throw e;
