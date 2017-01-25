@@ -1,11 +1,8 @@
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/input"
                "${CMAKE_CURRENT_BINARY_DIR}/input" COPYONLY )
 
-configure_file("${RESOURCES}/t511"
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/tape20"
                "${CMAKE_CURRENT_BINARY_DIR}/tape20" COPYONLY )
-
-configure_file("${RESOURCES}/t322"
-               "${CMAKE_CURRENT_BINARY_DIR}/tape26" COPYONLY )
 
 add_test( NAME "Test01"
           COMMAND ${PYTHON_EXECUTABLE} "../execute.py"

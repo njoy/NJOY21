@@ -12,3 +12,8 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/execute.py"
 
 add_subdirectory( "01" )	     
 add_subdirectory( "02" )
+add_subdirectory( "03" )
+add_subdirectory( "04" )
+add_subdirectory( "05" )
+add_subdirectory( "06" )
+add_subdirectory( "07" )

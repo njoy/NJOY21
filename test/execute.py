@@ -11,15 +11,14 @@ import subprocess
 retained_tapes = set( glob.glob('tape*') )
 reference_tapes = glob.glob('referenceTape*')
 
-with open('input', 'r') as i, \
-     open('output', 'w') as o, \
+with open('output', 'w') as o, \
      open('error', 'w') as e :
     njoy = os.path.join('..', '..', 'njoy21')
-    child = subprocess.Popen(njoy, stdin=i, stdout=o, stderr=e)
-    exit_code = child.communicate()[0]
-    if (exit_code):
+    child = subprocess.Popen([njoy, '-i', 'input'],  stdout=o, stderr=e)
+    child.communicate()
+    if (child.poll()):
         print("Error enountered while running NJOY21!")
-        exit(exit_code)
+        exit(child.poll())
 
     for reference_tape in reference_tapes:
         trial_tape = 'tape' + reference_tape[-2:]

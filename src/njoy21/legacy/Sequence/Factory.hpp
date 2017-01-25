@@ -17,8 +17,9 @@ protected:
   std::unique_ptr< interface::Routine >
   parse( std::string& label, input::iRecordStream< char >& input ){
     static const std::unordered_map< std::string, parser > parserMap =
-    { PAIR( MODER ), PAIR( RECONR ), PAIR( BROADR ) };
-    return parserMap.at( label )( input );      
+      { PAIR( MODER ), PAIR( RECONR ), PAIR( BROADR ), PAIR( GASPR ),
+        PAIR( PURR ), PAIR( UNRESR ) };
+    return parserMap.at( label )( input );
   }
 
   #undef Pair
