@@ -67,7 +67,8 @@ public:
       cycle( legacyProcessor, modernProcessor, label, queue ) :
       cycle( modernProcessor, legacyProcessor, label, queue );
     if ( label != "STOP" ){
-      Log::error( "Unrecognized routine label" );
+      Log::error( "Unrecognized routine label on line {}",
+		  manager->input().lineNumber );
       Log::info( "Requested routine: {}", label );
       throw std::exception();
     }
