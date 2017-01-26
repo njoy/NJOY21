@@ -1,0 +1,54 @@
+sudo: required
+dist: trusty
+
+git:
+  submodules: false  
+
+addons:
+  apt:
+    sources:
+      - sourceline: "deb http://apt.llvm.org/precise/ llvm-toolchain-precise-3.8 main"
+        key_url : "http://apt.llvm.org/llvm-snapshot.gpg.key"
+      - ubuntu-toolchain-r-test
+      - george-edison55-precise-backports
+    packages:
+      - gcc-6
+      - g++-6
+      - gfortran-6
+      - clang-3.8
+      - llvm-dev
+      - cmake
+      - cmake-data
+      
+language: cpp
+
+compiler:
+  - gcc
+  - clang
+
+os:
+  - linux
+
+script: ./.travis/build.sh
+
+env:
+  - build_type=debug static_libraries=FALSE
+  - build_type=release static_libraries=FALSE
+  - build_type=debug static_libraries=TRUE
+  - build_type=release static_libraries=TRUE
+
+matrix:
+  include:
+    - os: linux
+      compiler: gcc
+      env: build_type=coverage static_libraries=FALSE
+    - os: linux
+      compiler: clang
+      env:
+        build_type=debug static_libraries=FALSE
+        appended_flags="-fsanitize=address -fno-omit-frame-pointer "
+    - os: linux
+      compiler: clang
+      env:
+        build_type=debug static_libraries=FALSE
+        appended_flags="-fsanitize=undefined -fsanitize=integer -fno-omit-frame-pointer "
