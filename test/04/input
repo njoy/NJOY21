@@ -40,65 +40,13 @@ unresr
  1.e10/                                           card4
  0/                                               repeat card2, 0=unresr is done
 -- 
--- standard heatr processing w/partial kermas
-heatr
- -21 -24 -25/                                     card1
- 4025 7/                                          card2
- 302 303 304 318 402 443 444/                     card3
--- 
--- heatr w/checks and plots
-heatr
- -21 -24 -26 27/                                  card1
- 4025 7 0 1 0 2/                                  card2
- 302 303 304 318 402 443 444/                     card3
--- 
--- probability table processing
--- - one temperature
--- - one (infinite) sig-0 (same as unresr)
---  - 20 bins
---  - 64 ladders
--- purr pendf tape is -24 if heatr is not run;
--- purr pendf tape is -26 if heatr is run.
-purr
- -21 -26 -28/                                     card1
- 4025 1 1 20 64/                                  card2
- 293.6/                                           card3
- 1e10/                                            card4
- 0/                                               repeat card2, 0=purr is done
--- 
 -- gas production
 gaspr
- -21 -28 -30/                                     card1
+ -21 -24 -30/                                     card1
 -- 
 -- convert pendf tape from binary to ascii
 moder
  -30 38/                                          card1
--- 
--- fast acer library (card2 iopt=1)
-acer
- -21 -30 0 31 32/                                 card1
- 1 0 1 .10/                                       card2
- 'fast acer tape for material 4025'/              card3
- 4025 293.6/                                      card5
- /                                                card6
- /                                                card7
--- 
--- check library, plot library (card2 iopt=7)
--- - tape34 is ACE file;
--- - tape35 is xsdir info
-acer
- 0 31 33 34 35/                                   card1
- 7 1 1 -1/                                        card2
- 'acer check/plot tape for material 4025'/        card3
--- 
--- convert heatr plot file to .ps
--- *** skip over this if heatr was not run ***
-viewr
- 27 36/                                           card1
--- 
--- convert acer plot file to .ps
-viewr
- 33 37/                                           card1
 -- 
 -- finished
 stop
