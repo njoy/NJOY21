@@ -2,6 +2,7 @@ class Card2 {
 public:
 
   /* nested types */
+  using Mat = RECONR::Card3::Mat;
   #include "njoy21/input/PURR/Card2/Ntemp.hpp"
   #include "njoy21/input/PURR/Card2/Nsigz.hpp"
   #include "njoy21/input/PURR/Card2/Nbin.hpp"
@@ -9,7 +10,7 @@ public:
   #include "njoy21/input/PURR/Card2/Iprint.hpp"
   #include "njoy21/input/PURR/Card2/Nunx.hpp"
 
-  Argument< RECONR::Card3::Mat > matd;
+  Argument< Mat > matd;
   Argument< Ntemp > ntemp;
   Argument< Nsigz > nsigz;
   Argument< Nbin > nbin;

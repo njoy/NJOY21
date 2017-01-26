@@ -14,11 +14,10 @@ public:
   UNRESR( Istream& is )
     try:
       card1( is ){
-      
       Card2 card2(is );
       if( not card2.matd.value ){
-        Log::error(
-          "Must have at least one non-zero matd number in UNRESR Card2" );
+        Log::error
+	  ( "Must have at least one non-zero matd number in UNRESR Card2" );
         throw std::exception();
       }
       
@@ -26,7 +25,7 @@ public:
         optional< Card3 > card3;
         try{
           card3 = Card3( is, card2.ntemp );
-        } catch( std::exception& e ){
+        } catch( std::exception& e ) {
           Log::info( "Failed to read card 3" );
           throw e;
         }
@@ -34,14 +33,14 @@ public:
         optional< Card4 > card4;
         try{
           card4 = Card4( is, card2.nsigz );
-        } catch( std::exception& e ){
+        } catch( std::exception& e ) {
           Log::info( "Failed to read card 4" );
           throw e;
         }
 
-        cardSequence.emplace_back(std::move(card2),
-                                  std::move(*card3),
-                                  std::move(*card4));
+        cardSequence.emplace_back( std::move(card2),
+                                   std::move(*card3),
+                                   std::move(*card4) );
         try{
           card2 = Card2( is );
         } catch( std::exception& e ){
@@ -50,7 +49,7 @@ public:
         }
       } while( card2.matd.value );
 
-    } catch( std::exception& e ){
+    } catch( std::exception& e ) {
       Log::info( "Trouble validating UNRESR input" );
       throw e;
     }
