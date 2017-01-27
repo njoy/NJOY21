@@ -19,5 +19,4 @@ public:
     auto fileGaurd = manager.output( this );
     for ( auto& routine : this->sequence ){ (*routine)(); }
   }
-
 };
