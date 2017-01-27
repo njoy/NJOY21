@@ -17,6 +17,7 @@ addons:
       - gfortran-6
       - clang-3.8
       - llvm-dev
+      - libc++-dev
       - cmake
       - cmake-data
       
