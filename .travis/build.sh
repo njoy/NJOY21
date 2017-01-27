@@ -7,7 +7,6 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
 	   --slave /usr/bin/clang++ clang++ /usr/bin/clang++-3.8 \
 	   --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-6
     sudo update-alternatives --config clang
-    export appended_flags=$appended_flags"-stdlib=libstdc++"
     export PATH=/usr/bin:$PATH
     export CUSTOM=("-D no_link_time_optimization=TRUE")
   else
@@ -19,6 +18,7 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
          --slave /usr/bin/gcc-nm nm /usr/bin/gcc-nm-6 \
          --slave /usr/bin/gcc-ranlib ranlib /usr/bin/gcc-ranlib-6
     sudo update-alternatives --config gcc
+    export appended_flags=$appended_flags"-Wno-error=subobject-linkage -Wno-subobject-linkage"
     export CUSTOM=('-D CMAKE_AR=/usr/bin/gcc-ar' '-D CMAKE_NM=/usr/bin/gcc-nm' '-D CMAKE_RANLIB=/usr/bin/gcc-ranlib')
   fi;
 fi
