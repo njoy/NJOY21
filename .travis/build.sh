@@ -19,7 +19,7 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
          --slave /usr/bin/gcc-nm nm /usr/bin/gcc-nm-6 \
          --slave /usr/bin/gcc-ranlib ranlib /usr/bin/gcc-ranlib-6
     sudo update-alternatives --config gcc
-    export appended_flags=$appended_flags" -Wno-error=subobject-linkage -Wno-subobject-linkage CMAKE_EXE_LINKER_FLAGS=-lgfortran"
+    export appended_flags=$appended_flags" -Wno-error=subobject-linkage -Wno-subobject-linkage"
     export CUSTOM=('-D CMAKE_AR=/usr/bin/gcc-ar' '-D CMAKE_NM=/usr/bin/gcc-nm' '-D CMAKE_RANLIB=/usr/bin/gcc-ranlib')
   fi;
 fi
@@ -29,6 +29,7 @@ cd build
 cmake ${CUSTOM[@]}\
       -D build_type=$build_type \
       -D static_libraries=$static_libraries \
+      -D CMAKE_EXE_LINKDER_FLAGS="-lgfortran"
       -D appended_flags="$appended_flags" ..
 make -j2
 export COMPILATION_FAILURE=$?
