@@ -11,16 +11,21 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
     export appended_flags=$appended_flags" -isystem /usr/include/c++/v1/"
     export CUSTOM=("-D no_link_time_optimization=TRUE")
   else
-    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 90 \
-         --slave /usr/bin/g++ g++ /usr/bin/g++-6 \
-         --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-6 \
-         --slave /usr/bin/gcov gcov /usr/bin/gcov-6 \
-         --slave /usr/bin/gcc-ar ar /usr/bin/gcc-ar-6 \
-         --slave /usr/bin/gcc-nm nm /usr/bin/gcc-nm-6 \
-         --slave /usr/bin/gcc-ranlib ranlib /usr/bin/gcc-ranlib-6
-    sudo update-alternatives --config gcc
+#   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 90 \
+#        --slave /usr/bin/g++ g++ /usr/bin/g++-6 \
+#        --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-6 \
+#        --slave /usr/bin/gcov gcov /usr/bin/gcov-6 \
+#        --slave /usr/bin/gcc-ar ar /usr/bin/gcc-ar-6 \
+#        --slave /usr/bin/gcc-nm nm /usr/bin/gcc-nm-6 \
+#        --slave /usr/bin/gcc-ranlib ranlib /usr/bin/gcc-ranlib-6
+#   sudo update-alternatives --config gcc
     export appended_flags=$appended_flags" -Wno-error=subobject-linkage -Wno-subobject-linkage"
-    export CUSTOM=('-D CMAKE_AR=/usr/bin/gcc-ar' '-D CMAKE_NM=/usr/bin/gcc-nm' '-D CMAKE_RANLIB=/usr/bin/gcc-ranlib')
+#   export CUSTOM=('-D CMAKE_AR=/usr/bin/gcc-ar' '-D CMAKE_NM=/usr/bin/gcc-nm' '-D CMAKE_RANLIB=/usr/bin/gcc-ranlib')
+    ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
+    ln -s /usr/bin/g++-6 /usr/local/bin/g++
+    export CC=/usr/bin/gcc-6
+    export CXX=/usr/bin/g++-6
+    gcc -v && g++ -v
   fi;
 fi
 
@@ -29,7 +34,6 @@ cd build
 cmake ${CUSTOM[@]}\
       -D build_type=$build_type \
       -D static_libraries=$static_libraries \
-      -D CMAKE_EXE_LINKDER_FLAGS="-lgfortran" \
       -D appended_flags="$appended_flags" ..
 make -j2
 export COMPILATION_FAILURE=$?
