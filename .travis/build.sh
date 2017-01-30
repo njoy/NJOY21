@@ -23,9 +23,11 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
 #   export CUSTOM=('-D CMAKE_AR=/usr/bin/gcc-ar' '-D CMAKE_NM=/usr/bin/gcc-nm' '-D CMAKE_RANLIB=/usr/bin/gcc-ranlib')
     ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
     ln -s /usr/bin/g++-6 /usr/local/bin/g++
+    ln -s /usr/bin/gfortran /usr/local/bin/gfortran
     export CC=/usr/bin/gcc-6
     export CXX=/usr/bin/g++-6
-    gcc -v && g++ -v
+    export FC=/usr/bin/gfortran
+    gcc -v && g++ -v && gofrtran -v
   fi;
 fi
 
