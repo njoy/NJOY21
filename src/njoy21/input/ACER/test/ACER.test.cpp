@@ -5,4 +5,3 @@
 #include "njoy21.hpp"
 
 using namespace njoy::njoy21::input;
-
