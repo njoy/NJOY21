@@ -24,7 +24,7 @@ addons:
 language: cpp
 
 compiler:
-  - gcc-6
+  - gcc
 # - clang
 
 os:

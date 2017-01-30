@@ -29,7 +29,7 @@ cd build
 cmake ${CUSTOM[@]}\
       -D build_type=$build_type \
       -D static_libraries=$static_libraries \
-      -D CMAKE_EXE_LINKDER_FLAGS="-lgfortran"
+      -D CMAKE_EXE_LINKDER_FLAGS="-lgfortran" \
       -D appended_flags="$appended_flags" ..
 make -j2
 export COMPILATION_FAILURE=$?
