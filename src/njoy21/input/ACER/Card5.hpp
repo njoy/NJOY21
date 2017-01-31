@@ -15,7 +15,7 @@ class Card5 {
     Card::clear( is );
   }
     catch( std::exception& e ){
-      Log::info( "Trouble while validating card 2" );
+      Log::info( "Trouble while validating card 5" );
       throw e;
     }
 };
