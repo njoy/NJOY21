@@ -29,7 +29,12 @@ compiler:
 
 os:
   - linux
-
+  - osx
+  
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gcc; fi
+  
 script: ./.travis/build.sh
 
 env:
