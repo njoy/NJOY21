@@ -7,9 +7,9 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
 	 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-3.8 \
 	 --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-6
     sudo update-alternatives --config clang
-    export appended_flags=$appended_flags"-stdlib=libstdc++"
+    export appended_flags="$appended_flags -stdlib=libstdc++"
     export PATH=/usr/bin:$PATH
-    export CUSTOM=("-D no_link_time_optimization=TRUE")
+    export CUSTOM=("-D no_link_time_optimization=TRUE -D njoy_c_bindings_no_appended_flags=TRUE -D njoy_no_appended_flags=TRUE")
   else
     sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 90 \
          --slave /usr/bin/g++ g++ /usr/bin/g++-6 \
