@@ -45,9 +45,9 @@ env:
 
 matrix:
   include:
-    - os: linux
-      compiler: gcc
-      env: build_type=coverage static_libraries=FALSE
+    #- os: linux
+    #  compiler: gcc
+    #  env: build_type=coverage static_libraries=FALSE
     - os: linux
       compiler: clang
       env:

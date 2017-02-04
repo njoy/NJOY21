@@ -49,11 +49,11 @@ struct Temp2 {
       position = std::is_sorted_until( std::begin(v), std::end(v) );
       if ( position != std::end(v) ){
 	Log::warning("Encountered unsorted temp2 arguments in bootstrap mode" );
+        const auto distance = std::distance( std::begin(v), position );
 	Log::info("temp2 argument [{}]: {}",
-		  std::distance( std::begin(v), position ), *position );
-	std::advance( position, 1 );
+		   distance - 1, position[-1] );
 	Log::info("temp2 argument [{}]: {}",
-		  std::distance( std::begin(v), position ), *position );
+                   distance, *position );
 	return false;
       }
     }
