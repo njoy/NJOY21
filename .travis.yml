@@ -29,7 +29,12 @@ compiler:
 
 os:
   - linux
-
+  - osx
+  
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gcc; fi
+  
 script: ./.travis/build.sh
 
 env:
@@ -40,16 +45,25 @@ env:
 
 matrix:
   include:
+    # Exceeds time limit
+    #
+    #- os: linux
+    #  compiler: gcc
+    #  env: build_type=coverage static_libraries=FALSE
+    #
+    # Uninitialize memory access in fortran =(
+    # 
+    #- os: linux
+    #  compiler: clang
+    #  env:
+    #    build_type=debug static_libraries=FALSE
+    #    appended_flags="-fsanitize=address -fno-omit-frame-pointer "
     - os: linux
+      compiler: clang
+      env:
+        build_type=debug static_libraries=FALSE
+        appended_flags="-fsanitize=undefined -fno-omit-frame-pointer "
+  exclude:
+    - os: osx
       compiler: gcc
-      env: build_type=coverage static_libraries=FALSE
-    - os: linux
-      compiler: clang
-      env:
-        build_type=debug static_libraries=FALSE
-        appended_flags="-fsanitize=address -fno-omit-frame-pointer "
-    - os: linux
-      compiler: clang
-      env:
-        build_type=debug static_libraries=FALSE
-        appended_flags="-fsanitize=undefined -fsanitize=integer -fno-omit-frame-pointer "
+        
