@@ -22,6 +22,13 @@ public:
       throw f;
     }
     for ( auto& c : line ){ c = toupper(c); }
-    return utility::string::trim( line );
+    auto begin = std::find_if_not( line.begin(), line.end(),
+                                   [](auto&& c){ return std::isspace(c); } );
+    auto slash = std::find_if( begin, line.end(),
+                               [](auto&& c){ return c == '/'; } );
+    auto end = std::find_if_not( std::make_reverse_iterator( slash ),
+                                 std::make_reverse_iterator( begin ),
+                                 [](auto&& c){ return std::isspace(c); } ).base();
+    return std::string( begin, end );
   }
 };

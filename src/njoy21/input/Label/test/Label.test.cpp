@@ -33,6 +33,20 @@ SCENARIO( "label with comments" ){
   REQUIRE( "MODER" == Label::extract( iss ) );
 }
 
+SCENARIO( "label with leading blank lines" ){
+  iRecordStream<char> iss( std::istringstream(
+    "\n"
+    "\n"
+    "MoDEr") );
+  REQUIRE( "MODER" == Label::extract( iss ) );
+}
+
+SCENARIO( "label with fortran end of line" ){
+  iRecordStream<char> iss( std::istringstream(
+    " moder / CALL MODER TO CONVERT ASCII - BINARY") );
+    REQUIRE( "MODER" == Label::extract( iss ) );
+}
+
 SCENARIO( "missing label" ){
   {
     iRecordStream<char> iss( std::istringstream("") );
