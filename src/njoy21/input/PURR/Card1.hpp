@@ -13,7 +13,9 @@ public:
     try:
       nendf( argument::extract< Nendf >( is ) ),
       nin( argument::extract< Nin >( is, this->nendf ) ),
-      nout( argument::extract< Nout > ( is, this->nendf, this->nin ) ){}
+      nout( argument::extract< Nout > ( is, this->nendf, this->nin ) ){
+        Card::clear(is);
+      }
     catch( std::exception& e ){
       Log::info("Trouble while validating Card 1");
       throw e;

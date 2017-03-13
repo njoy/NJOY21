@@ -102,6 +102,15 @@ def project_statement( state ):
     contents = textwrap.dedent( """
         project( {name} VERSION {version} LANGUAGES {language_s} )
     """).format(**state, language_s=language)
+    if state['language'] == 'fortran':
+        contents += textwrap.dedent( """
+            if( NOT DEFINED Fortran_module_directory )
+                set( Fortran_module_directory "${CMAKE_BINARY_DIR}/modules"
+                     CACHE PATH "directory for fortran modules" )
+                file( MAKE_DIRECTORY "${Fortran_module_directory}" )
+            endif()
+        """)
+        
     return contents
 
 def traverse_subprojects( state ):
@@ -255,7 +264,8 @@ def add_targets( state ):
         if state['language'] == 'fortran':
             contents += textwrap.dedent(
                 """
-                target_include_directories( {name} PUBLIC ${{PROJECT_BINARY_DIRECTORY}} ) """).format(**state)
+                set_target_properties( {name} PROPERTIES Fortran_MODULE_DIRECTORY "${{Fortran_module_directory}}" )
+                target_include_directories( {name} PUBLIC "${{Fortran_module_directory}}" ) """).format(**state)
 
         if 'include_path' in state and state['include_path']:
             contents += textwrap.dedent(
@@ -264,23 +274,25 @@ def add_targets( state ):
 
         if state['target'] == 'executable' :
             contents += textwrap.dedent("""
+                if( NOT is_subproject )
+                    add_executable( {name}_executable {driver} )
                 
-                add_executable( {name}_executable {driver} )
-                
-                target_link_libraries( {name}_executable PUBLIC {name} )
-                foreach( flag IN LISTS ${name}_compiler_flags_list )
-                    target_compile_options( {name}_executable PUBLIC ${{flag}} )
-                endforeach( flag )           
-                set_target_properties( {name}_executable PROPERTIES LINK_FLAGS "${{{name}_compiler_flags}}" )
-                set_target_properties( {name}_executable PROPERTIES OUTPUT_NAME {name} )""").format(**state)
+                    target_link_libraries( {name}_executable PUBLIC {name} )
+                    foreach( flag IN LISTS ${name}_compiler_flags_list )
+                        target_compile_options( {name}_executable PUBLIC ${{flag}} )
+                    endforeach( flag )           
+                    set_target_properties( {name}_executable PROPERTIES LINK_FLAGS "${{{name}_compiler_flags}}" )
+                    set_target_properties( {name}_executable PROPERTIES OUTPUT_NAME {name} )
+                endif()""").format(**state)
         
             if state['language'] == 'fortran':
                 contents += textwrap.dedent(
                     """
-                    target_include_directories( {name}_executable PUBLIC ${{PROJECT_BINARY_DIRECTORY}} )""").format(**state)
+                    set_target_properties( {name}_executable PROPERTIES Fortran_MODULE_DIRECTORY "${{Fortran_module_directory}}" )
+                    target_include_directories( {name}_executable PUBLIC "${{Fortran_module_directory}}" )""").format(**state)
 
             if 'include_path' in state and state['include_path']:
-                contents += texwrap.dedent(
+                contents += textwrap.dedent(
                     """
                     target_include_directories( {name}_executable PUBLIC {include_path} ) """).format(**state)
 
@@ -305,11 +317,13 @@ def link_dependencies( state ):
         contents += ' INTERFACE {}'.format(name)
       else:
         contents += ' PUBLIC {}'.format(name)
+        
     contents += ' ) \n'
+    
   contents += '\n'
   return contents
 
-def add_unit_tests( state ):
+def add_tests( state ):
     contents = ''
     if not state['is_external_project'] and state['unit_tests']:
         name = state['name']
@@ -324,6 +338,7 @@ def add_unit_tests( state ):
                 split = '\n                '
             else:
                 split = ' '
+                
             test_contents += split + split.join( [ os.path.split( entry )[1] for entry in sources ] ) + ' )'
             test_contents += textwrap.dedent(
                 """
@@ -337,11 +352,19 @@ def add_unit_tests( state ):
                 """.format(name=name, executable_name=executable_name))
             if os.path.isdir( os.path.join( directory, 'resources' ) ):
                 test_contents += 'file( GLOB resources "resources/*" ) \n'
-                test_contents += 'file( COPY "${resources}" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}" ) \n'
+                test_contents += 'foreach( resource ${resources} )\n'
+                test_contents += '    file( COPY "${resource}" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}" ) \n'
+                test_contents += 'endforeach( resource )\n'
             test_contents += 'add_test( NAME {} COMMAND {} ) \n'.format(test_name, executable_name)
             with open( os.path.join( directory, 'CMakeLists.txt' ), 'w') as TestCMakeFile:
                 TestCMakeFile.write( test_contents )
+                
+        if state['target'] == 'executable' and \
+           os.path.isdir( os.path.join( os.getcwd(), 'test' ) ) :
+            contents += '    add_subdirectory( test ) \n'
+          
         contents += 'endif() \n'
+        
     return contents
 
 def generate():
@@ -358,6 +381,6 @@ def generate():
   contents += print_banner( state )
   contents += add_targets( state )
   contents += link_dependencies( state )
-  contents += add_unit_tests( state )
+  contents += add_tests( state )
   with open('CMakeLists.txt', 'w') as CMakeFile:
     CMakeFile.write(contents)

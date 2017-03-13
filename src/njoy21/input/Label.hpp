@@ -1,9 +1,9 @@
 class Label {
 public:
-  template< typename Istream >
+  template< typename Char >
   static auto
-  extract( Istream& is, long& lineNumber ){
-    std::basic_string< typename Istream::char_type > line;
+  extract( iRecordStream< Char >& is ){
+    std::basic_string< Char > line;
     auto continueReading = []( auto& line ){
       if ( line.length() > 2
 	   && line[0] == '-' && line[1] == '-' && line[2] == ' ' ){
@@ -15,16 +15,20 @@ public:
     try {
       do {
 	std::getline( is, line );
-	++lineNumber;
       } while( ( not is.eof() ) and continueReading( line ) );
-      if ( is.fail() ) {
-	throw std::ios::failure("");
-      }
+      if ( is.fail() ) { throw std::ios::failure(""); }
     } catch ( std::ios::failure& f ){
       Log::error("Encountered end of input file before reading 'stop' keyword");
       throw f;
     }
-    for ( auto & c : line ){ c = toupper(c); }
-    return utility::string::trim( line );
+    for ( auto& c : line ){ c = toupper(c); }
+    auto begin = std::find_if_not( line.begin(), line.end(),
+                                   [](auto&& c){ return std::isspace(c); } );
+    auto slash = std::find_if( begin, line.end(),
+                               [](auto&& c){ return c == '/'; } );
+    auto end = std::find_if_not( std::make_reverse_iterator( slash ),
+                                 std::make_reverse_iterator( begin ),
+                                 [](auto&& c){ return std::isspace(c); } ).base();
+    return std::string( begin, end );
   }
 };

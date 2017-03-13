@@ -27,8 +27,8 @@ public:
 	    argument::domainError< Matd >( is );
 	    throw std::exception();
 	  }
-	  Card::clear(is);
     	}
+	Card::clear(is);
     } catch( std::exception& e ) {
       Log::info("Trouble while validating Card 3");
       throw e;

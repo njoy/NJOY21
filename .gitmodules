@@ -13,3 +13,6 @@
 [submodule "dependencies/dimwits"]
 	path = dependencies/dimwits
 	url = https://github.com/njoy/DimensionalAnalysis.git
+[submodule "dependencies/njoy_c_bindings"]
+	path = dependencies/njoy_c_bindings
+	url = https://github.com/njoy/njoy_c_bindings.git

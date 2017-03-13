@@ -3,13 +3,13 @@ set -x
 
 if [ "$TRAVIS_OS_NAME" = "linux" ]; then
   if [ "$CXX" = "clang++" ]; then
-      sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-3.8 90 \
-	   --slave /usr/bin/clang++ clang++ /usr/bin/clang++-3.8 \
-	   --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-6
+    sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-3.8 90 \
+	 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-3.8 \
+	 --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-6
     sudo update-alternatives --config clang
+    export appended_flags="$appended_flags -stdlib=libstdc++"
     export PATH=/usr/bin:$PATH
-    export appended_flags=$appended_flags" -isystem /usr/include/c++/v1/"
-    export CUSTOM=("-D no_link_time_optimization=TRUE")
+    export CUSTOM=("-D no_link_time_optimization=TRUE -D njoy_c_bindings_no_appended_flags=TRUE -D njoy_no_appended_flags=TRUE")
   else
     sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 90 \
          --slave /usr/bin/g++ g++ /usr/bin/g++-6 \
@@ -19,7 +19,6 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
          --slave /usr/bin/gcc-nm nm /usr/bin/gcc-nm-6 \
          --slave /usr/bin/gcc-ranlib ranlib /usr/bin/gcc-ranlib-6
     sudo update-alternatives --config gcc
-    export appended_flags=$appended_flags" -Wno-error=subobject-linkage -Wno-subobject-linkage"
     export CUSTOM=('-D CMAKE_AR=/usr/bin/gcc-ar' '-D CMAKE_NM=/usr/bin/gcc-nm' '-D CMAKE_RANLIB=/usr/bin/gcc-ranlib')
   fi;
 fi

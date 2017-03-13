@@ -1,2 +1,6 @@
 subprojects
 bin
+build
+__pycache__
+*#*
+*~

@@ -28,7 +28,6 @@ struct Type : public defaultField< defaults > {
 
 template< typename Char, typename Policy, typename... Args >
 inline void read( iRecordStream<Char>& is, Type< Policy, true >& argument, Args&&... args ){
-  Log::debug("entered the correct read function" );
   argument.defaulted =
     not Type< Policy >::read( is, argument.value, std::forward<Args>(args)... );
 }
