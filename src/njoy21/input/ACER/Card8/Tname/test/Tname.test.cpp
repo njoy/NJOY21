@@ -18,6 +18,14 @@ SCENARIO( "ACER Card8 Tname", "[Card8], [Tname]"){
       }
     }
   }
+  GIVEN( "no tname value" ){
+    THEN( "the default value is returned" ){
+      iRecordStream<char> iss( std::istringstream( " ") );
+      njoy::Log::info("Testing something");
+      REQUIRE( ACER::Card8::Tname::defaultValue() == 
+                argument::extract< ACER::Card8::Tname >( iss ).value );
+    }
+  }
   GIVEN( "invalid tname values" ){
     THEN( "an exception is thrown" ){
       std::string value( "1234567" );
