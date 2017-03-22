@@ -13,7 +13,7 @@ SCENARIO( "Verifying ACER Card6 input",
 
   GIVEN( "both entries" ){
 
-    THEN( "the the appropriate values are returned" ){
+    THEN( "the appropriate values are returned" ){
       iRecordStream<char> issCard6( std::istringstream( " 0 0 /" ) );
       ACER::Card6 card6( issCard6, ngend );
 
