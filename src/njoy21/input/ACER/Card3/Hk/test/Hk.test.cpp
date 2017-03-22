@@ -8,22 +8,20 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "ACER card3 hk",
          "[Card3], [Hk]"){
-  GIVEN( "valid hks" ){
-    THEN( "the hk value is correctly read and returned" ){
-      std::string value("");
-      iRecordStream<char> iss(
-          std::istringstream( "'" + value + "'" ) );
-      REQUIRE( value == argument::extract< 
-                        ACER::Card3::Hk >( iss ).value );
-    }
+  GIVEN( "valid hk values" ){
+    std::vector< std::string > validValues{ 
+      "",
+      "This is a test descriptive string.",
+      "123456789012345678901234567890123456789012345678901234567890123456"
+    };
 
-    THEN( "the hk value is correctly read and returned" ){
-      std::string value(
-          "123456789012345678901234567890123456789012345678901234567890123456");
-      iRecordStream<char> iss(
-          std::istringstream( "'" + value + "'" ) );
-      REQUIRE( value == argument::extract< 
-                        ACER::Card3::Hk >( iss ).value );
+    THEN( "the tname value is correctly read and returned" ){
+      for( auto& hk : validValues ){
+        iRecordStream<char> iss( std::istringstream( "'" + hk + "'" ) );
+
+        REQUIRE( 
+            hk == argument::extract< ACER::Card3::Hk >( iss ).value );
+      }
     }
   }
   GIVEN( "invalid hks" ){

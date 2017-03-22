@@ -8,6 +8,7 @@ public:
   #include "njoy21/input/ACER/Card5.hpp"
   #include "njoy21/input/ACER/Card6.hpp"
   #include "njoy21/input/ACER/Card7.hpp"
+  #include "njoy21/input/ACER/Card8.hpp"
 
  Card1 card1;
  Card2 card2;
@@ -16,4 +17,5 @@ public:
  Card5 card5;
  Card6 card6;
  Card7 card7;
+ Card8 card8;
 };

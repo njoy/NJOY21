@@ -22,8 +22,7 @@ SCENARIO( "Newfor  output values",
   }
   GIVEN( "no thin1 value" ){
     THEN( "the default value is returned" ){
-      iRecordStream<char> iss(
-          std::istringstream( "/") );
+      iRecordStream<char> iss( std::istringstream( "/") );
       REQUIRE( ACER::Card7::Thin1::defaultValue() == 
                 argument::extract< ACER::Card7::Thin1 >( iss ).value );
     }

@@ -1,5 +1,5 @@
 class Card5 {
- public:
+public:
 
   #include "njoy21/input/ACER/Card5/Tempd.hpp"
 
