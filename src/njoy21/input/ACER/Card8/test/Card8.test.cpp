@@ -8,8 +8,7 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "Verifying ACER Card8 input", "[ACER], [Card8]" ){
   GIVEN( "valid material, temperature, and name" ){
-    iRecordStream<char> issCard8( 
-        std::istringstream( " 1 293.6 'lwtr'" ) );
+    iRecordStream<char> issCard8( std::istringstream( " 1 293.6 'lwtr'" ) );
 
     THEN( " the material and temperature can be extracted and verified" ){
       ACER::Card8 card8 ( issCard8 );
