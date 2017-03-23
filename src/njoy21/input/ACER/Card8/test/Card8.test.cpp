@@ -20,7 +20,7 @@ SCENARIO( "Verifying ACER Card8 input", "[ACER], [Card8]" ){
   } // GIVEN
   GIVEN( "only material and temperature" ){
     iRecordStream<char> issCard8( 
-        std::istringstream( " 1 293.6  " ) );
+        std::istringstream( " 1 293.6  /" ) );
 
     THEN( " the material and temperature can be extracted and verified" ){
       ACER::Card8 card8 ( issCard8 );

@@ -39,6 +39,33 @@ SCENARIO( "string" ){
     REQUIRE( sink == "Lorem" );
     REQUIRE( not iss.fail() );
   }
+
+  SECTION("without quotes"){
+    std::string sink = "";
+    iRecordStream<char> iss( std::istringstream("   Lorem Ipsum ") );
+    REQUIRE( Type<std::string>::read( iss, sink ) );
+    REQUIRE( sink == "Lorem" );
+    REQUIRE( not iss.fail() );
+    std::getline( iss, sink );
+    REQUIRE( sink == " Ipsum " );
+  }
+  
+  SECTION("incomplete quotes"){
+    std::string sink = "";
+    iRecordStream<char> iss( std::istringstream("   'Lorem Ipsum ") );
+    REQUIRE( Type<std::string>::read( iss, sink ) );
+    REQUIRE( iss.fail() );
+  }
+
+  SECTION("trailing slash"){
+    std::string sink = "";
+    iRecordStream<char> iss( std::istringstream(" hello/world ") );
+    REQUIRE( Type<std::string>::read( iss, sink ) );
+    REQUIRE( sink == "hello" );
+    REQUIRE( not iss.fail() );
+    std::getline( iss, sink );
+    REQUIRE( sink == "/world " );
+  }
 }
 
 SCENARIO( "Quantity" ){
