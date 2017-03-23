@@ -20,7 +20,9 @@ public:
       itype( argument::extract< Itype >( is ) ),
       suff( argument::extract< Suff >( is ) ),
       nxtra( argument::extract< Nxtra >( is ) )
-    {   }
+    {   
+      Card::clear( is );
+    }
     catch( std::exception& e ){
       Log::info( "Trouble validating Card2");
       throw e;

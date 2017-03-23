@@ -8,7 +8,10 @@ public:
   Card4( iRecordStream< Char >& is,
          Argument< ACER::Card2::Nxtra >& nxtra )
     try:
-      izaw( argument::extract< Izaw >( is, nxtra ) ){}
+      izaw( argument::extract< Izaw >( is, nxtra ) )
+    {
+      Card::clear( is );
+    }
     catch( std::exception& e ){
       Log::info("Trouble while validating Card 4");
       throw e;

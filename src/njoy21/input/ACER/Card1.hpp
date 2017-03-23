@@ -25,7 +25,9 @@ public:
                                          this->npend,
                                          this->ngend,
                                          this->nace ) )
-      {}
+      {
+        Card::clear( is );
+      }
     catch( std::exception& e ){
       Log::info( "Trouble validating Card1");
       throw e;
