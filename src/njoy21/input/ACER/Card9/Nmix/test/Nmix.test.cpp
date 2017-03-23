@@ -35,5 +35,3 @@ SCENARIO( "Verifying ACER Card9 input", "[ACER], [Card9]" ){
     }
   }
 }
-
-
