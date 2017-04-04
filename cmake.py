@@ -79,6 +79,30 @@ def project_statement( state ):
     
     return contents
 
+def compiler_minimum( state ):
+    contents = ''
+    any_ = False
+    for name, compiler in state['compiler'].items():
+        if 'minimum version' in compiler:
+            any_ = True
+            contents += "\nset( {name}_{vendor}_minimum_version {version} )".format(name = state['name'],
+                                                                                    vendor = vendor[name],
+                                                                                    version = compiler['minimum version'])
+    
+    if any_:
+        contents += """
+
+if( {name}_${{CMAKE_{language}_COMPILER_ID}}_minimum_version )
+    if( CMAKE_{language}_COMPILER_VERSION VERSION_LESS
+        ${{{name}_${{CMAKE_{language}_COMPILER_ID}}_minimum_version}} )
+        message(FATAL_ERROR "${{CMAKE_{language}_COMPILER_ID}} version must be greater than ${{{name}_${{CMAKE_{language}_COMPILER_ID}}_minimum_version}}" )
+    endif()
+endif()""".format(language = language[state['language']],
+                  name = state['name'])
+    
+    return '\n' + contents
+        
+
 def make_aux_directories( state ):
     contents = """
 
@@ -89,7 +113,7 @@ def make_aux_directories( state ):
         contents += """
 
     set( CMAKE_Fortran_MODULE_DIRECTORY "${CMAKE_BINARY_DIR}/fortran_modules" CACHE PATH "directory for fortran modules" )
-    file( MAKE_DIRECTORY ${CMAKE_Fortran_MODULE_DIRECTORY} ) """
+    file( MAKE_DIRECTORY "${CMAKE_Fortran_MODULE_DIRECTORY}" ) """
         
     contents = textwrap.dedent( contents ) 
     return contents
@@ -172,8 +196,8 @@ def define_compiler_flags( state ):
             args['debug_flags'] = ' '.join( ['"{0}"'.format(flag) for flag in flags['debug'] ] ) 
             args['release_flags'] = ' '.join( ['"{0}"'.format(flag) for flag in flags['optimization'] ] )
             
-            keys = ['strict', 'coverage', 'profile generate',
-                    'link time optimization', 'profile use',
+            keys = ['strict', 'coverage', 'subproject', 'base project',
+                    'profile generate', 'link time optimization', 'profile use',
                     'nonportable optimization', 'static' ]
             
             options = [ (key).replace(' ', '_') for key in keys ]
@@ -194,19 +218,17 @@ def define_compiler_flags( state ):
 
 def lto_flags_expression( state ):
     contents=""
-    release = "${{{name}_${{CMAKE_{language}_COMPILER_ID}}_${{CMAKE_SYSTEM_NAME}}_RELEASE_flags}}".format(language = language[state['language']], name = state['name'])
-    link_time_optimization = "${{{name}_${{CMAKE_{language}_COMPILER_ID}}_${{CMAKE_SYSTEM_NAME}}_link_time_optimization_flags}}".format(language = language[state['language']], name = state['name'])
+    release = "${{${{PREFIX}}_RELEASE_flags}}".format(language = language[state['language']], name = state['name'])
+    link_time_optimization = "${{${{PREFIX}}_link_time_optimization_flags}}".format(language = language[state['language']], name = state['name'])
     option_template = \
-    """$<$<BOOL:${{{{{0}}}}}>:${{{{{{name}}_${{{{CMAKE_{{language}}_COMPILER_ID}}}}_${{{{CMAKE_SYSTEM_NAME}}}}_{0}_flags}}}}>"""
-
+    """$<$<BOOL:${{{{{0}}}}}>:${{{{${{{{PREFIX}}}}_{0}_flags}}}}>"""
 
     profile_generate = option_template.format('profile_generate').format(language = language[state['language']], name = state['name'])
     profile_use = option_template.format('profile_use').format(language = language[state['language']], name = state['name'])
     nonportable_optimization = option_template.format('nonportable_optimization').format(language = language[state['language']], name = state['name'])
-    language_appended_flags = "${{{0}_appended_flags}}".format(language[state['language']])
-    project_appended_flags = "${{{0}_appended_flags}}".format(state['name'])    
-    contents =  " $<$<AND:$<CONFIG:RELEASE>,$<BOOL:${{link_time_optimization}}>>:{release} {link_time_optimization} {profile_generate} {profile_use} {nonportable_optimization} {language_appended_flags} {project_appended_flags}>"
-    contents
+    language_appended_flags = "$<$<BOOL:{0}_appended_flags>:${{{0}_appended_flags}}>".format(language[state['language']])
+    project_appended_flags = "$<$<BOOL:{0}_appended_flags>:${{{0}_appended_flags}}>".format(state['name'])
+    contents =    "\"$<$<AND:$<CONFIG:RELEASE>,$<BOOL:${{link_time_optimization}}>>:{release}{link_time_optimization}{profile_generate}{profile_use}{nonportable_optimization}{language_appended_flags}{project_appended_flags}>\""
     contents = contents.format(release = release,
                                link_time_optimization = link_time_optimization,
                                profile_generate = profile_generate,
@@ -220,12 +242,12 @@ def lto_flags_expression( state ):
     
 def target_flags_expression( state ):
     contents=""
-    template = "${{{{{{name}}_${{{{CMAKE_{{language}}_COMPILER_ID}}}}_${{{{CMAKE_SYSTEM_NAME}}}}_{0}_flags}}}}"
+    template = "\n${{{{${{{{PREFIX}}}}_{0}_flags}}}}"
     common = template.format('common')
     debug = template.format('DEBUG')
     release = template.format('RELEASE')
         
-    option_template = "$<$<BOOL:${{{{{0}}}}}>:${{{{{{name}}_${{{{CMAKE_{{language}}_COMPILER_ID}}}}_${{{{CMAKE_SYSTEM_NAME}}}}_{0}_flags}}}}>"
+    option_template = "\n$<$<BOOL:${{{{{0}}}}}>:${{{{${{{{PREFIX}}}}_{0}_flags}}}}>"
     strict = option_template.format('strict')
     coverage = option_template.format('coverage')
     profile_generate = option_template.format('profile_generate')
@@ -233,8 +255,10 @@ def target_flags_expression( state ):
     profile_use = option_template.format('profile_use')
     nonportable_optimization = option_template.format('nonportable_optimization')
     static = option_template.format('static')
-        
-    addition =  common + '\n' + strict + static \
+
+    subproject = "\n$<$<BOOL:${{is_subproject}}>:${{${{PREFIX}}_subproject_flags}}>"
+    base_project = "\n$<$<NOT:$<BOOL:${{is_subproject}}>>:${{${{PREFIX}}_base_project_flags}}>"
+    addition =  common + strict + static + subproject + base_project \
                 + "\n$<$<CONFIG:DEBUG>:" + debug + ' ' + coverage + '>' \
                 + "\n$<$<CONFIG:RELEASE>:"\
                 + release + ' '\
@@ -243,27 +267,27 @@ def target_flags_expression( state ):
                 + link_time_optimization\
                 + ' ' + nonportable_optimization + ">"
     contents += addition.format(language = language[state['language']], name = state['name'] )        
-    contents += " ${{{language}_appended_flags}} ${{{name}_appended_flags}}".format( language=language[state['language']], name=state['name'] )
+    contents += "\n${{{language}_appended_flags}} ${{{name}_appended_flags}}".format( language=language[state['language']], name=state['name'] )
     return contents
 
 def test_flags_expression( state ):
     contents = ''
-    template = "${{{{{{name}}_${{{{CMAKE_{{language}}_COMPILER_ID}}}}_${{{{CMAKE_SYSTEM_NAME}}}}_{0}_flags}}}}"
+    template = "${{{{${{{{PREFIX}}}}_{0}_flags}}}}"
     common = template.format('common')
     debug = template.format('DEBUG')
     release = template.format('RELEASE')
         
-    option_template = "$<$<BOOL:${{{{{0}}}}}>:${{{{{{name}}_${{{{CMAKE_{{language}}_COMPILER_ID}}}}_${{{{CMAKE_SYSTEM_NAME}}}}_{0}_flags}}}}>"
+    option_template = "$<$<BOOL:${{{{{0}}}}}>:${{{{PREFIX}}}}_{0}_flags}}}}>\n"
     strict = option_template.format('strict')
     link_time_optimization = option_template.format('link_time_optimization')
     nonportable_optimization = option_template.format('nonportable_optimization')
         
     addition =  common + strict \
-                + "\n$<$<CONFIG:DEBUG>:" + debug + '>' \
-                + "\n$<$<CONFIG:RELEASE>:" + release + link_time_optimization + nonportable_optimization + ">\n"
+                + "\n$<$<CONFIG:DEBUG>:\n" + debug + '>' \
+                + "\n$<$<CONFIG:RELEASE>:\n" + release + link_time_optimization + nonportable_optimization + ">\n"
     contents += addition.format(language = language[state['language']], name = state['name'])
         
-    contents += " ${{{language}_appended_flags}} ${{{name}_appended_flags}}".format( language=language[state['language']], name=state['name'] )
+    contents += "\n${{{language}_appended_flags}} ${{{name}_appended_flags}}".format( language=language[state['language']], name=state['name'] )
     return contents
 
 def set_library_type( state ):
@@ -280,7 +304,12 @@ def set_library_type( state ):
 
     set( CMAKE_SKIP_BUILD_RPATH FALSE )
     set( CMAKE_BUILD_WITH_INSTALL_RPATH FALSE )
-    set( CMAKE_INSTALL_RPATH "${{CMAKE_INSTALL_PREFIX}}/lib" )
+    if ( CMAKE_SYSTEM_NAME STREQUAL "Darwin" )
+        set( rpath_prefix "@loader_path" )
+    else()
+        set( rpath_prefix "\\\\$ORIGIN" )
+    endif()
+    list( INSERT 0 CMAKE_INSTALL_RPATH "${{rpath_prefix}}/../lib" )
     set( CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE )""" ).format(name = state['name'])
     
 def collect_revision_info( state ):
@@ -335,7 +364,7 @@ def add_targets( state ):
     for group in state['file extension']:
         sources.extend(state[group])
         
-    sources = '\n             ${CMAKE_CURRENT_SOURCE_DIR}/'.join( sources )
+    sources = '"\n             "${CMAKE_CURRENT_SOURCE_DIR}/'.join( sources )
     policy = "PUBLIC" if has_library(state) else "INTERFACE"
     compile_flags = target_flags_expression(state)
     link_flags = lto_flags_expression(state)
@@ -343,31 +372,34 @@ def add_targets( state ):
     if has_library(state):
         contents = """
 add_library( {name} ${{{name}_library_linkage}} 
-             ${{CMAKE_CURRENT_SOURCE_DIR}}/{sources} )
+             "${{CMAKE_CURRENT_SOURCE_DIR}}/{sources}" )
         """
     else:
         contents = """
 add_library( {name} INTERFACE )
-target_sources( {name} INTERFACE ${{CMAKE_CURRENT_SOURCE_DIR}}/{sources} )
+target_sources( {name} INTERFACE "${{CMAKE_CURRENT_SOURCE_DIR}}/{sources}" )
         """
 
     if state['language'] == 'fortran':
         contents += """
-target_include_directories( {name} PUBLIC ${{CMAKE_Fortran_MODULE_DIRECTORY}} )
+target_include_directories( {name} PUBLIC "${{CMAKE_Fortran_MODULE_DIRECTORY}}" )
         """
         
     if 'include path' in state:
         contents += """
 target_include_directories( {name} {policy} {include_path} )
         """
+
+    if has_library( state ) or has_executable( state ):
+        contents += """
+set( PREFIX {name}_${{CMAKE_{language}_COMPILER_ID}}_${{CMAKE_SYSTEM_NAME}} )
+        """
         
     if has_library( state ):
         contents += """
-target_compile_options( {name} PRIVATE 
-{compile_flags} )
+target_compile_options( {name} PRIVATE {compile_flags} )
 
-target_link_libraries( {name} PUBLIC
-{link_flags} )
+target_link_libraries( {name} PUBLIC {link_flags} )
         """
 
     contents += link_dependencies( state )
@@ -378,8 +410,7 @@ target_link_libraries( {name} PUBLIC
 if ( NOT is_subproject )
     add_executable( {name}_executable {driver} )
     set_target_properties( {name}_executable PROPERTIES OUTPUT_NAME {name} )
-    target_compile_options( {name}_executable PRIVATE 
-    {compile_flags} )
+    target_compile_options( {name}_executable PRIVATE {compile_flags} )
     target_link_libraries( {name}_executable {policy} {name} )
 endif()
         """)
@@ -510,9 +541,9 @@ def install( state ):
     if state['language'] == 'fortran':
         contents += """
         file( RELATIVE_PATH relative_fortran_module_files_path 
-              ${{CMAKE_CURRENT_SOURCE_DIR}} ${{CMAKE_Fortran_MODULE_DIRECTORY}} )
+              "${{CMAKE_CURRENT_SOURCE_DIR}}" "${{CMAKE_Fortran_MODULE_DIRECTORY}}" )
         file( GLOB fortran_module_files 
-              RELATIVE ${{relative_fortran_module_files_path}}
+              RELATIVE "${{relative_fortran_module_files_path}}"
               *.mod )
         install( FILES ${{fortran_module_files}} 
                  DESTINATION include
@@ -541,6 +572,7 @@ def generate():
     contents = "cmake_minimum_required( VERSION 3.2 ) \n"
     contents += fetch_subprojects( state )
     contents += project_statement( state )
+    contents += compiler_minimum( state )
     contents += define_options( state )
     contents += make_aux_directories( state )
     contents += traverse_subprojects( state )
