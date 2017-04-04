@@ -19,12 +19,8 @@ public:
   Card2 card2;
   Card3 card3;
   optional< Card4 > card4;
-  optional< Card5 > card5;
-  optional< Card6 > card6;
-  optional< Card7 > card7;
-  optional< Card8  > card8;
-  optional< Card8a > card8a;
-  optional< Card9  > card9;
+  optional< std::tuple< Card5, Card6, Card7 > > fastCards;
+  optional< std::tuple< Card8, Card8a, Card9 > > thermalCards;
   optional< Card10 > card10;
   optional< Card11 > card11;
   optional< Card12 > card12;
@@ -42,14 +38,16 @@ public:
 
       switch( card2.iopt.value ){
         case 1:
-          this->card5 = Card5( is );
-          this->card6 = Card6( is, card1.ngend );
-          this->card7 = Card7( is );
+          fastCards = std::make_tuple< Card5, Card6, Card7 >( 
+              Card5( is ), 
+              Card6( is, card1.ngend ), 
+              Card7( is ) );
           break;
         case 2:
-          this->card8 = Card8( is );
-          this->card8a = Card8a( is );
-          this->card9 = Card9( is );
+          thermalCards = std::make_tuple< Card8, Card8a, Card9 >(
+              Card8( is ),
+              Card8a( is ),
+              Card9( is ) );
           break;
         case 3:
           this->card10 = Card10( is );

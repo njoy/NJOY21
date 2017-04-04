@@ -39,20 +39,21 @@ SCENARIO( "Parsing valid ACER input" ){
       // Card3
       REQUIRE( sCard3 == acer.card3.hk.value );
       // Card5
-      REQUIRE( 1001 == acer.card5->matd.value );
-      REQUIRE( 293.6*dimwits::kelvin == acer.card5->tempd.value );
+      auto card5 = std::get<0>(*acer.fastCards);
+      REQUIRE( 1001 == card5.matd.value );
+      REQUIRE( 293.6*dimwits::kelvin == card5.tempd.value );
       // Card6
-      REQUIRE( 0 == acer.card6->newfor.value );
-      REQUIRE( 1 == acer.card6->iopp.value );
+      auto card6 = std::get<1>(*acer.fastCards);
+      REQUIRE( 0 == card6.newfor.value );
+      REQUIRE( 1 == card6.iopp.value );
       // Card7
-      REQUIRE( -1 == acer.card7->thin1.value );
-      REQUIRE( 1E4 == acer.card7->thin2.value );
-      REQUIRE( 5 == acer.card7->thin3.value );
+      auto card7 = std::get<2>(*acer.fastCards);
+      REQUIRE( -1 == card7.thin1.value );
+      REQUIRE( 1E4 == card7.thin2.value );
+      REQUIRE( 5 == card7.thin3.value );
 
       REQUIRE( not acer.card4 );
-      REQUIRE( not acer.card8 );
-      REQUIRE( not acer.card8a );
-      REQUIRE( not acer.card9 );
+      REQUIRE( not acer.thermalCards );
       REQUIRE( not acer.card10 );
       REQUIRE( not acer.card11 );
       REQUIRE( not acer.card12 );
@@ -93,25 +94,26 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE( 92235 == values[1].first );
       REQUIRE( 233.02479 == values[1].second );
       // Card8
-      REQUIRE( 1 == acer.card8->matd.value );
-      REQUIRE( 293.6*dimwits::kelvin == acer.card8->tempd.value );
-      REQUIRE( "lwtr" == acer.card8->tname.value );
+      auto card8 = std::get<0>(*acer.thermalCards);
+      REQUIRE( 1 == card8.matd.value );
+      REQUIRE( 293.6*dimwits::kelvin == card8.tempd.value );
+      REQUIRE( "lwtr" == card8.tname.value );
       // Card8a
-      REQUIRE( 1001 == acer.card8a->iza01.value );
-      REQUIRE( 8016 == acer.card8a->iza02.value );
-      REQUIRE( 9235 == acer.card8a->iza03.value );
+      auto card8a = std::get<1>(*acer.thermalCards);
+      REQUIRE( 1001 == card8a.iza01.value );
+      REQUIRE( 8016 == card8a.iza02.value );
+      REQUIRE( 9235 == card8a.iza03.value );
       // Card9
-      REQUIRE( 1 == acer.card9->mti.value );
-      REQUIRE( 80 == acer.card9->nbint.value );
-      REQUIRE( 231 == acer.card9->mte.value );
-      REQUIRE( 0 == acer.card9->ielas.value );
-      REQUIRE( 1 == acer.card9->nmix.value );
-      REQUIRE( 10.1 == acer.card9->emax.value );
-      REQUIRE( 2 == acer.card9->iwt.value );
+      auto card9 = std::get<2>(*acer.thermalCards);
+      REQUIRE( 1 == card9.mti.value );
+      REQUIRE( 80 == card9.nbint.value );
+      REQUIRE( 231 == card9.mte.value );
+      REQUIRE( 0 == card9.ielas.value );
+      REQUIRE( 1 == card9.nmix.value );
+      REQUIRE( 10.1 == card9.emax.value );
+      REQUIRE( 2 == card9.iwt.value );
 
-      REQUIRE( not acer.card5 );
-      REQUIRE( not acer.card6 );
-      REQUIRE( not acer.card7 );
+      REQUIRE( not acer.fastCards );
       REQUIRE( not acer.card10 );
       REQUIRE( not acer.card11 );
       REQUIRE( not acer.card12 );
@@ -146,12 +148,8 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE( 600*dimwits::kelvin == acer.card10->tempd.value );
 
       REQUIRE( not acer.card4 );
-      REQUIRE( not acer.card5 );
-      REQUIRE( not acer.card6 );
-      REQUIRE( not acer.card7 );
-      REQUIRE( not acer.card8 );
-      REQUIRE( not acer.card8a );
-      REQUIRE( not acer.card9 );
+      REQUIRE( not acer.fastCards );
+      REQUIRE( not acer.thermalCards );
       REQUIRE( not acer.card11 );
       REQUIRE( not acer.card12 );
     }
@@ -184,12 +182,8 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE( 9235 == acer.card11->matd.value );
 
       REQUIRE( not acer.card4 );
-      REQUIRE( not acer.card5 );
-      REQUIRE( not acer.card6 );
-      REQUIRE( not acer.card7 );
-      REQUIRE( not acer.card8 );
-      REQUIRE( not acer.card8a );
-      REQUIRE( not acer.card9 );
+      REQUIRE( not acer.fastCards );
+      REQUIRE( not acer.thermalCards );
       REQUIRE( not acer.card10 );
       REQUIRE( not acer.card12 );
     }
@@ -222,12 +216,8 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE( 9235 == acer.card12->matd.value );
 
       REQUIRE( not acer.card4 );
-      REQUIRE( not acer.card5 );
-      REQUIRE( not acer.card6 );
-      REQUIRE( not acer.card7 );
-      REQUIRE( not acer.card8 );
-      REQUIRE( not acer.card8a );
-      REQUIRE( not acer.card9 );
+      REQUIRE( not acer.fastCards );
+      REQUIRE( not acer.thermalCards );
       REQUIRE( not acer.card10 );
       REQUIRE( not acer.card11 );
     }
@@ -257,12 +247,8 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE( sCard3 == acer.card3.hk.value );
 
       REQUIRE( not acer.card4 );
-      REQUIRE( not acer.card5 );
-      REQUIRE( not acer.card6 );
-      REQUIRE( not acer.card7 );
-      REQUIRE( not acer.card8 );
-      REQUIRE( not acer.card8a );
-      REQUIRE( not acer.card9 );
+      REQUIRE( not acer.fastCards );
+      REQUIRE( not acer.thermalCards );
       REQUIRE( not acer.card10 );
       REQUIRE( not acer.card11 );
       REQUIRE( not acer.card12 );
@@ -293,12 +279,8 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE( sCard3 == acer.card3.hk.value );
 
       REQUIRE( not acer.card4 );
-      REQUIRE( not acer.card5 );
-      REQUIRE( not acer.card6 );
-      REQUIRE( not acer.card7 );
-      REQUIRE( not acer.card8 );
-      REQUIRE( not acer.card8a );
-      REQUIRE( not acer.card9 );
+      REQUIRE( not acer.fastCards );
+      REQUIRE( not acer.thermalCards );
       REQUIRE( not acer.card10 );
       REQUIRE( not acer.card11 );
       REQUIRE( not acer.card12 );

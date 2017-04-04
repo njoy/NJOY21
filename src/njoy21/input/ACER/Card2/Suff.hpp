@@ -13,7 +13,5 @@ struct Suff {
   }
 
   static Value_t defaultValue(){ return 0.0; }
-  static bool verify( Value_t s ){ 
-    Log::info("s: {}", s);
-    return true; }
+  static bool verify( Value_t ){ return true; }
 };
