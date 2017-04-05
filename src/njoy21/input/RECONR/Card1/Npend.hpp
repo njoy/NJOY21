@@ -2,6 +2,7 @@ struct Npend : public argument::common::Nout {
   
   using Value_t = argument::common::Nout::Value_t;
   
+  static std::string name(){ return "npend"; }
   static std::string description(){
     return
       "The npend argument specifies the io unit used internally by the\n"
