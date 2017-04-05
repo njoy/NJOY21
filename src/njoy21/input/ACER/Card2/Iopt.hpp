@@ -11,7 +11,9 @@ struct Iopt {
         "  4: photo-atomic data\n"
         "  5: photo-nuclear data\n"
         "  7: read type 1 ace files to print or edit\n"
-        "  8: read type 2 ace files to print or edit\n";
+        "  8: read type 2 ace files to print or edit\n"
+        "\n"
+        "A negative iopt value specifies mcnpx format.";
   }
 
   static bool verify( const Value_t v ){

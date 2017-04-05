@@ -13,7 +13,7 @@ struct Iprint {
         "boolean switch to turn off (or on) the output.\n"
         "\n"
         "The default value of 1 produces a complete, interpreted listing of\n"
-        "the ACE dataa. The whorter prit options (value 0) just put out \n"
+        "the ACE data. The whorter prit options (value 0) just put out \n"
         "progress information from the ACER job and a brief listing of the \n"
         "header information for the library that was generated.";
   }
