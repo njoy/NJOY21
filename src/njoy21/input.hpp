@@ -17,5 +17,6 @@ using iRecordStream =
 #include "njoy21/input/ACER.hpp"
 #include "njoy21/input/GASPR.hpp"
 #include "njoy21/input/HEATR.hpp"
+#include "njoy21/input/GROUPR.hpp"
 
 }
