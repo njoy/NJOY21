@@ -42,4 +42,16 @@ SCENARIO( "Verifying ACER Card4 input",
     }
   } // GIVEN
 
+  GIVEN( "invalid izaw---too many IZ,AW pairs" ){
+    iRecordStream<char> issIzaw( std::istringstream( 
+      std::to_string( pairs[0].first ) + " " + std::to_string( pairs[0].second ) + " " +
+      std::to_string( pairs[0].first ) + " " + std::to_string( pairs[0].second ) + " " +
+      std::to_string( pairs[0].first ) + " " + std::to_string( pairs[0].second ) + " " +
+      std::to_string( pairs[1].first ) + " " + std::to_string( pairs[1].second ) )
+      );
+    THEN( "an exception is thrown" ){
+      REQUIRE_THROWS( ACER::Card4 card4( issIzaw, nxtra ) );
+    }
+  } // GIVEN
+
 }
