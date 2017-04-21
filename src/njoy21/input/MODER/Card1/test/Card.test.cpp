@@ -27,12 +27,12 @@ SCENARIO( "bugless" ){
 SCENARIO( "bugged" ){
   {
     iRecordStream<char> iss( std::istringstream("   0 21\n") );
-    REQUIRE_THROWS( MODER::Card1 card1( iss ) );
+    REQUIRE_THROWS( MODER::Card1( iss ) );
   }{
     iRecordStream<char> iss( std::istringstream("   20 10\n") );
-    REQUIRE_THROWS( MODER::Card1 card1( iss ) );
+    REQUIRE_THROWS( MODER::Card1( iss ) );
   }{
     iRecordStream<char> iss( std::istringstream("   20 21 30\n") );
-    REQUIRE_THROWS( MODER::Card1 card1( iss ) );
+    REQUIRE_THROWS( MODER::Card1( iss ) );
   }
 }

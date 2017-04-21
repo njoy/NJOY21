@@ -26,12 +26,12 @@ SCENARIO( "bugged" ){
   Argument< MODER::Card1::Nout > nout; nout.value = 21;
   {
     iRecordStream<char> iss( std::istringstream( "0 125" ) );
-    REQUIRE_THROWS( MODER::Card3 card3( iss, nout ) );
+    REQUIRE_THROWS( MODER::Card3( iss, nout ) );
   }{
     iRecordStream<char> iss( std::istringstream( "24 /" ) );
-    REQUIRE_THROWS( MODER::Card3 card3( iss, nout ) );
+    REQUIRE_THROWS( MODER::Card3( iss, nout ) );
   }{
     iRecordStream<char> iss( std::istringstream( "21 125" ) );
-    REQUIRE_THROWS( MODER::Card3 card3( iss, nout ) );
+    REQUIRE_THROWS( MODER::Card3( iss, nout ) );
   }
 }

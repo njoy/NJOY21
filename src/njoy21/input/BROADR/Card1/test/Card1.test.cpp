@@ -24,15 +24,15 @@ SCENARIO( "bugless" ){
 SCENARIO( "bugged" ){
   {
     iRecordStream<char> iss( std::istringstream("   20 20 21\n") );
-    REQUIRE_THROWS( BROADR::Card1 card1( iss ) );
+    REQUIRE_THROWS( BROADR::Card1( iss ) );
   }{
     iRecordStream<char> iss( std::istringstream("   20 21 20\n") );
-    REQUIRE_THROWS( BROADR::Card1 card1( iss ) );
+    REQUIRE_THROWS( BROADR::Card1( iss ) );
   }{
     iRecordStream<char> iss( std::istringstream("   20 21 21\n") );
-    REQUIRE_THROWS( BROADR::Card1 card1( iss ) );
+    REQUIRE_THROWS( BROADR::Card1( iss ) );
   }{
     iRecordStream<char> iss( std::istringstream("   20 -21 22\n") );
-    REQUIRE_THROWS( BROADR::Card1 card1( iss ) );
+    REQUIRE_THROWS( BROADR::Card1( iss ) );
   }
 }
