@@ -15,6 +15,6 @@ SCENARIO( "bugless" ){
 SCENARIO( "bugged" ){
   std::string value("'123456789 123456789 123456789 123456789 123456789 123456789 1234567'");
   iRecordStream<char> iss( (std::istringstream(value)) );
-  REQUIRE_THROWS( RECONR::Card5 card5( iss ) );
+  REQUIRE_THROWS( RECONR::Card5( iss ) );
 }
 

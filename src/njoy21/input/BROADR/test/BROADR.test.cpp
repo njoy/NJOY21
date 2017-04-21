@@ -64,5 +64,5 @@ SCENARIO("bugged"){
     " 0.001 1 0.02 1e-07\n"
     " 300 1200\n"
     " 0/\n") );
-  REQUIRE_THROWS( BROADR broadr( multipleTemperature ) );
+  REQUIRE_THROWS( BROADR( multipleTemperature ) );
 }

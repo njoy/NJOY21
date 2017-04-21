@@ -33,9 +33,9 @@ SCENARIO( "bugless" ){
 SCENARIO( "bugged" ){
   {
     iRecordStream<char> iss( std::istringstream("   20 20 22 23\n") );
-    REQUIRE_THROWS( HEATR::Card1 card1( iss ) );
+    REQUIRE_THROWS( HEATR::Card1( iss ) );
   }{
     iRecordStream<char> iss( std::istringstream("   20 21 20 23\n") );
-    REQUIRE_THROWS( HEATR::Card1 card1( iss ) );
+    REQUIRE_THROWS( HEATR::Card1( iss ) );
   }
 }

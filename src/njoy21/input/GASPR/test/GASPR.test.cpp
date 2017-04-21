@@ -36,15 +36,15 @@ SCENARIO( "bugless" ){
 SCENARIO( "bugged" ){
   {
     iRecordStream<char> iss( std::istringstream( "21 -21 -22" ) );
-    REQUIRE_THROWS( GASPR gaspr( iss ) );
+    REQUIRE_THROWS( GASPR( iss ) );
   }{
     iRecordStream<char> iss( std::istringstream( "20 -21 -21" ) );
-    REQUIRE_THROWS( GASPR gaspr( iss ) );
+    REQUIRE_THROWS( GASPR( iss ) );
   }{
     iRecordStream<char> iss( std::istringstream( "20 -21 -20" ) );
-    REQUIRE_THROWS( GASPR gaspr( iss ) );
+    REQUIRE_THROWS( GASPR( iss ) );
   }{
     iRecordStream<char> iss( std::istringstream( "20 -21 22" ) );
-    REQUIRE_THROWS( GASPR gaspr( iss ) );
+    REQUIRE_THROWS( GASPR( iss ) );
   }
 }
