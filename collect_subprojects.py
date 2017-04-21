@@ -38,7 +38,9 @@ def traverse_dependencies( destination, traversed ):
                                 os.path.join( destination, dependency ) )
 
                 except OSError:
-                    warnings.warn( "Could not create symbolic link from {} to subprojects directory.".format( os.getcwd() ) )
+                    warnings.warn( "Could not create symbolic "
+                                   "link from {} to subprojects directory."\
+                                   .format( os.getcwd() ) )
                     warnings.warn( "Copying directory contents instead" )
                     shutil.copytree( os.getcwd(),
                                      os.path.join( destination, dependency ),
