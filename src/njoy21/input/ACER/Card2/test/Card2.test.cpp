@@ -38,13 +38,13 @@ SCENARIO( "Validating card2 inputs",
     WHEN( "input is empty, i.e., no iopt parameter" ){
       iRecordStream<char> issCard2( std::istringstream( " /" ) );
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( ACER::Card2 card2(issCard2 ) );
+        REQUIRE_THROWS( ACER::Card2(issCard2 ) );
       }
     }
     WHEN( "parameters are incorrect" ){
       iRecordStream<char> issCard2( std::istringstream( " 3 -1 /" ) );
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( ACER::Card2 card2(issCard2 ) );
+        REQUIRE_THROWS( ACER::Card2(issCard2 ) );
       }
     }
   }

@@ -50,7 +50,7 @@ SCENARIO( "Verifying ACER Card7 input",
   GIVEN( "invalid entries" ){
     THEN( "an exception is thrown" ){
       iRecordStream<char> issCard7( std::istringstream( " -1 -2 -7 " ) );
-      REQUIRE_THROWS( ACER::Card7 card7( issCard7 ) );
+      REQUIRE_THROWS( ACER::Card7( issCard7 ) );
     }
   }
 }

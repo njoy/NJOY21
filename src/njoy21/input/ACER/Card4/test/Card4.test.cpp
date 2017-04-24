@@ -38,7 +38,7 @@ SCENARIO( "Verifying ACER Card4 input",
       std::to_string( pairs[1].first ) + " " + std::to_string( pairs[1].second ) )
       );
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( ACER::Card4 card4( issIzaw, nxtra ) );
+      REQUIRE_THROWS( ACER::Card4( issIzaw, nxtra ) );
     }
   } // GIVEN
 

@@ -1,6 +1,6 @@
-struct Ngout1 | public argument::common::Nout {
+struct Ngout1 : public argument::common::Nout {
   using Value_t = argument::common::Nout::Value_t;
-  static std::string name(){ return ngout1; }
+  static std::string name(){ return "ngout1"; }
 
   static std::string description(){
     return
@@ -30,6 +30,6 @@ struct Ngout1 | public argument::common::Nout {
         ( Npend::verify( npend.value, nendf ) ) and
         /* Make sure the ngout1 is not equal to other input tape numbers */
         ( std::abs( nendf.value ) != std::abs( v ) ) and
-        l std::abs( npend.value ) != std::abs( v ) );
+        ( std::abs( npend.value ) != std::abs( v ) );
   }
 };

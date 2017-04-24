@@ -7,16 +7,16 @@ public:
 
   Argument< Nendf > nendf;
   Argument< Npend > npend;
-  std::optional< std::tuple< Ngout1, Ngout2 > > ngout;
+  optional< std::tuple< Ngout1, Ngout2 > > ngout;
 
   template< typename Char >
   Card1( iRecordStream< Char >& is )
     try:
       nendf( argument::extract< Nendf >( is ) ),
-      npend( argument::extract< Npend >( is, this->nendf ) ),
+      npend( argument::extract< Npend >( is, this->nendf ) )
       {
         Ngout1 ngout1( is, this->nendf, this->npend );
-        Ngout2 ngout2( is, this->nendf, this->npend, this->ngout1 );
+        Ngout2 ngout2( is, this->nendf, this->npend, ngout1 );
         ngout = std::make_tuple< Ngout1, Ngout2 >(
             std::move(ngout1), std::move(ngout2) );
 

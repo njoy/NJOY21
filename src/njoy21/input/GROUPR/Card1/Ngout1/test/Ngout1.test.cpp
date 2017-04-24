@@ -16,7 +16,8 @@ SCENARIO( "ndir output values", "[GROUPR],[Card1], [Ngout1]"){
       npend.value = 21;
 
       THEN( "the returned class has the correct tape value" ){
-        for( auto ngout1 : {0, -22, 22, 50, 99, -99} ){
+        for( auto ngout1 : {-22, 22, 50, 99, -99} ){
+          npend.value = 21*( ngout1/std::abs(ngout1) );
           iRecordStream<char> issNgout1( 
               std::istringstream( std::to_string( ngout1 )  ) );
           REQUIRE( ngout1 == argument::extract< GROUPR::Card1::Ngout1 >(

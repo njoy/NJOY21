@@ -15,9 +15,9 @@ SCENARIO( "bugless" ){
 
 SCENARIO( "bugged" ){
   GIVEN( "a string that's too long" ){
-    std::string value("123456789 123456789 123456789 123456789 123456789 123456789 123456789 1");
+    std::string value(
+      "123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 12");
     iRecordStream<char> iss{ std::istringstream( "'" + value + "'" ) };
-    REQUIRE_THROWS( (GROUPR::Card3( iss )) );
+    REQUIRE_THROWS( GROUPR::Card3( iss ) );
   }
 }
-

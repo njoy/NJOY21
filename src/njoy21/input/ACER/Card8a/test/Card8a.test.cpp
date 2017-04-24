@@ -41,7 +41,7 @@ SCENARIO( "Verifying ACER Card8 input", "[ACER], [Card8a]" ){
     iRecordStream<char> issCard8a( std::istringstream( " -1001 /" ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( ACER::Card8a card8a( issCard8a ) );
+      REQUIRE_THROWS( ACER::Card8a( issCard8a ) );
     }
   }
 }

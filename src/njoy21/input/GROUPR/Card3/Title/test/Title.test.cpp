@@ -28,12 +28,10 @@ SCENARIO( "GROUPR card3 title",
   GIVEN( "invalid titles" ){
     THEN( "an exception is thrown" ){
       std::string value(
-          "1234567890123456789012345678901234567890"
-          "1234567890123456789012345678901");
+          "123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 12");
       iRecordStream<char> iss(
           std::istringstream( "'" + value + "'" ) );
       REQUIRE_THROWS( argument::extract< GROUPR::Card3::Title >( iss ) );
     }
   }
 } // SCENARIO
-

@@ -43,7 +43,7 @@ SCENARIO( "Verifying ACER Card6 input",
   }
   GIVEN( "invalid entries" ){
       iRecordStream<char> issCard6( std::istringstream( " 2 2 /" ) );
-      REQUIRE_THROWS( ACER::Card6 card6( issCard6, ngend ) );
+      REQUIRE_THROWS( ACER::Card6( issCard6, ngend ) );
   }
 } // SCENARIO
           

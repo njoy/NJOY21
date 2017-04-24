@@ -26,7 +26,8 @@ struct Npend : public argument::common::Nin {
   }
 
   static bool verify( const Value_t v, const Argument<Nendf>& nendf ){
-    return argument::common::Nin::verify( v, nendf );
+    return argument::common::Nin::verify( v )
+        && ( std::abs(nendf.value) != std::abs( v ) );
   }
 };
 

@@ -18,7 +18,7 @@ SCENARIO( "Verifying ACER Card12 input", "[ACER], [Card12]" ){
   GIVEN( "invalid Card12 input" ){
     iRecordStream<char> issCard12( std::istringstream( " -9235" ) );
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( ACER::Card12 card12( issCard12 ) );
+        REQUIRE_THROWS( ACER::Card12( issCard12 ) );
       }
 
   } // GIVEN

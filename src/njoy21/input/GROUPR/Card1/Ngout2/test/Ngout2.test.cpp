@@ -21,28 +21,28 @@ SCENARIO( "ngout2 output values", "[GROUPR],[Card1], [Ngout2]"){
           iRecordStream<char> issNgout2( 
               std::istringstream(std::to_string( ngout2 ) ) );
           REQUIRE( ngout2 == argument::extract< GROUPR::Card1::Ngout2 >(
-                            issNgout2, nendf, npend, ngend ).value );
+                            issNgout2, nendf, npend, ngout1 ).value );
         }
       }
     }
-    WHEN( "the npend, nendf, or ngend value and ngout2 values are the same" ){
+    WHEN( "the npend, nendf, or ngout1 value and ngout2 values are the same" ){
       THEN( "an exception is thrown" ){
         int ngout2 = 23;
-        ngend.value = ngout2;
+        ngout1.value = ngout2;
         iRecordStream<char> issNgout2( 
             std::istringstream(std::to_string( ngout2 ) ) );
         REQUIRE_THROWS( argument::extract< GROUPR::Card1::Ngout2 >(
-                          issNgout2, nendf, npend, ngend ) );
+                          issNgout2, nendf, npend, ngout1 ) );
 
-        ngend.value = 22;
+        ngout1.value = 22;
         nendf.value = ngout2;
         REQUIRE_THROWS( argument::extract< GROUPR::Card1::Ngout2 >(
-                          issNgout2, nendf, npend, ngend ) );
+                          issNgout2, nendf, npend, ngout1 ) );
 
         nendf.value = 20;
         npend.value = ngout2;
         REQUIRE_THROWS( argument::extract< GROUPR::Card1::Ngout2 >(
-                          issNgout2, nendf, npend, ngend ) );
+                          issNgout2, nendf, npend, ngout1 ) );
 
       }
     }
