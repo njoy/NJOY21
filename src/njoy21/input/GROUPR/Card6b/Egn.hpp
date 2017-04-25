@@ -9,9 +9,10 @@ struct Egn {
         "multigroup cross sections.";
   }
   static bool verify( const Value_t& egn,
-                      const Argument< Card6a::Ngn > & ngn ){
-    Log::debug("size: {}, value: {}", egn.size(), ngn.value);
-//  if( long(egn.size()) != ngn.value + 1 ){
+                      const int nboundaries ){
+//                    const Argument< GROUPR::Card6a::Ngn > & ngn ){
+    Log::debug("size: {}, value: {}", egn.size(), nboundaries);
+//  if( long(egn.size()) != nboundaries.value + 1 ){
 //    Log::info( "Incorrect number of energy boundaries read in." );
 //    return false;
 //  }
@@ -23,7 +24,7 @@ struct Egn {
                     *found, std::distance(egn.begin(), found));
       return false;
     } else {
-      return ( long(egn.size()) == ngn.value + 1 );
+      return ( long(egn.size()) == nboundaries );
     }
   }
 };

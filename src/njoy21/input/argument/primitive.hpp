@@ -134,6 +134,13 @@ struct Type< std::vector<T> > {
     is >> vector;
     return true;
   }
+
+  template< typename Char, typename... Args >
+  static bool read( iRecordStream<Char>& is , Data_t& vector, const int& size, Args&&... ){
+    vector.resize( size );
+    is >> vector;
+    return true;
+  }
 };
 
 template< typename Core >

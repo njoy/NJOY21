@@ -9,7 +9,7 @@ public:
   Card6b( iRecordStream< Char >& is,
          Argument< GROUPR::Card6a::Ngn >& ngn )
     try:
-      egn( argument::extract< Egn >( is, ngn ) ){ 
+      egn( argument::extract< Egn >( is, ngn.value+1 ) ){ 
         Card::clear( is );
     } catch( std::exception& e ) {
       Log::info( "Trouble while validating card 6b" );
