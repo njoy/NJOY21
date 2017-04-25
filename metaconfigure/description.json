@@ -473,7 +473,14 @@
     "src/njoy21/input/GROUPR/Card1/Ngout1.hpp",
     "src/njoy21/input/GROUPR/Card1/Ngout2.hpp",
     "src/njoy21/input/GROUPR/Card1/Npend.hpp",
+    "src/njoy21/input/GROUPR/Card2/Igg.hpp",
+    "src/njoy21/input/GROUPR/Card2/Ign.hpp",
+    "src/njoy21/input/GROUPR/Card2/Iprint.hpp",
+    "src/njoy21/input/GROUPR/Card2/Iwt.hpp",
+    "src/njoy21/input/GROUPR/Card2/Lord.hpp",
     "src/njoy21/input/GROUPR/Card2/Matb.hpp",
+    "src/njoy21/input/GROUPR/Card2/Nsigz.hpp",
+    "src/njoy21/input/GROUPR/Card2/Ntemp.hpp",
     "src/njoy21/input/GROUPR/Card3/Title.hpp",
     "src/njoy21/input/HEATR/Card1.hpp",
     "src/njoy21/input/HEATR/Card2.hpp",
@@ -793,8 +800,29 @@
     "njoy21.input.GROUPR.Card2": [
       "src/njoy21/input/GROUPR/Card2/test/Card2.test.cpp"
     ],
+    "njoy21.input.GROUPR.Card2.Igg": [
+      "src/njoy21/input/GROUPR/Card2/Igg/test/Igg.test.cpp"
+    ],
+    "njoy21.input.GROUPR.Card2.Ign": [
+      "src/njoy21/input/GROUPR/Card2/Ign/test/Ign.test.cpp"
+    ],
+    "njoy21.input.GROUPR.Card2.Iprint": [
+      "src/njoy21/input/GROUPR/Card2/Iprint/test/Iprint.test.cpp"
+    ],
+    "njoy21.input.GROUPR.Card2.Iwt": [
+      "src/njoy21/input/GROUPR/Card2/Iwt/test/Iwt.test.cpp"
+    ],
+    "njoy21.input.GROUPR.Card2.Lord": [
+      "src/njoy21/input/GROUPR/Card2/Lord/test/Lord.test.cpp"
+    ],
     "njoy21.input.GROUPR.Card2.Matb": [
       "src/njoy21/input/GROUPR/Card2/Matb/test/Matb.test.cpp"
+    ],
+    "njoy21.input.GROUPR.Card2.Nsigz": [
+      "src/njoy21/input/GROUPR/Card2/Nsigz/test/Nsigz.test.cpp"
+    ],
+    "njoy21.input.GROUPR.Card2.Ntemp": [
+      "src/njoy21/input/GROUPR/Card2/Ntemp/test/Ntemp.test.cpp"
     ],
     "njoy21.input.GROUPR.Card3": [
       "src/njoy21/input/GROUPR/Card3/test/Card3.test.cpp"

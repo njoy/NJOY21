@@ -6,7 +6,7 @@ public:
   #include "njoy21/input/GROUPR/Card3.hpp"
 
   Card1 card1;
-//Card2 card2;
+  Card2 card2;
   Card3 card3;
 
   template< typename Istream >

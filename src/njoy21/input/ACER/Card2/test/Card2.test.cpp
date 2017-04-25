@@ -8,7 +8,6 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "Validating card2 inputs",
           "[ACER], [Card2]" ){
-  long ln{0};
   WHEN( "all optional values are are given" ){
     iRecordStream<char> issCard2( std::istringstream( "1 0 2 .80 4" ) );
     ACER::Card2 card2( issCard2 );

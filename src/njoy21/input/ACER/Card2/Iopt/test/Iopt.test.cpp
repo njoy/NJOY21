@@ -6,7 +6,7 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "ndir output values",
+SCENARIO( "Iopt output values",
          "[ACER],[Card2], [Iopt]"){
 
   long ln{0};
