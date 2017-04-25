@@ -5,7 +5,7 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "Newfor  output values",
+SCENARIO( "Thin1  output values",
          "[ACER],[Card7], [Thin1]"){
   GIVEN( "valid thin1 values" ){
     std::vector<double> validValues{0.001, 1E4, 1.0, 2, -1.0, -1E-6};

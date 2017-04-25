@@ -2,7 +2,7 @@ class GROUPR {
 public:
   /* nested types */
   #include "njoy21/input/GROUPR/Card1.hpp"
-//#include "njoy21/input/GROUPR/Card2.hpp"
+  #include "njoy21/input/GROUPR/Card2.hpp"
   #include "njoy21/input/GROUPR/Card3.hpp"
 
   Card1 card1;
