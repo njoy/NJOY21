@@ -6,9 +6,9 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "Verifying PURR Card3 input", "[PURR], [Card3]" ){
+SCENARIO( "Verifying GROUPR Card4 input", "[GROUPR], [Card4]" ){
 
-  Argument< PURR::Card2::Ntemp > ntemp;
+  Argument< GROUPR::Card2::Ntemp > ntemp;
   ntemp.value = 3;
 
   GIVEN( "valid temp" ){
@@ -20,22 +20,22 @@ SCENARIO( "Verifying PURR Card3 input", "[PURR], [Card3]" ){
         600*dimwits::kelvin,
         1200*dimwits::kelvin};
 
-      PURR::Card3 card3( issTemps, ntemp );
-      REQUIRE( refTemps == card3.temp.value );
+      GROUPR::Card4 card4( issTemps, ntemp );
+      REQUIRE( refTemps == card4.temp.value );
     }
   }
   GIVEN( "invalid temp---not enough temperatures" ){
     iRecordStream< char> issTemps( std::istringstream( " 293.6 600 " ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( PURR::Card3( issTemps, ntemp ) );
+      REQUIRE_THROWS( GROUPR::Card4( issTemps, ntemp ) );
     }
   }
   GIVEN( "invalid temp---too many temperatures" ){
     iRecordStream< char> issTemps( std::istringstream( " 293.6 600 900 1200" ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( PURR::Card3( issTemps, ntemp ) );
+      REQUIRE_THROWS( GROUPR::Card4( issTemps, ntemp ) );
     }
   }
 } // SCENARIO

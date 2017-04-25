@@ -1,12 +1,12 @@
-class Card3 {
+class Card4 {
 public:
   /* nested types */
-  #include "njoy21/input/PURR/Card3/Temp.hpp"
+  #include "njoy21/input/GROUPR/Card4/Temp.hpp"
 
   Argument< Temp > temp;
 
   template< typename Char >
-  Card3( iRecordStream< Char >& is, Argument< PURR::Card2::Ntemp >& ntemp)
+  Card4( iRecordStream< Char >& is, Argument< GROUPR::Card2::Ntemp >& ntemp)
     try:
       temp( argument::extract< Temp >( is, ntemp ) )
     {   

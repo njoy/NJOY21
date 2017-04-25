@@ -4,17 +4,20 @@ public:
   #include "njoy21/input/GROUPR/Card1.hpp"
   #include "njoy21/input/GROUPR/Card2.hpp"
   #include "njoy21/input/GROUPR/Card3.hpp"
+  #include "njoy21/input/GROUPR/Card4.hpp"
 
   Card1 card1;
   Card2 card2;
   Card3 card3;
+  Card4 card4;
 
   template< typename Istream >
   GROUPR( Istream& is )
   try:
     card1( is ),
-//  card2( is ),
-    card3( is )
+    card2( is ),
+    card3( is ),
+    card4( is )
   {
   }
   catch( std::exception& e ){
