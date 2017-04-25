@@ -10,7 +10,6 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "Nsigz output values", "[GROUPR],[Card2], [Nsigz]"){
 
-  long ln{0};
   GIVEN( "valid Nsigz parameters" ){
     std::vector<int> validValues(10);
     std::iota( validValues.begin(), validValues.end(), 0);
