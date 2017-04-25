@@ -470,6 +470,7 @@
     "src/njoy21/input/GROUPR/Card2.hpp",
     "src/njoy21/input/GROUPR/Card3.hpp",
     "src/njoy21/input/GROUPR/Card4.hpp",
+    "src/njoy21/input/GROUPR/Card5.hpp",
     "src/njoy21/input/GROUPR/Card1/Nendf.hpp",
     "src/njoy21/input/GROUPR/Card1/Ngout1.hpp",
     "src/njoy21/input/GROUPR/Card1/Ngout2.hpp",
@@ -484,6 +485,7 @@
     "src/njoy21/input/GROUPR/Card2/Ntemp.hpp",
     "src/njoy21/input/GROUPR/Card3/Title.hpp",
     "src/njoy21/input/GROUPR/Card4/Temp.hpp",
+    "src/njoy21/input/GROUPR/Card5/Sigz.hpp",
     "src/njoy21/input/HEATR/Card1.hpp",
     "src/njoy21/input/HEATR/Card2.hpp",
     "src/njoy21/input/HEATR/Card3.hpp",
@@ -837,6 +839,12 @@
     ],
     "njoy21.input.GROUPR.Card4.Temp": [
       "src/njoy21/input/GROUPR/Card4/Temp/test/Temp.test.cpp"
+    ],
+    "njoy21.input.GROUPR.Card5": [
+      "src/njoy21/input/GROUPR/Card5/test/Card5.test.cpp"
+    ],
+    "njoy21.input.GROUPR.Card5.Sigz": [
+      "src/njoy21/input/GROUPR/Card5/Sigz/test/Sigz.test.cpp"
     ],
     "njoy21.input.HEATR.Card1": [
       "src/njoy21/input/HEATR/Card1/test/Card1.test.cpp"
