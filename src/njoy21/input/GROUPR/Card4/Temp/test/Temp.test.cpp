@@ -57,7 +57,7 @@ SCENARIO( "Temp input values",
       iRecordStream< char> issValues( std::istringstream(" 1.0 2.0 3.0 4.0") );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS(
+        REQUIRE_NOTHROW(
             argument::extract< GROUPR::Card4::Temp >(issValues, ntemp) );
       }
     }
