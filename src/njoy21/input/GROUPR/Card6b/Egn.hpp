@@ -6,7 +6,7 @@ struct Egn {
     return
         "The egn parameter is a list of (ngn+1) energy values (in eV). ngn is\n"
         "input on Card6a. These energy values are the bin boundaries for \n"
-        "multigroup cross sections.";
+        "multigroup neutron cross sections.";
   }
   static bool verify( const Value_t& egn,
                       const int nboundaries ){

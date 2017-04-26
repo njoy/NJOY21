@@ -8,6 +8,8 @@ public:
   #include "njoy21/input/GROUPR/Card5.hpp"
   #include "njoy21/input/GROUPR/Card6a.hpp"
   #include "njoy21/input/GROUPR/Card6b.hpp"
+  #include "njoy21/input/GROUPR/Card7a.hpp"
+  #include "njoy21/input/GROUPR/Card7b.hpp"
 
   Card1 card1;
   Card2 card2;
@@ -16,6 +18,8 @@ public:
   Card5 card5;
   Card6a card6a;
   Card6b card6b;
+  Card7a card7a;
+  Card7b card7b;
 
   template< typename Istream >
   GROUPR( Istream& is )
@@ -26,7 +30,9 @@ public:
     card4( is ),
     card5( is ),
     card6a( is ),
-    card6b( is )
+    card6b( is ),
+    card7a( is ),
+    card7b( is )
   {
   }
   catch( std::exception& e ){

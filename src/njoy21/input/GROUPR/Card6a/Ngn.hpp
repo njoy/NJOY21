@@ -4,8 +4,8 @@ struct Ngn {
 
   static std::string description(){
     return
-        "The ngn parameter specifies the number of groups enabling the user\n"
-        "to create a unique group structure.\n"
+        "The ngn parameter specifies the number of neutron groups enabling \n"
+        "the user to create a unique group structure.\n"
         "\n"
         "The group boundaries are given in Card 6b.";
   }
