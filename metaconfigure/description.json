@@ -496,10 +496,14 @@
     "src/njoy21/input/GROUPR/Card7a/Ngg.hpp",
     "src/njoy21/input/GROUPR/Card7b/Egg.hpp",
     "src/njoy21/input/GROUPR/Card8a/Alpha2.hpp",
+    "src/njoy21/input/GROUPR/Card8a/Alpha3.hpp",
+    "src/njoy21/input/GROUPR/Card8a/Beta.hpp",
     "src/njoy21/input/GROUPR/Card8a/Fehi.hpp",
+    "src/njoy21/input/GROUPR/Card8a/Gamma.hpp",
     "src/njoy21/input/GROUPR/Card8a/Jsigz.hpp",
     "src/njoy21/input/GROUPR/Card8a/Nflmax.hpp",
     "src/njoy21/input/GROUPR/Card8a/Ninwt.hpp",
+    "src/njoy21/input/GROUPR/Card8a/Sam.hpp",
     "src/njoy21/input/GROUPR/Card8a/Sigpot.hpp",
     "src/njoy21/input/HEATR/Card1.hpp",
     "src/njoy21/input/HEATR/Card2.hpp",
@@ -891,8 +895,17 @@
     "njoy21.input.GROUPR.Card8a.Alpha2": [
       "src/njoy21/input/GROUPR/Card8a/Alpha2/test/Alpha2.test.cpp"
     ],
+    "njoy21.input.GROUPR.Card8a.Alpha3": [
+      "src/njoy21/input/GROUPR/Card8a/Alpha3/test/Alpha3.test.cpp"
+    ],
+    "njoy21.input.GROUPR.Card8a.Beta": [
+      "src/njoy21/input/GROUPR/Card8a/Beta/test/Beta.test.cpp"
+    ],
     "njoy21.input.GROUPR.Card8a.Fehi": [
       "src/njoy21/input/GROUPR/Card8a/Fehi/test/Fehi.test.cpp"
+    ],
+    "njoy21.input.GROUPR.Card8a.Gamma": [
+      "src/njoy21/input/GROUPR/Card8a/Gamma/test/Gamma.test.cpp"
     ],
     "njoy21.input.GROUPR.Card8a.Jsigz": [
       "src/njoy21/input/GROUPR/Card8a/Jsigz/test/Jsigz.test.cpp"
@@ -902,6 +915,9 @@
     ],
     "njoy21.input.GROUPR.Card8a.Ninwt": [
       "src/njoy21/input/GROUPR/Card8a/Ninwt/test/Ninwt.test.cpp"
+    ],
+    "njoy21.input.GROUPR.Card8a.Sam": [
+      "src/njoy21/input/GROUPR/Card8a/Sam/test/Sam.test.cpp"
     ],
     "njoy21.input.GROUPR.Card8a.Sigpot": [
       "src/njoy21/input/GROUPR/Card8a/Sigpot/test/Sigpot.test.cpp"
