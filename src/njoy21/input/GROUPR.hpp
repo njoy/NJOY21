@@ -11,6 +11,9 @@ public:
   #include "njoy21/input/GROUPR/Card7a.hpp"
   #include "njoy21/input/GROUPR/Card7b.hpp"
   #include "njoy21/input/GROUPR/Card8a.hpp"
+//#include "njoy21/input/GROUPR/Card8b.hpp"
+  #include "njoy21/input/GROUPR/Card8c.hpp"
+  #include "njoy21/input/GROUPR/Card8d.hpp"
   #include "njoy21/input/GROUPR/Card9.hpp"
   #include "njoy21/input/GROUPR/Card10.hpp"
 
@@ -24,6 +27,9 @@ public:
   Card7a card7a;
   Card7b card7b;
   Card8a card8a;
+//Card8b card8b;
+  Card8c card8c;
+  Card8d card8d;
   Card9 card9;
   Card10 card10;
 
@@ -40,6 +46,9 @@ public:
     card7a( is ),
     card7b( is ),
     card8a( is ),
+//  card8b( is ),
+//  card8c( is ),
+    card8d( is ),
     card9( is ),
     card10( is )
   {
