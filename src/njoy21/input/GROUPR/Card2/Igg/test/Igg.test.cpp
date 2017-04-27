@@ -10,14 +10,12 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "Igg output values", "[GROUPR],[Card2], [Igg]"){
 
-  long ln{0};
   GIVEN( "valid Igg parameters" ){
     std::vector<int> validValues(11);
     std::iota( validValues.begin(), validValues.end(), 0);
 
     THEN( "the returned class has the correct value" ){
       for( auto igg : validValues ){
-        njoy::Log::info("igg: {}", igg);
         iRecordStream<char> issIgg( 
             std::istringstream( std::to_string( igg ) ) );
 
@@ -39,5 +37,3 @@ SCENARIO( "Igg output values", "[GROUPR],[Card2], [Igg]"){
     }
   } // GIVEN
 } // SCENARIO
-
-

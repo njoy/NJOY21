@@ -2,7 +2,7 @@ struct Igg {
   using Value_t = int;
   static std::string name(){ return "igg"; }
 
-  static bool description(){
+  static std::string description(){
     return 
         "The igg option specfies the gamma group structure. The allowed\n"
         "values and their meanings are:\n"

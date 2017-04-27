@@ -11,6 +11,7 @@ public:
   #include "njoy21/input/GROUPR/Card7a.hpp"
   #include "njoy21/input/GROUPR/Card7b.hpp"
   #include "njoy21/input/GROUPR/Card8a.hpp"
+  #include "njoy21/input/GROUPR/Card9.hpp"
   #include "njoy21/input/GROUPR/Card10.hpp"
 
   Card1 card1;
@@ -23,6 +24,7 @@ public:
   Card7a card7a;
   Card7b card7b;
   Card8a card8a;
+  Card9 card9;
   Card10 card10;
 
   template< typename Istream >
@@ -38,6 +40,7 @@ public:
     card7a( is ),
     card7b( is ),
     card8a( is ),
+    card9( is ),
     card10( is )
   {
   }
