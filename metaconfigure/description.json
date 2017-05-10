@@ -56,9 +56,7 @@
       "linux": {
         "flags": {
           "base project": [],
-          "common": [
-            "-Wno-subobject-linkage"
-          ],
+          "common": [],
           "coverage": [
             "--coverage"
           ],
@@ -107,9 +105,7 @@
       "osx": {
         "flags": {
           "base project": [],
-          "common": [
-            "-Wno-subobject-linkage"
-          ],
+          "common": [],
           "coverage": [
             "--coverage"
           ],
@@ -157,9 +153,7 @@
       "windows": {
         "flags": {
           "base project": [],
-          "common": [
-            "-Wno-subobject-linkage"
-          ],
+          "common": [],
           "coverage": [
             "--coverage"
           ],
@@ -477,6 +471,7 @@
     "src/njoy21/input/GROUPR/Card7a.hpp",
     "src/njoy21/input/GROUPR/Card7b.hpp",
     "src/njoy21/input/GROUPR/Card8a.hpp",
+    "src/njoy21/input/GROUPR/Card8b.hpp",
     "src/njoy21/input/GROUPR/Card8c.hpp",
     "src/njoy21/input/GROUPR/Card8d.hpp",
     "src/njoy21/input/GROUPR/Card9.hpp",
@@ -510,6 +505,7 @@
     "src/njoy21/input/GROUPR/Card8a/Ninwt.hpp",
     "src/njoy21/input/GROUPR/Card8a/Sam.hpp",
     "src/njoy21/input/GROUPR/Card8a/Sigpot.hpp",
+    "src/njoy21/input/GROUPR/Card8b/Wght.hpp",
     "src/njoy21/input/GROUPR/Card8c/Eb.hpp",
     "src/njoy21/input/GROUPR/Card8c/Ec.hpp",
     "src/njoy21/input/GROUPR/Card8c/Tb.hpp",
@@ -940,6 +936,12 @@
     ],
     "njoy21.input.GROUPR.Card8a.Sigpot": [
       "src/njoy21/input/GROUPR/Card8a/Sigpot/test/Sigpot.test.cpp"
+    ],
+    "njoy21.input.GROUPR.Card8b": [
+      "src/njoy21/input/GROUPR/Card8b/test/Card8b.test.cpp"
+    ],
+    "njoy21.input.GROUPR.Card8b.Wght": [
+      "src/njoy21/input/GROUPR/Card8b/Wght/test/Wght.test.cpp"
     ],
     "njoy21.input.GROUPR.Card8c": [
       "src/njoy21/input/GROUPR/Card8c/test/Card8c.test.cpp"
