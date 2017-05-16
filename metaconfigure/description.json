@@ -439,10 +439,16 @@
     "src/njoy21/input/ACER/Card9/Nbint.hpp",
     "src/njoy21/input/ACER/Card9/Nmix.hpp",
     "src/njoy21/input/argument/common.hpp",
-    "src/njoy21/input/argument/primitive.hpp",
+    "src/njoy21/input/argument/parser.hpp",
+    "src/njoy21/input/argument/policy.hpp",
+    "src/njoy21/input/argument/Type.hpp",
     "src/njoy21/input/argument/common/Matd.hpp",
     "src/njoy21/input/argument/common/Nin.hpp",
     "src/njoy21/input/argument/common/Nout.hpp",
+    "src/njoy21/input/argument/parser/FortranString.hpp",
+    "src/njoy21/input/argument/parser/read.hpp",
+    "src/njoy21/input/argument/parser/rightShift.hpp",
+    "src/njoy21/input/argument/parser/validate.hpp",
     "src/njoy21/input/BROADR/Card1.hpp",
     "src/njoy21/input/BROADR/Card2.hpp",
     "src/njoy21/input/BROADR/Card3.hpp",
@@ -1135,20 +1141,16 @@
     "njoy21.input.argument.Type": [
       "src/njoy21/input/argument/Type/test/Type.test.cpp"
     ],
-    "njoy21.input.argument.primitive.Defaulted": [
-      "src/njoy21/input/argument/primitive/Defaulted/test/Defaulted.test.cpp"
+    "njoy21.input.argument.parser": [
+      "src/njoy21/input/argument/parser/test/Base.test.cpp",
+      "src/njoy21/input/argument/parser/test/Defaulted.test.cpp",
+      "src/njoy21/input/argument/parser/test/Discriminating.test.cpp",
+      "src/njoy21/input/argument/parser/test/Optional.test.cpp",
+      "src/njoy21/input/argument/parser/test/parser.test.cpp",
+      "src/njoy21/input/argument/parser/test/Required.test.cpp"
     ],
-    "njoy21.input.argument.primitive.Discriminating": [
-      "src/njoy21/input/argument/primitive/Discriminating/test/Discriminating.test.cpp"
-    ],
-    "njoy21.input.argument.primitive.Optional": [
-      "src/njoy21/input/argument/primitive/Optional/test/Optional.test.cpp"
-    ],
-    "njoy21.input.argument.primitive.Required": [
-      "src/njoy21/input/argument/primitive/Required/test/Required.test.cpp"
-    ],
-    "njoy21.input.argument.primitive.Type": [
-      "src/njoy21/input/argument/primitive/Type/test/Type.test.cpp"
+    "njoy21.input.argument.parser.Base": [
+      "src/njoy21/input/argument/parser/Base/test/Type.test.cpp"
     ],
     "njoy21.io.Manager": [
       "src/njoy21/io/Manager/test/Manager.test.cpp"
