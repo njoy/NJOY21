@@ -11,7 +11,7 @@ protected:
   #define PAIR( routine ) \
     std::make_pair< std::string, parser >                              \
     ( #routine,                                                        \
-      []( auto& inputStream ) -> std::unique_ptr< interface::Routine > \
+      []( input::iRecordStream< char >& inputStream ) -> std::unique_ptr< interface::Routine > \
       { return std::make_unique< routine >( inputStream ); } )
   
   std::unique_ptr< interface::Routine >

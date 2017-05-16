@@ -50,7 +50,6 @@ matrix:
     - os: linux
       compiler: gcc
       env: build_type=coverage static_libraries=FALSE
-    # Uninitialize memory access in fortran =(
     - os: linux
       compiler: clang
       env:

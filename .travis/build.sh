@@ -28,7 +28,7 @@ cd build
 cmake ${CUSTOM[@]}\
       -D build_type=$build_type \
       -D static_libraries=$static_libraries \
-      -D appended_flags="$appended_flags" ..
+      -D NJOY21_appended_flags="$appended_flags" ..
 make -j2
 export COMPILATION_FAILURE=$?
 if [ $COMPILATION_FAILURE -ne 0 ];
