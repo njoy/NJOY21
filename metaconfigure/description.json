@@ -446,9 +446,9 @@
     "src/njoy21/input/argument/common/Nin.hpp",
     "src/njoy21/input/argument/common/Nout.hpp",
     "src/njoy21/input/argument/parser/FortranString.hpp",
-    "src/njoy21/input/argument/parser/read.hpp",
-    "src/njoy21/input/argument/parser/rightShift.hpp",
-    "src/njoy21/input/argument/parser/validate.hpp",
+    "src/njoy21/input/argument/parser/src/read.hpp",
+    "src/njoy21/input/argument/parser/src/rightShift.hpp",
+    "src/njoy21/input/argument/parser/src/validate.hpp",
     "src/njoy21/input/BROADR/Card1.hpp",
     "src/njoy21/input/BROADR/Card2.hpp",
     "src/njoy21/input/BROADR/Card3.hpp",
@@ -1148,9 +1148,6 @@
       "src/njoy21/input/argument/parser/test/Optional.test.cpp",
       "src/njoy21/input/argument/parser/test/parser.test.cpp",
       "src/njoy21/input/argument/parser/test/Required.test.cpp"
-    ],
-    "njoy21.input.argument.parser.Base": [
-      "src/njoy21/input/argument/parser/Base/test/Type.test.cpp"
     ],
     "njoy21.io.Manager": [
       "src/njoy21/io/Manager/test/Manager.test.cpp"
