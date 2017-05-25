@@ -3,7 +3,11 @@
 
 using namespace njoy::njoy21::input::argument::parser;
 
-struct positiveInt{ static bool verify( int i ){ return i > 0; } };
+struct positiveInt{
+  using Value_t = int;
+  static bool verify( int i ){ return i > 0; }
+};
+
 using Discriminator = Discriminating< Base<int>, positiveInt >;
 
 template< typename Char >
@@ -21,5 +25,15 @@ SCENARIO( "Discriminating" ){
     int sink = 0;
     iRecordStream<char> iss( std::istringstream("   -101") );
     REQUIRE_THROWS( Discriminator::read( iss, sink ) );
+  }
+
+  SECTION( "unwrapping values" ){
+    int i = 1;
+    std::optional<int> oi = 1;
+    bool works;
+    works = std::is_same_type< decltype( Discriminator::unwrap(i) ), int& >::value;
+    REQUIRE(works);
+    works = std::is_same_type< decltype( Discriminator::unwrap(oi) ), int& >::value;
+    REQUIRE(works);
   }
 }
