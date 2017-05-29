@@ -54,12 +54,12 @@ matrix:
       compiler: clang
       env:
         build_type=debug static_libraries=FALSE
-        appended_flags="-fsanitize=address -fno-omit-frame-pointer "
+        appended_flags="-fsanitize=address;-fno-omit-frame-pointer;"
     - os: linux
       compiler: clang
       env:
         build_type=debug static_libraries=FALSE
-        appended_flags="-fsanitize=undefined -fno-omit-frame-pointer "
+        appended_flags="-fsanitize=undefined;-fno-omit-frame-pointer;"
   exclude:
     - os: osx
       compiler: gcc
