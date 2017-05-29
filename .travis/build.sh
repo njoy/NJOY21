@@ -5,7 +5,7 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
   sudo update-alternatives \
     --install /usr/bin/gcc gcc /usr/bin/gcc-6 90 \
     --slave /usr/bin/g++ g++ /usr/bin/g++-6 \
-    --slave /usr/bin/gfortran gfortran usr/bin/gfortran-6 \
+    --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-6 \
     --slave /usr/bin/gcov gcov /usr/bin/gcov-6
   sudo update-alternatives \
     --install /usr/bin/clang clang /usr/bin/clang-3.8 90 \
