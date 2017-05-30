@@ -10,5 +10,5 @@ struct Wght {
         "that it doesn't have the MAT MF MT numbers.";
   }
 
-  static bool verify( const Value_t& W ){ return true; }
+  static bool verify( const Value_t& ){ return true; }
 };

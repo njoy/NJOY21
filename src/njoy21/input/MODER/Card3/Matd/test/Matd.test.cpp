@@ -13,5 +13,5 @@ SCENARIO( "special values" ){
       iRecordStream<char> iss( std::istringstream("   125") );
     REQUIRE( argument::extract< MODER::Card3::Matd >( iss ).value == 125 );
   }
-  REQUIRE( argument::primitive::HasDefault< MODER::Card3::Matd >::value );
+  REQUIRE( argument::policy::hasDefault< MODER::Card3::Matd > );
 }
