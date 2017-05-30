@@ -16,7 +16,7 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
     export PATH=/usr/bin:$PATH
     export CUSTOM='-D link_time_optimization=OFF'
   else
-    export CUSTOM='-D link_time_optimization=ON'
+    export CUSTOM='-D link_time_optimization=ON -D CMAKE_AR=/usr/bin/gcc-ar -D CMAKE_NM=/usr/bin/gcc-nm -D CMAKE_RANLIB=/usr/bin/gcc-ranlib'
   fi;
   if [ "$build_type" = "coverage" ]; then
     export build_type=DEBUG
