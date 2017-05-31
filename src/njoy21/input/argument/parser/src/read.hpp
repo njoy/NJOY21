@@ -36,6 +36,38 @@ read( iRecordStream<Char>& is,
   return read( is, vector, size.value, std::forward<Args>(args)... );
 }
 
+template< typename Char, typename... Args >
+bool read( iRecordStream<Char>& is, std::optional<ENDFtk::TAB1>& tab1, Args&&... ){
+  double C1;
+  double C2;
+  int L1;
+  int L2;
+  int N1;
+  int N2;
+
+  is >> C1 >> C2
+     >> L1 >> L2
+     >> N1 >> N2;
+
+  std::vector< long > NBT;
+  std::vector< long > INT;
+  NBT.resize(N1);
+  INT.resize(N1);
+  for( int n = 0; n < N1; ++n ){
+    is >> NBT[n] >> INT[n];
+  }
+
+  std::vector< double > X; X.resize(N2);
+  std::vector< double > Y; Y.resize(N2);
+  for( int n = 0; n < N2; ++n ){
+    is >> X[n] >> Y[n];
+  }
+  tab1 = std::move(ENDFtk::TAB1( C1, C2, L1, L2,
+                      std::make_tuple(NBT, INT),
+                      std::make_tuple(X, Y) ) );
+  return true;
+}
+
 template< typename Char, typename T, typename... Args >
 std::enable_if_t< std::is_default_constructible<T>::value, bool >
 read( iRecordStream<Char>& is, std::optional<T>& value, Args&&... args ){

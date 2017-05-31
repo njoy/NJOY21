@@ -1,5 +1,5 @@
 struct Wght {
-  using Value_t = double;
+  using Value_t = ENDFtk::TAB1;
   static std::string name(){ return "wght"; }
 
   static std::string description() {
