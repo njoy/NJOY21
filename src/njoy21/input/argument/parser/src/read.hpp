@@ -62,9 +62,9 @@ bool read( iRecordStream<Char>& is, std::optional<ENDFtk::TAB1>& tab1, Args&&...
   for( int n = 0; n < N2; ++n ){
     is >> X[n] >> Y[n];
   }
-  tab1 = std::move(ENDFtk::TAB1( C1, C2, L1, L2,
-                      std::make_tuple(NBT, INT),
-                      std::make_tuple(X, Y) ) );
+  tab1 = ENDFtk::TAB1( C1, C2, L1, L2,
+		       std::make_tuple(NBT, INT),
+		       std::make_tuple(X, Y) );
   return true;
 }
 
