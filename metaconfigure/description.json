@@ -56,7 +56,9 @@
       "linux": {
         "flags": {
           "base project": [],
-          "common": [],
+          "common": [
+            "-Wno-subobject-linkage"
+          ],
           "coverage": [
             "--coverage"
           ],
@@ -105,7 +107,9 @@
       "osx": {
         "flags": {
           "base project": [],
-          "common": [],
+          "common": [
+            "-Wno-subobject-linkage"
+          ],
           "coverage": [
             "--coverage"
           ],
@@ -153,7 +157,9 @@
       "windows": {
         "flags": {
           "base project": [],
-          "common": [],
+          "common": [
+            "-Wno-subobject-linkage"
+          ],
           "coverage": [
             "--coverage"
           ],
