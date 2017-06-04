@@ -40,21 +40,40 @@ template< typename Char, typename... Args >
 bool
 read( iRecordStream<Char>& is, std::optional<ENDFtk::TAB1>& tab1, Args&&... ){
   double C1; is >> C1; validate(is); if ( is.fail() ) return {};
-  double C2; is >> C2; validate(is); if ( is.fail() ) return {};
-  int L1;    is >> L1; validate(is); if ( is.fail() ) return {};
-  int L2;    is >> L2; validate(is); if ( is.fail() ) return {};
-  int N1;    is >> N1; validate(is); if ( is.fail() ) return {};
-  int N2;    is >> N2; validate(is); if ( is.fail() ) return {};
 
+  auto read_ = [&]( auto& data, auto&& errorMessage ){
+    is >> data;
+    validate(is);
+    if ( is.fail() ){
+      errorMessage();
+    }
+  };
+
+  auto errorMessage = []( auto&& name ){
+    return [name]{
+      Log::info("Trouble while reading free-from TAB1");
+      Log::info("Could not read {} field", name );
+      throw std::ios_base::failure( name );
+    };
+  };
+
+  #define READ( name ) read_( name, errorMessage( #name ) )
+  double C2; READ( C2 );
+  int L1; READ( L1 );
+  int L2; READ( L2 );
+  int N1; READ( N1 );
   if ( N1 < 1 ){
     /* error message */
-    throw std::exception();
+    throw std::ios_base::failure( "TAB1 NR field < 1");
   }
+
+  int N2; READ( N2 );
   if ( N2 < 1 ){
     /* error message */
-    throw std::exception();
+    throw std::ios_base::failure( "TAB1 NP field < 1");
   }
-  
+  #undef READ
+    
   std::vector< long > NBT; NBT.resize(N1);
   std::vector< long > INT; INT.resize(N1);
 
@@ -62,12 +81,12 @@ read( iRecordStream<Char>& is, std::optional<ENDFtk::TAB1>& tab1, Args&&... ){
     is >> NBT[n]; validate(is);
     if ( is.fail() ){
       /* error message */
-      return {};
+      throw std::ios_base::failure("failed to read TAB1 NBT entry");
     }
     is >> INT[n]; validate(is);
     if ( is.fail() ){
       /* error message */
-      return {};
+      throw std::ios_base::failure("failed to read TAB1 INT entry");
     }
   }
 
@@ -78,12 +97,12 @@ read( iRecordStream<Char>& is, std::optional<ENDFtk::TAB1>& tab1, Args&&... ){
     is >> X[n]; validate(is);
     if ( is.fail() ){
       /* error message */
-      return {};
+      throw std::ios_base::failure("failed to read TAB1 X entry");
     }
     is >> Y[n]; validate(is);
     if ( is.fail() ){
       /* error message */
-      return {};
+      throw std::ios_base::failure("failed to read TAB1 Y entry");
     }
   }
   
