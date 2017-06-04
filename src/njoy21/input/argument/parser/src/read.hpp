@@ -37,34 +37,59 @@ read( iRecordStream<Char>& is,
 }
 
 template< typename Char, typename... Args >
-bool read( iRecordStream<Char>& is, std::optional<ENDFtk::TAB1>& tab1, Args&&... ){
-  double C1;
-  double C2;
-  int L1;
-  int L2;
-  int N1;
-  int N2;
+bool
+read( iRecordStream<Char>& is, std::optional<ENDFtk::TAB1>& tab1, Args&&... ){
+  double C1; is >> C1; validate(is); if ( is.fail() ) return {};
+  double C2; is >> C2; validate(is); if ( is.fail() ) return {};
+  int L1;    is >> L1; validate(is); if ( is.fail() ) return {};
+  int L2;    is >> L2; validate(is); if ( is.fail() ) return {};
+  int N1;    is >> N1; validate(is); if ( is.fail() ) return {};
+  int N2;    is >> N2; validate(is); if ( is.fail() ) return {};
 
-  is >> C1 >> C2
-     >> L1 >> L2
-     >> N1 >> N2;
+  if ( N1 < 1 ){
+    /* error message */
+    throw std::exception();
+  }
+  if ( N2 < 1 ){
+    /* error message */
+    throw std::exception();
+  }
+  
+  std::vector< long > NBT; NBT.resize(N1);
+  std::vector< long > INT; INT.resize(N1);
 
-  std::vector< long > NBT;
-  std::vector< long > INT;
-  NBT.resize(N1);
-  INT.resize(N1);
   for( int n = 0; n < N1; ++n ){
-    is >> NBT[n] >> INT[n];
+    is >> NBT[n]; validate(is);
+    if ( is.fail() ){
+      /* error message */
+      return {};
+    }
+    is >> INT[n]; validate(is);
+    if ( is.fail() ){
+      /* error message */
+      return {};
+    }
   }
 
   std::vector< double > X; X.resize(N2);
   std::vector< double > Y; Y.resize(N2);
+  
   for( int n = 0; n < N2; ++n ){
-    is >> X[n] >> Y[n];
+    is >> X[n]; validate(is);
+    if ( is.fail() ){
+      /* error message */
+      return {};
+    }
+    is >> Y[n]; validate(is);
+    if ( is.fail() ){
+      /* error message */
+      return {};
+    }
   }
+  
   tab1 = ENDFtk::TAB1( C1, C2, L1, L2,
-		       std::make_tuple(NBT, INT),
-		       std::make_tuple(X, Y) );
+		       std::move(NBT), std::move(INT),
+		       std::move(X), std::move(Y) );
   return true;
 }
 
