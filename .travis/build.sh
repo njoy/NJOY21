@@ -30,6 +30,7 @@ fi;
 
 mkdir build
 cd build
+       
 cmake -D CMAKE_BUILD_TYPE=$build_type \
       -D static_libraries=$static_libraries \
       -D NJOY21_appended_flags="$appended_flags" \
@@ -43,6 +44,9 @@ then
   exit 1
 fi
 
+repeat 300 100 echo "Keeping travis alive..."&
+export EKG = ?!
+       
 make VERBOSE=1 -j2 &> compilation.txt
 export COMPILATION_FAILURE=$?
 
@@ -52,6 +56,8 @@ then
   cat compilation.txt  
   exit 1
 fi
+
+kill $EKG
 
 ctest --output-on-failure -j2 &> testing.txt
 export TEST_FAILURE=$?
