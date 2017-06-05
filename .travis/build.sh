@@ -79,7 +79,7 @@ fi
 if $coverage; then
   pip install --user cpp-coveralls &> coverage_upload.txt
   echo "failed while loading coverage information"
-  coveralls  --exclude-pattern "/usr/include/.*|.*/CMakeFiles/.*|.*subprojects.*|.*dependencies.*|.*test\.cpp" --root ".." --build-root "." --gcov-options '\-lp' &>> coverage_upload.txt
+  coveralls  --exclude-pattern "/usr/include/.*|.*/CMakeFiles/.*|.*subprojects.*|.*dependencies.*|.*test\.cpp" --root ".." --build-root "." --gcov-options '\-lp' >> coverage_upload.txt 2>&1
   if [ $? -ne 0 ];
   then
      echo "failed while coverage report!"
