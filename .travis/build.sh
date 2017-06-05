@@ -53,7 +53,7 @@ then
 fi
 
 repeat 300 echo "Still building..."&
-export EKG=?!
+export EKG=$!
        
 make VERBOSE=1 -j2 &> compilation.txt
 export COMPILATION_FAILURE=$?
