@@ -1,6 +1,14 @@
 #!/bin/bash
 set -x
 
+function repeat {
+    while true
+    do
+        sleep $1
+        ${@:2}
+    done
+}
+       
 if [ "$TRAVIS_OS_NAME" = "linux" ]; then
   sudo update-alternatives \
     --install /usr/bin/gcc gcc /usr/bin/gcc-6 90 \
@@ -44,7 +52,7 @@ then
   exit 1
 fi
 
-repeat 300 100 echo "Keeping travis alive..."&
+repeat 300 echo "Still building..."&
 export EKG = ?!
        
 make VERBOSE=1 -j2 &> compilation.txt
@@ -79,3 +87,5 @@ if $coverage; then
      exit 1
   fi
 fi
+
+exit 0
