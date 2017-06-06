@@ -63,13 +63,13 @@ read( iRecordStream<Char>& is, std::optional<ENDFtk::TAB1>& tab1, Args&&... ){
   int L2; READ( L2 );
   int N1; READ( N1 );
   if ( N1 < 1 ){
-    /* error message */
+    Log::info("TAB1 N1 field must be >= 1");
     throw std::ios_base::failure( "TAB1 NR field < 1");
   }
 
   int N2; READ( N2 );
   if ( N2 < 1 ){
-    /* error message */
+    Log::info("TAB1 N2 field must be >= 1");
     throw std::ios_base::failure( "TAB1 NP field < 1");
   }
   #undef READ
@@ -80,12 +80,12 @@ read( iRecordStream<Char>& is, std::optional<ENDFtk::TAB1>& tab1, Args&&... ){
   for( int n = 0; n < N1; ++n ){
     is >> NBT[n]; validate(is);
     if ( is.fail() ){
-      /* error message */
+      Log::info( "Failed to read TAB1 entry {} of NBT array", n );
       throw std::ios_base::failure("failed to read TAB1 NBT entry");
     }
     is >> INT[n]; validate(is);
     if ( is.fail() ){
-      /* error message */
+      Log::info( "Failed to read TAB1 entry {} of INT array", n );
       throw std::ios_base::failure("failed to read TAB1 INT entry");
     }
   }
@@ -96,12 +96,12 @@ read( iRecordStream<Char>& is, std::optional<ENDFtk::TAB1>& tab1, Args&&... ){
   for( int n = 0; n < N2; ++n ){
     is >> X[n]; validate(is);
     if ( is.fail() ){
-      /* error message */
+      Log::info( "Failed to read TAB1 entry {} of X array", n );
       throw std::ios_base::failure("failed to read TAB1 X entry");
     }
     is >> Y[n]; validate(is);
     if ( is.fail() ){
-      /* error message */
+      Log::info( "Failed to read TAB1 entry {} of Y array", n );
       throw std::ios_base::failure("failed to read TAB1 Y entry");
     }
   }
