@@ -3,14 +3,12 @@ public:
 
   #include "njoy21/input/GROUPR/Card8b/Wght.hpp"
 
-//Argument< Wght > wght;
-  double wght;
+  Argument< Wght > wght;
 
   template< typename Char >
   Card8b( iRecordStream< Char >& is)
     try:
-      wght(0.0)
-//    wght( argument::extract< Wght >( is ) )
+      wght( argument::extract< Wght >( is ) )
     {
         Card::clear( is );
     } catch( std::exception& e ) {
