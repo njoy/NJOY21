@@ -8,8 +8,8 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "Verifying GROUPR Card7b input", "[GROUPR], [Card7b]" ){
 
-  Argument< GROUPR::Card6a::Ngn > ngn;
-  ngn.value = 3;
+  Argument< GROUPR::Card7a::Ngg > ngg;
+  ngg.value = 3;
 
   GIVEN( "valid energy boundaries" ){
     iRecordStream< char> issEggs( std::istringstream( " 1 2 3 4" ) );
@@ -21,7 +21,7 @@ SCENARIO( "Verifying GROUPR Card7b input", "[GROUPR], [Card7b]" ){
         3*dimwits::electronVolt,
         4*dimwits::electronVolt};
 
-      GROUPR::Card7b card7b( issEggs, ngn );
+      GROUPR::Card7b card7b( issEggs, ngg );
       REQUIRE( refEggs == card7b.egg.value );
     }
   }
@@ -29,14 +29,14 @@ SCENARIO( "Verifying GROUPR Card7b input", "[GROUPR], [Card7b]" ){
     iRecordStream< char> issTemps( std::istringstream( " 1 2 3 " ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( GROUPR::Card7b( issTemps, ngn ) );
+      REQUIRE_THROWS( GROUPR::Card7b( issTemps, ngg ) );
     }
   }
   GIVEN( "invalid sigz---too many sigma zero values" ){
     iRecordStream< char> issTemps( std::istringstream( " 1 2 3 4 5 " ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( GROUPR::Card7b( issTemps, ngn ) );
+      REQUIRE_THROWS( GROUPR::Card7b( issTemps, ngg ) );
     }
   }
 } // SCENARIO
