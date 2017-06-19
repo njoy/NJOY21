@@ -8,7 +8,7 @@ struct Nps {
       "The nps argument specifies the io unit used internally by the\n"
       "Fortran routine and the filename to be output, e.g. setting nps to\n"
       "21 or -21 specifies a file named 'tape21' is will be used for the\n"
-      "outputi.\n"
+      "output.\n"
       "\n"
       "The signedness of the argument implies the formatting of the file in\n"
       "question. Positive argument values indicate formatted output i.e.\n"
@@ -21,7 +21,8 @@ struct Nps {
   }
 
   static bool verify( const Value_t v, const Argument<Infile>& infile ){
-    return std::abs(v) >= 20 && std::abs(v) <= 99 && ( std::abs(infile.value) != std::abs( v ) );
+    return std::abs(v) >= 20 && std::abs(v) <= 99 
+      && ( std::abs(infile.value) != std::abs( v ) );
   }
 };
 
