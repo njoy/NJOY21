@@ -4,7 +4,6 @@ struct Infile {
   static std::string name() { return "infile"; }
 
   static std::string description() {
-//    return "This is a good description";
 	return 
 		"The infile argument specifies to the io unit used internally by the\n"
 		"Fortran routine and the filename ot be read in, e.g. setting infile to\n"
