@@ -21,8 +21,7 @@ struct Nps {
   }
 
   static bool verify( const Value_t v, const Argument<Infile>& infile ){
-    return std::abs(v) >= 20 && std::abs(v) <= 99 
-      && ( std::abs(infile.value) != std::abs( v ) );
+    return v >= 20 && v <= 99 && ( infile.value != v );
   }
 };
 

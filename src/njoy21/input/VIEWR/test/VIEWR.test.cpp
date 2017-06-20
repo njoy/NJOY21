@@ -11,12 +11,6 @@ SCENARIO( "Parsing valid VIEWR input" ){
     REQUIRE( viewr.card1.infile.value == 21 );
     REQUIRE( viewr.card1.nps.value == 22 );
   }
-  {
-    iRecordStream<char> iss( std::istringstream( "21 -22") );
-    VIEWR viewr( iss );
-    REQUIRE( viewr.card1.infile.value == 21 );
-    REQUIRE( viewr.card1.nps.value == -22 );
-  } 	
 }
 
 SCENARIO( "Parsing invalid VIEWR input" ){
@@ -24,6 +18,10 @@ SCENARIO( "Parsing invalid VIEWR input" ){
     iRecordStream<char> iss( std::istringstream( "21 -21" ) );
     REQUIRE_THROWS( VIEWR( iss ) );
   }
+  {
+    iRecordStream<char> iss( std::istringstream( "21 -22" ) );
+    REQUIRE_THROWS( VIEWR( iss ) );
+  } 
   {
     iRecordStream<char> iss( std::istringstream( "1 22" ) );
     REQUIRE_THROWS( VIEWR( iss ) );

@@ -19,6 +19,6 @@ struct Infile {
       "and 99, inclusively.";
   }	
 
-  static bool verify( const Value_t& i ){ return std::abs(i) >= 20 && std::abs(i) <= 99; }
-  
+  static bool verify( const Value_t& i ){ return i >= 20 && i <= 99; }
+
 };

@@ -9,12 +9,12 @@ using namespace njoy::njoy21::input;
 SCENARIO( "nps output values",
          "[VIEWR],[Card1], [Nps]"){
   GIVEN( "valid nps tape values" ){
-    std::vector<int> validValues{-20, 20, 42, 99, -99};
+    std::vector<int> validValues{20, 42, 99};
     WHEN( "the infile value is valid" ){
       THEN( "the returned class has the correct tape value" ){
         for( int nps : validValues ){
           Argument< VIEWR::Card1::Infile > infile; 
-          infile.value = 22*(nps/std::abs(nps));
+          infile.value = 22;
           iRecordStream<char> issNps(
               std::istringstream( std::to_string(nps) ) );
           REQUIRE(nps == argument::extract< 
@@ -37,7 +37,7 @@ SCENARIO( "nps output values",
   GIVEN( "invalid nps tape values" ){
     Argument< VIEWR::Card1::Infile > infile;
     infile.value = 22;
-    std::vector<int> invalidValues{-19, 19, 0, 100, -100};
+    std::vector<int> invalidValues{-19, 19, -20, 0, 100, -100};
     for( auto nps : invalidValues ){
       iRecordStream<char> issNps(
           std::istringstream( std::to_string(nps) ) );

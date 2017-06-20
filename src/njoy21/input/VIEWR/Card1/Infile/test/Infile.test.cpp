@@ -7,7 +7,7 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "infile input values" ){
   GIVEN( "valid infile tape values" ){
-    std::vector<int> validValues{-20, 20, 42, 99, -99};
+    std::vector<int> validValues{20, 42, 99};
 
     THEN( "the returned class has the correct tape value" ){
       for( int infile : validValues ){
