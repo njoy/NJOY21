@@ -20,5 +20,4 @@ using iRecordStream =
 #include "njoy21/input/GROUPR.hpp"
 #include "njoy21/input/VIEWR.hpp"
 #include "njoy21/input/MIXR.hpp"
-#include "njoy21/input/DTFR.hpp"
 }

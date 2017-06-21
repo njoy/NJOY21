@@ -387,7 +387,6 @@
     "src/njoy21/input/HEATR.hpp",
     "src/njoy21/input/VIEWR.hpp",
     "src/njoy21/input/GASPR.hpp",
-    "src/njoy21/input/DTFR.hpp",
     "src/njoy21/input/MODER.hpp",
     "src/njoy21/input/MIXR.hpp",
     "src/njoy21/input/BROADR.hpp",
@@ -520,10 +519,6 @@
     "src/njoy21/input/ACER/Card9/Mti.hpp",
     "src/njoy21/input/ACER/Card9/Emax.hpp",
     "src/njoy21/input/ACER/Card4/Izaw.hpp",
-    "src/njoy21/input/DTFR/Card1.hpp",
-    "src/njoy21/input/DTFR/Card1/Npend.hpp",
-    "src/njoy21/input/DTFR/Card1/Nin.hpp",
-    "src/njoy21/input/DTFR/Card1/Nout.hpp",
     "src/njoy21/input/argument/parser.hpp",
     "src/njoy21/input/argument/Type.hpp",
     "src/njoy21/input/argument/common.hpp",
@@ -823,12 +818,6 @@
     ],
     "njoy21.input.Card": [
       "src/njoy21/input/Card/test/Card.test.cpp"
-    ],
-    "njoy21.input.DTFR.Card1.Nin": [
-      "src/njoy21/input/DTFR/Card1/Nin/test/Nin.test.cpp"
-    ],
-    "njoy21.input.DTFR.Card1.Nout": [
-      "src/njoy21/input/DTFR/Card1/Nout/test/Nout.test.cpp"
     ],
     "njoy21.input.GASPR": [
       "src/njoy21/input/GASPR/test/GASPR.test.cpp"
