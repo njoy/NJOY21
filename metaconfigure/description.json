@@ -422,14 +422,17 @@
     "src/njoy21/input/RECONR/Card4/Errint.hpp",
     "src/njoy21/input/RECONR/Card4/Err.hpp",
     "src/njoy21/input/RECONR/Card4/Errmax.hpp",
+    "src/njoy21/input/MIXR/Card6.hpp",
     "src/njoy21/input/MIXR/Card1.hpp",
     "src/njoy21/input/MIXR/Card5.hpp",
     "src/njoy21/input/MIXR/Card4.hpp",
     "src/njoy21/input/MIXR/Card4/Temp.hpp",
     "src/njoy21/input/MIXR/Card5/Za.hpp",
     "src/njoy21/input/MIXR/Card5/Matd.hpp",
+    "src/njoy21/input/MIXR/Card5/Awr.hpp",
     "src/njoy21/input/MIXR/Card1/Nin.hpp",
     "src/njoy21/input/MIXR/Card1/Nout.hpp",
+    "src/njoy21/input/MIXR/Card6/Des.hpp",
     "src/njoy21/input/HEATR/Card1.hpp",
     "src/njoy21/input/HEATR/Card5.hpp",
     "src/njoy21/input/HEATR/Card2.hpp",
@@ -1023,11 +1026,23 @@
     "njoy21.input.MIXR.Card4.Temp": [
       "src/njoy21/input/MIXR/Card4/Temp/test/Temp.test.cpp"
     ],
+    "njoy21.input.MIXR.Card5": [
+      "src/njoy21/input/MIXR/Card5/test/Card5.test.cpp"
+    ],
+    "njoy21.input.MIXR.Card5.Awr": [
+      "src/njoy21/input/MIXR/Card5/Awr/test/Awr.test.cpp"
+    ],
     "njoy21.input.MIXR.Card5.Matd": [
       "src/njoy21/input/MIXR/Card5/Matd/test/Matd.test.cpp"
     ],
     "njoy21.input.MIXR.Card5.Za": [
       "src/njoy21/input/MIXR/Card5/Za/test/Za.test.cpp"
+    ],
+    "njoy21.input.MIXR.Card6": [
+      "src/njoy21/input/MIXR/Card6/test/Card6.test.cpp"
+    ],
+    "njoy21.input.MIXR.Card6.Des": [
+      "src/njoy21/input/MIXR/Card6/Des/test/Des.test.cpp"
     ],
     "njoy21.input.MODER": [
       "src/njoy21/input/MODER/test/MODER.test.cpp"
