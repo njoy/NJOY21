@@ -22,7 +22,9 @@ struct Ngout2 : public argument::common::Nout {
       "ngout2 and append the new GENDF tape to ngout2.";
   }
 
-  static Value_t define(){ return 0; }
+  static Value_t defaultValue( const Argument< Nendf >&,
+                               const Argument< Npend >& ,
+                               const Argument< Ngout1 >&) { return 0; }
   static bool verify( const Value_t v, 
                      const Argument< Nendf >& nendf,
                      const Argument< Npend >& npend,
