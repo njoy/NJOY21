@@ -10,12 +10,6 @@ struct Egg {
   }
   static bool verify( const Value_t& egg,
                       const int nboundaries ){
-//                    const Argument< GROUPR::Card6a::Ngn > & ngn ){
-    Log::debug("size: {}, value: {}", egg.size(), nboundaries);
-//  if( long(egg.size()) != nboundaries.value + 1 ){
-//    Log::info( "Incorrect number of energy boundaries read in." );
-//    return false;
-//  }
     auto found = std::find_if( egg.begin(), egg.end(),
                                [](auto& E){ return E <= 0.0*electronVolt; });
 

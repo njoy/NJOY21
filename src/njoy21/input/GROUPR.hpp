@@ -22,8 +22,8 @@ public:
   Card3 card3;
   Card4 card4;
   Card5 card5;
-  optional< std::tuple< Card6a, Card6b > > arbitraryNeutronStructureCards;
-  optional< std::tuple< Card7a, Card7b > > arbitraryGammaStructureCards;
+  optional< std::pair< Card6a, Card6b > > arbitraryNeutronStructureCards;
+  optional< std::pair< Card7a, Card7b > > arbitraryGammaStructureCards;
   optional< Card8a > card8a;
   optional< Card8b > card8b;
   optional< Card8c > card8c;
@@ -44,14 +44,14 @@ public:
       Card6a card6a( is );
       Card6b card6b( is, card6a.ngn );
 
-      arbitraryNeutronStructureCards = std::make_tuple< Card6a, Card6b >(
+      arbitraryNeutronStructureCards = std::make_pair< Card6a, Card6b >(
           std::move( card6a ), std::move( card6b ) );
     }
     if( card2.igg.value == 1 ){
       Card7a card7a( is );
       Card7b card7b( is, card7a.ngg );
 
-      arbitraryGammaStructureCards = std::make_tuple< Card7a, Card7b >(
+      arbitraryGammaStructureCards = std::make_pair< Card7a, Card7b >(
           std::move( card7a ), std::move( card7b ) );
     }
     if( card2.iwt.value < 0 ){
