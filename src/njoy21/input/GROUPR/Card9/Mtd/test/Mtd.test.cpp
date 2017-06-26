@@ -20,14 +20,14 @@ SCENARIO( "Mtd output values", "[GROUPR],[Card9], [Mtd]"){
             std::istringstream( std::to_string( mtd ) ) );
 
         REQUIRE( mtd == argument::extract< GROUPR::Card9::Mtd >( 
-                          issMtd ).value );
+                          issMtd, mfd ).value );
       }
     }
     mfd.value = 0;
     THEN( "the returned class has the correct value" ){
       iRecordStream<char> issMtd( std::istringstream( "0" ) );
 
-      REQUIRE( 0 == argument::extract< GROUPR::Card9::Mtd >( issMtd ).value );
+      REQUIRE( 0 == argument::extract< GROUPR::Card9::Mtd >( issMtd, mfd ).value );
     }
   } // GIVEN
   GIVEN( "invalid Mtd parameters" ){
@@ -39,7 +39,7 @@ SCENARIO( "Mtd output values", "[GROUPR],[Card9], [Mtd]"){
         iRecordStream<char> issMtd( 
             std::istringstream( std::to_string( mtd ) ) );
 
-        REQUIRE_THROWS( argument::extract< GROUPR::Card9::Mtd >( issMtd ) );
+        REQUIRE_THROWS( argument::extract< GROUPR::Card9::Mtd >( issMtd, mfd ) );
       }
     }
   } // GIVEN
