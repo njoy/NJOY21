@@ -67,24 +67,16 @@ public:
       this->card8d = Card8d( is );
     }
 
-    Card9 card9( is );
-    if( card9.mfd.value ){
-      this->card9List = std::vector< Card9 >();
-      this->card9List->push_back( std::move( card9 ) );
-      do {
-        this->card9List->emplace_back( is );
-      } while ( this->card9List->back().mfd.value );
-    }
+    this->card9List = std::vector< Card9 >();
+    do {
+      this->card9List->emplace_back( is );
+    } while ( this->card9List->back().mfd.value );
 
-    Card10 card10( is );
-    if( card10.matd.value ){
-      this->card10List = std::vector< Card10 >();
-      this->card10List->push_back( std::move( card10 ) );
+    this->card10List = std::vector< Card10 >();
+    do {
+      this->card10List->emplace_back( is );
+    } while ( this->card10List->back().matd.value );
 
-      do {
-        this->card10List->emplace_back( is );
-      } while ( this->card10List->back().matd.value );
-    }
   }
   catch( std::exception& e ){
     Log::info( "Trouble validating GROUPR input." );

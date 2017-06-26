@@ -24,7 +24,13 @@ struct Mtd {
         "     259          average inverse velocity (m/sec)\n";
   }
 
-  static bool verify( const Value_t M ){
-    return M != 0;
+  static Value_t defaultValue( const Argument< Mfd >& ){ return 0; }
+  static bool verify( const Value_t M, const Argument< Mfd >& mfd){
+    if( mfd.value == 0 ){
+      return true;
+    }
+    else{
+      return M != 0;
+    }
   }
 };

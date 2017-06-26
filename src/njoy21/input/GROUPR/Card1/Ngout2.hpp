@@ -30,7 +30,7 @@ struct Ngout2 : public argument::common::Nout {
                      const Argument< Npend >& npend,
                      const Argument< Ngout1 >& ngout1
                      ){
-    return argument::common::Nin::verify( v ) and
+    return ( (v == 0) or argument::common::Nin::verify( v ) ) and
         ( Ngout1::verify( ngout1.value, nendf, npend ) ) and
         /* Make sure the ngout2 is not equal to other input tape numbers */
         ( std::abs( nendf.value ) != std::abs( v ) ) and
