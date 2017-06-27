@@ -63,33 +63,33 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card9 input values can be verified" ){
 
-      REQUIRE( 4 == (*groupr.card9List).size() );
+      REQUIRE( 4 == groupr.card9List.size() );
       int i;
       { i = 0;
-        REQUIRE( 3 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 18 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "MF3 MT18" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 18 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
       }
       { i = 1;
-        REQUIRE( 3 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 102 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "MF3 MT102" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 102 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
       }
       { i = 2;
-        REQUIRE( 10 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 0 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 10 == groupr.card9List[i].mfd.value );
+        REQUIRE( 0 == groupr.card9List[i].mtd.value );
+        REQUIRE( "" == groupr.card9List[i].mtname.value );
       }
       { i = 3;
-        REQUIRE( 0 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 0 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 0 == groupr.card9List[i].mfd.value );
+        REQUIRE( 0 == groupr.card9List[i].mtd.value );
+        REQUIRE( "" == groupr.card9List[i].mtname.value );
       }
     }
     THEN( "the Card10 input values can be verified" ){
-      REQUIRE( 2 == (*groupr.card10List).size() );
-      REQUIRE( 9235 == (*groupr.card10List)[0].matd.value );
-      REQUIRE( 0 == (*groupr.card10List)[1].matd.value );
+      REQUIRE( 2 == groupr.card10List.size() );
+      REQUIRE( 9235 == groupr.card10List[0].matd.value );
+      REQUIRE( 0 == groupr.card10List[1].matd.value );
     }
   }
   WHEN( "reading in a more complicated input, ign=1, ign=1, iwt=-1" ){
@@ -145,33 +145,33 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card9 input values can be verified" ){
 
-      REQUIRE( 4 == (*groupr.card9List).size() );
+      REQUIRE( 4 == groupr.card9List.size() );
       int i;
       { i = 0;
-        REQUIRE( 3 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 18 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "MF3 MT18" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 18 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
       }
       { i = 1;
-        REQUIRE( 3 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 102 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "MF3 MT102" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 102 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
       }
       { i = 2;
-        REQUIRE( 10 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 0 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 10 == groupr.card9List[i].mfd.value );
+        REQUIRE( 0 == groupr.card9List[i].mtd.value );
+        REQUIRE( "" == groupr.card9List[i].mtname.value );
       }
       { i = 3;
-        REQUIRE( 0 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 0 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 0 == groupr.card9List[i].mfd.value );
+        REQUIRE( 0 == groupr.card9List[i].mtd.value );
+        REQUIRE( "" == groupr.card9List[i].mtname.value );
       }
     }
     THEN( "the Card10 input values can be verified" ){
-      REQUIRE( 2 == (*groupr.card10List).size() );
-      REQUIRE( 9235 == (*groupr.card10List)[0].matd.value );
-      REQUIRE( 0 == (*groupr.card10List)[1].matd.value );
+      REQUIRE( 2 == groupr.card10List.size() );
+      REQUIRE( 9235 == groupr.card10List[0].matd.value );
+      REQUIRE( 0 == groupr.card10List[1].matd.value );
     }
 
     THEN( "the Card6a input values can be verified" ){
@@ -276,33 +276,33 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card9 input values can be verified" ){
 
-      REQUIRE( 4 == (*groupr.card9List).size() );
+      REQUIRE( 4 == groupr.card9List.size() );
       int i;
       { i = 0;
-        REQUIRE( 3 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 18 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "MF3 MT18" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 18 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
       }
       { i = 1;
-        REQUIRE( 3 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 102 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "MF3 MT102" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 102 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
       }
       { i = 2;
-        REQUIRE( 10 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 0 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 10 == groupr.card9List[i].mfd.value );
+        REQUIRE( 0 == groupr.card9List[i].mtd.value );
+        REQUIRE( "" == groupr.card9List[i].mtname.value );
       }
       { i = 3;
-        REQUIRE( 0 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 0 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 0 == groupr.card9List[i].mfd.value );
+        REQUIRE( 0 == groupr.card9List[i].mtd.value );
+        REQUIRE( "" == groupr.card9List[i].mtname.value );
       }
     }
     THEN( "the Card10 input values can be verified" ){
-      REQUIRE( 2 == (*groupr.card10List).size() );
-      REQUIRE( 9235 == (*groupr.card10List)[0].matd.value );
-      REQUIRE( 0 == (*groupr.card10List)[1].matd.value );
+      REQUIRE( 2 == groupr.card10List.size() );
+      REQUIRE( 9235 == groupr.card10List[0].matd.value );
+      REQUIRE( 0 == groupr.card10List[1].matd.value );
     }
 
     THEN( "the card8c input values can be verified" ){
@@ -358,33 +358,33 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card9 input values can be verified" ){
 
-      REQUIRE( 4 == (*groupr.card9List).size() );
+      REQUIRE( 4 == groupr.card9List.size() );
       int i;
       { i = 0;
-        REQUIRE( 3 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 18 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "MF3 MT18" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 18 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
       }
       { i = 1;
-        REQUIRE( 3 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 102 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "MF3 MT102" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 102 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
       }
       { i = 2;
-        REQUIRE( 10 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 0 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 10 == groupr.card9List[i].mfd.value );
+        REQUIRE( 0 == groupr.card9List[i].mtd.value );
+        REQUIRE( "" == groupr.card9List[i].mtname.value );
       }
       { i = 3;
-        REQUIRE( 0 == (*groupr.card9List)[i].mfd.value );
-        REQUIRE( 0 == (*groupr.card9List)[i].mtd.value );
-        REQUIRE( "" == (*groupr.card9List)[i].mtname.value );
+        REQUIRE( 0 == groupr.card9List[i].mfd.value );
+        REQUIRE( 0 == groupr.card9List[i].mtd.value );
+        REQUIRE( "" == groupr.card9List[i].mtname.value );
       }
     }
     THEN( "the Card10 input values can be verified" ){
-      REQUIRE( 2 == (*groupr.card10List).size() );
-      REQUIRE( 9235 == (*groupr.card10List)[0].matd.value );
-      REQUIRE( 0 == (*groupr.card10List)[1].matd.value );
+      REQUIRE( 2 == groupr.card10List.size() );
+      REQUIRE( 9235 == groupr.card10List[0].matd.value );
+      REQUIRE( 0 == groupr.card10List[1].matd.value );
     }
 
     THEN( "the card8d input value can be verified" ){
