@@ -16,6 +16,7 @@
 #include <unordered_set>
 #include <queue>
 #include <iomanip>
+#include <regex>
 
 #include "ENDFtk.hpp"
 #include "dimwits.hpp"

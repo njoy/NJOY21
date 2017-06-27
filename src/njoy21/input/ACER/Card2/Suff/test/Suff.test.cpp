@@ -11,12 +11,11 @@ SCENARIO( "ndir output values",
 
   long ln{0};
   GIVEN( "valid suff values" ){
-    std::vector<double> validValues{0.0, .01, .70, .80, -.01, -.00};
+    std::vector<std::string> validValues{".01", ".70", ".80", "-.01", "-.00"};
 
     THEN( "the returned class has the correct value" ){
       for( auto& suff : validValues ){
-        iRecordStream<char> iss(
-            std::istringstream( std::to_string(suff) ) );
+        iRecordStream<char> iss( (std::istringstream( suff )) );
 
         REQUIRE( 
           suff == argument::extract< ACER::Card2::Suff >( iss ).value );
@@ -33,10 +32,13 @@ SCENARIO( "ndir output values",
   }
   
   GIVEN( "invalid suff values" ){
+    std::vector<std::string> invalidValues{ "abc", "0.0", "-0.0", "0.80"};
+
     THEN( "an exception is thrown" ){
-      iRecordStream<char> iss(
-          std::istringstream( "abc" ) );
-      REQUIRE_THROWS( argument::extract< ACER::Card2::Suff >( iss ) );
+      for( auto& suff : invalidValues ){
+        iRecordStream<char> iss( (std::istringstream( suff )) );
+        REQUIRE_THROWS( argument::extract< ACER::Card2::Suff >( iss ) );
+      }
     }
   }
 
