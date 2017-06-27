@@ -19,7 +19,8 @@ struct Ngout2 : public argument::common::Nout {
       "(and different absolute value than) the corresponding nendf argument.\n"
       "\n"
       "When the ngout1 argument is specified, NJOY will copy this tape to \n"
-      "ngout2 and append the new GENDF tape to ngout2.";
+      "ngout2 and append the new GENDF tape to ngout2. Otherwise, (when\n"
+      "ngout1=0) the GENDF tape is written to ngout2.";
   }
 
   static Value_t defaultValue( const Argument< Nendf >&,

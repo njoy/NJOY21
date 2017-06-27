@@ -7,7 +7,12 @@ struct Ngout1 : public argument::common::Nout {
       "The ngout1 argument specifies the io unit used internally by the\n"
       "Fortran routine and the filename to be output, e.g. setting ngout1 to\n"
       "21 or -21 specifies a file named 'tape21' is will be used for the\n"
-      "output\n"
+      "output. The normal mode for GROUPR is to use ngout=0; however it is\n"
+      "sometimes convenient to add a new material or raction to an existing\n"
+      "GENDF tape.\n"
+      "\n"
+      "When the ngout1 argument is specified, NJOY will copy this tape to \n"
+      "ngout2 and append the new GENDF tape to ngout2."
       "\n"
       "The signedness of the argument implies the formatting of the file in\n"
       "question. Positive argument values indicate formatted output i.e.\n"
@@ -16,10 +21,7 @@ struct Ngout1 : public argument::common::Nout {
       "\n"
       "ngout1 values are restricted to an absolute value between 20 and 99,\n"
       "inclusively, and are required to have the same signedness as\n"
-      "(and different absolute value than) the corresponding nendf argument.\n"
-      "\n"
-      "When the ngout1 argument is specified, NJOY will copy this tape to \n"
-      "ngout2 and append the new GENDF tape to ngout2.";
+      "(and different absolute value than) the corresponding nendf argument.";
   }
 
   static Value_t defaultValue( const Argument< Nendf >&,

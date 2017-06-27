@@ -12,7 +12,7 @@ SCENARIO( "Iwt output values", "[GROUPR],[Card2], [Iwt]"){
 
   long ln{0};
   GIVEN( "valid Iwt parameters" ){
-    std::vector<int> validValues(11);
+    std::vector<int> validValues(12);
     std::iota( validValues.begin(), validValues.end(), 0);
 
     THEN( "the returned class has the correct value" ){
@@ -26,10 +26,9 @@ SCENARIO( "Iwt output values", "[GROUPR],[Card2], [Iwt]"){
     }
   } // GIVEN
   GIVEN( "invalid Iwt parameters" ){
-    std::vector<int> invalidValues{ };
 
     THEN( "the returned class has the correct value" ){
-      for( auto iwt : invalidValues ){
+      for( auto iwt : { 13, 15 } ){
         iRecordStream<char> issIwt( 
             std::istringstream( std::to_string( iwt ) ) );
 
