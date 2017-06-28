@@ -12,7 +12,7 @@ struct Ninwt : public argument::common::Nout {
         "The default value is 0.";
   }
 
-  static Valuev_t defaultValue(){ return 0; }
+  static Value_t defaultValue(){ return 0; }
   static bool verify( const Value_t v ){
     return (std::abs(v) > 19 && std::abs(v) < 100);
   }
