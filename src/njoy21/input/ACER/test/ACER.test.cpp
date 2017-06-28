@@ -34,7 +34,7 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE(  1 == acer.card2.iopt.value );
       REQUIRE(  1 == acer.card2.iprint.value );
       REQUIRE(  1 == acer.card2.itype.value );
-      REQUIRE( 0.80 == acer.card2.suff.value );
+      REQUIRE( ".80" == acer.card2.suff.value );
       REQUIRE(  0 == acer.card2.nxtra.value );
       // Card3
       REQUIRE( sCard3 == acer.card3.hk.value );
@@ -83,7 +83,7 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE(  2 == acer.card2.iopt.value );
       REQUIRE(  1 == acer.card2.iprint.value );
       REQUIRE(  1 == acer.card2.itype.value );
-      REQUIRE( 0.80 == acer.card2.suff.value );
+      REQUIRE( ".80" == acer.card2.suff.value );
       REQUIRE(  2 == acer.card2.nxtra.value );
       // Card3
       REQUIRE( sCard3 == acer.card3.hk.value );
@@ -139,7 +139,7 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE(  3 == acer.card2.iopt.value );
       REQUIRE(  1 == acer.card2.iprint.value );
       REQUIRE(  1 == acer.card2.itype.value );
-      REQUIRE( 0.80 == acer.card2.suff.value );
+      REQUIRE( ".80" == acer.card2.suff.value );
       REQUIRE(  0 == acer.card2.nxtra.value );
       // Card3
       REQUIRE( sCard3 == acer.card3.hk.value );
@@ -174,7 +174,7 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE(  4 == acer.card2.iopt.value );
       REQUIRE(  1 == acer.card2.iprint.value );
       REQUIRE(  1 == acer.card2.itype.value );
-      REQUIRE( 0.80 == acer.card2.suff.value );
+      REQUIRE( ".80" == acer.card2.suff.value );
       REQUIRE(  0 == acer.card2.nxtra.value );
       // Card3
       REQUIRE( sCard3 == acer.card3.hk.value );
@@ -208,7 +208,7 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE(  5 == acer.card2.iopt.value );
       REQUIRE(  1 == acer.card2.iprint.value );
       REQUIRE(  1 == acer.card2.itype.value );
-      REQUIRE( 0.80 == acer.card2.suff.value );
+      REQUIRE( ".80" == acer.card2.suff.value );
       REQUIRE(  0 == acer.card2.nxtra.value );
       // Card3
       REQUIRE( sCard3 == acer.card3.hk.value );
@@ -241,7 +241,7 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE(  7 == acer.card2.iopt.value );
       REQUIRE(  1 == acer.card2.iprint.value );
       REQUIRE(  1 == acer.card2.itype.value );
-      REQUIRE( 0.80 == acer.card2.suff.value );
+      REQUIRE( ".80" == acer.card2.suff.value );
       REQUIRE(  0 == acer.card2.nxtra.value );
       // Card3
       REQUIRE( sCard3 == acer.card3.hk.value );
@@ -273,7 +273,7 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE(  8 == acer.card2.iopt.value );
       REQUIRE(  1 == acer.card2.iprint.value );
       REQUIRE(  2 == acer.card2.itype.value );
-      REQUIRE( 0.80 == acer.card2.suff.value );
+      REQUIRE( ".80" == acer.card2.suff.value );
       REQUIRE(  0 == acer.card2.nxtra.value );
       // Card3
       REQUIRE( sCard3 == acer.card3.hk.value );
