@@ -21,7 +21,7 @@ SCENARIO( "Verifying ACER Card9 input", "[ACER], [Card9]" ){
   GIVEN( "no iwt value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( ACER::Card9::Iwt::defaultValue() == 
+      REQUIRE( 0 == 
                 argument::extract< ACER::Card9::Iwt >( iss ).value );
     }
   }

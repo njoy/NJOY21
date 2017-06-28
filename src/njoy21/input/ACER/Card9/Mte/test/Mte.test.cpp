@@ -21,8 +21,7 @@ SCENARIO( "Verifying ACER Card9 input", "[ACER], [Card9]" ){
   GIVEN( "no mte value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( ACER::Card9::Mte::defaultValue() == 
-                argument::extract< ACER::Card9::Mte >( iss ).value );
+      REQUIRE( 0 == argument::extract< ACER::Card9::Mte >( iss ).value );
     }
   }
   GIVEN( "invalid mte values" ){

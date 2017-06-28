@@ -11,14 +11,14 @@ SCENARIO( "ngend output values",
 
   Argument< ACER::Card1::Nendf > nendf; 
   Argument< ACER::Card1::Npend > npend; 
-  nendf.value = 20;
+  nendf.value = 22;
 
   GIVEN( "valid ngend input values" ){
     WHEN( "the nendf and npend values are not the same as the ngend values" ){
       npend.value = 21;
 
       THEN( "the returned class has the correct tape value" ){
-        for( auto ngend : {0, -22, 22, 50, 99, -99} ){
+        for( auto ngend : {0, -20, 20, 42, 99, -99} ){
           iRecordStream<char> issNgend( 
               std::istringstream( std::to_string( ngend )  ) );
           REQUIRE( ngend == argument::extract< ACER::Card1::Ngend >(

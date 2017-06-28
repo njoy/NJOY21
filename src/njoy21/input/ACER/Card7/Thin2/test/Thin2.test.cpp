@@ -5,7 +5,7 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "Newfor  output values",
+SCENARIO( "Thin2  output values",
          "[ACER],[Card7], [thin2]"){
   GIVEN( "valid thin2 values" ){
     std::vector<double> validValues{0.0, 0.001, 1E4, 1.0, 2};
@@ -25,8 +25,7 @@ SCENARIO( "Newfor  output values",
     THEN( "the default value is returned" ){
       iRecordStream<char> iss(
           std::istringstream( "/") );
-      REQUIRE( ACER::Card7::Thin2::defaultValue() == 
-                argument::extract< ACER::Card7::Thin2 >( iss ).value );
+      REQUIRE( 0.0 == argument::extract< ACER::Card7::Thin2 >( iss ).value );
     }
   }
   GIVEN( "invalid thin2 values" ){

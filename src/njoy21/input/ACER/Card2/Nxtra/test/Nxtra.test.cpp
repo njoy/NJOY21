@@ -28,8 +28,7 @@ SCENARIO( "Nxtra input values",
     THEN( "the default value is returned" ){
       iRecordStream<char> iss(
           std::istringstream( " /" ) );
-      REQUIRE( ACER::Card2::Nxtra::defaultValue() == 
-                argument::extract< ACER::Card2::Nxtra >( iss ).value );
+      REQUIRE( 0 == argument::extract< ACER::Card2::Nxtra >( iss ).value );
     }
   }
   

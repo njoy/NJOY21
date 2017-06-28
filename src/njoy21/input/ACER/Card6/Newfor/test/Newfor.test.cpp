@@ -26,8 +26,7 @@ SCENARIO( "Newfor  output values",
     THEN( "the default value is returned" ){
       iRecordStream<char> iss(
           std::istringstream( "/") );
-      REQUIRE( ACER::Card6::Newfor::defaultValue() == 
-                argument::extract< ACER::Card6::Newfor >( iss ).value );
+      REQUIRE( 1 == argument::extract< ACER::Card6::Newfor >( iss ).value );
     }
   }
   

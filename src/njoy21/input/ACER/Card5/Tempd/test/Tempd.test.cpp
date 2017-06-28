@@ -21,7 +21,7 @@ SCENARIO( "Tempd input values", "[ACER], [Card5], [Tempd]" ){
   GIVEN( "no tempd value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( ACER::Card5::Tempd::defaultValue() == 
+      REQUIRE( 500*dimwits::kelvin == 
                 argument::extract< ACER::Card5::Tempd >( iss ).value );
     }
   }

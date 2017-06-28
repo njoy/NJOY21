@@ -28,8 +28,7 @@ SCENARIO( "Ntemp output values", "[GROUPR],[Card2], [Ntemp]"){
   GIVEN( "no ntemp value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( GROUPR::Card2::Ntemp::defaultValue() == 
-                argument::extract< GROUPR::Card2::Ntemp >( iss ).value );
+      REQUIRE( 1 == argument::extract< GROUPR::Card2::Ntemp >( iss ).value );
     }
   }
   GIVEN( "invalid Ntemp parameters" ){

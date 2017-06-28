@@ -22,8 +22,7 @@ SCENARIO( "Alpha2  output values", "[GROUPR],[Card8a], [Alpha2]"){
   GIVEN( "no alpha2 value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( GROUPR::Card8a::Alpha2::defaultValue() == 
-                argument::extract< GROUPR::Card8a::Alpha2 >( iss ).value );
+      REQUIRE( 0 == argument::extract< GROUPR::Card8a::Alpha2 >( iss ).value );
     }
   }
   GIVEN( "invalid alpha2 values" ){

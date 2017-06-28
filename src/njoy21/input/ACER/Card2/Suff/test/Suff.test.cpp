@@ -26,8 +26,7 @@ SCENARIO( "ndir output values",
     THEN( "the default value is returned" ){
       iRecordStream<char> iss(
           std::istringstream( " /" ) );
-      REQUIRE( ACER::Card2::Suff::defaultValue() == 
-                argument::extract< ACER::Card2::Suff >( iss ).value );
+      REQUIRE( ".00" == argument::extract< ACER::Card2::Suff >( iss ).value );
     }
   }
   

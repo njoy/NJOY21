@@ -20,7 +20,7 @@ SCENARIO( "value range" ){
   GIVEN( "no thnmax value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( BROADR::Card3::Thnmax::defaultValue() == 
+      REQUIRE( 1.0E6*dimwits::electronVolt == 
                 argument::extract< BROADR::Card3::Thnmax >( iss ).value );
     }
   }

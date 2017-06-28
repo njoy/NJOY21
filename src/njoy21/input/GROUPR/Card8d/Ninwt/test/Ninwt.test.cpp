@@ -25,8 +25,7 @@ SCENARIO( "Ninwt output values", "[GROUPR],[Card8a], [Ninwt]"){
   GIVEN( "no ninwt value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( GROUPR::Card8a::Ninwt::defaultValue() == 
-                argument::extract< GROUPR::Card8a::Ninwt >( iss ).value );
+      REQUIRE( 0 == argument::extract< GROUPR::Card8a::Ninwt >( iss ).value );
     }
   }
   GIVEN( "invalid Ninwt parameters" ){
