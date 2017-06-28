@@ -21,8 +21,7 @@ SCENARIO( "Verifying ACER Card9 input", "[ACER], [Card9]" ){
   GIVEN( "no nmix value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( ACER::Card9::Nmix::defaultValue() == 
-                argument::extract< ACER::Card9::Nmix >( iss ).value );
+      REQUIRE( 1 == argument::extract< ACER::Card9::Nmix >( iss ).value );
     }
   }
   GIVEN( "invalid nmix values" ){

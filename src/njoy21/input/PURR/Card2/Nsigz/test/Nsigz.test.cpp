@@ -13,8 +13,7 @@ SCENARIO( "Nsigz input values",
   GIVEN( "no nsigz values" ){
     THEN( "the default value is returned" ){
       iRecordStream< char> iss( std::istringstream(" /") );
-      REQUIRE( PURR::Card2::Nsigz::defaultValue() == 
-                argument::extract< PURR::Card2::Nsigz >( iss ).value );
+      REQUIRE( 1 == argument::extract< PURR::Card2::Nsigz >( iss ).value );
     }
   }
 

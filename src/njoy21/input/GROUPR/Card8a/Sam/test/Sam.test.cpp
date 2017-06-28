@@ -22,7 +22,7 @@ SCENARIO( "Sam  output values", "[GROUPR],[Card8a], [Sam]"){
   GIVEN( "no sam value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( GROUPR::Card8a::Sam::defaultValue() == 
+      REQUIRE( 0*dimwits::barn == 
                 argument::extract< GROUPR::Card8a::Sam >( iss ).value );
     }
   }

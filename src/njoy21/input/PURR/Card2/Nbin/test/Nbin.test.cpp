@@ -26,8 +26,7 @@ SCENARIO( "Nbin input values",
   GIVEN( "no nbin values" ){
     THEN( "the default value is returned" ){
       iRecordStream< char> iss( std::istringstream(" /") );
-      REQUIRE( PURR::Card2::Nbin::defaultValue() == 
-                argument::extract< PURR::Card2::Nbin >( iss ).value );
+      REQUIRE( 20 == argument::extract< PURR::Card2::Nbin >( iss ).value );
     }
   }
   

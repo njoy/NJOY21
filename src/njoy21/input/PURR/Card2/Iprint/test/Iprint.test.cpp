@@ -24,8 +24,7 @@ SCENARIO( "Iprint input values",
   GIVEN( "no iprint values" ){
     THEN( "the default value is returned" ){
       iRecordStream< char> iss( std::istringstream(" /") );
-      REQUIRE( PURR::Card2::Iprint::defaultValue() == 
-                argument::extract< PURR::Card2::Iprint >( iss ).value );
+      REQUIRE( 1 == argument::extract< PURR::Card2::Iprint >( iss ).value );
     }
   }
   

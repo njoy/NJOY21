@@ -27,8 +27,7 @@ SCENARIO( "Nsigz output values", "[GROUPR],[Card2], [Nsigz]"){
   GIVEN( "no nsigz value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( GROUPR::Card2::Nsigz::defaultValue() == 
-                argument::extract< GROUPR::Card2::Nsigz >( iss ).value );
+      REQUIRE( 1 == argument::extract< GROUPR::Card2::Nsigz >( iss ).value );
     }
   }
   GIVEN( "invalid Nsigz parameters" ){

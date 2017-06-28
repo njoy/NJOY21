@@ -15,10 +15,10 @@ struct Ngend : public argument::common::Nout {
       "ascii text files. Negative values indicate unformatted output i.e.\n"
       "Fortran-style block binary\n"
       "\n"
-      "nace values are restricted to an absolute value in the range [20, 99]."
+      "ngend values are restricted to an absolute value in the range [20, 99]."
       "\n"
       "The ngend tape is only needed for input if the old 30x20 photon \n"
-      "production matrix is to be constructed; otherwise, et it to zero. In\n"
+      "production matrix is to be constructed; otherwise, set it to zero. In\n"
       "addition, ngend is used for plotting output (if available) when one of\n"
       "the print or edit options is selected (see iopt=7); set it to zero to\n"
       "suppress plotting output.";

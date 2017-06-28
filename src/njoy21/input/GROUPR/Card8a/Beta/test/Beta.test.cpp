@@ -22,8 +22,7 @@ SCENARIO( "Beta  output values", "[GROUPR],[Card8a], [Beta]"){
   GIVEN( "no beta value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( GROUPR::Card8a::Beta::defaultValue() == 
-                argument::extract< GROUPR::Card8a::Beta >( iss ).value );
+      REQUIRE( 0 == argument::extract< GROUPR::Card8a::Beta >( iss ).value );
     }
   }
   GIVEN( "invalid beta values" ){

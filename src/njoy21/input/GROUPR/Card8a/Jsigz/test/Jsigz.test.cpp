@@ -22,8 +22,7 @@ SCENARIO( "Jsigz  output values", "[GROUPR],[Card8a], [Jsigz]"){
   GIVEN( "no jsigz value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( GROUPR::Card8a::Jsigz::defaultValue() == 
-                argument::extract< GROUPR::Card8a::Jsigz >( iss ).value );
+      REQUIRE( 0 == argument::extract< GROUPR::Card8a::Jsigz >( iss ).value );
     }
   }
   GIVEN( "invalid jsigz values" ){
