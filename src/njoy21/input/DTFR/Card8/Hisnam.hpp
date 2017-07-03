@@ -1,6 +1,7 @@
 struct Hisnam {
-  using Value_t = std::string;
+  using Value_t = optional<std::string>;
   static std::string name(){ return "hisnam"; }
+ 
 
   static std::string description(){
     return
@@ -11,6 +12,8 @@ struct Hisnam {
       "sections.";
   }
   
-  static bool verify( Value_t str ){ return str.length() <= 6; } 
+  static Value_t defaultValue() { return nullopt; }
+
+  static bool verify( Value_t str ){ return str->length() <= 6; } 
 };
 

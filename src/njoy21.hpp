@@ -1,6 +1,15 @@
 #ifndef NJOY21
 #define NJOY21
 
+#ifdef __GNUC__
+  #pragma GCC diagnostic push
+  #pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+#include <variant>
+#ifdef __GNUC__
+  #pragma GCC diagnostic pop
+#endif
+
 
 #ifdef USING_CPP17
   #include <optional>
@@ -11,6 +20,7 @@
     using namespace std::experimental;
   }
 #endif
+
 
 #include <sstream>
 #include <unordered_set>

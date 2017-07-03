@@ -392,6 +392,7 @@
     "src/njoy21/input/MIXR.hpp",
     "src/njoy21/input/BROADR.hpp",
     "src/njoy21/input/ACER.hpp",
+    "src/njoy21/input/THERMR.hpp",
     "src/njoy21/input/Label.hpp",
     "src/njoy21/input/argument.hpp",
     "src/njoy21/input/GROUPR.hpp",
@@ -570,6 +571,14 @@
     "src/njoy21/input/argument/parser/src/rightShift.hpp",
     "src/njoy21/input/argument/parser/src/validate.hpp",
     "src/njoy21/input/argument/parser/src/read.hpp",
+    "src/njoy21/input/THERMR/Card2.hpp",
+    "src/njoy21/input/THERMR/Card1.hpp",
+    "src/njoy21/input/THERMR/Card1/Nout.hpp",
+    "src/njoy21/input/THERMR/Card1/Nin.hpp",
+    "src/njoy21/input/THERMR/Card1/Nendf.hpp",
+    "src/njoy21/input/THERMR/Card2/Matdp.hpp",
+    "src/njoy21/input/THERMR/Card2/Nbin.hpp",
+    "src/njoy21/input/THERMR/Card2/Matde.hpp",
     "src/njoy21/input/MODER/Card2.hpp",
     "src/njoy21/input/MODER/Card3.hpp",
     "src/njoy21/input/MODER/Card1.hpp",
@@ -1320,6 +1329,27 @@
     ],
     "njoy21.input.RECONR.Card6.Enode": [
       "src/njoy21/input/RECONR/Card6/Enode/test/Enode.test.cpp"
+    ],
+    "njoy21.input.THERMR.Card1": [
+      "src/njoy21/input/THERMR/Card1/test/Card1.test.cpp"
+    ],
+    "njoy21.input.THERMR.Card1.Nendf": [
+      "src/njoy21/input/THERMR/Card1/Nendf/test/Nendf.test.cpp"
+    ],
+    "njoy21.input.THERMR.Card1.Nin": [
+      "src/njoy21/input/THERMR/Card1/Nin/test/Nin.test.cpp"
+    ],
+    "njoy21.input.THERMR.Card1.Nout": [
+      "src/njoy21/input/THERMR/Card1/Nout/test/Nout.test.cpp"
+    ],
+    "njoy21.input.THERMR.Card2.Matde": [
+      "src/njoy21/input/THERMR/Card2/Matde/test/Matde.test.cpp"
+    ],
+    "njoy21.input.THERMR.Card2.Matdp": [
+      "src/njoy21/input/THERMR/Card2/Matdp/test/Matdp.test.cpp"
+    ],
+    "njoy21.input.THERMR.Card2.Nbin": [
+      "src/njoy21/input/THERMR/Card2/Nbin/test/Nbin.test.cpp"
     ],
     "njoy21.input.UNRESR": [
       "src/njoy21/input/UNRESR/test/UNRESR.test.cpp"

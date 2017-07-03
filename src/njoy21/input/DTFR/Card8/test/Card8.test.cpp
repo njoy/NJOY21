@@ -11,7 +11,7 @@ SCENARIO( "Validating card8 inputs",
       iRecordStream<char> iss( std::istringstream( "hisnam 125 1 300" ) );
       DTFR::Card8 card8( iss );
       THEN( "the cards should correspond to correct values" ){
-        REQUIRE( "hisnam" == card8.hisnam.value );
+        REQUIRE( std::string("hisnam") == card8.hisnam.value );
         REQUIRE( 125 == card8.mat.value );
         REQUIRE( 1   == card8.jsigz.value );
         REQUIRE( 300 * dimwits::kelvin == card8.dtemp.value );
