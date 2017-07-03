@@ -14,7 +14,7 @@ struct Izaw {
       [](auto& P){ return (P.first < 0) or (P.second < 0); } );
 
     if( found != izaw.end() ){
-      Log::warning( "Negative IZ or AW parameter ({},{}) found at index{}",
+      Log::warning( "Negative IZ or AW parameter ({},{}) found at index {}",
                    found->first, found->second, 
                    std::distance( izaw.begin(), found ) );
       return false;

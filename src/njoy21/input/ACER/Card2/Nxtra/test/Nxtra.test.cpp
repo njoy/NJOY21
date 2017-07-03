@@ -11,7 +11,7 @@ SCENARIO( "Nxtra input values",
   long ln(0);
 
   GIVEN( "valid nxtra values" ){
-    std::vector<int> validValues{0, 1, 10, 20};
+    std::vector<int> validValues{0, 1, 10, 16};
 
     THEN( "the returned class has the correct value" ){
       for( auto& nxtra : validValues ){
@@ -33,7 +33,7 @@ SCENARIO( "Nxtra input values",
   }
   
   GIVEN( "invalid nxtra values" ){
-    std::vector<int> invalidValues{-1};
+    std::vector<int> invalidValues{-1, 17, 20};
 
     THEN( "an exception is thrown" ){
       for( auto& nxtra : invalidValues ){

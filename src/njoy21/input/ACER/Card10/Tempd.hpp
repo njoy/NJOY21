@@ -4,8 +4,8 @@ struct Tempd {
 
   static std::string description(){
     return 
-        "The tempd argument specifies the absolute temperature for the \n"
-        "material to be processed.";
+        "The tempd argument specifies the absolute temperature (in kelvin)\n"
+        "for the material to be processed.";
   }
 
   static Value_t defaultValue(){ return 300*kelvin; }
