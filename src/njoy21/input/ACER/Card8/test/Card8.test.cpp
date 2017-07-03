@@ -14,7 +14,7 @@ SCENARIO( "Verifying ACER Card8 input", "[ACER], [Card8]" ){
       ACER::Card8 card8 ( issCard8 );
       REQUIRE( 1 == card8.matd.value );
       REQUIRE( 293.6* dimwits::kelvin == card8.tempd.value );
-      REQUIRE( "lwtr" == card8.tname.value );
+      REQUIRE( "lwtr" == *card8.tname.value );
     }
   } // GIVEN
   GIVEN( "only material and temperature" ){
@@ -25,7 +25,7 @@ SCENARIO( "Verifying ACER Card8 input", "[ACER], [Card8]" ){
       ACER::Card8 card8 ( issCard8 );
       REQUIRE( 1 == card8.matd.value );
       REQUIRE( 293.6* dimwits::kelvin == card8.tempd.value );
-      REQUIRE( "      " == card8.tname.value );
+      REQUIRE( std::nullopt == card8.tname.value );
     }
   } // GIVEN
 
