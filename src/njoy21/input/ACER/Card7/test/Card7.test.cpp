@@ -9,12 +9,12 @@ SCENARIO( "Verifying ACER Card7 input",
          "[ACER], [Card7]" ){
   GIVEN( "all three entries" ){
     THEN( "the appropriate values are returned" ){
-      iRecordStream<char> issCard7( std::istringstream( "-2.0 1E3 1/" ) );
+      iRecordStream<char> issCard7( std::istringstream( "2.0 1E3 2/" ) );
       ACER::Card7 card7( issCard7 );
 
-      REQUIRE(-2.00 == card7.thin1.value );
-      REQUIRE( 1E3 == card7.thin2.value );
-      REQUIRE( 1   == card7.thin3.value );
+      REQUIRE(2.00 == card7.thin1.value );
+      REQUIRE( 1E3*dimwits::electronVolt == card7.thin2.value );
+      REQUIRE( 2   == card7.thin3.value );
     }
   }
   GIVEN( "only two entries" ){
@@ -23,17 +23,17 @@ SCENARIO( "Verifying ACER Card7 input",
       ACER::Card7 card7( issCard7 );
 
       REQUIRE(-2.00 == card7.thin1.value );
-      REQUIRE( 1E3 == card7.thin2.value );
+      REQUIRE( 1E3*dimwits::electronVolt == card7.thin2.value );
       REQUIRE( 0   == card7.thin3.value );
     }
   }
   GIVEN( "only one entry" ){
     THEN( "the appropriate values are returned" ){
-      iRecordStream<char> issCard7( std::istringstream( "-2.0 /" ) );
+      iRecordStream<char> issCard7( std::istringstream( "2.0 /" ) );
       ACER::Card7 card7( issCard7 );
 
-      REQUIRE(-2.00 == card7.thin1.value );
-      REQUIRE( 0 == card7.thin2.value );
+      REQUIRE(2.00 == card7.thin1.value );
+      REQUIRE( 0*dimwits::electronVolt == card7.thin2.value );
       REQUIRE( 0   == card7.thin3.value );
     }
   }
@@ -43,7 +43,7 @@ SCENARIO( "Verifying ACER Card7 input",
       ACER::Card7 card7( issCard7 );
 
       REQUIRE( 0.0 == card7.thin1.value );
-      REQUIRE( 0.0 == card7.thin2.value );
+      REQUIRE( 0.0*dimwits::electronVolt == card7.thin2.value );
       REQUIRE( 0   == card7.thin3.value );
     }
   }
