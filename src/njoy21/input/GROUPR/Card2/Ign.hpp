@@ -2,7 +2,7 @@ struct Ign {
   using Value_t = int;
   static std::string name(){ return "ign"; }
 
-  static bool description(){
+  static std::string description(){
     return 
         "The ign option specfies the neutron group structure. The allowed\n"
         "values and their meanings are:\n"

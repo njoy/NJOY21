@@ -38,14 +38,7 @@ SCENARIO( "ndir output values", "[GROUPR],[Card1], [Ngout1]"){
         npend.value = 20;
         REQUIRE_THROWS( argument::extract< GROUPR::Card1::Ngout1 >(
                           issNgout1, nendf, npend ) );
-
       }
-    }
-    WHEN( "no value is given (default)" ){
-      iRecordStream<char> issNgout1( std::istringstream( " /" ) );
-      npend.value = 21;
-      REQUIRE( 0 == argument::extract< GROUPR::Card1::Ngout1 >(
-              issNgout1, nendf, npend ).value );
     }
   }
   GIVEN( "Invalid ngout1 values" ){
