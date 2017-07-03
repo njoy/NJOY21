@@ -10,14 +10,14 @@ public:
   template< typename Char >
   Card8( iRecordStream< Char >& is )
     try:
-    matd( argument::extract< argument::common::Matd >( is ) ),
-    tempd( argument::extract< argument::common::Tempd >( is ) ),
-    tname( argument::extract< Tname >( is ) )
+      matd( argument::extract< argument::common::Matd >( is ) ),
+      tempd( argument::extract< argument::common::Tempd >( is ) ),
+      tname( argument::extract< Tname >( is ) )
   {
     Card::clear( is );
   }
     catch( std::exception& e ){
       Log::info( "Trouble while validating card 8" );
       throw e;
-    }
+  }
 };
