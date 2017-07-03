@@ -32,18 +32,6 @@ SCENARIO( "Validating card1 inputs",
         REQUIRE( 23 == card1.ngout2.value );
       }
     }
-
-    WHEN( "no optional values are given" ){
-      iRecordStream<char> issCard1( std::istringstream("20 21 /" ) );
-      GROUPR::Card1 card1(issCard1);
-      THEN( "the members can be tested" ){
-        REQUIRE( 20 == card1.nendf.value );
-        REQUIRE( 21 == card1.npend.value );
-        REQUIRE( 0 == card1.ngout1.value );
-        REQUIRE( 0 == card1.ngout2.value );
-      }
-
-    }
   }
 
   GIVEN( "invalid inputs" ){

@@ -13,7 +13,7 @@ SCENARIO( "Tempd input values", "[ACER], [Card10], [Tempd]" ){
     THEN( "the returned class has the correct value" ){
       for( auto tempd : validTempd ){
 	iRecordStream<char> issTempd( std::istringstream( std::to_string(tempd) ) );
-        auto tempdArg = argument::extract< ACER::Card10::Tempd >(issTempd );
+        auto tempdArg = argument::extract< argument::common::Tempd >(issTempd );
         REQUIRE( tempd * dimwits::kelvin == tempdArg.value );
       }
     }
@@ -22,14 +22,14 @@ SCENARIO( "Tempd input values", "[ACER], [Card10], [Tempd]" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
       REQUIRE( 300*dimwits::kelvin == 
-                argument::extract< ACER::Card10::Tempd >( iss ).value );
+               argument::extract< argument::common::Tempd >( iss ).value );
     }
   }
   GIVEN( "invalid tempd values" ){
     double tempd(-0.01);
     THEN( "an exception is thrown" ){
       iRecordStream<char> issTempd( std::istringstream( std::to_string(tempd) ) );
-      REQUIRE_THROWS( argument::extract< ACER::Card10::Tempd >(issTempd) );
+      REQUIRE_THROWS( argument::extract< argument::common::Tempd >(issTempd) );
     }
   }
 }

@@ -49,7 +49,7 @@ SCENARIO( "Parsing valid ACER input" ){
       // Card7
       auto card7 = std::get<2>(*acer.fastCards);
       REQUIRE( -1 == card7.thin1.value );
-      REQUIRE( 1E4 == card7.thin2.value );
+      REQUIRE( 1E4*dimwits::electronVolt == card7.thin2.value );
       REQUIRE( 5 == card7.thin3.value );
 
       REQUIRE( not acer.card4 );
@@ -97,7 +97,7 @@ SCENARIO( "Parsing valid ACER input" ){
       auto card8 = std::get<0>(*acer.thermalCards);
       REQUIRE( 1 == card8.matd.value );
       REQUIRE( 293.6*dimwits::kelvin == card8.tempd.value );
-      REQUIRE( "lwtr" == card8.tname.value );
+      REQUIRE( "lwtr" == *card8.tname.value );
       // Card8a
       auto card8a = std::get<1>(*acer.thermalCards);
       REQUIRE( 1001 == card8a.iza01.value );
@@ -110,7 +110,7 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE( 231 == card9.mte.value );
       REQUIRE( 0 == card9.ielas.value );
       REQUIRE( 1 == card9.nmix.value );
-      REQUIRE( 10.1 == card9.emax.value );
+      REQUIRE( 10.1*dimwits::electronVolt == card9.emax.value );
       REQUIRE( 2 == card9.iwt.value );
 
       REQUIRE( not acer.fastCards );
