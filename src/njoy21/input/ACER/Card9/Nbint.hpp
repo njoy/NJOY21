@@ -4,7 +4,7 @@ struct Nbint {
 
   static std::string description() {
     return
-        "The nbint argument specifies thenuber of bins for incoherent\n"
+        "The nbint argument specifies the number of bins for incoherent\n"
         "scattering.\n"
         "\n"
         "The default value is 16.";

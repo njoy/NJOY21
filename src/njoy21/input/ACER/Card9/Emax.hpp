@@ -1,5 +1,5 @@
 struct Emax {
-  using Value_t = double;
+  using Value_t = Quantity< ElectronVolt >;
   static std::string name(){ return "emax"; }
 
   static std::string description(){
@@ -12,6 +12,8 @@ struct Emax {
         "upper limit from the data in MF=3 on the PENDF tape.";
   }
 
-  static Value_t defaultValue(){ return 1000; }
-  static bool verify( const Value_t& emax ){ return emax > 0; }
+  static Value_t defaultValue(){ return 1.0*mega( electronVolt ); }
+  static bool verify( const Value_t& emax ){ 
+    return emax > 0.0*electronVolt; 
+  }
 };

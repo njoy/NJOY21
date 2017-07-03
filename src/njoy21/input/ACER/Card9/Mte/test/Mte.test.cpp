@@ -25,7 +25,7 @@ SCENARIO( "Verifying ACER Card9 input", "[ACER], [Card9]" ){
     }
   }
   GIVEN( "invalid mte values" ){
-    std::vector<int> invalidMte{-222, -241, -245};
+    std::vector<int> invalidMte{-222, -241, -245, 1000};
     THEN( "an exception is thrown" ){
       for( auto& mte : invalidMte ){
         iRecordStream< char> issMte( std::stringstream( std::to_string(mte) ) );

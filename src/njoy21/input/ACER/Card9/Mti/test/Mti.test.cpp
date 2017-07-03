@@ -19,7 +19,7 @@ SCENARIO( "Verifying ACER Card9 input", "[ACER], [Card9]" ){
     }
   }
   GIVEN( "invalid mti values" ){
-    std::vector<int> invalidMti{-222, -241, -245, 0};
+    std::vector<int> invalidMti{-222, -241, -245, 0, 1000};
     THEN( "an exception is thrown" ){
       for( auto& mti : invalidMti ){
         iRecordStream< char> issMti( std::stringstream( std::to_string(mti) ) );
