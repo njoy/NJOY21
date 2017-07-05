@@ -12,7 +12,7 @@ SCENARIO( "Nsigz output values", "[GROUPR],[Card2], [Nsigz]"){
 
   GIVEN( "valid Nsigz parameters" ){
     std::vector<int> validValues(10);
-    std::iota( validValues.begin(), validValues.end(), 0);
+    std::iota( validValues.begin(), validValues.end(), 1);
 
     THEN( "the returned class has the correct value" ){
       for( auto nsigz : validValues ){
@@ -31,7 +31,7 @@ SCENARIO( "Nsigz output values", "[GROUPR],[Card2], [Nsigz]"){
     }
   }
   GIVEN( "invalid Nsigz parameters" ){
-    std::vector<int> invalidValues{ -2, -1 };
+    std::vector<int> invalidValues{ -2, -1, 0 };
 
     THEN( "the returned class has the correct value" ){
       for( auto nsigz : invalidValues ){

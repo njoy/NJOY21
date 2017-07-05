@@ -36,7 +36,8 @@ SCENARIO( "Temp input values",
     }
 
     WHEN( "the temperature values are not in increasing order" ){
-      iRecordStream< char> issValues( std::istringstream(" 1.0 2.0 1.5") );
+      std::string temps(" 1.0 2.0 1.5");
+      iRecordStream< char> issValues( (std::istringstream(temps)) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS(

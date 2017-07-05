@@ -5,7 +5,9 @@ struct Sigz {
   static std::string description() {
     return
         "The sigz argument is a list of sigma zero cross section values (in\n"
-        "barns) that are used to calculate resonance self shielding.";
+        "barns) that are used to calculate resonance self shielding.\n"
+        "\n"
+        "Note: the first value will *always* be overwritten with infinity.";
   }
   static bool verify( const Value_t& sigz,
                       const Argument< Card2::Nsigz > & nsigz ){
