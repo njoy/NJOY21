@@ -52,10 +52,10 @@ public:
         readArbitraryNeutronStructure( is, card2.ign.value ) ),
     arbitraryGammaStructureCards( 
         readArbitraryGammaStructure( is, card2.igg.value ) ),
-    card8a( readFluxCalculatorParameters( is, card2.iwt.value ) ),
+    card8a( readFluxCalculatorParameters( is, card2.iwt.value, card1 ) ),
     card8b( readTabulatedWeightFunction( is, card2.iwt.value ) ),
     card8c( readAnalyticFluxParameters( is, card2.iwt.value ) ),
-    card8d( readInputResonanceFlux( is, card2.iwt.value ) ),
+    card8d( readInputResonanceFlux( is, card2.iwt.value, card1 ) ),
     card9List( readCard9List( is ) ),
     card10List( readCard10List( is ) )
   {

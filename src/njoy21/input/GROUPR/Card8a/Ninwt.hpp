@@ -12,23 +12,17 @@ struct Ninwt : public argument::common::Nout {
         "The default value is 0.";
   }
 
-  static Value_t defaultValue( 
-                      const Argument< Card1::Nendf >&,
-                      const Argument< Card1::Npend >&,
-                      const Argument< Card1::Ngout1 >&,
-                      const Argument< Card1::Ngout2 >&){
+  static Value_t defaultValue( const Card1& ){
     return 0; 
   }
 
-  static bool verify( const Value_t v,
-                      const Argument< Card1::Nendf >& nendf,
-                      const Argument< Card1::Npend >& npend,
-                      const Argument< Card1::Ngout1 >& ngout1,
-                      const Argument< Card1::Ngout2 >& ngout2 ){
-    return ( argument::common::Nin::verify( v ) ) and
-           ( std::abs( nendf.value ) != std::abs( v ) ) and
-           ( std::abs( npend.value ) != std::abs( v ) ) and
-           ( std::abs( ngout1.value ) != std::abs( v ) ) and
-           ( std::abs( ngout2.value ) != std::abs( v ) );
+  static bool verify( const Value_t v, const Card1& card1 ){
+    return ( v == 0 ) or (
+           ( argument::common::Nin::verify( v ) ) and
+           ( std::abs( card1.nendf.value ) != std::abs( v ) ) and
+           ( std::abs( card1.npend.value ) != std::abs( v ) ) and
+           ( std::abs( card1.ngout1.value ) != std::abs( v ) ) and
+           ( std::abs( card1.ngout2.value ) != std::abs( v ) )
+           );
   }
 };

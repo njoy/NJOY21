@@ -99,10 +99,10 @@ SCENARIO( "Parsing valid GROUPR input" ){
       + "'" + sCard3 + "' /\n"
       + sCard4
       + sCard5
-      + "4 /\n"             // Card6a
+      + "4 /\n"              // Card6a
       + "1 2 3 4 5/\n"       // Card6b
-      + "5 /\n"             // Card7a
-      + "1 2 3 4 5 6 /\n"     // Card7b
+      + "5 /\n"              // Card7a
+      + "1 2 3 4 5 6 /\n"    // Card7b
       + "400 10.6 5000 0 0 0.7768 7.5 0.40 1.6E-7 0.086 /\n" // Card8a
       + "0. 0. 0 0 1 6\n"                                                             // Card 8b
       + "6 5\n"

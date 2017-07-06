@@ -23,16 +23,12 @@ public:
   Argument< Gamma > gamma;
 
   template< typename Char >
-  Card8a( iRecordStream< Char >& is,
-          const Argument< Card1::Nendf >& nendf,
-          const Argument< Card1::Npend >& npend,
-          const Argument< Card1::Ngout1 >& ngout1,
-          const Argument< Card1::Ngout2 >& ngout2)
+  Card8a( iRecordStream< Char >& is, const Card1& card1 )
     try:
       fehi( argument::extract< Fehi >( is ) ),
       sigpot( argument::extract< Sigpot >( is ) ),
       nflmax( argument::extract< Nflmax >( is ) ),
-      ninwt( argument::extract< Ninwt >( is, nendf, npend, ngout1, ngout2 ) ),
+      ninwt( argument::extract< Ninwt >( is, card1 ) ),
       jsigz( argument::extract< Jsigz >( is ) ),
       alpha2( argument::extract< Alpha2 >( is ) ),
       sam( argument::extract< Sam >( is ) ),

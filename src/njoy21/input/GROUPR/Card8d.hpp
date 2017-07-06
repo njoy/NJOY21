@@ -5,9 +5,9 @@ public:
   Argument< Ninwt > ninwt;
 
   template< typename Char >
-  Card8d( iRecordStream< Char >& is )
+  Card8d( iRecordStream< Char >& is, const Card1& card1 )
     try:
-      ninwt( argument::extract< Ninwt >( is ) )
+      ninwt( argument::extract< Ninwt >( is, card1 ) )
     {   
       Card::clear( is );
     }
