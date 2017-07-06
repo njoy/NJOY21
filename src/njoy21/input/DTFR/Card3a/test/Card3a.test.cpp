@@ -8,12 +8,12 @@ SCENARIO( "Validating card3a inputs",
   "[DFTR], [Card3a]" ){
   GIVEN( "valid DTFR card3a inputs" ){
     WHEN( "all DTFR inputs provided" ){
-      iRecordStream<char> iss( std::istringstream( "221 0 0" ) );
+      iRecordStream<char> iss( std::istringstream( "221 125 4" ) );
       DTFR::Card3a card3a( iss );
       THEN( "the cards should correspond to correct values" ){
         REQUIRE( 221 == card3a.mti.value );
-        REQUIRE( 0   == card3a.mtc.value );
-        REQUIRE( 0   == card3a.nlc.value );
+        REQUIRE( 125 == card3a.mtc.value );
+        REQUIRE( 4   == card3a.nlc.value );
       } // THEN
     } // WHEN
     WHEN( "Mtc and Nlc not provided" ){

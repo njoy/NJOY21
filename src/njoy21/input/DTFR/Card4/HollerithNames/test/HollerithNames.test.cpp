@@ -5,7 +5,7 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "HollerithNames input values",
-         "[Card4], [HollerithNames]" ){
+  "[Card4], [HollerithNames]" ){
   Argument< DTFR::Card3::Iptotl > iptotl;
   iptotl.value = 6 ;
 
@@ -16,7 +16,7 @@ SCENARIO( "HollerithNames input values",
 
       THEN( "the Hollerith names can be extracted correctly" ){
         std::vector<std::string > refHolNames{ "pheat1", "edits", "dtfr" };
-	REQUIRE( refHolNames == argument::extract< 
+        REQUIRE( refHolNames == argument::extract< 
           DTFR::Card4::HollerithNames >( iss, iptotl.value - 3 ).value );
       } // THEN
     } // WHEN

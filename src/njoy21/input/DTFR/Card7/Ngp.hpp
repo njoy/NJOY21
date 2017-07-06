@@ -7,7 +7,8 @@ struct Ngp {
       "ngp is the number of gamma groups, and this value must agree with\n"
       "the the photon group structure used in GROUPR.\n"
       "\n"
-      "ngp is required to be some non-negative integer.";
+      "ngp is required to be some non-negative integer, and has a default\n."
+      "value of 0.";
   }
 
   static Value_t defaultValue(){ return 0; }

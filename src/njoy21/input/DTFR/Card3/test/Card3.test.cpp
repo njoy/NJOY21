@@ -36,9 +36,11 @@ SCENARIO( "Validating card3 inputs",
   } // GIVEN
   GIVEN( "invalid DTFR card3 inputs" ){
     WHEN( "all DTFR inputs provided" ){
-      iRecordStream<char> iss( std::istringstream( "-1 12 -5 5 25 1 0" ) );
+      iRecordStream<char> iss1( std::istringstream( "-1 12 -5 5 25 1 0" ) );
+      iRecordStream<char> iss2( std::istringstream( "5 12 4 5 15 1 0" ) );
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( DTFR::Card3( iss ) );
+        REQUIRE_THROWS( DTFR::Card3( iss1 ) );
+        REQUIRE_THROWS( DTFR::Card3( iss2 ) );
       } // THEN
     } // WHEN
     WHEN( "not all DTFR inputs provided" ){

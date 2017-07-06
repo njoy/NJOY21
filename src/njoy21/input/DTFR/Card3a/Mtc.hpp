@@ -3,8 +3,8 @@ struct Mtc {
   static std::string name() { return "mtc"; }
   static std::string description() {
     return
-      "Mtc is the MT number for thermal coherent cross sections to be\n"
-      "extracted from the GENDF tape. As with all MT numbers, Mtc must be\n"
+      "mtc is the MT number for thermal coherent cross sections to be\n"
+      "extracted from the GENDF tape. As with all MT numbers, mtc must be\n"
       "three digits or less.";
   }
   

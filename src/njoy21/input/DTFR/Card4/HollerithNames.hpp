@@ -5,8 +5,8 @@ struct HollerithNames {
   static std::string description() {
     return 
       "HollerithNames is a vector of the six-character hollerith names for\n"
-      "edits. User may enter names for as many cards as needed. Ther will be\n"
-      "(iptotl - 3) names read. Each name is delimited with a '.";
+      "edits. User may enter names for as many cards as needed. There will\n"
+      "be (iptotl - 3) names read.";
   }
 
   static bool verify( const Value_t& hollerithNames, int nConstants ){

@@ -8,10 +8,10 @@ SCENARIO( "Validating card6 inputs",
   "[DFTR], [Card6]" ){
   GIVEN( "valid DTFR card6 inputs" ){
     WHEN( "all DTFR inputs provided" ){
-      iRecordStream<char> iss( std::istringstream( "5 12" ) );
+      iRecordStream<char> iss( std::istringstream( "8 12" ) );
       DTFR::Card6 card6( iss );
       THEN( "the cards should correspond to correct values" ){
-        REQUIRE( 5  == card6.nlmax.value );
+        REQUIRE( 8  == card6.nlmax.value );
         REQUIRE( 12 == card6.ng.value );
       } // THEN
     } // WHEN

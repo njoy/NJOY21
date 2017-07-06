@@ -6,8 +6,8 @@ struct Ned {
     return
       "Ned is the number of entries in the edit table. Note that this is\n"
       "not equal to the number of edit positions, it is the number of edit\n"
-      "edit specification triplets to be read. Therefore, ned has to be\n"
-      "greater than or equal to (iptotl - 3)."; 
+      "specification triplets to be read. Therefore, ned must be greater\n"
+      "than or equal to (iptotl - 3)."; 
  }
 
   static Value_t defaultValue( const Argument<Iptotl>& ){ return 0; }

@@ -31,33 +31,33 @@ public:
 	
 	  auto card3a = 
             (card3.ntherm.value != 0 ) ? 
-	      optional<Card3a>(Card3a( is )) : std::nullopt;
+              optional<Card3a>(Card3a( is )) : std::nullopt;
 
-	  auto card4 = Card4( is, card3.iptotl);
+          auto card4 = Card4( is, card3.iptotl);
           
-	  Card5List card5List;
+          Card5List card5List;
 
-	  // Get all the card5 values. The # of card5 cards
-	  // is specified by ned
-	  try {
+          // Get all the card5 values. The # of card5 cards
+          // is specified by ned
+          try {
             for ( int n = 0; n < card3.ned.value; n++ ){
               card5List.emplace_back( is );
-	    }
-	  }
+            }
+          }
           catch( std::exception& e ){
             Log::info( "Failed reading card5" );
-	    Log::info( "Expecting {} cards but instead got {} card(s)",
+            Log::info( "Expecting {} cards but instead got {} card(s)",
               card3.ned.value, card5List.size() );
-	    throw e;
-	  }
-	 ControlTuple t(card3, card3a, card4, card5List ); 
-	 return t;
-	}
-	// ...or do cards 6-8
+            throw e;
+          }
+	  ControlTuple t(card3, card3a, card4, card5List ); 
+	  return t;
+        }
+        // ...or do cards 6-8
         else {
           auto card6 = Card6( is );
-	  return card6; 
-	}   
+          return card6; 
+        }   
   }
 
   template< typename Char >
@@ -73,6 +73,10 @@ public:
         }
         while ( card8List.back().hisnam.value );
         card8List.pop_back();
+        if ( card8List.size() == 0 ){
+          Log::info( "Failed reading Card8" );
+          throw("Invalid Card8 entry");
+        }  
       }
     catch( std::exception& e ){
       Log::info("Trouble while validating DTFR input");

@@ -5,14 +5,14 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "DTFR ng values",
-         "[DTFR],[Card6], [Ng]"){
+  "[DTFR],[Card6], [Ng]"){
 
   GIVEN( "valid ng values" ){
     std::vector<int> validValues{1, 2};
     THEN( "the returned class has the correct value" ){
       for( auto& ng : validValues ){
         iRecordStream<char> iss(
-            std::istringstream( std::to_string(ng) ) );
+          std::istringstream( std::to_string(ng) ) );
         REQUIRE( ng == argument::extract< 
           DTFR::Card6::Ng >( iss ).value );
       }

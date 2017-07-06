@@ -5,7 +5,7 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "DTFR nlmax values",
-         "[DTFR],[Card6], [Nlmax]"){
+  "[DTFR],[Card6], [Nlmax]"){
 
   GIVEN( "valid nlmax values" ){
     std::vector<int> validValues{1, 2};
@@ -13,7 +13,7 @@ SCENARIO( "DTFR nlmax values",
     THEN( "the returned class has the correct value" ){
       for( auto& nlmax : validValues ){
         iRecordStream<char> iss(
-            std::istringstream( std::to_string(nlmax) ) );
+          std::istringstream( std::to_string(nlmax) ) );
         REQUIRE( nlmax == argument::extract< 
           DTFR::Card6::Nlmax >( iss ).value );
       }

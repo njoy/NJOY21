@@ -12,9 +12,13 @@ struct Itabl {
       "\n"
       "In total, itabl = (iptotl - 3) + 3 + nup + ng.\n"
       "\n"
-      "Itabl must be an integer greater than zero."; 
+      "Thus, itabl must always be greater than or equal to iptotl + ng."; 
   }
 
-  static bool verify( Value_t i ){ return 0 < i; } 
+  static bool verify( const Value_t i,
+                      const Argument<DTFR::Card3::Iptotl>& iptotl,
+                      const Argument<DTFR::Card3::Ng>& ng ){ 
+    return ( iptotl.value + ng.value ) <= i; 
+  } 
 };
 

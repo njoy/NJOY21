@@ -8,11 +8,11 @@ SCENARIO( "DTFR iedit values",
   "[DTFR],[Card2], [Iedit]"){
 
   GIVEN( "valid iedit values" ){
-    iRecordStream<char> iss1( std::istringstream( "0" ) );
-    iRecordStream<char> iss2( std::istringstream( "1" ) );
+    iRecordStream<char> iss0( std::istringstream( "0" ) );
+    iRecordStream<char> iss1( std::istringstream( "1" ) );
     THEN( "the returned calss has the correct value" ){
-      REQUIRE( 0 == argument::extract< DTFR::Card2::Iedit >( iss1 ).value );
-      REQUIRE( 1 == argument::extract< DTFR::Card2::Iedit >( iss2 ).value );
+      REQUIRE( 0 == argument::extract< DTFR::Card2::Iedit >( iss0 ).value );
+      REQUIRE( 1 == argument::extract< DTFR::Card2::Iedit >( iss1 ).value );
     } // THEN
   } // GIVEN
 

@@ -37,7 +37,7 @@ SCENARIO( "DTFR ned values",
   GIVEN( "a smaller iptotl value" ){
     Argument< DTFR::Card3::Iptotl >iptotl; iptotl.value = 3;
     WHEN( "no ned input value is given" ){
-      THEN( "default value is used, exception is thrown" ){
+      THEN( "default value is used" ){
         iRecordStream<char> iss( std::istringstream( " /" ) );
         REQUIRE( 0 == argument::extract< 
           DTFR::Card3::Ned >( iss, iptotl ).value );

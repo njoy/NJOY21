@@ -10,7 +10,7 @@ SCENARIO( "Validating card5 inputs",
     Argument< DTFR::Card3::Ned > ned;
     ned.value = 6;
 
-    WHEN( "all DTFR inputs provided are valid" ){
+    WHEN( "all DTFR card5 inputs provided are valid" ){
       iRecordStream<char> iss( std::istringstream( "1 91 3" ) );
       DTFR::Card5 card5( iss );
       THEN( "the cards should correspond to correct values" ){
@@ -25,7 +25,7 @@ SCENARIO( "Validating card5 inputs",
     Argument< DTFR::Card3::Ned > ned;
     ned.value = 6;
 
-    WHEN( "not all DTFR inputs provided are valid" ){
+    WHEN( "not all DTFR card5 inputs provided are valid" ){
       iRecordStream<char> iss( std::istringstream( "-1 91 3" ) );
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( DTFR::Card5( iss ) );
