@@ -63,7 +63,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card9 input values can be verified" ){
 
-      REQUIRE( 4 == groupr.card9List.size() );
+      REQUIRE( 3 == groupr.card9List.size() );
       int i;
       { i = 0;
         REQUIRE( 3 == groupr.card9List[i].mfd.value );
@@ -87,7 +87,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
       }
     }
     THEN( "the Card10 input values can be verified" ){
-      REQUIRE( 2 == groupr.card10List.size() );
+      REQUIRE( 1 == groupr.card10List.size() );
       REQUIRE( 9235 == groupr.card10List[0].matd.value );
       REQUIRE( 0 == groupr.card10List[1].matd.value );
     }
@@ -145,7 +145,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card9 input values can be verified" ){
 
-      REQUIRE( 4 == groupr.card9List.size() );
+      REQUIRE( 3 == groupr.card9List.size() );
       int i;
       { i = 0;
         REQUIRE( 3 == groupr.card9List[i].mfd.value );
@@ -169,7 +169,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
       }
     }
     THEN( "the Card10 input values can be verified" ){
-      REQUIRE( 2 == groupr.card10List.size() );
+      REQUIRE( 1 == groupr.card10List.size() );
       REQUIRE( 9235 == groupr.card10List[0].matd.value );
       REQUIRE( 0 == groupr.card10List[1].matd.value );
     }
@@ -276,7 +276,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card9 input values can be verified" ){
 
-      REQUIRE( 4 == groupr.card9List.size() );
+      REQUIRE( 3 == groupr.card9List.size() );
       int i;
       { i = 0;
         REQUIRE( 3 == groupr.card9List[i].mfd.value );
@@ -300,7 +300,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
       }
     }
     THEN( "the Card10 input values can be verified" ){
-      REQUIRE( 2 == groupr.card10List.size() );
+      REQUIRE( 1 == groupr.card10List.size() );
       REQUIRE( 9235 == groupr.card10List[0].matd.value );
       REQUIRE( 0 == groupr.card10List[1].matd.value );
     }
@@ -358,7 +358,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card9 input values can be verified" ){
 
-      REQUIRE( 4 == groupr.card9List.size() );
+      REQUIRE( 3 == groupr.card9List.size() );
       int i;
       { i = 0;
         REQUIRE( 3 == groupr.card9List[i].mfd.value );
@@ -382,7 +382,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
       }
     }
     THEN( "the Card10 input values can be verified" ){
-      REQUIRE( 2 == groupr.card10List.size() );
+      REQUIRE( 1 == groupr.card10List.size() );
       REQUIRE( 9235 == groupr.card10List[0].matd.value );
       REQUIRE( 0 == groupr.card10List[1].matd.value );
     }

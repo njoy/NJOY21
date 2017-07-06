@@ -12,8 +12,23 @@ struct Ninwt : public argument::common::Nout {
         "The default value is 0.";
   }
 
-  static Value_t defaultValue(){ return 0; }
-  static bool verify( const Value_t v ){
-    return (std::abs(v) > 19 && std::abs(v) < 100) or v == 0;
+  static Value_t defaultValue( 
+                      const Argument< Card1::Nendf >&,
+                      const Argument< Card1::Npend >&,
+                      const Argument< Card1::Ngout1 >&,
+                      const Argument< Card1::Ngout2 >&){
+    return 0; 
+  }
+
+  static bool verify( const Value_t v,
+                      const Argument< Card1::Nendf >& nendf,
+                      const Argument< Card1::Npend >& npend,
+                      const Argument< Card1::Ngout1 >& ngout1,
+                      const Argument< Card1::Ngout2 >& ngout2 ){
+    return ( argument::common::Nin::verify( v ) ) and
+           ( std::abs( nendf.value ) != std::abs( v ) ) and
+           ( std::abs( npend.value ) != std::abs( v ) ) and
+           ( std::abs( ngout1.value ) != std::abs( v ) ) and
+           ( std::abs( ngout2.value ) != std::abs( v ) );
   }
 };
