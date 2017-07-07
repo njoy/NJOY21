@@ -391,10 +391,12 @@
     "src/njoy21/input/GROUPR.hpp",
     "src/njoy21/input/HEATR.hpp",
     "src/njoy21/input/Label.hpp",
+    "src/njoy21/input/MIXR.hpp",
     "src/njoy21/input/MODER.hpp",
     "src/njoy21/input/PURR.hpp",
     "src/njoy21/input/RECONR.hpp",
     "src/njoy21/input/UNRESR.hpp",
+    "src/njoy21/input/VIEWR.hpp",
     "src/njoy21/input/ACER/Card1.hpp",
     "src/njoy21/input/ACER/Card10.hpp",
     "src/njoy21/input/ACER/Card11.hpp",
@@ -545,6 +547,14 @@
     "src/njoy21/input/HEATR/Card2/Npk.hpp",
     "src/njoy21/input/HEATR/Card2/Nqa.hpp",
     "src/njoy21/input/HEATR/Card2/Ntemp.hpp",
+    "src/njoy21/input/MIXR/Card4.hpp",
+    "src/njoy21/input/MIXR/Card5.hpp",
+    "src/njoy21/input/MIXR/Card6.hpp",
+    "src/njoy21/input/MIXR/Card4/Temp.hpp",
+    "src/njoy21/input/MIXR/Card5/Awr.hpp",
+    "src/njoy21/input/MIXR/Card5/Matd.hpp",
+    "src/njoy21/input/MIXR/Card5/Za.hpp",
+    "src/njoy21/input/MIXR/Card6/Des.hpp",
     "src/njoy21/input/MODER/Card1.hpp",
     "src/njoy21/input/MODER/Card2.hpp",
     "src/njoy21/input/MODER/Card3.hpp",
@@ -586,6 +596,9 @@
     "src/njoy21/input/RECONR/Card6/Enode.hpp",
     "src/njoy21/input/UNRESR/Card2.hpp",
     "src/njoy21/input/UNRESR/Card2/Iprint.hpp",
+    "src/njoy21/input/VIEWR/Card1.hpp",
+    "src/njoy21/input/VIEWR/Card1/Infile.hpp",
+    "src/njoy21/input/VIEWR/Card1/Nps.hpp",
     "src/njoy21/io/Manager.hpp",
     "src/njoy21/io/Manager/Builder.hpp",
     "src/njoy21/io/Manager/FileGaurd.hpp",
@@ -1002,6 +1015,30 @@
     "njoy21.input.Label": [
       "src/njoy21/input/Label/test/Label.test.cpp"
     ],
+    "njoy21.input.MIXR.Card4": [
+      "src/njoy21/input/MIXR/Card4/test/Card4.test.cpp"
+    ],
+    "njoy21.input.MIXR.Card4.Temp": [
+      "src/njoy21/input/MIXR/Card4/Temp/test/Temp.test.cpp"
+    ],
+    "njoy21.input.MIXR.Card5": [
+      "src/njoy21/input/MIXR/Card5/test/Card5.test.cpp"
+    ],
+    "njoy21.input.MIXR.Card5.Awr": [
+      "src/njoy21/input/MIXR/Card5/Awr/test/Awr.test.cpp"
+    ],
+    "njoy21.input.MIXR.Card5.Matd": [
+      "src/njoy21/input/MIXR/Card5/Matd/test/Matd.test.cpp"
+    ],
+    "njoy21.input.MIXR.Card5.Za": [
+      "src/njoy21/input/MIXR/Card5/Za/test/Za.test.cpp"
+    ],
+    "njoy21.input.MIXR.Card6": [
+      "src/njoy21/input/MIXR/Card6/test/Card6.test.cpp"
+    ],
+    "njoy21.input.MIXR.Card6.Des": [
+      "src/njoy21/input/MIXR/Card6/Des/test/Des.test.cpp"
+    ],
     "njoy21.input.MODER": [
       "src/njoy21/input/MODER/test/MODER.test.cpp"
     ],
@@ -1136,6 +1173,18 @@
     ],
     "njoy21.input.UNRESR.Card2.Iprint": [
       "src/njoy21/input/UNRESR/Card2/Iprint/test/Iprint.test.cpp"
+    ],
+    "njoy21.input.VIEWR": [
+      "src/njoy21/input/VIEWR/test/VIEWR.test.cpp"
+    ],
+    "njoy21.input.VIEWR.Card1": [
+      "src/njoy21/input/VIEWR/Card1/test/Card1.test.cpp"
+    ],
+    "njoy21.input.VIEWR.Card1.Infile": [
+      "src/njoy21/input/VIEWR/Card1/Infile/test/Infile.test.cpp"
+    ],
+    "njoy21.input.VIEWR.Card1.Nps": [
+      "src/njoy21/input/VIEWR/Card1/Nps/test/Nps.test.cpp"
     ],
     "njoy21.input.argument": [
       "src/njoy21/input/argument/test/argument.test.cpp",
