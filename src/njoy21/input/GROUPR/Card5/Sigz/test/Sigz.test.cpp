@@ -12,15 +12,15 @@ SCENARIO( "Sigz input values", "[Card5], [Sigz]" ){
     nsigz.value = 3;
 
     WHEN( "there are the correct number of temperatures and they are valid" ){
-      iRecordStream< char> issPoints( std::istringstream(" 1E10 2.0 3.0") );
+      iRecordStream< char> issPoints( std::istringstream(" 1.0 2.0 3.0") );
 
       THEN( "the grid points can be extracted correctly" ){
         auto sigz = argument::extract< 
                     GROUPR::Card5::Sigz >(issPoints, nsigz);
         std::vector< dimwits::Quantity< dimwits::Barn > > refSigzs{
-                      1E10*dimwits::barn, 
-                      2.0*dimwits::barn, 
-                      3.0*dimwits::barn};
+            std::numeric_limits<double>::infinity()*dimwits::barn, 
+            2.0*dimwits::barn, 
+            3.0*dimwits::barn};
         REQUIRE( refSigzs == sigz.value );
       }
     }

@@ -17,20 +17,15 @@ struct Mtd {
         "     221-250      reserved for thermal scattering\n"
         "     251          average elastic scatter cosine computed from \n"
         "                   File 4\n"
-        "     252          continuos-slowing-down parameter computed from \n"
+        "     252          continuous-slowing-down parameter computed from \n"
         "                   File 4\n"
         "     257          average energy\n"
         "     258          average lethargy\n"
         "     259          average inverse velocity (m/sec)\n";
   }
 
-  static Value_t defaultValue( const Argument< Mfd >& ){ return 0; }
-  static bool verify( const Value_t M, const Argument< Mfd >& mfd){
-    if( mfd.value == 0 ){
-      return true;
-    }
-    else{
-      return M != 0;
-    }
+  static Value_t defaultValue(){ return 0; }
+  static bool verify( const Value_t M ){
+    return ( M != 0 ) and ( std::abs( M ) < 1000 );
   }
 };

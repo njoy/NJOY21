@@ -17,12 +17,12 @@ public:
   #include "njoy21/input/GROUPR/Card9.hpp"
   #include "njoy21/input/GROUPR/Card10.hpp"
 
+  using Card8Variant = std::variant< std::monostate, Card8b, Card8c, Card8d >;
+
   #include "njoy21/input/GROUPR/src/readArbitraryNeutronStructure.hpp"
   #include "njoy21/input/GROUPR/src/readArbitraryGammaStructure.hpp"
   #include "njoy21/input/GROUPR/src/readFluxCalculatorParameters.hpp"
-  #include "njoy21/input/GROUPR/src/readTabulatedWeightFunction.hpp"
-  #include "njoy21/input/GROUPR/src/readAnalyticFluxParameters.hpp"
-  #include "njoy21/input/GROUPR/src/readInputResonanceFlux.hpp"
+  #include "njoy21/input/GROUPR/src/readFluxParameters.hpp"
   #include "njoy21/input/GROUPR/src/readCard9List.hpp"
   #include "njoy21/input/GROUPR/src/readCard10List.hpp"
 
@@ -34,9 +34,7 @@ public:
   optional< std::pair< Card6a, Card6b > > arbitraryNeutronStructureCards;
   optional< std::pair< Card7a, Card7b > > arbitraryGammaStructureCards;
   optional< Card8a > card8a;
-  optional< Card8b > card8b;
-  optional< Card8c > card8c;
-  optional< Card8d > card8d;
+  Card8Variant card8Variant;
   std::vector< Card9 > card9List;
   std::vector< Card10 > card10List;
 
@@ -53,9 +51,7 @@ public:
     arbitraryGammaStructureCards( 
         readArbitraryGammaStructure( is, card2.igg.value ) ),
     card8a( readFluxCalculatorParameters( is, card2.iwt.value, card1 ) ),
-    card8b( readTabulatedWeightFunction( is, card2.iwt.value ) ),
-    card8c( readAnalyticFluxParameters( is, card2.iwt.value ) ),
-    card8d( readInputResonanceFlux( is, card2.iwt.value, card1 ) ),
+    card8Variant( readFluxParameters( is, card2.iwt.value, card1 ) ),
     card9List( readCard9List( is ) ),
     card10List( readCard10List( is ) )
   {

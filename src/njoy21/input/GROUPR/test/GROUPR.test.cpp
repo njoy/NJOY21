@@ -18,6 +18,8 @@ std::string sCard9_10{
       "9235 /\n"                       // Card10
       "0 /\n"                       // Card10
 };
+
+
 SCENARIO( "Parsing valid GROUPR input" ){
   WHEN( "reading in a very generic input" ){
     iRecordStream<char> iss( std::istringstream(
@@ -58,9 +60,15 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card5 input values can be verified" ){
       REQUIRE( 2 == groupr.card5.sigz.value.size() );
-      REQUIRE( 1E6*dimwits::barn == groupr.card5.sigz.value[0] );
+      REQUIRE( std::numeric_limits<double>::infinity()*dimwits::barn == 
+               groupr.card5.sigz.value[0] );
       REQUIRE( 1E-10*dimwits::barn == groupr.card5.sigz.value[1] );
     }
+
+    THEN( "the Card8 variant must be false (i.e., not exist )" ){
+      REQUIRE( not groupr.card8Variant.index() );
+    }
+
     THEN( "the Card9 input values can be verified" ){
 
       REQUIRE( 3 == groupr.card9List.size() );
@@ -140,7 +148,8 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card5 input values can be verified" ){
       REQUIRE( 2 == groupr.card5.sigz.value.size() );
-      REQUIRE( 1E6*dimwits::barn == groupr.card5.sigz.value[0] );
+      REQUIRE( std::numeric_limits<double>::infinity()*dimwits::barn == 
+               groupr.card5.sigz.value[0] );
       REQUIRE( 1E-10*dimwits::barn == groupr.card5.sigz.value[1] );
     }
     THEN( "the Card9 input values can be verified" ){
@@ -215,13 +224,13 @@ SCENARIO( "Parsing valid GROUPR input" ){
       REQUIRE( 0.086 == card8a.gamma.value );
     }
     THEN( "the card8b values can be verified" ){
-      auto card8b = (*groupr.card8b);
-      REQUIRE( 1E-5      == card8b.wght.value.xValues[0] );
-      REQUIRE( 1E3      ==  card8b.wght.value.xValues[1] );
-      REQUIRE( 1E4      ==  card8b.wght.value.xValues[2] );
-      REQUIRE( 1.00925E4 == card8b.wght.value.xValues[3] );
-      REQUIRE( 1.01859E4 == card8b.wght.value.xValues[4] );
-      REQUIRE( 1.02802E4 == card8b.wght.value.xValues[5] );
+      auto& card8b = std::experimental::get<GROUPR::Card8b>( groupr.card8Variant );
+      REQUIRE( 1E-5        == card8b.wght.value.xValues[0] );
+      REQUIRE( 1E3         == card8b.wght.value.xValues[1] );
+      REQUIRE( 1E4         == card8b.wght.value.xValues[2] );
+      REQUIRE( 1.00925E4   == card8b.wght.value.xValues[3] );
+      REQUIRE( 1.01859E4   == card8b.wght.value.xValues[4] );
+      REQUIRE( 1.02802E4   == card8b.wght.value.xValues[5] );
 
       REQUIRE( 8.0E-20     == card8b.wght.value.yValues[0] );
       REQUIRE( 9.13415E-10 == card8b.wght.value.yValues[1] );
@@ -271,7 +280,8 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card5 input values can be verified" ){
       REQUIRE( 2 == groupr.card5.sigz.value.size() );
-      REQUIRE( 1E6*dimwits::barn == groupr.card5.sigz.value[0] );
+      REQUIRE( std::numeric_limits<double>::infinity()*dimwits::barn == 
+               groupr.card5.sigz.value[0] );
       REQUIRE( 1E-10*dimwits::barn == groupr.card5.sigz.value[1] );
     }
     THEN( "the Card9 input values can be verified" ){
@@ -306,7 +316,8 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
 
     THEN( "the card8c input values can be verified" ){
-      auto card8c = (*groupr.card8c);
+      auto& card8c = std::experimental::get<GROUPR::Card8c>( 
+          groupr.card8Variant );
       REQUIRE( 0.10*dimwits::electronVolt == card8c.eb.value );
       REQUIRE( 0.025*dimwits::electronVolt == card8c.tb.value );
       REQUIRE( 820.3E3*dimwits::electronVolt == card8c.ec.value );
@@ -353,7 +364,8 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card5 input values can be verified" ){
       REQUIRE( 2 == groupr.card5.sigz.value.size() );
-      REQUIRE( 1E6*dimwits::barn == groupr.card5.sigz.value[0] );
+      REQUIRE( std::numeric_limits<double>::infinity()*dimwits::barn == 
+               groupr.card5.sigz.value[0] );
       REQUIRE( 1E-10*dimwits::barn == groupr.card5.sigz.value[1] );
     }
     THEN( "the Card9 input values can be verified" ){
@@ -388,7 +400,9 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
 
     THEN( "the card8d input value can be verified" ){
-      REQUIRE( 22 == groupr.card8d->ninwt.value );
+      auto& card8d = std::experimental::get<GROUPR::Card8d>( 
+          groupr.card8Variant );
+      REQUIRE( 22 == card8d.ninwt.value );
     }
   }
 }

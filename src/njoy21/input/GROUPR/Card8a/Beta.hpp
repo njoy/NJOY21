@@ -4,8 +4,7 @@ struct Beta {
 
   static std::string description(){
     return 
-        "The beta parameter specifies the admixed moderator cross section (in\n"
-        "banrs per absorber atom)."
+        "The beta parameter specifies the admixed moderator \n"
         "\n"
         "The default value is 0, which means none.";
   }

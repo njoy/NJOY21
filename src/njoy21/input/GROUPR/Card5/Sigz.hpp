@@ -9,8 +9,10 @@ struct Sigz {
         "\n"
         "Note: the first value will *always* be overwritten with infinity.";
   }
-  static bool verify( const Value_t& sigz,
+  static bool verify( Value_t& sigz,
                       const Argument< Card2::Nsigz > & nsigz ){
+
+    sigz[0] = std::numeric_limits<double>::infinity()*barn;
     auto found = std::find_if( sigz.begin(), sigz.end(),
                                [](auto& E){ return E < 0.0*barn; });
 
