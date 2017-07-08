@@ -27,8 +27,8 @@ SCENARIO( "Wght input values", "[Card8b], [Wght]" ){
       std::vector<double> Y{8.00000E-20, 9.13415E-10, 6.13955E-08,
                             6.17490E-08, 6.09190E-08, 6.19874E-08};
 
-      REQUIRE( X == TAB1.xValues );
-      REQUIRE( Y == TAB1.yValues );
+      REQUIRE( ranges::equal(X, TAB1.x()) );
+      REQUIRE( ranges::equal(Y, TAB1.y()) );
     }
   }
 

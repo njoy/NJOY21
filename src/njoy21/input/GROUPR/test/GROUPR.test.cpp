@@ -225,19 +225,19 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the card8b values can be verified" ){
       auto& card8b = std::experimental::get<GROUPR::Card8b>( groupr.card8Variant );
-      REQUIRE( 1E-5        == card8b.wght.value.xValues[0] );
-      REQUIRE( 1E3         == card8b.wght.value.xValues[1] );
-      REQUIRE( 1E4         == card8b.wght.value.xValues[2] );
-      REQUIRE( 1.00925E4   == card8b.wght.value.xValues[3] );
-      REQUIRE( 1.01859E4   == card8b.wght.value.xValues[4] );
-      REQUIRE( 1.02802E4   == card8b.wght.value.xValues[5] );
+      REQUIRE( 1E-5        == card8b.wght.value.x()[0] );
+      REQUIRE( 1E3         == card8b.wght.value.x()[1] );
+      REQUIRE( 1E4         == card8b.wght.value.x()[2] );
+      REQUIRE( 1.00925E4   == card8b.wght.value.x()[3] );
+      REQUIRE( 1.01859E4   == card8b.wght.value.x()[4] );
+      REQUIRE( 1.02802E4   == card8b.wght.value.x()[5] );
 
-      REQUIRE( 8.0E-20     == card8b.wght.value.yValues[0] );
-      REQUIRE( 9.13415E-10 == card8b.wght.value.yValues[1] );
-      REQUIRE( 6.13955E-8  == card8b.wght.value.yValues[2] );
-      REQUIRE( 6.17490E-8  == card8b.wght.value.yValues[3] );
-      REQUIRE( 6.09190E-8  == card8b.wght.value.yValues[4] );
-      REQUIRE( 6.19874E-8  == card8b.wght.value.yValues[5] );
+      REQUIRE( 8.0E-20     == card8b.wght.value.y()[0] );
+      REQUIRE( 9.13415E-10 == card8b.wght.value.y()[1] );
+      REQUIRE( 6.13955E-8  == card8b.wght.value.y()[2] );
+      REQUIRE( 6.17490E-8  == card8b.wght.value.y()[3] );
+      REQUIRE( 6.09190E-8  == card8b.wght.value.y()[4] );
+      REQUIRE( 6.19874E-8  == card8b.wght.value.y()[5] );
     }
   }
   WHEN( "reading in an input where iwt=4" ){
