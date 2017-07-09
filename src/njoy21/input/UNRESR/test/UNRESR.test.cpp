@@ -81,7 +81,7 @@ SCENARIO( "Parsing invlaid UNRESR input" ){
     iRecordStream< char > iss( std::istringstream( sCard1 + sCard2_0 ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( UNRESR unresr( iss ) );
+      REQUIRE_THROWS( UNRESR( iss ) );
     }
   }
   WHEN( "Cards with non-terminating-Card2" ){
@@ -89,7 +89,7 @@ SCENARIO( "Parsing invlaid UNRESR input" ){
         std::istringstream( sCard1 + sCard2_full + sCard3 + sCard4) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( UNRESR unresr( iss ) );
+      REQUIRE_THROWS( UNRESR( iss ) );
     }
   }
   WHEN( "Card3 has too few entries" ){
@@ -99,7 +99,7 @@ SCENARIO( "Parsing invlaid UNRESR input" ){
             sCard1 + "9228 4 2 /\n" + sCard3 + sCard4 + sCard2_0 ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( UNRESR unresr( iss ) );
+      REQUIRE_THROWS( UNRESR( iss ) );
     }
   }
   WHEN( "Card3 has too many entries" ){
@@ -109,7 +109,7 @@ SCENARIO( "Parsing invlaid UNRESR input" ){
             sCard1 + "9228 2 2 /\n" + sCard3 + sCard4 + sCard2_0 ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( UNRESR unresr( iss ) );
+      REQUIRE_THROWS( UNRESR( iss ) );
     }
   }
   WHEN( "Card4 has too few entries" ){
@@ -119,7 +119,7 @@ SCENARIO( "Parsing invlaid UNRESR input" ){
             sCard1 + "9228 3 3 /\n" + sCard3 + sCard4 + sCard2_0 ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( UNRESR unresr( iss ) );
+      REQUIRE_THROWS( UNRESR( iss ) );
     }
   }
   WHEN( "Card4 has too many entries" ){
@@ -129,7 +129,7 @@ SCENARIO( "Parsing invlaid UNRESR input" ){
             sCard1 + "9228 3 1 /\n" + sCard3 + sCard4 + sCard2_0 ) );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( UNRESR unresr( iss ) );
+      REQUIRE_THROWS( UNRESR( iss ) );
     }
   }
 }

@@ -29,10 +29,10 @@ SCENARIO( "RECONR Card1 input" ){
     // as those are tested in their respective classes/tests.
     {
       iRecordStream<char> stream( std::istringstream("   -20 21") );
-      REQUIRE_THROWS( RECONR::Card1 card1( stream ) );
+      REQUIRE_THROWS( RECONR::Card1( stream ) );
     }{
       iRecordStream<char> stream( std::istringstream("   -20 -20") );
-      REQUIRE_THROWS( RECONR::Card1 card1( stream ) );
+      REQUIRE_THROWS( RECONR::Card1( stream ) );
     }
   }
 } // SCENARIO

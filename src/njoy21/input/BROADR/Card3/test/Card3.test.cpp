@@ -28,5 +28,5 @@ SCENARIO( "bugless" ){
 
 SCENARIO( "bugged" ){
   iRecordStream<char> iss( std::istringstream("   0.0") );
-  REQUIRE_THROWS( BROADR::Card3 card3( iss ) );
+  REQUIRE_THROWS( BROADR::Card3( iss ) );
 }

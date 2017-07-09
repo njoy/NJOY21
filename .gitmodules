@@ -16,3 +16,9 @@
 [submodule "dependencies/njoy_c_bindings"]
 	path = dependencies/njoy_c_bindings
 	url = https://github.com/njoy/njoy_c_bindings.git
+[submodule "dependencies/ENDFtk"]
+	path = dependencies/ENDFtk
+	url = https://github.com/njoy/ENDFtk.git
+[submodule "dependencies/variant-adapter"]
+	path = dependencies/variant-adapter
+	url = https://github.com/njoy/variant-adapter.git

@@ -23,10 +23,10 @@ struct Temp2 {
     
     if ( long( v.size() ) != ntemp2.value ){
       if ( long( v.size() ) < ntemp2.value ){
-	Log::warning( "Encountered fewer temp2 arguments than"
+        Log::warning( "Encountered fewer temp2 arguments than"
 		      " specified in card2 ntemp2 argument" );
       } else {
-	Log::warning( "Encountered more temp2 arguments than"
+        Log::warning( "Encountered more temp2 arguments than"
 		      " specified in card2 ntemp2 argument" );
       }
       Log::info( "ntemp2: {}", ntemp2.value );
@@ -41,20 +41,18 @@ struct Temp2 {
       Log::warning("Encountered temp2 argument less than temp1 argument" );
       Log::info("temp1 argument: {}", temp1.value );
       Log::info("temp2 argument [{}]: {}",
-		std::distance( std::begin(v), position ), *position );
+        std::distance( std::begin(v), position ), *position );
       return false;
     }
 
     if ( istrap.value ){
       position = std::is_sorted_until( std::begin(v), std::end(v) );
       if ( position != std::end(v) ){
-	Log::warning("Encountered unsorted temp2 arguments in bootstrap mode" );
+        Log::warning("Encountered unsorted temp2 arguments in bootstrap mode" );
         const auto distance = std::distance( std::begin(v), position );
-	Log::info("temp2 argument [{}]: {}",
-		   distance - 1, position[-1] );
-	Log::info("temp2 argument [{}]: {}",
-                   distance, *position );
-	return false;
+        Log::info("temp2 argument [{}]: {}", distance - 1, position[-1] );
+        Log::info("temp2 argument [{}]: {}", distance, *position );
+        return false;
       }
     }
     return true;
