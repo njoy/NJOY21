@@ -5,9 +5,10 @@ struct Newfor {
   static std::string description(){
     return 
         "The newfor argument specifies whether the 'new' cumulative angle \n"
-        "distributions, LAW=61, and outgoing particle distributions.\n"
+        "distributions, LAW=61, and outgoing particle distributions are to be\n"
+        "used.\n"
         "\n"
-        "This was intruced for MCNP4C and is suitable for all subsequent\n"
+        "This was introduced for MCNP4C and is suitable for all subsequent\n"
         "versions.";
   }
 

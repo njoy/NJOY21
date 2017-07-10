@@ -24,8 +24,7 @@ SCENARIO( "Iprint input values",
   GIVEN( "no iprint values" ){
     THEN( "the default value is returned" ){
       iRecordStream< char > iss(std::istringstream( " /" ));
-      REQUIRE( UNRESR::Card2::Iprint::defaultValue() == 
-                argument::extract< UNRESR::Card2::Iprint >( iss ).value );
+      REQUIRE( 0 == argument::extract< UNRESR::Card2::Iprint >( iss ).value );
     }
   }
   

@@ -12,14 +12,14 @@ SCENARIO( "nace output values",
   Argument< ACER::Card1::Nendf > nendf; 
   Argument< ACER::Card1::Npend > npend; 
   Argument< ACER::Card1::Ngend > ngend; 
-  nendf.value = 20;
+  nendf.value = 23;
   npend.value = 21;
   ngend.value = 22;
 
   GIVEN( "valid nace input values" ){
     WHEN( "the nendf and npend values are not the same as the nace values" ){
       THEN( "the returned class has the correct tape value" ){
-        for( auto nace : {-23, 23, 50, 99, -99} ){
+        for( auto nace : {-20, 20, 50, 99, -99} ){
           iRecordStream<char> issNace( 
               std::istringstream(std::to_string( nace ) ) );
           REQUIRE( nace == argument::extract< ACER::Card1::Nace >(

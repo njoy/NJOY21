@@ -8,10 +8,9 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Matb  output values",
          "[GROUPR],[Card2], [Matb]"){
   GIVEN( "valid matb values" ){
-    std::vector<int> validValues{1001, 1, 9238};
 
     THEN( "the returned class has the correct value" ){
-      for( auto& matb : validValues ){
+      for( auto& matb : {1001, 1, 9238} ){
         iRecordStream<char> iss(
             std::istringstream( std::to_string(matb) ) );
 
@@ -21,10 +20,9 @@ SCENARIO( "Matb  output values",
     }
   }
   GIVEN( "invalid matb values" ){
-    std::vector<int> invalidValues{0};
 
     THEN( "an exception is thrown" ){
-      for( auto& matb : invalidValues ){
+      for( auto& matb : {0, 10000} ){
         iRecordStream<char> iss(
             std::istringstream( std::to_string(matb) ) );
 

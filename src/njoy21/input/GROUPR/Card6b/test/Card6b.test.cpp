@@ -32,7 +32,7 @@ SCENARIO( "Verifying GROUPR Card6b input", "[GROUPR], [Card6b]" ){
       REQUIRE_THROWS( GROUPR::Card6b( issTemps, ngn ) );
     }
   }
-  GIVEN( "invalid sigz---too many sigma zero values" ){
+  GIVEN( "invalid ngn---too many enery boundaries " ){
     iRecordStream< char> issTemps( std::istringstream( " 1 2 3 4 5 " ) );
 
     THEN( "an exception is thrown" ){

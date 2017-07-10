@@ -17,7 +17,7 @@ struct Ndir : public argument::common::Nout {
       "\n"
       "ndir values are restricted to an absolute value in the range [20, 99]."
       "\n"
-      "ndir is the main output tape for the ACE-formatted data table.";
+      "ndir contains the xsdir entry for the ACE file.";
   }
   static bool verify( const Value_t v, 
                       const Argument<Nendf>& nendf, 

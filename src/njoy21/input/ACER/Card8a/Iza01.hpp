@@ -7,5 +7,7 @@ struct Iza01 {
         "The iza arguments specify the ZA value for the moderator components.";
   }
 
-  static bool verify( const Value_t& M ){ return M > 0; }
+  static bool verify( const Value_t& M ){ 
+    return ( M > 0 ) and ( M < 200000 ) ; 
+  }
 };

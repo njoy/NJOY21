@@ -14,28 +14,27 @@ struct Temp {
       Log::info( "Incorrect number of temperatures read in." );
       return false;
     }
+
     // Make sure all temperatures are positive
     auto found = std::find_if( temps.begin(), temps.end(),
                                [](auto& E){ return E < 0.0*kelvin; });
-
     if ( found != temps.end() ){
       Log::info( "Negative temperature ({}) found at index {}",
                     *found, std::distance(temps.begin(), found));
       return false;
-    } else {
+    } 
 
-      // Make sure temperatures are in increasing order
-      for( size_t i=1; i < temps.size(); ++i ){
-        if( temps[i-1] > temps[i] ){
-          Log::warning( 
-            "Temperatures are not in increasing order.\n"
-             "Temperature at index {} ({}) > tempeature at index {} ({})",
-                       temps[i-1], i-1, temps[i], i);
-          return false;
-        }
-      }
-
-      return true;
+    // Make sure temperatures are in increasing order
+    auto unsortedStart = std::is_sorted_until( temps.begin(), temps.end() );
+    if( unsortedStart != temps.end() ){
+      auto dis = std::distance( temps.begin(), unsortedStart );
+      Log::warning( "Temperatures are not in increasing order.");
+      Log::info( "Temperature at index {} ({}) > temperature at index {} ({})",
+                   dis-1, *(unsortedStart-1), dis, *(unsortedStart));
+      return false;
     }
+
+    // If we haven't returned false yet...
+    return true;
   }
 };

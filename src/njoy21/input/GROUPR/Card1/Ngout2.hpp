@@ -14,12 +14,13 @@ struct Ngout2 : public argument::common::Nout {
       "ascii text files. Negative values indicate unformatted output i.e.\n"
       "Fortran-style block binary\n"
       "\n"
-      "ngout2 values are restricted to an absolute value between 20 and 99,\n"
+      "values are restricted to an absolute value between 20 and 99,\n"
       "inclusively, and are required to have the same signedness as\n"
       "(and different absolute value than) the corresponding nendf argument.\n"
       "\n"
       "When the ngout1 argument is specified, NJOY will copy this tape to \n"
-      "ngout2 and append the new GENDF tape to ngout2.";
+      "ngout2 and append the new GENDF tape to ngout2. Otherwise, (when\n"
+      "ngout1=0) the GENDF tape is written to ngout2.";
   }
 
   static bool verify( const Value_t v, 
@@ -27,8 +28,7 @@ struct Ngout2 : public argument::common::Nout {
                      const Argument< Npend >& npend,
                      const Argument< Ngout1 >& ngout1
                      ){
-    return argument::common::Nin::verify( v ) and
-        ( Ngout1::verify( ngout1.value, nendf, npend ) ) and
+    return ( argument::common::Nin::verify( v ) ) and
         /* Make sure the ngout2 is not equal to other input tape numbers */
         ( std::abs( nendf.value ) != std::abs( v ) ) and
         ( std::abs( npend.value ) != std::abs( v ) ) and

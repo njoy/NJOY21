@@ -38,6 +38,7 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gcc; fi
   
 script: ./.travis/build.sh
+after_success: "./.travis/signature.sh"
 
 env:
   - build_type=debug static_libraries=FALSE
@@ -60,7 +61,3 @@ matrix:
       env:
         build_type=debug static_libraries=FALSE
         appended_flags="-fsanitize=undefined;-fno-omit-frame-pointer;"
-  exclude:
-    - os: osx
-      compiler: gcc
-        

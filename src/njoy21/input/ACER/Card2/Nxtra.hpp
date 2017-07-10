@@ -11,5 +11,6 @@ struct Nxtra {
   }
 
   static Value_t defaultValue(){ return 0; }
-  static bool verify( Value_t n ){ return n >= 0; }
+  static bool verify( Value_t n ){ 
+    return ( n >= 0 ) and ( n <= 16 ); }
 };

@@ -14,15 +14,15 @@ SCENARIO( "Verifying ACER Card9 input", "[ACER], [Card9]" ){
         iRecordStream<char> issEmax( 
             std::istringstream( std::to_string(emax) ) );
         auto emaxArg = argument::extract< ACER::Card9::Emax >(issEmax );
-        REQUIRE( emax == emaxArg.value );
+        REQUIRE( emax*dimwits::electronVolt == emaxArg.value );
       }
     }
   }
   GIVEN( "no emax value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( ACER::Card9::Emax::defaultValue() == 
-                argument::extract< ACER::Card9::Emax >( iss ).value );
+      REQUIRE( 1.0*dimwits::kilo( dimwits::electronVolt ) == 
+               argument::extract< ACER::Card9::Emax >( iss ).value );
     }
   }
   GIVEN( "invalid emax values" ){

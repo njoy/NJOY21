@@ -1,16 +1,14 @@
 class Card10 {
 public:
 
-  #include "njoy21/input/ACER/Card10/Tempd.hpp"
-
   Argument< argument::common::Matd > matd;
-  Argument< Tempd > tempd;
+  Argument< argument::common::Tempd > tempd;
 
   template< typename Char >
   Card10( iRecordStream< Char >& is )
     try:
     matd( argument::extract< argument::common::Matd >( is ) ),
-    tempd( argument::extract< Tempd >( is ) )
+    tempd( argument::extract< argument::common::Tempd >( is ) )
   {
     Card::clear( is );
   }

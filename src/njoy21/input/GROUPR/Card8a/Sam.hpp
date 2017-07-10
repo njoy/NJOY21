@@ -5,7 +5,7 @@ struct Sam {
   static std::string description(){
     return 
         "The sam parameter specifies the admixed moderator cross section (in\n"
-        "banrs per absorber atom)."
+        "barns per absorber atom)."
         "\n"
         "The default value is 0, which means none.";
   }

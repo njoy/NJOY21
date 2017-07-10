@@ -26,8 +26,7 @@ SCENARIO( "Nladr input values",
   GIVEN( "no nladr values" ){
     THEN( "the default value is returned" ){
       iRecordStream< char> iss( std::istringstream(" /") );
-      REQUIRE( PURR::Card2::Nladr::defaultValue() == 
-                argument::extract< PURR::Card2::Nladr >( iss ).value );
+      REQUIRE( 64 == argument::extract< PURR::Card2::Nladr >( iss ).value );
     }
   }
   

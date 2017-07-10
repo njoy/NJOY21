@@ -4,7 +4,7 @@ struct Mte {
 
   static std::string description() {
     return
-        "The mte argument is the material number for the thermal elastic \n"
+        "The mte argument is the reaction number for the thermal elastic \n"
         "scattering.\n"
         "\n"
         "The deafault value is zero; a nonzero value is only needed for \n"
@@ -12,5 +12,7 @@ struct Mte {
   }
 
   static Value_t defaultValue(){ return 0; }
-  static bool verify( const Value_t& mte ){ return mte >= 0; }
+  static bool verify( const Value_t& mte ){ 
+    return ( mte >= 0 ) and ( mte < 1000 ); 
+  }
 };

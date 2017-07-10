@@ -16,7 +16,7 @@ SCENARIO( "Validating card2 inputs",
       REQUIRE( 1 == card2.iopt.value );
       REQUIRE( 0 == card2.iprint.value );
       REQUIRE( 2 == card2.itype.value );
-      REQUIRE( .80 == card2.suff.value );
+      REQUIRE( ".80" == card2.suff.value );
       REQUIRE( 4 == card2.nxtra.value );
     }
   }
@@ -28,7 +28,7 @@ SCENARIO( "Validating card2 inputs",
       REQUIRE( -2 == card2.iopt.value );
       REQUIRE( 1 == card2.iprint.value );
       REQUIRE( 1 == card2.itype.value );
-      REQUIRE( .00 == card2.suff.value );
+      REQUIRE( ".00" == card2.suff.value );
       REQUIRE( 0 == card2.nxtra.value );
     }
   }

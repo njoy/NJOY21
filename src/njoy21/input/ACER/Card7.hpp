@@ -12,8 +12,8 @@ public:
   Card7( iRecordStream< Char >& is )
   try:
     thin1( argument::extract< Thin1 >( is ) ),
-    thin2( argument::extract< Thin2 >( is ) ),
-    thin3( argument::extract< Thin3 >( is ) )
+    thin2( argument::extract< Thin2 >( is, thin1 ) ),
+    thin3( argument::extract< Thin3 >( is, thin1 ) )
   {
     Card::clear( is );
   }

@@ -10,5 +10,13 @@ struct Mtname {
         "The argument must be less than 16 characters long.";
   }
 
-  static bool verify( const Value_t M ){ return M.size() < 16; }
+  static Value_t defaultValue( const Argument< Mfd >& ){ return ""; }
+  static bool verify( const Value_t M, const Argument< Mfd >& mfd ){ 
+    if( mfd.value == 0 ){
+      return true;
+    }
+    else{
+      return ( M.size() < 16 ) and ( M.size() > 0 );
+    }
+  }
 };

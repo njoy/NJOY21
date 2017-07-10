@@ -11,7 +11,7 @@ SCENARIO( "Nxtra input values",
   long ln(0);
 
   GIVEN( "valid nxtra values" ){
-    std::vector<int> validValues{0, 1, 10, 20};
+    std::vector<int> validValues{0, 1, 10, 16};
 
     THEN( "the returned class has the correct value" ){
       for( auto& nxtra : validValues ){
@@ -28,13 +28,12 @@ SCENARIO( "Nxtra input values",
     THEN( "the default value is returned" ){
       iRecordStream<char> iss(
           std::istringstream( " /" ) );
-      REQUIRE( ACER::Card2::Nxtra::defaultValue() == 
-                argument::extract< ACER::Card2::Nxtra >( iss ).value );
+      REQUIRE( 0 == argument::extract< ACER::Card2::Nxtra >( iss ).value );
     }
   }
   
   GIVEN( "invalid nxtra values" ){
-    std::vector<int> invalidValues{-1};
+    std::vector<int> invalidValues{-1, 17, 20};
 
     THEN( "an exception is thrown" ){
       for( auto& nxtra : invalidValues ){

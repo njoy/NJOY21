@@ -15,7 +15,7 @@ public:
     try:
       eb( argument::extract< Eb >( is ) ),
       tb( argument::extract< Tb >( is ) ),
-      ec( argument::extract< Ec >( is ) ),
+      ec( argument::extract< Ec >( is, eb ) ),
       tc( argument::extract< Tc >( is ) )
     {   
       Card::clear( is );

@@ -7,17 +7,20 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "Validating card8a inputs", "[GROUPR], [Card8a]" ){
+  iRecordStream<char> issCard1( std::istringstream("40 21 22 23 / " ) );
+  GROUPR::Card1 card1(issCard1);
+
   WHEN( "all optional values are are given" ){
     iRecordStream<char> issCard8a( 
-        std::istringstream( "400 10.6 5000 0 0 0.7768 7.5 0.40 1.6E-7 0.086 /") 
+        std::istringstream( "400 10.6 5000 80 0 0.7768 7.5 0.40 1.6E-7 0.086 /") 
         );
-    GROUPR::Card8a card8a( issCard8a );
+    GROUPR::Card8a card8a( issCard8a, card1 );
 
     THEN( "the card8a values can be verified" ){
       REQUIRE( 400*dimwits::electronVolt == card8a.fehi.value );
       REQUIRE( 10.6*dimwits::barn == card8a.sigpot.value );
       REQUIRE( 5000 == card8a.nflmax.value );
-      REQUIRE( 0 == card8a.ninwt.value );
+      REQUIRE( 80 == card8a.ninwt.value );
       REQUIRE( 0 == card8a.jsigz.value );
       REQUIRE( 0.7768 == card8a.alpha2.value );
       REQUIRE( 7.5*dimwits::barn == card8a.sam.value );
@@ -28,7 +31,7 @@ SCENARIO( "Validating card8a inputs", "[GROUPR], [Card8a]" ){
   }
   WHEN( "none of the optional values are given" ){
     iRecordStream<char> issCard8a( std::istringstream( "400 10.6 5000 /" ) );
-    GROUPR::Card8a card8a( issCard8a );
+    GROUPR::Card8a card8a( issCard8a, card1 );
 
     THEN( "the card8a values can be verified" ){
       REQUIRE( 400*dimwits::electronVolt == card8a.fehi.value );
@@ -48,7 +51,7 @@ SCENARIO( "Validating card8a inputs", "[GROUPR], [Card8a]" ){
     WHEN( "parameters are incorrect" ){
       iRecordStream<char> issCard8a( std::istringstream( " 3 -1 /" ) );
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( GROUPR::Card8a(issCard8a ) );
+        REQUIRE_THROWS( GROUPR::Card8a(issCard8a, card1 ) );
       }
     }
   }

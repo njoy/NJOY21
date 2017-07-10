@@ -22,7 +22,7 @@ struct Type : public defaultField< policy::hasDefault< Policy > > {
     defaultField< policy::hasDefault< Policy > >( success ),
     value( std::move(value) ){}
 
-  template< typename = std::enable_if_t
-	    < std::is_default_constructible<Value_t>::value > >
+  template< bool defaultable = std::is_default_constructible<Value_t>::value,
+	    std::enable_if_t<defaultable, int> = 0 >
   Type() : defaultField< policy::hasDefault< Policy > >() {}
 };
