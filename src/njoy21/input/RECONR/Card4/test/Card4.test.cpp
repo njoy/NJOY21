@@ -15,9 +15,9 @@ SCENARIO( "Verifying RECONR Card4 input", "[Card4]"){
 						   + " 293.6 1.0 2.0") );
       RECONR::Card4 card4(iss );
       REQUIRE( err == card4.err.value );
-      REQUIRE( 293.6 * dimwits::kelvin == card4.tempr.value );
+      REQUIRE( 293.6 == Approx(card4.tempr.value.value) );
       REQUIRE( 1.0 == card4.errmax.value );
-      REQUIRE( 2.0 * dimwits::barn == card4.errint.value );
+      REQUIRE( 2.0 == Approx(card4.errint.value.value) );
 
     }
     WHEN( "none of the optional parameters are given" ){
@@ -25,9 +25,9 @@ SCENARIO( "Verifying RECONR Card4 input", "[Card4]"){
       RECONR::Card4 card4(iss);
 
       REQUIRE( err == card4.err.value );
-      REQUIRE( 0.0 * dimwits::kelvin == card4.tempr.value );
+      REQUIRE( 0.0 == Approx(card4.tempr.value.value) );
       REQUIRE( err * 10 == card4.errmax.value );
-      REQUIRE( (err / 2E4) * dimwits::barn == card4.errint.value );
+      REQUIRE( (err / 2E4) == Approx(card4.errint.value.value) );
     }
   }
 
@@ -35,7 +35,7 @@ SCENARIO( "Verifying RECONR Card4 input", "[Card4]"){
     double err(0.0);
     THEN( "an exception is thrown" ){
       iRecordStream<char> iss( std::istringstream( std::to_string(err) + '/') );
-      REQUIRE_THROWS( RECONR::Card4 card4(iss) );
+      REQUIRE_THROWS( RECONR::Card4(iss) );
     }
   }
 } // SCENARIO

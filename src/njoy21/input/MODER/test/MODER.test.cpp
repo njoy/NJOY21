@@ -35,13 +35,13 @@ SCENARIO( "bugless" ){
 SCENARIO( "bugged" ){
   {
     iRecordStream<char> iss( std::istringstream( "21 -21" ) );
-    REQUIRE_THROWS( MODER moder( iss ) );
+    REQUIRE_THROWS( MODER( iss ) );
   }{
     iRecordStream<char> iss( std::istringstream(
       "1 -22 \n"
       "'my simple pendf tape'\n"
       "0 /"
       ) );
-    REQUIRE_THROWS( MODER moder( iss ) );
+    REQUIRE_THROWS( MODER( iss ) );
   }
 }

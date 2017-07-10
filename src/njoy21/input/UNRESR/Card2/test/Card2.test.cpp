@@ -67,7 +67,7 @@ SCENARIO( "Verifying PURR Card2 input",
       iRecordStream< char > issCard2(
           std::istringstream(  std::to_string(material)  ));
       long ln{1};
-      REQUIRE_THROWS( PURR::Card2 card2(issCard2 ) );
+      REQUIRE_THROWS( PURR::Card2(issCard2 ) );
     }
   }
 } // SCENARIO

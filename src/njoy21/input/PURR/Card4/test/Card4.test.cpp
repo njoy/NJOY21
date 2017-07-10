@@ -31,7 +31,7 @@ SCENARIO( "Verifying PURR Card4 input",
     long ln(0);
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( PURR::Card4 card4( issTemps, nsigz ) );
+      REQUIRE_THROWS( PURR::Card4( issTemps, nsigz ) );
     }
   }
   GIVEN( "invalid sigz---too many sigma zero values" ){
@@ -39,7 +39,7 @@ SCENARIO( "Verifying PURR Card4 input",
     long ln(0);
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( PURR::Card4 card4( issTemps, nsigz ) );
+      REQUIRE_THROWS( PURR::Card4( issTemps, nsigz ) );
     }
   }
 } // SCENARIO

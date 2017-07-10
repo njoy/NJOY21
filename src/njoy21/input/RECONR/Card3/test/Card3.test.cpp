@@ -22,11 +22,11 @@ SCENARIO( "Verifying RECONR Card3 input", "[RECONR], [Card3]" ){
       }
       THEN( "an exception is thrown when ncards is invalid" ){
         iRecordStream<char> iss( std::istringstream( std::to_string(material) + " -1 2 " ) );
-        REQUIRE_THROWS( RECONR::Card3 card3(iss) );
+        REQUIRE_THROWS( RECONR::Card3(iss) );
       }
       THEN( "an exception is thrown when ngrid is invalid" ){
         iRecordStream<char> iss( std::istringstream( std::to_string(material) + " 1 -2 " ) );
-        REQUIRE_THROWS( RECONR::Card3 card3(iss) );
+        REQUIRE_THROWS( RECONR::Card3(iss) );
       }
     } // WHEN
 
@@ -58,7 +58,7 @@ SCENARIO( "Verifying RECONR Card3 input", "[RECONR], [Card3]" ){
     
     THEN( "an exception is thrown when reading RECONR Card3 input" ){
       iRecordStream<char> iss( std::istringstream( std::to_string(material) ) );
-      REQUIRE_THROWS( RECONR::Card3 card3(iss) );
+      REQUIRE_THROWS( RECONR::Card3(iss) );
     }
   } // GIVEN
 } // SCENARIO

@@ -24,7 +24,7 @@ SCENARIO( "Verifying RECONR Card6 input", "[RECONR],[Card6]"){
     iRecordStream<char> iss( std::istringstream(" 1.0 2.0 3.0 4.0") );
 
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( RECONR::Card6 card6( iss, ngrid ) );
+      REQUIRE_THROWS( RECONR::Card6( iss, ngrid ) );
     }
   }
 }

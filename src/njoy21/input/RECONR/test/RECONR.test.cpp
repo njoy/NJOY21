@@ -162,21 +162,21 @@ SCENARIO( "Parsing invalid RECONR input" ){
       iRecordStream<char> iss
 	( std::istringstream( card1 + card2 + "0/\n" ) );
 
-      REQUIRE_THROWS( RECONR reconr(iss) );
+      REQUIRE_THROWS( RECONR(iss) );
     }
   }
   WHEN( "Cards non-terminating-3" ){
     THEN( "an exception is thrown" ){
       iRecordStream<char> iss
 	( std::istringstream( card1 + card2 + card3 ) );
-      REQUIRE_THROWS( RECONR reconr(iss) );
+      REQUIRE_THROWS( RECONR(iss) );
     }
   }
   WHEN( "Cards 3,4" ){
     THEN( "an exception is thrown" ){
       iRecordStream<char> iss
 	( std::istringstream( card1 + card2 + " 1234 0 0\n"  + card4 ) );
-      REQUIRE_THROWS( RECONR reconr(iss) );
+      REQUIRE_THROWS( RECONR(iss) );
     }
   }
   WHEN( "Cards 3,4,5,5,5,3 and ncards = 2" ){
@@ -184,7 +184,7 @@ SCENARIO( "Parsing invalid RECONR input" ){
       iRecordStream<char> iss
 	( std::istringstream( card1 + card2 + "1306 2 0\n" + card4 + card5
 			      + card5 + card5 + "0/\n" ) );
-      REQUIRE_THROWS( RECONR reconr(iss) );
+      REQUIRE_THROWS( RECONR(iss) );
     }
   }
   WHEN( "Cards 3,4,5,5,5,3 and ncards = 4" ){
@@ -192,7 +192,7 @@ SCENARIO( "Parsing invalid RECONR input" ){
       iRecordStream<char> iss
 	( std::istringstream( card1 + card2 + "1306 4 0\n" + card4
 			      + card5 + card5 + card5 + "0/\n" ) );
-      REQUIRE_THROWS( RECONR reconr(iss) );
+      REQUIRE_THROWS( RECONR(iss) );
     }
   }
   WHEN( "Cards 3,4,6,3 and ngrid = 0" ){
@@ -200,7 +200,7 @@ SCENARIO( "Parsing invalid RECONR input" ){
       iRecordStream<char> iss
 	( std::istringstream( card1 + card2 + "1306 0 0\n"
 			      + card4 + card6 + "0/\n" ) );
-      REQUIRE_THROWS( RECONR reconr(iss) );
+      REQUIRE_THROWS( RECONR(iss) );
     }
   }
   WHEN( "Cards 3,4,3 and ngrid > 0" ){
@@ -208,7 +208,7 @@ SCENARIO( "Parsing invalid RECONR input" ){
       iRecordStream<char> iss
 	( std::istringstream( card1 + card2 + "1306 0 1000000\n"
 			      + card4 + "0/\n" ) );
-      REQUIRE_THROWS( RECONR reconr(iss) );
+      REQUIRE_THROWS( RECONR(iss) );
     }
   }
   WHEN( "Cards 3,4, and faulty 5" ){
@@ -216,7 +216,7 @@ SCENARIO( "Parsing invalid RECONR input" ){
       iRecordStream<char> iss
 	( std::istringstream( card1 + card2 + "1306 1 0\n"
 			      + card4 + "'abcd\n" + "0/\n" ) );
-      REQUIRE_THROWS( RECONR reconr(iss) );
+      REQUIRE_THROWS( RECONR(iss) );
     }
   }
 }

@@ -31,5 +31,8 @@ struct Thnmax {
       "by NJOY";
   }
 
-  static Value_t defaultValue(){ return 1.0 * mega(electronVolts); }
+  static Value_t defaultValue(){ return 1.0 * mega(electronVolt); }
+  static bool verify( Value_t& T ){
+    return T != 0.0*electronVolt;
+  }
 };

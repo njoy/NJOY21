@@ -22,8 +22,8 @@ struct DefaultPositiveInt : public PositiveInt {
   static Value_t defaultValue(){ return 10; }  
 };
 
-using Descriminator = Type< PositiveInt >;
-using Defaultor = Type< DefaultPositiveInt >;
+using Descriminator = parser::Type< PositiveInt >;
+using Defaultor = parser::Type< DefaultPositiveInt >;
 
 template< typename Char >
 using iRecordStream = njoy::njoy21::input::iRecordStream<Char>;
