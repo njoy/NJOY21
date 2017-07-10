@@ -23,7 +23,7 @@ public:
       ng    ( argument::extract< Ng     >( is ) ),
       iptotl( argument::extract< Iptotl >( is ) ),
       ipingp( argument::extract< Ipingp >( is, this->iptotl ) ),
-      itabl ( argument::extract< Itabl  >( is ) ),
+      itabl ( argument::extract< Itabl  >( is, this->iptotl, this->ng ) ),
       ned   ( argument::extract< Ned    >( is, this->iptotl ) ),
       ntherm( argument::extract< Ntherm >( is ) )
       {

@@ -9,7 +9,7 @@ SCENARIO( "DTFR ntherm values",
 
   GIVEN( "valid ntherm inputs" ){
     std::vector<int> validValues{0, 1, 15};
-    THEN( "the returntherm class has the correct value" ){
+    THEN( "the returned ntherm class has the correct value" ){
       for( int ntherm : validValues ){
         iRecordStream<char> iss( 
           std::istringstream( std::to_string( ntherm ) ) );

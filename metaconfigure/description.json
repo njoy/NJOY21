@@ -433,26 +433,26 @@
     "src/njoy21/input/HEATR/Card1/Nin.hpp",
     "src/njoy21/input/UNRESR/Card2.hpp",
     "src/njoy21/input/UNRESR/Card2/Iprint.hpp",
-    "src/njoy21/input/THERMR/Card1.hpp",
-    "src/njoy21/input/THERMR/Card3.hpp",
     "src/njoy21/input/THERMR/Card4.hpp",
+    "src/njoy21/input/THERMR/Card3.hpp",
     "src/njoy21/input/THERMR/Card2.hpp",
-    "src/njoy21/input/THERMR/Card4/Emax.hpp",
-    "src/njoy21/input/THERMR/Card4/Tol.hpp",
-    "src/njoy21/input/THERMR/Card3/Tempr.hpp",
-    "src/njoy21/input/THERMR/Card2/Ntemp.hpp",
+    "src/njoy21/input/THERMR/Card1.hpp",
+    "src/njoy21/input/THERMR/Card2/Nbin.hpp",
+    "src/njoy21/input/THERMR/Card2/Icoh.hpp",
+    "src/njoy21/input/THERMR/Card2/Iform.hpp",
+    "src/njoy21/input/THERMR/Card2/Matdp.hpp",
+    "src/njoy21/input/THERMR/Card2/Matde.hpp",
     "src/njoy21/input/THERMR/Card2/Mtref.hpp",
     "src/njoy21/input/THERMR/Card2/Natom.hpp",
-    "src/njoy21/input/THERMR/Card2/Nbin.hpp",
+    "src/njoy21/input/THERMR/Card2/Ntemp.hpp",
     "src/njoy21/input/THERMR/Card2/Iin.hpp",
-    "src/njoy21/input/THERMR/Card2/Icoh.hpp",
     "src/njoy21/input/THERMR/Card2/Iprint.hpp",
-    "src/njoy21/input/THERMR/Card2/Matdp.hpp",
-    "src/njoy21/input/THERMR/Card2/Iform.hpp",
-    "src/njoy21/input/THERMR/Card2/Matde.hpp",
-    "src/njoy21/input/THERMR/Card1/Nout.hpp",
-    "src/njoy21/input/THERMR/Card1/Nendf.hpp",
     "src/njoy21/input/THERMR/Card1/Nin.hpp",
+    "src/njoy21/input/THERMR/Card1/Nendf.hpp",
+    "src/njoy21/input/THERMR/Card1/Nout.hpp",
+    "src/njoy21/input/THERMR/Card3/Tempr.hpp",
+    "src/njoy21/input/THERMR/Card4/Emax.hpp",
+    "src/njoy21/input/THERMR/Card4/Tol.hpp",
     "src/njoy21/input/GROUPR/Card1.hpp",
     "src/njoy21/input/GROUPR/Card7b.hpp",
     "src/njoy21/input/GROUPR/Card10.hpp",
@@ -544,7 +544,6 @@
     "src/njoy21/input/DTFR/Card1/Npend.hpp",
     "src/njoy21/input/DTFR/Card1/Nplot.hpp",
     "src/njoy21/input/DTFR/Card1/Nout.hpp",
-    "src/njoy21/input/DTFR/Card1/Nin.hpp",
     "src/njoy21/input/DTFR/Card5/Mult.hpp",
     "src/njoy21/input/DTFR/Card5/Mt.hpp",
     "src/njoy21/input/DTFR/Card5/Jpos.hpp",
@@ -553,7 +552,6 @@
     "src/njoy21/input/DTFR/Card2/Ifilm.hpp",
     "src/njoy21/input/DTFR/Card8/Mat.hpp",
     "src/njoy21/input/DTFR/Card8/Jsigz.hpp",
-    "src/njoy21/input/DTFR/Card8/Ngp.hpp",
     "src/njoy21/input/DTFR/Card8/Dtemp.hpp",
     "src/njoy21/input/DTFR/Card8/Hisnam.hpp",
     "src/njoy21/input/PURR/Card1.hpp",
@@ -616,7 +614,6 @@
     "src/njoy21/input/MIXR/Card6/Des.hpp",
     "src/njoy21/input/MIXR/Card5/Za.hpp",
     "src/njoy21/input/MIXR/Card5/Awr.hpp",
-    "src/njoy21/input/MIXR/Card5/Matd.hpp",
     "src/njoy21/input/MIXR/Card4/Temp.hpp",
     "src/njoy21/input/RECONR/Card4.hpp",
     "src/njoy21/input/RECONR/Card3.hpp",
@@ -884,9 +881,6 @@
     "njoy21.input.DTFR.Card1": [
       "src/njoy21/input/DTFR/Card1/test/Card1.test.cpp"
     ],
-    "njoy21.input.DTFR.Card1.Nin": [
-      "src/njoy21/input/DTFR/Card1/Nin/test/Nin.test.cpp"
-    ],
     "njoy21.input.DTFR.Card1.Nout": [
       "src/njoy21/input/DTFR/Card1/Nout/test/Nout.test.cpp"
     ],
@@ -994,9 +988,6 @@
     ],
     "njoy21.input.DTFR.Card8.Mat": [
       "src/njoy21/input/DTFR/Card8/Mat/test/Mat.test.cpp"
-    ],
-    "njoy21.input.DTFR.Card8.Ngp": [
-      "src/njoy21/input/DTFR/Card8/Ngp/test/Ngp.test.cpp"
     ],
     "njoy21.input.GASPR": [
       "src/njoy21/input/GASPR/test/GASPR.test.cpp"
@@ -1207,9 +1198,6 @@
     ],
     "njoy21.input.MIXR.Card5.Awr": [
       "src/njoy21/input/MIXR/Card5/Awr/test/Awr.test.cpp"
-    ],
-    "njoy21.input.MIXR.Card5.Matd": [
-      "src/njoy21/input/MIXR/Card5/Matd/test/Matd.test.cpp"
     ],
     "njoy21.input.MIXR.Card5.Za": [
       "src/njoy21/input/MIXR/Card5/Za/test/Za.test.cpp"

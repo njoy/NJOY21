@@ -11,21 +11,21 @@ SCENARIO( "npend output values",
     Argument< DTFR::Card1::Nout> nout; nout.value = 22;
 
     WHEN( "the npend value is valid" ){
-      std::vector<int> validValues{-20, 20, 42, 99, -99};
+      std::vector<int> validValues{-20, 20, 0, 42, 99, -99};
       THEN( "the returned class has the correct tape value" ){
         for( int npend : validValues ){
           iRecordStream<char> iss(
             std::istringstream( std::to_string(npend) ) );
           REQUIRE(npend == argument::extract< 
-	    DTFR::Card1::Npend >( iss, nin, nout).value );
+            DTFR::Card1::Npend >( iss, nin, nout).value );
         }
       } // THEN
     } // WHEN
 
     WHEN( "no npend value given " ){
-      THEN( "default value is substituted in" ){
-	iRecordStream<char> iss( std::istringstream( "  /" ) );
-	REQUIRE( 0 == argument::extract<
+      THEN( "default value is used" ){
+        iRecordStream<char> iss( std::istringstream( "  /" ) );
+        REQUIRE( 0 == argument::extract<
           DTFR::Card1::Npend > ( iss, nin, nout ).value );
       } // THEN
     } // WHEN
@@ -37,12 +37,12 @@ SCENARIO( "npend output values",
           DTFR::Card1::Npend >( iss1, nin, nout ) );
         iRecordStream<char> iss2(std::istringstream( "22" ) );
         REQUIRE_THROWS( argument::extract< 
-                       DTFR::Card1::Npend >( iss2, nin, nout ) );
+          DTFR::Card1::Npend >( iss2, nin, nout ) );
       } // THEN
     } // WHEN
 
     WHEN( "npend tapes are out of range" ){
-      std::vector<int> invalidValues{-19, 19, 0, 100, -100};
+      std::vector<int> invalidValues{-19, 19, 100, -100};
       THEN( "an exception is thrown" ){
         for( int npend : invalidValues ){
           iRecordStream<char> iss(

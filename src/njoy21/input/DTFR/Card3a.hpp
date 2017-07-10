@@ -18,8 +18,7 @@ public:
         Card::clear(is);
       }
     catch( std::exception& e ){
-      Log::info("Trouble while validating Card 1");
+      Log::info("Trouble while validating Card3a");
       throw e;
     }
- 
 };

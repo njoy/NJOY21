@@ -1,6 +1,6 @@
 class Card5 {
   public:
-    #include "njoy21/input/MIXR/Card5/Matd.hpp"
+    using Matd = argument::common::Matd;
     #include "njoy21/input/MIXR/Card5/Za.hpp"
     #include "njoy21/input/MIXR/Card5/Awr.hpp"
     

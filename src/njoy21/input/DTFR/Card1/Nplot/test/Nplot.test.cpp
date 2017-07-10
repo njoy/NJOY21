@@ -5,7 +5,7 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "nplot output values",
-         "[DTFR],[Card1], [Nplot]"){
+  "[DTFR],[Card1], [Nplot]"){
 
   GIVEN( "valid inputs for nin, nout, and npend" ){
     Argument< DTFR::Card1::Nin   > nin; 
@@ -20,15 +20,15 @@ SCENARIO( "nplot output values",
           iRecordStream<char> iss(
             std::istringstream( std::to_string(nplot) ) );
           REQUIRE( nplot == argument::extract< 
-	    DTFR::Card1::Nplot >( iss, nin, nout, npend).value );
+	    DTFR::Card1::Nplot >( iss, nin, nout, npend ).value );
         }
       } // THEN
     } // WHEN
 
     WHEN( "no nplot value given " ){
       THEN( "default value is substituted in" ){
-	iRecordStream<char> iss( std::istringstream( "  /" ) );
-	REQUIRE( 0 == argument::extract<
+        iRecordStream<char> iss( std::istringstream( "  /" ) );
+        REQUIRE( 0 == argument::extract<
           DTFR::Card1::Nplot > ( iss, nin, nout, npend ).value );
       } // THEN
     } // WHEN
@@ -39,9 +39,9 @@ SCENARIO( "nplot output values",
         for( int nplot : invalidValues ){
           iRecordStream<char> iss( 
             std::istringstream( std::to_string( nplot ) ) );
-	  REQUIRE_THROWS( argument::extract<
+            REQUIRE_THROWS( argument::extract<
             DTFR::Card1::Nplot >( iss, nin, nout, npend ) );
-	}
+        }
       } //THEN
     } // WHEN
     WHEN( "nplot tapes are out of range" ){

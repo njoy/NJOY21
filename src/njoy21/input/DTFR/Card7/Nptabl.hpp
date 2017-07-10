@@ -7,7 +7,7 @@ struct Nptabl {
       "Nptabl is the number of photon production tables, and is usually\n"
       "equal to zero (none) or one.\n"
       "\n"
-      "Nptabl must be a non-negative integer.";
+      "Nptabl must be a non-negative integer, and has a default value of 0.";
   }
   
   static Value_t defaultValue(){ return 0; }

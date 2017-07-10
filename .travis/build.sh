@@ -50,6 +50,8 @@ then
   echo "failed while configuring"
   cat configuration.txt
   exit 1
+else
+  rm configuration.txt
 fi
 
 repeat 300 echo "Still building..."&
@@ -63,6 +65,8 @@ then
   echo "failed while compiling"
   cat compilation.txt  
   exit 1
+else
+  rm compilation.txt
 fi
 
 kill $EKG
@@ -74,17 +78,20 @@ then
     echo "failed while testing"
     cat testing.txt  
     exit 1
+else
+  rm testing.txt
 fi
 
 if $coverage; then
   pip install --user cpp-coveralls &> coverage_upload.txt
   coveralls -e /usr/include/ -e ../subprojects -e ../dependencies -E ".*/CMakeFiles/.*|.*test\.cpp" --root ".." --build-root "." --gcov-options '\-lp' >> coverage_upload.txt 2>&1
-  # coveralls  --exclude-pattern "/usr/include/.*|.*/CMakeFiles/.*|.*subprojects.*|.*dependencies.*|.*test\.cpp" --root ".." --build-root "." --gcov-options '\-lp' >> coverage_upload.txt 2>&1
   if [ $? -ne 0 ];
   then
      echo "failed while coverage report!"
      cat coverage_upload.txt
      exit 1
+  else
+    rm coverage_upload.txt
   fi
 fi
 
