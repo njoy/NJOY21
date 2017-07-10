@@ -4,7 +4,8 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "DTFR input, [DTFR]" ){
+SCENARIO( "DTFR input", 
+  "[DTFR]" ){
   GIVEN( "a card2 iedit value of 0" ){
     WHEN( "all entries are valid" ){
       iRecordStream<char> iss( std::istringstream( 
