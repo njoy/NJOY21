@@ -21,10 +21,4 @@ public:
       Log::info("Trouble while validating Card3a");
       throw e;
     }
-
-    friend void swap( Card3a& left, Card3a& right ){
-      auto temp = left;
-      left = right;
-      right = temp;
-    } 
 };
