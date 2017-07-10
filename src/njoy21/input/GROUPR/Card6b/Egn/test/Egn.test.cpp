@@ -35,6 +35,15 @@ SCENARIO( "Egn input values", "[Card6b], [Egn]" ){
       }
     }
 
+    WHEN( "the energy boundaries are not in increasing order" ){
+      iRecordStream< char> issPoints( std::istringstream(" 1.0 2.2 2.0 4.0") );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS(
+            argument::extract< GROUPR::Card6b::Egn >(issPoints, ngn.value+1) );
+      }
+    }
+
     WHEN( "commas are used to separate values" ){
       iRecordStream< char> issPoints( std::istringstream(" 1.0, 2.0, 3.0, 4.0") );
 

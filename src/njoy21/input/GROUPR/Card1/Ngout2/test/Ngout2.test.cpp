@@ -10,14 +10,14 @@ SCENARIO( "ngout2 output values", "[GROUPR],[Card1], [Ngout2]"){
   Argument< GROUPR::Card1::Nendf > nendf;
   Argument< GROUPR::Card1::Npend > npend;
   Argument< GROUPR::Card1::Ngout1 > ngout1;
-  nendf.value = 20;
+  nendf.value = 40;
   npend.value = 21;
   ngout1.value = 22;
 
   GIVEN( "valid ngout2 values" ){
     WHEN( "the nendf and npend values are not the same as the ngout2 values" ){
       THEN( "the returned class has the correct tape value" ){
-        for( auto ngout2 : {-23, 23, 50, 99, -99} ){
+        for( auto ngout2 : {-20, 20, 50, 99, -99} ){
           iRecordStream<char> issNgout2( 
               std::istringstream(std::to_string( ngout2 ) ) );
           REQUIRE( ngout2 == argument::extract< GROUPR::Card1::Ngout2 >(

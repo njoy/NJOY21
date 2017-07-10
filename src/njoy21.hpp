@@ -12,11 +12,22 @@
   }
 #endif
 
+#ifdef __GNUC__
+  #pragma GCC diagnostic push
+  #pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+#include <variant>   
+#ifdef __GNUC__
+  #pragma GCC diagnostic pop
+#endif
+
 #include <sstream>
 #include <unordered_set>
 #include <queue>
 #include <iomanip>
+#include <regex>
 
+#include "ENDFtk.hpp"
 #include "dimwits.hpp"
 #include "Log.hpp"
 #include "utility.hpp"

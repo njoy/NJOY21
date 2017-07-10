@@ -10,5 +10,6 @@ struct Matd : public argument::common::Matd {
       "If matd value of 0 indicates that GROUPR is to be finished.";
   }
   
-  static bool verify( const Value_t& m ){ return m >= 0; }
+  static bool verify( const Value_t& m ){ 
+    return ( m >= 0 ) and ( m < 10000 ); }
 };

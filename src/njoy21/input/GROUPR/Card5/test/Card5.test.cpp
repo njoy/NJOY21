@@ -17,7 +17,7 @@ SCENARIO( "Verifying GROUPR Card5 input", "[GROUPR], [Card5]" ){
 
     THEN( "the sigma zero cross section values can be extracted and verified" ){
       std::vector< dimwits::Quantity< dimwits::Barn > > refSigzs{
-        1*dimwits::barn,
+        std::numeric_limits<double>::infinity()*dimwits::barn, 
         2*dimwits::barn,
         3*dimwits::barn};
 

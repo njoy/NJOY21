@@ -16,5 +16,4 @@ struct Thin1 {
         "When thin1=2, the 1/E weighting has a weighting of 10 when E < 0.1.";
   }
   static Value_t defaultValue(){ return 0.0; }
-  static bool verify( const Value_t& ){ return true; }
 };

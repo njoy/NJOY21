@@ -42,35 +42,6 @@ SCENARIO( "Iopp  output values",
       REQUIRE_THROWS( argument::extract< ACER::Card6::Iopp >( iss, ngend ) );
     }
   }
-//GIVEN( "non-zero (but valid) ngend" ){
-
-//  WHEN( "valid iopp values" ){
-//    std::vector<int> validValues{0, 1};
-
-//    THEN( "the returned class has the correct value" ){
-//      for( auto& iopp : validValues ){
-
-//        REQUIRE( 
-//          iopp == argument::extract< ACER::Card6::Iopp >( 
-//              iss, ngend ).value );
-//      }
-//    }
-//  }
-
-//} // GIVEN
-//GIVEN( "valid iopp values" ){
-//  std::vector<int> validValues{0, 1};
-
-//  THEN( "the returned class has the correct value" ){
-//    for( auto& iopp : validValues ){
-//      iRecordStream<char> iss(
-//          std::istringstream( std::to_string(iopp) ) );
-
-//      REQUIRE( 
-//        iopp == argument::extract< ACER::Card6::Iopp >( iss ).value );
-//    }
-//  }
-//}
   GIVEN( "no iopp values" ){
     Argument< ACER::Card1::Ngend > ngend;
     ngend.value = 22;

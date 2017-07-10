@@ -21,8 +21,7 @@ SCENARIO( "Verifying ACER Card9 input", "[ACER], [Card9]" ){
   GIVEN( "no Nbint value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( ACER::Card9::Nbint::defaultValue() == 
-                argument::extract< ACER::Card9::Nbint >( iss ).value );
+      REQUIRE( 16 == argument::extract< ACER::Card9::Nbint >( iss ).value );
     }
   }
   GIVEN( "invalid nbint values" ){

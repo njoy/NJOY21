@@ -21,12 +21,11 @@ SCENARIO( "Verifying ACER Card9 input", "[ACER], [Card9]" ){
   GIVEN( "no mte value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( ACER::Card9::Mte::defaultValue() == 
-                argument::extract< ACER::Card9::Mte >( iss ).value );
+      REQUIRE( 0 == argument::extract< ACER::Card9::Mte >( iss ).value );
     }
   }
   GIVEN( "invalid mte values" ){
-    std::vector<int> invalidMte{-222, -241, -245};
+    std::vector<int> invalidMte{-222, -241, -245, 1000};
     THEN( "an exception is thrown" ){
       for( auto& mte : invalidMte ){
         iRecordStream< char> issMte( std::stringstream( std::to_string(mte) ) );

@@ -22,8 +22,7 @@ SCENARIO( "Gamma  output values", "[GROUPR],[Card8a], [Gamma]"){
   GIVEN( "no gamma value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( GROUPR::Card8a::Gamma::defaultValue() == 
-                argument::extract< GROUPR::Card8a::Gamma >( iss ).value );
+      REQUIRE( 0 == argument::extract< GROUPR::Card8a::Gamma >( iss ).value );
     }
   }
   GIVEN( "invalid gamma values" ){

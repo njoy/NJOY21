@@ -4,8 +4,8 @@ struct Gamma {
 
   static std::string description(){
     return 
-        "The gamma parameter specifies te fraction of admixed moderator cross\n"
-        "section in external moderator cross section.\n"
+        "The gamma parameter specifies the fraction of admixed moderator\n"
+        "cross section in external moderator cross section.\n"
         "\n"
         "The default value is 0, which means none.";
   }

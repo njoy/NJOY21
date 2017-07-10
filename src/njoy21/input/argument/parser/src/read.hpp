@@ -36,6 +36,82 @@ read( iRecordStream<Char>& is,
   return read( is, vector, size.value, std::forward<Args>(args)... );
 }
 
+template< typename Char, typename... Args >
+bool
+read( iRecordStream<Char>& is, std::optional<ENDFtk::TAB1>& tab1, Args&&... ){
+  double C1; is >> C1; validate(is); if ( is.fail() ) return {};
+
+  auto read_ = [&]( auto& data, auto&& errorMessage ){
+    is >> data;
+    validate(is);
+    if ( is.fail() ){
+      errorMessage();
+    }
+  };
+
+  auto errorMessage = []( auto&& name ){
+    return [name]{
+      Log::info("Trouble while reading free-from TAB1");
+      Log::info("Could not read {} field", name );
+      throw std::ios_base::failure( name );
+    };
+  };
+
+  #define READ( name ) read_( name, errorMessage( #name ) )
+  double C2; READ( C2 );
+  int L1; READ( L1 );
+  int L2; READ( L2 );
+  int N1; READ( N1 );
+  if ( N1 < 1 ){
+    Log::info("TAB1 N1 field must be >= 1");
+    throw std::ios_base::failure( "TAB1 NR field < 1");
+  }
+
+  int N2; READ( N2 );
+  if ( N2 < 1 ){
+    Log::info("TAB1 N2 field must be >= 1");
+    throw std::ios_base::failure( "TAB1 NP field < 1");
+  }
+  #undef READ
+    
+  std::vector< long > NBT; NBT.resize(N1);
+  std::vector< long > INT; INT.resize(N1);
+
+  for( int n = 0; n < N1; ++n ){
+    is >> NBT[n]; validate(is);
+    if ( is.fail() ){
+      Log::info( "Failed to read TAB1 entry {} of NBT array", n );
+      throw std::ios_base::failure("failed to read TAB1 NBT entry");
+    }
+    is >> INT[n]; validate(is);
+    if ( is.fail() ){
+      Log::info( "Failed to read TAB1 entry {} of INT array", n );
+      throw std::ios_base::failure("failed to read TAB1 INT entry");
+    }
+  }
+
+  std::vector< double > X; X.resize(N2);
+  std::vector< double > Y; Y.resize(N2);
+  
+  for( int n = 0; n < N2; ++n ){
+    is >> X[n]; validate(is);
+    if ( is.fail() ){
+      Log::info( "Failed to read TAB1 entry {} of X array", n );
+      throw std::ios_base::failure("failed to read TAB1 X entry");
+    }
+    is >> Y[n]; validate(is);
+    if ( is.fail() ){
+      Log::info( "Failed to read TAB1 entry {} of Y array", n );
+      throw std::ios_base::failure("failed to read TAB1 Y entry");
+    }
+  }
+  
+  tab1 = ENDFtk::TAB1( C1, C2, L1, L2,
+		       std::move(NBT), std::move(INT),
+		       std::move(X), std::move(Y) );
+  return true;
+}
+
 template< typename Char, typename T, typename... Args >
 std::enable_if_t< std::is_default_constructible<T>::value, bool >
 read( iRecordStream<Char>& is, std::optional<T>& value, Args&&... args ){

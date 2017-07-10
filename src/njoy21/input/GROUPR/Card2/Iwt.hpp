@@ -2,7 +2,7 @@ struct Iwt {
   using Value_t = int;
   static std::string name(){ return "iwt"; }
 
-  static bool description(){
+  static std::string description(){
     return 
         "The iwt option specfies the gamma group structure. The allowed\n"
         "values and their meanings are:\n"
@@ -20,9 +20,11 @@ struct Iwt {
         "     10           claw with t-dependent thermal part\n"
         "     11           vitamin-e weight function (ornl-5505)\n"
         "     12           vit-e with t-dep thermal part\n"
-        "     -n           compute flux with weight n\n"
+        "     -n           read flux calculations from input; use weight n\n"
         "      0           read in resonance flux from ninwt";
   }
 
-  static bool verify( const Value_t ) { return true; }
+  static bool verify( const Value_t i ) { 
+    return abs(i) < 13;
+  }
 };

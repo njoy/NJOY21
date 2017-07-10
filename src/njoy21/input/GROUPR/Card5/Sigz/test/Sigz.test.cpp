@@ -18,9 +18,9 @@ SCENARIO( "Sigz input values", "[Card5], [Sigz]" ){
         auto sigz = argument::extract< 
                     GROUPR::Card5::Sigz >(issPoints, nsigz);
         std::vector< dimwits::Quantity< dimwits::Barn > > refSigzs{
-                      1.0*dimwits::barn, 
-                      2.0*dimwits::barn, 
-                      3.0*dimwits::barn};
+            std::numeric_limits<double>::infinity()*dimwits::barn, 
+            2.0*dimwits::barn, 
+            3.0*dimwits::barn};
         REQUIRE( refSigzs == sigz.value );
       }
     }

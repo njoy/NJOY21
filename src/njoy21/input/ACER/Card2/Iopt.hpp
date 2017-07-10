@@ -2,7 +2,7 @@ struct Iopt {
   using Value_t = int;
 
   static std::string name(){ return "iopt"; }
-  static bool description(){
+  static std::string description(){
     return
         "The parameter iopt specifies the kind of ACE data being produced:\n"
         "  1: fast data\n"

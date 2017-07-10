@@ -27,8 +27,7 @@ SCENARIO( "iprint output values",
     THEN( "the default value is returned" ){
       iRecordStream<char> iss(
           std::istringstream( "/") );
-      REQUIRE( GROUPR::Card2::Iprint::defaultValue() == 
-                argument::extract< GROUPR::Card2::Iprint >( iss ).value );
+      REQUIRE( 1 == argument::extract< GROUPR::Card2::Iprint >( iss ).value );
     }
   }
   

@@ -8,5 +8,8 @@ struct Ec {
         "calculating a weight function.";
   }
 
-  static bool verify( const Value_t E ){ return E > 0.0*electronVolt; }
+  static bool verify( const Value_t E,
+                      const Argument< Eb >& eb){ 
+    return (E > 0.0*electronVolt) and ( E > eb.value ); 
+  }
 };

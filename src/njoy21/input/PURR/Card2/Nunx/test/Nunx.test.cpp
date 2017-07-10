@@ -23,8 +23,7 @@ SCENARIO( "Nunx input values",
   GIVEN( "no nunx values" ){
     THEN( "the default value is returned" ){
       iRecordStream< char> iss( std::istringstream(" /") );
-      REQUIRE( PURR::Card2::Nunx::defaultValue() == 
-                argument::extract< PURR::Card2::Nunx >( iss ).value );
+      REQUIRE( 0 == argument::extract< PURR::Card2::Nunx >( iss ).value );
     }
   }
   

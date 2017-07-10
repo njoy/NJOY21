@@ -9,5 +9,5 @@ struct Nsigz {
   }
 
   static int defaultValue(){ return 1; }
-  static bool verify( Value_t v ){ return v >= 0; }
+  static bool verify( Value_t v ){ return v > 0; }
 };

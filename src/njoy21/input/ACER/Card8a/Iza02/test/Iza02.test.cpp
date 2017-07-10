@@ -22,8 +22,7 @@ SCENARIO( "Iza02 input values", "[ACER], [Card8a], [Iza02]" ){
   GIVEN( "no iza02 value" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( ACER::Card8a::Iza02::defaultValue() == 
-                argument::extract< ACER::Card8a::Iza02 >( iss ).value );
+      REQUIRE( 0 == argument::extract< ACER::Card8a::Iza02 >( iss ).value );
     }
   }
   GIVEN( "invalid iza02 values" ){

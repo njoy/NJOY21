@@ -17,7 +17,7 @@ SCENARIO( "Verifying ACER Card8 input", "[ACER], [Card8]" ){
       REQUIRE( 231  == card9.mte.value );
       REQUIRE( 0    == card9.ielas.value );
       REQUIRE( 1    == card9.nmix.value );
-      REQUIRE( 10.1 == card9.emax.value );
+      REQUIRE( 10.1*dimwits::electronVolt == card9.emax.value );
       REQUIRE( 2    == card9.iwt.value );
     }
   }
@@ -30,7 +30,7 @@ SCENARIO( "Verifying ACER Card8 input", "[ACER], [Card8]" ){
       REQUIRE( 0    == card9.mte.value );
       REQUIRE( 0    == card9.ielas.value );
       REQUIRE( 1    == card9.nmix.value );
-      REQUIRE( 1000 == card9.emax.value );
+      REQUIRE( 1000*dimwits::electronVolt == card9.emax.value );
       REQUIRE( 0    == card9.iwt.value );
     }
   }

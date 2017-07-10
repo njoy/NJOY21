@@ -416,6 +416,7 @@
     "src/njoy21/input/argument/common/Nin.hpp",
     "src/njoy21/input/argument/common/Matd.hpp",
     "src/njoy21/input/argument/common/Nout.hpp",
+    "src/njoy21/input/argument/common/Tempd.hpp",
     "src/njoy21/input/HEATR/Card1.hpp",
     "src/njoy21/input/HEATR/Card4.hpp",
     "src/njoy21/input/HEATR/Card3.hpp",
@@ -458,6 +459,7 @@
     "src/njoy21/input/GROUPR/Card9.hpp",
     "src/njoy21/input/GROUPR/Card8a.hpp",
     "src/njoy21/input/GROUPR/Card6b.hpp",
+    "src/njoy21/input/GROUPR/Card8b.hpp",
     "src/njoy21/input/GROUPR/Card6a.hpp",
     "src/njoy21/input/GROUPR/Card3.hpp",
     "src/njoy21/input/GROUPR/Card4.hpp",
@@ -484,6 +486,12 @@
     "src/njoy21/input/GROUPR/Card8c/Ec.hpp",
     "src/njoy21/input/GROUPR/Card8c/Tb.hpp",
     "src/njoy21/input/GROUPR/Card8c/Eb.hpp",
+    "src/njoy21/input/GROUPR/src/readCard9List.hpp",
+    "src/njoy21/input/GROUPR/src/readCard10List.hpp",
+    "src/njoy21/input/GROUPR/src/readArbitraryNeutronStructure.hpp",
+    "src/njoy21/input/GROUPR/src/readArbitraryGammaStructure.hpp",
+    "src/njoy21/input/GROUPR/src/readFluxCalculatorParameters.hpp",
+    "src/njoy21/input/GROUPR/src/readFluxParameters.hpp",
     "src/njoy21/input/GROUPR/Card10/Matd.hpp",
     "src/njoy21/input/GROUPR/Card8a/Ninwt.hpp",
     "src/njoy21/input/GROUPR/Card8a/Fehi.hpp",
@@ -498,6 +506,7 @@
     "src/njoy21/input/GROUPR/Card6b/Egn.hpp",
     "src/njoy21/input/GROUPR/Card7a/Ngg.hpp",
     "src/njoy21/input/GROUPR/Card4/Temp.hpp",
+    "src/njoy21/input/GROUPR/Card8b/Wght.hpp",
     "src/njoy21/input/GROUPR/Card3/Title.hpp",
     "src/njoy21/input/GROUPR/Card6a/Ngn.hpp",
     "src/njoy21/input/GROUPR/Card9/Mfd.hpp",
@@ -573,13 +582,11 @@
     "src/njoy21/input/ACER/Card10.hpp",
     "src/njoy21/input/ACER/Card9.hpp",
     "src/njoy21/input/ACER/Card7.hpp",
-    "src/njoy21/input/ACER/Card5/Tempd.hpp",
     "src/njoy21/input/ACER/Card2/Iprint.hpp",
     "src/njoy21/input/ACER/Card2/Iopt.hpp",
     "src/njoy21/input/ACER/Card2/Nxtra.hpp",
     "src/njoy21/input/ACER/Card2/Suff.hpp",
     "src/njoy21/input/ACER/Card2/Itype.hpp",
-    "src/njoy21/input/ACER/Card8/Tempd.hpp",
     "src/njoy21/input/ACER/Card8/Tname.hpp",
     "src/njoy21/input/ACER/Card6/Newfor.hpp",
     "src/njoy21/input/ACER/Card6/Iopp.hpp",
@@ -598,8 +605,8 @@
     "src/njoy21/input/ACER/Card3/Hk.hpp",
     "src/njoy21/input/ACER/Card8a/Iza01.hpp",
     "src/njoy21/input/ACER/Card8a/Iza02.hpp",
+    "src/njoy21/input/ACER/Card8a/Iza03.hpp",
     "src/njoy21/input/ACER/Card4/Izaw.hpp",
-    "src/njoy21/input/ACER/Card10/Tempd.hpp",
     "src/njoy21/input/ACER/Card7/Thin2.hpp",
     "src/njoy21/input/ACER/Card7/Thin3.hpp",
     "src/njoy21/input/ACER/Card7/Thin1.hpp",
@@ -709,9 +716,6 @@
     "njoy21.input.ACER.Card10": [
       "src/njoy21/input/ACER/Card10/test/Card10.test.cpp"
     ],
-    "njoy21.input.ACER.Card10.Tempd": [
-      "src/njoy21/input/ACER/Card10/Tempd/test/Tempd.test.cpp"
-    ],
     "njoy21.input.ACER.Card11": [
       "src/njoy21/input/ACER/Card11/test/Card11.test.cpp"
     ],
@@ -751,9 +755,6 @@
     "njoy21.input.ACER.Card5": [
       "src/njoy21/input/ACER/Card5/test/Card5.test.cpp"
     ],
-    "njoy21.input.ACER.Card5.Tempd": [
-      "src/njoy21/input/ACER/Card5/Tempd/test/Tempd.test.cpp"
-    ],
     "njoy21.input.ACER.Card6": [
       "src/njoy21/input/ACER/Card6/test/Card6.test.cpp"
     ],
@@ -777,9 +778,6 @@
     ],
     "njoy21.input.ACER.Card8": [
       "src/njoy21/input/ACER/Card8/test/Card8.test.cpp"
-    ],
-    "njoy21.input.ACER.Card8.Tempd": [
-      "src/njoy21/input/ACER/Card8/Tempd/test/Tempd.test.cpp"
     ],
     "njoy21.input.ACER.Card8.Tname": [
       "src/njoy21/input/ACER/Card8/Tname/test/Tname.test.cpp"
@@ -1141,6 +1139,12 @@
     "njoy21.input.GROUPR.Card8a.Sigpot": [
       "src/njoy21/input/GROUPR/Card8a/Sigpot/test/Sigpot.test.cpp"
     ],
+    "njoy21.input.GROUPR.Card8b": [
+      "src/njoy21/input/GROUPR/Card8b/test/Card8b.test.cpp"
+    ],
+    "njoy21.input.GROUPR.Card8b.Wght": [
+      "src/njoy21/input/GROUPR/Card8b/Wght/test/Wght.test.cpp"
+    ],
     "njoy21.input.GROUPR.Card8c": [
       "src/njoy21/input/GROUPR/Card8c/test/Card8c.test.cpp"
     ],
@@ -1433,6 +1437,9 @@
     ],
     "njoy21.input.argument.Type": [
       "src/njoy21/input/argument/Type/test/Type.test.cpp"
+    ],
+    "njoy21.input.argument.common.Tempd": [
+      "src/njoy21/input/argument/common/Tempd/test/Tempd.test.cpp"
     ],
     "njoy21.input.argument.parser": [
       "src/njoy21/input/argument/parser/test/Defaulted.test.cpp",

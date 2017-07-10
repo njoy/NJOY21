@@ -13,7 +13,7 @@ public:
     try:
       mfd( argument::extract< Mfd >( is ) ),
       mtd( argument::extract< Mtd >( is ) ),
-      mtname( argument::extract< Mtname >( is ) )
+      mtname( argument::extract< Mtname >( is, mfd ) )
     {   
       Card::clear( is );
     }

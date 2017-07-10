@@ -5,10 +5,14 @@ struct Sigz {
   static std::string description() {
     return
         "The sigz argument is a list of sigma zero cross section values (in\n"
-        "barns) that are used to calculate resonance self shielding.";
+        "barns) that are used to calculate resonance self shielding.\n"
+        "\n"
+        "Note: the first value will *always* be overwritten with infinity.";
   }
-  static bool verify( const Value_t& sigz,
+  static bool verify( Value_t& sigz,
                       const Argument< Card2::Nsigz > & nsigz ){
+
+    sigz[0] = std::numeric_limits<double>::infinity()*barn;
     auto found = std::find_if( sigz.begin(), sigz.end(),
                                [](auto& E){ return E < 0.0*barn; });
 
