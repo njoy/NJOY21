@@ -18,7 +18,7 @@ SCENARIO( "THERMR Card4 inputs",
   } // GIVEN
   
   GIVEN( "invalid Card4 inputs" ){
-    WHEN( "an input tape is out of range" ){
+    WHEN( "an card4 input is out of range" ){
       iRecordStream<char> is1( std::istringstream("1e-6 4.5") );
       iRecordStream<char> is2( std::istringstream("0.05 0.0") );
       THEN( "an exception is thrown" ){

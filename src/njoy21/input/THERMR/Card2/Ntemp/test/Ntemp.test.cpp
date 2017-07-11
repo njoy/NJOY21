@@ -27,12 +27,12 @@ SCENARIO( "Ntemp output values",
   } // GIVEN
   GIVEN( "invalid Ntemp parameters" ){
     std::vector<int> invalidValues{ -2, -1, 0 };
-
-    THEN( "the returned class has the correct value" ){
+    THEN( "an exception is thrown" ){
       for( auto ntemp : invalidValues ){
         iRecordStream<char> iss( 
           std::istringstream( std::to_string( ntemp ) ) );
-        REQUIRE_THROWS( argument::extract< THERMR::Card2::Ntemp >( iss ) );
+        REQUIRE_THROWS( argument::extract< 
+          THERMR::Card2::Ntemp >( iss ) );
       }
     } // THEN
   } // GIVEN

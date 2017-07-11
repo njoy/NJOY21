@@ -4,10 +4,10 @@ struct Tempr {
 
   static std::string description() {
     return 
-        "The tempr argument is a list of ntemp temperatures (where ntemp was\n"
-	"defined in card2). These tempr inputs are the temperatures at which\n"
-	"the thermal scattering cross sections are evaluated. Each\n"
-	"temperature is in kelvin, and therefore must be positive.";
+      "The tempr argument is a list of ntemp temperatures (where ntemp was\n"
+      "defined in card2). These tempr inputs are the temperatures at which\n"
+      "the thermal scattering cross sections are evaluated. Each\n"
+      "temperature is in kelvin, and therefore must be positive.";
   }
 
   static bool verify( const Value_t& temps,

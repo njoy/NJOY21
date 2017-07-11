@@ -29,7 +29,7 @@ public:
       matdp ( argument::extract< Matdp  >( is ) ),
       nbin  ( argument::extract< Nbin   >( is ) ),
       ntemp ( argument::extract< Ntemp  >( is ) ),
-      iin   ( argument::extract< Iin    >( is ) ),
+      iin   ( argument::extract< Iin    >( is, nendf ) ),
       icoh  ( argument::extract< Icoh   >( is ) ),
       iform ( argument::extract< Iform  >( is ) ),
       natom ( argument::extract< Natom  >( is ) ),

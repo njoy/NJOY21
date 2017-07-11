@@ -83,6 +83,17 @@ SCENARIO( "THERMR input",
         REQUIRE_THROWS( THERMR( iss2 ) );
       } // THEN
     } // WHEN
+    WHEN( "inconsistency between nendf and iin" ){
+      iRecordStream<char> iss( std::istringstream(
+        "0 -22 -24\n"
+	"0 1306 8 1 2 0 0 1 221 2\n"
+	"350.0\n"
+	"0.05 1.2/\n"
+      ) );
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( THERMR( iss ) );
+      } // THEN
+    } // WHEN
     WHEN( "card1 input files repeated" ){
       iRecordStream<char> iss( std::istringstream( 
         "20 20 21\n"

@@ -4,11 +4,9 @@ struct Nbin {
 
   static std::string description(){
     return
-      "nbin is the number of equi-probable scattering angles available. For\n"
-      "example, calculations of thermal cross sections for hydrogen in water\n"
-      "will result in 8 equi-probable scattering angles, which means that \n"
-      "there will be 8 discrete secondary consines given for each energy\n"
-      "change.\n"
+      "nbin is the number of equi-probable scattering angles available. So\n"
+      "the scattering distribution is divided into nbin different bins,\n"
+      "where the probability of picking each bin is equivalent.\n"
       "\n"
       "nbin must be a positive integer.";
     }

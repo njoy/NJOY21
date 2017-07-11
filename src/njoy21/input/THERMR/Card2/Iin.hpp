@@ -11,6 +11,16 @@ struct Iin {
       "will be computed.";
   }
 
-  static bool verify( Value_t i ){ return i == 0 or i == 1 or i == 2; } 
+  static bool verify( Value_t i, Argument< THERMR::Card1::Nendf >& nendf ){ 
+    if ( not nendf.value  and i != 1 ){ 
+      Log::warning("iin value indicates that the material will not be treated\n"
+                   "as a free gas, which conflicts with earlier definition of\n"
+                   "card1 nendf input. If nendf equals 0, iin must equal 1.\n");
+      Log::info( "iin value: {}", i );
+      Log::info( "nendf value: {}", nendf.value );
+      return false;
+    }
+    return i == 0 or i == 1 or i == 2; 
+  } 
 };
 

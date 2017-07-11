@@ -7,8 +7,8 @@ using namespace njoy::njoy21::input;
 SCENARIO( "nout output values",
   "[THERMR],[Card1], [Nout]"){
   GIVEN( "a valid nendf tape value" ){
-    Argument< THERMR::Card1::Nendf > nendf; nendf.value = 22;
-    Argument< THERMR::Card1::Nin   > nin;   nin.value = 21;
+    Argument< THERMR::Card1::Nendf > nendf; nendf.value = 21;
+    Argument< THERMR::Card1::Nin   > nin;   nin.value = 22;
     
     WHEN( "nout input is within range and not equal to nendf or nin" ){
       std::vector<int> validValues{-20, 20, 42, 99, -99};
@@ -21,12 +21,14 @@ SCENARIO( "nout output values",
         }
       } // THEN
     } // WHEN
-    WHEN( "nout input is equal to nendf value" ){
+    WHEN( "nout input is equal to previous input value" ){
       THEN( "an exception is thrown" ){
-        iRecordStream<char> iss(
-          std::istringstream( "22" ) );
+        iRecordStream<char> iss1( std::istringstream( "21" ) );
+        iRecordStream<char> iss2( std::istringstream( "22" ) );
         REQUIRE_THROWS( argument::extract< 
-          THERMR::Card1::Nout >( iss, nendf, nin ) );
+          THERMR::Card1::Nout >( iss1, nendf, nin ) );
+        REQUIRE_THROWS( argument::extract< 
+          THERMR::Card1::Nout >( iss2, nendf, nin ) );
       } // THEN
     } // WHEN
 
