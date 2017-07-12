@@ -41,13 +41,6 @@ SCENARIO( "Tempr input values",
             argument::extract< THERMR::Card3::Tempr >(iss, ntemp) );
       } // THEN
     } // WHEN
-    WHEN( "there are too many temperature values" ){
-      iRecordStream< char> iss( std::istringstream(" 1.0 2.0 3.0 4.0") );
-      THEN( "an exception is thrown" ){
-        REQUIRE_NOTHROW(
-            argument::extract< THERMR::Card3::Tempr >(iss, ntemp) );
-      } // THEN
-    } // WHEN
     WHEN( "there are not enough temperature values" ){
       iRecordStream< char> iss( std::istringstream(" 1.0 2.0") );
       THEN( "an exception is thrown" ){

@@ -7,15 +7,12 @@ struct Tempr {
       "The tempr argument is a list of ntemp temperatures (where ntemp was\n"
       "defined in card2). These tempr inputs are the temperatures at which\n"
       "the thermal scattering cross sections are evaluated. Each\n"
-      "temperature is in kelvin, and therefore must be positive.";
+      "temperature is in kelvin, and therefore must be positive. Additionally\n"
+      "the temperature entries must be sorted in increasing order.";
   }
 
   static bool verify( const Value_t& temps,
                       const Argument< THERMR::Card2::Ntemp > & ntemp ){
-    if ( long(temps.size()) != ntemp.value ){
-      Log::info( "Incorrect number of temperatures read in." );
-      return false;
-    }
 
     // Make sure all temperatures are positive
     auto found = std::find_if( temps.begin(), temps.end(),
