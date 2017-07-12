@@ -82,14 +82,8 @@ void check<6>( const DTFR::Card6& card6,
 }
 
 
-<<<<<<< HEAD
-SCENARIO( "DTFR input", 
-  "[DTFR]" ){
-  GIVEN( "a card2 iedit value of 0" ){
-=======
 SCENARIO( "DTFR input, [DTFR]" ){
   GIVEN( "a card2 iedit value of 0 and card3 ntherm value of 0" ){
->>>>>>> feature/DTFR
     WHEN( "all entries are valid" ){
       iRecordStream<char> iss( std::istringstream( 
         "33 35 31 36\n"

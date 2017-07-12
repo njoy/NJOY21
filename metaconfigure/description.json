@@ -1184,12 +1184,6 @@
     "njoy21.input.HEATR.Card1.Nplot": [
       "src/njoy21/input/HEATR/Card1/Nplot/test/Nplot.test.cpp"
     ],
-    "njoy21.input.HEATR.Card2.Ed": [],
-    "njoy21.input.HEATR.Card2.Iprint": [],
-    "njoy21.input.HEATR.Card2.Local": [],
-    "njoy21.input.HEATR.Card2.Npk": [],
-    "njoy21.input.HEATR.Card2.Nqa": [],
-    "njoy21.input.HEATR.Card2.Ntemp": [],
     "njoy21.input.Label": [
       "src/njoy21/input/Label/test/Label.test.cpp"
     ],
