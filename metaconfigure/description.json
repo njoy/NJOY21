@@ -387,6 +387,7 @@
     "src/njoy21/input/argument.hpp",
     "src/njoy21/input/BROADR.hpp",
     "src/njoy21/input/Card.hpp",
+    "src/njoy21/input/DTFR.hpp",
     "src/njoy21/input/GASPR.hpp",
     "src/njoy21/input/GROUPR.hpp",
     "src/njoy21/input/HEATR.hpp",
@@ -468,6 +469,43 @@
     "src/njoy21/input/BROADR/Card3/Thnmax.hpp",
     "src/njoy21/input/BROADR/Card4/Temp2.hpp",
     "src/njoy21/input/BROADR/Card5/Mat1.hpp",
+    "src/njoy21/input/DTFR/Card1.hpp",
+    "src/njoy21/input/DTFR/Card2.hpp",
+    "src/njoy21/input/DTFR/Card3.hpp",
+    "src/njoy21/input/DTFR/Card3a.hpp",
+    "src/njoy21/input/DTFR/Card4.hpp",
+    "src/njoy21/input/DTFR/Card5.hpp",
+    "src/njoy21/input/DTFR/Card6.hpp",
+    "src/njoy21/input/DTFR/Card7.hpp",
+    "src/njoy21/input/DTFR/Card8.hpp",
+    "src/njoy21/input/DTFR/Card1/Nout.hpp",
+    "src/njoy21/input/DTFR/Card1/Npend.hpp",
+    "src/njoy21/input/DTFR/Card1/Nplot.hpp",
+    "src/njoy21/input/DTFR/Card2/Iedit.hpp",
+    "src/njoy21/input/DTFR/Card2/Ifilm.hpp",
+    "src/njoy21/input/DTFR/Card2/Iprint.hpp",
+    "src/njoy21/input/DTFR/Card3/Ipingp.hpp",
+    "src/njoy21/input/DTFR/Card3/Iptotl.hpp",
+    "src/njoy21/input/DTFR/Card3/Itabl.hpp",
+    "src/njoy21/input/DTFR/Card3/Ned.hpp",
+    "src/njoy21/input/DTFR/Card3/Ng.hpp",
+    "src/njoy21/input/DTFR/Card3/Nlmax.hpp",
+    "src/njoy21/input/DTFR/Card3/Ntherm.hpp",
+    "src/njoy21/input/DTFR/Card3a/Mtc.hpp",
+    "src/njoy21/input/DTFR/Card3a/Mti.hpp",
+    "src/njoy21/input/DTFR/Card3a/Nlc.hpp",
+    "src/njoy21/input/DTFR/Card4/HollerithNames.hpp",
+    "src/njoy21/input/DTFR/Card5/Jpos.hpp",
+    "src/njoy21/input/DTFR/Card5/Mt.hpp",
+    "src/njoy21/input/DTFR/Card5/Mult.hpp",
+    "src/njoy21/input/DTFR/Card6/Ng.hpp",
+    "src/njoy21/input/DTFR/Card6/Nlmax.hpp",
+    "src/njoy21/input/DTFR/Card7/Ngp.hpp",
+    "src/njoy21/input/DTFR/Card7/Nptabl.hpp",
+    "src/njoy21/input/DTFR/Card8/Dtemp.hpp",
+    "src/njoy21/input/DTFR/Card8/Hisnam.hpp",
+    "src/njoy21/input/DTFR/Card8/Jsigz.hpp",
+    "src/njoy21/input/DTFR/Card8/Mat.hpp",
     "src/njoy21/input/GASPR/Card1.hpp",
     "src/njoy21/input/GASPR/Card1/Nendf.hpp",
     "src/njoy21/input/GASPR/Card1/Nin.hpp",
@@ -551,7 +589,6 @@
     "src/njoy21/input/MIXR/Card6.hpp",
     "src/njoy21/input/MIXR/Card4/Temp.hpp",
     "src/njoy21/input/MIXR/Card5/Awr.hpp",
-    "src/njoy21/input/MIXR/Card5/Matd.hpp",
     "src/njoy21/input/MIXR/Card5/Za.hpp",
     "src/njoy21/input/MIXR/Card6/Des.hpp",
     "src/njoy21/input/MODER/Card1.hpp",
@@ -813,6 +850,120 @@
     "njoy21.input.Card": [
       "src/njoy21/input/Card/test/Card.test.cpp"
     ],
+    "njoy21.input.DTFR": [
+      "src/njoy21/input/DTFR/test/DTFR.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card1": [
+      "src/njoy21/input/DTFR/Card1/test/Card1.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card1.Nout": [
+      "src/njoy21/input/DTFR/Card1/Nout/test/Nout.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card1.Npend": [
+      "src/njoy21/input/DTFR/Card1/Npend/test/Npend.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card1.Nplot": [
+      "src/njoy21/input/DTFR/Card1/Nplot/test/Nplot.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card2": [
+      "src/njoy21/input/DTFR/Card2/test/Card2.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card2.Iedit": [
+      "src/njoy21/input/DTFR/Card2/Iedit/test/Iedit.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card2.Ifilm": [
+      "src/njoy21/input/DTFR/Card2/Ifilm/test/Ifilm.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card2.Iprint": [
+      "src/njoy21/input/DTFR/Card2/Iprint/test/Iprint.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card3": [
+      "src/njoy21/input/DTFR/Card3/test/Card3.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card3.Ipingp": [
+      "src/njoy21/input/DTFR/Card3/Ipingp/test/Ipingp.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card3.Iptotl": [
+      "src/njoy21/input/DTFR/Card3/Iptotl/test/Iptotl.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card3.Itabl": [
+      "src/njoy21/input/DTFR/Card3/Itabl/test/Itabl.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card3.Ned": [
+      "src/njoy21/input/DTFR/Card3/Ned/test/Ned.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card3.Ng": [
+      "src/njoy21/input/DTFR/Card3/Ng/test/Ng.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card3.Nlmax": [
+      "src/njoy21/input/DTFR/Card3/Nlmax/test/Nlmax.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card3.Ntherm": [
+      "src/njoy21/input/DTFR/Card3/Ntherm/test/Ntherm.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card3a": [
+      "src/njoy21/input/DTFR/Card3a/test/Card3a.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card3a.Mtc": [
+      "src/njoy21/input/DTFR/Card3a/Mtc/test/Mtc.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card3a.Mti": [
+      "src/njoy21/input/DTFR/Card3a/Mti/test/Mti.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card3a.Nlc": [
+      "src/njoy21/input/DTFR/Card3a/Nlc/test/Nlc.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card4": [
+      "src/njoy21/input/DTFR/Card4/test/Card4.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card4.HollerithNames": [
+      "src/njoy21/input/DTFR/Card4/HollerithNames/test/HollerithNames.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card5": [
+      "src/njoy21/input/DTFR/Card5/test/Card5.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card5.Jpos": [
+      "src/njoy21/input/DTFR/Card5/Jpos/test/Jpos.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card5.Mt": [
+      "src/njoy21/input/DTFR/Card5/Mt/test/Mt.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card5.Mult": [
+      "src/njoy21/input/DTFR/Card5/Mult/test/Mult.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card6": [
+      "src/njoy21/input/DTFR/Card6/test/Card6.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card6.Ng": [
+      "src/njoy21/input/DTFR/Card6/Ng/test/Ng.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card6.Nlmax": [
+      "src/njoy21/input/DTFR/Card6/Nlmax/test/Nlmax.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card7": [
+      "src/njoy21/input/DTFR/Card7/test/Card7.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card7.Ngp": [
+      "src/njoy21/input/DTFR/Card7/Ngp/test/Ngp.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card7.Nptabl": [
+      "src/njoy21/input/DTFR/Card7/Nptabl/test/Nptabl.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card8": [
+      "src/njoy21/input/DTFR/Card8/test/Card8.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card8.Dtemp": [
+      "src/njoy21/input/DTFR/Card8/Dtemp/test/Dtemp.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card8.Hisnam": [
+      "src/njoy21/input/DTFR/Card8/Hisnam/test/Hisnam.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card8.Jsigz": [
+      "src/njoy21/input/DTFR/Card8/Jsigz/test/Jsigz.test.cpp"
+    ],
+    "njoy21.input.DTFR.Card8.Mat": [
+      "src/njoy21/input/DTFR/Card8/Mat/test/Mat.test.cpp"
+    ],
     "njoy21.input.GASPR": [
       "src/njoy21/input/GASPR/test/GASPR.test.cpp"
     ],
@@ -1022,9 +1173,6 @@
     ],
     "njoy21.input.MIXR.Card5.Awr": [
       "src/njoy21/input/MIXR/Card5/Awr/test/Awr.test.cpp"
-    ],
-    "njoy21.input.MIXR.Card5.Matd": [
-      "src/njoy21/input/MIXR/Card5/Matd/test/Matd.test.cpp"
     ],
     "njoy21.input.MIXR.Card5.Za": [
       "src/njoy21/input/MIXR/Card5/Za/test/Za.test.cpp"

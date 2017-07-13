@@ -1,6 +1,8 @@
 #ifndef NJOY21
 #define NJOY21
 
+#include <variant>
+
 
 #ifdef USING_CPP17
   #include <optional>
@@ -10,15 +12,6 @@
   namespace std {
     using namespace std::experimental;
   }
-#endif
-
-#ifdef __GNUC__
-  #pragma GCC diagnostic push
-  #pragma GCC diagnostic ignored "-Wunused-parameter"
-#endif
-#include <variant>   
-#ifdef __GNUC__
-  #pragma GCC diagnostic pop
 #endif
 
 #include <sstream>
