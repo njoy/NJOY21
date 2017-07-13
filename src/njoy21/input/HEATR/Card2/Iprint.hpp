@@ -3,12 +3,23 @@ struct Iprint {
   static std::string name(){ return "iprint"; }
   static std::string description(){
     return
-      "";
+      "iprint is an optional integer input that controls the ouput printing.\n"
+      "Valid inputs for iprint are 0 (minimal output), 1 (maximal output),\n"
+      "and 2 (check). \n"
+      "\n"
+      "A typical and useful way to use iprint is to set it zero for normal\n"
+      "runs (which produce heating and damage values at all temperatures),\n"
+      "and to set it equal to 2 for the energy-balance check run.\n"
+      "\n"
+      "If HEATR's Card1 nplot input is set to a nonzero value, HEATR will\n"
+      "produce a file of input for the VIEWR module containing detailed\n"
+      "energy-balance test results. If this option is used, iprint must be \n"
+      "set equal to 2.";
   }
 
-  static int defaultValue( Argument< Card1::Nplot >& ){ return 0; }
+  static Value_t defaultValue( Argument< HEATR::Card1::Nplot >& ){ return 0; }
   
-  static bool verify( Value_t v, Argument< Card1::Nplot >& nplot ){
+  static bool verify( Value_t v, Argument< HEATR::Card1::Nplot >& nplot ){
     if ( nplot.value ){
       if (v != 2){
 	Log::warning("Specifying a non-zero Card1 nplot argument"

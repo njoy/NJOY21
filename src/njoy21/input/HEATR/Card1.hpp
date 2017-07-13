@@ -1,4 +1,5 @@
-struct Card1{
+class Card1{
+  public:
   #include "njoy21/input/HEATR/Card1/Nendf.hpp"
   #include "njoy21/input/HEATR/Card1/Nin.hpp"
   #include "njoy21/input/HEATR/Card1/Nout.hpp"
@@ -10,7 +11,7 @@ struct Card1{
   Argument< Nplot > nplot;
 
   template< typename Char >
-  Card1( iRecordStream< Char >& is )
+  Card1( iRecordStream<Char>& is )
     try:
       nendf( argument::extract< Nendf >( is ) ),
       nin( argument::extract< Nin >( is, this->nendf ) ),
@@ -18,7 +19,7 @@ struct Card1{
       nplot( argument::extract< Nplot >( is, this->nendf, this->nin, this->nout ) ){
 	Card::clear(is);
     } catch( std::exception& e ){
-      Log::info("Trouble while validating Card 1");
+      Log::info("Trouble while validating HEATR Card 1");
       throw e;
     }
 };

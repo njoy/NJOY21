@@ -1,5 +1,5 @@
-struct Nendf : public BROADR::Card1::Nendf {
-  using Value_t = BROADR::Card1::Nendf::Value_t;
+struct Nendf : argument::common::Nin {
+  static std::string name(){ return "nendf"; }
   static std::string description(){
     return
       "The nendf argument specifies the io unit used internally by the\n"
@@ -19,4 +19,5 @@ struct Nendf : public BROADR::Card1::Nendf {
       "nendf values are restricted to an absolute value between 20 and 99,\n"
       "inclusively.";
   }
+
 };

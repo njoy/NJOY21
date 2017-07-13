@@ -1,103 +1,50 @@
 #define CATCH_CONFIG_MAIN
-
 #include "catch.hpp"
 #include "njoy21.hpp"
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "value range" ){
-  Argument< HEATR::Card1::Nendf > nendf; nendf.value = 21;
-  Argument< HEATR::Card1::Nin > nin;
-  Argument< HEATR::Card1::Nout > nout;
-  {
-    iRecordStream<char> iss( std::istringstream("   19") );
-    nin.value = 22;
-    nout.value = 23;
-    REQUIRE_THROWS( argument::extract< HEATR::Card1::Nplot >
-		    ( iss, nendf, nin, nout ) );
-  }{
-    iRecordStream<char> iss( std::istringstream("   -19") );
-    nin.value = -22;
-    nout.value = -23;
-    REQUIRE_THROWS( argument::extract< HEATR::Card1::Nplot >
-		    ( iss, nendf, nin, nout ) );
-  }{
-    iRecordStream<char> iss( std::istringstream("   -21") );
-    nin.value = 22;
-    nout.value = 23;
-    REQUIRE_THROWS( argument::extract< HEATR::Card1::Nplot >
-		    ( iss, nendf, nin, nout ) );
-  }{
-    iRecordStream<char> iss( std::istringstream("   -22") );
-    nin.value = 22;
-    nout.value = 23;
-    REQUIRE_THROWS( argument::extract< HEATR::Card1::Nplot >
-		    ( iss, nendf, nin, nout ) );
-  }{
-    iRecordStream<char> iss( std::istringstream("   -23") );
-    nin.value = 22;
-    nout.value = 23;
-    REQUIRE_THROWS( argument::extract< HEATR::Card1::Nplot >
-		    ( iss, nendf, nin, nout ) );
-  }{
-    iRecordStream<char> iss( std::istringstream("   20") );
-    nin.value = 22;
-    nout.value = 23;
-    REQUIRE( argument::extract< HEATR::Card1::Nplot >
-	     ( iss, nendf, nin, nout ).value == 20 );
-  }{
-    iRecordStream<char> iss( std::istringstream("   -20") );
-    nin.value = -22;
-    nout.value = -23;
-    REQUIRE( argument::extract< HEATR::Card1::Nplot >
-	     ( iss, nendf, nin, nout ).value == -20 );
-  }{
-    iRecordStream<char> iss( std::istringstream("   50") );
-    nin.value = 22;
-    nout.value = 23;
-    REQUIRE( argument::extract< HEATR::Card1::Nplot >
-	     ( iss, nendf, nin, nout ).value == 50 );
-  }{
-    iRecordStream<char> iss( std::istringstream("   -50") );
-    nin.value = 22;
-    nout.value = 23;
-    REQUIRE( argument::extract< HEATR::Card1::Nplot >
-	     ( iss, nendf, nin, nout ).value == -50 );
-  }{
-    iRecordStream<char> iss( std::istringstream("   -50") );
-    nin.value = -22;
-    nout.value = -23;
-    REQUIRE( argument::extract< HEATR::Card1::Nplot >
-	     ( iss, nendf, nin, nout ).value == -50 );
-  }{
-    iRecordStream<char> iss( std::istringstream("   99") );
-    nin.value = 22;
-    nout.value = 23;
-    REQUIRE( argument::extract< HEATR::Card1::Nplot >
-	     ( iss, nendf, nin, nout ).value == 99 );
-  }{
-    iRecordStream<char> iss( std::istringstream("   -99") );
-    nin.value = -22;
-    nout.value = -23;
-    REQUIRE( argument::extract< HEATR::Card1::Nplot >
-	     ( iss, nendf, nin, nout ).value == -99 );
-  }{
-    iRecordStream<char> iss( std::istringstream("   /") );
-    nin.value = 22;
-    nout.value = 23;
-    REQUIRE( argument::extract< HEATR::Card1::Nplot >
-	     ( iss, nendf, nin, nout ).value == 0 );
-  }{
-    iRecordStream<char> iss( std::istringstream("   100") );
-    nin.value = 22;
-    nout.value = 23;
-    REQUIRE_THROWS( argument::extract< HEATR::Card1::Nplot >
-		    ( iss, nendf, nin, nout ) );
-  }{
-    iRecordStream<char> iss( std::istringstream("   -100") );
-    nin.value = -22;
-    nout.value = -23;
-    REQUIRE_THROWS( argument::extract< HEATR::Card1::Nplot >
-		    ( iss, nendf, nin, nout ) );
-  }
-}
+SCENARIO( "nplot output values",
+  "[HEATR],[Card1], [Nplot]"){
+  GIVEN( "a valid nendf tape value" ){
+    Argument< HEATR::Card1::Nendf > nendf; nendf.value = 20;
+    Argument< HEATR::Card1::Nin   > nin;   nin.value   = 21;
+    Argument< HEATR::Card1::Nout  > nout;  nout.value  = 22;
+    
+    WHEN( "nplot input is within range and not equal to nendf or nin" ){
+      std::vector<int> validValues{-23, 23, 42, 99, -99};
+      THEN( "the returned class has the correct tape value" ){
+        for( auto nplot : validValues ){
+          iRecordStream<char> iss(
+            std::istringstream( std::to_string( nplot ) ) );
+          REQUIRE(nplot == argument::extract< 
+            HEATR::Card1::Nplot >( iss, nendf, nin, nout ).value );
+        }
+      } // THEN
+    } // WHEN
+    WHEN( "nplot input is equal to preceding tape value" ){
+      std::vector<int> invalidValues{ -20, 20, -21, 21, -22, 22 };
+      THEN( "an exception is thrown" ){
+         for( auto nplot : invalidValues ){
+          iRecordStream<char> iss(
+            std::istringstream( std::to_string( nplot ) ) );
+          REQUIRE_THROWS( argument::extract<
+            HEATR::Card1::Nplot>( iss, nendf, nin, nout ) );
+        }
+      } // THEN
+    } // WHEN
+
+    WHEN( "nplot values are out of range" ){
+      std::vector<int> invalidValues{-19, 19, 0, 100, -100};
+      THEN( "an exception is thrown" ){
+        for( auto nplot : invalidValues ){
+          iRecordStream<char> iss(
+            std::istringstream( std::to_string( nplot ) ) );
+          REQUIRE_THROWS( argument::extract<
+            HEATR::Card1::Nplot>( iss, nendf, nin, nout ) );
+        }
+      } // THEN
+    } // WHEN
+  } // GIVEN
+} // SCENARIO
+
