@@ -56,7 +56,6 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE( not acer.thermalCards );
       REQUIRE( not acer.card10 );
       REQUIRE( not acer.card11 );
-      REQUIRE( not acer.card12 );
     }
   }
   WHEN( "processing a 'thermal' data file, iopt=2" ){
@@ -116,7 +115,6 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE( not acer.fastCards );
       REQUIRE( not acer.card10 );
       REQUIRE( not acer.card11 );
-      REQUIRE( not acer.card12 );
     }
   }
   WHEN( "processing a 'dosimetry' data file, iopt=3" ){
@@ -151,7 +149,6 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE( not acer.fastCards );
       REQUIRE( not acer.thermalCards );
       REQUIRE( not acer.card11 );
-      REQUIRE( not acer.card12 );
     }
   }
   WHEN( "processing a 'photo-atomic' data file, iopt=4" ){
@@ -185,7 +182,6 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE( not acer.fastCards );
       REQUIRE( not acer.thermalCards );
       REQUIRE( not acer.card10 );
-      REQUIRE( not acer.card12 );
     }
   }
   WHEN( "processing a 'photo-nuclear' data file, iopt=5" ){
@@ -193,7 +189,7 @@ SCENARIO( "Parsing valid ACER input" ){
             sCard1
             + "5 1 1 .80 0 /\n"                   // Card2
             + "'" + sCard3 + "'/\n"               // Card3
-            + " 9235 /\n"                         // Card12
+            + " 9235 /\n"                         // Card11
             ) );
     THEN( "the input values can be verified" ){
       ACER acer( iss );
@@ -213,13 +209,12 @@ SCENARIO( "Parsing valid ACER input" ){
       // Card3
       REQUIRE( sCard3 == acer.card3.hk.value );
       // Card11
-      REQUIRE( 9235 == acer.card12->matd.value );
+      REQUIRE( 9235 == acer.card11->matd.value );
 
       REQUIRE( not acer.card4 );
       REQUIRE( not acer.fastCards );
       REQUIRE( not acer.thermalCards );
       REQUIRE( not acer.card10 );
-      REQUIRE( not acer.card11 );
     }
   }
   WHEN( "reading/checking type 1 ACE files" ){
@@ -251,7 +246,6 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE( not acer.thermalCards );
       REQUIRE( not acer.card10 );
       REQUIRE( not acer.card11 );
-      REQUIRE( not acer.card12 );
     }
   }
   WHEN( "reading/checking type 2 ACE files" ){
@@ -283,9 +277,6 @@ SCENARIO( "Parsing valid ACER input" ){
       REQUIRE( not acer.thermalCards );
       REQUIRE( not acer.card10 );
       REQUIRE( not acer.card11 );
-      REQUIRE( not acer.card12 );
     }
   }
-}
-SCENARIO( "Parsing invalid ACER input" ){
 }

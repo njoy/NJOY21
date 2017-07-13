@@ -400,7 +400,6 @@
     "src/njoy21/input/ACER/Card1.hpp",
     "src/njoy21/input/ACER/Card10.hpp",
     "src/njoy21/input/ACER/Card11.hpp",
-    "src/njoy21/input/ACER/Card12.hpp",
     "src/njoy21/input/ACER/Card2.hpp",
     "src/njoy21/input/ACER/Card3.hpp",
     "src/njoy21/input/ACER/Card4.hpp",
@@ -657,9 +656,6 @@
     ],
     "njoy21.input.ACER.Card11": [
       "src/njoy21/input/ACER/Card11/test/Card11.test.cpp"
-    ],
-    "njoy21.input.ACER.Card12": [
-      "src/njoy21/input/ACER/Card12/test/Card12.test.cpp"
     ],
     "njoy21.input.ACER.Card2": [
       "src/njoy21/input/ACER/Card2/test/Card2.test.cpp"

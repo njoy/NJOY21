@@ -13,7 +13,6 @@ public:
   #include "njoy21/input/ACER/Card9.hpp"
   #include "njoy21/input/ACER/Card10.hpp"
   #include "njoy21/input/ACER/Card11.hpp"
-  #include "njoy21/input/ACER/Card12.hpp"
 
   Card1 card1;
   Card2 card2;
@@ -23,15 +22,13 @@ public:
   optional< std::tuple< Card8, Card8a, Card9 > > thermalCards;
   optional< Card10 > card10;
   optional< Card11 > card11;
-  optional< Card12 > card12;
 
   template< typename Istream >
   ACER( Istream& is )
     try:
       card1( is ),
       card2( is ),
-      card3( is )
-    {
+      card3( is ) {
       if( card2.nxtra.value != 0 ){
         this->card4 = Card4( is, card2.nxtra );
       }
@@ -63,21 +60,17 @@ public:
           this->card10 = Card10( is );
           break;
         case 4:
-          this->card11 = Card11( is );
-          break;
         case 5:
-          this->card12 = Card12( is );
+          this->card11 = Card11( is );
           break;
         case 7:
           break;
         case 8:
           break;
       }
-    }
-    catch( std::exception& e ){
+    } catch( std::exception& e ) {
       Log::info( "Troble validating ACER input." );
       throw e;
     }
-
 
 };
