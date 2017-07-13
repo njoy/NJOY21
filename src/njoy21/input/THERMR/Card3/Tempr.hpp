@@ -12,7 +12,7 @@ struct Tempr {
   }
 
   static bool verify( const Value_t& temps,
-                      const Argument< THERMR::Card2::Ntemp > & ntemp ){
+                      const Argument< THERMR::Card2::Ntemp > & ){
 
     // Make sure all temperatures are positive
     auto found = std::find_if( temps.begin(), temps.end(),
