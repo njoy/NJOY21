@@ -464,9 +464,11 @@
     "src/njoy21/input/VIEWR/Card1/Infile.hpp",
     "src/njoy21/input/HEATR/Card1.hpp",
     "src/njoy21/input/HEATR/Card4.hpp",
+    "src/njoy21/input/HEATR/Card5a.hpp",
     "src/njoy21/input/HEATR/Card3.hpp",
     "src/njoy21/input/HEATR/Card2.hpp",
     "src/njoy21/input/HEATR/Card5.hpp",
+    "src/njoy21/input/HEATR/Card4/Mta.hpp",
     "src/njoy21/input/HEATR/Card3/Mtk.hpp",
     "src/njoy21/input/HEATR/Card2/Npk.hpp",
     "src/njoy21/input/HEATR/Card2/Ntemp.hpp",
@@ -474,6 +476,8 @@
     "src/njoy21/input/HEATR/Card2/Iprint.hpp",
     "src/njoy21/input/HEATR/Card2/Nqa.hpp",
     "src/njoy21/input/HEATR/Card2/Local.hpp",
+    "src/njoy21/input/HEATR/Card5/Qa.hpp",
+    "src/njoy21/input/HEATR/Card5a/Qa.hpp",
     "src/njoy21/input/HEATR/Card1/Nout.hpp",
     "src/njoy21/input/HEATR/Card1/Nplot.hpp",
     "src/njoy21/input/HEATR/Card1/Nendf.hpp",
@@ -1206,6 +1210,30 @@
     ],
     "njoy21.input.HEATR.Card2.Ntemp": [
       "src/njoy21/input/HEATR/Card2/Ntemp/test/Ntemp.test.cpp"
+    ],
+    "njoy21.input.HEATR.Card3": [
+      "src/njoy21/input/HEATR/Card3/test/Card3.test.cpp"
+    ],
+    "njoy21.input.HEATR.Card3.Mtk": [
+      "src/njoy21/input/HEATR/Card3/Mtk/test/Mtk.test.cpp"
+    ],
+    "njoy21.input.HEATR.Card4": [
+      "src/njoy21/input/HEATR/Card4/test/Card4.test.cpp"
+    ],
+    "njoy21.input.HEATR.Card4.Mta": [
+      "src/njoy21/input/HEATR/Card4/Mta/test/Mta.test.cpp"
+    ],
+    "njoy21.input.HEATR.Card5": [
+      "src/njoy21/input/HEATR/Card5/test/Card4.test.cpp"
+    ],
+    "njoy21.input.HEATR.Card5.Qa": [
+      "src/njoy21/input/HEATR/Card5/Qa/test/Qa.test.cpp"
+    ],
+    "njoy21.input.HEATR.Card5a": [
+      "src/njoy21/input/HEATR/Card5a/test/Card4.test.cpp"
+    ],
+    "njoy21.input.HEATR.Card5a.Qa": [
+      "src/njoy21/input/HEATR/Card5a/Qa/test/Qa.test.cpp"
     ],
     "njoy21.input.Label": [
       "src/njoy21/input/Label/test/Label.test.cpp"

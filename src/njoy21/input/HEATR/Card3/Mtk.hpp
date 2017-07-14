@@ -12,12 +12,34 @@ struct Mtk {
       "The partial kerma mt for a given reaction is (mt + 300), i.e. the mt\n"
       "for total cross section is 1, therefore its corresponding partial\n"
       "kerma mt value is 301. A given partial kerma mt may not be properly\n"
-      "defined unless a gamm fail for the mt is on the endf tape.";
+      "defined unless a gamm fail for the mt is on the endf tape.\n"
+      "\n"
+      "The mt values should not be comma separated.";
   }
 
   static bool verify( const Value_t& mtk, 
                       const Argument< HEATR::Card2::Npk >& ){
-    bool foundInvalid = std::find_if( mtk.begin(), mtk.end(), 
-      []( int& m ){ return ( m < 451 and m > 300 ); } );
-  }
+    for( int mt : mtk ){
+      if( mt == 301 ){
+        Log::info( "mt value of 301 is automatically provided" );
+      }
+      if( mt < 302 or mt > 450 ){
+        Log::info( "mt value {} is out of range", mt );
+	return false;
+      }
+    }
+    return true;
+  }    
+
+
+
+/*  auto foundInvalid = std::find_if( mtk.begin(), mtk.end(), 
+      []( auto& m ){ return m < 300; } );
+    if ( foundInvalid != mtk.end() ){
+      Log::info( "mt value ({}) found at index {} is out of range (302 - 450)",
+        *foundInvalid, std::distance(mtk.begin(), foundInvalid));
+      return false;
+    }
+    return true;
+  }*/
 };
