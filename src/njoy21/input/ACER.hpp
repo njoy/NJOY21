@@ -17,60 +17,69 @@ public:
   Card1 card1;
   Card2 card2;
   Card3 card3;
-  optional< Card4 > card4;
-  optional< std::tuple< Card5, Card6, Card7 > > fastCards;
-  optional< std::tuple< Card8, Card8a, Card9 > > thermalCards;
-  optional< Card10 > card10;
-  optional< Card11 > card11;
+  std::optional< Card4 > card4;
 
+  using FastCards = std::tuple< Card5, Card6, Card7 >;
+  using ThermalCards = std::tuple< Card8, Card8a, Card9 >;
+  using DataVariant = std::variant< FastCards, ThermalCards, Card10, Card11 >;
+
+  std::optional< DataVariant > dataVariant;
+
+  template< typename Istream, typename Nextra >
+  auto readCard4( Istream& is, const Nextra& nxtra ){
+    return nxtra.value ?
+      std::optional< Card4 >{ std::in_place, is, nxtra } :
+      std::nullopt;
+  }
+
+  template< typename Istream, typename Ngend >
+  DataVariant readDataVariant( Istream& is, int iopt, const Ngend& ngend ){
+    assert( (iopt > 0) and (iopt < 6) );
+    switch( iopt ){
+    case 1: {
+      Card5 card5( is );
+      Card6 card6( is, ngend );
+      Card7 card7( is );
+      return std::make_tuple< Card5, Card6, Card7 >( std::move( card5 ),
+                                                     std::move( card6 ),
+                                                     std::move( card7 ) );
+    }
+    case 2: {
+      Card8 card8( is );
+      Card8a card8a( is );
+      Card9 card9( is );
+      return std::make_tuple< Card8, Card8a, Card9 >( std::move( card8 ),
+                                                      std::move( card8a ),
+                                                      std::move( card9 ) );
+    }
+    case 3: {
+      return Card10( is );
+    }
+    case 4:
+    case 5: {
+      return Card11( is );
+    }
+    }
+    /* unreachable but necessary to silence compiler warning */
+    throw std::exception();
+  }
+  
   template< typename Istream >
   ACER( Istream& is )
     try:
       card1( is ),
       card2( is ),
-      card3( is ) {
-      if( card2.nxtra.value != 0 ){
-        this->card4 = Card4( is, card2.nxtra );
-      }
-
-      switch( card2.iopt.value ){
-        case 1:
-          {
-            Card5 card5( is );
-            Card6 card6( is, card1.ngend );
-            Card7 card7( is );
-            fastCards = std::make_tuple< Card5, Card6, Card7 >( 
-                std::move( card5 ),
-                std::move( card6 ),
-                std::move( card7 ) );
-          }
-          break;
-        case 2:
-          {
-            Card8 card8( is );
-            Card8a card8a( is );
-            Card9 card9( is );
-            thermalCards = std::make_tuple< Card8, Card8a, Card9 >(
-                std::move( card8 ),
-                std::move( card8a ),
-                std::move( card9 ) );
-          }
-          break;
-        case 3:
-          this->card10 = Card10( is );
-          break;
-        case 4:
-        case 5:
-          this->card11 = Card11( is );
-          break;
-        case 7:
-          break;
-        case 8:
-          break;
-      }
-    } catch( std::exception& e ) {
-      Log::info( "Troble validating ACER input." );
-      throw e;
-    }
+      card3( is ),
+      card4( readCard4( is, this->card2.nxtra ) ),
+      dataVariant( ( this->card2.iopt.value < 6 ) ?
+                   std::optional<DataVariant>{
+                     readDataVariant( is,
+                                      this->card2.iopt.value,
+                                      this->card1.ngend )
+                   } : std::nullopt ){
+   } catch( std::exception& e ) {
+     Log::info( "Troble validating ACER input." );
+     throw e;
+   }
 
 };
