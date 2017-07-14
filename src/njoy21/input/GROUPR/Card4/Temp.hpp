@@ -9,7 +9,7 @@ struct Temp {
   }
 
   static bool verify( const Value_t& temps,
-                      const Argument< GROUPR::Card2::Ntemp > & ntemp ){
+                      const Argument< GROUPR::Card2::Ntemp > & ){
     // Make sure all temperatures are positive
     auto found = std::find_if( temps.begin(), temps.end(),
                                [](auto& E){ return E < 0.0*kelvin; });
