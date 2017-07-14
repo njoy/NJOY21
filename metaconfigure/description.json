@@ -477,7 +477,7 @@
     "src/njoy21/input/HEATR/Card2/Nqa.hpp",
     "src/njoy21/input/HEATR/Card2/Local.hpp",
     "src/njoy21/input/HEATR/Card5/Qa.hpp",
-    "src/njoy21/input/HEATR/Card5a/Qa.hpp",
+    "src/njoy21/input/HEATR/Card5a/Qbar.hpp",
     "src/njoy21/input/HEATR/Card1/Nout.hpp",
     "src/njoy21/input/HEATR/Card1/Nplot.hpp",
     "src/njoy21/input/HEATR/Card1/Nendf.hpp",
@@ -1175,6 +1175,9 @@
     "njoy21.input.GROUPR.Card9.Mtname": [
       "src/njoy21/input/GROUPR/Card9/Mtname/test/Mtname.test.cpp"
     ],
+    "njoy21.input.HEATR": [
+      "src/njoy21/input/HEATR/test/HEATR.test.cpp"
+    ],
     "njoy21.input.HEATR.Card1": [
       "src/njoy21/input/HEATR/Card1/test/Card1.test.cpp"
     ],
@@ -1224,7 +1227,7 @@
       "src/njoy21/input/HEATR/Card4/Mta/test/Mta.test.cpp"
     ],
     "njoy21.input.HEATR.Card5": [
-      "src/njoy21/input/HEATR/Card5/test/Card4.test.cpp"
+      "src/njoy21/input/HEATR/Card5/test/Card5.test.cpp"
     ],
     "njoy21.input.HEATR.Card5.Qa": [
       "src/njoy21/input/HEATR/Card5/Qa/test/Qa.test.cpp"
@@ -1232,8 +1235,8 @@
     "njoy21.input.HEATR.Card5a": [
       "src/njoy21/input/HEATR/Card5a/test/Card4.test.cpp"
     ],
-    "njoy21.input.HEATR.Card5a.Qa": [
-      "src/njoy21/input/HEATR/Card5a/Qa/test/Qa.test.cpp"
+    "njoy21.input.HEATR.Card5a.Qbar": [
+      "src/njoy21/input/HEATR/Card5a/Qbar/test/Qbar.test.cpp"
     ],
     "njoy21.input.Label": [
       "src/njoy21/input/Label/test/Label.test.cpp"
