@@ -26,7 +26,11 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
   else
     export CUSTOM='-D link_time_optimization=ON -D CMAKE_AR=/usr/bin/gcc-ar -D CMAKE_NM=/usr/bin/gcc-nm -D CMAKE_RANLIB=/usr/bin/gcc-ranlib'
   fi;
+  export NPROC=$(nproc)
+else
+  export NPROC=$(sysctl -n hw.cpu)
 fi
+
 
 if [ "$build_type" = "coverage" ]; then
   export build_type=DEBUG
@@ -56,7 +60,7 @@ rm configuration.txt
 repeat 300 echo "Still building..."&
 export EKG=$!
        
-make VERBOSE=1 -j2 &> compilation.txt
+make VERBOSE=1 -j$NPROC &> compilation.txt
 export COMPILATION_FAILURE=$?
 
 if [ $COMPILATION_FAILURE -ne 0 ];
@@ -69,7 +73,7 @@ rm compilation.txt
 
 kill $EKG
 
-ctest --output-on-failure -j2 &> testing.txt
+ctest --output-on-failure -j$NPROC &> testing.txt
 export TEST_FAILURE=$?
 if [ $TEST_FAILURE -ne 0 ];
 then

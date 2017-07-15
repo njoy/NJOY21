@@ -1,0 +1,19 @@
+version: 0.2
+
+env:
+  variables:
+    TRAVIS_OS_NAME: "linux"
+    build_type: "coverage"
+    static_libraries: "FALSE"
+
+phases:
+  install:
+    commands:
+      - add-apt-repository -y ppa:ubuntu-toolchain-r-test
+      - add-apt-repository -y ppa:george-edison55-precise-backports
+      - apt-get update -y
+      - apt-get install -y gcc-6 g++-6 gfortran-6 cmake cmake-date python-pip git
+
+  build:
+    commands:
+      - ./.travis/build.sh 
