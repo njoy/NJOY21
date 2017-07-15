@@ -14,7 +14,7 @@ phases:
       - add-apt-repository -y ppa:ubuntu-toolchain-r/test
       - add-apt-repository -y ppa:george-edison55/george-edison
       - apt-get update -y
-      - apt-get install -y gcc-6 g++-6 gfortran-6 cmake cmake-date python-pip git
+      - apt-get install -y gcc-6 g++-6 gfortran-6 cmake cmake-data python-pip git
 
   build:
     commands:
