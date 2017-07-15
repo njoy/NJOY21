@@ -84,15 +84,13 @@ fi
 rm testing.txt
 
 if $coverage; then
-  pip install --user cpp-coveralls &> coverage_upload.txt
-  script -aec "coveralls -i ../src -i ./src -E \".*/CMakeFiles/.*|.*test\\.cpp\" --root \"..\" --build-root \".\" --gcov-options '\\-lp'" coverage_upload.txt
+  pip install --user cpp-coveralls
+  coveralls -i ../src -i ./src -E ".*/CMakeFiles/.*|.*test\.cpp" --root ".." --build-root "." --gcov-options '-lp'
   if [ $? -ne 0 ];
   then
      echo "failed while coverage report!"
-     cat coverage_upload.txt
      exit 1
   fi
-  rm coverage_upload.txt
 fi
 
 exit 0
