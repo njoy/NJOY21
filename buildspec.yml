@@ -9,6 +9,8 @@ env:
 phases:
   install:
     commands:
+      - apt-get update -y
+      - apt-get install -y software-properties-common python-software-properties
       - add-apt-repository -y ppa:ubuntu-toolchain-r-test
       - add-apt-repository -y ppa:george-edison55-precise-backports
       - apt-get update -y
