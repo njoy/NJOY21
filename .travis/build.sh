@@ -84,13 +84,16 @@ fi
 rm testing.txt
 
 if $coverage; then
-  pip install --user cpp-coveralls
-  ~/.local/bin/coveralls -i ../src -i ./src -E ".*/CMakeFiles/.*|.*test\.cpp" --root ".." --build-root "." --gcov-options '\-lp'
-  if [ $? -ne 0 ];
-  then
-     echo "failed while coverage report!"
-     exit 1
-  fi
+  lcov --directory . \
+       --directory ../src \
+       --base-directory ../src/njoy21 \
+       --capture \
+       --output-file coverage.info
+  lcov --extract "*njoy21*" \
+       --output-file coverage.info
+  lcov --remove "*test*" \
+       --output-file coverage.info
+  bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
 fi
 
 exit 0
