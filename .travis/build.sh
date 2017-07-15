@@ -84,14 +84,17 @@ fi
 rm testing.txt
 
 if $coverage; then
-  lcov --directory . \
-       --directory ../src \
+  wget http://downloads.sourceforge.net/ltp/lcov-1.13.tar.gz
+  tar xvfz lcov-1.11.tar.gz;
+  make -C lcov-1.13
+  export PATH=$(pwd)/lcov-1.11/bin/:$PATH
+  lcov --capture \
+       --directory . \
        --base-directory ../src/njoy21 \
-       --capture \
        --output-file coverage.info
-  lcov --extract "*njoy21*" \
+  lcov --extract coverage.info "*njoy21*" \
        --output-file coverage.info
-  lcov --remove "*test*" \
+  lcov --remove coverage.info "*test*" \
        --output-file coverage.info
   bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
 fi
