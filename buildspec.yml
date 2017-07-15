@@ -9,10 +9,11 @@ env:
 phases:
   install:
     commands:
+      - apt-get purge cmake
       - apt-get update -y
       - apt-get install -y software-properties-common python-software-properties
       - add-apt-repository -y ppa:ubuntu-toolchain-r/test
-      - add-apt-repository -y ppa:george-edison55/precise-backports
+      - add-apt-repository -y ppa:george-edison55/cmake-3.x
       - apt-get update -y
       - apt-get install -y gcc-6 g++-6 gfortran-6 cmake cmake-data python-pip git
 
