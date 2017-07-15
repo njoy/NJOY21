@@ -16,4 +16,4 @@ phases:
 
   build:
     commands:
-      - ./.travis/build.sh
+      - ./.travis/build.sh 
