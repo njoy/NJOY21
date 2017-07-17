@@ -31,15 +31,4 @@ struct Mtk {
     return true;
   }    
 
-
-
-/*  auto foundInvalid = std::find_if( mtk.begin(), mtk.end(), 
-      []( auto& m ){ return m < 300; } );
-    if ( foundInvalid != mtk.end() ){
-      Log::info( "mt value ({}) found at index {} is out of range (302 - 450)",
-        *foundInvalid, std::distance(mtk.begin(), foundInvalid));
-      return false;
-    }
-    return true;
-  }*/
 };

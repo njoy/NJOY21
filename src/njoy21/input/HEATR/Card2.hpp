@@ -31,21 +31,21 @@ class Card2 {
         //if ( npk.value * 3 + 7 > 28 ){
         if ( npk.value > 7 ){
           Log::info( "iprint value of 2, signifying kinematic check" );
-	  Log::info( "for kinematic checks, 6 partial kerma mt values (in\n"
+          Log::info( "for kinematic checks, 6 partial kerma mt values (in\n"
                      "addition to mt = 301) are allowed" );
           Log::info( "number of kerma mts requested (npk): {}", npk.value );
-	  throw( "invalid npk input - requested too many kerma mts" );
-	}
-      //else if ( npk.value + 3 > 28 ){
-      else if ( npk.value > 25 ){
+          throw( "invalid npk input - requested too many kerma mts" );
+        }
+        //else if ( npk.value + 3 > 28 ){
+        else if ( npk.value > 25 ){
         Log::info( "iprint value of {}", iprint.value );
         Log::info( "for heatr runs that are not kinematic checks (where\n"
                    "iprint = 2), 25 partial kerma mt values (in addition\n"
                    "to mt = 301) are allowed" );
         Log::info( "number of kerma mts requested (npk): {}", npk.value );
-      } 
-      Card::clear( is );
-    }
+        } 
+      }
+    Card::clear( is );
   }
   catch( std::exception& e ){
     Log::info( "Trouble while validating HEATR Card2" );
