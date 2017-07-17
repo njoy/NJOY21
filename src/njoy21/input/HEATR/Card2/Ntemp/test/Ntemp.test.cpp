@@ -5,18 +5,27 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "HEATR ntemp values",
-  "[HEATR],[Card2], [Ntemp]"){
+  "[HEATR], [Card2], [Ntemp]"){
 
   GIVEN( "valid ntemp inputs" ){
-    std::vector<int> validValues{0, 1, 15};
-    THEN( "the returned ntemp class has the correct value" ){
-      for( int ntemp : validValues ){
-        iRecordStream<char> iss( 
-          std::istringstream( std::to_string( ntemp ) ) );
-        REQUIRE( ntemp == argument::extract< 
+    WHEN( "ntemp value provided" ){
+      std::vector<int> validValues{0, 1, 15};
+      THEN( "the returned ntemp class has the correct value" ){
+        for( int ntemp : validValues ){
+          iRecordStream<char> iss( 
+            std::istringstream( std::to_string( ntemp ) ) );
+          REQUIRE( ntemp == argument::extract< 
+            HEATR::Card2::Ntemp >( iss ).value );
+        } 
+      } // THEN
+    } // WHEN
+    WHEN( "no ntemp value provided" ){
+      iRecordStream<char> iss( std::istringstream( " /" ) );
+      THEN( "the default value is used" ){ 
+        REQUIRE( 0 == argument::extract<
           HEATR::Card2::Ntemp >( iss ).value );
-      } 
-    } // THEN
+      } // THEN
+    } // WHEN
   } // GIVEN
 
   GIVEN( "ntemp input values are invalid" ){
@@ -28,14 +37,6 @@ SCENARIO( "HEATR ntemp values",
         REQUIRE_THROWS( argument::extract< 
           HEATR::Card2::Ntemp >( iss ) );
       }
-    } // THEN
-  } // GIVEN
-
-  GIVEN( "no ntemp input value is given" ){
-    THEN( "the default value is used" ){ 
-      iRecordStream<char> iss( std::istringstream( " /" ) );
-      REQUIRE( 0 == argument::extract<
-        HEATR::Card2::Ntemp >( iss ).value );
     } // THEN
   } // GIVEN
 } // SCENARIO

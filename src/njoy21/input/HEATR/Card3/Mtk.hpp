@@ -12,7 +12,7 @@ struct Mtk {
       "The partial kerma mt for a given reaction is (mt + 300), i.e. the mt\n"
       "for total cross section is 1, therefore its corresponding partial\n"
       "kerma mt value is 301. A given partial kerma mt may not be properly\n"
-      "defined unless a gamm fail for the mt is on the endf tape.\n"
+      "defined unless a gamma file for the mt is on the endf tape.\n"
       "\n"
       "The mt values should not be comma separated.";
   }

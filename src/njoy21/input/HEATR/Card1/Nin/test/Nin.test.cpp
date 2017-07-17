@@ -5,7 +5,7 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "nin output values",
-  "[HEATR],[Card1], [Nin]"){
+  "[HEATR], [Card1], [Nin]"){
   GIVEN( "a valid nendf tape value" ){
     Argument< HEATR::Card1::Nendf > nendf; nendf.value = 22;
     

@@ -5,18 +5,27 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "HEATR local values",
-  "[HEATR],[Card2], [Local]"){
+  "[HEATR], [Card2], [Local]"){
 
   GIVEN( "valid local inputs" ){
-    std::vector<int> validValues{0, 1};
-    THEN( "the returned local class has the correct value" ){
-      for( int local : validValues ){
-        iRecordStream<char> iss( 
-          std::istringstream( std::to_string( local ) ) );
-        REQUIRE( local == argument::extract< 
+    WHEN( "local input provided" ){
+      std::vector<int> validValues{0, 1};
+      THEN( "the returned local class has the correct value" ){
+        for( int local : validValues ){
+          iRecordStream<char> iss( 
+            std::istringstream( std::to_string( local ) ) );
+          REQUIRE( local == argument::extract< 
+            HEATR::Card2::Local >( iss ).value );
+        } 
+      } // THEN
+    } // WHEN
+    WHEN( "no local input provided" ){
+      iRecordStream<char> iss( std::istringstream( " /" ) );
+      THEN( "the default value is used" ){
+        REQUIRE( 0 == argument::extract<
           HEATR::Card2::Local >( iss ).value );
-      } 
-    } // THEN
+      } // THEN
+    } // WHEN      
   } // GIVEN
 
   GIVEN( "local input values are invalid" ){
@@ -28,14 +37,6 @@ SCENARIO( "HEATR local values",
         REQUIRE_THROWS( argument::extract< 
           HEATR::Card2::Local >( iss ) );
       }
-    } // THEN
-  } // GIVEN
-
-  GIVEN( "no local input value is given" ){
-    THEN( "the default value is used" ){ 
-      iRecordStream<char> iss( std::istringstream( " /" ) );
-      REQUIRE( 0 == argument::extract<
-        HEATR::Card2::Local >( iss ).value );
     } // THEN
   } // GIVEN
 } // SCENARIO

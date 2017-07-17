@@ -5,15 +5,14 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "HEATR ed values",
-  "[HEATR],[Card2], [Ed]"){
+  "[HEATR], [Card2], [Ed]"){
   GIVEN( "ed input and card2 matd input are provided" ){
     Argument< HEATR::Card2::Matd > matd; matd.value = 1325;
     WHEN( "ed input value is valid" ){
       std::vector<double> validValues{0.0, 1.0, 2.0};
       THEN( "the returned ed class has the correct value" ){
         for( auto ed : validValues ){
-          iRecordStream<char> iss( 
-            std::istringstream( std::to_string( ed ) ) );
+          iRecordStream<char> iss( std::istringstream( std::to_string( ed ) ) );
           REQUIRE( ed*dimwits::electronVolts == argument::extract< 
             HEATR::Card2::Ed >( iss, matd ).value );
         } 
@@ -23,14 +22,14 @@ SCENARIO( "HEATR ed values",
       std::vector<double> invalidValues{-2.0, -1.0};
       THEN( "an exception is thrown" ){
         for( auto ed : invalidValues ){
-          iRecordStream<char> iss( 
-            std::istringstream( std::to_string( ed ) ) );
+          iRecordStream<char> iss( std::istringstream( std::to_string( ed ) ) );
           REQUIRE_THROWS( argument::extract< 
             HEATR::Card2::Ed >( iss, matd ) );
         }
       } // THEN
     } // WHEN
   } // GIVEN
+  
   GIVEN( "a card2 matd input value but no ed input value" ){
     Argument< HEATR::Card2::Matd > matd;   
     WHEN( "default value is in calculated table" ){
@@ -52,7 +51,7 @@ SCENARIO( "HEATR ed values",
     WHEN( "default value is not in calculated table" ){
       std::vector<int> validMatd{ 2125, 3025, 3925, 8235, 9228 };
       const int defaultValue = 25;
-      THEN( "the default value is calculated and used" ){ 
+      THEN( "the default value of 25 eV is used" ){ 
         for( auto matdNum : validMatd ){
           iRecordStream<char> iss( std::istringstream( "/" ) );
           matd.value = matdNum;	

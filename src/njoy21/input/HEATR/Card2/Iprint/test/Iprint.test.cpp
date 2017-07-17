@@ -5,7 +5,7 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "HEATR iprint values",
-  "[HEATR],[Card2], [Iprint]"){
+  "[HEATR], [Card2], [Iprint]"){
   GIVEN( "a card1 nplot input value of zero" ){
     Argument< HEATR::Card1::Nplot > nplot; nplot.value = 0;
     WHEN( "iprint input value is provided and is valid" ){
@@ -41,8 +41,7 @@ SCENARIO( "HEATR iprint values",
   GIVEN( "a nonzero card1 nplot input value" ){
     Argument< HEATR::Card1::Nplot > nplot; nplot.value = 20;
     WHEN( "iprint input value is valid" ){
-      iRecordStream<char> iss(
-        std::istringstream( "2" ) );
+      iRecordStream<char> iss( std::istringstream( "2" ) );
       THEN( "the returned iprint class has the correct value" ){
         REQUIRE( 2 == argument::extract<
           HEATR::Card2::Iprint >( iss, nplot ).value );

@@ -5,7 +5,7 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "HEATR mtk values",
-  "[HEATR],[Card3], [Mtk]"){
+  "[HEATR], [Card3], [Mtk]"){
   GIVEN( "a card2 npk input value" ){
     Argument< HEATR::Card2::Npk > npk; npk.value = 5;
     WHEN( "mtk entries are valid" ){
