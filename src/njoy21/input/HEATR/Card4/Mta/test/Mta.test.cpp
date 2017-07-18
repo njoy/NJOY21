@@ -5,7 +5,7 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "HEATR mta values",
-  "[HEATR],[Card4], [Mta]"){
+  "[HEATR], [Card4], [Mta]"){
   GIVEN( "a card2 nqa input value" ){
     Argument< HEATR::Card2::Nqa > nqa; nqa.value = 4;
     WHEN( "mta entries are valid" ){

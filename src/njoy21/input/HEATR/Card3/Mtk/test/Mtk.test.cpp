@@ -40,5 +40,11 @@ SCENARIO( "HEATR mtk values",
         REQUIRE_THROWS( argument::extract< HEATR::Card3::Mtk >( iss, npk ) );
       } // THEN
     } // WHEN
+    WHEN( "there are too many mt values" ){
+      iRecordStream<char> iss( std::istringstream( "302 303 350 400 449 450" ));
+      THEN( "no exception is thrown" ){
+        REQUIRE_NOTHROW( argument::extract< HEATR::Card3::Mtk >( iss, npk ) );
+      } // THEN
+    } // WHEN
   } // GIVEN
 } // SCENARIO

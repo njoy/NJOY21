@@ -49,10 +49,10 @@ SCENARIO( "HEATR input",
 
 	REQUIRE( heatr.controlTuple );
 
-        auto card4 = std::get<0>( heatr.controlTuple.value() );
+        const auto& card4 = std::get<0>( heatr.controlTuple.value() );
 	REQUIRE( card4.mta.value[0] == 16 );
 
-        auto card5 = std::get<1>( heatr.controlTuple.value() );
+        const auto& card5 = std::get<1>( heatr.controlTuple.value() );
 	REQUIRE( card5.qa.value[0] == 55e6 * dimwits::electronVolts);
       } // THEN
     } // WHEN
@@ -71,17 +71,17 @@ SCENARIO( "HEATR input",
 	REQUIRE( heatr.card3->mtk.value[0] == 444 );
 	REQUIRE( heatr.card3->mtk.value[1] == 445 );
 	
-	auto card4 = std::get<0>( heatr.controlTuple.value() );
+	const auto& card4 = std::get<0>( heatr.controlTuple.value() );
 	REQUIRE( card4.mta.value.size() == 2 );
 	REQUIRE( card4.mta.value[0] == 16 );
 	REQUIRE( card4.mta.value[1] == 18 );
 
-	auto card5 = std::get<1>( heatr.controlTuple.value() );
+	const auto& card5 = std::get<1>( heatr.controlTuple.value() );
 	REQUIRE( card5.qa.value.size() == 2 );
 	REQUIRE( card5.qa.value[0] == 55e6 * dimwits::electronVolts );
 	REQUIRE( card5.qa.value[1] == 56e6 * dimwits::electronVolts );
 
-	REQUIRE( not std::get<2>( heatr.controlTuple.value() ) );
+        REQUIRE( std::get<2>( heatr.controlTuple.value() ).size() == 0 );
       } // THEN
     } // WHEN
 
@@ -97,17 +97,17 @@ SCENARIO( "HEATR input",
         ) );
       HEATR heatr( iss );
       THEN( "all cards have the correct values, along with card5a values" ){
-	auto card4 = std::get<0>( heatr.controlTuple.value() );
+	const auto& card4 = std::get<0>( heatr.controlTuple.value() );
 	REQUIRE( card4.mta.value.size() == 2 );
 	REQUIRE( card4.mta.value[0] == 16 );
 	REQUIRE( card4.mta.value[1] == 18 );
 
-	auto card5 = std::get<1>( heatr.controlTuple.value() );
+	const auto& card5 = std::get<1>( heatr.controlTuple.value() );
 	REQUIRE( card5.qa.value.size() == 2 );
 	REQUIRE( card5.qa.value[0] == 55e6 * dimwits::electronVolts );
 	REQUIRE( card5.qa.value[1] == 99e6 * dimwits::electronVolts );
-
-	auto card5aList = std::get<2>( heatr.controlTuple.value() ).value();
+	
+	const auto& card5aList = std::get<2>( heatr.controlTuple.value() );
 	REQUIRE( card5aList.size() == 1 );
 	REQUIRE( card5aList[0].qbar.value.NR() == 1 );
 	REQUIRE( card5aList[0].qbar.value.NP() == 3 );
@@ -115,7 +115,6 @@ SCENARIO( "HEATR input",
 	std::vector<double> y{-8.14e6, -8.14e6, -8.36e6};
 	REQUIRE( ranges::equal( x, card5aList[0].qbar.value.x() ) );
 	REQUIRE( ranges::equal( y, card5aList[0].qbar.value.y() ) );
-
       } // THEN
     } // WHEN
 
@@ -209,7 +208,6 @@ SCENARIO( "HEATR input",
         REQUIRE_THROWS( HEATR( iss1 ) );
       } // THEN
     } // WHEN
-
   } // GIVEN
 } // SCENARIO
 

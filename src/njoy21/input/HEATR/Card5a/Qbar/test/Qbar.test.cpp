@@ -7,7 +7,7 @@ using namespace njoy::njoy21::input;
 extern std::function< njoy::ENDFtk::UnivariateTabulation() > makeTAB1;
 
 SCENARIO( "HEATR qbar values",
-  "[HEATR],[Card5a], [Qbar]"){
+  "[HEATR], [Card5a], [Qbar]"){
   GIVEN( "a valid tab1 input" ){
     std::string tab1 = " 0. 0. 0 0 1 6\n"
     "6 5\n"
