@@ -3,9 +3,9 @@ struct Nout : argument::common::Nout {
     return
       argument::common::Nout::description() +
       "\n\n"
-      "For HEATR in particular, the nout input is is required to\n"
+      "For HEATR in particular, the nout input is is required to:\n"
       " + have an absolute value distinct from the corresponding nendf value\n"
-      " + have an value distinct from the corresponding nin value\n"
+      " + have a value distinct from the corresponding nin value\n"
       " + share signedness with the corresponding nin value";
   }
   

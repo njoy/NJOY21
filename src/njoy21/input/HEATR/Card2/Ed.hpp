@@ -60,6 +60,6 @@ struct Ed {
 
   static bool verify( const Value_t& i,
                       const Argument< HEATR::Card2::Matd >& ){ 
-    return (i > -1.0*electronVolts); 
+    return (i >= 0.0*electronVolts); 
   }
 };

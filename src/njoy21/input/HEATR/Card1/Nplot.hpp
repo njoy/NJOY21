@@ -20,7 +20,8 @@ struct Nplot {
       "nendf, nin, and nout values. An nplot value of 0 indicates that the\n"
       "nplot option is not going to be used.\n"
       "\n"
-      "nplot has a default value of 0.";
+      "If the nplot option is used (i.e. given a nonzero value), then the\n"
+      "card2 iprint input must be equal to 2. nplot has a default value of 0.";
   }
 
   static Value_t defaultValue( const Argument< Nendf >&,
