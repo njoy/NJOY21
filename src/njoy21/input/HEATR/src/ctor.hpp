@@ -1,9 +1,3 @@
-
-Card1 card1;
-Card2 card2;
-optional<Card3> card3;
-optional<ControlTuple> controlTuple;
-
 	
 template< typename Char >
 HEATR( iRecordStream<Char>& is )

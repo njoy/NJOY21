@@ -13,8 +13,8 @@ static optional<ControlTuple> buildControlTuple(
         card5aList.emplace_back( is );
       }
     }
-    ControlTuple c( std::move(card4), std::move(card5), std::move(card5aList) );
-    return c;
+    return ControlTuple( std::move(card4), std::move(card5), 
+      std::move(card5aList) );
   }
   
   return std::nullopt;

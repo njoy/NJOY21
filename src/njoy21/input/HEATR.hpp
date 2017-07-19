@@ -11,4 +11,9 @@ public:
   #include "njoy21/input/HEATR/src/buildControlTuple.hpp"
   #include "njoy21/input/HEATR/src/ctor.hpp"
 
+  Card1 card1;
+  Card2 card2;
+  optional<Card3> card3;
+  optional<ControlTuple> controlTuple;
+
 };
