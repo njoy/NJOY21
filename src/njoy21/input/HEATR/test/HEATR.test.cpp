@@ -33,7 +33,7 @@ SCENARIO( "HEATR input",
       } // THEN
     } // WHEN
 
-    WHEN( "Cards 4 and 5 are invoked" ){
+    WHEN( "Cards 4 and 5 are invoked, qa values < 99e6 eV" ){
       iRecordStream<char> iss( std::istringstream( 
         "-21 -22 -24 -25\n"
         "1325 0 1 0 0 2 27\n"
@@ -71,6 +71,8 @@ SCENARIO( "HEATR input",
 	REQUIRE( heatr.card3->mtk.value[0] == 444 );
 	REQUIRE( heatr.card3->mtk.value[1] == 445 );
 	
+	REQUIRE( heatr.controlTuple );
+
 	const auto& card4 = std::get<0>( *(heatr.controlTuple) );
 	REQUIRE( card4.mta.value.size() == 2 );
 	REQUIRE( card4.mta.value[0] == 16 );
@@ -85,7 +87,7 @@ SCENARIO( "HEATR input",
       } // THEN
     } // WHEN
 
-    WHEN( "Cards 4 and 5 are invoked, qa values > 99e6 eV" ){
+    WHEN( "Cards 4 and 5 are invoked, qa value >= 99e6 eV (singular card5a)" ){
       iRecordStream<char> iss( std::istringstream( 
         "-21 -22 -24 -25\n"
         "1325 0 2 0 0 2 27\n"
@@ -97,6 +99,9 @@ SCENARIO( "HEATR input",
         ) );
       HEATR heatr( iss );
       THEN( "all cards have the correct values, along with card5a values" ){
+
+	REQUIRE( heatr.controlTuple );
+
 	const auto& card4 = std::get<0>( *(heatr.controlTuple) );
 	REQUIRE( card4.mta.value.size() == 2 );
 	REQUIRE( card4.mta.value[0] == 16 );
@@ -115,6 +120,55 @@ SCENARIO( "HEATR input",
 	std::vector<double> y{-8.14e6, -8.14e6, -8.36e6};
 	REQUIRE( ranges::equal( x, card5aList[0].qbar.value.x() ) );
 	REQUIRE( ranges::equal( y, card5aList[0].qbar.value.y() ) );
+      } // THEN
+    } // WHEN
+
+    WHEN( "Cards 4 and 5 are invoked, qa value >= 99e6 eV (mult. card5a's)" ){
+      iRecordStream<char> iss( std::istringstream( 
+        "-21 -22 -24 -25\n"
+        "1325 0 2 0 0 2 27\n"
+        "16 18\n"
+	"10e7 99e6\n"
+        "0 0 0 0 1 3\n"
+	"3 2\n"
+	"8.9e6 -8.14e6 9.0e6 -8.14e6 1.1e7 -8.36e6\n"
+        "0 0 0 0 2 6\n"
+	"3 2 6 1\n"
+	"8.9e6 8.14e6 9.0e6 8.14e6 1.1e7 8.36e6\n"
+	"1.3e7 9.14e6 1.5e7 9.14e6 1.8e7 9.36e6\n"
+        ) );
+      HEATR heatr( iss );
+      THEN( "all cards have the correct values, along with card5a values" ){
+
+	REQUIRE( heatr.controlTuple );
+
+	const auto& card4 = std::get<0>( *(heatr.controlTuple) );
+	REQUIRE( card4.mta.value.size() == 2 );
+	REQUIRE( card4.mta.value[0] == 16 );
+	REQUIRE( card4.mta.value[1] == 18 );
+
+	const auto& card5 = std::get<1>( *(heatr.controlTuple) );
+	REQUIRE( card5.qa.value.size() == 2 );
+	REQUIRE( card5.qa.value[0] == 10e7 * dimwits::electronVolts );
+	REQUIRE( card5.qa.value[1] == 99e6 * dimwits::electronVolts );
+	
+	const auto& card5aList = std::get<2>( *(heatr.controlTuple) );
+	REQUIRE( card5aList.size() == 2 );
+
+	REQUIRE( card5aList[0].qbar.value.NR() == 1 );
+	REQUIRE( card5aList[0].qbar.value.NP() == 3 );
+	std::vector<double> x1{8.9e6, 9.0e6, 1.1e7};
+	std::vector<double> y1{-8.14e6, -8.14e6, -8.36e6};
+	REQUIRE( ranges::equal( x1, card5aList[0].qbar.value.x() ) );
+	REQUIRE( ranges::equal( y1, card5aList[0].qbar.value.y() ) );
+
+	REQUIRE( card5aList[1].qbar.value.NR() == 2 );
+	REQUIRE( card5aList[1].qbar.value.NP() == 6 );
+	std::vector<double> x2{8.9e6, 9.0e6, 1.1e7, 1.3e7, 1.5e7, 1.8e7};
+	std::vector<double> y2{8.14e6, 8.14e6, 8.36e6, 9.14e6, 9.14e6, 9.36e6};
+	REQUIRE( ranges::equal( x2, card5aList[1].qbar.value.x() ) );
+	REQUIRE( ranges::equal( y2, card5aList[1].qbar.value.y() ) );
+
       } // THEN
     } // WHEN
 

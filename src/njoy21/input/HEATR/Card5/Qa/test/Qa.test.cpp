@@ -22,7 +22,7 @@ SCENARIO( "HEATR qa values",
     WHEN( "a qa entry has absolute value are greater than or equal to 99e6" ){
       iRecordStream<char> iss1( std::istringstream( "-1.5e6 -1.6e6 -99e6" ) );
       iRecordStream<char> iss2( std::istringstream( "1.5e6 1.6e6 10e7" ) );
-      THEN( "warning printed, no exception thrown" ){ 
+      THEN( "no exception thrown" ){ 
         REQUIRE_NOTHROW( argument::extract< HEATR::Card5::Qa >( iss1, nqa ) );
         REQUIRE_NOTHROW( argument::extract< HEATR::Card5::Qa >( iss2, nqa ) );
       } // THEN

@@ -16,9 +16,10 @@ struct Mta {
                       const Argument< HEATR::Card2::Nqa >& ){
     for( int mt : mta ){
       if( mt < 1 or mt > 999 ){
-        Log::info( "mt value {} is out of range", mt );
+        Log::info( "mt value {} is out of range.\n"
+          "acceptable range for mt values is 1 - 999 inclusively\n", mt );
 	return false;
-      }
+      } 
     }
     return true;
   }    

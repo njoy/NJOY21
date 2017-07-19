@@ -12,14 +12,8 @@ struct Qa {
       "nqa entries in Card5 (nqa is an input from Card3).";
   }
 
-  static bool verify( const Value_t& qa, 
+  static bool verify( const Value_t&, 
                       const Argument< HEATR::Card2::Nqa >& ){
-    for( auto q : qa ){
-      if( ( 99e6 * electronVolts <= q ) or ( -99e6 * electronVolts >= q ) ){
-        Log::info( "\nq value: {}", q );
-        Log::warning("abs( q value ) > 99e6. card5a qbar entry used\n" );
-      }
-    }
     return true;
   }    
 };

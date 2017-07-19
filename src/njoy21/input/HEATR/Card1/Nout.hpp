@@ -5,7 +5,7 @@ struct Nout : argument::common::Nout {
       "\n\n"
       "For HEATR in particular, the nout input is is required to:\n"
       " + have an absolute value distinct from the corresponding nendf value\n"
-      " + have a value distinct from the corresponding nin value\n"
+      " + have an absolute value distinct from the corresponding nin value\n"
       " + share signedness with the corresponding nin value";
   }
   

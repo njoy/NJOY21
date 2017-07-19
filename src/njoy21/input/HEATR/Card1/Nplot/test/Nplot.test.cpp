@@ -7,12 +7,12 @@ using namespace njoy::njoy21::input;
 SCENARIO( "nplot output values",
   "[HEATR], [Card1], [Nplot]"){
   GIVEN( "a valid nendf tape value" ){
-    Argument< HEATR::Card1::Nendf > nendf; nendf.value = 20;
-    Argument< HEATR::Card1::Nin   > nin;   nin.value   = 21;
-    Argument< HEATR::Card1::Nout  > nout;  nout.value  = 22;
+    Argument< HEATR::Card1::Nendf > nendf; nendf.value = 21;
+    Argument< HEATR::Card1::Nin   > nin;   nin.value   = 22;
+    Argument< HEATR::Card1::Nout  > nout;  nout.value  = 23;
     
     WHEN( "nplot is within range and not equal to nendf, nin, or nout" ){
-      std::vector<int> validValues{-23, 23, 0, 42, 99, -99};
+      std::vector<int> validValues{-20, 20, 0, 42, 99, -99};
       THEN( "the returned class has the correct tape value" ){
         for( auto nplot : validValues ){
           iRecordStream<char> iss(
@@ -23,7 +23,7 @@ SCENARIO( "nplot output values",
       } // THEN
     } // WHEN
     WHEN( "nplot input is equal to a preceding tape value" ){
-      std::vector<int> invalidValues{ -20, 20, -21, 21, -22, 22 };
+      std::vector<int> invalidValues{ -21, 21, -22, 22, -23, 23 };
       THEN( "an exception is thrown" ){
          for( auto nplot : invalidValues ){
           iRecordStream<char> iss(
