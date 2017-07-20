@@ -1,7 +1,4 @@
 
-using Card5aList = std::vector<Card5a>;
-using ControlTuple = std::tuple< Card4, Card5, Card5aList >;
-
 static optional<ControlTuple> buildControlTuple( 
   iRecordStream<char>& is, Card2& card2 ){
   if( card2.nqa.value > 0 ){
