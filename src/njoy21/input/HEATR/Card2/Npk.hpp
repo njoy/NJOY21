@@ -5,8 +5,8 @@ struct Npk {
     return
       "npk is a optional integer argument specifying the number of partial\n"
       "KERMAs desired. As such, the npk value is required to be non-negative.\n"
-      "Note that this argument need not consider the total KERMA, which is always\n"
-      "computed by HEATR. When unspecified, this argument defaults to zero.\n";
+      "Note that this argument need not consider the total KERMA, which is\n"
+      "always computed by HEATR. When unspecified, npk defaults to zero.\n";
   }
 
   static Value_t defaultValue(){ return 0; }
