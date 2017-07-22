@@ -26,7 +26,11 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
   else
     export CUSTOM='-D link_time_optimization=ON -D CMAKE_AR=/usr/bin/gcc-ar -D CMAKE_NM=/usr/bin/gcc-nm -D CMAKE_RANLIB=/usr/bin/gcc-ranlib'
   fi;
+  export NPROC=$(nproc)
+else
+  export NPROC=$(sysctl -n hw.cpu)
 fi
+
 
 if [ "$build_type" = "coverage" ]; then
   export build_type=DEBUG
@@ -56,7 +60,7 @@ rm configuration.txt
 repeat 300 echo "Still building..."&
 export EKG=$!
        
-make VERBOSE=1 -j2 &> compilation.txt
+make VERBOSE=1 -j$NPROC &> compilation.txt
 export COMPILATION_FAILURE=$?
 
 if [ $COMPILATION_FAILURE -ne 0 ];
@@ -69,7 +73,7 @@ rm compilation.txt
 
 kill $EKG
 
-ctest --output-on-failure -j2 &> testing.txt
+ctest --output-on-failure -j$NPROC &> testing.txt
 export TEST_FAILURE=$?
 if [ $TEST_FAILURE -ne 0 ];
 then
@@ -80,15 +84,19 @@ fi
 rm testing.txt
 
 if $coverage; then
-  pip install --user cpp-coveralls &> coverage_upload.txt
-  script -aec "coveralls -i ../src -i ./src -E \".*/CMakeFiles/.*|.*test\\.cpp\" --root \"..\" --build-root \".\" --gcov-options '\\-lp'" coverage_upload.txt
-  if [ $? -ne 0 ];
-  then
-     echo "failed while coverage report!"
-     cat coverage_upload.txt
-     exit 1
-  fi
-  rm coverage_upload.txt
+  wget http://downloads.sourceforge.net/ltp/lcov-1.13.tar.gz
+  tar xvfz lcov-1.11.tar.gz;
+  make -C lcov-1.13
+  export PATH=$(pwd)/lcov-1.11/bin/:$PATH
+  lcov --capture \
+       --directory . \
+       --base-directory ../src/njoy21 \
+       --output-file coverage.info
+  lcov --extract coverage.info "*njoy21*" \
+       --output-file coverage.info
+  lcov --remove coverage.info "*test*" \
+       --output-file coverage.info
+  bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
 fi
 
 exit 0

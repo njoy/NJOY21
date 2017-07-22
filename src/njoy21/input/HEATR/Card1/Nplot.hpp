@@ -14,11 +14,14 @@ struct Nplot {
       "ascii text files. Negative values indicate unformatted input i.e.\n"
       "Fortran-style block binary\n"
       "\n"
-      "nplot values are restricted to an absolute value between 20 and 99,\n"
-      "inclusively, and are required to\n"
-      " + have an absolute value distinct from the corresponding nendf value\n"
-      " + have an absolute value distinct from the corresponding nin value\n"
-      " + have an absolute value distinct from the corresponding nout value";
+      "If the nplot option is used, then the nplot value is restricted to\n"
+      "have an absolute value between 20 and 99, inclusively, and is\n"
+      "required to have an absolute value distinct from the corresponding\n"
+      "nendf, nin, and nout values. An nplot value of 0 indicates that the\n"
+      "nplot option is not going to be used.\n"
+      "\n"
+      "If the nplot option is used (i.e. given a nonzero value), then the\n"
+      "card2 iprint input must be equal to 2. nplot has a default value of 0.";
   }
 
   static Value_t defaultValue( const Argument< Nendf >&,
@@ -29,6 +32,7 @@ struct Nplot {
 		      const Argument< Nendf >& nendf,
 		      const Argument< Nin >& nin,
 		      const Argument< Nout >& nout ){
+    if( v == 0 ){ return true; }
     const auto absv = std::abs(v);
     return argument::common::Nout::verify( v )
       and ( absv != std::abs( nendf.value ) )

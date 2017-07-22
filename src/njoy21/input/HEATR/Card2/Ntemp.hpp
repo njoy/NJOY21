@@ -3,11 +3,13 @@ struct Ntemp {
   static std::string name(){ return "ntemp"; }
   static std::string description(){
     return
-      "ntemp is a optional integer argument specifying the number of temperatures\n"
-      "from the input that input PENDF-format tape which should be processed.\n"
-      "As such, the ntemp value is required to be non-negative. When unspecified,\n"
-      "this argument defaults to zero, which denotes that ALL temperatures on\n"
-      "the input PENDF-format tape should be processed";
+      "ntemp is a optional integer argument specifying the number of\n"
+      "temperatures from the input PENDF-format tape which should be\n"
+      "processed.\n"
+      "\n"
+      "As such, the ntemp value is required to be non-negative. When,\n"
+      "unspecified, this argument defaults to zero, which denotes that ALL\n"
+      "temperatures on the input PENDF-format tape should be processed";
   }
 
   static Value_t defaultValue(){ return 0; }

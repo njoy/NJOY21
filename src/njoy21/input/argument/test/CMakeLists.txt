@@ -1,8 +1,8 @@
 
 add_executable( njoy21.input.argument.test
                 argument.test.cpp
-                extract.test.cpp
-                read.test.cpp )
+                read.test.cpp
+                extract.test.cpp )
 target_compile_options( njoy21.input.argument.test PRIVATE ${${PREFIX}_common_flags}
 $<$<BOOL:${strict}>:${${PREFIX}_strict_flags}>$<$<CONFIG:DEBUG>:
 ${${PREFIX}_DEBUG_flags}

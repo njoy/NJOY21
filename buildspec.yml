@@ -1,0 +1,22 @@
+version: 0.2
+
+env:
+  variables:
+    TRAVIS_OS_NAME: "linux"
+    build_type: "coverage"
+    static_libraries: "FALSE"
+
+phases:
+  install:
+    commands:
+      - apt-get purge cmake
+      - apt-get update -y
+      - apt-get install -y software-properties-common python-software-properties
+      - add-apt-repository -y ppa:ubuntu-toolchain-r/test
+      - add-apt-repository -y ppa:george-edison55/cmake-3.x
+      - apt-get update -y
+      - apt-get install -y gcc-6 g++-6 gfortran-6 cmake cmake-data git lcov
+
+  build:
+    commands:
+      - ./.travis/build.sh 

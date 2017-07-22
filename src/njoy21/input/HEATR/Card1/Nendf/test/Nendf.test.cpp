@@ -1,43 +1,33 @@
 #define CATCH_CONFIG_MAIN
-
 #include "catch.hpp"
 #include "njoy21.hpp"
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "value range" ){
-  {
-    iRecordStream<char> iss( std::istringstream("   19") );
-    REQUIRE_THROWS( argument::extract< HEATR::Card1::Nendf >( iss ) );
-  }{
-    iRecordStream<char> iss( std::istringstream("   -19") );
-    REQUIRE_THROWS( argument::extract< HEATR::Card1::Nendf >( iss ) );
-  }{
-    iRecordStream<char> iss( std::istringstream("   20") );
-    REQUIRE( argument::extract< HEATR::Card1::Nendf >( iss ).value == 20 );
-  }{
-    iRecordStream<char> iss( std::istringstream("   -20") );
-    REQUIRE( argument::extract< HEATR::Card1::Nendf >( iss ).value == -20 );
-  }{
-    iRecordStream<char> iss( std::istringstream("   50") );
-    REQUIRE( argument::extract< HEATR::Card1::Nendf >( iss ).value == 50 );
-  }{
-    iRecordStream<char> iss( std::istringstream("   -50") );
-    REQUIRE( argument::extract< HEATR::Card1::Nendf >( iss ).value == -50 );
-  }{
-    iRecordStream<char> iss( std::istringstream("   99") );
-    REQUIRE( argument::extract< HEATR::Card1::Nendf >( iss ).value == 99 );
-  }{
-    iRecordStream<char> iss( std::istringstream("   -99") );
-    REQUIRE( argument::extract< HEATR::Card1::Nendf >( iss ).value == -99 );
-  }{
-    iRecordStream<char> iss( std::istringstream("   100") );
-    REQUIRE_THROWS( argument::extract< HEATR::Card1::Nendf >( iss ) );
-  }{
-    iRecordStream<char> iss( std::istringstream("   -100") );
-    REQUIRE_THROWS( argument::extract< HEATR::Card1::Nendf >( iss ) );
-  }{
-    iRecordStream<char> iss( std::istringstream("  /") );
-    REQUIRE_THROWS( argument::extract< HEATR::Card1::Nendf >( iss ) );
-  }
-}
+SCENARIO( "nendf input values",
+  "[HEATR],[Card1],[Nendf]" ){
+  GIVEN( "valid nendf tape values" ){
+    std::vector<int> validValues{-20, 20, 42, 99, -99};
+    THEN( "the returned class has the correct tape value" ){
+      for( auto nendf : validValues ){
+        iRecordStream<char> iss(
+          std::istringstream( std::to_string( nendf ) ) );
+        REQUIRE(nendf == argument::extract< 
+          HEATR::Card1::Nendf >( iss ).value );
+      }
+    } // THEN
+  } // GIVEN
+
+  GIVEN( "invalid nendf tape values" ){
+    std::vector<int> invalidValues{-19, 19, -1, 1, 100, -100};
+    THEN( "an exception is thrown" ){
+      for( auto nendf : invalidValues ){
+        iRecordStream<char> iss(
+          std::istringstream( std::to_string(nendf) ) );
+        REQUIRE_THROWS( argument::extract<
+          HEATR::Card1::Nendf>( iss ) );
+      }
+    } // THEN
+  } // GIVEN
+} // SCENARIO
+

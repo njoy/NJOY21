@@ -27,7 +27,6 @@ struct Ndir : public argument::common::Nout {
                       ){
 
     return argument::common::Nin::verify( v ) and
-        ( Nace::verify(nace.value, nendf, npend, ngend ) ) and 
         /* Make sure the ndir is not equal to other input tape numbers */
         ( std::abs(nendf.value) != std::abs( v ) ) and
         ( std::abs(npend.value) != std::abs( v ) ) and

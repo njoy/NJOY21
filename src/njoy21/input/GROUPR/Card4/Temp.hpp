@@ -9,12 +9,7 @@ struct Temp {
   }
 
   static bool verify( const Value_t& temps,
-                      const Argument< GROUPR::Card2::Ntemp > & ntemp ){
-    if ( long(temps.size()) != ntemp.value ){
-      Log::info( "Incorrect number of temperatures read in." );
-      return false;
-    }
-
+                      const Argument< GROUPR::Card2::Ntemp > & ){
     // Make sure all temperatures are positive
     auto found = std::find_if( temps.begin(), temps.end(),
                                [](auto& E){ return E < 0.0*kelvin; });
@@ -30,7 +25,7 @@ struct Temp {
       auto dis = std::distance( temps.begin(), unsortedStart );
       Log::warning( "Temperatures are not in increasing order.");
       Log::info( "Temperature at index {} ({}) > temperature at index {} ({})",
-                   dis-1, *(unsortedStart-1), dis, *(unsortedStart));
+                   dis-1, unsortedStart[-1], dis, *(unsortedStart));
       return false;
     }
 
