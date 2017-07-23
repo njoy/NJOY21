@@ -28,7 +28,7 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
   fi;
   export NPROC=$(nproc)
 else
-  export NPROC=$(sysctl -n hw.cpu)
+  export NPROC=$(sysctl -n hw.physicalcpu)
 fi
 
 
