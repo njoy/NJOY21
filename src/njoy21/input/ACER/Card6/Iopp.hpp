@@ -16,8 +16,10 @@ struct Iopp {
   }
 
   static Value_t defaultValue( const Argument< Card1::Ngend >& ){ return 1; }
+
   static bool verify( const Value_t& I,
                       const Argument< Card1::Ngend >& ngend ){ 
     // This assumes that the ngend value has already been verified
-    return ( ( (I == 0) and ( ngend.value != 0))  or ( I == 1 ) );}
+    return ( ( (I == 0) and ( ngend.value != 0 ))  or ( I == 1 ) );
+  }
 };
