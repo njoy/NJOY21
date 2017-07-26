@@ -666,14 +666,24 @@
     "src/njoy21/input/THERMR/Card4/Tol.hpp",
     "src/njoy21/input/THERMR/Card4/Emax.hpp",
     "src/njoy21/input/LEAPR/Card1.hpp",
+    "src/njoy21/input/LEAPR/Card6.hpp",
     "src/njoy21/input/LEAPR/Card3.hpp",
     "src/njoy21/input/LEAPR/Card4.hpp",
     "src/njoy21/input/LEAPR/Card5.hpp",
     "src/njoy21/input/LEAPR/Card2.hpp",
     "src/njoy21/input/LEAPR/Card1/Nout.hpp",
+    "src/njoy21/input/LEAPR/Card6/Mss.hpp",
+    "src/njoy21/input/LEAPR/Card6/Aws.hpp",
+    "src/njoy21/input/LEAPR/Card6/Nss.hpp",
+    "src/njoy21/input/LEAPR/Card6/Sps.hpp",
+    "src/njoy21/input/LEAPR/Card6/B7.hpp",
     "src/njoy21/input/LEAPR/Card2/Title.hpp",
     "src/njoy21/input/LEAPR/Card5/Spr.hpp",
+    "src/njoy21/input/LEAPR/Card5/Ncold.hpp",
     "src/njoy21/input/LEAPR/Card5/Awr.hpp",
+    "src/njoy21/input/LEAPR/Card5/Nsk.hpp",
+    "src/njoy21/input/LEAPR/Card5/Npr.hpp",
+    "src/njoy21/input/LEAPR/Card5/Iel.hpp",
     "src/njoy21/input/LEAPR/Card4/Mat.hpp",
     "src/njoy21/input/LEAPR/Card4/Ilog.hpp",
     "src/njoy21/input/LEAPR/Card4/Isabt.hpp",
@@ -1296,8 +1306,38 @@
     "njoy21.input.LEAPR.Card5.Awr": [
       "src/njoy21/input/LEAPR/Card5/Awr/test/Awr.test.cpp"
     ],
+    "njoy21.input.LEAPR.Card5.Iel": [
+      "src/njoy21/input/LEAPR/Card5/Iel/test/Iel.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card5.Ncold": [
+      "src/njoy21/input/LEAPR/Card5/Ncold/test/Ncold.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card5.Npr": [
+      "src/njoy21/input/LEAPR/Card5/Npr/test/Npr.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card5.Nsk": [
+      "src/njoy21/input/LEAPR/Card5/Nsk/test/Nsk.test.cpp"
+    ],
     "njoy21.input.LEAPR.Card5.Spr": [
       "src/njoy21/input/LEAPR/Card5/Spr/test/Spr.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card6": [
+      "src/njoy21/input/LEAPR/Card6/test/Card6.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card6.Aws": [
+      "src/njoy21/input/LEAPR/Card6/Aws/test/Aws.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card6.B7": [
+      "src/njoy21/input/LEAPR/Card6/B7/test/B7.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card6.Mss": [
+      "src/njoy21/input/LEAPR/Card6/Mss/test/Mss.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card6.Nss": [
+      "src/njoy21/input/LEAPR/Card6/Nss/test/Nss.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card6.Sps": [
+      "src/njoy21/input/LEAPR/Card6/Sps/test/Sps.test.cpp"
     ],
     "njoy21.input.Label": [
       "src/njoy21/input/Label/test/Label.test.cpp"

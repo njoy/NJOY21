@@ -11,5 +11,7 @@ struct Spr {
       "\n"
       "spr must be positive, and provided in units of barns.";
   }
-  static bool verify( const Value_t& spr ){ return spr > ( 0 * dimwits::barns ); }
+  static bool verify( const Value_t& spr ){ 
+    return spr > ( 0 * dimwits::barns ); 
+  }
 };
