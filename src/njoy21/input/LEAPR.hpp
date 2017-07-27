@@ -9,6 +9,7 @@ public:
 #include "njoy21/input/LEAPR/Card7.hpp"
 #include "njoy21/input/LEAPR/Card8.hpp"
 #include "njoy21/input/LEAPR/Card9.hpp"
+#include "njoy21/input/LEAPR/Card10.hpp"
 
 Card1 card1;
 Card2 card2;
@@ -19,6 +20,7 @@ Card6 card6;
 Card7 card7;
 Card8 card8;
 Card9 card9;
+Card10 card10;
 
 template <typename Char> 
   LEAPR( iRecordStream<Char>& iss )
