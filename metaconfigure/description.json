@@ -669,6 +669,7 @@
     "src/njoy21/input/LEAPR/Card6.hpp",
     "src/njoy21/input/LEAPR/Card8.hpp",
     "src/njoy21/input/LEAPR/Card10.hpp",
+    "src/njoy21/input/LEAPR/Card11.hpp",
     "src/njoy21/input/LEAPR/Card9.hpp",
     "src/njoy21/input/LEAPR/Card7.hpp",
     "src/njoy21/input/LEAPR/Card3.hpp",
@@ -697,6 +698,8 @@
     "src/njoy21/input/LEAPR/Card4/Ilog.hpp",
     "src/njoy21/input/LEAPR/Card4/Isabt.hpp",
     "src/njoy21/input/LEAPR/Card4/Za.hpp",
+    "src/njoy21/input/LEAPR/Card11/Ni.hpp",
+    "src/njoy21/input/LEAPR/Card11/Delta.hpp",
     "src/njoy21/input/LEAPR/Card9/Beta.hpp",
     "src/njoy21/input/LEAPR/Card3/Iprint.hpp",
     "src/njoy21/input/LEAPR/Card3/Nphon.hpp",
@@ -1285,6 +1288,12 @@
     ],
     "njoy21.input.LEAPR.Card10.Temp": [
       "src/njoy21/input/LEAPR/Card10/Temp/test/Temp.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card11.Delta": [
+      "src/njoy21/input/LEAPR/Card11/Delta/test/Delta.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card11.Ni": [
+      "src/njoy21/input/LEAPR/Card11/Ni/test/Ni.test.cpp"
     ],
     "njoy21.input.LEAPR.Card2": [
       "src/njoy21/input/LEAPR/Card2/test/Card2.test.cpp"
