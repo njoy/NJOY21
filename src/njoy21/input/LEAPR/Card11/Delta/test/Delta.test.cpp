@@ -12,7 +12,7 @@ SCENARIO( "Delta input values",
       for( auto& delta : validValues ){
         iRecordStream<char> iss(
           std::istringstream( std::to_string( delta ) ) );
-        REQUIRE( dimwits::electronVolts * delta == argument::extract< 
+        REQUIRE( delta * dimwits::electronVolts == argument::extract< 
           LEAPR::Card11::Delta >( iss ).value );
       }
     } // THEN

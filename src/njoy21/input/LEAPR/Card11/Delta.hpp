@@ -7,6 +7,6 @@ struct Delta {
       "in eV. delta must be greater than zero.";
   }
   static bool verify( const Value_t& delta ){ 
-    return delta > ( 0.0 * dimwits::electronVolts);
+    return delta > ( 0.0 * dimwits::electronVolts );
   }
 };

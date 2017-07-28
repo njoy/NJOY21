@@ -672,11 +672,16 @@
     "src/njoy21/input/LEAPR/Card11.hpp",
     "src/njoy21/input/LEAPR/Card9.hpp",
     "src/njoy21/input/LEAPR/Card7.hpp",
+    "src/njoy21/input/LEAPR/Card12.hpp",
     "src/njoy21/input/LEAPR/Card3.hpp",
     "src/njoy21/input/LEAPR/Card4.hpp",
     "src/njoy21/input/LEAPR/Card5.hpp",
     "src/njoy21/input/LEAPR/Card2.hpp",
+    "src/njoy21/input/LEAPR/Card13.hpp",
     "src/njoy21/input/LEAPR/Card1/Nout.hpp",
+    "src/njoy21/input/LEAPR/Card13/Twt.hpp",
+    "src/njoy21/input/LEAPR/Card13/C.hpp",
+    "src/njoy21/input/LEAPR/Card13/Tbeta.hpp",
     "src/njoy21/input/LEAPR/Card6/Mss.hpp",
     "src/njoy21/input/LEAPR/Card6/Aws.hpp",
     "src/njoy21/input/LEAPR/Card6/Nss.hpp",
@@ -694,6 +699,7 @@
     "src/njoy21/input/LEAPR/Card7/Lat.hpp",
     "src/njoy21/input/LEAPR/Card7/Nalpha.hpp",
     "src/njoy21/input/LEAPR/Card7/Nbeta.hpp",
+    "src/njoy21/input/LEAPR/Card12/Rho.hpp",
     "src/njoy21/input/LEAPR/Card4/Mat.hpp",
     "src/njoy21/input/LEAPR/Card4/Ilog.hpp",
     "src/njoy21/input/LEAPR/Card4/Isabt.hpp",
@@ -1289,11 +1295,32 @@
     "njoy21.input.LEAPR.Card10.Temp": [
       "src/njoy21/input/LEAPR/Card10/Temp/test/Temp.test.cpp"
     ],
+    "njoy21.input.LEAPR.Card11": [
+      "src/njoy21/input/LEAPR/Card11/test/Card11.test.cpp"
+    ],
     "njoy21.input.LEAPR.Card11.Delta": [
       "src/njoy21/input/LEAPR/Card11/Delta/test/Delta.test.cpp"
     ],
     "njoy21.input.LEAPR.Card11.Ni": [
       "src/njoy21/input/LEAPR/Card11/Ni/test/Ni.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card12": [
+      "src/njoy21/input/LEAPR/Card12/test/Card12.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card12.Rho": [
+      "src/njoy21/input/LEAPR/Card12/Rho/test/Rho.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card13": [
+      "src/njoy21/input/LEAPR/Card13/test/Card13.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card13.C": [
+      "src/njoy21/input/LEAPR/Card13/C/test/C.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card13.Tbeta": [
+      "src/njoy21/input/LEAPR/Card13/Tbeta/test/Tbeta.test.cpp"
+    ],
+    "njoy21.input.LEAPR.Card13.Twt": [
+      "src/njoy21/input/LEAPR/Card13/Twt/test/Twt.test.cpp"
     ],
     "njoy21.input.LEAPR.Card2": [
       "src/njoy21/input/LEAPR/Card2/test/Card2.test.cpp"
