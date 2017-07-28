@@ -15,7 +15,7 @@ SCENARIO( "Temp input values",
       THEN( "the rho values can be extracted correctly" ){
         std::vector< double > refRhos{ 1.0, 2.0, 3.0 };
         LEAPR::Card12 card12( iss, ni );
-        REQUIRE( refRhos == card12.rho.value );
+        REQUIRE( refRhos * dimwits::electronVolts == card12.rho.value );
       } // THEN
     } // WHEN
     WHEN( "the rho values are invalid" ){
@@ -52,7 +52,7 @@ SCENARIO( "Temp input values",
         std::vector< double > refRhos{.01, .015, .025, .035, .05,
           .075, .101, .150, .25, .33, .504, .756, 1.01, 1.26, 1.51};
         LEAPR::Card12 card12( iss, ni );
-        REQUIRE( refRhos == card12.rho.value );
+        REQUIRE( refRhos * dimwits::electronVolts == card12.rho.value );
       } // THEN
     } // WHEN
   } // GIVEN

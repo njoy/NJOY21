@@ -7,7 +7,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Spr input values", 
   "[LEAPR], [Card5], [Spr]"){
   GIVEN( "valid spr input values" ){
-    std::vector<float> validValues{0.001, 23.0};
+    std::vector<double> validValues{0.001, 23.0};
     THEN( "the returned class has the correct value" ){
       for( auto& spr : validValues ){
         iRecordStream<char> iss(
@@ -18,7 +18,7 @@ SCENARIO( "Spr input values",
     } // THEN
   } // GIVEN
   GIVEN( "invalid spr values" ){
-    std::vector<float> invalidValues{0,-0.001};
+    std::vector<double> invalidValues{0,-0.001};
     THEN( "an exception is thrown" ){
       for( auto& spr : invalidValues ){
         iRecordStream<char> iss(
