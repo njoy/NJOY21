@@ -3,14 +3,14 @@
 #include "njoy21.hpp"
 
 using namespace njoy::njoy21::input;
-SCENARIO( "Temp input values",
-  "[Card14], [Temp]" ){
+SCENARIO( "LEAPR Card15 oe input values",
+  "[LEAPR], [Card15], [Oe]" ){
   GIVEN( "a small value for nd" ){
     Argument< LEAPR::Card14::Nd > nd;
     nd.value = 3;
 
     WHEN( "there are the correct number of oes and they are valid" ){
-      iRecordStream< char> iss( std::istringstream(" 1.0 2.0 3.0") );
+      iRecordStream< char> iss( std::istringstream("1.0 2.0 3.0") );
 
       THEN( "the oe values can be extracted correctly" ){
         std::vector< dimwits::Quantity< dimwits::ElectronVolts > > refOes{ 

@@ -1,5 +1,5 @@
 struct C {
-  using Value_t = int;
+  using Value_t = double;
   static std::string name(){ return "c"; }
   static std::string description(){
     return

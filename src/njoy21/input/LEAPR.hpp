@@ -15,6 +15,7 @@ public:
 #include "njoy21/input/LEAPR/Card13.hpp"
 #include "njoy21/input/LEAPR/Card14.hpp"
 #include "njoy21/input/LEAPR/Card15.hpp"
+#include "njoy21/input/LEAPR/Card16.hpp"
 
 Card1 card1;
 Card2 card2;

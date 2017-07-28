@@ -22,7 +22,7 @@ SCENARIO( "LEAPR nss input values",
       for( auto& nss : invalidValues ){
         iRecordStream<char> iss(
           std::istringstream( std::to_string( nss ) ) );
-        rEQUIRE_THROWS( argument::extract< LEAPR::Card6::Nss >( iss ) );
+        REQUIRE_THROWS( argument::extract< LEAPR::Card6::Nss >( iss ) );
       }
     } // THEN
   } // GIVEN

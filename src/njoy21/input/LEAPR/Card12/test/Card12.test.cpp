@@ -13,9 +13,12 @@ SCENARIO( "LEAPR Card12 input values",
       iRecordStream< char> iss( std::istringstream(" 1.0 2.0 3.0") );
 
       THEN( "the rho values can be extracted correctly" ){
-        std::vector< double > refRhos{ 1.0, 2.0, 3.0 };
+        std::vector< dimwits::Quantity< dimwits::ElectronVolts > > refRhos{ 
+          1.0 * dimwits::electronVolts,  
+          2.0 * dimwits::electronVolts,
+          3.0 * dimwits::electronVolts };
         LEAPR::Card12 card12( iss, ni );
-        REQUIRE( refRhos * dimwits::electronVolts == card12.rho.value );
+        REQUIRE( refRhos == card12.rho.value );
       } // THEN
     } // WHEN
     WHEN( "the rho values are invalid" ){
@@ -40,19 +43,26 @@ SCENARIO( "LEAPR Card12 input values",
 
   GIVEN( "a larger value for ni" ){
     Argument< LEAPR::Card11::Ni > ni;
-    ni.value = 15;
+    ni.value = 7;
 
     WHEN( "there are the correct number of rhos and they are valid" ){
       iRecordStream< char> iss( std::istringstream(
-      ".010 .015 .025 .035 .050 .075 .101 .150\n"
-      "2.5e-1 3.3e-1  5.04e-1 7.56e-1 1.01e+0 1.26e+0 1.51e+0/"
+      ".010 .015 .025 .035\n"
+      "2.5e-1 3.3e-1  5.04e-1/"
       ) );
 
       THEN( "the rho values can be extracted correctly" ){
-        std::vector< double > refRhos{.01, .015, .025, .035, .05,
-          .075, .101, .150, .25, .33, .504, .756, 1.01, 1.26, 1.51};
+        std::vector< dimwits::Quantity< dimwits::ElectronVolts > > refRhos{ 
+          .01  * dimwits::electronVolts,
+          .015 * dimwits::electronVolts, 
+          .025 * dimwits::electronVolts,
+          .035 * dimwits::electronVolts,
+          .250 * dimwits::electronVolts,
+          .330 * dimwits::electronVolts,
+          .504 * dimwits::electronVolts };
+
         LEAPR::Card12 card12( iss, ni );
-        REQUIRE( refRhos * dimwits::electronVolts == card12.rho.value );
+        REQUIRE( refRhos == card12.rho.value );
       } // THEN
     } // WHEN
   } // GIVEN

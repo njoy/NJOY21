@@ -13,7 +13,7 @@ SCENARIO( "LEAPR Card13 C input values",
         iRecordStream<char> iss(
           std::istringstream( std::to_string( c ) ) );
         REQUIRE( c == argument::extract< 
-          LEAPR::Card7::C >( iss ).value );
+          LEAPR::Card13::C >( iss ).value );
       }
     } // THEN
   } // GIVEN
@@ -24,7 +24,7 @@ SCENARIO( "LEAPR Card13 C input values",
         iRecordStream<char> iss(
           std::istringstream( std::to_string( c ) ) );
         REQUIRE_THROWS( argument::extract< 
-          LEAPR::Card7::C >( iss ) );
+          LEAPR::Card13::C >( iss ) );
       }
     } // THEN
   } // GIVEN
