@@ -4,8 +4,8 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "nout input values",
-  "[LEAPR],[Card1],[Nout]" ){
+SCENARIO( "LEAPR Card1 nout input values",
+  "[LEAPR], [Card1], [Nout]" ){
   GIVEN( "valid nout tape values" ){
     std::vector<int> validValues{-20, 20, 42, 99, -99};
     THEN( "the returned class has the correct tape value" ){
@@ -23,7 +23,7 @@ SCENARIO( "nout input values",
     THEN( "an exception is thrown" ){
       for( auto nout : invalidValues ){
         iRecordStream<char> iss(
-          std::istringstream( std::to_string(nout) ) );
+          std::istringstream( std::to_string( nout ) ) );
         REQUIRE_THROWS( argument::extract<
           LEAPR::Card1::Nout>( iss ) );
       }

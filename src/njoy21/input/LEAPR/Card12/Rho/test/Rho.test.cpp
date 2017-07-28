@@ -4,8 +4,8 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "Rho input values",
-  "[Card12], [Rho]" ){
+SCENARIO( "LEAPR Card12 rho input values",
+  "[LEAPR], [Card12], [Rho]" ){
   GIVEN( "a small value for ni" ){
     Argument< LEAPR::Card11::Ni > ni;
     ni.value = 3;
@@ -17,7 +17,7 @@ SCENARIO( "Rho input values",
         auto rhos = argument::extract< 
           LEAPR::Card12::Rho >(iss, ni);
         std::vector< dimwits::Quantity< dimwits::ElectronVolts > > refRhos{ 
-	  1.0 * dimwits::electronVolts,  
+          1.0 * dimwits::electronVolts,  
           2.0 * dimwits::electronVolts,
           3.0 * dimwits::electronVolts };
         REQUIRE( refRhos == rhos.value );
@@ -60,7 +60,7 @@ SCENARIO( "Rho input values",
         auto rhos = argument::extract< 
           LEAPR::Card12::Rho >(iss, ni);
         std::vector< dimwits::Quantity< dimwits::ElectronVolts > > refRhos{ 
-	  .01  * dimwits::electronVolts,
+          .01  * dimwits::electronVolts,
           .015 * dimwits::electronVolts, 
           .025 * dimwits::electronVolts,
           .035 * dimwits::electronVolts,

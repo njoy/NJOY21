@@ -4,8 +4,8 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "Beta input values",
-         "[Card9], [Beta]" ){
+SCENARIO( "LEAPR Card9 Beta input values",
+  "[LEAPR], [Card9], [Beta]" ){
   GIVEN( "a small value for nbeta" ){
     Argument< LEAPR::Card7::Nbeta > nbeta;
     nbeta.value = 3;

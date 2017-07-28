@@ -4,7 +4,7 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "Aws input values", 
+SCENARIO( "LEAPR Card6 aws input values", 
   "[LEAPR], [Card6],[Aws]"){
   GIVEN( "valid aws input values" ){
     std::vector<double> validValues{0.001, 23.0};
@@ -22,7 +22,7 @@ SCENARIO( "Aws input values",
       for( auto& aws : invalidValues ){
         iRecordStream<char> iss(
           std::istringstream( std::to_string( aws ) ) );
-	REQUIRE_THROWS( argument::extract< LEAPR::Card6::Aws >( iss ) );
+        REQUIRE_THROWS( argument::extract< LEAPR::Card6::Aws >( iss ) );
       }
     } // THEN
   } // GIVEN

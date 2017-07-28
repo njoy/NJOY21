@@ -4,7 +4,7 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "LEAPR ilog values",
+SCENARIO( "LEAPR Card4 ilog values",
   "[LEAPR], [Card4], [Ilog]"){
 
   GIVEN( "valid ilog values" ){

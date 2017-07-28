@@ -17,7 +17,7 @@ SCENARIO( "Oe input values",
         auto oes = argument::extract< 
           LEAPR::Card15::Oe >(iss, nd);
           std::vector< dimwits::Quantity< dimwits::ElectronVolts > > refOes{ 
-	    1.0 * dimwits::electronVolts,  
+            1.0 * dimwits::electronVolts,  
             2.0 * dimwits::electronVolts,
             3.0 * dimwits::electronVolts };
         REQUIRE( refOes == oes.value );
@@ -60,7 +60,7 @@ SCENARIO( "Oe input values",
         auto oes = argument::extract< 
           LEAPR::Card15::Oe >(iss, nd);
         std::vector< dimwits::Quantity< dimwits::ElectronVolts > > refOes{ 
-	  .01  * dimwits::electronVolts,
+          .01  * dimwits::electronVolts,
           .015 * dimwits::electronVolts, 
           .025 * dimwits::electronVolts,
           .035 * dimwits::electronVolts,

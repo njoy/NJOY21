@@ -4,8 +4,8 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "LEAPR card2 title",
-         "[Card2], [Title]"){
+SCENARIO( "LEAPR card2 title input",
+  "[Card2], [Title]"){
   GIVEN( "valid title values" ){
     std::vector< std::string > validValues{ 
       "",
@@ -14,22 +14,23 @@ SCENARIO( "LEAPR card2 title",
       "1234567890123456789012345678901234567890123456789012345678901234567890"
     };
 
-    THEN( "the tname value is correctly read and returned" ){
+    THEN( "the title is correctly read and returned" ){
       for( auto& title : validValues ){
         iRecordStream<char> iss( std::istringstream( "'" + title + "'" ) );
 
         REQUIRE( 
             title == argument::extract< LEAPR::Card2::Title >( iss ).value );
-      }
-    }
-  }
-  GIVEN( "invalid titles" ){
+      } 
+    } // THEN
+  } // GIVEN
+  GIVEN( "invalid title" ){
     THEN( "an exception is thrown" ){
       std::string value(
-          "123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 12");
+          "123456789 123456789 123456789 123456789 123456789 123456789" 
+          "123456789 123456789 12");
       iRecordStream<char> iss(
           std::istringstream( "'" + value + "'" ) );
       REQUIRE_THROWS( argument::extract< LEAPR::Card2::Title >( iss ) );
-    }
-  }
+    } // THEN
+  } // GIVEN
 } // SCENARIO

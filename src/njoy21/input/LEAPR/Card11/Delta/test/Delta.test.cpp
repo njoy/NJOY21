@@ -4,7 +4,7 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "Delta input values", 
+SCENARIO( "LEAPR Card11 delta input values", 
   "[LEAPR], [Card11], [Delta]"){
   GIVEN( "valid delta input values" ){
     std::vector<double> validValues{0.001, 2.0};
@@ -23,7 +23,7 @@ SCENARIO( "Delta input values",
       for( auto& delta : invalidValues ){
         iRecordStream<char> iss(
           std::istringstream( std::to_string( delta ) ) );
-	REQUIRE_THROWS( argument::extract< 
+        REQUIRE_THROWS( argument::extract< 
           LEAPR::Card11::Delta >( iss ) );
       }
     } // THEN

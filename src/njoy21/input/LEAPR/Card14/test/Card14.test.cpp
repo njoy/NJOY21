@@ -3,27 +3,27 @@
 #include "njoy21.hpp"
 
 using namespace njoy::njoy21::input;
-SCENARIO( "nout input values",
-  "[LEAPR], [Card1]" ){
-  GIVEN( "valid card1 entry" ){
-    std::vector<int> validValues{-20, 20, 42, 99, -99};
+SCENARIO( "LEAPR Card14 input values",
+  "[LEAPR], [Card14]" ){
+  GIVEN( "valid card14 entry" ){
+    std::vector<int> validValues{0, 1, 2, 20};
     THEN( "the returned values are correct" ){
-      for( auto nout : validValues ){
+      for( auto nd : validValues ){
         iRecordStream<char> iss(
-          std::istringstream( std::to_string( nout ) ) );
-        LEAPR::Card1 card1( iss );
-        REQUIRE( card1.nout.value == nout );
+          std::istringstream( std::to_string( nd ) ) );
+        LEAPR::Card14 card14( iss );
+        REQUIRE( card14.nd.value == nd );
       }
     } // THEN
   } // GIVEN
 
-  GIVEN( "invalid card1 values" ){
-    std::vector<int> invalidValues{-19, 19, -1, 1, 100, -100};
+  GIVEN( "invalid card14 values" ){
+    std::vector<int> invalidValues{-1, -100};
     THEN( "an exception is thrown" ){
-      for( auto nout : invalidValues ){
+      for( auto nd : invalidValues ){
         iRecordStream<char> iss(
-          std::istringstream( std::to_string(nout) ) );
-        REQUIRE_THROWS( LEAPR::Card1( iss ) );
+          std::istringstream( std::to_string(nd) ) );
+        REQUIRE_THROWS( LEAPR::Card14( iss ) );
       }
     } // THEN
   } // GIVEN

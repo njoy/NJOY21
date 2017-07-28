@@ -4,7 +4,7 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "LEAPR iprint values",
+SCENARIO( "LEAPR Card3 iprint values",
   "[LEAPR], [Card3], [Iprint]"){
 
   GIVEN( "valid iprint values" ){

@@ -3,8 +3,8 @@
 #include "njoy21.hpp"
 
 using namespace njoy::njoy21::input;
-SCENARIO( "Temp input values",
-         "[Card7], [Temp]" ){
+SCENARIO( "LEAPR Card8 alpha input values",
+  "[LEAPR], [Card8], [Alpha]" ){
   GIVEN( "a small value for nalpha" ){
     Argument< LEAPR::Card7::Nalpha > nalpha;
     nalpha.value = 3;

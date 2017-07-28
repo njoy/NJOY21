@@ -4,7 +4,7 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "Nss input values", 
+SCENARIO( "LEAPR nss input values", 
   "[LEAPR], [Card6], [Nss]"){
   GIVEN( "valid nss input values" ){
     std::vector<int> validValues{0, 1};
@@ -22,7 +22,7 @@ SCENARIO( "Nss input values",
       for( auto& nss : invalidValues ){
         iRecordStream<char> iss(
           std::istringstream( std::to_string( nss ) ) );
-	REQUIRE_THROWS( argument::extract< LEAPR::Card6::Nss >( iss ) );
+        rEQUIRE_THROWS( argument::extract< LEAPR::Card6::Nss >( iss ) );
       }
     } // THEN
   } // GIVEN

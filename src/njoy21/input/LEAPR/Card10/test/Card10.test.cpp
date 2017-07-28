@@ -3,7 +3,7 @@
 #include "njoy21.hpp"
 
 using namespace njoy::njoy21::input;
-SCENARIO( "temp input values",
+SCENARIO( "LEAPR Card10 input values",
   "[LEAPR], [Card10]" ){
   GIVEN( "valid card10 entry" ){
     std::vector<double> validValues{0, -293.5, 293.5};

@@ -10,7 +10,7 @@ public:
         Card::clear( iss );
       }
     catch( std::exception& e) {
-      Log::info( "Trouble while validating Card 2" );
+      Log::info( "Trouble while validating Card1" );
       throw e;
     }
 };

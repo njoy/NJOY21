@@ -4,7 +4,7 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "LEAPR lat values",
+SCENARIO( "LEAPR Card7 lat values",
   "[LEAPR], [Card7], [Lat]"){
 
   GIVEN( "valid lat values" ){

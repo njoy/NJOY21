@@ -4,16 +4,16 @@ class Card13 {
   #include "njoy21/input/LEAPR/Card13/C.hpp"
   #include "njoy21/input/LEAPR/Card13/Tbeta.hpp"
 
-  Argument< Twt > twt;
-  Argument< C  > c;
-  Argument< Tbeta    > tbeta;
+  Argument< Twt   > twt;
+  Argument< C     > c;
+  Argument< Tbeta > tbeta;
 
   template< typename Char >
   Card13( iRecordStream<Char>& is )
   try:
-    twt( argument::extract< Twt >( is ) ),
-    c ( argument::extract< C  >( is ) ),
-    tbeta   ( argument::extract< Tbeta    >( is ) )
+    twt  ( argument::extract< Twt   >( is ) ),
+    c    ( argument::extract< C     >( is ) ),
+    tbeta( argument::extract< Tbeta >( is ) )
   {
     Card::clear( is );
   }

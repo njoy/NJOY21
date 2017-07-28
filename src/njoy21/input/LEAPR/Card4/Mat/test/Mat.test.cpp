@@ -4,21 +4,19 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "LEAPR mat values",
+SCENARIO( "LEAPR Card4 mat values",
   "[LEAPR], [Card4], [Mat]"){
 
   GIVEN( "valid mat values" ){
-    WHEN( "mat value is given" ){
-      std::vector<int> validValues{1, 2, 99};
-      THEN( "the returned class has the correct value" ){
-        for( int mat : validValues ){
-          iRecordStream<char> iss( 
-            std::istringstream( std::to_string( mat ) ) );
-          REQUIRE( mat == argument::extract< 
-            LEAPR::Card4::Mat >( iss ).value );
-        }
-      } // THEN
-    } // WHEN
+    std::vector<int> validValues{1, 2, 99};
+    THEN( "the returned class has the correct value" ){
+      for( int mat : validValues ){
+        iRecordStream<char> iss( 
+          std::istringstream( std::to_string( mat ) ) );
+        REQUIRE( mat == argument::extract< 
+          LEAPR::Card4::Mat >( iss ).value );
+      }
+    } // THEN
   } // GIVEN
 
   GIVEN( "invalid mat values" ){

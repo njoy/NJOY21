@@ -3,7 +3,7 @@
 #include "njoy21.hpp"
 
 using namespace njoy::njoy21::input;
-SCENARIO( "nout input values",
+SCENARIO( "LEAPR Card11 input values",
   "[LEAPR], [Card11]" ){
   GIVEN( "valid card11 inputs" ){
     iRecordStream<char> is( std::istringstream( "20 30" ) );

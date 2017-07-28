@@ -4,8 +4,7 @@
 
 using namespace njoy::njoy21::input;
 
-
-SCENARIO( "nout input values",
+SCENARIO( "LEAPR Card6 input values",
   "[LEAPR], [Card6]" ){
   GIVEN( "valid card6 inputs" ){
     WHEN( "secondary scatterer available (nss = 1)" ){
@@ -13,11 +12,11 @@ SCENARIO( "nout input values",
       THEN( "all card6 inputs are provided and returned correctly" ){
         LEAPR::Card6 card6( is );
         REQUIRE( card6.nss.value   == 1    );
-	auto ct = *( card6.controlTuple );
-	REQUIRE( std::get<0>( ct ).value == 1 );
-	REQUIRE( std::get<1>( ct ).value == 15.87 );
-	REQUIRE( std::get<2>( ct ).value == 3.84*dimwits::barns  );
-	REQUIRE( std::get<3>( ct ).value == 1 );
+        auto ct = *( card6.controlTuple );
+        REQUIRE( std::get<0>( ct ).value == 1 );
+        REQUIRE( std::get<1>( ct ).value == 15.87 );
+        REQUIRE( std::get<2>( ct ).value == 3.84*dimwits::barns  );
+        REQUIRE( std::get<3>( ct ).value == 1 );
       } // THEN
     } // WHEN
     WHEN( "secondary scatterer not available (nss = 0)" ){

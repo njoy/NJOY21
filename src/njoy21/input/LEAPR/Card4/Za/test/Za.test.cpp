@@ -4,7 +4,7 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "Za input values", 
+SCENARIO( "LEAPR Card4 Za input values", 
   "[LEAPR], [Card4], [Za]"){
   GIVEN( "valid za value" ){
     std::vector<double> validValues{1001.0, 26000.0, 199999.0 };

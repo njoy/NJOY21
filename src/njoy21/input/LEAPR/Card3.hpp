@@ -3,6 +3,7 @@ public:
   #include "njoy21/input/LEAPR/Card3/Ntempr.hpp"
   #include "njoy21/input/LEAPR/Card3/Iprint.hpp"
   #include "njoy21/input/LEAPR/Card3/Nphon.hpp"
+
   Argument < Ntempr > ntempr;
   Argument < Iprint > iprint;
   Argument < Nphon  > nphon;
@@ -16,7 +17,7 @@ public:
         Card::clear( iss );
       }
     catch( std::exception& e) {
-      Log::info( "Trouble while validating Card 3" );
+      Log::info( "Trouble while validating Card3" );
       throw e;
     }
 };

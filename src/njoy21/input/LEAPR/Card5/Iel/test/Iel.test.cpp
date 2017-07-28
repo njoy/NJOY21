@@ -4,7 +4,7 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "Iel input values", 
+SCENARIO( "LEAPR Card5 iel input values", 
   "[LEAPR], [Card5], [Iel]"){
   GIVEN( "valid iel input values" ){
     WHEN( "iel input provided" ){
@@ -30,7 +30,7 @@ SCENARIO( "Iel input values",
       for( auto& iel : invalidValues ){
         iRecordStream<char> iss(
           std::istringstream( std::to_string( iel ) ) );
-	REQUIRE_THROWS( argument::extract< LEAPR::Card5::Iel >( iss ) );
+        REQUIRE_THROWS( argument::extract< LEAPR::Card5::Iel >( iss ) );
       }
     } // THEN
   } // GIVEN

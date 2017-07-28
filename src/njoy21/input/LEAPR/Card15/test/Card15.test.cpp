@@ -54,7 +54,7 @@ SCENARIO( "Temp input values",
 
       THEN( "the oe values can be extracted correctly" ){
         std::vector< dimwits::Quantity< dimwits::ElectronVolts > > refOes{ 
-	  .01  * dimwits::electronVolts,
+          .01  * dimwits::electronVolts,
           .015 * dimwits::electronVolts, 
           .025 * dimwits::electronVolts,
           .035 * dimwits::electronVolts,

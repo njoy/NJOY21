@@ -3,7 +3,7 @@
 #include "njoy21.hpp"
 
 using namespace njoy::njoy21::input;
-SCENARIO( "nout input values",
+SCENARIO( "LEAPR Card7 input values",
   "[LEAPR], [Card7]" ){
   GIVEN( "valid card7 inputs" ){
     WHEN( "all card7 inputs provided" ){

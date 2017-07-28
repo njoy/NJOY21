@@ -4,19 +4,33 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "bugless" ){
-  std::string value(
-      "123456789 123456789 123456789 123456789 123456789 123456789 123456");
-  iRecordStream<char> iss{ std::istringstream( "'" + value + "'" ) };
-  LEAPR::Card2 card2( iss );
-  REQUIRE( card2.title.value == value );
-}
+SCENARIO( "LEAPR card2",
+  "[LEAPR], [Card2]"){
+  GIVEN( "valid card2 inputs" ){
+    std::vector< std::string > validValues{ 
+      "",
+      "This is a test descriptive string.",
+      "123456789012345678901234567890123456789012345678901234567890123456",
+      "1234567890123456789012345678901234567890123456789012345678901234567890"
+    };
+    THEN( "card2 is correctly read and returned" ){
+      for( auto& title : validValues ){
+        iRecordStream<char> iss( std::istringstream( "'" + title + "'" ) );
 
-SCENARIO( "bugged" ){
-  GIVEN( "a string that's too long" ){
-    std::string value(
-      "123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 12");
-    iRecordStream<char> iss{ std::istringstream( "'" + value + "'" ) };
-    REQUIRE_THROWS( LEAPR::Card2( iss ) );
-  }
-}
+        LEAPR::Card2 card2( iss );
+        REQUIRE( card2.title.value == title );
+      } 
+    } // THEN
+  } // GIVEN
+  GIVEN( "invalid card2 input" ){
+    THEN( "an exception is thrown" ){
+      std::string value(
+          "123456789 123456789 123456789 123456789 123456789 123456789" 
+          "123456789 123456789 12");
+      iRecordStream<char> iss(
+          std::istringstream( "'" + value + "'" ) );
+
+      REQUIRE_THROWS( LEAPR::Card2( iss ) );
+    } // THEN
+  } // GIVEN
+} // SCENARIO

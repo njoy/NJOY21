@@ -4,7 +4,7 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "LEAPR tbeta values",
+SCENARIO( "LEAPR Card13 tbeta values",
   "[LEAPR], [Card13], [Tbeta]"){
 
   GIVEN( "valid tbeta values" ){

@@ -4,8 +4,8 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "C input values", 
-  "[LEAPR], [Card7], [C]"){
+SCENARIO( "LEAPR Card13 C input values", 
+  "[LEAPR], [Card13], [C]"){
   GIVEN( "valid c input values" ){
     std::vector<double> validValues{0.0, 0.5, 0.1};
     THEN( "the returned class has the correct value" ){
@@ -23,7 +23,7 @@ SCENARIO( "C input values",
       for( auto& c : invalidValues ){
         iRecordStream<char> iss(
           std::istringstream( std::to_string( c ) ) );
-	REQUIRE_THROWS( argument::extract< 
+        REQUIRE_THROWS( argument::extract< 
           LEAPR::Card7::C >( iss ) );
       }
     } // THEN

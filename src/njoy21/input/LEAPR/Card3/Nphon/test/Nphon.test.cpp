@@ -1,11 +1,10 @@
 #define CATCH_CONFIG_MAIN
-#include <numeric>
 #include "catch.hpp"
 #include "njoy21.hpp"
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "Nphon output values", 
+SCENARIO( "LEAPR Card3 nphon input values", 
   "[LEAPR], [Card3], [Nphon]"){
   GIVEN( "valid Nphon parameters" ){
     std::vector<int> validValues = { 1, 50, 150 };

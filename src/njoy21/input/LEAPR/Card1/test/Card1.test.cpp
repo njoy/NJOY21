@@ -3,7 +3,8 @@
 #include "njoy21.hpp"
 
 using namespace njoy::njoy21::input;
-SCENARIO( "nout input values",
+
+SCENARIO( "LEAPR Card1 input values",
   "[LEAPR], [Card1]" ){
   GIVEN( "valid card1 entry" ){
     std::vector<int> validValues{-20, 20, 42, 99, -99};
@@ -22,7 +23,7 @@ SCENARIO( "nout input values",
     THEN( "an exception is thrown" ){
       for( auto nout : invalidValues ){
         iRecordStream<char> iss(
-          std::istringstream( std::to_string(nout) ) );
+          std::istringstream( std::to_string( nout ) ) );
         REQUIRE_THROWS( LEAPR::Card1( iss ) );
       }
     } // THEN

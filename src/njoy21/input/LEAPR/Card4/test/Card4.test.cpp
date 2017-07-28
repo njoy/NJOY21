@@ -3,7 +3,7 @@
 #include "njoy21.hpp"
 
 using namespace njoy::njoy21::input;
-SCENARIO( "nout input values",
+SCENARIO( "LEAPR Card4 input",
   "[LEAPR], [Card4]" ){
   GIVEN( "valid card4 inputs" ){
     WHEN( "all card4 inputs provided" ){
@@ -29,24 +29,15 @@ SCENARIO( "nout input values",
   } // GIVEN
   GIVEN( "invalid card4 inputs" ){
     WHEN( "card4 input value is out of range" ){
-      iRecordStream<char> is1LO( std::istringstream( "-1  1001   1  1" ) );
-      iRecordStream<char> is1HI( std::istringstream( "101 1001   1  1" ) );
-      iRecordStream<char> is2LO( std::istringstream( "1   999    1  1" ) );
-      iRecordStream<char> is2HI( std::istringstream( "1   200000 1  1" ) );
-      iRecordStream<char> is3LO( std::istringstream( "1   1001  -1  1" ) );
-      iRecordStream<char> is3HI( std::istringstream( "1   1001   2  1" ) );
-      iRecordStream<char> is4LO( std::istringstream( "1   1001   1 -1" ) );
-      iRecordStream<char> is4HI( std::istringstream( "1   1001   1  2" ) );
+      iRecordStream<char> is1( std::istringstream( "-1  1001   1  1" ) );
+      iRecordStream<char> is2( std::istringstream( "1   999    1  1" ) );
+      iRecordStream<char> is3( std::istringstream( "1   1001  -1  1" ) );
+      iRecordStream<char> is4( std::istringstream( "1   1001   1 -1" ) );
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( LEAPR::Card4( is1LO ) );
-        REQUIRE_THROWS( LEAPR::Card4( is1HI ) );
-        REQUIRE_THROWS( LEAPR::Card4( is2LO ) );
-        REQUIRE_THROWS( LEAPR::Card4( is2HI ) );
-        REQUIRE_THROWS( LEAPR::Card4( is3LO ) );
-        REQUIRE_THROWS( LEAPR::Card4( is3HI ) );
-        REQUIRE_THROWS( LEAPR::Card4( is4LO ) );
-        REQUIRE_THROWS( LEAPR::Card4( is4HI ) );
-
+        REQUIRE_THROWS( LEAPR::Card4( is1 ) );
+        REQUIRE_THROWS( LEAPR::Card4( is2 ) );
+        REQUIRE_THROWS( LEAPR::Card4( is3 ) );
+        REQUIRE_THROWS( LEAPR::Card4( is4 ) );
       } // THEN
     } // WHEN
   } // GIVEN

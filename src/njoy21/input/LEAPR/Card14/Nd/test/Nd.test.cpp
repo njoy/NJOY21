@@ -4,9 +4,9 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "nd input values",
+SCENARIO( "LEAPR Card14 nd input values",
   "[LEAPR], [Card14], [Nd]" ){
-  GIVEN( "valid nd tape values" ){
+  GIVEN( "valid nd values" ){
     std::vector<int> validValues{0, 1, 2, 99};
     THEN( "the returned class has the correct tape value" ){
       for( auto nd : validValues ){
@@ -18,7 +18,7 @@ SCENARIO( "nd input values",
     } // THEN
   } // GIVEN
 
-  GIVEN( "invalid nd tape values" ){
+  GIVEN( "invalid nd values" ){
     std::vector<int> invalidValues{-1, -100};
     THEN( "an exception is thrown" ){
       for( auto nd : invalidValues ){

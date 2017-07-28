@@ -11,7 +11,7 @@ public:
         Card::clear( iss );
       }
     catch( std::exception& e) {
-      Log::info( "Trouble while validating Card 12" );
+      Log::info( "Trouble while validating Card15" );
       throw e;
     }
 };
