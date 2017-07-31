@@ -9,8 +9,8 @@ struct Nd {
       "Choice of discrete oscillators must be such that:\n"
       "   wt + ws + ( w_1 + w_2 + ... + w_nd ) = 1   \n"
       "where wt is the translational weight (twt from Card13), ws is the\n"
-      "weight for solid type law, and w_i is the weight of the ith discrete\n"
-      "oscillator (given on card16).";
+      "weight for solid type law (tbeta from Card13), and w_i is the weight\n"
+      "of the ith discrete oscillator (given on card16).";
   } 
   static bool verify( const Value_t nd ){ return nd >= 0; }
 };
