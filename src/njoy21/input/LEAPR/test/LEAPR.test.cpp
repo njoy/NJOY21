@@ -105,8 +105,8 @@ SCENARIO( "LEAPR input",
 	  REQUIRE( card15->oe.value    == refOes	);
 	  std::vector< double > refOws = { 0.163467, 0.326933 };
 	  REQUIRE( card16->ow.value    == refOws );
-	  REQUIRE( card17->nka.value   == 2      );
-	  REQUIRE( card17->dka.value   == 0.001 * InvAng );
+//	  REQUIRE( card17->nka.value   == 2      );
+//	  REQUIRE( card17->dka.value   == 0.001 * InvAng );
 	 
         }
 	const auto& loop2 = leapr.tempLoop[1];
@@ -131,8 +131,8 @@ SCENARIO( "LEAPR input",
 	  REQUIRE( card13.tbeta.value == 0.5 	);
 	  REQUIRE( card14.nd.value    == 0 	);
 	  REQUIRE( not oscillatorTuple );
-	  REQUIRE( card17->nka.value  == 3      );
-	  REQUIRE( card17->dka.value  == 0.002 * InvAng );
+//	  REQUIRE( card17->nka.value  == 3      );
+//	  REQUIRE( card17->dka.value  == 0.002 * InvAng );
         }
 
       } // THEN
