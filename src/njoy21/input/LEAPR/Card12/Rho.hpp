@@ -1,5 +1,5 @@
 struct Rho {
-  using Value_t = std::vector< Quantity< ElectronVolts > >;
+  using Value_t = std::vector< double >;
   static std::string name(){ return "rho"; }
 
   static std::string description() {
@@ -18,7 +18,7 @@ struct Rho {
                       const Argument< LEAPR::Card11::Ni > & ){
     // Make sure all rhos are positive
     auto found = std::find_if( rhos.begin(), rhos.end(),
-      [](auto& a){ return a < 0.0 * dimwits::electronVolts; });
+      [](auto& a){ return a < 0.0; });
     if ( found != rhos.end() ){
       Log::info( "Negative rho ({}) found at index {}",
                     *found, std::distance(rhos.begin(), found));

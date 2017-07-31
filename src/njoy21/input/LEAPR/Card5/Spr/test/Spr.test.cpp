@@ -18,7 +18,7 @@ SCENARIO( "LEAPR Card5 spr input values",
     } // THEN
   } // GIVEN
   GIVEN( "invalid spr values" ){
-    std::vector<double> invalidValues{0,-0.001};
+    std::vector<double> invalidValues{0, -0.001};
     THEN( "an exception is thrown" ){
       for( auto& spr : invalidValues ){
         iRecordStream<char> iss(

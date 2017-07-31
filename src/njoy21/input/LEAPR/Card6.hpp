@@ -14,7 +14,7 @@ class Card6 {
 
   static optional<ControlTuple> buildControlTuple( 
     iRecordStream<char>& is, const Argument< Nss >& nss ){
-	  
+          
     if( nss.value == 1 ){
       auto b7  = argument::extract< B7  >( is );
       auto aws = argument::extract< Aws >( is );
@@ -22,7 +22,6 @@ class Card6 {
       auto mss = argument::extract< Mss >( is );
       return ControlTuple( b7, aws, sps, mss );
     }   
-    
     return std::nullopt;
   }
 
@@ -32,17 +31,14 @@ class Card6 {
     nss( argument::extract< Nss >( is ) ),
     controlTuple( buildControlTuple( is, this->nss ) )
   {
-    // If nss == 0 and line is not clear, inform user that nss == 0 
-    // must be used with an otherwise empty line
     if( nss.value == 0 ){
       try{ Card::clear( is ); }
       catch( std::exception& e ){
-        Log::info( "If the existence of a secondary scatterer is indicated\n"
-		   "(nss = 1), then all subsequent Card6 inputs are required" );
-	throw e;
+        Log::info( "If no secondary scatterer is indicated (nss = 0), then\n"
+                   "no other Card6 inputs are necessary." );
+        throw e;
       }
     }
-    Card::clear( is );
   }
   catch( std::exception& e ){
     Log::info( "Trouble while validating LEAPR Card6" );

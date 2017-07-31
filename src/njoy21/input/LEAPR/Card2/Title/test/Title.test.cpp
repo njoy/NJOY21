@@ -17,19 +17,18 @@ SCENARIO( "LEAPR card2 title input",
     THEN( "the title is correctly read and returned" ){
       for( auto& title : validValues ){
         iRecordStream<char> iss( std::istringstream( "'" + title + "'" ) );
-
         REQUIRE( 
-            title == argument::extract< LEAPR::Card2::Title >( iss ).value );
+          title == argument::extract< LEAPR::Card2::Title >( iss ).value );
       } 
     } // THEN
   } // GIVEN
   GIVEN( "invalid title" ){
     THEN( "an exception is thrown" ){
       std::string value(
-          "123456789 123456789 123456789 123456789 123456789 123456789" 
-          "123456789 123456789 12");
+        "123456789 123456789 123456789 123456789 123456789 123456789" 
+        "123456789 123456789 12");
       iRecordStream<char> iss(
-          std::istringstream( "'" + value + "'" ) );
+        std::istringstream( "'" + value + "'" ) );
       REQUIRE_THROWS( argument::extract< LEAPR::Card2::Title >( iss ) );
     } // THEN
   } // GIVEN

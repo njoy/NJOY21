@@ -10,7 +10,7 @@ SCENARIO( "LEAPR Card4 isabt values",
   GIVEN( "valid isabt values" ){
     iRecordStream<char> iss0( std::istringstream( "0" ) );
     iRecordStream<char> iss1( std::istringstream( "1" ) );
-    THEN( "the returned calss has the correct value" ){
+    THEN( "the returned class has the correct value" ){
       REQUIRE( 0 == argument::extract< LEAPR::Card4::Isabt >( iss0 ).value );
       REQUIRE( 1 == argument::extract< LEAPR::Card4::Isabt >( iss1 ).value );
     } // THEN

@@ -9,7 +9,7 @@ SCENARIO( "LEAPR Card1 nout input values",
   GIVEN( "valid nout tape values" ){
     std::vector<int> validValues{-20, 20, 42, 99, -99};
     THEN( "the returned class has the correct tape value" ){
-      for( auto nout : validValues ){
+      for( auto& nout : validValues ){
         iRecordStream<char> iss(
           std::istringstream( std::to_string( nout ) ) );
         REQUIRE(nout == argument::extract< 
@@ -21,7 +21,7 @@ SCENARIO( "LEAPR Card1 nout input values",
   GIVEN( "invalid nout tape values" ){
     std::vector<int> invalidValues{-19, 19, -1, 1, 100, -100};
     THEN( "an exception is thrown" ){
-      for( auto nout : invalidValues ){
+      for( auto& nout : invalidValues ){
         iRecordStream<char> iss(
           std::istringstream( std::to_string( nout ) ) );
         REQUIRE_THROWS( argument::extract<

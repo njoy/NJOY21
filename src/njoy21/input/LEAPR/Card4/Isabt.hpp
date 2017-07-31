@@ -14,7 +14,5 @@ struct Isabt {
   }
 
   static Value_t defaultValue(){ return 0; }
-  static bool verify( const Value_t i ){
-    return ( i == 0 or i == 1 );
-  }
+  static bool verify( const Value_t i ){ return ( i == 0 or i == 1 ); }
 };

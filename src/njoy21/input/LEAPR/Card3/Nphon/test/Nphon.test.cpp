@@ -9,7 +9,7 @@ SCENARIO( "LEAPR Card3 nphon input values",
   GIVEN( "valid Nphon parameters" ){
     std::vector<int> validValues = { 1, 50, 150 };
     THEN( "the returned class has the correct value" ){
-      for( int nphon : validValues ){
+      for( auto& nphon : validValues ){
         iRecordStream<char> iss( 
           std::istringstream( std::to_string( nphon ) ) );
         REQUIRE( nphon == argument::extract< 
@@ -27,7 +27,7 @@ SCENARIO( "LEAPR Card3 nphon input values",
   GIVEN( "invalid Nphon parameters" ){
     std::vector<int> invalidValues{ -2, -1, 0 };
     THEN( "an exception is thrown" ){
-      for( auto nphon : invalidValues ){
+      for( auto& nphon : invalidValues ){
         iRecordStream<char> iss( 
           std::istringstream( std::to_string( nphon ) ) );
         REQUIRE_THROWS( argument::extract< 

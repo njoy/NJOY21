@@ -20,7 +20,5 @@ struct Mat {
       "----------------------------------------";
   }
 
-  static bool verify( const Value_t v ){
-    return ( v < 100 and v > 0 );
-  }
+  static bool verify( const Value_t v ){ return ( v < 100 and v > 0 ); }
 };

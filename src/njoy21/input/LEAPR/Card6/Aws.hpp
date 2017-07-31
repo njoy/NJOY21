@@ -6,5 +6,5 @@ struct Aws {
       "The aws input is the weight ratio of the secondary scatterer to\n"
       "neutron. aws is unitless, and must be positive.";
   }
-  static bool verify( const Value_t& aws ){ return aws > ( 0.0 ); }
+  static bool verify( const Value_t& aws ){ return aws > 0.0; }
 };

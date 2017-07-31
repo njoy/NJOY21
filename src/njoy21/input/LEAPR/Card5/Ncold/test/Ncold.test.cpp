@@ -18,7 +18,7 @@ SCENARIO( "LEAPR Card5 ncold input values",
         }
       } // THEN
     } // WHEN
-    WHEN( "no ncoldd input provided" ){
+    WHEN( "no ncold input provided" ){
       iRecordStream<char> iss( std::istringstream( " /" ) );
       THEN( "default value is used" ){
         REQUIRE( 0 == argument::extract< LEAPR::Card5::Ncold >( iss ).value );

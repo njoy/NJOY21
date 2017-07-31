@@ -16,10 +16,7 @@ SCENARIO( "LEAPR Card12 rho input values",
       THEN( "the rho values can be extracted correctly" ){
         auto rhos = argument::extract< 
           LEAPR::Card12::Rho >(iss, ni);
-        std::vector< dimwits::Quantity< dimwits::ElectronVolts > > refRhos{ 
-          1.0 * dimwits::electronVolts,  
-          2.0 * dimwits::electronVolts,
-          3.0 * dimwits::electronVolts };
+        std::vector< double > refRhos{ 1.0, 2.0, 3.0 };
         REQUIRE( refRhos == rhos.value );
       } // THEN
     } // WHEN
@@ -59,14 +56,8 @@ SCENARIO( "LEAPR Card12 rho input values",
       THEN( "the rho values can be extracted correctly" ){
         auto rhos = argument::extract< 
           LEAPR::Card12::Rho >(iss, ni);
-        std::vector< dimwits::Quantity< dimwits::ElectronVolts > > refRhos{ 
-          .01  * dimwits::electronVolts,
-          .015 * dimwits::electronVolts, 
-          .025 * dimwits::electronVolts,
-          .035 * dimwits::electronVolts,
-          .250 * dimwits::electronVolts,
-          .330 * dimwits::electronVolts,
-          .504 * dimwits::electronVolts };
+        std::vector< double > refRhos{ 
+          .01, .015, .025, .035, .250, .330, .504}
         REQUIRE( refRhos == rhos.value );
       } // THEN
     } // WHEN

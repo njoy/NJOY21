@@ -4,8 +4,9 @@ struct Ntempr {
   static std::string description(){
     return
       "The ntempr argument specifies the number of final temperatures\n"
-      "desired. These temperatures will be put on card3. ntempr defaults\n"
-      "to a value of 1 and must be a positive integer";
+      "desired. For each temperature value, cards 10 - 18 will be repeated,\n"
+      "with the desired temperature specified on card10.\n"
+      "ntempr defaults to a value of 1 and must be a positive integer";
   }
 
   static Value_t defaultValue(){ return 1; }

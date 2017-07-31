@@ -19,6 +19,13 @@ public:
 #include "njoy21/input/LEAPR/Card17.hpp"
 #include "njoy21/input/LEAPR/Card18.hpp"
 #include "njoy21/input/LEAPR/Card19.hpp"
+#include "njoy21/input/LEAPR/Card20.hpp"
+using OscillatorTuple = std::tuple< optional< Card15 >, optional< Card16 > >;
+using PairCorrelTuple = std::tuple< optional< Card17 >, optional< Card18 > >;
+using TempLoopIter = std::tuple< Card10, Card11, Card12, Card13, Card14, 
+				 optional<OscillatorTuple>, optional<PairCorrelTuple> >;
+					 //    Card15, Card16, Card17, Card18 >;
+using TempLoop = std::vector<TempLoopIter>;
 
 Card1 card1;
 Card2 card2;
@@ -29,12 +36,56 @@ Card6 card6;
 Card7 card7;
 Card8 card8;
 Card9 card9;
-Card10 card10;
+TempLoop tempLoop;
+
+
+static TempLoopIter buildTempLoopIter( iRecordStream<char>& is, Card5& card5 ){
+  auto card10 = Card10( is );
+  auto card11 = Card11( is );
+  auto card12 = Card12( is, card11.ni );
+  auto card13 = Card13( is );
+  auto card14 = Card14( is );
+  auto card15 = ( card14.nd.value != 0 ) ? 
+    optional<Card15>(Card15( is, card14.nd )) : std::nullopt;
+  auto card16 = ( card14.nd.value != 0 ) ? 
+    optional<Card16>(Card16( is, card14.nd, card13.twt, card13.tbeta )) : std::nullopt;
+  auto oscillatorTuple = (card14.nd.value != 0 ) ?
+    optional<OscillatorTuple>(OscillatorTuple( card15, card16 )) : std::nullopt;
+
+  auto card17 = ( card5.nsk.value != 0 ) ?
+    optional<Card17>(Card17( is ) ) : std::nullopt;
+  auto card18 = ( card5.nsk.value != 0 ) ?
+    optional<Card18>(Card18( is, card17->nka ) ) : std::nullopt;
+  auto pairCorrelTuple = (card5.nsk.value != 0 ) ?
+    optional<PairCorrelTuple>(PairCorrelTuple( card17, card18 ) ) : std::nullopt;
+  return TempLoopIter( card10, card11, card12, card13, card14, oscillatorTuple, pairCorrelTuple );
+}
+
+
+static TempLoop buildTempLoop( iRecordStream<char>& is, Card3& card3, Card5& card5 ){
+  TempLoop myTempLoop;
+  for( int i = 0; i < card3.ntempr.value; i++ ){
+    myTempLoop.emplace_back( buildTempLoopIter( is, card5 ) );
+  }
+   
+  return myTempLoop;
+} 
+
 
 template <typename Char> 
   LEAPR( iRecordStream<Char>& iss )
   try:
-    card1( iss ){}
+    card1( iss ),
+    card2( iss ),
+    card3( iss ),
+    card4( iss ),
+    card5( iss ),
+    card6( iss ),
+    card7( iss ),
+    card8( iss, this->card7.nalpha ),
+    card9( iss, this->card7.nbeta  ),
+    tempLoop( buildTempLoop( iss, this->card3, this->card5 ) )
+    {}
   catch( std::exception &e ){
     Log::info( "Trouble with validating LEAPR input" );
     throw e;

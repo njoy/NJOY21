@@ -10,7 +10,6 @@ public:
           Argument< LEAPR::Card13::Twt >& twt,
           Argument< LEAPR::Card13::Tbeta >& tbeta )
     try:
-     // ow( argument::extract < Ow > ( iss, nd ) ){
       ow( argument::extract < Ow > ( iss, nd, twt, tbeta ) ){
         Card::clear( iss );
       }

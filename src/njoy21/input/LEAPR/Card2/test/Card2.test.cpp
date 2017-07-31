@@ -16,20 +16,17 @@ SCENARIO( "LEAPR card2",
     THEN( "card2 is correctly read and returned" ){
       for( auto& title : validValues ){
         iRecordStream<char> iss( std::istringstream( "'" + title + "'" ) );
-
         LEAPR::Card2 card2( iss );
         REQUIRE( card2.title.value == title );
       } 
     } // THEN
   } // GIVEN
   GIVEN( "invalid card2 input" ){
+    std::string value(
+      "123456789 123456789 123456789 123456789 123456789 123456789" 
+      "123456789 123456789 12");
     THEN( "an exception is thrown" ){
-      std::string value(
-          "123456789 123456789 123456789 123456789 123456789 123456789" 
-          "123456789 123456789 12");
-      iRecordStream<char> iss(
-          std::istringstream( "'" + value + "'" ) );
-
+      iRecordStream<char> iss( std::istringstream( "'" + value + "'" ) );
       REQUIRE_THROWS( LEAPR::Card2( iss ) );
     } // THEN
   } // GIVEN

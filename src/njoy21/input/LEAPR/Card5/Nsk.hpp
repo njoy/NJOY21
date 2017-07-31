@@ -8,6 +8,9 @@ struct Nsk {
       "that no intermolecular interference is desired, while values of 1 and\n"
       "2 correspond to vineyard and skold interference options, respectively.\n"
       "\n"
+      "An nsk value of 1 or 2 will invoke the use of cards 17 and 18.\n"
+      "Additionally, a value of 2 will invoke the use of card 19.\n"
+      "\n"
       "nsk has a default value of 0.";
   }
   static Value_t defaultValue(){ return 0; }

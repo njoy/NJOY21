@@ -10,7 +10,7 @@ SCENARIO( "LEAPR Card4 mat values",
   GIVEN( "valid mat values" ){
     std::vector<int> validValues{1, 2, 99};
     THEN( "the returned class has the correct value" ){
-      for( int mat : validValues ){
+      for( auto& mat : validValues ){
         iRecordStream<char> iss( 
           std::istringstream( std::to_string( mat ) ) );
         REQUIRE( mat == argument::extract< 
@@ -22,7 +22,7 @@ SCENARIO( "LEAPR Card4 mat values",
   GIVEN( "invalid mat values" ){
     std::vector<int> invalidValues{-1, 0, 100, 101};
     THEN( "an exception is thrown" ){
-      for( int mat : invalidValues ){
+      for( auto& mat : invalidValues ){
         iRecordStream<char> iss( 
           std::istringstream( std::to_string( mat ) ) );
         REQUIRE_THROWS( argument::extract< 
