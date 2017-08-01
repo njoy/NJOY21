@@ -20,11 +20,10 @@ public:
 #include "njoy21/input/LEAPR/Card18.hpp"
 #include "njoy21/input/LEAPR/Card19.hpp"
 #include "njoy21/input/LEAPR/Card20.hpp"
-using OscillatorTuple = std::tuple< optional< Card15 >, optional< Card16 > >;
-using PairCorrelTuple = std::tuple< optional< Card17 >, optional< Card18 >, optional< Card19 > >;
+using OscillatorTuple = std::tuple< Card15, Card16 >;
+using PairCorrelTuple = std::tuple< Card17, Card18, optional< Card19 > >;
 using TempLoopIter = std::tuple< Card10, Card11, Card12, Card13, Card14, 
 				 optional<OscillatorTuple>, optional<PairCorrelTuple> >;
-					 //    Card15, Card16, Card17, Card18 >;
 using TempLoop = std::vector<TempLoopIter>;
 using Card20List = std::vector<Card20>;
 
@@ -40,6 +39,18 @@ Card9 card9;
 TempLoop tempLoop;
 Card20List card20List;
 
+static optional<OscillatorTuple> buildOscillatorTuple( iRecordStream<char>& is, Card13& card13, Card14& card14 ){
+  auto card15 = Card15( is, card14.nd );
+  auto card16 = Card16( is, card14.nd, card13.twt, card13.tbeta );
+  return OscillatorTuple( card15, card16 );
+}
+
+static optional<PairCorrelTuple> buildPairCorrelTuple( iRecordStream<char>& is, Card5& card5 ){
+  auto card17 = Card17( is );
+  auto card18 = Card18( is, card17.nka );
+  auto card19 = ( card5.nsk.value == 2 ) ? optional<Card19>( Card19( is ) ) : std::nullopt;
+  return PairCorrelTuple( card17, card18, card19 );
+}
 
 static TempLoopIter buildTempLoopIter( iRecordStream<char>& is, Card5& card5 ){
   auto card10 = Card10( is );
@@ -49,23 +60,10 @@ static TempLoopIter buildTempLoopIter( iRecordStream<char>& is, Card5& card5 ){
   auto card14 = Card14( is );
 
   // Cards 15 and 16
-  auto card15 = ( card14.nd.value != 0 ) ? 
-    optional<Card15>(Card15( is, card14.nd )) : std::nullopt;
-  auto card16 = ( card14.nd.value != 0 ) ? 
-    optional<Card16>(Card16( is, card14.nd, card13.twt, card13.tbeta )) : std::nullopt;
-  auto oscillatorTuple = (card14.nd.value != 0 ) ?
-    optional<OscillatorTuple>(OscillatorTuple( card15, card16 )) : std::nullopt;
+  auto oscillatorTuple = (card14.nd.value != 0 ) ? buildOscillatorTuple( is, card13, card14 ) : std::nullopt;
 
   // Cards 17, 18, and 19
-  auto card17 = ( card5.nsk.value != 0 ) ?
-    optional<Card17>(Card17( is ) ) : std::nullopt;
-  auto card18 = ( card5.nsk.value != 0 ) ?
-    optional<Card18>(Card18( is, card17->nka ) ) : std::nullopt;
-  auto card19 = ( card5.nsk.value == 2 ) ?
-    optional<Card19>(Card19( is ) ) : std::nullopt;
-  auto pairCorrelTuple = (card5.nsk.value != 0 ) ?
-    optional<PairCorrelTuple>(PairCorrelTuple( card17, card18, card19 ) ) : std::nullopt;
-
+  auto pairCorrelTuple = (card5.nsk.value != 0 ) ? buildPairCorrelTuple( is, card5 ) : std::nullopt;
   
   return TempLoopIter( card10, card11, card12, card13, card14, oscillatorTuple, pairCorrelTuple );
 }

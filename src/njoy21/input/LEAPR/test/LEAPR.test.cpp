@@ -106,15 +106,15 @@ SCENARIO( "LEAPR input",
 	  REQUIRE( card14.nd.value    == 2 	);
 	  std::vector< dimwits::Quantity< dimwits::ElectronVolts > > refOes = {
             0.205 * dimwits::electronVolts, 0.436 * dimwits::electronVolts };
-	  REQUIRE( card15->oe.value    == refOes	);
+	  REQUIRE( card15.oe.value    == refOes	);
 	  std::vector< double > refOws = { 0.163467, 0.326933 };
-	  REQUIRE( card16->ow.value    == refOws );
-	  REQUIRE( card17->nka.value   == 2      );
- 	  REQUIRE( card17->dka.value   == 0.001 * InverseAngstrom );
+	  REQUIRE( card16.ow.value    == refOws );
+	  REQUIRE( card17.nka.value   == 2      );
+ 	  REQUIRE( card17.dka.value   == 0.001 * InverseAngstrom );
 	  std::vector< decltype( InverseAngstrom ) > refSkappas{ 
 	    1.5 * InverseAngstrom, 
 	    2.0 * InverseAngstrom };
-	  REQUIRE( card18->skappa.value == refSkappas );
+	  REQUIRE( card18.skappa.value == refSkappas );
 	  REQUIRE( not card19 );
 	 
         }
@@ -141,13 +141,13 @@ SCENARIO( "LEAPR input",
 	  REQUIRE( card13.tbeta.value == 0.5 	);
 	  REQUIRE( card14.nd.value    == 0 	);
 	  REQUIRE( not oscillatorTuple );
-	  REQUIRE( card17->nka.value  == 3      );
-	  REQUIRE( card17->dka.value  == 0.002 * InverseAngstrom );
+	  REQUIRE( card17.nka.value  == 3      );
+	  REQUIRE( card17.dka.value  == 0.002 * InverseAngstrom );
 	  std::vector< decltype( InverseAngstrom ) > refSkappas{ 
 	    2.0 * InverseAngstrom, 
 	    2.5 * InverseAngstrom, 
 	    3.0 * InverseAngstrom };
-	  REQUIRE( card18->skappa.value == refSkappas );
+	  REQUIRE( card18.skappa.value == refSkappas );
 	  REQUIRE( not card19 );
         }
 
