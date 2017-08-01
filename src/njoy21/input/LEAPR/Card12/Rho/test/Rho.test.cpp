@@ -57,7 +57,7 @@ SCENARIO( "LEAPR Card12 rho input values",
         auto rhos = argument::extract< 
           LEAPR::Card12::Rho >(iss, ni);
         std::vector< double > refRhos{ 
-          .01, .015, .025, .035, .250, .330, .504}
+          .01, .015, .025, .035, .250, .330, .504};
         REQUIRE( refRhos == rhos.value );
       } // THEN
     } // WHEN

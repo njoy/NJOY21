@@ -21,11 +21,12 @@ public:
 #include "njoy21/input/LEAPR/Card19.hpp"
 #include "njoy21/input/LEAPR/Card20.hpp"
 using OscillatorTuple = std::tuple< optional< Card15 >, optional< Card16 > >;
-using PairCorrelTuple = std::tuple< optional< Card17 >, optional< Card18 > >;
+using PairCorrelTuple = std::tuple< optional< Card17 >, optional< Card18 >, optional< Card19 > >;
 using TempLoopIter = std::tuple< Card10, Card11, Card12, Card13, Card14, 
 				 optional<OscillatorTuple>, optional<PairCorrelTuple> >;
 					 //    Card15, Card16, Card17, Card18 >;
 using TempLoop = std::vector<TempLoopIter>;
+using Card20List = std::vector<Card20>;
 
 Card1 card1;
 Card2 card2;
@@ -37,6 +38,7 @@ Card7 card7;
 Card8 card8;
 Card9 card9;
 TempLoop tempLoop;
+Card20List card20List;
 
 
 static TempLoopIter buildTempLoopIter( iRecordStream<char>& is, Card5& card5 ){
@@ -45,6 +47,8 @@ static TempLoopIter buildTempLoopIter( iRecordStream<char>& is, Card5& card5 ){
   auto card12 = Card12( is, card11.ni );
   auto card13 = Card13( is );
   auto card14 = Card14( is );
+
+  // Cards 15 and 16
   auto card15 = ( card14.nd.value != 0 ) ? 
     optional<Card15>(Card15( is, card14.nd )) : std::nullopt;
   auto card16 = ( card14.nd.value != 0 ) ? 
@@ -52,12 +56,17 @@ static TempLoopIter buildTempLoopIter( iRecordStream<char>& is, Card5& card5 ){
   auto oscillatorTuple = (card14.nd.value != 0 ) ?
     optional<OscillatorTuple>(OscillatorTuple( card15, card16 )) : std::nullopt;
 
+  // Cards 17, 18, and 19
   auto card17 = ( card5.nsk.value != 0 ) ?
     optional<Card17>(Card17( is ) ) : std::nullopt;
   auto card18 = ( card5.nsk.value != 0 ) ?
     optional<Card18>(Card18( is, card17->nka ) ) : std::nullopt;
+  auto card19 = ( card5.nsk.value == 2 ) ?
+    optional<Card19>(Card19( is ) ) : std::nullopt;
   auto pairCorrelTuple = (card5.nsk.value != 0 ) ?
-    optional<PairCorrelTuple>(PairCorrelTuple( card17, card18 ) ) : std::nullopt;
+    optional<PairCorrelTuple>(PairCorrelTuple( card17, card18, card19 ) ) : std::nullopt;
+
+  
   return TempLoopIter( card10, card11, card12, card13, card14, oscillatorTuple, pairCorrelTuple );
 }
 
@@ -72,6 +81,8 @@ static TempLoop buildTempLoop( iRecordStream<char>& is, Card3& card3, Card5& car
 } 
 
 
+  
+
 template <typename Char> 
   LEAPR( iRecordStream<Char>& iss )
   try:
@@ -85,7 +96,19 @@ template <typename Char>
     card8( iss, this->card7.nalpha ),
     card9( iss, this->card7.nbeta  ),
     tempLoop( buildTempLoop( iss, this->card3, this->card5 ) )
-    {}
+    {
+      do {
+        card20List.emplace_back( iss );
+      }
+      while( card20List.back().comment.value );
+      card20List.pop_back();
+      if( card20List.size() == 0 ){
+	Log::info( "Failed reading card20" );
+	throw( "invalid card20 input" );
+      }
+
+    }
+
   catch( std::exception &e ){
     Log::info( "Trouble with validating LEAPR input" );
     throw e;

@@ -6,10 +6,9 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "LEAPR input",
   "[LEAPR]" ){
-
-  auto InvAng =  dimwits::pow( 1.0 * dimwits::angstrom, dimwits::Ratio<-1> );
-  GIVEN( "valid LEAPR input" ){
-    WHEN( "no secondary scatterer (card6 nss = 0)" ){
+  auto InverseAngstrom =  dimwits::pow( 1.0 * dimwits::angstrom, dimwits::Ratio<-1> );
+  GIVEN( "valid LEAPR input, multiple temperatures loops" ){
+    WHEN( "no sec. scatterer (card6 nss=0), temp specific inputs (Card11-18)" ){
       iRecordStream<char> iss( std::istringstream(
         "20\n" 					// Card1
         "'graphite, endf model (extended)'\n"	// Card2
@@ -20,22 +19,26 @@ SCENARIO( "LEAPR input",
         "3 5 1/\n"				// Card7
         "2.5e-1 7.5e-1 1.0/\n"			// Card8
         "0.0 0.2 0.4 0.6 0.8/\n"		// Card9
-        "293/\n"				// Card10
-	".03 4\n"				// Card11
-	"1.0 2.0 3.0 4.0\n" 			// Card12
-	"0.0192 0.0 0.4904\n" 			// Card13
-	"2\n"		 			// Card14
-	"0.205 0.436\n"	 			// Card15
-	"0.163467 0.326933\n"	 		// Card16
-	"2 0.001\n"		 		// Card17
-	"1.5 2.0\n"		 		// Card18
-        "300/\n"				// Card10
-	".02 3\n"				// Card11
-	"2.0 4.0 6.0\n" 			// Card12
-	"0.2 0.0 0.5\n" 			// Card13
+        "293/\n"				// Card10 --
+	".03 4\n"				// Card11  |
+	"1.0 2.0 3.0 4.0\n" 			// Card12  |
+	"0.0192 0.0 0.4904\n" 			// Card13  |
+	"2\n"		 			// Card14  |- Temp Loop 1
+	"0.205 0.436\n"	 			// Card15  |
+	"0.163467 0.326933\n"	 		// Card16  |
+	"2 0.001\n"		 		// Card17  |
+	"1.5 2.0\n"		 		// Card18 --
+        "300/\n"				// Card10 --
+	".02 3\n"				// Card11  |
+	"2.0 4.0 6.0\n" 			// Card12  |- Temp Loop 2
+	"0.2 0.0 0.5\n" 			// Card13  |
 	"0\n"  					// Card14, no Card15 or Card16
-	"3 0.002\n"		 		// Card17
-	"2.0 2.5 3.0\n"		 		// Card18
+	"3 0.002\n"		 		// Card17  |
+	"2.0 2.5 3.0\n"		 		// Card18 --
+	"'test run for njoy leapr\n"		// Card20
+	" where this fun comment spans\n"	//
+	" multiple lines.'\n"			//
+	"/ "
 
       ) );
       THEN( "all cards have the correct values" ){
@@ -90,6 +93,7 @@ SCENARIO( "LEAPR input",
 	  const auto& pairCorrelTuple = std::get<6>( loop1 );
 	  const auto& card17 = std::get<0>( *pairCorrelTuple );
 	  const auto& card18 = std::get<1>( *pairCorrelTuple );
+	  const auto& card19 = std::get<2>( *pairCorrelTuple );
 
 	  REQUIRE( card10.temp.value  == 293.0 * dimwits::kelvin );
 	  REQUIRE( card11.delta.value == 0.03 * dimwits::electronVolts );
@@ -105,8 +109,13 @@ SCENARIO( "LEAPR input",
 	  REQUIRE( card15->oe.value    == refOes	);
 	  std::vector< double > refOws = { 0.163467, 0.326933 };
 	  REQUIRE( card16->ow.value    == refOws );
-//	  REQUIRE( card17->nka.value   == 2      );
-//	  REQUIRE( card17->dka.value   == 0.001 * InvAng );
+	  REQUIRE( card17->nka.value   == 2      );
+ 	  REQUIRE( card17->dka.value   == 0.001 * InverseAngstrom );
+	  std::vector< decltype( InverseAngstrom ) > refSkappas{ 
+	    1.5 * InverseAngstrom, 
+	    2.0 * InverseAngstrom };
+	  REQUIRE( card18->skappa.value == refSkappas );
+	  REQUIRE( not card19 );
 	 
         }
 	const auto& loop2 = leapr.tempLoop[1];
@@ -117,9 +126,10 @@ SCENARIO( "LEAPR input",
 	  const auto& card13 = std::get<3>( loop2 );
 	  const auto& card14 = std::get<4>( loop2 );
 	  const auto& oscillatorTuple = std::get<5>( loop2 );
-	  const auto& pairCorrelTuple = std::get<6>( loop1 );
+	  const auto& pairCorrelTuple = std::get<6>( loop2 );
 	  const auto& card17 = std::get<0>( *pairCorrelTuple );
 	  const auto& card18 = std::get<1>( *pairCorrelTuple );
+	  const auto& card19 = std::get<2>( *pairCorrelTuple );
 
 	  REQUIRE( card10.temp.value  == 300.0 * dimwits::kelvin );
 	  REQUIRE( card11.delta.value == 0.02 * dimwits::electronVolts );
@@ -131,9 +141,20 @@ SCENARIO( "LEAPR input",
 	  REQUIRE( card13.tbeta.value == 0.5 	);
 	  REQUIRE( card14.nd.value    == 0 	);
 	  REQUIRE( not oscillatorTuple );
-//	  REQUIRE( card17->nka.value  == 3      );
-//	  REQUIRE( card17->dka.value  == 0.002 * InvAng );
+	  REQUIRE( card17->nka.value  == 3      );
+	  REQUIRE( card17->dka.value  == 0.002 * InverseAngstrom );
+	  std::vector< decltype( InverseAngstrom ) > refSkappas{ 
+	    2.0 * InverseAngstrom, 
+	    2.5 * InverseAngstrom, 
+	    3.0 * InverseAngstrom };
+	  REQUIRE( card18->skappa.value == refSkappas );
+	  REQUIRE( not card19 );
         }
+
+        std::string refCard20_0 = "test run for njoy leapr where this "
+		                  "fun comment spans multiple lines.";
+	const auto& card20_0 = leapr.card20List[0];
+	REQUIRE( *(card20_0.comment.value) == refCard20_0 );
 
       } // THEN
     } // WHEN
