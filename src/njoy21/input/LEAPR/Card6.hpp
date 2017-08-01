@@ -20,6 +20,10 @@ class Card6 {
       auto aws = argument::extract< Aws >( is );
       auto sps = argument::extract< Sps >( is );
       auto mss = argument::extract< Mss >( is );
+      Log::info( "b7  {}",b7.value );
+      Log::info( "aws {}",aws.value );
+      Log::info( "sps {}",sps.value );
+      Log::info( "mss {}",mss.value );
       return ControlTuple( b7, aws, sps, mss );
     }   
     return std::nullopt;
@@ -31,7 +35,7 @@ class Card6 {
     nss( argument::extract< Nss >( is ) ),
     controlTuple( buildControlTuple( is, this->nss ) )
   {
-    if( nss.value == 0 ){
+/*    if( nss.value == 0 ){
       try{ Card::clear( is ); }
       catch( std::exception& e ){
         Log::info( "If no secondary scatterer is indicated (nss = 0), then\n"
@@ -39,6 +43,14 @@ class Card6 {
         throw e;
       }
     }
+    else{
+      try{ Card::clear( is ); }
+      catch( std::exception& e ){
+        Log::info( "not quite clear yet" );
+        throw e;
+      }
+    }*/
+	Card::clear(is);
   }
   catch( std::exception& e ){
     Log::info( "Trouble while validating LEAPR Card6" );
