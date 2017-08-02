@@ -5,7 +5,10 @@ struct Comment {
 
   static std::string description(){
     return
-      "Comment is a comment";
+      "The comment input gives the new comment cards that are to be added\n"
+      "to the section MF=1/MT=451 on the output ENDF file.\n"
+      "\n"
+      "The comment cards are terminated by an empty card.";
   }
   
   static Value_t defaultValue() { return nullopt; }

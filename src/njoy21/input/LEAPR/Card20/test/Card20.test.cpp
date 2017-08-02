@@ -7,7 +7,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "LEAPR Card20 input",
   "[LEAPR], [Card20]"){
 
-  GIVEN( "valid (short) comment entry" ){
+  GIVEN( "valid (short) card20 entry" ){
     THEN( "the returned class has the correct value" ){
       iRecordStream<char> iss( std::istringstream( "'h'" ) );
       LEAPR::Card20 card20( iss );
@@ -15,7 +15,7 @@ SCENARIO( "LEAPR Card20 input",
     } // THEN
   } // GIVEN
 
-  GIVEN( "valid (medium) comment entry" ){
+  GIVEN( "valid (medium) card20 entry" ){
     THEN( "the returned class has the correct value" ){
       iRecordStream<char> iss( std::istringstream( 
         "'123456789 123456789 123456789 123456789 123456789"
@@ -26,7 +26,7 @@ SCENARIO( "LEAPR Card20 input",
     } // THEN
   } // GIVEN
 
-  GIVEN( "invalid (long) comment values" ){
+  GIVEN( "invalid (long) card20 entry" ){
     THEN( "an exception is thrown" ){
       iRecordStream<char> iss( std::istringstream( 
         "'123456789 123456789 123456789 123456789 123456789"
@@ -36,7 +36,7 @@ SCENARIO( "LEAPR Card20 input",
     } // THEN
   } // GIVEN
   
-  GIVEN( "no comment value provided" ){
+  GIVEN( "no card20 value provided" ){
     THEN( "nullopt value used" ){
       iRecordStream<char> iss( std::istringstream( " /" ) );
       REQUIRE( not argument::extract<

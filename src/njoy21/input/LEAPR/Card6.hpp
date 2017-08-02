@@ -31,7 +31,7 @@ class Card6 {
     nss( argument::extract< Nss >( is ) ),
     controlTuple( buildControlTuple( is, this->nss ) )
   {
-/*    if( nss.value == 0 ){
+    if( nss.value == 0 ){
       try{ Card::clear( is ); }
       catch( std::exception& e ){
         Log::info( "If no secondary scatterer is indicated (nss = 0), then\n"
@@ -45,8 +45,7 @@ class Card6 {
         Log::info( "not quite clear yet" );
         throw e;
       }
-    }*/
-	Card::clear(is);
+    }
   }
   catch( std::exception& e ){
     Log::info( "Trouble while validating LEAPR Card6" );

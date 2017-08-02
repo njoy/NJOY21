@@ -15,7 +15,7 @@ struct Skappa {
                       const Argument< LEAPR::Card17::Nka > & ){
     // Make sure all skappas are positive
     auto found = std::find_if( skappas.begin(), skappas.end(),
-                               [](auto& a){ return a <= 0.0 * pow( 1.0 * angstrom, Ratio<-1> ); });
+      [](auto& a){ return a <= 0.0 * pow( 1.0 * angstrom, Ratio<-1> ); });
     if ( found != skappas.end() ){
       Log::info( "Negative skappa ({}) found at index {}",
                     *found, std::distance(skappas.begin(), found));

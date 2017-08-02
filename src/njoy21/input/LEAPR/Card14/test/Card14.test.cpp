@@ -8,7 +8,7 @@ SCENARIO( "LEAPR Card14 input values",
   GIVEN( "valid card14 entry" ){
     std::vector<int> validValues{0, 1, 2, 20};
     THEN( "the returned values are correct" ){
-      for( auto nd : validValues ){
+      for( auto& nd : validValues ){
         iRecordStream<char> iss(
           std::istringstream( std::to_string( nd ) ) );
         LEAPR::Card14 card14( iss );
@@ -20,9 +20,9 @@ SCENARIO( "LEAPR Card14 input values",
   GIVEN( "invalid card14 values" ){
     std::vector<int> invalidValues{-1, -100};
     THEN( "an exception is thrown" ){
-      for( auto nd : invalidValues ){
+      for( auto& nd : invalidValues ){
         iRecordStream<char> iss(
-          std::istringstream( std::to_string(nd) ) );
+          std::istringstream( std::to_string( nd ) ) );
         REQUIRE_THROWS( LEAPR::Card14( iss ) );
       }
     } // THEN

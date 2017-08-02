@@ -8,7 +8,7 @@ SCENARIO( "LEAPR Card10 input values",
   GIVEN( "valid card10 entry" ){
     std::vector<double> validValues{0, -293.5, 293.5};
     THEN( "the returned values are correct" ){
-      for( auto temp : validValues ){
+      for( auto& temp : validValues ){
         iRecordStream<char> iss(
           std::istringstream( std::to_string( temp ) ) );
         LEAPR::Card10 card10( iss );

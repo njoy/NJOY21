@@ -3,7 +3,7 @@ struct C {
   static std::string name(){ return "c"; }
   static std::string description(){
     return
-      "The c argument is the diffusion constant for the desired\n"
+      "The c argument is the diffusion constant for the desired rho(E) freq.\n"
       "distribution. Note that the twt input immediate preceding c on Card13\n"
       "indicates whether a translational term is desired. c decides whether\n"
       "this translational term is a free-gas law (c = 0.0) or a diffusive\n"

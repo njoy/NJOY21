@@ -4,9 +4,9 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "LEAPR Card19 cfrac input values", 
-  "[LEAPR], [Card19], [Cfrac]"){
-  GIVEN( "valid cfrac input values" ){
+SCENARIO( "LEAPR Card19 input values", 
+  "[LEAPR], [Card19]"){
+  GIVEN( "valid card19 input values" ){
     iRecordStream<char> is0( std::istringstream( "0.0" ) );
     iRecordStream<char> is1( std::istringstream( "0.1" ) );
     iRecordStream<char> is2( std::istringstream( "0.9" ) );
@@ -26,7 +26,7 @@ SCENARIO( "LEAPR Card19 cfrac input values",
       }
     } // THEN
   } // GIVEN
-  GIVEN( "invalid cfrac values" ){
+  GIVEN( "invalid card19 input values" ){
     iRecordStream<char> is1( std::istringstream( "-0.1" ) );
     iRecordStream<char> is2( std::istringstream( "1.1" ) );
     

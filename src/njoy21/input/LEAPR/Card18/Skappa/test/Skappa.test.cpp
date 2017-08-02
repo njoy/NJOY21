@@ -15,8 +15,7 @@ SCENARIO( "LEAPR Card18 skappa input values",
       iRecordStream< char> iss( std::istringstream(" 1.0 2.0 3.0") );
 
       THEN( "the skappa values can be extracted correctly" ){
-        auto skappas = argument::extract< 
-          LEAPR::Card18::Skappa >(iss, nka);
+        auto skappas = argument::extract< LEAPR::Card18::Skappa >( iss, nka );
         std::vector< decltype(InvAng) > refSkappas{ 1.0 * InvAng, 
                                                     2.0 * InvAng, 
                                                     3.0 * InvAng };

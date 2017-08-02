@@ -9,7 +9,7 @@ SCENARIO( "LEAPR Card17 nka input values",
   GIVEN( "valid nka values" ){
     std::vector<int> validValues{0, 1, 2, 99};
     THEN( "the returned class has the correct tape value" ){
-      for( auto nka : validValues ){
+      for( auto& nka : validValues ){
         iRecordStream<char> iss(
           std::istringstream( std::to_string( nka ) ) );
         REQUIRE(nka == argument::extract< 
@@ -21,9 +21,9 @@ SCENARIO( "LEAPR Card17 nka input values",
   GIVEN( "invalid nka values" ){
     std::vector<int> invalidValues{-1, -100};
     THEN( "an exception is thrown" ){
-      for( auto nka : invalidValues ){
+      for( auto& nka : invalidValues ){
         iRecordStream<char> iss(
-          std::istringstream( std::to_string(nka) ) );
+          std::istringstream( std::to_string( nka ) ) );
         REQUIRE_THROWS( argument::extract<
           LEAPR::Card17::Nka>( iss ) );
       }

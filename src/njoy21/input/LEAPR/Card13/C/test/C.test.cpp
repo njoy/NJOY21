@@ -4,7 +4,7 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "LEAPR Card13 C input values", 
+SCENARIO( "LEAPR Card13 c input values", 
   "[LEAPR], [Card13], [C]"){
   GIVEN( "valid c input values" ){
     std::vector<double> validValues{0.0, 0.5, 0.1};

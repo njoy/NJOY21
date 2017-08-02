@@ -30,6 +30,13 @@ SCENARIO( "LEAPR Card15 oe input values",
           LEAPR::Card15::Oe >( iss, nd ) );
       } // THEN
     } // WHEN
+    WHEN( "the oe values are not in increasing order" ){
+      iRecordStream< char> iss( std::istringstream("1.0 3.0 2.0") );
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( argument::extract< 
+          LEAPR::Card15::Oe >( iss, nd ) );
+      } // THEN
+    } // WHEN
     WHEN( "too few oe values are provided" ){
       iRecordStream< char> iss( std::istringstream("1.0 2.0") );
       THEN( "an exception is thrown" ){

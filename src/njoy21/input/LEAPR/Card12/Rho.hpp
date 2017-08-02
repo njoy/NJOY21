@@ -11,7 +11,8 @@ struct Rho {
 	"input as well).\n"
 	"\n"
 	"rho values should be given in the order of increasing eV, but\n"
-	"do not have to be in increasing order themselves.";
+	"do not have to be in increasing order themselves. However, all\n"
+	"values must be non-negative.";
   }
 
   static bool verify( const Value_t& rhos,

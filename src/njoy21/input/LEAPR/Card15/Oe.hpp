@@ -7,8 +7,7 @@ struct Oe {
         "The oe argument gives the energies (eV) of the nd discrete\n"
 	"oscillators (where nd is a card14 input).\n"
 	"\n"
-	"oe values should be given in the order of increasing eV, but\n"
-	"do not have to be in increasing order themselves.";
+	"oe values should be given in the order of increasing eV.";
   }
 
   static bool verify( const Value_t& oes,

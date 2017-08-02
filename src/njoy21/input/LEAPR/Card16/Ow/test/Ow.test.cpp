@@ -6,7 +6,7 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "LEAPR Card16 ow input values",
   "[LEAPR], [Card16], [Ow]" ){
-  GIVEN( "a small value for nd" ){
+  GIVEN( "a value for card14's nd, card13 twt, and card13 tbeta" ){
     Argument< LEAPR::Card14::Nd > nd;
     Argument< LEAPR::Card13::Twt > twt;
     Argument< LEAPR::Card13::Tbeta > tbeta;

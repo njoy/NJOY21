@@ -6,15 +6,13 @@ using namespace njoy::njoy21::input;
 SCENARIO( "nout input values",
   "[LEAPR], [Card13]" ){
   GIVEN( "valid card13 inputs" ){
-    WHEN( "all card13 inputs provided" ){
-      iRecordStream<char> is( std::istringstream( "0.0 1.0 1.0" ) );
-      THEN( "the extracted values are correct" ){
-        LEAPR::Card13 card13( is );
-        REQUIRE( card13.twt.value   == 0.0 );
-        REQUIRE( card13.c.value     == 1.0 );
-        REQUIRE( card13.tbeta.value == 1.0 );
-      } // THEN
-    } // WHEN
+    iRecordStream<char> is( std::istringstream( "0.0 1.0 1.0" ) );
+    THEN( "the extracted values are correct" ){
+      LEAPR::Card13 card13( is );
+      REQUIRE( card13.twt.value   == 0.0 );
+      REQUIRE( card13.c.value     == 1.0 );
+      REQUIRE( card13.tbeta.value == 1.0 );
+    } // THEN
   } // GIVEN
   GIVEN( "invalid card13 inputs" ){
     WHEN( "card13 input value is out of range" ){

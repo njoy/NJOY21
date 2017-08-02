@@ -15,7 +15,7 @@ struct Ow {
       "   wt + ws + ( w_1 + w_2 + ... + w_nd ) = 1   \n"
       "where wt is the translational weight (twt from Card13), ws is the\n"
       "weight for solid type law (tbeta from Card13), and each w_i is a \n"
-      "component of the ow input";
+      "value in the ow input";
 
   }
 
@@ -31,6 +31,7 @@ struct Ow {
                     *found, std::distance(ows.begin(), found));
       return false;
     } 
+
     auto sum = std::accumulate( ows.begin(), ows.end(), 0.0 );
     return sum + twt.value + tbeta.value == 1.0;
   }
