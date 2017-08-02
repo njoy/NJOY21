@@ -20,10 +20,6 @@ class Card6 {
       auto aws = argument::extract< Aws >( is );
       auto sps = argument::extract< Sps >( is );
       auto mss = argument::extract< Mss >( is );
-      Log::info( "b7  {}",b7.value );
-      Log::info( "aws {}",aws.value );
-      Log::info( "sps {}",sps.value );
-      Log::info( "mss {}",mss.value );
       return ControlTuple( b7, aws, sps, mss );
     }   
     return std::nullopt;

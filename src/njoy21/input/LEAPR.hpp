@@ -21,11 +21,17 @@ public:
 #include "njoy21/input/LEAPR/Card19.hpp"
 #include "njoy21/input/LEAPR/Card20.hpp"
 using OscillatorTuple = std::tuple< Card15, Card16 >;
+
 using PairCorrelTuple = std::tuple< Card17, Card18, optional< Card19 > >;
-using TempLoopIter = std::tuple< Card10, Card11, Card12, Card13, Card14, 
-                                 optional<OscillatorTuple>, 
+
+using TempSpecificTuple = std::tuple< Card11, Card12, Card13, Card14,
+                                 optional<OscillatorTuple>,
                                  optional<PairCorrelTuple> >;
+
+using TempLoopIter = std::tuple< Card10, optional< TempSpecificTuple > >;
+
 using TempLoop = std::vector<TempLoopIter>;
+
 using Card20List = std::vector<Card20>;
 
 Card1 card1;
@@ -39,6 +45,7 @@ Card8 card8;
 Card9 card9;
 TempLoop tempLoop;
 Card20List card20List;
+
 
 static optional<OscillatorTuple> 
 buildOscillatorTuple( iRecordStream<char>& is, Card13& card13, Card14& card14 ){
@@ -60,9 +67,8 @@ buildPairCorrelTuple( iRecordStream<char>& is, Card5& card5 ){
 
 }
 
-static TempLoopIter buildTempLoopIter( iRecordStream<char>& is, Card5& card5 ){
-
-  auto card10 = Card10( is );
+static optional<TempSpecificTuple>
+buildTempSpecificTuple( iRecordStream<char>& is, Card5& card5 ){
   auto card11 = Card11( is );
   auto card12 = Card12( is, card11.ni );
   auto card13 = Card13( is );
@@ -76,8 +82,28 @@ static TempLoopIter buildTempLoopIter( iRecordStream<char>& is, Card5& card5 ){
   auto pairCorrelTuple = (card5.nsk.value != 0 ) ? 
     buildPairCorrelTuple( is, card5 ) : std::nullopt;
   
-  return TempLoopIter( card10, card11, card12, card13, 
-		       card14, oscillatorTuple, pairCorrelTuple );
+  return TempSpecificTuple( card11, card12, card13, card14,
+    oscillatorTuple, pairCorrelTuple );
+}  
+
+
+static TempLoopIter buildTempLoopIter( iRecordStream<char>& is, 
+                                       Card5& card5, int& i ){
+
+  auto card10 = Card10( is );
+  if( i == 0 and card10.temp.value < 0.0 * dimwits::kelvin ){
+    Log::info( "A negative card10 temp value indicates that the temperautre\n"
+               "specific parameters (cards 11 - 19) will not be provided,\n"
+	       "and instead parameters from a previous temperature iteration\n"
+	       "will be used.\n"
+	       "\n"
+	       "Thus, the first temperature loop cannot have a negative\n"
+	       "value, since there are no previous loops to reference." );
+    throw( "Invalid Card10 temp input" );
+  }
+  auto tempSpecificTuple = (card10.temp.value > 0.0 * dimwits::kelvin ) ?
+    buildTempSpecificTuple( is, card5 ) : std::nullopt;
+  return TempLoopIter( card10, tempSpecificTuple );
 
 }
 
@@ -87,7 +113,7 @@ buildTempLoop( iRecordStream<char>& is, Card3& card3, Card5& card5 ){
 
   TempLoop myTempLoop;
   for( int i = 0; i < card3.ntempr.value; i++ ){
-    myTempLoop.emplace_back( buildTempLoopIter( is, card5 ) );
+    myTempLoop.emplace_back( buildTempLoopIter( is, card5, i ) );
   }
    
   return myTempLoop;
