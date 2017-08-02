@@ -16,6 +16,7 @@ SCENARIO( "LEAPR Card17 dka input values",
           LEAPR::Card17::Dka >( iss ) ).value );
       }
     } // THEN
+  } // GIVEN
   GIVEN( "invalid dka values" ){
     std::vector<double> invalidDka{ 0.0, -1.0 };
     THEN( "an exception is thrown" ){
