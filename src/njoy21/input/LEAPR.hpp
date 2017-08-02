@@ -22,6 +22,9 @@ public:
 #include "njoy21/input/LEAPR/Card20.hpp"
 using OscillatorTuple = std::tuple< Card15, Card16 >;
 using PairCorrelTuple = std::tuple< Card17, Card18, optional< Card19 > >;
+using TempSpecificTuple = std::tuple< Card11, Card12, Card13, Card14,
+                                 optional<OscillatorTuple>,
+                                 optional<PairCorrelTuple> >;
 using TempLoopIter = std::tuple< Card10, Card11, Card12, Card13, Card14, 
                                  optional<OscillatorTuple>, 
                                  optional<PairCorrelTuple> >;
