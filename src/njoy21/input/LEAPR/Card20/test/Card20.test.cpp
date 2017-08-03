@@ -18,29 +18,21 @@ SCENARIO( "LEAPR Card20 input",
   GIVEN( "valid (medium) card20 entry" ){
     THEN( "the returned class has the correct value" ){
       iRecordStream<char> iss( std::istringstream( 
-        "'123456789 123456789 123456789 123456789 123456789"
-	" 123456789 123456789 123456789'" ) );
-      REQUIRE( "123456789 123456789 123456789 123456789 123456789" 
-	       " 123456789 123456789 123456789" ==
-        *(argument::extract< LEAPR::Card20::Comment >( iss ).value ) );
+        "'123456789 123456789 123456789 123456789 123456789 123456789 123456'" )
+       );
+      LEAPR::Card20 card20( iss );
+      REQUIRE( 
+        "123456789 123456789 123456789 123456789 123456789 123456789 123456" 
+         == *(card20.comment.value) );
     } // THEN
   } // GIVEN
 
   GIVEN( "invalid (long) card20 entry" ){
     THEN( "an exception is thrown" ){
       iRecordStream<char> iss( std::istringstream( 
-        "'123456789 123456789 123456789 123456789 123456789"
-        " 123456789 123456789 123456789 0'" ) );
-      REQUIRE_THROWS( argument::extract< 
-        LEAPR::Card20::Comment >( iss ) );
-    } // THEN
-  } // GIVEN
-  
-  GIVEN( "no card20 value provided" ){
-    THEN( "nullopt value used" ){
-      iRecordStream<char> iss( std::istringstream( " /" ) );
-      REQUIRE( not argument::extract<
-        LEAPR::Card20::Comment >( iss ).value );
+        "'123456789 123456789 123456789 123456789 123456789 123456789 1234567'")
+      );
+      REQUIRE_THROWS( LEAPR::Card20( iss ) ); 
     } // THEN
   } // GIVEN
 } // SCENARIO

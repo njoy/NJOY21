@@ -1,6 +1,6 @@
 class Card1 {
 public:
-  #include "njoy21/input/LEAPR/Card1/Nout.hpp"
+  using Nout = argument::common::Nout;
   Argument < Nout > nout;
 
   template< typename Char> 

@@ -13,6 +13,6 @@ struct Comment {
   
   static Value_t defaultValue() { return nullopt; }
 
-  static bool verify( Value_t str ){ return str->length() <= 80; } 
+  static bool verify( Value_t str ){ return str->length() <= 66; } 
 };
 

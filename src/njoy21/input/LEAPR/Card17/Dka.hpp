@@ -9,7 +9,7 @@ struct Dka {
       "very low neutron energies. dka must only be used when nsk (Card 5\n"
       "input) is nonzero.\n"
       "\n"
-      "The dka input should be in units of inverse angstroms, and must bei\n" 
+      "The dka input should be in units of inverse angstroms, and must be\n" 
       "greater than zero.";
   }
   

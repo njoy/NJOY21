@@ -44,8 +44,8 @@ SCENARIO( "LEAPR input",
         "0.205 0.436\n"                         // Card15  |
         "0.163467 0.326933\n"                   // Card16  |
         "2 0.001\n"                             // Card17  |
-        "1.5 2.0\n"                             // Card18  |
-        "0.1\n" +                               // Card19 --
+        "1.5 2.0\n"                             // Card18 -- 
+        "0.1\n" +                               // Card19 
 	card20 +
         "/ "
       ) );
@@ -105,7 +105,6 @@ SCENARIO( "LEAPR input",
         const auto& pairCorrelTuple = std::get<5>( *tempTuple   );
         const auto& card17 = std::get<0>( *pairCorrelTuple );
         const auto& card18 = std::get<1>( *pairCorrelTuple );
-        const auto& card19 = std::get<2>( *pairCorrelTuple );
 
         REQUIRE( card10.temp.value  == 293.0 * dimwits::kelvin );
         REQUIRE( card11.delta.value == 0.03  * dimwits::electronVolts );
@@ -128,8 +127,8 @@ SCENARIO( "LEAPR input",
           1.5 * InvAngstrom, 
           2.0 * InvAngstrom };
         REQUIRE( card18.skappa.value == refSkappas );
-        REQUIRE( card19 );
-	REQUIRE( card19->cfrac.value == 0.1 );
+        REQUIRE( leapr.card19 );
+	REQUIRE( leapr.card19->cfrac.value == 0.1 );
         // FINISHED TEMP LOOP 1
 
         std::string refCard20_0 = "test run for njoy leapr";
@@ -197,7 +196,6 @@ SCENARIO( "LEAPR input",
           const auto& pairCorrelTuple = std::get<5>( *tempTuple  );
           const auto& card17 = std::get<0>( *pairCorrelTuple );
           const auto& card18 = std::get<1>( *pairCorrelTuple );
-          const auto& card19 = std::get<2>( *pairCorrelTuple );
 
           REQUIRE( card10.temp.value  == 293.0 * dimwits::kelvin );
           REQUIRE( card11.delta.value == 0.03  * dimwits::electronVolts );
@@ -220,7 +218,7 @@ SCENARIO( "LEAPR input",
             1.5 * InvAngstrom, 
             2.0 * InvAngstrom };
           REQUIRE( card18.skappa.value == refSkappas );
-          REQUIRE( not card19 );
+          REQUIRE( not leapr.card19 );
        
         }
     
@@ -236,7 +234,6 @@ SCENARIO( "LEAPR input",
           const auto& pairCorrelTuple = std::get<5>( *tempTuple );
           const auto& card17 = std::get<0>( *pairCorrelTuple );
           const auto& card18 = std::get<1>( *pairCorrelTuple );
-          const auto& card19 = std::get<2>( *pairCorrelTuple );
 
           REQUIRE( card10.temp.value  == 300.0 * dimwits::kelvin );
           REQUIRE( card11.delta.value == 0.02  * dimwits::electronVolts );
@@ -255,7 +252,7 @@ SCENARIO( "LEAPR input",
                         2.5 * InvAngstrom, 
                         3.0 * InvAngstrom };
           REQUIRE( card18.skappa.value == refSkappas );
-          REQUIRE( not card19 );
+          REQUIRE( not leapr.card19 );
         }
       } // THEN
       WHEN( "two temp loops, with secondary scatterer (card6 nss = 1)" ){
@@ -344,7 +341,6 @@ SCENARIO( "LEAPR input",
           const auto& pairCorrelTuple = std::get<5>( *tempTuple  );
           const auto& card17 = std::get<0>( *pairCorrelTuple );
           const auto& card18 = std::get<1>( *pairCorrelTuple );
-          const auto& card19 = std::get<2>( *pairCorrelTuple );
 
           REQUIRE( card10.temp.value  == 293.0 * dimwits::kelvin );
           REQUIRE( card11.delta.value == 0.03  * dimwits::electronVolts );
@@ -367,7 +363,7 @@ SCENARIO( "LEAPR input",
             1.5 * InvAngstrom, 
             2.0 * InvAngstrom };
           REQUIRE( card18.skappa.value == refSkappas );
-          REQUIRE( not card19 );
+          REQUIRE( not leapr.card19 );
         }
 
         {
@@ -464,6 +460,5 @@ SCENARIO( "LEAPR input",
         REQUIRE_THROWS( LEAPR( iss ) );
       } // THEN
     } // WHEN
-
   } // GIVEN
 } // SCENARIO

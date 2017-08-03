@@ -685,7 +685,12 @@
     "src/njoy21/input/LEAPR/Card2.hpp",
     "src/njoy21/input/LEAPR/Card13.hpp",
     "src/njoy21/input/LEAPR/Card14.hpp",
-    "src/njoy21/input/LEAPR/Card1/Nout.hpp",
+    "src/njoy21/input/LEAPR/src/tempLoopIter.hpp",
+    "src/njoy21/input/LEAPR/src/tempLoop.hpp",
+    "src/njoy21/input/LEAPR/src/buildTempSpecificTuple.hpp",
+    "src/njoy21/input/LEAPR/src/buildCard20List.hpp",
+    "src/njoy21/input/LEAPR/src/buildOscillatorTuple.hpp",
+    "src/njoy21/input/LEAPR/src/buildPairCorrelTuple.hpp",
     "src/njoy21/input/LEAPR/Card14/Nd.hpp",
     "src/njoy21/input/LEAPR/Card19/Cfrac.hpp",
     "src/njoy21/input/LEAPR/Card13/Twt.hpp",
@@ -1303,9 +1308,6 @@
     ],
     "njoy21.input.LEAPR.Card1": [
       "src/njoy21/input/LEAPR/Card1/test/Card1.test.cpp"
-    ],
-    "njoy21.input.LEAPR.Card1.Nout": [
-      "src/njoy21/input/LEAPR/Card1/Nout/test/Nout.test.cpp"
     ],
     "njoy21.input.LEAPR.Card10": [
       "src/njoy21/input/LEAPR/Card10/test/Card10.test.cpp"
