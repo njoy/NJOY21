@@ -7,13 +7,11 @@ using namespace njoy::njoy21::input;
 SCENARIO( "nout output values",
   "[COVR], [Card1], [Nout]"){
   GIVEN( "a nin tape value" ){
-    Argument< COVR::Card1::Nin > nin; 
-    
+    Argument< COVR::Card1::Nin > nin; nin.value = 22;
     WHEN( "nout input is within range and not equal to nin" ){
       std::vector<int> validValues{-20, 20, 0, 42, 99, -99};
       THEN( "the returned class has the correct tape value" ){
         for( auto& nout : validValues ){
-          nin.value = 22;
           iRecordStream<char> iss(
             std::istringstream( std::to_string( nout ) ) );
           REQUIRE(nout == argument::extract< 

@@ -545,7 +545,11 @@
     "src/njoy21/input/THERMR/Card2/Iprint.hpp",
     "src/njoy21/input/THERMR/Card2/Icoh.hpp",
     "src/njoy21/input/THERMR/Card2/Nbin.hpp",
+    "src/njoy21/input/COVR/Card2z.hpp",
     "src/njoy21/input/COVR/Card1.hpp",
+    "src/njoy21/input/COVR/Card2.hpp",
+    "src/njoy21/input/COVR/Card2z/Nlev.hpp",
+    "src/njoy21/input/COVR/Card2/Icolor.hpp",
     "src/njoy21/input/COVR/Card1/Nplot.hpp",
     "src/njoy21/input/COVR/Card1/Nout.hpp",
     "src/njoy21/input/ACER/Card10.hpp",
@@ -889,6 +893,15 @@
     ],
     "njoy21.input.COVR.Card1.Nplot": [
       "src/njoy21/input/COVR/Card1/Nplot/test/Nplot.test.cpp"
+    ],
+    "njoy21.input.COVR.Card2": [
+      "src/njoy21/input/COVR/Card2/test/Card2.test.cpp"
+    ],
+    "njoy21.input.COVR.Card2.Icolor": [
+      "src/njoy21/input/COVR/Card2/Icolor/test/Icolor.test.cpp"
+    ],
+    "njoy21.input.COVR.Card2z.Nlev": [
+      "src/njoy21/input/COVR/Card2z/Nlev/test/Nlev.test.cpp"
     ],
     "njoy21.input.Card": [
       "src/njoy21/input/Card/test/Card.test.cpp"

@@ -23,7 +23,7 @@ class Card1 {
         Card::clear( is );
       }
     catch( std::exception& e ){
-      Log::info( "Trouble while validating HEATR Card2" );
+      Log::info( "Trouble while validating COVR Card1" );
       throw e;
     }
 };
