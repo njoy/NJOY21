@@ -8,22 +8,11 @@ class Card6 {
   
   using ControlTuple = std::tuple< Argument< B7  >, Argument< Aws >, 
                                    Argument< Sps >, Argument< Mss > >;
+  
+  #include "njoy21/input/LEAPR/Card6/src/buildControlTuple.hpp"
 
   Argument< Nss > nss;
   optional<ControlTuple> controlTuple; 
-
-  static optional<ControlTuple> buildControlTuple( 
-    iRecordStream<char>& is, const Argument< Nss >& nss ){
-          
-    if( nss.value == 1 ){
-      auto b7  = argument::extract< B7  >( is );
-      auto aws = argument::extract< Aws >( is );
-      auto sps = argument::extract< Sps >( is );
-      auto mss = argument::extract< Mss >( is );
-      return ControlTuple( b7, aws, sps, mss );
-    }   
-    return std::nullopt;
-  }
 
   template< typename Char >
   Card6( iRecordStream<Char>& is )
@@ -42,7 +31,6 @@ class Card6 {
     else{
       try{ Card::clear( is ); }
       catch( std::exception& e ){
-        Log::info( "not quite clear yet" );
         throw e;
       }
     }

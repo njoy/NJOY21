@@ -701,6 +701,7 @@
     "src/njoy21/input/LEAPR/Card6/Nss.hpp",
     "src/njoy21/input/LEAPR/Card6/Sps.hpp",
     "src/njoy21/input/LEAPR/Card6/B7.hpp",
+    "src/njoy21/input/LEAPR/Card6/src/buildControlTuple.hpp",
     "src/njoy21/input/LEAPR/Card2/Title.hpp",
     "src/njoy21/input/LEAPR/Card8/Alpha.hpp",
     "src/njoy21/input/LEAPR/Card17/Nka.hpp",

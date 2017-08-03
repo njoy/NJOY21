@@ -8,7 +8,7 @@ SCENARIO( "LEAPR Card5 ncold input values",
   "[LEAPR], [Card5], [Ncold]"){
   GIVEN( "valid ncold input values" ){
     WHEN( "ncold input provided" ){
-      std::vector<int> validValues{0, 1, 3, 4};
+      std::vector<int> validValues{0, 1, 2, 3, 4};
       THEN( "the returned class has the correct value" ){
         for( auto& ncold : validValues ){
           iRecordStream<char> iss(

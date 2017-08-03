@@ -8,7 +8,7 @@ SCENARIO( "LEAPR Card5 iel input values",
   "[LEAPR], [Card5], [Iel]"){
   GIVEN( "valid iel input values" ){
     WHEN( "iel input provided" ){
-      std::vector<int> validValues{0, 1, 5, 6};
+      std::vector<int> validValues{0, 1, 2, 3, 4, 5, 6};
       THEN( "the returned class has the correct value" ){
         for( auto& iel : validValues ){
           iRecordStream<char> iss(
@@ -17,7 +17,7 @@ SCENARIO( "LEAPR Card5 iel input values",
         }
       } // THEN
     } // WHEN
-    WHEN( "no ield input provided" ){
+    WHEN( "no iel input provided" ){
       iRecordStream<char> iss( std::istringstream( " /" ) );
       THEN( "default value is used" ){
         REQUIRE( 0 == argument::extract< LEAPR::Card5::Iel >( iss ).value );

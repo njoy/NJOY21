@@ -8,11 +8,12 @@ SCENARIO( "LEAPR Card4 ilog values",
   "[LEAPR], [Card4], [Ilog]"){
 
   GIVEN( "valid ilog values" ){
-    iRecordStream<char> iss0( std::istringstream( "0" ) );
-    iRecordStream<char> iss1( std::istringstream( "1" ) );
+    std::vector<int> validVal = {0, 1};
     THEN( "the returned calss has the correct value" ){
-      REQUIRE( 0 == argument::extract< LEAPR::Card4::Ilog >( iss0 ).value );
-      REQUIRE( 1 == argument::extract< LEAPR::Card4::Ilog >( iss1 ).value );
+      for( auto& val : validVal ){
+        iRecordStream<char> iss( std::istringstream( std::to_string( val ) ) );
+        REQUIRE( val == argument::extract< LEAPR::Card4::Ilog >( iss ).value );
+      } 
     } // THEN
   } // GIVEN
 
@@ -24,11 +25,12 @@ SCENARIO( "LEAPR Card4 ilog values",
   } // GIVEN
 
   GIVEN( "invalid ilog values" ){
-    iRecordStream<char> iss1( std::istringstream( "-1" ) );
-    iRecordStream<char> iss2( std::istringstream( "2"  ) );
+    std::vector<int> validVal = {-1, 2};
     THEN( "an exception is thrown" ){
-      REQUIRE_THROWS( argument::extract< LEAPR::Card4::Ilog >( iss1 ) );
-      REQUIRE_THROWS( argument::extract< LEAPR::Card4::Ilog >( iss2 ) );
+      for( auto& val : validVal ){
+        iRecordStream<char> iss( std::istringstream( std::to_string( val ) ) );
+        REQUIRE_THROWS( argument::extract< LEAPR::Card4::Ilog >( iss ).value );
+      } 
     } // THEN
   } // GIVEN
 } // SCENARIO
