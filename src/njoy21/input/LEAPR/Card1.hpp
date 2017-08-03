@@ -1,6 +1,11 @@
 class Card1 {
 public:
-  using Nout = argument::common::Nout;
+  struct Nout : public argument::common::Nout {
+    static bool verify( argument::common::Nout::Value_t v ){
+      return argument::common::Nout::verify( v );
+    }
+  };
+  
   Argument < Nout > nout;
 
   template< typename Char> 
