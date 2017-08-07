@@ -20,14 +20,6 @@ SCENARIO( "nlev output values",
       } // THEN
     } // WHEN
 
-    WHEN( "no nlev value given " ){
-      THEN( "default value is substituted in" ){
-        iRecordStream<char> iss( std::istringstream( "  /" ) );
-        REQUIRE( not argument::extract<
-          COVR::Card2z::Nlev > ( iss ).value );
-      } // THEN
-    } // WHEN
-  
     WHEN( "nlev tapes are out of range" ){
       std::vector<int> invalidValues{0, 10};
       THEN( "an exception is thrown" ){
