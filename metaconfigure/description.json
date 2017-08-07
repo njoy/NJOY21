@@ -545,9 +545,18 @@
     "src/njoy21/input/THERMR/Card2/Iprint.hpp",
     "src/njoy21/input/THERMR/Card2/Icoh.hpp",
     "src/njoy21/input/THERMR/Card2/Nbin.hpp",
+    "src/njoy21/input/COVR/Card2a.hpp",
     "src/njoy21/input/COVR/Card2z.hpp",
     "src/njoy21/input/COVR/Card1.hpp",
+    "src/njoy21/input/COVR/Card3a.hpp",
     "src/njoy21/input/COVR/Card2.hpp",
+    "src/njoy21/input/COVR/Card3a/Ncase.hpp",
+    "src/njoy21/input/COVR/Card3a/Irelco.hpp",
+    "src/njoy21/input/COVR/Card3a/Noleg.hpp",
+    "src/njoy21/input/COVR/Card3a/Ndiv.hpp",
+    "src/njoy21/input/COVR/Card3a/Nstart.hpp",
+    "src/njoy21/input/COVR/Card2a/Epmin.hpp",
+    "src/njoy21/input/COVR/Card2z/Tlev.hpp",
     "src/njoy21/input/COVR/Card2z/Nlev.hpp",
     "src/njoy21/input/COVR/Card2/Icolor.hpp",
     "src/njoy21/input/COVR/Card1/Nplot.hpp",
@@ -900,8 +909,35 @@
     "njoy21.input.COVR.Card2.Icolor": [
       "src/njoy21/input/COVR/Card2/Icolor/test/Icolor.test.cpp"
     ],
+    "njoy21.input.COVR.Card2a": [
+      "src/njoy21/input/COVR/Card2a/test/Card2a.test.cpp"
+    ],
+    "njoy21.input.COVR.Card2a.Epmin": [
+      "src/njoy21/input/COVR/Card2a/Epmin/test/Epmin.test.cpp"
+    ],
     "njoy21.input.COVR.Card2z.Nlev": [
       "src/njoy21/input/COVR/Card2z/Nlev/test/Nlev.test.cpp"
+    ],
+    "njoy21.input.COVR.Card2z.Tlev": [
+      "src/njoy21/input/COVR/Card2z/Tlev/test/Tlev.test.cpp"
+    ],
+    "njoy21.input.COVR.Card3a": [
+      "src/njoy21/input/COVR/Card3a/test/Card3a.test.cpp"
+    ],
+    "njoy21.input.COVR.Card3a.Irelco": [
+      "src/njoy21/input/COVR/Card3a/Irelco/test/Irelco.test.cpp"
+    ],
+    "njoy21.input.COVR.Card3a.Ncase": [
+      "src/njoy21/input/COVR/Card3a/Ncase/test/Ncase.test.cpp"
+    ],
+    "njoy21.input.COVR.Card3a.Ndiv": [
+      "src/njoy21/input/COVR/Card3a/Ndiv/test/Ndiv.test.cpp"
+    ],
+    "njoy21.input.COVR.Card3a.Noleg": [
+      "src/njoy21/input/COVR/Card3a/Noleg/test/Noleg.test.cpp"
+    ],
+    "njoy21.input.COVR.Card3a.Nstart": [
+      "src/njoy21/input/COVR/Card3a/Nstart/test/Nstart.test.cpp"
     ],
     "njoy21.input.Card": [
       "src/njoy21/input/Card/test/Card.test.cpp"
