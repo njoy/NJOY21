@@ -6,6 +6,7 @@ public:
 #include "njoy21/input/COVR/Card3a.hpp"
 #include "njoy21/input/COVR/Card2b.hpp"
 #include "njoy21/input/COVR/Card3b.hpp"
+#include "njoy21/input/COVR/Card3c.hpp"
     
 Card1 card1;
 Card2 card2;

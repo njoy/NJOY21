@@ -478,6 +478,7 @@
     "src/njoy21/input/COVR/Card2z.hpp",
     "src/njoy21/input/COVR/Card3a.hpp",
     "src/njoy21/input/COVR/Card3b.hpp",
+    "src/njoy21/input/COVR/Card3c.hpp",
     "src/njoy21/input/COVR/Card1/Nout.hpp",
     "src/njoy21/input/COVR/Card1/Nplot.hpp",
     "src/njoy21/input/COVR/Card2/Icolor.hpp",
@@ -492,6 +493,7 @@
     "src/njoy21/input/COVR/Card3a/Noleg.hpp",
     "src/njoy21/input/COVR/Card3a/Nstart.hpp",
     "src/njoy21/input/COVR/Card3b/Hlibid.hpp",
+    "src/njoy21/input/COVR/Card3c/Hdescr.hpp",
     "src/njoy21/input/DTFR/Card1.hpp",
     "src/njoy21/input/DTFR/Card2.hpp",
     "src/njoy21/input/DTFR/Card3.hpp",
@@ -958,6 +960,12 @@
     ],
     "njoy21.input.COVR.Card3b.Hlibid": [
       "src/njoy21/input/COVR/Card3b/Hlibid/test/Hlibid.test.cpp"
+    ],
+    "njoy21.input.COVR.Card3c": [
+      "src/njoy21/input/COVR/Card3c/test/Card3c.test.cpp"
+    ],
+    "njoy21.input.COVR.Card3c.Hdescr": [
+      "src/njoy21/input/COVR/Card3c/Hdescr/test/Hdescr.test.cpp"
     ],
     "njoy21.input.Card": [
       "src/njoy21/input/Card/test/Card.test.cpp"
