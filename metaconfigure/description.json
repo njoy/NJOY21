@@ -479,6 +479,7 @@
     "src/njoy21/input/COVR/Card3a.hpp",
     "src/njoy21/input/COVR/Card3b.hpp",
     "src/njoy21/input/COVR/Card3c.hpp",
+    "src/njoy21/input/COVR/Card4.hpp",
     "src/njoy21/input/COVR/Card1/Nout.hpp",
     "src/njoy21/input/COVR/Card1/Nplot.hpp",
     "src/njoy21/input/COVR/Card2/Icolor.hpp",
@@ -494,6 +495,10 @@
     "src/njoy21/input/COVR/Card3a/Nstart.hpp",
     "src/njoy21/input/COVR/Card3b/Hlibid.hpp",
     "src/njoy21/input/COVR/Card3c/Hdescr.hpp",
+    "src/njoy21/input/COVR/Card4/Mat.hpp",
+    "src/njoy21/input/COVR/Card4/Mat1.hpp",
+    "src/njoy21/input/COVR/Card4/Mt.hpp",
+    "src/njoy21/input/COVR/Card4/Mt1.hpp",
     "src/njoy21/input/DTFR/Card1.hpp",
     "src/njoy21/input/DTFR/Card2.hpp",
     "src/njoy21/input/DTFR/Card3.hpp",
@@ -966,6 +971,18 @@
     ],
     "njoy21.input.COVR.Card3c.Hdescr": [
       "src/njoy21/input/COVR/Card3c/Hdescr/test/Hdescr.test.cpp"
+    ],
+    "njoy21.input.COVR.Card4.Mat": [
+      "src/njoy21/input/COVR/Card4/Mat/test/Mat.test.cpp"
+    ],
+    "njoy21.input.COVR.Card4.Mat1": [
+      "src/njoy21/input/COVR/Card4/Mat1/test/Mat1.test.cpp"
+    ],
+    "njoy21.input.COVR.Card4.Mt": [
+      "src/njoy21/input/COVR/Card4/Mt/test/Mt.test.cpp"
+    ],
+    "njoy21.input.COVR.Card4.Mt1": [
+      "src/njoy21/input/COVR/Card4/Mt1/test/Mt1.test.cpp"
     ],
     "njoy21.input.Card": [
       "src/njoy21/input/Card/test/Card.test.cpp"
