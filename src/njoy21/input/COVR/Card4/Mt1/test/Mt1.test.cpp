@@ -4,31 +4,38 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "COVR mt values",
-  "[COVR], [Card4], [Mt]"){
+SCENARIO( "COVR mt1 values",
+  "[COVR], [Card4], [Mt1]"){
 
-  GIVEN( "valid mt  values" ){
+  GIVEN( "valid mt1 values" ){
     std::vector<int> validValues{0, 1, 2};
-
-    THEN( "the returned class has the correct value" ){
-      for( int mt : validValues ){
-        iRecordStream<char> iss( 
-          std::istringstream( std::to_string( mt ) ) );
-        REQUIRE( mt == argument::extract< 
-          COVR::Card4::Mt >( iss ).value );
-      }
-    } // THEN
+    WHEN( "mt1 value provided" ){
+      THEN( "the returned class has the correct value" ){
+        for( int mt1 : validValues ){
+          iRecordStream<char> iss( 
+            std::istringstream( std::to_string( mt1 ) ) );
+          REQUIRE( mt1 == argument::extract< 
+            COVR::Card4::Mt1 >( iss ).value );
+        }
+      } // THEN
+    } // WHEN
+    WHEN( "no mt1 value provided" ){
+      iRecordStream<char> iss( std::istringstream( " /" ) );
+      THEN( "default value is used" ){
+        REQUIRE( 0 == argument::extract<
+          COVR::Card4::Mt1 >( iss ).value );
+      } // THEN
+    } // WHEN
   } // GIVEN
 
-  GIVEN( "invalid mt values" ){
+  GIVEN( "invalid mt1 values" ){
     std::vector<int> invalidValues{-1, -2};
-
     THEN( "an exception is thrown" ){
-      for( int mt : invalidValues ){
+      for( int mt1 : invalidValues ){
         iRecordStream<char> iss( 
-          std::istringstream( std::to_string( mt ) ) );
+          std::istringstream( std::to_string( mt1 ) ) );
         REQUIRE_THROWS( argument::extract< 
-          COVR::Card4::Mt >( iss ) );
+          COVR::Card4::Mt1 >( iss ) );
       }
     } // THEN
   } // GIVEN

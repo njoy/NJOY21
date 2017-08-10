@@ -10,7 +10,7 @@ struct Mt1 {
       "steady state and delayed components of the fission neutron spectrum,\n"
       "or the delayed fission neutron yield."; 
   }
-
+  static Value_t defaultValue(){ return 0; }
   static bool verify( Value_t i ){ return 0 <= i; } 
 };
 
