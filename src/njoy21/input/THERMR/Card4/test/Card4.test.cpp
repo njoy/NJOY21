@@ -12,7 +12,7 @@ SCENARIO( "THERMR Card4 inputs",
       THEN( "the extracted values are correct" ){
         THERMR::Card4 card4( is );
         REQUIRE( card4.tol.value == 0.01 );
-        REQUIRE( card4.emax.value == 4.6 );
+        REQUIRE( card4.emax.value == 4.6 * dimwits::electronVolts );
       } // THEN 
     } // WHEN
   } // GIVEN

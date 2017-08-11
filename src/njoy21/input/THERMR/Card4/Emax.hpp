@@ -1,5 +1,5 @@
 struct Emax {
-  using Value_t = double;
+  using Value_t = Quantity< ElectronVolts >;
   static std::string name(){ return "emax"; }
   static std::string description(){
     return
@@ -11,6 +11,6 @@ struct Emax {
   }
   
   static bool verify( const Value_t emax ){
-    return ( 0.0 < emax ); 
+    return ( emax > 0.0 * electronVolts ); 
   }
 };
