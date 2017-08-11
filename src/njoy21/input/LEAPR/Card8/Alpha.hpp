@@ -17,11 +17,8 @@ struct Alpha {
   static bool verify( const Value_t& alphas,
                       const Argument< LEAPR::Card7::Nalpha > & ){
     // Make sure all alphas are positive
-    auto found = std::find_if( alphas.begin(), alphas.end(),
-                               [](auto& a){ return a < 0.0; });
-    if ( found != alphas.end() ){
-      Log::info( "Negative alpha ({}) found at index {}",
-                    *found, std::distance(alphas.begin(), found));
+    if ( alphas[0] < 0.0 ){
+      Log::info( "Negative alpha value found" ); 
       return false;
     } 
 

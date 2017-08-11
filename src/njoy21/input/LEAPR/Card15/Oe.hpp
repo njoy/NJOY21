@@ -13,11 +13,8 @@ struct Oe {
   static bool verify( const Value_t& oes,
                       const Argument< LEAPR::Card14::Nd > & ){
     // Make sure all oes are positive
-    auto found = std::find_if( oes.begin(), oes.end(),
-                               [](auto& a){ return a < 0.0 * electronVolts; });
-    if ( found != oes.end() ){
-      Log::info( "Negative oe ({}) found at index {}",
-                    *found, std::distance(oes.begin(), found));
+    if ( oes[0] < 0.0 * electronVolts ){
+      Log::info( "Negative oe value found" );
       return false;
     } 
 

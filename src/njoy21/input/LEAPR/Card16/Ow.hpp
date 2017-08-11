@@ -24,15 +24,13 @@ struct Ow {
 		      const Argument< LEAPR::Card13::Twt >& twt,
                       const Argument< LEAPR::Card13::Tbeta > & tbeta ){
     // Make sure all ows are positive
-    auto found = std::find_if( ows.begin(), ows.end(),
-                               [](auto& a){ return a < 0.0; });
-    if ( found != ows.end() ){
-      Log::info( "Negative ow ({}) found at index {}",
-                    *found, std::distance(ows.begin(), found));
+    if ( ows[0] < 0.0 ){
+      Log::info( "Negative ow value found" ); 
       return false;
     } 
 
-    auto sum = std::accumulate( ows.begin(), ows.end(), 0.0 );
-    return sum + twt.value + tbeta.value == 1.0;
+    const auto totalWeight = std::accumulate( ows.begin(), ows.end(), 
+		                              twt.value + tbeta.value );
+    return std::abs( totalWeight - 1.0 ) < 1e-7;
   }
 };

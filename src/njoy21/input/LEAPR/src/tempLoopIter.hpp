@@ -4,7 +4,7 @@ static TempLoopIter buildTempLoopIter( iRecordStream<char>& is,
 
   auto card10 = Card10( is );
   if( i == 0 and card10.temp.value < 0.0 * dimwits::kelvin ){
-    Log::info( "A negative card10 temp value indicates that the temperautre\n"
+    Log::info( "A negative card10 temp value indicates that the temperature\n"
                "specific parameters (cards 11 - 19) will not be provided,\n"
 	       "and instead parameters from a previous temperature iteration\n"
 	       "will be used.\n"

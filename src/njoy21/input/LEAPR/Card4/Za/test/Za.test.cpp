@@ -7,7 +7,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "LEAPR Card4 Za input values", 
   "[LEAPR], [Card4], [Za]"){
   GIVEN( "valid za value" ){
-    std::vector<double> validValues{1001.0, 26000.0, 199999.0 };
+    std::vector<long> validValues{1001, 26000, 199999 };
     THEN( "the returned class has the correct value" ){
       for( auto& za : validValues ){
         iRecordStream<char> iss(
@@ -17,7 +17,7 @@ SCENARIO( "LEAPR Card4 Za input values",
     } // THEN
   } // GIVEN
   GIVEN( "invalid za value" ){
-    std::vector<double> invalidValues{-1.0, 1000.0, 200000.0, 200001.0};
+    std::vector<long> invalidValues{-1, 1000, 200000, 200001};
     THEN( "an exception is thrown" ){
       for( auto& za : invalidValues ){
         iRecordStream<char> iss(
