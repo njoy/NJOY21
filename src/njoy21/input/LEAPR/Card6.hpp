@@ -7,7 +7,8 @@ class Card6 {
   #include "njoy21/input/LEAPR/Card6/Mss.hpp"
 
   struct ControlTuple {
-    ControlTuple( Argument< B7 > b7, Argument< Aws > aws, Argument< Sps > sps, Argument< Mss > mss ) :
+    ControlTuple( Argument< B7  > b7,  Argument< Aws > aws, 
+                  Argument< Sps > sps, Argument< Mss > mss ) :
       b7( b7 ), aws( aws ), sps( sps ), mss( mss ) {}
     Argument< B7  > b7;  
     Argument< Aws > aws;  

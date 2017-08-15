@@ -291,10 +291,10 @@ SCENARIO( "LEAPR input",
           REQUIRE( leapr.card6.nss.value == 1 );
           REQUIRE( leapr.card6.controlTuple );
           auto ct = *( leapr.card6.controlTuple );
-          REQUIRE( std::get<0>( ct ).value == 1 );
-          REQUIRE( std::get<1>( ct ).value == 15.87 );
-          REQUIRE( std::get<2>( ct ).value == 3.84 * dimwits::barns );
-          REQUIRE( std::get<3>( ct ).value == 1 );
+          REQUIRE( ct.b7.value == 1 );
+          REQUIRE( ct.aws.value == 15.87 );
+          REQUIRE( ct.sps.value == 3.84 * dimwits::barns );
+          REQUIRE( ct.mss.value == 1 );
         } // THEN
       } // WHEN
     } // WHEN
