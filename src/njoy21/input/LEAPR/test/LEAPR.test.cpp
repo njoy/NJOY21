@@ -12,7 +12,7 @@ SCENARIO( "LEAPR input",
   std::string card2         = "'graphite, endf model'\n";
   std::string card3_1_temp  = "1 0 101\n";
   std::string card3_2_temps = "2 0 101\n";
-  std::string card4         = "31 6012.0 1 1\n";
+  std::string card4         = "31 6012 1 1\n";
   std::string card5_vineyard = "11.898 4.7392 1 1 1 1\n";
   std::string card5_skold    = "11.898 4.7392 1 1 1 2\n";
   std::string card6_no_secondary_scatter = "0/\n";

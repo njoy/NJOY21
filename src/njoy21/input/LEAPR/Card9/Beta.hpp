@@ -17,11 +17,8 @@ struct Beta {
   static bool verify( const Value_t& betas,
                       const Argument< LEAPR::Card7::Nbeta > & ){
     // Make sure all betas are positive
-    auto found = std::find_if( betas.begin(), betas.end(),
-                               [](auto& a){ return a < 0.0; });
-    if ( found != betas.end() ){
-      Log::info( "Negative beta ({}) found at index {}",
-                    *found, std::distance(betas.begin(), found));
+    if ( betas[0] < 0.0 ){
+      Log::info( "Negative beta found" );
       return false;
     } 
 
