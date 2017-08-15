@@ -13,10 +13,10 @@ SCENARIO( "LEAPR Card6 input values",
         LEAPR::Card6 card6( is );
         REQUIRE( card6.nss.value   == 1    );
         auto ct = *( card6.controlTuple );
-        REQUIRE( std::get<0>( ct ).value == 1 );
-        REQUIRE( std::get<1>( ct ).value == 15.87 );
-        REQUIRE( std::get<2>( ct ).value == 3.84*dimwits::barns  );
-        REQUIRE( std::get<3>( ct ).value == 1 );
+	REQUIRE( ct.b7.value == 1 );
+        REQUIRE( ct.aws.value == 15.87 );
+        REQUIRE( ct.sps.value == 3.84*dimwits::barns  );
+        REQUIRE( ct.mss.value == 1 );
       } // THEN
     } // WHEN
     WHEN( "secondary scatterer not available (nss = 0)" ){

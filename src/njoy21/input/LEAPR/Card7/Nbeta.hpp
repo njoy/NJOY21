@@ -5,7 +5,7 @@ struct Nbeta {
     return
       "The nbeta argument is the number of beta values provided for S(a,b).\n"
       "\n"
-      "nbeta must be a positive interger.";
+      "nbeta must be a positive integer.";
   }
   static bool verify( const Value_t& nbeta ){ return nbeta > 0; }
 };
