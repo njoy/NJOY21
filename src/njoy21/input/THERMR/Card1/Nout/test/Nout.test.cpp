@@ -6,7 +6,7 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "nout output values",
   "[THERMR],[Card1], [Nout]"){
-  GIVEN( "a valid nendf tape value" ){
+  GIVEN( "valid nendf and nin tape values" ){
     Argument< THERMR::Card1::Nendf > nendf; nendf.value = 21;
     Argument< THERMR::Card1::Nin   > nin;   nin.value = 22;
     
