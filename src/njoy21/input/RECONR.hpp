@@ -68,7 +68,14 @@ public:
                                    std::move(card6) );
 
         try{
+          int previousMat = card3.mat.value;
           card3 = Card3( is );
+          if( card3.mat.value != 0 and previousMat > card3.mat.value ){
+            Log::info( "mat value {} followed by mat value {}", 
+              previousMat, card3.mat.value );
+            Log::info( "mat values should be provided in increasing order" );
+            throw( "invalid mat ordering" );
+          }
         } catch( std::exception& e ){
           Log::info( "Expected to read a terminating card 3 (mat=0).");
           Log::info( "Read {} card 5 entries, expected {}", 
