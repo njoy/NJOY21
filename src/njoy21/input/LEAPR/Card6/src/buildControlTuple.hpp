@@ -7,7 +7,7 @@ static optional<ControlTuple> buildControlTuple(
     auto aws = argument::extract< Aws >( is );
     auto sps = argument::extract< Sps >( is );
     auto mss = argument::extract< Mss >( is );
-    return ControlTuple( b7, aws, sps, mss );
+    return ControlTuple{ b7, aws, sps, mss };
   }   
   return std::nullopt;
 }
