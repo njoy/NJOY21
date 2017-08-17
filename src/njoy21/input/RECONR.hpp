@@ -68,14 +68,7 @@ public:
                                    std::move(card6) );
 
         try{
-          int previousMat = card3.mat.value;
           card3 = Card3( is );
-          if( card3.mat.value != 0 and previousMat > card3.mat.value ){
-            Log::info( "mat value {} followed by mat value {}", 
-              previousMat, card3.mat.value );
-            Log::info( "mat values should be provided in increasing order" );
-            throw( "invalid mat ordering" );
-          }
         } catch( std::exception& e ){
           Log::info( "Expected to read a terminating card 3 (mat=0).");
           Log::info( "Read {} card 5 entries, expected {}", 
@@ -85,7 +78,16 @@ public:
                      card3.ngrid.value );
           throw e;
         }
-      } while( card3.mat.value );
+        if( card3.mat.value == 0 ){ break; }
+	int previousMat = std::get<Card3>(cardSequence.back()).mat.value;
+        if( previousMat > card3.mat.value ){
+          Log::info( "mat value {} followed by mat value {}", 
+            previousMat, card3.mat.value );
+          Log::info( "mat values should be provided in increasing order" );
+          throw std::exception();
+        }
+
+      } while( true );
     }
     catch( std::exception& e ){
       Log::info( "Trouble validating RECONR input" );
