@@ -25,7 +25,7 @@ public:
       Card3 card3( is );
       if ( not card3.mat.value ){
         Log::error(
-  	  "Must have at least one non-zero mat number in RECONR Card3" );
+          "Must have at least one non-zero mat number in RECONR Card3" );
         throw std::exception();
       }
       optional< Card4 > card4;
@@ -63,7 +63,7 @@ public:
         }
 
         cardSequence.emplace_back( std::move(card3),
-  				   std::move(*card4), 
+                                     std::move(*card4), 
                                    std::move(card5List), 
                                    std::move(card6) );
 
@@ -79,7 +79,7 @@ public:
           throw e;
         }
         if( card3.mat.value == 0 ){ break; }
-	int previousMat = std::get<Card3>(cardSequence.back()).mat.value;
+        int previousMat = std::get<Card3>(cardSequence.back()).mat.value;
         if( previousMat > card3.mat.value ){
           Log::info( "mat value {} followed by mat value {}", 
             previousMat, card3.mat.value );
