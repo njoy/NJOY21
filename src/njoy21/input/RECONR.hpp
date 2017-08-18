@@ -63,7 +63,7 @@ public:
         }
 
         cardSequence.emplace_back( std::move(card3),
-                                     std::move(*card4), 
+                                   std::move(*card4), 
                                    std::move(card5List), 
                                    std::move(card6) );
 
