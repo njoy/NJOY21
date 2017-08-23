@@ -1,8 +1,8 @@
 class Card1 {
 public:
-  struct Nout : public argument::common::Nin {
-    static bool verify( argument::common::Nin::Value_t v ){
-      return argument::common::Nin::verify( v );
+  struct Nout : public argument::common::Nout {
+    static bool verify( argument::common::Nout::Value_t v ){
+      return argument::common::Nout::verify( v );
     }
   };
   

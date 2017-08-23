@@ -23,14 +23,14 @@ struct Ngout2 : public argument::common::Nout {
       "ngout1=0) the GENDF tape is written to ngout2.";
   }
 
-  template < typename Nin >
   static bool verify( const Value_t v, 
-                     const Nin& nendf,
-                     const Nin& npend,
-                     const Nin& ngout1
+                     const Argument< Nendf >& nendf,
+                     const Argument< Npend >& npend,
+                     const Argument< Ngout1 >& ngout1
                      ){
-    return ( argument::common::Nout::verify( v, nendf ) ) and
+    return ( argument::common::Nin::verify( v ) ) and
         /* Make sure the ngout2 is not equal to other input tape numbers */
+        ( std::abs( nendf.value ) != std::abs( v ) ) and
         ( std::abs( npend.value ) != std::abs( v ) ) and
         ( std::abs( ngout1.value ) != std::abs( v ) );
   }

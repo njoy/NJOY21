@@ -19,23 +19,18 @@ SCENARIO( "ndir output values", "[GROUPR],[Card1], [Ngout1]"){
         for( auto ngout1 : {-20, 20, 50, 99, -99} ){
           npend.value = 21*( ngout1/std::abs(ngout1) );
           iRecordStream<char> issNgout1( 
-              std::istringstream( std::to_string( ngout1 ) ) );
+              std::istringstream( std::to_string( ngout1 )  ) );
           REQUIRE( ngout1 == argument::extract< GROUPR::Card1::Ngout1 >(
                             issNgout1, nendf, npend ).value );
         }
-        npend.value = 21;
-        iRecordStream<char> issNgout1(
-             std::istringstream( std::to_string( 0 ) ) );
-        REQUIRE( 0 == argument::extract< GROUPR::Card1::Ngout1 >(
-                         issNgout1, nendf, npend ).value );
       }
     }
     WHEN( "the npend or nendf value and ngout1 values are the same" ){
       THEN( "an exception is thrown" ){
-        int ngout1 = 40; //20;
-        npend.value = 41; //ngout1;
+        int ngout1 = 20;
+        npend.value = ngout1;
         iRecordStream<char> issNgout1( 
-            std::istringstream( std::to_string( ngout1 ) ) );
+            std::istringstream( std::to_string( ngout1 )  ) );
         REQUIRE_THROWS( argument::extract< GROUPR::Card1::Ngout1 >(
                           issNgout1, nendf, npend ) );
 
@@ -48,12 +43,11 @@ SCENARIO( "ndir output values", "[GROUPR],[Card1], [Ngout1]"){
   }
   GIVEN( "Invalid ngout1 values" ){
     std::vector<int> invalidValues{-19, 19, 100, -100};
-    npend.value = 24;
     for( auto ngout1 : invalidValues ){
       iRecordStream<char> issNgout1(
           std::istringstream( std::to_string(ngout1) ) );
-      REQUIRE_THROWS(argument::extract<GROUPR::Card1::Ngout1>(
-              issNgout1, nendf, npend));
+      REQUIRE_THROWS(argument::extract<GROUPR::Card1::Npend>(
+              issNgout1, nendf));
     }
   }
 }
