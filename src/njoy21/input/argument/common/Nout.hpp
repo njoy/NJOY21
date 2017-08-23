@@ -17,14 +17,13 @@ struct Nout {
       "and 99, inclusively, and are required to have the same signedness as\n"
       "(and different absolute value than) the corresponding nin argument.";
   }
-  
-  static bool verify( const Value_t v ){
-    return std::abs(v) > 19 && std::abs(v) < 100;
-  }
 
   template< typename Nin >
-  static bool verify( const Value_t v, const Nin& nin ){
-    return verify(v)
-      && ( nin.value * v > 0 ) && ( std::abs(nin.value) != std::abs(v) );
+  static bool defaultValue( const Nin& ){ return 0; }
+
+  template< typename Nin_v >
+  static bool verify( const Value_t v, const Nin_v& nin ){
+    return (v == 0) or ( Nin::verify(v) and
+         ( nin.value * v > 0 ) and ( nin.value != v ) );
   }
 };

@@ -34,7 +34,7 @@ struct Nplot {
 		      const Argument< Nout >& nout ){
     if( v == 0 ){ return true; }
     const auto absv = std::abs(v);
-    return argument::common::Nout::verify( v )
+    return argument::common::Nin::verify( v )
       and ( absv != std::abs( nendf.value ) )
       and ( absv != std::abs( nin.value ) )
       and ( absv != std::abs( nout.value ) );

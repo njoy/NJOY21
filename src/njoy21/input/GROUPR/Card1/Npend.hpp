@@ -1,6 +1,6 @@
-struct Npend : public argument::common::Nin {
+struct Npend : public argument::common::Npend {
   
-  using Value_t = argument::common::Nin::Value_t;
+  using Value_t = argument::common::Npend::Value_t;
   
   static std::string name(){ return "npend"; }
   static std::string description(){

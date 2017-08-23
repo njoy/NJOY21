@@ -1,9 +1,11 @@
 class Card1 {
 public:
   #include "njoy21/input/GROUPR/Card1/Nendf.hpp"
-  #include "njoy21/input/GROUPR/Card1/Npend.hpp"
+//  #include "njoy21/input/GROUPR/Card1/Npend.hpp"
   #include "njoy21/input/GROUPR/Card1/Ngout1.hpp"
   #include "njoy21/input/GROUPR/Card1/Ngout2.hpp"
+
+  using Npend = argument::common::Npend;
 
   Argument< Nendf > nendf;
   Argument< Npend > npend;
