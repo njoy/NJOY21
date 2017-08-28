@@ -1065,6 +1065,9 @@
     "njoy21.input.DTFR.Card8.Mat": [
       "src/njoy21/input/DTFR/Card8/Mat/test/Mat.test.cpp"
     ],
+    "njoy21.input.GAMINR.Card1": [
+      "src/njoy21/input/GAMINR/Card1/test/Card1.test.cpp"
+    ],
     "njoy21.input.GAMINR.Card1.Nendf": [
       "src/njoy21/input/GAMINR/Card1/Nendf/test/Nendf.test.cpp"
     ],

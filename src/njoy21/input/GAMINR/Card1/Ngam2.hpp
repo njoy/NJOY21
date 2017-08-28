@@ -20,6 +20,6 @@ struct Ngam2{
              ( std::abs( npend.value ) != std::abs( v ) ) and
              ( std::abs( ngam1.value ) != std::abs( v ) ) and
              ( v*nendf.value > 0 ) and
-             ( v*ngam1.value > 0 ) );
+             ( v*ngam1.value >= 0 ) );
   }
 };
