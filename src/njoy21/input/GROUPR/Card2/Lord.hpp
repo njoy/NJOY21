@@ -8,5 +8,5 @@ struct Lord {
         "scattering matrices.";
   }
 
-  static bool verify( const Value_t l ){ return l > 0; }
+  static bool verify( const Value_t l ){ return l > 0 ; }
 };

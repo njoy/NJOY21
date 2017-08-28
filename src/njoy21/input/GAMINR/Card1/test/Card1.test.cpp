@@ -67,5 +67,12 @@ SCENARIO( "Validating card1 inputs",
         REQUIRE_THROWS( GAMINR::Card1(issCard1) );
       }
     }
+    WHEN( "Different signed values" ){
+      iRecordStream<char> issCard1( std::istringstream("-20 21 22 -24 /" ) );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( GAMINR::Card1(issCard1) );
+      }
+    }
   }
 }

@@ -603,7 +603,9 @@
     "src/njoy21/input/GASPR/Card1/Nout.hpp",
     "src/njoy21/input/GASPR/Card1/Nendf.hpp",
     "src/njoy21/input/GASPR/Card1/Nin.hpp",
+    "src/njoy21/input/GAMINR/Card2.hpp",
     "src/njoy21/input/GAMINR/Card1.hpp",
+    "src/njoy21/input/GAMINR/Card2/Iwt.hpp",
     "src/njoy21/input/GAMINR/Card1/Ngam1.hpp",
     "src/njoy21/input/GAMINR/Card1/Ngam2.hpp",
     "src/njoy21/input/THERMR/Card1.hpp",
@@ -1079,6 +1081,12 @@
     ],
     "njoy21.input.GAMINR.Card1.Npend": [
       "src/njoy21/input/GAMINR/Card1/Npend/test/Npend.test.cpp"
+    ],
+    "njoy21.input.GAMINR.Card2": [
+      "src/njoy21/input/GAMINR/Card2/test/Card2.test.cpp"
+    ],
+    "njoy21.input.GAMINR.Card2.Iwt": [
+      "src/njoy21/input/GAMINR/Card2/Iwt/test/Iwt.test.cpp"
     ],
     "njoy21.input.GASPR": [
       "src/njoy21/input/GASPR/test/GASPR.test.cpp"
