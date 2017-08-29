@@ -2,7 +2,7 @@ class Card4 {
 public:
 
   using Ngg = GROUPR::Card7a::Ngg;
-  #include "njoy21/input/GAMINR/Card4/Egg.hpp"
+  using Egg = GROUPR::Card7b::Egg;
 
   Argument< Ngg > ngg;
   Argument< Egg > egg;
@@ -11,7 +11,7 @@ public:
   Card4( iRecordStream< Char >& is )
     try:
       ngg( argument::extract< Ngg >( is ) ),
-      egg( argument::extract< Egg >( is, this->ngg ) )
+      egg( argument::extract< Egg >( is, this->ngg.value+1 ) )
       { 
         Card::clear( is );
       }
