@@ -16,7 +16,7 @@ public:
         Card::clear( is );
       }
     catch( std::exception& e ) {
-      Log::info( "Trouble while validating card 4" );
+      Log::info( "Trouble while validating GAMINR card 4" );
       throw e;
     }
 };
