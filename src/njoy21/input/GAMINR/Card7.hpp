@@ -1,6 +1,6 @@
 class Card7 {
 public:
-  using Matd = GROUPR::Card10::Matd;
+  #include "njoy21/input/GAMINR/Card7/Matd.hpp"
   
   Argument< Matd > matd;
 

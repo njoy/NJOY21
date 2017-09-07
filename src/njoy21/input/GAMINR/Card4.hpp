@@ -1,8 +1,8 @@
 class Card4 {
 public:
 
-  using Ngg = GROUPR::Card7a::Ngg;
-  using Egg = GROUPR::Card7b::Egg;
+  #include "njoy21/input/GAMINR/Card4/Ngg.hpp"
+  #include "njoy21/input/GAMINR/Card4/Egg.hpp"
 
   Argument< Ngg > ngg;
   Argument< Egg > egg;
