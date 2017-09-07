@@ -3,7 +3,7 @@ public:
 using Matb = argument::common::Matd;
 using Igg = GROUPR::Card2::Igg;
 #include "njoy21/input/GAMINR/Card2/Iwt.hpp"
-using Lord = GROUPR::Card2::Lord;
+#include "njoy21/input/GAMINR/Card2/Lord.hpp"
 using Iprint = GROUPR::Card2::Iprint;
 
   Argument< Matb > matb;
