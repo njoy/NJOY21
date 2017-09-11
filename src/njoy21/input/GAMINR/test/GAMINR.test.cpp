@@ -47,11 +47,11 @@ SCENARIO( "Parsing valid GAMINR input" ){
     }
 
     THEN( "the Card4 optional must be empty (i.e., not exist )" ){
-      REQUIRE( std::nullopt == gaminr.arbitraryGammaStructureCard );
+      REQUIRE( std::nullopt == gaminr.card4 );
     }
 
     THEN( "the Card5 optional must be empty (i.e., not exist )" ){
-      REQUIRE( std::nullopt == gaminr.arbitraryWeightsCard );
+      REQUIRE( std::nullopt == gaminr.card5 );
     }
 
     THEN( "the Card6 input values can be verified" ){
@@ -79,7 +79,7 @@ SCENARIO( "Parsing valid GAMINR input" ){
         REQUIRE( "" == gaminr.card6List[i].mtname.value );
       }
     }
-    THEN( "the Card10 input values can be verified" ){
+    THEN( "the Card7 input values can be verified" ){
       REQUIRE( 1 == gaminr.card7List.size() );
       REQUIRE( 9235 == gaminr.card7List[0].matd.value );
       REQUIRE( 0 == gaminr.card7List[1].matd.value );
@@ -146,11 +146,8 @@ SCENARIO( "Parsing valid GAMINR input" ){
     }
 
     THEN( "the Card4 input values can be verified" ){
-      auto card4 = (*gaminr.arbitraryGammaStructureCard );
+      auto card4 = (*gaminr.card4);
       REQUIRE( 5 == card4.ngg.value );
-    }
-    THEN( "the Card4 input values can be verified" ){
-      auto card4 = (*gaminr.arbitraryGammaStructureCard );
       REQUIRE( 6 == card4.egg.value.size() );
       REQUIRE( 1*dimwits::electronVolt == card4.egg.value[0] );
       REQUIRE( 2*dimwits::electronVolt == card4.egg.value[1] );
@@ -160,7 +157,7 @@ SCENARIO( "Parsing valid GAMINR input" ){
       REQUIRE( 6*dimwits::electronVolt == card4.egg.value[5] );
     }
     THEN( "the card5 values can be verified" ){
-      auto card5 = (*gaminr.arbitraryWeightsCard );
+      auto card5 = (*gaminr.card5);
       REQUIRE( 1E-5        == card5.wght.value.x()[0] );
       REQUIRE( 1E3         == card5.wght.value.x()[1] );
       REQUIRE( 1E4         == card5.wght.value.x()[2] );

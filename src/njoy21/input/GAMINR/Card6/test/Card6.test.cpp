@@ -40,5 +40,34 @@ SCENARIO( "Validating card6 inputs", "[GAMINR], [Card6]" ){
       REQUIRE( "" == card6.mtname.value );
     }
   }
+
+  GIVEN( "mfd is invalid" ){
+    WHEN( "mfd=-2" ){
+      iRecordStream<char> issCard6( std::istringstream( "-2 /" ) );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( GAMINR::Card6( issCard6 ) );
+      }
+    }
+    WHEN( "mfd=1000001" ){
+      iRecordStream<char> issCard6( std::istringstream( "1000001 /" ) );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( GAMINR::Card6( issCard6 ) );
+      }
+    }
+    WHEN( "mtd=0" ){
+      iRecordStream<char> issCard6( std::istringstream( "-1 0 /" ) );
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( GAMINR::Card6( issCard6 ) );
+      }
+    }
+    WHEN( "mtd=1000" ){
+      iRecordStream<char> issCard6( std::istringstream( "-1 1000 /" ) );
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( GAMINR::Card6( issCard6 ) );
+      }
+    }
+  }
 } // SCENARIO
 

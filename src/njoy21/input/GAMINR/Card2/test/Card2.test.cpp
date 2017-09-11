@@ -34,37 +34,38 @@ SCENARIO( "Validating card2 inputs", "[GAMINR], [Card2]" ){
   }
 
   GIVEN( "invalid Card2 input" ){
-    WHEN( "parameters are incorrect" ){
+    WHEN( "Matb is incorrect" ){
       iRecordStream<char> issCard2( std::istringstream( " -1 4 1 4 /" ) );
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( GAMINR::Card2(issCard2 ) );
       }
     }
-    WHEN( "parameters are incorrect" ){
-      iRecordStream<char> issCard2( std::istringstream( " 3 -1 1 4 /" ) );
-      THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( GAMINR::Card2(issCard2 ) );
+    WHEN( "Igg is incorrect" ){
+      {
+        iRecordStream<char> issCard2( std::istringstream( " 3 -1 1 4 /" ) );
+        THEN( "an exception is thrown" ){
+          REQUIRE_THROWS( GAMINR::Card2(issCard2 ) );
+        }
+      }{
+        iRecordStream<char> issCard2( std::istringstream( " 3 20 1 4 /" ) );
+        THEN( "an exception is thrown" ){
+          REQUIRE_THROWS( GAMINR::Card2(issCard2 ) );
+        }
       }
     }
-    WHEN( "parameters are incorrect" ){
-      iRecordStream<char> issCard2( std::istringstream( " 3 20 1 4 /" ) );
-      THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( GAMINR::Card2(issCard2 ) );
-      }
-    }
-    WHEN( "parameters are incorrect" ){
+    WHEN( "Iwt is incorrect (not 1, 2, or 3)" ){
       iRecordStream<char> issCard2( std::istringstream( " 3 3 4 4 /" ) );
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( GAMINR::Card2(issCard2 ) );
       }
     }
-    WHEN( "parameters are incorrect" ){
+    WHEN( "Lord is incorrect" ){
       iRecordStream<char> issCard2( std::istringstream( " 3 3 1 -1 /" ) );
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( GAMINR::Card2(issCard2 ) );
       }
     }
-    WHEN( "parameters are incorrect" ){
+    WHEN( "Iprint incorrect" ){
       iRecordStream<char> issCard2( std::istringstream( " 3 20 1 4 -1 /" ) );
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( GAMINR::Card2(issCard2 ) );

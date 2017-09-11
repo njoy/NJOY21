@@ -17,8 +17,8 @@ public:
   Card1 card1;
   Card2 card2;
   Card3 card3;
-  optional< Card4 > arbitraryGammaStructureCard;
-  optional< Card5 > arbitraryWeightsCard;
+  optional< Card4 > card4;
+  optional< Card5 > card5;
   std::vector< Card6 > card6List;
   std::vector< Card7 > card7List;
 
@@ -28,9 +28,9 @@ public:
     card1( is ),
     card2( is ),
     card3( is ),
-    arbitraryGammaStructureCard(
+    card4(
         readArbitraryGammaStructure( is, card2.igg.value ) ),
-    arbitraryWeightsCard( 
+    card5( 
         readArbitraryWeights( is, card2.iwt.value ) ),
     card6List( readCard6List( is ) ),
     card7List( readCard7List( is ) )

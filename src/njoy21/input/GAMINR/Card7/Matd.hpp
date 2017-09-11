@@ -1,6 +1,4 @@
 struct Matd : public argument::common::Matd {
-  using Value_t = argument::common::Matd::Value_t;
-  static std::string name(){ return "matd"; }
   static std::string description(){
     return
       "The matd argument specifies the next Material number to be processed.\n"

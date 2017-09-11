@@ -22,7 +22,7 @@ struct Egg {
       return false;
     }
 
-    // Make sure enerby boundaries are in increasing order
+    // Make sure energy boundaries are in increasing order
     auto unsortedStart = std::is_sorted_until( egg.begin(), egg.end() );
     if( unsortedStart != egg.end() ){
       auto dis = std::distance( egg.begin(), unsortedStart );

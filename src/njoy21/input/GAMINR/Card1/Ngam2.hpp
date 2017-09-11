@@ -15,11 +15,7 @@ struct Ngam2{
       "\n"
       "values are restricted to an absolute value between 20 and 99,\n"
       "inclusively, and are required to have the same signedness as\n"
-      "(and different absolute value than) the corresponding nendf argument.\n"
-      "\n"
-      "When the ngam1 argument is specified, NJOY will copy this tape to \n"
-      "ngam2 and append the new GENDF tape to ngam2. Otherwise, (when\n"
-      "ngam1=0) the GENDF tape is written to ngam2.";
+      "(and different absolute value than) the corresponding nendf argument.\n";
   }
   static std::string name(){
     return "Ngam2";
