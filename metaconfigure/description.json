@@ -394,6 +394,7 @@
     "src/njoy21/input/ACER.hpp",
     "src/njoy21/input/MIXR.hpp",
     "src/njoy21/input/HEATR.hpp",
+    "src/njoy21/input/PLOTR.hpp",
     "src/njoy21/input/Card.hpp",
     "src/njoy21/input/LEAPR.hpp",
     "src/njoy21/input/DTFR.hpp",
@@ -666,6 +667,9 @@
     "src/njoy21/input/BROADR/Card2/Mat1.hpp",
     "src/njoy21/input/BROADR/Card2/Istart.hpp",
     "src/njoy21/input/BROADR/Card2/Temp1.hpp",
+    "src/njoy21/input/PLOTR/Card0.hpp",
+    "src/njoy21/input/PLOTR/Card0/Nplt0.hpp",
+    "src/njoy21/input/PLOTR/Card0/Nplt.hpp",
     "src/njoy21/input/MODER/Card3.hpp",
     "src/njoy21/input/MODER/Card2.hpp",
     "src/njoy21/input/MODER/Card1.hpp",
@@ -1612,6 +1616,15 @@
     ],
     "njoy21.input.MODER.Card3.Nin": [
       "src/njoy21/input/MODER/Card3/Nin/test/Nin.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card0": [
+      "src/njoy21/input/PLOTR/Card0/test/Card0.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card0.Nplt": [
+      "src/njoy21/input/PLOTR/Card0/Nplt/test/Nplt.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card0.Nplt0": [
+      "src/njoy21/input/PLOTR/Card0/Nplt0/test/Nplt0.test.cpp"
     ],
     "njoy21.input.PURR": [
       "src/njoy21/input/PURR/test/PURR.test.cpp"
