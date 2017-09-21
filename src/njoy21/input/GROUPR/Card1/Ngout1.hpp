@@ -25,6 +25,8 @@ struct Ngout1 : public argument::common::Nout {
       "(and different absolute value than) the corresponding nendf argument.\n";
   }
 
+  static int defaultValue( const Argument< Nendf >&,
+                           const Argument< Npend >& ){ return 0; }
   static bool verify( const Value_t v, 
                      const Argument< Nendf >& nendf,
                      const Argument< Npend >& npend
