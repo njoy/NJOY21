@@ -44,4 +44,5 @@ public:
 */
 
   #include "njoy21/input/PLOTR/Card0.hpp"
+  #include "njoy21/input/PLOTR/Card1.hpp"
 };
