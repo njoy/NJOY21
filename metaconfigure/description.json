@@ -667,12 +667,21 @@
     "src/njoy21/input/BROADR/Card2/Mat1.hpp",
     "src/njoy21/input/BROADR/Card2/Istart.hpp",
     "src/njoy21/input/BROADR/Card2/Temp1.hpp",
+    "src/njoy21/input/PLOTR/Card2.hpp",
     "src/njoy21/input/PLOTR/Card1.hpp",
     "src/njoy21/input/PLOTR/Card0.hpp",
     "src/njoy21/input/PLOTR/Card1/Ipcol.hpp",
     "src/njoy21/input/PLOTR/Card1/Istyle.hpp",
     "src/njoy21/input/PLOTR/Card1/Lori.hpp",
     "src/njoy21/input/PLOTR/Card1/Size.hpp",
+    "src/njoy21/input/PLOTR/Card2/Wh.hpp",
+    "src/njoy21/input/PLOTR/Card2/Iplot.hpp",
+    "src/njoy21/input/PLOTR/Card2/Iwcol.hpp",
+    "src/njoy21/input/PLOTR/Card2/Ll.hpp",
+    "src/njoy21/input/PLOTR/Card2/Wr.hpp",
+    "src/njoy21/input/PLOTR/Card2/Facty.hpp",
+    "src/njoy21/input/PLOTR/Card2/Factx.hpp",
+    "src/njoy21/input/PLOTR/Card2/Ww.hpp",
     "src/njoy21/input/PLOTR/Card0/Nplt0.hpp",
     "src/njoy21/input/PLOTR/Card0/Nplt.hpp",
     "src/njoy21/input/MODER/Card3.hpp",
@@ -1645,6 +1654,30 @@
     ],
     "njoy21.input.PLOTR.Card1.Size": [
       "src/njoy21/input/PLOTR/Card1/Size/test/Size.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card2": [
+      "src/njoy21/input/PLOTR/Card2/test/Card2.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card2.Factx": [
+      "src/njoy21/input/PLOTR/Card2/Factx/test/Factx.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card2.Facty": [
+      "src/njoy21/input/PLOTR/Card2/Facty/test/Facty.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card2.Iplot": [
+      "src/njoy21/input/PLOTR/Card2/Iplot/test/Iplot.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card2.Ll": [
+      "src/njoy21/input/PLOTR/Card2/Ll/test/Ll.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card2.Wh": [
+      "src/njoy21/input/PLOTR/Card2/Wh/test/Wh.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card2.Wr": [
+      "src/njoy21/input/PLOTR/Card2/Wr/test/Wr.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card2.Ww": [
+      "src/njoy21/input/PLOTR/Card2/Ww/test/Ww.test.cpp"
     ],
     "njoy21.input.PURR": [
       "src/njoy21/input/PURR/test/PURR.test.cpp"
