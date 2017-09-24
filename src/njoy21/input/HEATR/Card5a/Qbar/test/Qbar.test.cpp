@@ -4,7 +4,7 @@
 
 using namespace njoy::njoy21::input;
 
-extern std::function< njoy::ENDFtk::UnivariateTabulation() > makeTAB1;
+extern std::function< njoy::ENDFtk::TAB1() > makeTAB1;
 
 SCENARIO( "HEATR qbar values",
   "[HEATR], [Card5a], [Qbar]"){
@@ -23,14 +23,14 @@ SCENARIO( "HEATR qbar values",
     iRecordStream<char> iss2( ( std::istringstream( tab2 ) ) );
     
     THEN( "the returned values are correct" ){
-      njoy::ENDFtk::UnivariateTabulation TAB1 = argument::extract< 
+      njoy::ENDFtk::TAB1 tab1 = argument::extract< 
         HEATR::Card5a::Qbar >( iss1 ).value;
-      njoy::ENDFtk::UnivariateTabulation TAB2 = argument::extract<
+      njoy::ENDFtk::TAB1 tab2 = argument::extract<
         HEATR::Card5a::Qbar >( iss2 ).value;
 
-      REQUIRE( 1 == TAB1.NR() ); REQUIRE( 6 == TAB1.NP() );
+      REQUIRE( 1 == tab1.NR() ); REQUIRE( 6 == tab1.NP() );
 
-      REQUIRE( 2 == TAB2.NR() ); REQUIRE( 4 == TAB2.NP() );
+      REQUIRE( 2 == tab2.NR() ); REQUIRE( 4 == tab2.NP() );
 
       std::vector<double> X{1.00000E-05, 1.00000E+03, 1.00000E+04, 
                             1.00925E+04, 1.01859E+04, 1.02802E+04};
@@ -40,11 +40,11 @@ SCENARIO( "HEATR qbar values",
       std::vector<double> X2{0.5, 2.0, 3.0, 4.0};
       std::vector<double> Y2{1.5, 1.8, 1.9, 2.0};
 
-      REQUIRE( ranges::equal(X, TAB1.x()) );
-      REQUIRE( ranges::equal(Y, TAB1.y()) );
+      REQUIRE( ranges::equal(X, tab1.x()) );
+      REQUIRE( ranges::equal(Y, tab1.y()) );
 
-      REQUIRE( ranges::equal( X2, TAB2.x() ) );
-      REQUIRE( ranges::equal( Y2, TAB2.y() ) );
+      REQUIRE( ranges::equal( X2, tab2.x() ) );
+      REQUIRE( ranges::equal( Y2, tab2.y() ) );
 
     } // THEN
   } // GIVEN

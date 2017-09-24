@@ -16,19 +16,19 @@ SCENARIO( "Wght input values", "[Card8b], [Wght]" ){
     THEN( "the returned TAB1 has the correct values" ){
       iRecordStream<char> iss( ( std::istringstream( sTAB1 ) ) );
 
-      njoy::ENDFtk::UnivariateTabulation TAB1 = argument::extract< 
+      njoy::ENDFtk::TAB1 tab1 = argument::extract< 
           GROUPR::Card8b::Wght >( iss ).value;
 
-      REQUIRE( 1 == TAB1.NR() );
-      REQUIRE( 6 == TAB1.NP() );
+      REQUIRE( 1 == tab1.NR() );
+      REQUIRE( 6 == tab1.NP() );
 
       std::vector<double> X{1.00000E-05, 1.00000E+03, 1.00000E+04, 
                             1.00925E+04, 1.01859E+04, 1.02802E+04};
       std::vector<double> Y{8.00000E-20, 9.13415E-10, 6.13955E-08,
                             6.17490E-08, 6.09190E-08, 6.19874E-08};
 
-      REQUIRE( ranges::equal(X, TAB1.x()) );
-      REQUIRE( ranges::equal(Y, TAB1.y()) );
+      REQUIRE( ranges::equal(X, tab1.x()) );
+      REQUIRE( ranges::equal(Y, tab1.y()) );
     }
   }
 
