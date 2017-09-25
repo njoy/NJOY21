@@ -667,6 +667,7 @@
     "src/njoy21/input/BROADR/Card2/Mat1.hpp",
     "src/njoy21/input/BROADR/Card2/Istart.hpp",
     "src/njoy21/input/BROADR/Card2/Temp1.hpp",
+    "src/njoy21/input/PLOTR/Card4.hpp",
     "src/njoy21/input/PLOTR/Card3.hpp",
     "src/njoy21/input/PLOTR/Card2.hpp",
     "src/njoy21/input/PLOTR/Card1.hpp",
@@ -686,6 +687,12 @@
     "src/njoy21/input/PLOTR/Card2/Ww.hpp",
     "src/njoy21/input/PLOTR/Card0/Nplt0.hpp",
     "src/njoy21/input/PLOTR/Card0/Nplt.hpp",
+    "src/njoy21/input/PLOTR/Card4/Itype.hpp",
+    "src/njoy21/input/PLOTR/Card4/Ytag.hpp",
+    "src/njoy21/input/PLOTR/Card4/Xtag.hpp",
+    "src/njoy21/input/PLOTR/Card4/Jtype.hpp",
+    "src/njoy21/input/PLOTR/Card4/Ileg.hpp",
+    "src/njoy21/input/PLOTR/Card4/Igrid.hpp",
     "src/njoy21/input/PLOTR/Card3/Title.hpp",
     "src/njoy21/input/MODER/Card3.hpp",
     "src/njoy21/input/MODER/Card2.hpp",
@@ -1690,6 +1697,27 @@
     ],
     "njoy21.input.PLOTR.Card3a": [
       "src/njoy21/input/PLOTR/Card3a/test/Card3a.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card4": [
+      "src/njoy21/input/PLOTR/Card4/test/Card4.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card4.Igrid": [
+      "src/njoy21/input/PLOTR/Card4/Igrid/test/Igrid.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card4.Ileg": [
+      "src/njoy21/input/PLOTR/Card4/Ileg/test/Ileg.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card4.Itype": [
+      "src/njoy21/input/PLOTR/Card4/Itype/test/Itype.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card4.Jtype": [
+      "src/njoy21/input/PLOTR/Card4/Jtype/test/Jtype.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card4.Xtag": [
+      "src/njoy21/input/PLOTR/Card4/Xtag/test/Xtag.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card4.Ytag": [
+      "src/njoy21/input/PLOTR/Card4/Ytag/test/Ytag.test.cpp"
     ],
     "njoy21.input.PURR": [
       "src/njoy21/input/PURR/test/PURR.test.cpp"
