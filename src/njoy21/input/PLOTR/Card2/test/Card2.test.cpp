@@ -38,7 +38,7 @@ SCENARIO( "Validating card2 inputs",
       THEN( "the members can be tested" ){
         REQUIRE( -1 == card2.iplot.value );
         REQUIRE( 2 == card2.iwcol.value );
-        REQUIRE( -2.2f == card2.factx.value );
+        REQUIRE( 2.2f == card2.factx.value );
         REQUIRE( 1.3f == card2.facty.value );
         REQUIRE( 1.5f == card2.xll.value );
         REQUIRE( 0.2f == card2.yll.value );
@@ -102,11 +102,12 @@ SCENARIO( "Validating card2 inputs",
       }
     }//WHEN
     WHEN( "An extra value is given" ){
+      lori.value = 0;
       iRecordStream<char> issCard2( std::istringstream(
             "-1 1 1.4 1.4 2.8 3.2 2.9 2.9 180.0 22/" ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( PLOTR::Card2(issCard2, 1) );
+        REQUIRE_THROWS( PLOTR::Card2(issCard2, lori) );
       }
     }//WHEN
   }//GIVEN

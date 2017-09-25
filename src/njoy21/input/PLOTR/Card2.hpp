@@ -28,11 +28,11 @@ public:
       factx( argument::extract< Factx >( is ) ),
       facty( argument::extract< Facty >( is ) ),
       // Second value of xll is the width of page left.
-      xll( argument::extract< Ll >( is ), (10.0 - (lori.value*2.5)) ),
+      xll( argument::extract< Ll >( is, (10.0 - (lori.value*2.5))) ),
       // Second value of yll is the height of page left.
-      yll( argument::extract< Ll >( is ), (7.5 + (lori.value*2.5)) ),
-      ww( argument::extract< Ww >( is ), lori.value ),
-      wh( argument::extract< Wh >( is ), lori.value ),
+      yll( argument::extract< Ll >( is, (7.5 + (lori.value*2.5))) ),
+      ww( argument::extract< Ww >( is, lori.value ) ),
+      wh( argument::extract< Wh >( is, lori.value ) ),
       wr( argument::extract< Wr >( is ) )
       {
         Card::clear( is );
