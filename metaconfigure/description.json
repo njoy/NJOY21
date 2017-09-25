@@ -667,9 +667,11 @@
     "src/njoy21/input/BROADR/Card2/Mat1.hpp",
     "src/njoy21/input/BROADR/Card2/Istart.hpp",
     "src/njoy21/input/BROADR/Card2/Temp1.hpp",
+    "src/njoy21/input/PLOTR/Card3.hpp",
     "src/njoy21/input/PLOTR/Card2.hpp",
     "src/njoy21/input/PLOTR/Card1.hpp",
     "src/njoy21/input/PLOTR/Card0.hpp",
+    "src/njoy21/input/PLOTR/Card3a.hpp",
     "src/njoy21/input/PLOTR/Card1/Ipcol.hpp",
     "src/njoy21/input/PLOTR/Card1/Istyle.hpp",
     "src/njoy21/input/PLOTR/Card1/Lori.hpp",
@@ -684,6 +686,7 @@
     "src/njoy21/input/PLOTR/Card2/Ww.hpp",
     "src/njoy21/input/PLOTR/Card0/Nplt0.hpp",
     "src/njoy21/input/PLOTR/Card0/Nplt.hpp",
+    "src/njoy21/input/PLOTR/Card3/Title.hpp",
     "src/njoy21/input/MODER/Card3.hpp",
     "src/njoy21/input/MODER/Card2.hpp",
     "src/njoy21/input/MODER/Card1.hpp",
@@ -1678,6 +1681,15 @@
     ],
     "njoy21.input.PLOTR.Card2.Ww": [
       "src/njoy21/input/PLOTR/Card2/Ww/test/Ww.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card3": [
+      "src/njoy21/input/PLOTR/Card3/test/Card3.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card3.Title": [
+      "src/njoy21/input/PLOTR/Card3/Title/test/Title.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card3a": [
+      "src/njoy21/input/PLOTR/Card3a/test/Card3a.test.cpp"
     ],
     "njoy21.input.PURR": [
       "src/njoy21/input/PURR/test/PURR.test.cpp"
