@@ -27,7 +27,7 @@ SCENARIO( "Ytag output values", "[PLOTR],[Card4], [Ytag]"){
   GIVEN( "no Ytag parameter provided" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> issYtag( std::istringstream( " /" ) );
-      REQUIRE( true == argument::extract< PLOTR::Card4::Ytag >( 
+      REQUIRE( 0.0f == argument::extract< PLOTR::Card4::Ytag >( 
                          issYtag ).value );
     }
   } //GIVEN

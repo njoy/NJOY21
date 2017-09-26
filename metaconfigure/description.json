@@ -672,14 +672,20 @@
     "src/njoy21/input/PLOTR/Card3.hpp",
     "src/njoy21/input/PLOTR/Card2.hpp",
     "src/njoy21/input/PLOTR/Card5.hpp",
+    "src/njoy21/input/PLOTR/Card6.hpp",
     "src/njoy21/input/PLOTR/Card1.hpp",
     "src/njoy21/input/PLOTR/Card6a.hpp",
     "src/njoy21/input/PLOTR/Card0.hpp",
+    "src/njoy21/input/PLOTR/Card7.hpp",
     "src/njoy21/input/PLOTR/Card3a.hpp",
+    "src/njoy21/input/PLOTR/Card7a.hpp",
     "src/njoy21/input/PLOTR/Card1/Ipcol.hpp",
     "src/njoy21/input/PLOTR/Card1/Istyle.hpp",
     "src/njoy21/input/PLOTR/Card1/Lori.hpp",
     "src/njoy21/input/PLOTR/Card1/Size.hpp",
+    "src/njoy21/input/PLOTR/Card6/Yl.hpp",
+    "src/njoy21/input/PLOTR/Card6/Ystep.hpp",
+    "src/njoy21/input/PLOTR/Card6/Yh.hpp",
     "src/njoy21/input/PLOTR/Card2/Wh.hpp",
     "src/njoy21/input/PLOTR/Card2/Iplot.hpp",
     "src/njoy21/input/PLOTR/Card2/Iwcol.hpp",
@@ -691,6 +697,9 @@
     "src/njoy21/input/PLOTR/Card5/Eh.hpp",
     "src/njoy21/input/PLOTR/Card5/Xstep.hpp",
     "src/njoy21/input/PLOTR/Card5/El.hpp",
+    "src/njoy21/input/PLOTR/Card7/Rtop.hpp",
+    "src/njoy21/input/PLOTR/Card7/Rbot.hpp",
+    "src/njoy21/input/PLOTR/Card7/Rstep.hpp",
     "src/njoy21/input/PLOTR/Card0/Nplt0.hpp",
     "src/njoy21/input/PLOTR/Card0/Nplt.hpp",
     "src/njoy21/input/PLOTR/Card4/Itype.hpp",
@@ -1740,8 +1749,35 @@
     "njoy21.input.PLOTR.Card5a": [
       "src/njoy21/input/PLOTR/Card5a/test/Card5a.test.cpp"
     ],
+    "njoy21.input.PLOTR.Card6": [
+      "src/njoy21/input/PLOTR/Card6/test/Card6.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card6.Yh": [
+      "src/njoy21/input/PLOTR/Card6/Yh/test/Yh.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card6.Yl": [
+      "src/njoy21/input/PLOTR/Card6/Yl/test/Yl.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card6.Ystep": [
+      "src/njoy21/input/PLOTR/Card6/Ystep/test/Ystep.test.cpp"
+    ],
     "njoy21.input.PLOTR.Card6a": [
       "src/njoy21/input/PLOTR/Card6a/test/Card6a.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card7": [
+      "src/njoy21/input/PLOTR/Card7/test/Card7.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card7.Rbot": [
+      "src/njoy21/input/PLOTR/Card7/Rbot/test/Rbot.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card7.Rstep": [
+      "src/njoy21/input/PLOTR/Card7/Rstep/test/Rstep.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card7.Rtop": [
+      "src/njoy21/input/PLOTR/Card7/Rtop/test/Rtop.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card7a": [
+      "src/njoy21/input/PLOTR/Card7a/test/Card7a.test.cpp"
     ],
     "njoy21.input.PURR": [
       "src/njoy21/input/PURR/test/PURR.test.cpp"

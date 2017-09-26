@@ -1,10 +1,9 @@
-struct Xstep {
+struct Ystep {
   using Value_t = float;
-  static std::string name(){ return "xstep"; }
+  static std::string name(){ return "ystep"; }
   static std::string description(){
     return
-      "The xstep argument specifies the spacing for tics on the energy (x)\n"
-      "axis.\n\n"
+      "The ystep argument specifies the spacing for tics on the y-axis.\n\n"
       "The default behavior is automatic scaling.  The value is ignored if\n"
       "log scaling is used.";
   }

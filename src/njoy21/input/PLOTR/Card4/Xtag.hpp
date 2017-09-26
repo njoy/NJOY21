@@ -7,9 +7,7 @@ struct Xtag {
       "corner of the legend.\n\n"
       "The default will be to put the legend on the left edge of the plot.";
   }
-  // defaultValue will be used by Card5 to set the default x-coordinate.
-  static bool defaultValue(){ return true; }
-  static bool verify( Value_t v ){
-    return ( v >= 0 );
-  }
+  // defaultVal will be used by Card5 to set the default x-coordinate.
+  static Value_t defaultValue(){ return 0.0; }
+  static bool verify( Value_t v ){ return ( v >= 0.0 ); }
 };

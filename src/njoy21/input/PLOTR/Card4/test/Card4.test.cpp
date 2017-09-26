@@ -33,8 +33,8 @@ SCENARIO( "Validating card4 inputs",
         REQUIRE( 2 == card4.jtype.value );
         REQUIRE( 0 == card4.igrid.value );
         REQUIRE( 2 == card4.ileg.value );
-        REQUIRE( true == card4.xtag.value );
-        REQUIRE( true == card4.ytag.value );
+        REQUIRE( 0.0f == card4.xtag.value );
+        REQUIRE( 0.0f == card4.ytag.value );
       }
     } //WHEN
     WHEN( "No values are given" ){
@@ -46,8 +46,8 @@ SCENARIO( "Validating card4 inputs",
         REQUIRE( 0 == card4.jtype.value );
         REQUIRE( 2 == card4.igrid.value );
         REQUIRE( 0 == card4.ileg.value );
-        REQUIRE( true == card4.xtag.value );
-        REQUIRE( true == card4.ytag.value );
+        REQUIRE( 0.0f == card4.xtag.value );
+        REQUIRE( 0.0f == card4.ytag.value );
       }
     } //WHEN
   } // GIVEN

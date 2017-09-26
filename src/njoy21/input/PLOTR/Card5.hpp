@@ -11,7 +11,7 @@ public:
   template< typename Char >
   Card5 ( iRecordStream< Char >& is )
     try:
-      el( argument::extract< El >( is ) ),
+      el( argument::extract< El >( is, card4 ) ),
       eh( argument::extract< Eh >( is, this->el ) ),
       xstep( argument::extract< Xstep >( is ) )
       {
