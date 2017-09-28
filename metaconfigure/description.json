@@ -667,25 +667,48 @@
     "src/njoy21/input/BROADR/Card2/Mat1.hpp",
     "src/njoy21/input/BROADR/Card2/Istart.hpp",
     "src/njoy21/input/BROADR/Card2/Temp1.hpp",
+    "src/njoy21/input/PLOTR/Card10.hpp",
     "src/njoy21/input/PLOTR/Card5a.hpp",
     "src/njoy21/input/PLOTR/Card4.hpp",
     "src/njoy21/input/PLOTR/Card3.hpp",
+    "src/njoy21/input/PLOTR/Card11.hpp",
+    "src/njoy21/input/PLOTR/Card10a.hpp",
     "src/njoy21/input/PLOTR/Card2.hpp",
     "src/njoy21/input/PLOTR/Card5.hpp",
     "src/njoy21/input/PLOTR/Card6.hpp",
     "src/njoy21/input/PLOTR/Card1.hpp",
+    "src/njoy21/input/PLOTR/Card8.hpp",
     "src/njoy21/input/PLOTR/Card6a.hpp",
+    "src/njoy21/input/PLOTR/Card12.hpp",
+    "src/njoy21/input/PLOTR/Card9.hpp",
     "src/njoy21/input/PLOTR/Card0.hpp",
     "src/njoy21/input/PLOTR/Card7.hpp",
     "src/njoy21/input/PLOTR/Card3a.hpp",
+    "src/njoy21/input/PLOTR/Card13.hpp",
     "src/njoy21/input/PLOTR/Card7a.hpp",
     "src/njoy21/input/PLOTR/Card1/Ipcol.hpp",
     "src/njoy21/input/PLOTR/Card1/Istyle.hpp",
     "src/njoy21/input/PLOTR/Card1/Lori.hpp",
     "src/njoy21/input/PLOTR/Card1/Size.hpp",
+    "src/njoy21/input/PLOTR/Card13/Xerr1.hpp",
+    "src/njoy21/input/PLOTR/Card13/Yerr1.hpp",
+    "src/njoy21/input/PLOTR/Card13/Xdata.hpp",
+    "src/njoy21/input/PLOTR/Card13/Yerr2.hpp",
+    "src/njoy21/input/PLOTR/Card13/Ydata.hpp",
+    "src/njoy21/input/PLOTR/Card13/Xerr2.hpp",
+    "src/njoy21/input/PLOTR/src/readCard13List.hpp",
     "src/njoy21/input/PLOTR/Card6/Yl.hpp",
     "src/njoy21/input/PLOTR/Card6/Ystep.hpp",
     "src/njoy21/input/PLOTR/Card6/Yh.hpp",
+    "src/njoy21/input/PLOTR/Card8/Mfd.hpp",
+    "src/njoy21/input/PLOTR/Card8/Nin.hpp",
+    "src/njoy21/input/PLOTR/Card8/Nth.hpp",
+    "src/njoy21/input/PLOTR/Card8/Temper.hpp",
+    "src/njoy21/input/PLOTR/Card8/Iverf.hpp",
+    "src/njoy21/input/PLOTR/Card8/Nkh.hpp",
+    "src/njoy21/input/PLOTR/Card8/Mtd.hpp",
+    "src/njoy21/input/PLOTR/Card8/Ntp.hpp",
+    "src/njoy21/input/PLOTR/Card8/Matd.hpp",
     "src/njoy21/input/PLOTR/Card2/Wh.hpp",
     "src/njoy21/input/PLOTR/Card2/Iplot.hpp",
     "src/njoy21/input/PLOTR/Card2/Iwcol.hpp",
@@ -694,12 +717,17 @@
     "src/njoy21/input/PLOTR/Card2/Facty.hpp",
     "src/njoy21/input/PLOTR/Card2/Factx.hpp",
     "src/njoy21/input/PLOTR/Card2/Ww.hpp",
+    "src/njoy21/input/PLOTR/Card10a/Ytag.hpp",
+    "src/njoy21/input/PLOTR/Card10a/Xtag.hpp",
+    "src/njoy21/input/PLOTR/Card10a/Xpoint.hpp",
+    "src/njoy21/input/PLOTR/Card10/Aleg.hpp",
     "src/njoy21/input/PLOTR/Card5/Eh.hpp",
     "src/njoy21/input/PLOTR/Card5/Xstep.hpp",
     "src/njoy21/input/PLOTR/Card5/El.hpp",
     "src/njoy21/input/PLOTR/Card7/Rtop.hpp",
     "src/njoy21/input/PLOTR/Card7/Rbot.hpp",
     "src/njoy21/input/PLOTR/Card7/Rstep.hpp",
+    "src/njoy21/input/PLOTR/Card12/Nform.hpp",
     "src/njoy21/input/PLOTR/Card0/Nplt0.hpp",
     "src/njoy21/input/PLOTR/Card0/Nplt.hpp",
     "src/njoy21/input/PLOTR/Card4/Itype.hpp",
@@ -708,7 +736,19 @@
     "src/njoy21/input/PLOTR/Card4/Jtype.hpp",
     "src/njoy21/input/PLOTR/Card4/Ileg.hpp",
     "src/njoy21/input/PLOTR/Card4/Igrid.hpp",
+    "src/njoy21/input/PLOTR/Card11/Y3.hpp",
+    "src/njoy21/input/PLOTR/Card11/Xv.hpp",
+    "src/njoy21/input/PLOTR/Card11/X3.hpp",
+    "src/njoy21/input/PLOTR/Card11/Yv.hpp",
+    "src/njoy21/input/PLOTR/Card11/Z3.hpp",
+    "src/njoy21/input/PLOTR/Card11/Zv.hpp",
     "src/njoy21/input/PLOTR/Card3/Title.hpp",
+    "src/njoy21/input/PLOTR/Card9/Ishade.hpp",
+    "src/njoy21/input/PLOTR/Card9/Isym.hpp",
+    "src/njoy21/input/PLOTR/Card9/Idash.hpp",
+    "src/njoy21/input/PLOTR/Card9/Ithick.hpp",
+    "src/njoy21/input/PLOTR/Card9/Icon.hpp",
+    "src/njoy21/input/PLOTR/Card9/Iccol.hpp",
     "src/njoy21/input/MODER/Card3.hpp",
     "src/njoy21/input/MODER/Card2.hpp",
     "src/njoy21/input/MODER/Card1.hpp",
@@ -1680,6 +1720,30 @@
     "njoy21.input.PLOTR.Card1.Size": [
       "src/njoy21/input/PLOTR/Card1/Size/test/Size.test.cpp"
     ],
+    "njoy21.input.PLOTR.Card10": [
+      "src/njoy21/input/PLOTR/Card10/test/Card10.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card10a": [
+      "src/njoy21/input/PLOTR/Card10a/test/Card10.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card10a.Xpoint": [
+      "src/njoy21/input/PLOTR/Card10a/Xpoint/test/Xpoint.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card10a.Xtag": [
+      "src/njoy21/input/PLOTR/Card10a/Xtag/test/Xtag.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card10a.Ytag": [
+      "src/njoy21/input/PLOTR/Card10a/Ytag/test/Ytag.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card11": [
+      "src/njoy21/input/PLOTR/Card11/test/Card11.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card12": [
+      "src/njoy21/input/PLOTR/Card12/test/Card12.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card12.Nform": [
+      "src/njoy21/input/PLOTR/Card12/Nform/test/Nform.test.cpp"
+    ],
     "njoy21.input.PLOTR.Card2": [
       "src/njoy21/input/PLOTR/Card2/test/Card2.test.cpp"
     ],
@@ -1778,6 +1842,57 @@
     ],
     "njoy21.input.PLOTR.Card7a": [
       "src/njoy21/input/PLOTR/Card7a/test/Card7a.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card8": [
+      "src/njoy21/input/PLOTR/Card8/test/Card8.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card8.Iverf": [
+      "src/njoy21/input/PLOTR/Card8/Iverf/test/Iverf.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card8.Matd": [
+      "src/njoy21/input/PLOTR/Card8/Matd/test/Matd.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card8.Mfd": [
+      "src/njoy21/input/PLOTR/Card8/Mfd/test/Mfd.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card8.Mtd": [
+      "src/njoy21/input/PLOTR/Card8/Mtd/test/Mtd.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card8.Nin": [
+      "src/njoy21/input/PLOTR/Card8/Nin/test/Nin.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card8.Nkh": [
+      "src/njoy21/input/PLOTR/Card8/Nkh/test/Nkh.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card8.Nth": [
+      "src/njoy21/input/PLOTR/Card8/Nth/test/Nth.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card8.Ntp": [
+      "src/njoy21/input/PLOTR/Card8/Ntp/test/Ntp.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card8.Temper": [
+      "src/njoy21/input/PLOTR/Card8/Temper/test/Temper.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card9": [
+      "src/njoy21/input/PLOTR/Card9/test/Card9.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card9.Iccol": [
+      "src/njoy21/input/PLOTR/Card9/Iccol/test/Iccol.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card9.Icon": [
+      "src/njoy21/input/PLOTR/Card9/Icon/test/Icon.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card9.Idash": [
+      "src/njoy21/input/PLOTR/Card9/Idash/test/Idash.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card9.Ishade": [
+      "src/njoy21/input/PLOTR/Card9/Ishade/test/Ishade.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card9.Isym": [
+      "src/njoy21/input/PLOTR/Card9/Isym/test/Isym.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card9.Ithick": [
+      "src/njoy21/input/PLOTR/Card9/Ithick/test/Ithick.test.cpp"
     ],
     "njoy21.input.PURR": [
       "src/njoy21/input/PURR/test/PURR.test.cpp"

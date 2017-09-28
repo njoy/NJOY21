@@ -55,4 +55,10 @@ public:
   #include "njoy21/input/PLOTR/Card6a.hpp"
   #include "njoy21/input/PLOTR/Card7.hpp"
   #include "njoy21/input/PLOTR/Card7a.hpp"
+  #include "njoy21/input/PLOTR/Card8.hpp"
+  #include "njoy21/input/PLOTR/Card9.hpp"
+  #include "njoy21/input/PLOTR/Card10.hpp"
+  #include "njoy21/input/PLOTR/Card10a.hpp"
+  #include "njoy21/input/PLOTR/Card11.hpp"
+  #include "njoy21/input/PLOTR/Card12.hpp"
 };
