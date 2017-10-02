@@ -14,12 +14,12 @@ SCENARIO( "Xtag output values", "[PLOTR],[Card4], [Xtag]"){
     std::vector<float> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
-      for( auto xtag : validValues ){
+      for( auto& xtag : validValues ){
         iRecordStream<char> issXtag( 
-            std::istringstream( std::to_string( xtag ) ) );
+            std::istringstream( std::to_string( 0.0 ) ) );
 
-        REQUIRE( xtag == argument::extract< PLOTR::Card4::Xtag >( 
-                          issXtag ) );
+        REQUIRE( xtag == *( argument::extract< PLOTR::Card4::Xtag >( 
+                          issXtag ).value ) );
       }
     }
   } // GIVEN
@@ -35,7 +35,7 @@ SCENARIO( "Xtag output values", "[PLOTR],[Card4], [Xtag]"){
     std::vector<float> invalidValues{ -2.0, -1.1 };
 
     THEN( "the class throws an exception" ){
-      for( auto xtag : invalidValues ){
+      for( auto& xtag : invalidValues ){
         iRecordStream<char> issXtag( 
             std::istringstream( std::to_string( xtag ) ) );
 
