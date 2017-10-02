@@ -9,10 +9,10 @@ public:
   Argument< Rstep > rstep;
 
   template< typename Char >
-  Card7 ( iRecordStream< Char >& is )
+  Card7 ( iRecordStream< Char >& is, Argument< PLOTR::Card4::Jtype >& jtype )
     try:
-      rbot( argument::extract< Rbot >( is ) ),
-      rtop( argument::extract< Rtop >( is, this->rbot ) ),
+      rbot( argument::extract< Rbot >( is, jtype.value ) ),
+      rtop( argument::extract< Rtop >( is, this->rbot.value ) ),
       rstep( argument::extract< Rstep >( is ) )
       {
         Card::clear( is );

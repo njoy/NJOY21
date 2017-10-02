@@ -4,11 +4,15 @@ struct Eh {
   static std::string description(){
     return
       "The eh argument specifies the upper bound for the energy (x) axis.\n\n"
-      "Checks that eh has a greater value than el.";
+      "Checks that eh has a greater value than el.\n\n"
+      "If using the default value, the default value should be used for el\n"
+      "and xstep as well.";
   }
-  static Value_t defaultValue( const Argument< El >& ){ return 1.0; }
+  static Value_t defaultValue( const float el ){
+    return el;
+  }
   static bool verify( const Value_t v, 
-                      const Argument< El >& el ){
-    return ( v >= 0 and v > el.value );
+                      const float el ){
+    return ( v >= el );
   }
 };

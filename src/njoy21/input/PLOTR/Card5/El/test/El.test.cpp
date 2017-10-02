@@ -10,7 +10,9 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "El output values", "[PLOTR],[Card5], [El]"){
 
-  GIVEN( "valid El parameters" ){
+  std::vector<int> itype{1,2,3,4};
+
+  GIVEN( "valid El parameters with itype == 1" ){
     std::vector<float> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
@@ -19,21 +21,72 @@ SCENARIO( "El output values", "[PLOTR],[Card5], [El]"){
             std::istringstream( std::to_string( el ) ) );
 
         REQUIRE( el == argument::extract< PLOTR::Card5::El >( 
-                          issEl ).value );
+                          issEl, itype[0] ).value );
       }
     }
   } // GIVEN
 
-  GIVEN( "default value" ){
+  GIVEN( "valid El parameters with itype == 2" ){
+    std::vector<float> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
+
+    THEN( "the returned class has the correct value" ){
+      for( auto el : validValues ){
+        iRecordStream<char> issEl( 
+            std::istringstream( std::to_string( el ) ) );
+
+        REQUIRE( el == argument::extract< PLOTR::Card5::El >( 
+                          issEl, itype[1] ).value );
+      }
+    }
+  } // GIVEN
+
+  GIVEN( "valid El parameters with itype == 3" ){
+    std::vector<float> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
+
+    THEN( "the returned class has the correct value" ){
+      for( auto el : validValues ){
+        iRecordStream<char> issEl( 
+            std::istringstream( std::to_string( el ) ) );
+
+        REQUIRE( el == argument::extract< PLOTR::Card5::El >( 
+                          issEl, itype[2] ).value );
+      }
+    }
+  } // GIVEN
+
+  GIVEN( "valid El parameters with itype == 4" ){
+    std::vector<float> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
+
+    THEN( "the returned class has the correct value" ){
+      for( auto el : validValues ){
+        iRecordStream<char> issEl( 
+            std::istringstream( std::to_string( el ) ) );
+
+        REQUIRE( el == argument::extract< PLOTR::Card5::El >( 
+                          issEl, itype[3] ).value );
+      }
+    }
+  } // GIVEN
+
+  GIVEN( "default value for linear scale" ){
     iRecordStream<char> issEl( std::istringstream( " /" ) );
 
     THEN( "default value is returned" ){
       REQUIRE( 0.0f == argument::extract< PLOTR::Card5::El >(
-                          issEl ).value );
+                          issEl, itype[0] ).value );
     }
   }//GIVEN
 
-  GIVEN( "invalid El parameters" ){
+  GIVEN( "default value for log scale" ){
+    iRecordStream<char> issEl( std::istringstream( " /" ) );
+
+    THEN( "default value is returned" ){
+      REQUIRE( 1.0e-07 == argument::extract< PLOTR::Card5::El >(
+                          issEl, itype[2] ).value );
+    }
+  }//GIVEN
+
+  GIVEN( "invalid El parameters for linear scale" ){
     std::vector<float> invalidValues{ -2.0, -1.1 };
 
     THEN( "the class throws an exception" ){
@@ -41,7 +94,22 @@ SCENARIO( "El output values", "[PLOTR],[Card5], [El]"){
         iRecordStream<char> issEl( 
             std::istringstream( std::to_string( el ) ) );
 
-        REQUIRE_THROWS( argument::extract< PLOTR::Card5::El >( issEl ) );
+        REQUIRE_THROWS( argument::extract< PLOTR::Card5::El >(
+                         issEl, itype[ 1 ] ) );
+      }
+    }
+  } // GIVEN
+
+  GIVEN( "invalid El parameters for log scale" ){
+    std::vector<float> invalidValues{ -2.0, -1.1, 0.0 };
+
+    THEN( "the class throws an exception" ){
+      for( auto el : invalidValues ){
+        iRecordStream<char> issEl( 
+            std::istringstream( std::to_string( el ) ) );
+
+        REQUIRE_THROWS( argument::extract< PLOTR::Card5::El >(
+                         issEl, itype[ 3 ] ) );
       }
     }
   } // GIVEN

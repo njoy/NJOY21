@@ -1,5 +1,5 @@
 struct Xtag {
-  using Value_t = float;
+  using Value_t = optional< float >;
   static std::string name(){ return "xtag"; }
   static std::string description(){
     return
@@ -8,6 +8,6 @@ struct Xtag {
       "The default will be to put the legend on the left edge of the plot.";
   }
   // defaultVal will be used by Card5 to set the default x-coordinate.
-  static Value_t defaultValue(){ return 0.0; }
-  static bool verify( Value_t v ){ return ( v >= 0.0 ); }
+  static Value_t defaultValue(){ return nullopt; }
+  static bool verify( Value_t v ){ return ( v.value() >= 0.0f ); }
 };

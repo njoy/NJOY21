@@ -19,7 +19,7 @@ SCENARIO( "Xtag output values", "[PLOTR],[Card4], [Xtag]"){
             std::istringstream( std::to_string( xtag ) ) );
 
         REQUIRE( xtag == argument::extract< PLOTR::Card4::Xtag >( 
-                          issXtag ).value );
+                          issXtag ) );
       }
     }
   } // GIVEN
@@ -27,9 +27,7 @@ SCENARIO( "Xtag output values", "[PLOTR],[Card4], [Xtag]"){
   GIVEN( "no Xtag parameter provided" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> issXtag( std::istringstream( " /" ) );
-      REQUIRE( 0.0f == argument::extract< PLOTR::Card4::Xtag >( 
-                         issXtag ).value );
-//      REQUIRE( PLOTR::Card4::Xtag::defUsed == true );
+      REQUIRE( not argument::extract< PLOTR::Card4::Xtag >( issXtag ).value );
     }
   } //GIVEN
 

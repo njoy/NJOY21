@@ -20,8 +20,8 @@ SCENARIO( "Validating card4 inputs",
         REQUIRE( 1 == card4.jtype.value );
         REQUIRE( 1 == card4.igrid.value );
         REQUIRE( 1 == card4.ileg.value );
-        REQUIRE( 1.0 == card4.xtag.value );
-        REQUIRE( 1.0 == card4.ytag.value );
+        REQUIRE( 1.0f == card4.xtag.value );
+        REQUIRE( 1.0f == card4.ytag.value );
       }
     } //WHEN
     WHEN( "A couple defaults are used" ){
@@ -33,8 +33,8 @@ SCENARIO( "Validating card4 inputs",
         REQUIRE( 2 == card4.jtype.value );
         REQUIRE( 0 == card4.igrid.value );
         REQUIRE( 2 == card4.ileg.value );
-        REQUIRE( 0.0f == card4.xtag.value );
-        REQUIRE( 0.0f == card4.ytag.value );
+        REQUIRE( std::nullopt == card4.xtag.value );
+        REQUIRE( std::nullopt == card4.ytag.value );
       }
     } //WHEN
     WHEN( "No values are given" ){
@@ -46,8 +46,8 @@ SCENARIO( "Validating card4 inputs",
         REQUIRE( 0 == card4.jtype.value );
         REQUIRE( 2 == card4.igrid.value );
         REQUIRE( 0 == card4.ileg.value );
-        REQUIRE( 0.0f == card4.xtag.value );
-        REQUIRE( 0.0f == card4.ytag.value );
+        REQUIRE( std::nullopt == card4.xtag.value );
+        REQUIRE( std::nullopt == card4.ytag.value );
       }
     } //WHEN
   } // GIVEN

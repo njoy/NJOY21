@@ -1,13 +1,13 @@
 class Card6a {
 public:
-  #include "njoy21/input/PLOTR/Card3/Title.hpp"
+  #include "njoy21/input/PLOTR/Card6a/Ylabl.hpp"
 
-  Argument< Title > title;
+  Argument< Ylabl > ylabl;
 
   template< typename Char >
   Card6a( iRecordStream< Char >& is )
     try:
-      title( argument::extract< Title >( is ) )
+      ylabl( argument::extract< Ylabl >( is ) )
     {
       Card::clear( is );
     }

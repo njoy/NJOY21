@@ -11,7 +11,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Ytag output values", "[PLOTR],[Card4], [Ytag]"){
 
   GIVEN( "valid Ytag parameters" ){
-    std::vector<float> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
+    std::vector<float> validValues{-2.0,-1.1,0.0,0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto ytag : validValues ){
@@ -23,25 +23,11 @@ SCENARIO( "Ytag output values", "[PLOTR],[Card4], [Ytag]"){
       }
     }
   } // GIVEN
-
-  GIVEN( "no Ytag parameter provided" ){
-    THEN( "the default value is returned" ){
-      iRecordStream<char> issYtag( std::istringstream( " /" ) );
-      REQUIRE( 0.0f == argument::extract< PLOTR::Card4::Ytag >( 
-                         issYtag ).value );
-    }
-  } //GIVEN
-
-  GIVEN( "invalid Ytag parameters" ){
-    std::vector<float> invalidValues{ -2.0, -1.1 };
-
-    THEN( "the class throws an exception" ){
-      for( auto ytag : invalidValues ){
-        iRecordStream<char> issYtag( 
-            std::istringstream( std::to_string( ytag ) ) );
-
-        REQUIRE_THROWS( argument::extract< PLOTR::Card4::Ytag >( issYtag ) );
-      }
-    }
-  } // GIVEN
+//  GIVEN( "no input" ){
+//    iRecordStream<char> issYtag( std::istringstream( "  /" ) );
+//    THEN( "the null opt is returned" ){
+//      REQUIRE( std::nullopt == argument::extract< PLOTR::Card4::Ytag >(
+//                               issYtag ).value );
+//    }
+//  } //GIVEN
 } // SCENARIO
