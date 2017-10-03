@@ -14,7 +14,7 @@ SCENARIO( "Yh output values", "[PLOTR],[Card6], [Yh]"){
   yl.value = 0.0;
 
   GIVEN( "valid Yh parameters" ){
-    std::vector<float> validValues{0.01,0.1,0.5,0.8,1.0,2.0,80.0};
+    std::vector<double> validValues{0.01,0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto yh : validValues ){
@@ -37,7 +37,7 @@ SCENARIO( "Yh output values", "[PLOTR],[Card6], [Yh]"){
   }//GIVEN
 
   GIVEN( "invalid Yh parameters" ){
-    std::vector<float> invalidValues{ -2.0, -1.1 };
+    std::vector<double> invalidValues{ -2.0, -1.1 };
 
     THEN( "the class throws an exception" ){
       for( auto yh : invalidValues ){

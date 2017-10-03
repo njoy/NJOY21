@@ -13,7 +13,7 @@ SCENARIO( "El output values", "[PLOTR],[Card5], [El]"){
   std::vector<int> itype{1,2,3,4};
 
   GIVEN( "valid El parameters with itype == 1" ){
-    std::vector<float> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
+    std::vector<double> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto el : validValues ){
@@ -27,7 +27,7 @@ SCENARIO( "El output values", "[PLOTR],[Card5], [El]"){
   } // GIVEN
 
   GIVEN( "valid El parameters with itype == 2" ){
-    std::vector<float> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
+    std::vector<double> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto el : validValues ){
@@ -41,7 +41,7 @@ SCENARIO( "El output values", "[PLOTR],[Card5], [El]"){
   } // GIVEN
 
   GIVEN( "valid El parameters with itype == 3" ){
-    std::vector<float> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
+    std::vector<double> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto el : validValues ){
@@ -55,7 +55,7 @@ SCENARIO( "El output values", "[PLOTR],[Card5], [El]"){
   } // GIVEN
 
   GIVEN( "valid El parameters with itype == 4" ){
-    std::vector<float> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
+    std::vector<double> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto el : validValues ){
@@ -87,7 +87,7 @@ SCENARIO( "El output values", "[PLOTR],[Card5], [El]"){
   }//GIVEN
 
   GIVEN( "invalid El parameters for linear scale" ){
-    std::vector<float> invalidValues{ -2.0, -1.1 };
+    std::vector<double> invalidValues{ -2.0, -1.1 };
 
     THEN( "the class throws an exception" ){
       for( auto el : invalidValues ){
@@ -101,7 +101,7 @@ SCENARIO( "El output values", "[PLOTR],[Card5], [El]"){
   } // GIVEN
 
   GIVEN( "invalid El parameters for log scale" ){
-    std::vector<float> invalidValues{ -2.0, -1.1, 0.0 };
+    std::vector<double> invalidValues{ -2.0, -1.1, 0.0 };
 
     THEN( "the class throws an exception" ){
       for( auto el : invalidValues ){

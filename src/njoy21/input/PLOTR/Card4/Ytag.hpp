@@ -1,5 +1,5 @@
 struct Ytag {
-  using Value_t = optional< float >;
+  using Value_t = optional< double >;
   static std::string name(){ return "ytag"; }
   static std::string description(){
     return

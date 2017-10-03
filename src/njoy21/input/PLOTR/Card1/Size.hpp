@@ -1,5 +1,5 @@
 struct Size {
-  using Value_t = float;
+  using Value_t = double;
   static std::string name(){ return "size"; }
   static std::string description(){
     return
@@ -13,7 +13,7 @@ struct Size {
       "The default value is 0.30 specifying the character height is\n"
       "0.30 page units.";
   }
-  static float defaultValue(){ return 0.30; }
+  static double defaultValue(){ return 0.30; }
   static bool verify( Value_t v ){
     return ( std::abs(v) <= 1.0 and v != 0.0);
   }

@@ -1,5 +1,5 @@
 struct Rbot {
-  using Value_t = float;
+  using Value_t = double;
   static std::string name(){ return "rbot"; }
   static std::string description(){
     return

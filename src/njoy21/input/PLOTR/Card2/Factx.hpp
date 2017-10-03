@@ -1,5 +1,5 @@
 struct Factx {
-  using Value_t = float;
+  using Value_t = double;
   static std::string name(){ return "factx"; }
   static std::string description(){
     return

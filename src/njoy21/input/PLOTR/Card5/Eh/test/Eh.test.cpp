@@ -14,7 +14,7 @@ SCENARIO( "Eh output values", "[PLOTR],[Card5], [Eh]"){
   el.value = 0.0;
 
   GIVEN( "valid Eh parameters" ){
-    std::vector<float> validValues{0.01,0.1,0.5,0.8,1.0,2.0,80.0};
+    std::vector<double> validValues{0.01,0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto eh : validValues ){
@@ -37,7 +37,7 @@ SCENARIO( "Eh output values", "[PLOTR],[Card5], [Eh]"){
   }//GIVEN
 
   GIVEN( "invalid Eh parameters" ){
-    std::vector<float> invalidValues{ -2.0, -1.1 };
+    std::vector<double> invalidValues{ -2.0, -1.1 };
 
     THEN( "the class throws an exception" ){
       for( auto eh : invalidValues ){

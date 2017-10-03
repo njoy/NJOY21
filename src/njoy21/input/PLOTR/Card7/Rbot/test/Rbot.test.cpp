@@ -11,7 +11,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Rbot output values", "[PLOTR],[Card7], [Rbot]"){
 
   GIVEN( "valid Rbot parameters" ){
-    std::vector<float> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
+    std::vector<double> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto rbot : validValues ){
@@ -34,7 +34,7 @@ SCENARIO( "Rbot output values", "[PLOTR],[Card7], [Rbot]"){
   }//GIVEN
 
   GIVEN( "invalid Rbot parameters" ){
-    std::vector<float> invalidValues{ -2.0, -1.1 };
+    std::vector<double> invalidValues{ -2.0, -1.1 };
 
     THEN( "the class throws an exception" ){
       for( auto rbot : invalidValues ){

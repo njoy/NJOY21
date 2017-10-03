@@ -1,5 +1,5 @@
 struct El {
-  using Value_t = float;
+  using Value_t = double;
   static std::string name(){ return "el"; }
   static std::string description(){
     return

@@ -1,5 +1,5 @@
 struct Xtag {
-  using Value_t = float;
+  using Value_t = double;
   static std::string name(){ return "xtag"; }
   static std::string description(){
     return

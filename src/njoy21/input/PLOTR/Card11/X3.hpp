@@ -1,5 +1,5 @@
 struct X3 {
-  using Value_t = float;
+  using Value_t = double;
   static std::string name(){ return "x3"; }
   static std::string description(){
     return

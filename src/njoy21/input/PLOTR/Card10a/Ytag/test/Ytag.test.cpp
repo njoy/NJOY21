@@ -11,7 +11,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Ytag output values", "[PLOTR],[Card10a], [Ytag]"){
 
   GIVEN( "valid Ytag parameters" ){
-    std::vector<float> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
+    std::vector<double> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto ytag : validValues ){
@@ -25,7 +25,7 @@ SCENARIO( "Ytag output values", "[PLOTR],[Card10a], [Ytag]"){
   } // GIVEN
 
   GIVEN( "invalid Ytag parameters" ){
-    std::vector<float> invalidValues{ -2.0, -1.1 };
+    std::vector<double> invalidValues{ -2.0, -1.1 };
 
     THEN( "the class throws an exception" ){
       for( auto ytag : invalidValues ){
