@@ -11,7 +11,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Factx output values", "[PLOTR],[Card2], [Factx]"){
 
   GIVEN( "valid Factx parameters" ){
-    std::vector<float> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
+    std::vector<double> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto factx : validValues ){
@@ -33,7 +33,7 @@ SCENARIO( "Factx output values", "[PLOTR],[Card2], [Factx]"){
   } //GIVEN
 
   GIVEN( "invalid Factx parameters" ){
-    std::vector<float> invalidValues{ -2.0, -1.1, 0.0 };
+    std::vector<double> invalidValues{ -2.0, -1.1, 0.0 };
 
     THEN( "the class throws an exception" ){
       for( auto factx : invalidValues ){

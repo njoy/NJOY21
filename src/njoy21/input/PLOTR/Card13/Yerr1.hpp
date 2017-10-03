@@ -1,5 +1,5 @@
 struct Yerr1 {
-  using Value_t = float;
+  using Value_t = double;
   static std::string name(){ return "yerr1"; }
   static std::string description(){
     return

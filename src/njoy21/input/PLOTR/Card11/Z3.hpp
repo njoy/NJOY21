@@ -1,5 +1,5 @@
 struct Z3 {
-  using Value_t = float;
+  using Value_t = double;
   static std::string name(){ return "z3"; }
   static std::string description(){
     return

@@ -1,5 +1,5 @@
 struct Xtag {
-  using Value_t = optional< float >;
+  using Value_t = optional< double >;
   static std::string name(){ return "xtag"; }
   static std::string description(){
     return
@@ -9,5 +9,5 @@ struct Xtag {
   }
   // defaultVal will be used by Card5 to set the default x-coordinate.
   static Value_t defaultValue(){ return nullopt; }
-  static bool verify( Value_t v ){ return ( v.value() >= 0.0f ); }
+  static bool verify( const Value_t& v ){ return ( v >= 0.0 ); }
 };

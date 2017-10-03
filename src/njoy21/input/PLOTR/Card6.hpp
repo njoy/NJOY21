@@ -17,7 +17,7 @@ public:
       yh( argument::extract< Yh >( is, this->yl.value ) ),
       ystep( argument::extract< Ystep >( is ) )
       {
-        ytag.value.value = ytag.value.value_or( this->yh.value );
+        ytag.value = ytag.value.value_or( this->yh.value );
         Card::clear( is );
       }
     catch( std::exception& e ){

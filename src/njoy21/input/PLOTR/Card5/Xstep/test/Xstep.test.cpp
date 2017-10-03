@@ -11,7 +11,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Xstep output values", "[PLOTR],[Card5], [Xstep]"){
 
   GIVEN( "valid Xstep parameters" ){
-    std::vector<float> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
+    std::vector<double> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto xstep : validValues ){
@@ -34,7 +34,7 @@ SCENARIO( "Xstep output values", "[PLOTR],[Card5], [Xstep]"){
   }//GIVEN
 
   GIVEN( "invalid Xstep parameters" ){
-    std::vector<float> invalidValues{ -2.0, -1.1, 0.0 };
+    std::vector<double> invalidValues{ -2.0, -1.1, 0.0 };
 
     THEN( "the class throws an exception" ){
       for( auto xstep : invalidValues ){

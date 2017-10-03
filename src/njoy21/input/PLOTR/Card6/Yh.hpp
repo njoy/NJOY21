@@ -1,5 +1,5 @@
 struct Yh {
-  using Value_t = float;
+  using Value_t = double;
   static std::string name(){ return "yh"; }
   static std::string description(){
     return

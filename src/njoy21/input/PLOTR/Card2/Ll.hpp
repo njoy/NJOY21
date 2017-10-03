@@ -1,5 +1,5 @@
 struct Ll {
-  using Value_t = float;
+  using Value_t = double;
   static std::string name(){ return "Ll"; }
   static std::string description(){
     return
@@ -13,8 +13,8 @@ struct Ll {
       "8.5x11 inches.  The orientation is defined by the lori argument on\n"
       "Card 1.";
   }
-  static Value_t defaultValue(const float){ return 0.0; }
-  static bool verify( Value_t v , const float pgsize, const float marg = 0.5 ){
+  static Value_t defaultValue(const double){ return 0.0; }
+  static bool verify( Value_t v , const double pgsize, const double marg = 0.5 ){
     return ( v <= pgsize+marg and v >= marg*-1.0 );
   }
 };

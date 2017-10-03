@@ -17,7 +17,7 @@ public:
       eh( argument::extract< Eh >( is, this->el.value ) ),
       xstep( argument::extract< Xstep >( is ) )
       {
-        xtag.value.value = xtag.value.value_or( this->el.value );
+        xtag.value = xtag.value.value_or( this->el.value );
         Card::clear( is );
       }
     catch( std::exception& e ){

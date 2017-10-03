@@ -13,7 +13,7 @@ SCENARIO( "Wh output values", "[PLOTR],[Card2], [Wh]"){
   GIVEN( "valid Wh parameters" ){
     WHEN( "the available size is 7.5 inches" ){
       const int lori = 1;
-      std::vector<float> validValues{0.5, 1.0, 4.8, 8.0, 11.0};
+      std::vector<double> validValues{0.5, 1.0, 4.8, 8.0, 11.0};
 
       THEN( "the returned class has the correct value" ){
         for( auto wh : validValues ){
@@ -27,7 +27,7 @@ SCENARIO( "Wh output values", "[PLOTR],[Card2], [Wh]"){
     }
     WHEN( "the available size is 10.0 inches" ){
       const int lori = 0;
-      std::vector<float> validValues{0.5, 1.0, 4.8, 10.5, 11.0};
+      std::vector<double> validValues{0.5, 1.0, 4.8, 10.5, 11.0};
 
       THEN( "the returned class has the correct value" ){
         for( auto wh : validValues ){
@@ -56,7 +56,7 @@ SCENARIO( "Wh output values", "[PLOTR],[Card2], [Wh]"){
 
   GIVEN( "invalid Wh parameters" ){
     WHEN( "the available size is 7.5 inches" ){
-      std::vector<float> invalidValues{ -2.0, -1.0, -0.5, 11.1 };
+      std::vector<double> invalidValues{ -2.0, -1.0, -0.5, 11.1 };
 
       THEN( "the returned class has the correct value" ){
         for( auto wh : invalidValues ){
@@ -68,7 +68,7 @@ SCENARIO( "Wh output values", "[PLOTR],[Card2], [Wh]"){
       }
     }
     WHEN( "the available size is 10.0 inches" ){
-      std::vector<float> invalidValues{ -2.0, -1.1, -0.51, 11.1 };
+      std::vector<double> invalidValues{ -2.0, -1.1, -0.51, 11.1 };
 
       THEN( "the returned class has the correct value" ){
         for( auto wh : invalidValues ){

@@ -1,5 +1,5 @@
 struct Xstep {
-  using Value_t = float;
+  using Value_t = double;
   static std::string name(){ return "xstep"; }
   static std::string description(){
     return

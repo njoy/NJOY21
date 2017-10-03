@@ -12,8 +12,8 @@ SCENARIO( "Ll output values", "[PLOTR],[Card2], [Ll]"){
 
   GIVEN( "valid Ll parameters" ){
     WHEN( "the available size is 7.5 inches" ){
-      const float size = 7.5;
-      std::vector<float> validValues{-0.5, -0.1, 0.0, 0.5, 1.0, 4.8, 8.0};
+      const double size = 7.5;
+      std::vector<double> validValues{-0.5, -0.1, 0.0, 0.5, 1.0, 4.8, 8.0};
 
       THEN( "the returned class has the correct value" ){
         for( auto ll : validValues ){
@@ -26,8 +26,8 @@ SCENARIO( "Ll output values", "[PLOTR],[Card2], [Ll]"){
       }
     }
     WHEN( "the available size is 10.0 inches" ){
-      const float size = 10.0;
-      std::vector<float> validValues{-0.5, -0.1, 0.0, 0.5, 1.0, 4.8, 10.5};
+      const double size = 10.0;
+      std::vector<double> validValues{-0.5, -0.1, 0.0, 0.5, 1.0, 4.8, 10.5};
 
       THEN( "the returned class has the correct value" ){
         for( auto ll : validValues ){
@@ -56,7 +56,7 @@ SCENARIO( "Ll output values", "[PLOTR],[Card2], [Ll]"){
 
   GIVEN( "invalid Ll parameters" ){
     WHEN( "the available size is 7.5 inches" ){
-      std::vector<float> invalidValues{ -2.0, -1.1, -0.51, 8.01 };
+      std::vector<double> invalidValues{ -2.0, -1.1, -0.51, 8.01 };
 
       THEN( "the returned class has the correct value" ){
         for( auto ll : invalidValues ){
@@ -68,7 +68,7 @@ SCENARIO( "Ll output values", "[PLOTR],[Card2], [Ll]"){
       }
     }
     WHEN( "the available size is 10.0 inches" ){
-      std::vector<float> invalidValues{ -2.0, -1.1, -0.51, 10.51 };
+      std::vector<double> invalidValues{ -2.0, -1.1, -0.51, 10.51 };
 
       THEN( "the returned class has the correct value" ){
         for( auto ll : invalidValues ){

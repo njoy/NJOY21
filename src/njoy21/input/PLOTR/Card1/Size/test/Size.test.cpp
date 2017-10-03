@@ -11,7 +11,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Size output values", "[PLOTR],[Card1], [Size]"){
 
   GIVEN( "valid Size parameters" ){
-    std::vector<float> validValues{-1.0,-0.5,-0.1,0.1,0.5,0.8,1.0};
+    std::vector<double> validValues{-1.0,-0.5,-0.1,0.1,0.5,0.8,1.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto size : validValues ){
@@ -33,7 +33,7 @@ SCENARIO( "Size output values", "[PLOTR],[Card1], [Size]"){
   } //GIVEN
 
   GIVEN( "invalid Size parameters" ){
-    std::vector<float> invalidValues{ -2.0, -1.1, 0.0, 2.0, 3.0 };
+    std::vector<double> invalidValues{ -2.0, -1.1, 0.0, 2.0, 3.0 };
 
     THEN( "the returned class has the correct value" ){
       for( auto size : invalidValues ){

@@ -11,7 +11,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Wr output values", "[PLOTR],[Card2], [Wr]"){
 
   GIVEN( "valid Wr parameters" ){
-    std::vector<float> validValues{-90.0, -27.5, 0.0, 19.3, 182.9, 721.8};
+    std::vector<double> validValues{-90.0, -27.5, 0.0, 19.3, 182.9, 721.8};
 
     THEN( "the returned class has the correct value" ){
       for( auto wr : validValues ){
@@ -33,7 +33,7 @@ SCENARIO( "Wr output values", "[PLOTR],[Card2], [Wr]"){
   } //GIVEN
 
   GIVEN( "invalid Wr parameters" ){
-    std::vector<float> invalidValues{ -90.1 };
+    std::vector<double> invalidValues{ -90.1 };
 
     THEN( "the returned class has the correct value" ){
       for( auto wr : invalidValues ){

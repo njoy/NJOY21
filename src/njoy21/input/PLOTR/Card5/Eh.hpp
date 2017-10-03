@@ -1,5 +1,5 @@
 struct Eh {
-  using Value_t = float;
+  using Value_t = double;
   static std::string name(){ return "eh"; }
   static std::string description(){
     return
@@ -8,11 +8,11 @@ struct Eh {
       "If using the default value, the default value should be used for el\n"
       "and xstep as well.";
   }
-  static Value_t defaultValue( const float el ){
+  static Value_t defaultValue( const double el ){
     return el;
   }
   static bool verify( const Value_t v, 
-                      const float el ){
+                      const double el ){
     return ( v >= el );
   }
 };

@@ -13,7 +13,7 @@ SCENARIO( "Yl output values", "[PLOTR],[Card6], [Yl]"){
   std::vector<int> itype{1,2,3,4};
 
   GIVEN( "valid Yl parameters for linear scale" ){
-    std::vector<float> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
+    std::vector<double> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto yl : validValues ){
@@ -27,7 +27,7 @@ SCENARIO( "Yl output values", "[PLOTR],[Card6], [Yl]"){
   } // GIVEN
 
   GIVEN( "valid Yl parameters for log scale" ){
-    std::vector<float> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
+    std::vector<double> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto yl : validValues ){
@@ -59,7 +59,7 @@ SCENARIO( "Yl output values", "[PLOTR],[Card6], [Yl]"){
   }//GIVEN
 
   GIVEN( "invalid Yl parameters for log scale" ){
-    std::vector<float> invalidValues{ -2.0, -1.1, 0.0 };
+    std::vector<double> invalidValues{ -2.0, -1.1, 0.0 };
 
     THEN( "the class throws an exception" ){
       for( auto yl : invalidValues ){
@@ -73,7 +73,7 @@ SCENARIO( "Yl output values", "[PLOTR],[Card6], [Yl]"){
   } // GIVEN
 
   GIVEN( "invalid Yl parameters for linear scale" ){
-    std::vector<float> invalidValues{ -2.0, -1.1 };
+    std::vector<double> invalidValues{ -2.0, -1.1 };
 
     THEN( "the class throws an exception" ){
       for( auto yl : invalidValues ){

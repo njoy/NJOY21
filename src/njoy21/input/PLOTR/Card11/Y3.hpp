@@ -1,5 +1,5 @@
 struct Y3 {
-  using Value_t = float;
+  using Value_t = double;
   static std::string name(){ return "y3"; }
   static std::string description(){
     return
