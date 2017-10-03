@@ -21,13 +21,13 @@ SCENARIO( "Validating card2 inputs",
       THEN( "the members can be tested" ){
         REQUIRE( 1 == card2.iplot.value );
         REQUIRE( 4 == card2.iwcol.value );
-        REQUIRE( 0.2f == card2.factx.value );
-        REQUIRE( 3.1f == card2.facty.value );
-        REQUIRE( -0.1f == card2.xll.value );
-        REQUIRE( -0.3f == card2.yll.value );
-        REQUIRE( 1.8f == card2.ww.value );
-        REQUIRE( 2.9f == card2.wh.value );
-        REQUIRE( 3.0f == card2.wr.value );
+        REQUIRE( APPROX( 0.2 ) == card2.factx.value );
+        REQUIRE( APPROX( 3.1 ) == card2.facty.value );
+        REQUIRE( APPROX( -0.1 ) == card2.xll.value );
+        REQUIRE( APPROX( -0.3 ) == card2.yll.value );
+        REQUIRE( APPROX( 1.8 ) == card2.ww.value );
+        REQUIRE( APPROX( 2.9 ) == card2.wh.value );
+        REQUIRE( APPROX( 3.0 ) == card2.wr.value );
       }
     } //WHEN
     WHEN( "A couple defaults are used" ){
@@ -38,13 +38,13 @@ SCENARIO( "Validating card2 inputs",
       THEN( "the members can be tested" ){
         REQUIRE( -1 == card2.iplot.value );
         REQUIRE( 2 == card2.iwcol.value );
-        REQUIRE( 2.2f == card2.factx.value );
-        REQUIRE( 1.3f == card2.facty.value );
-        REQUIRE( 1.5f == card2.xll.value );
-        REQUIRE( 0.2f == card2.yll.value );
-        REQUIRE( 7.5f == card2.ww.value );
-        REQUIRE( 10.0f == card2.wh.value );
-        REQUIRE( 0.0f == card2.wr.value );
+        REQUIRE( APPROX( 2.2 ) == card2.factx.value );
+        REQUIRE( APPROX( 1.3 ) == card2.facty.value );
+        REQUIRE( APPROX( 1.5 ) == card2.xll.value );
+        REQUIRE( APPROX( 0.2 ) == card2.yll.value );
+        REQUIRE( APPROX( 7.5 ) == card2.ww.value );
+        REQUIRE( APPROX( 10.0 ) == card2.wh.value );
+        REQUIRE( APPROX( 0.0 ) == card2.wr.value );
       }
     } //WHEN
     WHEN( "No values are given" ){
@@ -55,13 +55,13 @@ SCENARIO( "Validating card2 inputs",
       THEN( "the members can be tested" ){
         REQUIRE( 1 == card2.iplot.value );
         REQUIRE( 0 == card2.iwcol.value );
-        REQUIRE( 1.0f == card2.factx.value );
-        REQUIRE( 1.0f == card2.facty.value );
-        REQUIRE( 0.0f == card2.xll.value );
-        REQUIRE( 0.0f == card2.yll.value );
-        REQUIRE( 10.0f == card2.ww.value );
-        REQUIRE( 7.5f == card2.wh.value );
-        REQUIRE( 0.0f == card2.wr.value );
+        REQUIRE( APPROX( 1.0 ) == card2.factx.value );
+        REQUIRE( APPROX( 1.0 ) == card2.facty.value );
+        REQUIRE( APPROX( 0.0 ) == card2.xll.value );
+        REQUIRE( APPROX( 0.0 ) == card2.yll.value );
+        REQUIRE( APPROX( 10.0 ) == card2.ww.value );
+        REQUIRE( APPROX( 7.5 ) == card2.wh.value );
+        REQUIRE( APPROX( 0.0 ) == card2.wr.value );
       }
     } //WHEN
   } // GIVEN

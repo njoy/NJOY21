@@ -31,7 +31,7 @@ SCENARIO( "Yh output values", "[PLOTR],[Card6], [Yh]"){
     iRecordStream<char> issYh( std::istringstream( " /" ) );
     
     THEN( "default value is returned" ){
-      REQUIRE( 1.0f == argument::extract< PLOTR::Card6::Yh >(
+      REQUIRE( APPROX( 1.0 ) == argument::extract< PLOTR::Card6::Yh >(
                           issYh, yl ).value );
     }
   }//GIVEN

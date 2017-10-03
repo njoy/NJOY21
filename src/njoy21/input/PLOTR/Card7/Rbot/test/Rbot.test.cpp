@@ -28,7 +28,7 @@ SCENARIO( "Rbot output values", "[PLOTR],[Card7], [Rbot]"){
     iRecordStream<char> issRbot( std::istringstream( " /" ) );
 
     THEN( "default value is returned" ){
-      REQUIRE( 0.0f == argument::extract< PLOTR::Card7::Rbot >(
+      REQUIRE( APPROX( 0.0 ) == argument::extract< PLOTR::Card7::Rbot >(
                           issRbot ).value );
     }
   }//GIVEN

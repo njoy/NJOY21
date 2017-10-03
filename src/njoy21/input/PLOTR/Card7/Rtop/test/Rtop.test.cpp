@@ -31,7 +31,7 @@ SCENARIO( "Rtop output values", "[PLOTR],[Card7], [Rtop]"){
     iRecordStream<char> issRtop( std::istringstream( " /" ) );
     
     THEN( "default value is returned" ){
-      REQUIRE( 1.0f == argument::extract< PLOTR::Card7::Rtop >(
+      REQUIRE( APPROX( 1.0 ) == argument::extract< PLOTR::Card7::Rtop >(
                           issRtop, rbot ).value );
     }
   }//GIVEN

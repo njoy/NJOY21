@@ -44,12 +44,12 @@ SCENARIO( "Ll output values", "[PLOTR],[Card2], [Ll]"){
   GIVEN( "no Ll parameter provided" ){
     THEN( "the default value is returned with 7.5 added" ){
       iRecordStream<char> issLl( std::istringstream( " /" ) );
-      REQUIRE( 0.0f == argument::extract< PLOTR::Card2::Ll >( 
+      REQUIRE( APPROX( 0.0 ) == argument::extract< PLOTR::Card2::Ll >( 
                          issLl, 7.5 ).value );
     }
     THEN( "the default value is returned with 10.0 added" ){
       iRecordStream<char> issLl( std::istringstream( " /" ) );
-      REQUIRE( 0.0f == argument::extract< PLOTR::Card2::Ll >( 
+      REQUIRE( APPROX( 0.0 ) == argument::extract< PLOTR::Card2::Ll >( 
                          issLl, 10.0 ).value );
     }
   } //GIVEN

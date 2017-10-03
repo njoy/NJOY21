@@ -31,7 +31,7 @@ SCENARIO( "Eh output values", "[PLOTR],[Card5], [Eh]"){
     iRecordStream<char> issEh( std::istringstream( " /" ) );
     
     THEN( "default value is returned" ){
-      REQUIRE( 1.0f == argument::extract< PLOTR::Card5::Eh >(
+      REQUIRE( APPROX( 1.0 ) == argument::extract< PLOTR::Card5::Eh >(
                           issEh, el ).value );
     }
   }//GIVEN

@@ -16,9 +16,9 @@ SCENARIO( "Validating card10a inputs",
       PLOTR::Card10a card10a(issCard10a);
 
       THEN( "the members can be tested" ){
-        REQUIRE( 10.0f == card10a.xtag.value );
-        REQUIRE( 50.0f == card10a.ytag.value );
-        REQUIRE( 2.0f == card10a.xpoint.value );
+        REQUIRE( APPROX( 10.0 ) == card10a.xtag.value );
+        REQUIRE( APPROX( 50.0 ) == card10a.ytag.value );
+        REQUIRE( APPROX( 2.0 ) == card10a.xpoint.value );
       }
     } //WHEN
     WHEN( "All zeros" ){
@@ -27,9 +27,9 @@ SCENARIO( "Validating card10a inputs",
       PLOTR::Card10a card10a(issCard10a);
 
       THEN( "the members can be tested" ){
-        REQUIRE( 0.0f == card10a.xtag.value );
-        REQUIRE( 0.0f == card10a.ytag.value );
-        REQUIRE( 0.0f == card10a.xpoint.value );
+        REQUIRE( APPROX( 0.0 ) == card10a.xtag.value );
+        REQUIRE( APPROX( 0.0 ) == card10a.ytag.value );
+        REQUIRE( APPROX( 0.0 ) == card10a.xpoint.value );
       }
     } //WHEN
   } // GIVEN

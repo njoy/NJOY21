@@ -16,12 +16,12 @@ SCENARIO( "Validating card11 inputs",
       PLOTR::Card11 card11(issCard11);
 
       THEN( "the members can be tested" ){
-        REQUIRE( 10.0f == card11.xv.value );
-        REQUIRE( 50.0f == card11.yv.value );
-        REQUIRE( 2.0f == card11.zv.value );
-        REQUIRE( -3.0f == card11.x3.value );
-        REQUIRE( -2.0f == card11.y3.value );
-        REQUIRE( -0.5f == card11.z3.value );
+        REQUIRE( APPROX( 10.0 ) == card11.xv.value );
+        REQUIRE( APPROX( 50.0 ) == card11.yv.value );
+        REQUIRE( APPROX( 2.0 ) == card11.zv.value );
+        REQUIRE( APPROX( -3.0 ) == card11.x3.value );
+        REQUIRE( APPROX( -2.0 ) == card11.y3.value );
+        REQUIRE( APPROX( -0.5 ) == card11.z3.value );
       }
     } //WHEN
     WHEN( "All zeros" ){
@@ -30,12 +30,12 @@ SCENARIO( "Validating card11 inputs",
       PLOTR::Card11 card11(issCard11);
 
       THEN( "the members can be tested" ){
-        REQUIRE( 0.0f == card11.xv.value );
-        REQUIRE( 0.0f == card11.yv.value );
-        REQUIRE( 0.0f == card11.zv.value );
-        REQUIRE( 0.0f == card11.x3.value );
-        REQUIRE( 0.0f == card11.y3.value );
-        REQUIRE( 0.0f == card11.z3.value );
+        REQUIRE( APPROX( 0.0 ) == card11.xv.value );
+        REQUIRE( APPROX( 0.0 ) == card11.yv.value );
+        REQUIRE( APPROX( 0.0 ) == card11.zv.value );
+        REQUIRE( APPROX( 0.0 ) == card11.x3.value );
+        REQUIRE( APPROX( 0.0 ) == card11.y3.value );
+        REQUIRE( APPROX( 0.0 ) == card11.z3.value );
       }
     } //WHEN
     WHEN( "No values" ){
@@ -43,12 +43,12 @@ SCENARIO( "Validating card11 inputs",
       PLOTR::Card11 card11(issCard11);
 
       THEN( "the default values are returned" ){
-        REQUIRE( 15.0f == card11.xv.value );
-        REQUIRE( -15.0f == card11.yv.value );
-        REQUIRE( 15.0f == card11.zv.value );
-        REQUIRE( 2.5f == card11.x3.value );
-        REQUIRE( 6.5f == card11.y3.value );
-        REQUIRE( 2.5f == card11.z3.value );
+        REQUIRE( APPROX( 15.0 ) == card11.xv.value );
+        REQUIRE( APPROX( -15.0 ) == card11.yv.value );
+        REQUIRE( APPROX( 15.0 ) == card11.zv.value );
+        REQUIRE( APPROX( 2.5 ) == card11.x3.value );
+        REQUIRE( APPROX( 6.5 ) == card11.y3.value );
+        REQUIRE( APPROX( 2.5 ) == card11.z3.value );
       }
     }
   } // GIVEN

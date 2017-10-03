@@ -72,7 +72,7 @@ SCENARIO( "El output values", "[PLOTR],[Card5], [El]"){
     iRecordStream<char> issEl( std::istringstream( " /" ) );
 
     THEN( "default value is returned" ){
-      REQUIRE( 0.0f == argument::extract< PLOTR::Card5::El >(
+      REQUIRE( APPROX( 0.0 ) == argument::extract< PLOTR::Card5::El >(
                           issEl, itype[0] ).value );
     }
   }//GIVEN
@@ -81,7 +81,7 @@ SCENARIO( "El output values", "[PLOTR],[Card5], [El]"){
     iRecordStream<char> issEl( std::istringstream( " /" ) );
 
     THEN( "default value is returned" ){
-      REQUIRE( 1.0e-07 == argument::extract< PLOTR::Card5::El >(
+      REQUIRE( APPROX( 1.0e-07 ) == argument::extract< PLOTR::Card5::El >(
                           issEl, itype[2] ).value );
     }
   }//GIVEN

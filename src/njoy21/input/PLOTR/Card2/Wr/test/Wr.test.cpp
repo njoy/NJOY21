@@ -27,7 +27,7 @@ SCENARIO( "Wr output values", "[PLOTR],[Card2], [Wr]"){
   GIVEN( "no Wr parameter provided" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> issWr( std::istringstream( " /" ) );
-      REQUIRE( 0.0f == argument::extract< PLOTR::Card2::Wr >( 
+      REQUIRE( APPROX( 0.0 ) == argument::extract< PLOTR::Card2::Wr >( 
                          issWr ).value );
     }
   } //GIVEN

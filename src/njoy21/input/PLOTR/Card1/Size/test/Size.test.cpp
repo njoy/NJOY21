@@ -27,7 +27,7 @@ SCENARIO( "Size output values", "[PLOTR],[Card1], [Size]"){
   GIVEN( "no Size parameter provided" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> issSize( std::istringstream( " /" ) );
-      REQUIRE( 0.3f == argument::extract< PLOTR::Card1::Size >( 
+      REQUIRE( APPROX( 0.3 ) == argument::extract< PLOTR::Card1::Size >( 
                          issSize ).value );
     }
   } //GIVEN

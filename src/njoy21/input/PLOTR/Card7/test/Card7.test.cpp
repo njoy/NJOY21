@@ -16,9 +16,9 @@ SCENARIO( "Validating card7 inputs",
       PLOTR::Card7 card7(issCard7);
 
       THEN( "the members can be tested" ){
-        REQUIRE( 10.0f == card7.rbot.value );
-        REQUIRE( 50.0f == card7.rtop.value );
-        REQUIRE( 2.0f == card7.rstep.value );
+        REQUIRE( APPROX( 10.0 ) == card7.rbot.value );
+        REQUIRE( APPROX( 50.0 ) == card7.rtop.value );
+        REQUIRE( APPROX( 2.0 ) == card7.rstep.value );
       }
     } //WHEN
     WHEN( "A couple defaults are used" ){
@@ -26,9 +26,9 @@ SCENARIO( "Validating card7 inputs",
       PLOTR::Card7 card7(issCard7);
 
       THEN( "the members can be tested" ){
-        REQUIRE( 500.0f == card7.rbot.value );
-        REQUIRE( 400000.0f == card7.rtop.value );
-        REQUIRE( 1.0f == card7.rstep.value );
+        REQUIRE( APPROX( 500.0 ) == card7.rbot.value );
+        REQUIRE( APPROX( 400000.0 ) == card7.rtop.value );
+        REQUIRE( APPROX( 1.0 ) == card7.rstep.value );
       }
     } //WHEN
     WHEN( "No values are given" ){
@@ -36,9 +36,9 @@ SCENARIO( "Validating card7 inputs",
       PLOTR::Card7 card7(issCard7);
 
       THEN( "the members can be tested" ){
-        REQUIRE( 0.0f == card7.rbot.value );
-        REQUIRE( 1.0f == card7.rtop.value );
-        REQUIRE( 1.0f == card7.rstep.value );
+        REQUIRE( APPROX( 0.0 ) == card7.rbot.value );
+        REQUIRE( APPROX( 1.0 ) == card7.rtop.value );
+        REQUIRE( APPROX( 1.0 ) == card7.rstep.value );
       }
     } //WHEN
   } // GIVEN

@@ -20,8 +20,8 @@ SCENARIO( "Validating card4 inputs",
         REQUIRE( 1 == card4.jtype.value );
         REQUIRE( 1 == card4.igrid.value );
         REQUIRE( 1 == card4.ileg.value );
-        REQUIRE( 1.0f == card4.xtag.value );
-        REQUIRE( 1.0f == card4.ytag.value );
+        REQUIRE( APPROX( 1.0 ) == card4.xtag.value );
+        REQUIRE( APPROX( 1.0 ) == card4.ytag.value );
       }
     } //WHEN
     WHEN( "A couple defaults are used" ){

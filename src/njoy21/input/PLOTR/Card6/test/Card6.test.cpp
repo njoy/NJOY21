@@ -19,10 +19,10 @@ SCENARIO( "Validating card6 inputs",
       PLOTR::Card6 card6( issCard6, &card4 );
 
       THEN( "the members can be tested" ){
-        REQUIRE( 10.0f == card6.yl.value );
-        REQUIRE( 50.0f == card6.yh.value );
-        REQUIRE( 2.0f == card6.ystep.value );
-        REQUIRE( 50.0f == card4.ytag.value );
+        REQUIRE( APPROX( 10.0 ) == card6.yl.value );
+        REQUIRE( APPROX( 50.0 ) == card6.yh.value );
+        REQUIRE( APPROX( 2.0 ) == card6.ystep.value );
+        REQUIRE( APPROX( 50.0 ) == card4.ytag.value );
       }
     } //WHEN
     WHEN( "A couple defaults are used" ){
@@ -31,10 +31,10 @@ SCENARIO( "Validating card6 inputs",
       PLOTR::Card6 card6( issCard6, &card4 );
 
       THEN( "the members can be tested" ){
-        REQUIRE( 500.0f == card6.yl.value );
-        REQUIRE( 400000.0f == card6.yh.value );
-        REQUIRE( 1.0f == card6.ystep.value );
-        REQUIRE( 400000.0f == card4.ytag.value );
+        REQUIRE( APPROX( 500.0 ) == card6.yl.value );
+        REQUIRE( APPROX( 400000.0 ) == card6.yh.value );
+        REQUIRE( APPROX( 1.0 ) == card6.ystep.value );
+        REQUIRE( APPROX( 400000.0 ) == card4.ytag.value );
       }
     } //WHEN
     WHEN( "No values are given" ){
@@ -43,10 +43,10 @@ SCENARIO( "Validating card6 inputs",
       PLOTR::Card6 card6( issCard6, &card4 );
 
       THEN( "the members can be tested" ){
-        REQUIRE( 0.0f == card6.yl.value );
-        REQUIRE( 1.0f == card6.yh.value );
-        REQUIRE( 1.0f == card6.ystep.value );
-        REQUIRE( 1.0f == card4.ytag.value );
+        REQUIRE( APPROX( 0.0 ) == card6.yl.value );
+        REQUIRE( APPROX( 1.0 ) == card6.yh.value );
+        REQUIRE( APPROX( 1.0 ) == card6.ystep.value );
+        REQUIRE( APPROX( 1.0 ) == card4.ytag.value );
       }
     } //WHEN
   } // GIVEN
