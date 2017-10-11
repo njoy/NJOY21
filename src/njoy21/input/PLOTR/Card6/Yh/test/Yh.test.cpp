@@ -22,7 +22,7 @@ SCENARIO( "Yh output values", "[PLOTR],[Card6], [Yh]"){
             std::istringstream( std::to_string( yh ) ) );
 
         REQUIRE( yh == argument::extract< PLOTR::Card6::Yh >( 
-                          issYh, yl ).value );
+                          issYh, yl.value ).value );
       }
     }
   } // GIVEN
@@ -31,28 +31,15 @@ SCENARIO( "Yh output values", "[PLOTR],[Card6], [Yh]"){
     iRecordStream<char> issYh( std::istringstream( " /" ) );
     
     THEN( "default value is returned" ){
-      REQUIRE( APPROX( 1.0 ) == argument::extract< PLOTR::Card6::Yh >(
-                          issYh, yl ).value );
+      REQUIRE( Approx( 0.0 ) == argument::extract< PLOTR::Card6::Yh >(
+                          issYh, yl.value ).value );
     }
   }//GIVEN
-
-  GIVEN( "invalid Yh parameters" ){
-    std::vector<double> invalidValues{ -2.0, -1.1 };
-
-    THEN( "the class throws an exception" ){
-      for( auto yh : invalidValues ){
-        iRecordStream<char> issYh( 
-            std::istringstream( std::to_string( yh ) ) );
-
-        REQUIRE_THROWS( argument::extract< PLOTR::Card6::Yh >( issYh, yl ) );
-      }
-    }
-  } // GIVEN
 
   GIVEN( "Yh is less than Yl" ){
     iRecordStream<char> issYh( std::istringstream( " 10.0 / " ) );
     yl.value = 20.0;
 
-    REQUIRE_THROWS( argument::extract< PLOTR::Card6::Yh >( issYh, yl ) );
+    REQUIRE_THROWS( argument::extract< PLOTR::Card6::Yh >( issYh, yl.value ) );
   }//GIVEN
 } // SCENARIO

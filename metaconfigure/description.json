@@ -737,6 +737,7 @@
     "src/njoy21/input/PLOTR/Card4/Jtype.hpp",
     "src/njoy21/input/PLOTR/Card4/Ileg.hpp",
     "src/njoy21/input/PLOTR/Card4/Igrid.hpp",
+    "src/njoy21/input/PLOTR/Card4/src/readCoords.hpp",
     "src/njoy21/input/PLOTR/Card5a/Xlabl.hpp",
     "src/njoy21/input/PLOTR/Card11/Y3.hpp",
     "src/njoy21/input/PLOTR/Card11/Xv.hpp",

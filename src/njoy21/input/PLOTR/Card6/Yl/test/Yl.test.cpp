@@ -44,7 +44,7 @@ SCENARIO( "Yl output values", "[PLOTR],[Card6], [Yl]"){
     iRecordStream<char> issYl( std::istringstream( " /" ) );
 
     THEN( "default value is returned" ){
-      REQUIRE( APPROX( 0.0 ) == argument::extract< PLOTR::Card6::Yl >(
+      REQUIRE( Approx( 0.0 ) == argument::extract< PLOTR::Card6::Yl >(
                           issYl, itype[2] ).value );
     }
   }//GIVEN
@@ -53,7 +53,7 @@ SCENARIO( "Yl output values", "[PLOTR],[Card6], [Yl]"){
     iRecordStream<char> issYl( std::istringstream( " /" ) );
 
     THEN( "default value is returned" ){
-      REQUIRE( APPROX( 1.0e-07 ) == argument::extract< PLOTR::Card6::Yl >(
+      REQUIRE( Approx( 1.0e-07 ) == argument::extract< PLOTR::Card6::Yl >(
                           issYl, itype[3] ).value );
     }
   }//GIVEN
@@ -68,20 +68,6 @@ SCENARIO( "Yl output values", "[PLOTR],[Card6], [Yl]"){
 
         REQUIRE_THROWS( argument::extract< PLOTR::Card6::Yl >(
                           issYl, itype[1] ) );
-      }
-    }
-  } // GIVEN
-
-  GIVEN( "invalid Yl parameters for linear scale" ){
-    std::vector<double> invalidValues{ -2.0, -1.1 };
-
-    THEN( "the class throws an exception" ){
-      for( auto yl : invalidValues ){
-        iRecordStream<char> issYl( 
-            std::istringstream( std::to_string( yl ) ) );
-
-        REQUIRE_THROWS( argument::extract< PLOTR::Card6::Yl >(
-                          issYl, itype[0] ) );
       }
     }
   } // GIVEN

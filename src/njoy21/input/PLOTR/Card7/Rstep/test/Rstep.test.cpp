@@ -28,7 +28,7 @@ SCENARIO( "Rstep output values", "[PLOTR],[Card7], [Rstep]"){
     iRecordStream<char> issRstep( std::istringstream( " /" ) );
 
     THEN( "default value is returned" ){
-      REQUIRE( APPROX( 1.0 ) == argument::extract< PLOTR::Card7::Rstep >(
+      REQUIRE( Approx( 1.0 ) == argument::extract< PLOTR::Card7::Rstep >(
                           issRstep ).value );
     }
   }//GIVEN

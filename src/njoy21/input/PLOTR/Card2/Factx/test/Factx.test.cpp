@@ -27,7 +27,7 @@ SCENARIO( "Factx output values", "[PLOTR],[Card2], [Factx]"){
   GIVEN( "no Factx parameter provided" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> issFactx( std::istringstream( " /" ) );
-      REQUIRE( APPROX( 1.0 ) == argument::extract< PLOTR::Card2::Factx >( 
+      REQUIRE( Approx( 1.0 ) == argument::extract< PLOTR::Card2::Factx >( 
                          issFactx ).value );
     }
   } //GIVEN

@@ -44,12 +44,12 @@ SCENARIO( "Wh output values", "[PLOTR],[Card2], [Wh]"){
   GIVEN( "no Wh parameter provided" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> issWh( std::istringstream( " /" ) );
-      REQUIRE( APPROX( 7.5 ) == argument::extract< PLOTR::Card2::Wh >( 
+      REQUIRE( Approx( 7.5 ) == argument::extract< PLOTR::Card2::Wh >( 
                          issWh, 1 ).value );
     }
     THEN( "the default value is returned" ){
       iRecordStream<char> issWh( std::istringstream( " /" ) );
-      REQUIRE( APPROX( 10.0 ) == argument::extract< PLOTR::Card2::Wh >( 
+      REQUIRE( Approx( 10.0 ) == argument::extract< PLOTR::Card2::Wh >( 
                          issWh, 0 ).value );
     }
   } //GIVEN

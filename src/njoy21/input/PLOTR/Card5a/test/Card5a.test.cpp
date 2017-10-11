@@ -10,7 +10,7 @@ SCENARIO( "bugless" ){
       "123456789 123456789 123456789 123456789 123456789 123456789 ");
   iRecordStream<char> iss{ std::istringstream( "'" + value + "'" ) };
   PLOTR::Card5a card5a( iss );
-  REQUIRE( card5a.title.value == value );
+  REQUIRE( card5a.xlabl.value == value );
 }
 
 SCENARIO( "bugged" ){

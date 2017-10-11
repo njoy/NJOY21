@@ -10,8 +10,7 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "Eh output values", "[PLOTR],[Card5], [Eh]"){
 
-  Argument< PLOTR::Card5::El > el;
-  el.value = 0.0;
+  double el = 0.0;
 
   GIVEN( "valid Eh parameters" ){
     std::vector<double> validValues{0.01,0.1,0.5,0.8,1.0,2.0,80.0};
@@ -31,7 +30,7 @@ SCENARIO( "Eh output values", "[PLOTR],[Card5], [Eh]"){
     iRecordStream<char> issEh( std::istringstream( " /" ) );
     
     THEN( "default value is returned" ){
-      REQUIRE( APPROX( 1.0 ) == argument::extract< PLOTR::Card5::Eh >(
+      REQUIRE( Approx( 0.0 ) == argument::extract< PLOTR::Card5::Eh >(
                           issEh, el ).value );
     }
   }//GIVEN
@@ -51,7 +50,7 @@ SCENARIO( "Eh output values", "[PLOTR],[Card5], [Eh]"){
 
   GIVEN( "Eh is less than El" ){
     iRecordStream<char> issEh( std::istringstream( " 10.0 / " ) );
-    el.value = 20.0;
+    el = 20.0;
 
     REQUIRE_THROWS( argument::extract< PLOTR::Card5::Eh >( issEh, el ) );
   }//GIVEN

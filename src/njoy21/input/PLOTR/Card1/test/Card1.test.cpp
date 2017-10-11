@@ -17,7 +17,7 @@ SCENARIO( "Validating card1 inputs",
       THEN( "the members can be tested" ){
         REQUIRE( 0 == card1.lori.value );
         REQUIRE( 2 == card1.istyle.value );
-        REQUIRE( -0.2f == card1.size.value );
+        REQUIRE( Approx(-0.2) == card1.size.value );
         REQUIRE( 3 == card1.ipcol.value );
       }
     } //WHEN
@@ -28,7 +28,7 @@ SCENARIO( "Validating card1 inputs",
       THEN( "the members can be tested" ){
         REQUIRE( 1 == card1.lori.value );
         REQUIRE( 2 == card1.istyle.value );
-        REQUIRE( 0.30f == card1.size.value );
+        REQUIRE( Approx(0.30) == card1.size.value );
         REQUIRE( 0 == card1.ipcol.value );
       }
     } //WHEN
@@ -39,7 +39,7 @@ SCENARIO( "Validating card1 inputs",
       THEN( "the members can be tested" ){
         REQUIRE( 1 == card1.lori.value );
         REQUIRE( 2 == card1.istyle.value );
-        REQUIRE( 0.30f == card1.size.value );
+        REQUIRE( Approx(0.30) == card1.size.value );
         REQUIRE( 0 == card1.ipcol.value );
       }
     } //WHEN

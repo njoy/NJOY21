@@ -8,73 +8,61 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "Validating card6 inputs",
           "[PLOTR], [Card6]" ){
-  // Simple values to create a PLOTR::Card4 with no Ytag value.
-  iRecordStream<char> issCard4( std::istringstream( "1 0 / " ) );
+  Argument< PLOTR::Card4::Itype > itype; itype.value = 1;
+  Argument< PLOTR::Card4::Ytag > ytag;
 
   GIVEN( "valid PLOTR Card6 inputs" ){
     WHEN( "All values are given" ){
-      Argument< PLOTR::Card4 > card4( issCard4 );
       iRecordStream<char> issCard6(
             std::istringstream(" 10.0 50.0 2 / " ) );
-      PLOTR::Card6 card6( issCard6, &card4 );
+      PLOTR::Card6 card6( issCard6, itype, ytag );
 
       THEN( "the members can be tested" ){
-        REQUIRE( APPROX( 10.0 ) == card6.yl.value );
-        REQUIRE( APPROX( 50.0 ) == card6.yh.value );
-        REQUIRE( APPROX( 2.0 ) == card6.ystep.value );
-        REQUIRE( APPROX( 50.0 ) == card4.ytag.value );
+        REQUIRE( Approx( 10.0 ) == card6.yl.value );
+        REQUIRE( Approx( 50.0 ) == card6.yh.value );
+        REQUIRE( Approx( 2.0 ) == card6.ystep.value );
+        REQUIRE( Approx( 50.0 ) == *(ytag.value) );
       }
     } //WHEN
     WHEN( "A couple defaults are used" ){
-      Argument< PLOTR::Card4 > card4( issCard4 );
       iRecordStream<char> issCard6( std::istringstream(" 500.0 400000.0 / " ) );
-      PLOTR::Card6 card6( issCard6, &card4 );
+      PLOTR::Card6 card6( issCard6, itype, ytag );
 
       THEN( "the members can be tested" ){
-        REQUIRE( APPROX( 500.0 ) == card6.yl.value );
-        REQUIRE( APPROX( 400000.0 ) == card6.yh.value );
-        REQUIRE( APPROX( 1.0 ) == card6.ystep.value );
-        REQUIRE( APPROX( 400000.0 ) == card4.ytag.value );
+        REQUIRE( Approx( 500.0 ) == card6.yl.value );
+        REQUIRE( Approx( 400000.0 ) == card6.yh.value );
+        REQUIRE( Approx( 1.0 ) == card6.ystep.value );
+        REQUIRE( Approx( 400000.0 ) == *(ytag.value) );
       }
     } //WHEN
     WHEN( "No values are given" ){
-      Argument< PLOTR::Card4 > card4( issCard4 );
       iRecordStream<char> issCard6( std::istringstream(" / "));
-      PLOTR::Card6 card6( issCard6, &card4 );
+      PLOTR::Card6 card6( issCard6, itype, ytag );
 
       THEN( "the members can be tested" ){
-        REQUIRE( APPROX( 0.0 ) == card6.yl.value );
-        REQUIRE( APPROX( 1.0 ) == card6.yh.value );
-        REQUIRE( APPROX( 1.0 ) == card6.ystep.value );
-        REQUIRE( APPROX( 1.0 ) == card4.ytag.value );
+        REQUIRE( Approx( 0.0 ) == card6.yl.value );
+        REQUIRE( Approx( 0.0 ) == card6.yh.value );
+        REQUIRE( Approx( 1.0 ) == card6.ystep.value );
+        REQUIRE( Approx( 0.0 ) == *(ytag.value) );
       }
     } //WHEN
   } // GIVEN
 
   GIVEN( "invalid inputs" ){
-    Argument< PLOTR::Card4 > card4( issCard4 );
-    WHEN( "All values are wrong" ){
-      iRecordStream<char> issCard6( std::istringstream(
-             "-1.0 1.0 0.5/" ) );
-  
-      THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( PLOTR::Card6( issCard6, &card4 ) );
-      }
-    }//WHEN
     WHEN( "One value is wrong" ){
       {
         iRecordStream<char> issCard6( std::istringstream(
               "1.0 -1.0 0.5/" ) );
 
         THEN( "an exception is thrown" ){
-          REQUIRE_THROWS( PLOTR::Card6( issCard6, &card4 ) );
+          REQUIRE_THROWS( PLOTR::Card6( issCard6, itype, ytag ) );
         }
       }{
         iRecordStream<char> issCard6( std::istringstream(
               "1.0 4.0 -0.6/" ) );
 
         THEN( "an exception is thrown" ){
-          REQUIRE_THROWS( PLOTR::Card6( issCard6, &card4 ) );
+          REQUIRE_THROWS( PLOTR::Card6( issCard6, itype, ytag ) );
         }
       }
     }//WHEN
@@ -83,7 +71,7 @@ SCENARIO( "Validating card6 inputs",
             "1.0 10.0 1.0 20 /" ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( PLOTR::Card6( issCard6, &card4 ) );
+        REQUIRE_THROWS( PLOTR::Card6( issCard6, itype, ytag ) );
       }
     }//WHEN
   }//GIVEN

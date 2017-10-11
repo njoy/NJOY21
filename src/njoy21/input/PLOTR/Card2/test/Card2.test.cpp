@@ -21,13 +21,13 @@ SCENARIO( "Validating card2 inputs",
       THEN( "the members can be tested" ){
         REQUIRE( 1 == card2.iplot.value );
         REQUIRE( 4 == card2.iwcol.value );
-        REQUIRE( APPROX( 0.2 ) == card2.factx.value );
-        REQUIRE( APPROX( 3.1 ) == card2.facty.value );
-        REQUIRE( APPROX( -0.1 ) == card2.xll.value );
-        REQUIRE( APPROX( -0.3 ) == card2.yll.value );
-        REQUIRE( APPROX( 1.8 ) == card2.ww.value );
-        REQUIRE( APPROX( 2.9 ) == card2.wh.value );
-        REQUIRE( APPROX( 3.0 ) == card2.wr.value );
+        REQUIRE( Approx( 0.2 ) == card2.factx.value );
+        REQUIRE( Approx( 3.1 ) == card2.facty.value );
+        REQUIRE( Approx( -0.1 ) == card2.xll.value );
+        REQUIRE( Approx( -0.3 ) == card2.yll.value );
+        REQUIRE( Approx( 1.8 ) == card2.ww.value );
+        REQUIRE( Approx( 2.9 ) == card2.wh.value );
+        REQUIRE( Approx( 3.0 ) == card2.wr.value );
       }
     } //WHEN
     WHEN( "A couple defaults are used" ){
@@ -38,13 +38,13 @@ SCENARIO( "Validating card2 inputs",
       THEN( "the members can be tested" ){
         REQUIRE( -1 == card2.iplot.value );
         REQUIRE( 2 == card2.iwcol.value );
-        REQUIRE( APPROX( 2.2 ) == card2.factx.value );
-        REQUIRE( APPROX( 1.3 ) == card2.facty.value );
-        REQUIRE( APPROX( 1.5 ) == card2.xll.value );
-        REQUIRE( APPROX( 0.2 ) == card2.yll.value );
-        REQUIRE( APPROX( 7.5 ) == card2.ww.value );
-        REQUIRE( APPROX( 10.0 ) == card2.wh.value );
-        REQUIRE( APPROX( 0.0 ) == card2.wr.value );
+        REQUIRE( Approx( 2.2 ) == card2.factx.value );
+        REQUIRE( Approx( 1.3 ) == card2.facty.value );
+        REQUIRE( Approx( 1.5 ) == card2.xll.value );
+        REQUIRE( Approx( 0.2 ) == card2.yll.value );
+        REQUIRE( Approx( 7.5 ) == card2.ww.value );
+        REQUIRE( Approx( 10.0 ) == card2.wh.value );
+        REQUIRE( Approx( 0.0 ) == card2.wr.value );
       }
     } //WHEN
     WHEN( "No values are given" ){
@@ -55,13 +55,13 @@ SCENARIO( "Validating card2 inputs",
       THEN( "the members can be tested" ){
         REQUIRE( 1 == card2.iplot.value );
         REQUIRE( 0 == card2.iwcol.value );
-        REQUIRE( APPROX( 1.0 ) == card2.factx.value );
-        REQUIRE( APPROX( 1.0 ) == card2.facty.value );
-        REQUIRE( APPROX( 0.0 ) == card2.xll.value );
-        REQUIRE( APPROX( 0.0 ) == card2.yll.value );
-        REQUIRE( APPROX( 10.0 ) == card2.ww.value );
-        REQUIRE( APPROX( 7.5 ) == card2.wh.value );
-        REQUIRE( APPROX( 0.0 ) == card2.wr.value );
+        REQUIRE( Approx( 1.0 ) == card2.factx.value );
+        REQUIRE( Approx( 1.0 ) == card2.facty.value );
+        REQUIRE( Approx( 0.0 ) == card2.xll.value );
+        REQUIRE( Approx( 0.0 ) == card2.yll.value );
+        REQUIRE( Approx( 10.0 ) == card2.ww.value );
+        REQUIRE( Approx( 7.5 ) == card2.wh.value );
+        REQUIRE( Approx( 0.0 ) == card2.wr.value );
       }
     } //WHEN
   } // GIVEN

@@ -1,6 +1,6 @@
 struct Ylabl : public PLOTR::Card3::Title {
   using Value_t = PLOTR::Card3::Title::Value_t;
-  static std::string name(){ return "title"; }
+  static std::string name(){ return "ylabl"; }
 
   static std::string description(){
     return

@@ -16,7 +16,7 @@ SCENARIO( "Xtag output values", "[PLOTR],[Card4], [Xtag]"){
     THEN( "the returned class has the correct value" ){
       for( auto& xtag : validValues ){
         iRecordStream<char> issXtag( 
-            std::istringstream( std::to_string( 0.0 ) ) );
+            std::istringstream( std::to_string( xtag ) ) );
 
         REQUIRE( xtag == *( argument::extract< PLOTR::Card4::Xtag >( 
                           issXtag ).value ) );
