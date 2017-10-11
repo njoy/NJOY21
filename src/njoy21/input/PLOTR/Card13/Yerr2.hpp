@@ -6,8 +6,7 @@ struct Yerr2 {
       "The yerr2 argument specifies the upper y error limit.\n"
       "Setting this value to zero results in the same value as yerr1.";
   }
-  static bool verify( Value_t v, Value_t yerr1 ){
-    if( v == 0.0 ) this->value = yerr1;
+  static bool verify( Value_t v, Value_t ){
     return ( v >= 0.0 );
   }
 };

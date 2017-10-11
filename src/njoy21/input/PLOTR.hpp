@@ -61,4 +61,5 @@ public:
   #include "njoy21/input/PLOTR/Card10a.hpp"
   #include "njoy21/input/PLOTR/Card11.hpp"
   #include "njoy21/input/PLOTR/Card12.hpp"
+  #include "njoy21/input/PLOTR/Card13.hpp"
 };

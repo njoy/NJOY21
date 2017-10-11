@@ -737,7 +737,6 @@
     "src/njoy21/input/PLOTR/Card4/Jtype.hpp",
     "src/njoy21/input/PLOTR/Card4/Ileg.hpp",
     "src/njoy21/input/PLOTR/Card4/Igrid.hpp",
-    "src/njoy21/input/PLOTR/Card4/src/readCoords.hpp",
     "src/njoy21/input/PLOTR/Card5a/Xlabl.hpp",
     "src/njoy21/input/PLOTR/Card11/Y3.hpp",
     "src/njoy21/input/PLOTR/Card11/Xv.hpp",
@@ -1746,6 +1745,24 @@
     ],
     "njoy21.input.PLOTR.Card12.Nform": [
       "src/njoy21/input/PLOTR/Card12/Nform/test/Nform.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card13.Xdata": [
+      "src/njoy21/input/PLOTR/Card13/Xdata/test/Xdata.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card13.Xerr1": [
+      "src/njoy21/input/PLOTR/Card13/Xerr1/test/Xerr1.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card13.Xerr2": [
+      "src/njoy21/input/PLOTR/Card13/Xerr2/test/Xerr2.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card13.Ydata": [
+      "src/njoy21/input/PLOTR/Card13/Ydata/test/Ydata.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card13.Yerr1": [
+      "src/njoy21/input/PLOTR/Card13/Yerr1/test/Yerr1.test.cpp"
+    ],
+    "njoy21.input.PLOTR.Card13.Yerr2": [
+      "src/njoy21/input/PLOTR/Card13/Yerr2/test/Yerr2.test.cpp"
     ],
     "njoy21.input.PLOTR.Card2": [
       "src/njoy21/input/PLOTR/Card2/test/Card2.test.cpp"

@@ -20,9 +20,9 @@ public:
       xdata( argument::extract< Xdata >( is ) ),
       ydata( argument::extract< Ydata >( is ) ),
       yerr1( argument::extract< Yerr1 >( is ) ),
-      yerr2( argument::extract< Yerr2 >( is, this->yerr1 ) ),
+      yerr2( argument::extract< Yerr2 >( is, this->yerr1.value ) ),
       xerr1( argument::extract< Xerr1 >( is ) ),
-      xerr2( argument::extract< Xerr2 >( is, this->xerr1 ) )
+      xerr2( argument::extract< Xerr2 >( is, this->xerr1.value ) )
       {
         Card::clear( is );
       }

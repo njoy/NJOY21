@@ -5,7 +5,7 @@ struct Xdata {
     return
       "The xdata argument specifies the x-value for the data point.\n";
   }
-  static bool verify( Value_t v ){
-    return ( v >= 0.0 );
+  static bool verify( Value_t ){
+    return true;
   }
 };
