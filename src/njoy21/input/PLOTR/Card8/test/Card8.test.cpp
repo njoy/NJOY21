@@ -30,7 +30,7 @@ SCENARIO( "Validating card8 inputs",
         REQUIRE( 9235 == card8.matd.value );
         REQUIRE( 6 == card8.mfd.value );
         REQUIRE( 17 == card8.mtd.value );
-        REQUIRE( 150.0d * dimwits::kelvin == card8.temper.value );
+        REQUIRE( 150.0 * dimwits::kelvin == card8.temper.value );
         REQUIRE( 20 == card8.nth.value );
         REQUIRE( 2 == card8.ntp.value );
         REQUIRE( 2 == card8.nkh.value );
@@ -47,7 +47,7 @@ SCENARIO( "Validating card8 inputs",
         REQUIRE( 1 == card8.matd.value );
         REQUIRE( 7 == card8.mfd.value );
         REQUIRE( -20 == card8.mtd.value );
-        REQUIRE( 0.0d * dimwits::kelvin == card8.temper.value );
+        REQUIRE( 0.0 * dimwits::kelvin == card8.temper.value );
         REQUIRE( 1 == card8.nth.value );
         REQUIRE( 1 == card8.ntp.value );
         REQUIRE( 1 == card8.nkh.value );

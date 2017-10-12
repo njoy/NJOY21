@@ -1,3 +1,4 @@
+#include "njoy21/input/PLOTR/Card13.hpp"
 template< typename Istream>
 static std::vector< Card13 > readCard13List( Istream& is ){
   std::vector< Card13 > card13List;
