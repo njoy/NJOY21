@@ -24,6 +24,11 @@ public:
   #include "njoy21/input/PLOTR/src/readCard7.hpp"
   #include "njoy21/input/PLOTR/src/Plot.hpp"
   #include "njoy21/input/PLOTR/src/readPlots.hpp"
+  #include "njoy21/input/PLOTR/src/readCard10.hpp"
+  #include "njoy21/input/PLOTR/src/readCard10a.hpp"
+  #include "njoy21/input/PLOTR/src/readCard11.hpp"
+  #include "njoy21/input/PLOTR/src/readCard13List.hpp"
+  #include "njoy21/input/PLOTR/src/Freeform.hpp"
   #include "njoy21/input/PLOTR/src/readFreeform.hpp"
   #include "njoy21/input/PLOTR/src/Curves.hpp"
   #include "njoy21/input/PLOTR/src/readCurves.hpp"
@@ -37,7 +42,7 @@ public:
   try:
     card0( is ),
     card1( is ),
-    curves( readCurves( is ) )
+    curves( readCurves( is, this->card1.lori ) )
   {
   }
   catch( std::exception& e ){

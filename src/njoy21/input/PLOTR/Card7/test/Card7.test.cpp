@@ -15,7 +15,7 @@ SCENARIO( "Validating card7 inputs",
     WHEN( "All values are given" ){
       iRecordStream<char> issCard7(
             std::istringstream(" 10.0 50.0 2 / " ) );
-      PLOTR::Card7 card7(issCard7, jtype );
+      PLOTR::Card7 card7(issCard7, jtype.value );
 
       THEN( "the members can be tested" ){
         REQUIRE( Approx( 10.0 ) == card7.rbot.value );
@@ -25,7 +25,7 @@ SCENARIO( "Validating card7 inputs",
     } //WHEN
     WHEN( "A couple defaults are used" ){
       iRecordStream<char> issCard7( std::istringstream(" 500.0 400000.0 / " ) );
-      PLOTR::Card7 card7(issCard7, jtype );
+      PLOTR::Card7 card7(issCard7, jtype.value );
 
       THEN( "the members can be tested" ){
         REQUIRE( Approx( 500.0 ) == card7.rbot.value );
@@ -35,7 +35,7 @@ SCENARIO( "Validating card7 inputs",
     } //WHEN
     WHEN( "No values are given" ){
       iRecordStream<char> issCard7( std::istringstream(" / "));
-      PLOTR::Card7 card7(issCard7, jtype );
+      PLOTR::Card7 card7(issCard7, jtype.value );
 
       THEN( "the members can be tested" ){
         REQUIRE( Approx( 0.0 ) == card7.rbot.value );
@@ -52,14 +52,14 @@ SCENARIO( "Validating card7 inputs",
               "1.0 -1.0 0.5/" ) );
 
         THEN( "an exception is thrown" ){
-          REQUIRE_THROWS( PLOTR::Card7(issCard7, jtype ) );
+          REQUIRE_THROWS( PLOTR::Card7(issCard7, jtype.value ) );
         }
       }{
         iRecordStream<char> issCard7( std::istringstream(
               "1.0 4.0 -0.6/" ) );
 
         THEN( "an exception is thrown" ){
-          REQUIRE_THROWS( PLOTR::Card7(issCard7, jtype ) );
+          REQUIRE_THROWS( PLOTR::Card7(issCard7, jtype.value ) );
         }
       }
     }//WHEN
@@ -68,7 +68,7 @@ SCENARIO( "Validating card7 inputs",
             "1.0 10.0 1.0 20 /" ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( PLOTR::Card7(issCard7, jtype ) );
+        REQUIRE_THROWS( PLOTR::Card7(issCard7, jtype.value ) );
       }
     }//WHEN
   }//GIVEN

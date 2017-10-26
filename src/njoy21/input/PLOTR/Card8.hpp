@@ -9,6 +9,7 @@ public:
   #include "njoy21/input/PLOTR/Card8/Nth.hpp"
   #include "njoy21/input/PLOTR/Card8/Ntp.hpp"
   #include "njoy21/input/PLOTR/Card8/Nkh.hpp"
+  #include "njoy21/input/PLOTR/src/readNtpNkh.hpp"
 
   Argument< Iverf > iverf;
   Argument< Nin > nin;
@@ -17,12 +18,10 @@ public:
   Argument< Mtd > mtd;
   Argument< Temper > temper;
   Argument< Nth > nth;
-  Argument< Ntp > ntp;
-  Argument< Nkh > nkh;
+  optional< std::pair< Argument< Ntp >, Argument< Nkh > > > ntpnkh;
 
   template< typename Char >
-  Card8 ( iRecordStream< Char >& is,
-          Argument< PLOTR::Card4::Jtype >& jtype )
+  Card8 ( iRecordStream< Char >& is, const int jtype )
     try:
       iverf( argument::extract< Iverf >( is ) ),
       nin( argument::extract< Nin >( is, this->iverf.value ) ),
@@ -31,11 +30,8 @@ public:
       mtd( argument::extract< Mtd >( is, this->iverf.value ) ),
       temper( argument::extract< Temper >( is, this->iverf.value ) ),
       nth( argument::extract< Nth >( is, this->mfd.value,
-                                     this->iverf.value, jtype.value )),
-      ntp( argument::extract< Ntp >( is, this->mfd.value,
-                                     this->iverf.value ) ),
-      nkh( argument::extract< Nkh >( is, this->mfd.value,
-                                     this->iverf.value ) )
+                                     this->iverf.value, jtype ) ),
+      ntpnkh( readNtpNkh( is, this->mfd.value, this->iverf.value ) )
       {
         Card::clear( is );
       }

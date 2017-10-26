@@ -6,18 +6,18 @@ class Curves {
   optional< Card10 > card10;
   optional< Card10a > card10a;
   optional< Card11 > card11;
-  optional< std::pair< Card12, optional< Card13 > > > freeform;
+  optional< Freeform > freeform;
 
   template< typename Istream >
   Curves( Istream& is, const int iplot )
   try:
     plot( readPlot( is, iplot ) ),
-    card8( is ),
+    card8( is, this->plot->card4.jtype.value ),
     card9( is ),
-    card10( is, this->plot->card4.ileg.value ),
-    card10a( is, this->plot->card4.ileg.value ),
-    card11( is, this->plot->card4.itype.value ),
-    freeform( is, this->card8.iverf.value )
+    card10( readCard10(is, this->plot->card4.ileg.value ) ),
+    card10a( readCard10a(is, this->plot->card4.ileg.value ) ),
+    card11( readCard11(is, this->plot->card4.itype.value ) ),
+    freeform( readFreeform( is, this->card8.iverf.value ) )
   {
   }
   catch( std::exception& e ){

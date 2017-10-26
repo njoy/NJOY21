@@ -1,5 +1,5 @@
 struct Ntp{
-  using Value_t = int;
+  using Value_t = optional< int >;
   static std::string name(){ return "ntp"; }
   static std::string description(){
     return
@@ -15,12 +15,15 @@ struct Ntp{
         "For mfd=7, ntp = 1 to use alpha as the independent variable (default)."
         "\n           ntp = 2 to use beta as the independent variable.";
   }
-  static Value_t defaultValue( int, int ){ return 1; }
-  static bool verify( Value_t v, int mfd, int iverf ){
-    if( iverf == 0 ) return true;
-    if( iverf == 1 and mfd == 3 ) return ( v == 1 or v == 2 );
-    if( iverf != 1 and mfd == 6 ) return ( v > 0 );
-    if( mfd == 7 ) return ( v == 1 or v == 2 );
+  static Value_t defaultValue( const int, const int ){
+    return 1;
+  }
+  static bool verify( const Value_t v, const int mfd, const int iverf ){
+    std::cout << "Ntp iverf: " << iverf << " and v: " << *v << '\n';
+    if( iverf == 0 or v == std::nullopt ) return true;
+    if( iverf == 1 and mfd == 3 ) return ( *v == 1 or *v == 2 );
+    if( iverf != 1 and mfd == 6 ) return ( *v > 0 );
+    if( mfd == 7 ) return ( *v == 1 or *v == 2 );
     return false;
   }
 };

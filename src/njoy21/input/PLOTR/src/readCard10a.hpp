@@ -4,8 +4,7 @@ static optional< Card10a >
 {
 
   if( ileg == 2 ){
-    Card10a card10a( is );
-    return optional< Card10a >( card10a );
+    return Card10a( is );
   }
   return std::nullopt;
-};
+}

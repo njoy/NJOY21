@@ -8,4 +8,4 @@ static optional< Card11 >
     return optional< Card11 >( card11 );
   }
   return std::nullopt;
-};
+}

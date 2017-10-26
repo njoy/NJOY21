@@ -697,7 +697,9 @@
     "src/njoy21/input/PLOTR/Card13/Ydata.hpp",
     "src/njoy21/input/PLOTR/Card13/Xerr2.hpp",
     "src/njoy21/input/PLOTR/src/readCard13List.hpp",
+    "src/njoy21/input/PLOTR/src/Freeform.hpp",
     "src/njoy21/input/PLOTR/src/readCurves.hpp",
+    "src/njoy21/input/PLOTR/src/readNtpNkh.hpp",
     "src/njoy21/input/PLOTR/src/readCard10.hpp",
     "src/njoy21/input/PLOTR/src/readFreeform.hpp",
     "src/njoy21/input/PLOTR/src/readCard7.hpp",
@@ -1706,6 +1708,9 @@
     ],
     "njoy21.input.MODER.Card3.Nin": [
       "src/njoy21/input/MODER/Card3/Nin/test/Nin.test.cpp"
+    ],
+    "njoy21.input.PLOTR": [
+      "src/njoy21/input/PLOTR/test/PLOTR.test.cpp"
     ],
     "njoy21.input.PLOTR.Card0": [
       "src/njoy21/input/PLOTR/Card0/test/Card0.test.cpp"
