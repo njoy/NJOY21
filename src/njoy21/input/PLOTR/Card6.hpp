@@ -11,13 +11,16 @@ public:
   template< typename Char >
   Card6 ( iRecordStream< Char >& is,
           Argument< PLOTR::Card4::Itype >& itype,
-          Argument< PLOTR::Card4::Ytag >& ytag )
+          Argument< PLOTR::Card4::Ytag >& ytag,
+          const int ileg )
     try:
       yl( argument::extract< Yl >( is, itype.value ) ),
       yh( argument::extract< Yh >( is, this->yl.value ) ),
       ystep( argument::extract< Ystep >( is ) )
       {
-        ytag.value = ytag.value.value_or( this->yh.value );
+        if( ileg != 0 ){
+          ytag.value = ytag.value.value_or( this->yh.value );
+        }
         Card::clear( is );
       }
     catch( std::exception& e ){

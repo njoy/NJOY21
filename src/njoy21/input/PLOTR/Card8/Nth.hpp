@@ -1,5 +1,5 @@
 struct Nth{
-  using Value_t = int;
+  using Value_t = optional< int >;
   static std::string name(){ return "nth"; }
   static std::string description(){
     return
@@ -19,7 +19,10 @@ struct Nth{
         "For mfd=7, nth is the index for the independent variables (alpha\n"
         "or beta).";
   }
-  static Value_t defaultValue( int, int, int ){ return 1; }
+  static Value_t defaultValue( const int, const int iverf, const int ){ 
+    if( iverf == 0 ) return std::nullopt;
+    return 1;
+  }
   static bool verify( Value_t v, int mfd, int iverf, int jtype ){
     if( iverf == 0 ) return true;
     if( iverf == 1 ){ // GENDF

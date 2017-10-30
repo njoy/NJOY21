@@ -1,5 +1,5 @@
 struct Mfd {
-  using Value_t = int;
+  using Value_t = optional< int >;
   static std::string name(){ return "mfd"; }
   static std::string description(){
     return 
@@ -45,11 +45,11 @@ struct Mfd {
         "        sections\n\n"
         "If the Iverf value is 0, this value is ignored.";
   }
-
+  static Value_t defaultValue( const int ){ return std::nullopt; }
   static bool verify( const Value_t m, const int iverf ){
     if( iverf == 0 ) return true;
-    return ( ( m > 0 and m < 11 ) or ( m > 11 and m < 16 ) or ( m == 23 ) or
-             ( m > 25 and m < 29 ) or ( m > 29 and m < 36 ) or ( m == 39 ) or
-             ( m == 40 ) );
+    return ( ( *m > 0 and *m < 11 ) or ( *m > 11 and *m < 16 ) or ( *m == 23 )
+          or ( *m > 25 and *m < 29 ) or ( *m > 29 and *m < 36 ) or ( *m == 39 )
+          or ( *m == 40 ) );
   }
 };

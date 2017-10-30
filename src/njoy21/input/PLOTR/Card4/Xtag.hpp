@@ -8,6 +8,6 @@ struct Xtag {
       "The default will be to put the legend on the left edge of the plot.";
   }
   // defaultVal will be used by Card5 to set the default x-coordinate.
-  static Value_t defaultValue(){ return nullopt; }
+  static Value_t defaultValue(){ return std::nullopt; }
   static bool verify( const Value_t& v ){ return (not v) or (*v >= 0.0 ); }
 };

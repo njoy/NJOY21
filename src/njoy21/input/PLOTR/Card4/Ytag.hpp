@@ -8,5 +8,5 @@ struct Ytag {
       "The default will be to put the legend at the top of the plot.";
   }
   // defaultValue will be used by Card6 to set the default y-coordinate.
-  static Value_t defaultValue(){ return nullopt; }
+  static Value_t defaultValue(){ return std::nullopt; }
 };

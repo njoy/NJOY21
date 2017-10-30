@@ -15,9 +15,9 @@ class Plot {
     card3( is ),
     card3a( is ),
     card4( is ),
-    card5( is, this->card4.xtag, this->card4.itype ),
+    card5( is, this->card4.xtag, this->card4.itype, this->card4.ileg.value ),
     card5a( is ),
-    card6( is, this->card4.itype, this->card4.ytag ),
+    card6( is, this->card4.itype, this->card4.ytag, this->card4.ileg.value ),
     card6a( is ),
     card7( readCard7( is, this->card4.jtype.value ) )
   {

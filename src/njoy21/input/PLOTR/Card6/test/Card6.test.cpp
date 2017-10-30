@@ -10,12 +10,13 @@ SCENARIO( "Validating card6 inputs",
           "[PLOTR], [Card6]" ){
   Argument< PLOTR::Card4::Itype > itype; itype.value = 1;
   Argument< PLOTR::Card4::Ytag > ytag;
+  const int ileg = 1;
 
   GIVEN( "valid PLOTR Card6 inputs" ){
     WHEN( "All values are given" ){
       iRecordStream<char> issCard6(
             std::istringstream(" 10.0 50.0 2 / " ) );
-      PLOTR::Card6 card6( issCard6, itype, ytag );
+      PLOTR::Card6 card6( issCard6, itype, ytag, ileg );
 
       THEN( "the members can be tested" ){
         REQUIRE( Approx( 10.0 ) == card6.yl.value );
@@ -26,7 +27,7 @@ SCENARIO( "Validating card6 inputs",
     } //WHEN
     WHEN( "A couple defaults are used" ){
       iRecordStream<char> issCard6( std::istringstream(" 500.0 400000.0 / " ) );
-      PLOTR::Card6 card6( issCard6, itype, ytag );
+      PLOTR::Card6 card6( issCard6, itype, ytag, ileg );
 
       THEN( "the members can be tested" ){
         REQUIRE( Approx( 500.0 ) == card6.yl.value );
@@ -37,7 +38,7 @@ SCENARIO( "Validating card6 inputs",
     } //WHEN
     WHEN( "No values are given" ){
       iRecordStream<char> issCard6( std::istringstream(" / "));
-      PLOTR::Card6 card6( issCard6, itype, ytag );
+      PLOTR::Card6 card6( issCard6, itype, ytag, ileg );
 
       THEN( "the members can be tested" ){
         REQUIRE( Approx( 0.0 ) == card6.yl.value );
@@ -55,14 +56,14 @@ SCENARIO( "Validating card6 inputs",
               "1.0 -1.0 0.5/" ) );
 
         THEN( "an exception is thrown" ){
-          REQUIRE_THROWS( PLOTR::Card6( issCard6, itype, ytag ) );
+          REQUIRE_THROWS( PLOTR::Card6( issCard6, itype, ytag, ileg ) );
         }
       }{
         iRecordStream<char> issCard6( std::istringstream(
               "1.0 4.0 -0.6/" ) );
 
         THEN( "an exception is thrown" ){
-          REQUIRE_THROWS( PLOTR::Card6( issCard6, itype, ytag ) );
+          REQUIRE_THROWS( PLOTR::Card6( issCard6, itype, ytag, ileg ) );
         }
       }
     }//WHEN
@@ -71,7 +72,7 @@ SCENARIO( "Validating card6 inputs",
             "1.0 10.0 1.0 20 /" ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( PLOTR::Card6( issCard6, itype, ytag ) );
+        REQUIRE_THROWS( PLOTR::Card6( issCard6, itype, ytag, ileg ) );
       }
     }//WHEN
   }//GIVEN

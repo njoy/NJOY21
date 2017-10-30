@@ -18,7 +18,6 @@ struct Nkh{
     return 1;
   }
   static bool verify( Value_t v, int mfd, int iverf ){
-    std::cout << "Nkh iverf: " << iverf << " and v: " << *v << '\n';
     if( iverf == 0 or v == std::nullopt ) return true;
     if( iverf == 1 and mfd == 3 ) return ( *v == 1 or *v == 2 );
     if( iverf != 1 and mfd == 6 ) return ( *v > 0 );
