@@ -20,6 +20,22 @@ SCENARIO( "Validating card0 inputs",
           REQUIRE( 21 == card0.nplt0.value );
         }
       }{
+        iRecordStream<char> issCard0( std::istringstream("-22 25 /" ) );
+        PLOTR::Card0 card0(issCard0);
+
+        THEN( "the members can be tested" ){
+          REQUIRE( -22 == card0.nplt.value );
+          REQUIRE( 25 == card0.nplt0.value );
+        }
+      }{
+        iRecordStream<char> issCard0( std::istringstream(" -29 -99 /" ) );
+        PLOTR::Card0 card0(issCard0);
+
+        THEN( "the members can be tested" ){
+          REQUIRE( -29 == card0.nplt.value );
+          REQUIRE( -99 == card0.nplt0.value );
+        }
+      }{
         iRecordStream<char> issCard0( std::istringstream("20 / " ) );
         PLOTR::Card0 card0(issCard0);
 
@@ -34,6 +50,27 @@ SCENARIO( "Validating card0 inputs",
   GIVEN( "invalid inputs" ){
     WHEN( "Duplicate values for Nplt and Nplt0" ){
       iRecordStream<char> issCard0( std::istringstream("20 20 /" ) );
+  
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( PLOTR::Card0(issCard0) );
+      }
+    }
+    WHEN( "Invalid value for Nplt0" ){
+      iRecordStream<char> issCard0( std::istringstream("20 -2 /" ) );
+  
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( PLOTR::Card0(issCard0) );
+      }
+    }
+    WHEN( "Invalid value for Nplt" ){
+      iRecordStream<char> issCard0( std::istringstream("100 /" ) );
+  
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( PLOTR::Card0(issCard0) );
+      }
+    }
+    WHEN( "Invalid value for both" ){
+      iRecordStream<char> issCard0( std::istringstream("100 -19 /" ) );
   
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( PLOTR::Card0(issCard0) );

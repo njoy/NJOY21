@@ -7,7 +7,7 @@ struct Yerr1 {
       "Setting this value to zero results in no error bars in the y-direction.";
   }
   static Value_t defaultValue(){ return std::nullopt; }
-  static bool verify( Value_t v ){
-    return ( *v >= 0.0 );
+  static bool verify( const Value_t v ){
+    return ( *v >= 0.0 ) or ( v == std::nullopt );
   }
 };

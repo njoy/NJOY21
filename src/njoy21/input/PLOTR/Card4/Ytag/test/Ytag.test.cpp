@@ -23,11 +23,4 @@ SCENARIO( "Ytag output values", "[PLOTR],[Card4], [Ytag]"){
       }
     }
   } // GIVEN
-//  GIVEN( "no input" ){
-//    iRecordStream<char> issYtag( std::istringstream( "  /" ) );
-//    THEN( "the null opt is returned" ){
-//      REQUIRE( std::nullopt == argument::extract< PLOTR::Card4::Ytag >(
-//                               issYtag ).value );
-//    }
-//  } //GIVEN
 } // SCENARIO

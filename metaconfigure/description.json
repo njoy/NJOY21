@@ -1760,6 +1760,9 @@
     "njoy21.input.PLOTR.Card12.Nform": [
       "src/njoy21/input/PLOTR/Card12/Nform/test/Nform.test.cpp"
     ],
+    "njoy21.input.PLOTR.Card13": [
+      "src/njoy21/input/PLOTR/Card13/test/Card13.test.cpp"
+    ],
     "njoy21.input.PLOTR.Card13.Xdata": [
       "src/njoy21/input/PLOTR/Card13/Xdata/test/Xdata.test.cpp"
     ],

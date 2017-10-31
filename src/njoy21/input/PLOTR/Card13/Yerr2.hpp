@@ -6,8 +6,8 @@ struct Yerr2 {
       "The yerr2 argument specifies the upper y error limit.\n"
       "Setting this value to zero results in the same value as yerr1.";
   }
-  static Value_t defaultValue( Value_t ){ return std::nullopt; }
-  static bool verify( Value_t v, Value_t ){
-    return ( *v >= 0.0 );
+  static Value_t defaultValue(){ return std::nullopt; }
+  static bool verify( const Value_t v ){
+    return ( *v >= 0.0 ) or ( v == std::nullopt );
   }
 };

@@ -27,7 +27,8 @@ struct Ww {
     if( pgfmt == 1 ) return 10.0;
     return 7.5;
   }
-  static bool verify( Value_t v , const int ){
-    return ( v > 0.0 and v <= 11.0 );
+  static bool verify( Value_t v , const int pgfmt ){
+    return ( v > 0.0 and 
+             v <= ( PLOTR::Card2::Ww::defaultValue( pgfmt ) + 1.0 ) );
   }
 };

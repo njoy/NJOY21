@@ -24,6 +24,14 @@ SCENARIO( "Yerr1 output values", "[PLOTR],[Card13], [Yerr1]"){
     }
   } // GIVEN
 
+  GIVEN( "no parameter provided" ){
+    iRecordStream<char> issYerr1( std::istringstream( " /" ) );
+    THEN( "the default nullopt is returned" ){
+      REQUIRE( std::nullopt == argument::extract< PLOTR::Card13::Yerr1 >(
+                               issYerr1 ).value );
+    }
+  } // GIVEN
+
   GIVEN( "invalid Yerr1 parameters" ){
     std::vector<double> invalidValues{-2.0, -1.0};
 

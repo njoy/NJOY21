@@ -23,6 +23,13 @@ SCENARIO( "Lori output values", "[PLOTR],[Card1], [Lori]"){
       }
     }
   } // GIVEN
+  GIVEN( "no parameter" ){
+    THEN( "the default is returned" ){
+      iRecordStream<char> issLori( std::istringstream( " /" ) );
+
+      REQUIRE( 1 == argument::extract< PLOTR::Card1::Lori >( issLori ).value );
+    }
+  } //GIVEN
   GIVEN( "invalid Lori parameters" ){
     std::vector<int> invalidValues{ -2, -1, 2, 3 };
 

@@ -1,4 +1,4 @@
-struct Nplt0 : public argument::common::Nin {
+struct Nplt0 {
   using Value_t = argument::common::Nin::Value_t;
   static std::string name(){ return "nplt0"; }
   static std::string description(){
@@ -17,8 +17,9 @@ struct Nplt0 : public argument::common::Nin {
       "and 99, inclusively.  The default value, 0, is also allowed.  As\n"
       "usual, the value for nplt0 cannot be the same as nplt.";
   }
-  static int defaultValue( const Argument< Nplt >& ) { return 0; }
+  static Value_t defaultValue( const Argument< Nplt >& ) { return 0; }
   static bool verify( const Value_t v, const Argument< Nplt >& nplt ){
-    return v == 0 || argument::common::Nout::verify(v, nplt);
+    return ( v == 0 or argument::common::Nin::verify(v) ) and 
+         ( std::abs(v) != std::abs(nplt.value) );
   }
 };

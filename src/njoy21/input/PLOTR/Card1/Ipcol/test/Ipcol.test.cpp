@@ -23,6 +23,13 @@ SCENARIO( "Ipcol output values", "[PLOTR],[Card1], [Ipcol]"){
       }
     }
   } // GIVEN
+  GIVEN( "No provided parameter" ){
+    THEN( "the default value is returned" ){
+      iRecordStream<char> issIpcol( std::istringstream( " /" ) );
+
+      REQUIRE( 0 == argument::extract< PLOTR::Card1::Ipcol >( issIpcol ).value);
+    }
+  }
   GIVEN( "invalid Ipcol parameters" ){
     std::vector<int> invalidValues{ -2, -1, 8, 9 };
 

@@ -32,12 +32,31 @@ SCENARIO( "Validating card10a inputs",
         REQUIRE( Approx( 0.0 ) == card10a.xpoint.value );
       }
     } //WHEN
+    WHEN( "As many negative values as possible are given" ){
+      iRecordStream<char> issCard10a( std::istringstream(
+                           " 0.0 -1.0 -4.0 / " ) );
+      PLOTR::Card10a card10a(issCard10a);
+
+      THEN( "the members can be tested" ){
+        REQUIRE( Approx( 0.0 ) == card10a.xtag.value );
+        REQUIRE( Approx(-1.0 ) == card10a.ytag.value );
+        REQUIRE( Approx(-4.0 ) == card10a.xpoint.value );
+      }
+    } //WHEN
   } // GIVEN
 
   GIVEN( "invalid inputs" ){
     WHEN( "An extra value is given" ){
       iRecordStream<char> issCard10a( std::istringstream(
             "1.0 10.0 1.0 20 /" ) );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( PLOTR::Card10a(issCard10a) );
+      }
+    }//WHEN
+    WHEN( "A negative xtag value is given" ){
+      iRecordStream<char> issCard10a( std::istringstream(
+            "-1.0 10.0 1.0 /" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( PLOTR::Card10a(issCard10a) );

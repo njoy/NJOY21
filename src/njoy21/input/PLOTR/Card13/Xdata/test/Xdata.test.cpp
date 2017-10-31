@@ -24,4 +24,12 @@ SCENARIO( "Xdata output values", "[PLOTR],[Card13], [Xdata]"){
     }
   } // GIVEN
 
+  GIVEN( "no parameter" ){
+    iRecordStream<char> issXdata( std::istringstream( " /" ) );
+    THEN( "a default nullopt is returned" ){
+      REQUIRE( std::nullopt == argument::extract< PLOTR::Card13::Xdata >(
+                               issXdata ).value );
+    }
+  } // GIVEN
+
 } // SCENARIO

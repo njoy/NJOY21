@@ -23,6 +23,14 @@ SCENARIO( "Istyle output values", "[PLOTR],[Card1], [Istyle]"){
       }
     }
   } // GIVEN
+  GIVEN( "no parameter" ){
+    THEN( "the default parameter is used" ){
+      iRecordStream<char> issIstyle( std::istringstream( "  /" ) );
+
+      REQUIRE( 2 == 
+               argument::extract< PLOTR::Card1::Istyle >( issIstyle).value );
+    }
+  }
   GIVEN( "invalid Istyle parameters" ){
     std::vector<int> invalidValues{ -2, -1, 0, 3, 4 };
 

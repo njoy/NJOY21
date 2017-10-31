@@ -10,8 +10,6 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "Yerr2 output values", "[PLOTR],[Card13], [Yerr2]"){
 
-  const double yerr1 = 3.0;
-
   GIVEN( "valid Yerr2 parameters" ){
     std::vector<double> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
 
@@ -21,8 +19,16 @@ SCENARIO( "Yerr2 output values", "[PLOTR],[Card13], [Yerr2]"){
             std::istringstream( std::to_string( yerr2 ) ) );
 
         REQUIRE( yerr2 == argument::extract< PLOTR::Card13::Yerr2 >( 
-                          issYerr2, yerr1 ).value );
+                          issYerr2 ).value );
       }
+    }
+  } // GIVEN
+
+  GIVEN( "no parameter provided" ){
+    iRecordStream<char> issYerr2( std::istringstream( " /" ) );
+    THEN( "the default nullopt is returned" ){
+      REQUIRE( std::nullopt == argument::extract< PLOTR::Card13::Yerr2 >(
+                               issYerr2 ).value );
     }
   } // GIVEN
 
@@ -35,7 +41,7 @@ SCENARIO( "Yerr2 output values", "[PLOTR],[Card13], [Yerr2]"){
             std::istringstream( std::to_string( yerr2 ) ) );
 
         REQUIRE_THROWS( argument::extract< PLOTR::Card13::Yerr2 >( 
-                          issYerr2, yerr1 ) );
+                          issYerr2 ) );
       }
     }
   } // GIVEN

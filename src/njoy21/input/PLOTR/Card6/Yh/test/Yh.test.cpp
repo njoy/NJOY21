@@ -11,10 +11,10 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Yh output values", "[PLOTR],[Card6], [Yh]"){
 
   Argument< PLOTR::Card6::Yl > yl;
-  yl.value = 0.0;
+  yl.value = -10.0;
 
   GIVEN( "valid Yh parameters" ){
-    std::vector<double> validValues{0.01,0.1,0.5,0.8,1.0,2.0,80.0};
+    std::vector<double> validValues{-4.0,0.01,0.1,0.5,0.8,1.0,2.0,80.0};
 
     THEN( "the returned class has the correct value" ){
       for( auto yh : validValues ){
@@ -28,6 +28,7 @@ SCENARIO( "Yh output values", "[PLOTR],[Card6], [Yh]"){
   } // GIVEN
 
   GIVEN( "default value" ){
+    yl.value = 0.0;
     iRecordStream<char> issYh( std::istringstream( " /" ) );
     
     THEN( "default value is returned" ){

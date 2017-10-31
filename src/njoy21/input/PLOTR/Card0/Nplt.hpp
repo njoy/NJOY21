@@ -1,4 +1,5 @@
-struct Nplt : public argument::common::Nin {
+struct Nplt {
+  using Value_t = argument::common::Nin::Value_t;
   static std::string name(){ return "nplt"; }
   static std::string description(){
     return
@@ -14,5 +15,8 @@ struct Nplt : public argument::common::Nin {
       "\n"
       "Typically, nplt values are restricted to an absolute value between 20\n"
       "and 99, inclusively.";
+  }
+  static bool verify( const Value_t v ){
+    return argument::common::Nin::verify(v);
   }
 };

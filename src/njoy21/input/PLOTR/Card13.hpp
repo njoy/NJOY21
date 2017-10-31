@@ -20,10 +20,16 @@ public:
       xdata( argument::extract< Xdata >( is ) ),
       ydata( argument::extract< Ydata >( is ) ),
       yerr1( argument::extract< Yerr1 >( is ) ),
-      yerr2( argument::extract< Yerr2 >( is, this->yerr1.value ) ),
+      yerr2( argument::extract< Yerr2 >( is ) ),
       xerr1( argument::extract< Xerr1 >( is ) ),
-      xerr2( argument::extract< Xerr2 >( is, this->xerr1.value ) )
+      xerr2( argument::extract< Xerr2 >( is ) )
       {
+        if( this->yerr2.value != std::nullopt and 
+            *( this->yerr2.value ) == 0.0 ) 
+                                     this->yerr2.value = *( this->yerr1.value );
+        if( this->xerr2.value != std::nullopt and 
+            *( this->xerr2.value ) == 0.0 )
+                                     this->xerr2.value = *( this->xerr1.value );
         Card::clear( is );
       }
     catch( std::exception& e ){

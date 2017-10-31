@@ -25,7 +25,7 @@ SCENARIO( "Ishade output values", "[PLOTR],[Card9], [Ishade]"){
     }
   } // GIVEN
   GIVEN( "invalid Ishade parameters" ){
-    std::vector<int> invalidValues{ -2, -1, 82, 90 };
+    std::vector<int> invalidValues{ -2, -1, 81, 90 };
 
     THEN( "the returned class has the correct value" ){
       for( auto ishade : invalidValues ){

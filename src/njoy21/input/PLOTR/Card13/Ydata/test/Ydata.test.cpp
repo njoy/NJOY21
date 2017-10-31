@@ -24,4 +24,12 @@ SCENARIO( "Ydata output values", "[PLOTR],[Card13], [Ydata]"){
     }
   } // GIVEN
 
+  GIVEN( "no parameter" ){
+    iRecordStream<char> issYdata( std::istringstream( " /" ) );
+    THEN( "the default nullopt is returned" ){
+      REQUIRE( std::nullopt == argument::extract< PLOTR::Card13::Ydata >(
+                               issYdata ).value );
+    }
+  } // GIVEN
+
 } // SCENARIO
