@@ -8,5 +8,5 @@ struct Ithick {
       "plot, and 1 for a visible line.  The default value is 1.";
   }
   static int defaultValue(){ return 1; }
-  static bool verify( Value_t v ){ return ( v == 0 or v == 1 ); }
+  static bool verify( Value_t v ){ return v >= 0; }
 };

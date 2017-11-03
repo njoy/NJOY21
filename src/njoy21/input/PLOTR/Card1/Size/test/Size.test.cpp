@@ -35,7 +35,7 @@ SCENARIO( "Size output values", "[PLOTR],[Card1], [Size]"){
   GIVEN( "invalid Size parameters" ){
     std::vector<double> invalidValues{ -2.0, -1.1, 0.0, 2.0, 3.0 };
 
-    THEN( "the returned class has the correct value" ){
+    THEN( "an exception is thrown" ){
       for( auto size : invalidValues ){
         iRecordStream<char> issSize( 
             std::istringstream( std::to_string( size ) ) );

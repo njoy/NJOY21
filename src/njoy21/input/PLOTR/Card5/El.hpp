@@ -1,5 +1,5 @@
 struct El {
-  using Value_t = double;
+  using Value_t = optional< double >;
   static std::string name(){ return "el"; }
   static std::string description(){
     return
@@ -16,16 +16,12 @@ struct El {
       "If using the default value, the default value should be used for eh\n"
       "and xstep as well.";
   }
-  static Value_t defaultValue( const int itype ){
-    if( std::abs( itype ) == 1 or std::abs( itype ) == 2 ){
-      return 0.0;
-    }
-    return 1.0e-7;
-  }
+  static Value_t defaultValue( const int ){ return std::nullopt; }
   static bool verify( Value_t v, const int itype ){
+    if( v == std::nullopt ) return true;
     if( std::abs( itype ) == 1 or std::abs( itype ) == 2 ){
-      return ( v >= 0.0 );
+      return ( *v >= 0.0 );
     }
-    return ( v > 0.0 );
+    return ( *v > 0.0 );
   }
 };

@@ -12,53 +12,47 @@ SCENARIO( "Yl output values", "[PLOTR],[Card6], [Yl]"){
 
   std::vector<int> itype{1,2,3,4};
 
-  GIVEN( "valid Yl parameters for linear scale" ){
-    std::vector<double> validValues{-10.0,-5.0,0.0,0.1,0.5,0.8,1.0,2.0,80.0};
-
-    THEN( "the returned class has the correct value" ){
-      for( auto yl : validValues ){
-        iRecordStream<char> issYl( 
-            std::istringstream( std::to_string( yl ) ) );
-
-        REQUIRE( yl == argument::extract< PLOTR::Card6::Yl >( 
-                          issYl, itype[0] ).value );
+  GIVEN( "valid entries" ){
+  
+    WHEN( "valid Yl parameters for linear scale" ){
+      std::vector<double> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
+  
+      THEN( "the returned class has the correct value" ){
+        for( auto yl : validValues ){
+          iRecordStream<char> issYl( 
+              std::istringstream( std::to_string( yl ) ) );
+  
+          REQUIRE( yl == *( argument::extract< PLOTR::Card6::Yl >( 
+                            issYl, itype[0] ).value ) );
+        }
       }
     }
-  } // GIVEN
-
-  GIVEN( "valid Yl parameters for log scale" ){
-    std::vector<double> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
-
-    THEN( "the returned class has the correct value" ){
-      for( auto yl : validValues ){
-        iRecordStream<char> issYl( 
-            std::istringstream( std::to_string( yl ) ) );
-
-        REQUIRE( yl == argument::extract< PLOTR::Card6::Yl >( 
-                          issYl, itype[1] ).value );
+  
+    WHEN( "valid Yl parameters for log scale" ){
+      std::vector<double> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
+  
+      THEN( "the returned class has the correct value" ){
+        for( auto yl : validValues ){
+          iRecordStream<char> issYl( 
+              std::istringstream( std::to_string( yl ) ) );
+  
+          REQUIRE( yl == *( argument::extract< PLOTR::Card6::Yl >( 
+                            issYl, itype[1] ).value ) );
+        }
       }
     }
-  } // GIVEN
-
-  GIVEN( "default value for linear scale" ){
-    iRecordStream<char> issYl( std::istringstream( " /" ) );
-
-    THEN( "default value is returned" ){
-      REQUIRE( Approx( 0.0 ) == argument::extract< PLOTR::Card6::Yl >(
-                          issYl, itype[2] ).value );
+  
+    WHEN( "default value is used" ){
+      iRecordStream<char> issYl( std::istringstream( " /" ) );
+  
+      THEN( "default value is returned" ){
+        REQUIRE( std::nullopt == argument::extract< PLOTR::Card6::Yl >(
+                            issYl, itype[2] ).value );
+      }
     }
-  }//GIVEN
+  }
 
-  GIVEN( "default value for log scale" ){
-    iRecordStream<char> issYl( std::istringstream( " /" ) );
-
-    THEN( "default value is returned" ){
-      REQUIRE( Approx( 1.0e-07 ) == argument::extract< PLOTR::Card6::Yl >(
-                          issYl, itype[3] ).value );
-    }
-  }//GIVEN
-
-  GIVEN( "invalid Yl parameters for log scale" ){
+  GIVEN( "invalid Yl parameters" ){
     std::vector<double> invalidValues{ -2.0, -1.1, 0.0 };
 
     THEN( "the class throws an exception" ){

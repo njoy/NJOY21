@@ -10,5 +10,5 @@ struct Iverf {
       "data will be collected.";
   }
   static int defaultValue(){ return 0; }
-  static bool verify( Value_t v ){ return ( v < 9 and v >= 0 ); }
+  static bool verify( Value_t v ){ return ( v < 7 and v >= 0 ); }
 };

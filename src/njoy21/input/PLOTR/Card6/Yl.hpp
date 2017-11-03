@@ -1,5 +1,5 @@
 struct Yl {
-  using Value_t = double;
+  using Value_t = optional< double >;
   static std::string name(){ return "yl"; }
   static std::string description(){
     return
@@ -14,16 +14,11 @@ struct Yl {
       "If using the default value, the default value should be used for yh\n"
       "and ystep as well.";
   }
-  static Value_t defaultValue( const int itype ){
-    if( std::abs( itype ) == 1 or std::abs( itype )  == 3 ){
-      return 0.0;
-    }
-    return 1.0e-07;
-  }
-  static bool verify( Value_t v, const int itype ){
+  static Value_t defaultValue( const int ){ return std::nullopt; }
+  static bool verify( const Value_t v, const int itype ){
     if( std::abs( itype ) == 2 or std::abs( itype ) == 4 ){
-      return ( v > 0.0 );
+      return ( *v > 0.0 );
     }
-    return true;
+    return ( *v >= 0.0 );
   }
 };

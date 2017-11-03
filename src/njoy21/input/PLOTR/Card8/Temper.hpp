@@ -9,7 +9,7 @@ struct Temper : public argument::common::Tempd {
   }
   static Value_t defaultValue( const int iverf ){
     if( iverf == 0 ) return std::nullopt;
-    return 0.0*kelvin;
+    return 0.0*dimwits::kelvin;
   }
   static bool verify( const Value_t& t, const int iverf ){
     if( iverf == 0 ) return true;

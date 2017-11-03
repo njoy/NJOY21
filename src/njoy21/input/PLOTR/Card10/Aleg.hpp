@@ -3,7 +3,7 @@ struct Aleg : public PLOTR::Card3::Title {
   static std::string name(){ return "aleg"; }
   static std::string description(){
     return
-      "The aleg parameter is the title for the curve tak or legend block.\n"
+      "The aleg parameter is the title for the curve tag or legend block.\n"
       "60 characters max.  The default is a blank string.";
   }
 };

@@ -26,7 +26,7 @@ SCENARIO( "Iccol output values", "[PLOTR],[Card9], [Iccol]"){
   GIVEN( "invalid Iccol parameters" ){
     std::vector<int> invalidValues{ -2, -1, 9, 10 };
 
-    THEN( "the returned class has the correct value" ){
+    THEN( "an exception is thrown" ){
       for( auto iccol : invalidValues ){
         iRecordStream<char> issIccol( 
             std::istringstream( std::to_string( iccol ) ) );

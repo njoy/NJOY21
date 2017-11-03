@@ -11,7 +11,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Mtd output values", "[PLOTR],[Card8], [Mtd]"){
   int iverf = 2;
   GIVEN( "valid Mtd parameters" ){
-    std::vector<int> validValues{ -999, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 999};
+    std::vector<int> validValues{0, 1, 2, 3, 4, 5, 999};
 
     THEN( "the returned class has the correct value" ){
       for( auto mtd : validValues ){
@@ -32,7 +32,7 @@ SCENARIO( "Mtd output values", "[PLOTR],[Card8], [Mtd]"){
     }
   } // GIVEN
   GIVEN( "invalid Mtd parameters" ){
-    std::vector<int> invalidValues{ 1000 };
+    std::vector<int> invalidValues{-20, -1, 1000 };
 
     THEN( "the returned class has the correct value" ){
       for( auto mtd : invalidValues ){

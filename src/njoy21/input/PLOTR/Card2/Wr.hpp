@@ -3,11 +3,11 @@ struct Wr {
   static std::string name(){ return "wr"; }
   static std::string description(){
     return
-      "The wr argument specifies the rotation of the window for this plot.\n"
-      "wr combines the ww and wh values using the pythagoream theorem to\n"
-      "determine the distance from the point defined by xll and yll to the\n"
-      "opposite corner of the window.  The direction from the (xll,yll)\n"
-      "corner to the opposite corner is defined by wr as degrees\n"
+      "The wr argument specifies the rotation (in degrees) of the window for\n"
+      "this plot. wr combines the ww and wh values using the pythagoream\n"
+      "theorem to determine the distance from the point defined by xll and\n"
+      "yll to the opposite corner of the window.  The direction from the\n"
+      "(xll, yll) corner to the opposite corner is defined by wr as degrees\n"
       "counter-clockwise from the positive x direction.  The plot maintains\n"
       "the height and width defined by wh and ww, respectively, but it\n"
       "will only be visible inside of the window.  As such wr should usually\n"

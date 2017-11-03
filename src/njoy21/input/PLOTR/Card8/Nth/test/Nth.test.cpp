@@ -53,7 +53,7 @@ SCENARIO( "Nth input values", "[PLOTR], [Card8], [Nth]" ){
       }
     }
     WHEN( "mfd = 4 and iverf != 1" ){
-      std::vector<int> validNth{ 0, 1, 5, 30 };
+      std::vector<int> validNth{ 0, 1, 5, 30, 64 };
       int mfd = 4; int iverf = 2; int jtype = 0;
       THEN( "the returned value is correct" ){
         for( auto nth : validNth ){
@@ -70,7 +70,7 @@ SCENARIO( "Nth input values", "[PLOTR], [Card8], [Nth]" ){
       }
     }
     WHEN( "mfd = 6 and iverf != 1" ){
-      std::vector<int> validNth{ 0, 1, 5, 30 };
+      std::vector<int> validNth{ 0, 1, 5, 30, 100, 1000, 1999 };
       int mfd = 6; int iverf = 3; int jtype = 0;
       THEN( "the returned value is correct" ){
         for( auto nth : validNth ){
@@ -164,7 +164,7 @@ SCENARIO( "Nth input values", "[PLOTR], [Card8], [Nth]" ){
       }
     }
     WHEN( "mfd = 4 and iverf != 1" ){
-      std::vector<int> invalidNth{ -10, -2, -1 };
+      std::vector<int> invalidNth{ -10, -2, -1, 65 };
       int mfd = 4; int iverf = 2; int jtype = 0;
       THEN( "an exception is thrown" ){
         for( auto nth : invalidNth ){
@@ -176,8 +176,8 @@ SCENARIO( "Nth input values", "[PLOTR], [Card8], [Nth]" ){
       }
     }
     WHEN( "mfd = 6 and iverf != 1" ){
-      std::vector<int> invalidNth{ -10, -2, -1 };
-      int mfd = 3; int iverf = 3; int jtype = 0;
+      std::vector<int> invalidNth{ -10, -2, -1, 2000 };
+      int mfd = 6; int iverf = 3; int jtype = 0;
       THEN( "an exception is thrown" ){
         for( auto nth : invalidNth ){
           iRecordStream<char> issNth( std::istringstream(

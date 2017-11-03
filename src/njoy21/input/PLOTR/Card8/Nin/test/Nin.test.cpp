@@ -9,7 +9,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Nin input values", "[PLOTR], [Card8], [Nin]" ){
   int iverf = 2;
   GIVEN( "valid nin values" ){
-    std::vector<int> validNin{ 20, 45, 99 };
+    std::vector<int> validNin{ -99, -39, -20, 20, 45, 99 };
 
     THEN( "the returned class has the correct value" ){
       for( auto nin : validNin ){

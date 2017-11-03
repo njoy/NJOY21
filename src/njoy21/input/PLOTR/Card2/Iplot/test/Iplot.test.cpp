@@ -11,7 +11,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Iplot output values", "[PLOTR],[Card2], [Iplot]"){
 
   GIVEN( "valid Iplot parameters" ){
-    std::vector<int> validValues{-8,-1,1, 12, 99};
+    std::vector<int> validValues{-99,-8,-1,1,12,99};
 
     THEN( "the returned class has the correct value" ){
       for( auto iplot : validValues ){

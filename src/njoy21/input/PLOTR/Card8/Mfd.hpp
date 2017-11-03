@@ -4,7 +4,7 @@ struct Mfd {
   static std::string description(){
     return 
         "The mfd parameter specifies the ENDF file to be used.\n\n"
-        "Per the ENDF/VI manual, the available values are:\n\n"
+        "Per the ENDF-6 manual, the available values are:\n\n"
         "    1 - General information\n"
         "    2 - Resonance parameter data\n"
         "    3 - Reaction cross sections\n"

@@ -1,5 +1,5 @@
 struct Yh {
-  using Value_t = double;
+  using Value_t = optional< double >;
   static std::string name(){ return "yh"; }
   static std::string description(){
     return
@@ -11,9 +11,15 @@ struct Yh {
       "remain.";
   }
   static Value_t defaultValue( const Value_t yl ){
-    return yl;
+    if( yl != std::nullopt ){
+      Log::info( "When using default values in PLOTR::Card6, the default\n"
+                 "values should be used for all parameters.");
+      std::exception e;
+      throw e;
+    }
+    return std::nullopt;
   }
-  static bool verify( Value_t v, const Value_t yl ){
-    return ( v >= yl );
+  static bool verify( const Value_t v, const Value_t yl ){
+    return ( *v >= *yl );
   }
 };

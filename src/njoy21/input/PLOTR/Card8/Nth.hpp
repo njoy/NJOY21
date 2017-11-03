@@ -30,7 +30,9 @@ struct Nth{
       if( mfd == 6 and jtype == 0 ) return ( v > 0 ); // 2-D plots
     } else{
       if( mfd == 3 or mfd == 5 ) return ( v > 0 );
-      if( mfd == 4 or mfd == 6 or mfd == 7 ) return ( v >= 0 );
+      if( mfd == 4 ) return ( v >= 0 and v < 65 );
+      if( mfd == 6 ) return ( v >= 0 and v < 2000 );
+      if( mfd == 7 ) return ( v >= 0 );
     }
     return false;
   }

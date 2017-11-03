@@ -1,6 +1,5 @@
 class Card7a {
 public:
-//  #include "njoy21/input/PLOTR/Card3/Title.hpp"
   using Rl = PLOTR::Card3::Title;
 
   Argument< Rl > rl;

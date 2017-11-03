@@ -26,7 +26,7 @@ SCENARIO( "Idash output values", "[PLOTR],[Card9], [Idash]"){
   GIVEN( "invalid Idash parameters" ){
     std::vector<int> invalidValues{ -2, -1, 5, 6 };
 
-    THEN( "the returned class has the correct value" ){
+    THEN( "an exception is thrown" ){
       for( auto idash : invalidValues ){
         iRecordStream<char> issIdash( 
             std::istringstream( std::to_string( idash ) ) );

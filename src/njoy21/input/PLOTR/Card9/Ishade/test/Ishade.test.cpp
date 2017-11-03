@@ -27,7 +27,7 @@ SCENARIO( "Ishade output values", "[PLOTR],[Card9], [Ishade]"){
   GIVEN( "invalid Ishade parameters" ){
     std::vector<int> invalidValues{ -2, -1, 81, 90 };
 
-    THEN( "the returned class has the correct value" ){
+    THEN( "an exception is thrown" ){
       for( auto ishade : invalidValues ){
         iRecordStream<char> issIshade( 
             std::istringstream( std::to_string( ishade ) ) );

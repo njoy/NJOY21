@@ -11,7 +11,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Ithick output values", "[PLOTR],[Card9], [Ithick]"){
 
   GIVEN( "valid Ithick parameters" ){
-    std::vector<int> validValues{0,1};
+    std::vector<int> validValues{0,1,10,100,1000};
 
     THEN( "the returned class has the correct value" ){
       for( auto ithick : validValues ){
@@ -24,7 +24,7 @@ SCENARIO( "Ithick output values", "[PLOTR],[Card9], [Ithick]"){
     }
   } // GIVEN
   GIVEN( "invalid Ithick parameters" ){
-    std::vector<int> invalidValues{ -2, -1, 2, 3 };
+    std::vector<int> invalidValues{ -2, -1};
 
     THEN( "the returned class has the correct value" ){
       for( auto ithick : invalidValues ){

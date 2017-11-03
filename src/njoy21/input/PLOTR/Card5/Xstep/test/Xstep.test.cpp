@@ -2,6 +2,16 @@
 
 #include <numeric>
 
+#ifdef USING_CPP17
+  #include <optional>
+#else 
+  #include <experimental/optional>
+
+  namespace std {
+    using namespace std::experimental;
+  }
+#endif
+
 #include "catch.hpp"
 
 #include "njoy21.hpp"
@@ -10,38 +20,57 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "Xstep output values", "[PLOTR],[Card5], [Xstep]"){
 
-  GIVEN( "valid Xstep parameters" ){
-    std::vector<double> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
-
-    THEN( "the returned class has the correct value" ){
-      for( auto xstep : validValues ){
-        iRecordStream<char> issXstep( 
-            std::istringstream( std::to_string( xstep ) ) );
-
-        REQUIRE( xstep == argument::extract< PLOTR::Card5::Xstep >( 
-                          issXstep ).value );
+  GIVEN( "valid entries" ){
+    WHEN( "valid Xstep parameters" ){
+      std::optional< double > el = 0.0;
+      std::optional< double > eh = 1.0;
+      std::vector<double> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
+  
+      THEN( "the returned class has the correct value" ){
+        for( auto xstep : validValues ){
+          iRecordStream<char> issXstep( 
+              std::istringstream( std::to_string( xstep ) ) );
+  
+          REQUIRE( xstep == *( argument::extract< PLOTR::Card5::Xstep >( 
+                               issXstep, el, eh ).value ) );
+        }
+      }
+    }
+  
+    WHEN( "default value" ){
+      std::optional< double > el,eh;
+      iRecordStream<char> issXstep( std::istringstream( " /" ) );
+  
+      THEN( "default value is returned" ){
+        REQUIRE( std::nullopt == argument::extract< PLOTR::Card5::Xstep >(
+                            issXstep, el, eh ).value );
       }
     }
   } // GIVEN
 
-  GIVEN( "default value" ){
-    iRecordStream<char> issXstep( std::istringstream( " /" ) );
-
-    THEN( "default value is returned" ){
-      REQUIRE( Approx( 1.0 ) == argument::extract< PLOTR::Card5::Xstep >(
-                          issXstep ).value );
-    }
-  }//GIVEN
-
   GIVEN( "invalid Xstep parameters" ){
+    std::optional< double > el = 1.0;
+    std::optional< double > eh = 5.0;
+
+    WHEN( "xstep uses the default value but el and/or eh don't" ){
+      iRecordStream<char> issXstep( std::istringstream( " / " ) );
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( argument::extract< PLOTR::Card5::Xstep >(
+                                            issXstep, el, eh ) );
+      }
+    }
+
     std::vector<double> invalidValues{ -2.0, -1.1, 0.0 };
 
-    THEN( "the class throws an exception" ){
+    WHEN( "el and eh have values but the xstep value is wrong" ){
       for( auto xstep : invalidValues ){
         iRecordStream<char> issXstep( 
             std::istringstream( std::to_string( xstep ) ) );
 
-        REQUIRE_THROWS( argument::extract< PLOTR::Card5::Xstep >( issXstep ) );
+        THEN( "an exception is thrown" ){
+          REQUIRE_THROWS( argument::extract< PLOTR::Card5::Xstep >(
+                                              issXstep, el, eh ) );
+        }
       }
     }
   } // GIVEN

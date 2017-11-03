@@ -10,5 +10,5 @@ struct X3 {
       "of the axis on that side of the work box.";
   }
   static Value_t defaultValue(){ return 2.5; }
-  static bool verify( Value_t ){ return true; }
+  static bool verify( Value_t v ){ return v != 0.0; }
 };

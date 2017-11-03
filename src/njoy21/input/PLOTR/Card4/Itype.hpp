@@ -10,7 +10,9 @@ struct Itype {
       "    2 - linear x - log y\n"
       "    3 - log x - linear y\n"
       "    4 - log x - log y\n\n"
-      "The default value is 4 - log x - log y.\n";
+      "The default value is 4 - log x - log y.\n\n"
+      "This value should be negative if the plot will be 3-D and require a\n"
+      "z-axis.\n";
   }
   static int defaultValue(){ return 4; }
   static bool verify( Value_t v ){ return ( std::abs(v) < 5 and v != 0 ); }

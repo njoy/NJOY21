@@ -23,7 +23,7 @@ public:
 
   #include "njoy21/input/PLOTR/src/readCard7.hpp"
   #include "njoy21/input/PLOTR/src/Plot.hpp"
-  #include "njoy21/input/PLOTR/src/readPlots.hpp"
+  #include "njoy21/input/PLOTR/src/readPlot.hpp"
   #include "njoy21/input/PLOTR/src/readCard10.hpp"
   #include "njoy21/input/PLOTR/src/readCard10a.hpp"
   #include "njoy21/input/PLOTR/src/readCard11.hpp"

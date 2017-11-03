@@ -58,7 +58,7 @@ SCENARIO( "Ww output values", "[PLOTR],[Card2], [Ww]"){
     WHEN( "the available size is 7.5 inches" ){
       std::vector<double> invalidValues{ -2.0, -1.0, -0.5, 8.51, 11.1 };
 
-      THEN( "the returned class has the correct value" ){
+      THEN( "an exception is thrown" ){
         for( auto ww : invalidValues ){
           iRecordStream<char> issWw( 
               std::istringstream( std::to_string( ww ) ) );
@@ -70,7 +70,7 @@ SCENARIO( "Ww output values", "[PLOTR],[Card2], [Ww]"){
     WHEN( "the available size is 10.0 inches" ){
       std::vector<double> invalidValues{ -2.0, -1.1, -0.51, 11.1 };
 
-      THEN( "the returned class has the correct value" ){
+      THEN( "an exception is thrown" ){
         for( auto ww : invalidValues ){
           iRecordStream<char> issWw( 
               std::istringstream( std::to_string( ww ) ) );

@@ -1,6 +1,6 @@
 template< typename Istream>
 static optional< std::vector< Card13 > > 
-                                 readCard13List( Istream& is, const int nform ){
+readCard13List( Istream& is, const int nform ){
   if( nform != 0 ) return std::nullopt;
 
   std::vector< Card13 > card13List;

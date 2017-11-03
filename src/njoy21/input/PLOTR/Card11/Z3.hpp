@@ -8,5 +8,5 @@ struct Z3 {
       "The default value is 2.5.";
   }
   static Value_t defaultValue(){ return 2.5; }
-  static bool verify( Value_t ){ return true; }
+  static bool verify( Value_t v ){ return v != 0.0; }
 };

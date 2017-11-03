@@ -1,5 +1,5 @@
 struct Eh {
-  using Value_t = double;
+  using Value_t = optional< double >;
   static std::string name(){ return "eh"; }
   static std::string description(){
     return
@@ -8,11 +8,16 @@ struct Eh {
       "If using the default value, the default value should be used for el\n"
       "and xstep as well.";
   }
-  static Value_t defaultValue( const double el ){
-    return el;
+  static Value_t defaultValue( const Value_t el ){
+    if( el != std::nullopt ){
+      Log::info( "When using a default in PLOTR::Card5, all values should use\n"
+                 "their default value.\n" );
+      std::exception e;
+      throw e;
+    }
+    return std::nullopt;
   }
-  static bool verify( const Value_t v, 
-                      const double el ){
-    return ( v >= el );
+  static bool verify( const Value_t v, const Value_t el ){
+    return ( el != std::nullopt and *v >= *el );
   }
 };

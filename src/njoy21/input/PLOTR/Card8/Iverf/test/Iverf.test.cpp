@@ -11,7 +11,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Iverf output values", "[PLOTR],[Card8], [Iverf]"){
 
   GIVEN( "valid Iverf parameters" ){
-    std::vector<int> validValues{0,1,2,3,4,5,6,7,8};
+    std::vector<int> validValues{0,1,2,3,4,5,6};
 
     THEN( "the returned class has the correct value" ){
       for( auto iverf : validValues ){
@@ -30,7 +30,7 @@ SCENARIO( "Iverf output values", "[PLOTR],[Card8], [Iverf]"){
     }
   }//GIVEN
   GIVEN( "invalid Iverf parameters" ){
-    std::vector<int> invalidValues{ -1,9 };
+    std::vector<int> invalidValues{ -1,7 };
 
     THEN( "the returned class has the correct value" ){
       for( auto iverf : invalidValues ){
