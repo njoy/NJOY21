@@ -18,7 +18,6 @@ struct El {
   }
   static Value_t defaultValue( const int ){ return std::nullopt; }
   static bool verify( Value_t v, const int itype ){
-    if( v == std::nullopt ) return true;
     if( std::abs( itype ) == 1 or std::abs( itype ) == 2 ){
       return ( *v >= 0.0 );
     }

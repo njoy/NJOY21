@@ -12,12 +12,11 @@ struct Eh {
     if( el != std::nullopt ){
       Log::info( "When using a default in PLOTR::Card5, all values should use\n"
                  "their default value.\n" );
-      std::exception e;
-      throw e;
+      throw std::exception();
     }
     return std::nullopt;
   }
   static bool verify( const Value_t v, const Value_t el ){
-    return ( el != std::nullopt and *v >= *el );
+    return *v > *el;
   }
 };

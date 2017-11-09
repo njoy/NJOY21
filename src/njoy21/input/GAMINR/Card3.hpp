@@ -12,7 +12,7 @@ using Title = GROUPR::Card3::Title;
       Card::clear( is );
     }
     catch( std::exception& e ){
-      Log::info("Trouble while validating GAMINR Card 3");
+      Log::info("Trouble while validating Card 3");
       throw e;
     }
 };

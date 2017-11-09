@@ -1,5 +1,5 @@
 struct Ylabl {
-  using Value_t = PLOTR::Card3::Title::Value_t;
+  using Value_t = std::string;
   static std::string name(){ return "ylabl"; }
 
   static std::string description(){
@@ -10,6 +10,6 @@ struct Ylabl {
 
   static Value_t defaultValue(){ return "cross section (barns)"; }
   static bool verify( const Value_t& s ){
-    return PLOTR::Card3::Title::verify(s);
+    return ( s.length() < 61 );
   }
 };

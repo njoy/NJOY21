@@ -16,7 +16,7 @@ public:
     try:
       el( argument::extract< El >( is, itype.value ) ),
       eh( argument::extract< Eh >( is, this->el.value ) ),
-      xstep( argument::extract< Xstep >( is, this->el.value, this->eh.value ) )
+      xstep( argument::extract< Xstep >( is, this->el.value ) )
       {
         if( ileg != 0 and this->el.value != std::nullopt ){
           xtag.value = xtag.value.value_or( *( this->el.value ) );
@@ -24,7 +24,7 @@ public:
         Card::clear( is );
       }
     catch( std::exception& e ){
-      Log::info( "Trouble validating PLOTR Card5" );
+      Log::info( "Trouble validating Card5" );
       throw e;
     }
 };

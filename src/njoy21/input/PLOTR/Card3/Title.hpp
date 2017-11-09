@@ -1,10 +1,12 @@
+template< typename S >
 struct Title {
   using Value_t = std::string;
-  static std::string name(){ return "title"; }
+  static std::string name(){ return S{}.c_str(); }
 
   static std::string description(){
     return 
-        "The title parameter is title for a particular plot.  The default\n"
+        "The " + std::string( S{}.c_str() ) +
+        "parameter is the title for a particular plot.  The default\n"
         "value is no title.  The character limit is 60.";
   }
 

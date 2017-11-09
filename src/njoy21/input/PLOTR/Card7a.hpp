@@ -1,6 +1,7 @@
 class Card7a {
 public:
-  using Rl = PLOTR::Card3::Title;
+  
+  using Rl = Card3::Title< hana::string<'r','l'> >;
 
   Argument< Rl > rl;
 

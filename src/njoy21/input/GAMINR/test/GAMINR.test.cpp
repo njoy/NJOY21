@@ -9,12 +9,14 @@ using namespace njoy::njoy21::input;
 std::string sCard1( "-30 -32 0 -34 /\n" );
 std::string sCard3( "GAMINR Card4 title for testing" );
 std::string sCard6_7{
-      "3 18 'MF3 MT18' /\n"         // Card 6.1
-      "3 102 'MF3 MT102' /\n"       // Card 6.2
-      "10 /\n"                      // Card 6.3
-      "0 /\n"                       // Card 6.4
-      "9235 /\n"                       // Card7
-      "0 /\n"                       // Card7
+      "3 18 'MF3 MT18' /\n"      // Card 6.1
+      "3 102 'MF3 MT102' /\n"    // Card 6.2
+      "10 18 'Test3' /\n"        // Card 6.3
+      "0 /\n"                    // Card 6.4
+      "9235 /\n"                 // Card7
+      "3 18 'MF3 MT18' /\n"      // Card 6.5
+      "0 /\n"                    // Card 6.6
+      "0 /\n"                    // Card7
 };
 
 
@@ -54,35 +56,37 @@ SCENARIO( "Parsing valid GAMINR input" ){
       REQUIRE( std::nullopt == gaminr.card5 );
     }
 
-    THEN( "the Card6 input values can be verified" ){
+    THEN( "the material input values can be verified" ){
 
-      REQUIRE( 3 == gaminr.card6List.size() );
+      REQUIRE( 2 == gaminr.materials.size() );
+      REQUIRE( 3 == gaminr.materials.at(0).card6.size() );
+      REQUIRE( 1 == gaminr.materials.at(1).card6.size() );
       int i;
       { i = 0;
-        REQUIRE( 3 == gaminr.card6List[i].mfd.value );
-        REQUIRE( 18 == gaminr.card6List[i].mtd.value );
-        REQUIRE( "MF3 MT18" == gaminr.card6List[i].mtname.value );
+        REQUIRE( 3 == gaminr.materials.at(0).card6.at(i).mfd.value );
+        REQUIRE( 18 == gaminr.materials.at(0).card6.at(i).mtd.value );
+        REQUIRE( "MF3 MT18" == gaminr.materials.at(0).card6.at(i).mtname.value );
       }
       { i = 1;
-        REQUIRE( 3 == gaminr.card6List[i].mfd.value );
-        REQUIRE( 102 == gaminr.card6List[i].mtd.value );
-        REQUIRE( "MF3 MT102" == gaminr.card6List[i].mtname.value );
+        REQUIRE( 3 == gaminr.materials.at(0).card6.at(i).mfd.value );
+        REQUIRE( 102 == gaminr.materials.at(0).card6.at(i).mtd.value );
+        REQUIRE( "MF3 MT102" == gaminr.materials.at(0).card6.at(i).mtname.value );
       }
       { i = 2;
-        REQUIRE( 10 == gaminr.card6List[i].mfd.value );
-        REQUIRE( 0 == gaminr.card6List[i].mtd.value );
-        REQUIRE( "" == gaminr.card6List[i].mtname.value );
+        REQUIRE( 10 == gaminr.materials.at(0).card6.at(i).mfd.value );
+        REQUIRE( 18 == gaminr.materials.at(0).card6.at(i).mtd.value );
+        REQUIRE( "Test3" == gaminr.materials.at(0).card6.at(i).mtname.value );
       }
-      { i = 3;
-        REQUIRE( 0 == gaminr.card6List[i].mfd.value );
-        REQUIRE( 0 == gaminr.card6List[i].mtd.value );
-        REQUIRE( "" == gaminr.card6List[i].mtname.value );
+
+      REQUIRE( 9235 == gaminr.materials.at(0).card7.matd.value );
+
+      { i = 0;
+        REQUIRE( 3 == gaminr.materials.at(1).card6.at(i).mfd.value );
+        REQUIRE( 18 == gaminr.materials.at(1).card6.at(i).mtd.value );
+        REQUIRE( "MF3 MT18" == gaminr.materials.at(1).card6.at(i).mtname.value );
       }
-    }
-    THEN( "the Card7 input values can be verified" ){
-      REQUIRE( 1 == gaminr.card7List.size() );
-      REQUIRE( 9235 == gaminr.card7List[0].matd.value );
-      REQUIRE( 0 == gaminr.card7List[1].matd.value );
+
+      REQUIRE( 0 == gaminr.materials.at(1).card7.matd.value );
     }
   }
 
@@ -114,35 +118,38 @@ SCENARIO( "Parsing valid GAMINR input" ){
       REQUIRE( 4 == gaminr.card2.lord.value );
       REQUIRE( 0 == gaminr.card2.iprint.value );
     }
-    THEN( "the Card6 input values can be verified" ){
 
-      REQUIRE( 3 == gaminr.card6List.size() );
+    THEN( "the material input values can be verified" ){
+
+      REQUIRE( 2 == gaminr.materials.size() );
+      REQUIRE( 3 == gaminr.materials.at(0).card6.size() );
+      REQUIRE( 1 == gaminr.materials.at(1).card6.size() );
       int i;
       { i = 0;
-        REQUIRE( 3 == gaminr.card6List[i].mfd.value );
-        REQUIRE( 18 == gaminr.card6List[i].mtd.value );
-        REQUIRE( "MF3 MT18" == gaminr.card6List[i].mtname.value );
+        REQUIRE( 3 == gaminr.materials.at(0).card6.at(i).mfd.value );
+        REQUIRE( 18 == gaminr.materials.at(0).card6.at(i).mtd.value );
+        REQUIRE( "MF3 MT18" == gaminr.materials.at(0).card6.at(i).mtname.value );
       }
       { i = 1;
-        REQUIRE( 3 == gaminr.card6List[i].mfd.value );
-        REQUIRE( 102 == gaminr.card6List[i].mtd.value );
-        REQUIRE( "MF3 MT102" == gaminr.card6List[i].mtname.value );
+        REQUIRE( 3 == gaminr.materials.at(0).card6.at(i).mfd.value );
+        REQUIRE( 102 == gaminr.materials.at(0).card6.at(i).mtd.value );
+        REQUIRE( "MF3 MT102" == gaminr.materials.at(0).card6.at(i).mtname.value );
       }
       { i = 2;
-        REQUIRE( 10 == gaminr.card6List[i].mfd.value );
-        REQUIRE( 0 == gaminr.card6List[i].mtd.value );
-        REQUIRE( "" == gaminr.card6List[i].mtname.value );
+        REQUIRE( 10 == gaminr.materials.at(0).card6.at(i).mfd.value );
+        REQUIRE( 18 == gaminr.materials.at(0).card6.at(i).mtd.value );
+        REQUIRE( "Test3" == gaminr.materials.at(0).card6.at(i).mtname.value );
       }
-      { i = 3;
-        REQUIRE( 0 == gaminr.card6List[i].mfd.value );
-        REQUIRE( 0 == gaminr.card6List[i].mtd.value );
-        REQUIRE( "" == gaminr.card6List[i].mtname.value );
+
+      REQUIRE( 9235 == gaminr.materials.at(0).card7.matd.value );
+
+      { i = 0;
+        REQUIRE( 3 == gaminr.materials.at(1).card6.at(i).mfd.value );
+        REQUIRE( 18 == gaminr.materials.at(1).card6.at(i).mtd.value );
+        REQUIRE( "MF3 MT18" == gaminr.materials.at(1).card6.at(i).mtname.value );
       }
-    }
-    THEN( "the Card7 input values can be verified" ){
-      REQUIRE( 1 == gaminr.card7List.size() );
-      REQUIRE( 9235 == gaminr.card7List[0].matd.value );
-      REQUIRE( 0 == gaminr.card7List[1].matd.value );
+
+      REQUIRE( 0 == gaminr.materials.at(1).card7.matd.value );
     }
 
     THEN( "the Card4 input values can be verified" ){
@@ -207,12 +214,13 @@ SCENARIO( "Parsing invalid GAMINR input" ){
       sCard1
       + "125 0 2 4 1 /\n"         // Card2
       + "'" + sCard3 + "' /\n"
-      + "3 18 'MF3 MT18' /\n"         // Card 6.1
-      + "3 102 'MF3 MT102' /\n"       // Card 6.2
-      + "10 /\n"                      // Card 6.3
-      // + "0 /\n"                       // Card 6.4
-      + "9235 /\n"                       // Card7
-      + "0 /\n"                       // Card7
+      "3 18 'MF3 MT18' /\n"         // Card 6.1
+      "3 102 'MF3 MT102' /\n"       // Card 6.2
+      "10 /\n"                      // Card 6.3
+      //"0 /\n"                       // Card 6.4
+      "9235 /\n"                       // Card7
+      "3 18 'MF3 MT18' /\n"         // Card 6.5
+      "0 /\n"                       // Card7
     ) );
 
     THEN( "an exception is thrown" ){
@@ -224,12 +232,13 @@ SCENARIO( "Parsing invalid GAMINR input" ){
       sCard1
       + "125 0 2 4 1 /\n"         // Card2
       + "'" + sCard3 + "' /\n"
-      + "3 18 'MF3 MT18' /\n"         // Card 6.1
-      + "3 102 'MF3 MT102' /\n"       // Card 6.2
-      + "10 /\n"                      // Card 6.3
-      + "0 /\n"                       // Card 6.4
-      + "9235 /\n"                       // Card7
-      // + "0 /\n"                       // Card7
+      "3 18 'MF3 MT18' /\n"         // Card 6.1
+      "3 102 'MF3 MT102' /\n"       // Card 6.2
+      "10 /\n"                      // Card 6.3
+      "0 /\n"                       // Card 6.4
+      "9235 /\n"                       // Card7
+      "3 18 'MF3 MT18' /\n"         // Card 6.5
+      //"0 /\n"                       // Card7
     ) );
 
     THEN( "an exception is thrown" ){

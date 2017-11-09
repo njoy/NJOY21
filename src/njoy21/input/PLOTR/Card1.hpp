@@ -21,7 +21,7 @@ public:
         Card::clear( is );
       }
     catch( std::exception& e ){
-      Log::info( "Trouble validating PLOTR Card1" );
+      Log::info( "Trouble validating Card1" );
       throw e;
     }
 };

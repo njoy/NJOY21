@@ -16,12 +16,12 @@ SCENARIO( "PLOTR card3 title",
       "12345678901234567890123456789012345678901234567890"
     };
 
-    THEN( "the tname value is correctly read and returned" ){
+    THEN( "the title value is correctly read and returned" ){
       for( auto& title : validValues ){
         iRecordStream<char> iss( std::istringstream( "'" + title + "'" ) );
 
         REQUIRE( 
-            title == argument::extract< PLOTR::Card3::Title >( iss ).value );
+            title == argument::extract< PLOTR::Card3::T1 >( iss ).value );
       }
     }
   }
@@ -31,7 +31,7 @@ SCENARIO( "PLOTR card3 title",
           "123456789 123456789 123456789 123456789 123456789 123456789 1");
       iRecordStream<char> iss(
           std::istringstream( "'" + value + "'" ) );
-      REQUIRE_THROWS( argument::extract< PLOTR::Card3::Title >( iss ) );
+      REQUIRE_THROWS( argument::extract< PLOTR::Card3::T1 >( iss ) );
     }
   }
 } // SCENARIO

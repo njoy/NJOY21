@@ -8,19 +8,19 @@ public:
   #include "njoy21/input/GAMINR/Card5.hpp"
   #include "njoy21/input/GAMINR/Card6.hpp"
   #include "njoy21/input/GAMINR/Card7.hpp"
+  #include "njoy21/input/GAMINR/src/Material.hpp"
 
   #include "njoy21/input/GAMINR/src/readArbitraryGammaStructure.hpp"
   #include "njoy21/input/GAMINR/src/readArbitraryWeights.hpp"
   #include "njoy21/input/GAMINR/src/readCard6List.hpp"
-  #include "njoy21/input/GAMINR/src/readCard7List.hpp"
+  #include "njoy21/input/GAMINR/src/readMaterials.hpp"
 
   Card1 card1;
   Card2 card2;
   Card3 card3;
   optional< Card4 > card4;
   optional< Card5 > card5;
-  std::vector< Card6 > card6List;
-  std::vector< Card7 > card7List;
+  std::vector< Material > materials;
 
   template< typename Istream >
   GAMINR( Istream& is )
@@ -32,8 +32,7 @@ public:
         readArbitraryGammaStructure( is, card2.igg.value ) ),
     card5( 
         readArbitraryWeights( is, card2.iwt.value ) ),
-    card6List( readCard6List( is ) ),
-    card7List( readCard7List( is ) )
+    materials( readMaterials( is ) )
   {
   }
   catch( std::exception& e ){

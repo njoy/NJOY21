@@ -9,5 +9,5 @@ struct Xtag {
   }
   // defaultVal will be used by Card5 to set the default x-coordinate.
   static Value_t defaultValue(){ return std::nullopt; }
-  static bool verify( const Value_t& v ){ return (not v) or (*v >= 0.0 ); }
+  static bool verify( const Value_t& v ){ return *v >= 0.0; }
 };

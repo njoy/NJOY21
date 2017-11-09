@@ -22,7 +22,7 @@ using Npend = GROUPR::Card1::Npend;
         Card::clear( is );
       }
     catch( std::exception& e ){
-      Log::info( "Trouble validating GAMINR Card1" );
+      Log::info( "Trouble validating Card1" );
       throw e;
     }
 };

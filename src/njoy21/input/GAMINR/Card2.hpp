@@ -24,7 +24,7 @@ using Iprint = GROUPR::Card2::Iprint;
         Card::clear( is );
       }
     catch( std::exception& e ){
-      Log::info( "Trouble validating GAMINR Card2" );
+      Log::info( "Trouble validating Card2" );
       throw e;
     }
 };

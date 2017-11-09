@@ -1,5 +1,5 @@
 struct Xlabl {
-  using Value_t = PLOTR::Card3::Title::Value_t; // std::string
+  using Value_t = std::string;
   static std::string name(){ return "xlabl"; }
 
   static std::string description(){
@@ -10,6 +10,6 @@ struct Xlabl {
 
   static Value_t defaultValue(){ return "energy (ev)"; }
   static bool verify( const Value_t& s ){ 
-    return PLOTR::Card3::Title::verify(s);
+    return ( s.length() < 61 );
   }
 };

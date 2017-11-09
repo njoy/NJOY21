@@ -94,10 +94,10 @@ SCENARIO( "Parsing valid PLOTR input" ){
       REQUIRE( Approx( 0.1 ) == plotr.curves[0].first.wr.value );
     }
     THEN( "the Card3 input values can be verified" ){
-      REQUIRE( sCard3_1 == plotr.curves[0].second.plot->card3.title.value );
+      REQUIRE( sCard3_1 == plotr.curves[0].second.plot->card3.t1.value );
     }
     THEN( "the Card3a input values can be verified" ){
-      REQUIRE( sCard3a_1 == plotr.curves[0].second.plot->card3a.title.value );
+      REQUIRE( sCard3a_1 == plotr.curves[0].second.plot->card3a.t2.value );
     }
     THEN( "the Card4 input values can be verified: 1 0 2 1 10.0 10.0" ){
       REQUIRE( 1 == plotr.curves[0].second.plot->card4.itype.value );
@@ -222,10 +222,10 @@ SCENARIO( "Parsing valid PLOTR input" ){
       REQUIRE( Approx( 0.1 ) == plotr.curves[0].first.wr.value );
     }
     THEN( "the Card3 input values can be verified" ){
-      REQUIRE( sCard3_1 == plotr.curves[0].second.plot->card3.title.value );
+      REQUIRE( sCard3_1 == plotr.curves[0].second.plot->card3.t1.value );
     }
     THEN( "the Card3a input values can be verified" ){
-      REQUIRE( sCard3a_1 == plotr.curves[0].second.plot->card3a.title.value );
+      REQUIRE( sCard3a_1 == plotr.curves[0].second.plot->card3a.t2.value );
     }
     THEN( "the Card4 input values can be verified: -1 1 2 0" ){
       REQUIRE( -1 == plotr.curves[0].second.plot->card4.itype.value );
@@ -361,12 +361,12 @@ SCENARIO( "Parsing valid PLOTR input" ){
       REQUIRE( Approx( 0.1 ) == plotr.curves[0].first.wr.value );
     }
     THEN( "the Card3 input values can be verified" ){
-      REQUIRE( PLOTR::Card3::Title::defaultValue() == 
-               plotr.curves[0].second.plot->card3.title.value );
+      REQUIRE( PLOTR::Card3::T1::defaultValue() == 
+               plotr.curves[0].second.plot->card3.t1.value );
     }
     THEN( "the Card3a input values can be verified" ){
-      REQUIRE( PLOTR::Card3a::Title::defaultValue() == 
-               plotr.curves[0].second.plot->card3a.title.value );
+      REQUIRE( PLOTR::Card3a::T2::defaultValue() == 
+               plotr.curves[0].second.plot->card3a.t2.value );
     }
     THEN( "the Card4 input values can be verified: 1" ){
       REQUIRE( 1 == plotr.curves[0].second.plot->card4.itype.value );
@@ -532,10 +532,10 @@ SCENARIO( "Parsing valid PLOTR input" ){
       REQUIRE( Approx( 0.1 ) == plotr.curves[0].first.wr.value );
     }
     THEN( "the first Card3 input values can be verified" ){
-      REQUIRE( sCard3_1 == plotr.curves[0].second.plot->card3.title.value );
+      REQUIRE( sCard3_1 == plotr.curves[0].second.plot->card3.t1.value );
     }
     THEN( "the first Card3a input values can be verified" ){
-      REQUIRE( sCard3a_1 == plotr.curves[0].second.plot->card3a.title.value );
+      REQUIRE( sCard3a_1 == plotr.curves[0].second.plot->card3a.t2.value );
     }
     THEN( "the first Card4 input values can be verified: 1 0 2 1 10.0 10.0" ){
       REQUIRE( 1 == plotr.curves[0].second.plot->card4.itype.value );
@@ -626,12 +626,12 @@ SCENARIO( "Parsing valid PLOTR input" ){
       REQUIRE( Approx( 0.1 ) == plotr.curves[1].first.wr.value );
     }
     THEN( "the second Card3 input values can be verified" ){
-      REQUIRE( PLOTR::Card3::Title::defaultValue() == 
-               plotr.curves[1].second.plot->card3.title.value );
+      REQUIRE( PLOTR::Card3::T1::defaultValue() == 
+               plotr.curves[1].second.plot->card3.t1.value );
     }
     THEN( "the second Card3a input values can be verified" ){
-      REQUIRE( PLOTR::Card3a::Title::defaultValue() == 
-               plotr.curves[1].second.plot->card3a.title.value );
+      REQUIRE( PLOTR::Card3a::T2::defaultValue() == 
+               plotr.curves[1].second.plot->card3a.t2.value );
     }
     THEN( "the second Card4 input values can be verified: 1" ){
       REQUIRE( 1 == plotr.curves[1].second.plot->card4.itype.value );

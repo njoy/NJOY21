@@ -1,13 +1,14 @@
 class Card3 {
 public:
   #include "njoy21/input/PLOTR/Card3/Title.hpp"
+  using T1 = Title< hana::string<'t', '1'> >;
 
-  Argument< Title > title;
+  Argument< T1 > t1;
 
   template< typename Char >
   Card3( iRecordStream< Char >& is )
     try:
-      title( argument::extract< Title >( is ) )
+      t1( argument::extract< T1 >( is ) )
     {
       Card::clear( is );
     }

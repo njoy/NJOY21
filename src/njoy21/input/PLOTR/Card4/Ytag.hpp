@@ -9,5 +9,4 @@ struct Ytag {
   }
   // defaultValue will be used by Card6 to set the default y-coordinate.
   static Value_t defaultValue(){ return std::nullopt; }
-  static bool verify( Value_t ){ return true; }
 };
