@@ -11,5 +11,10 @@ static std::vector< std::pair< Card2, Curves > >
     tmp2 = Card2( is, lori );
   }
 
+  if( curveList.size() == 0 ){
+    Log::error( "No curves were specified in PLOTR module." );
+    throw std::exception();
+  }
+
   return curveList;
 }

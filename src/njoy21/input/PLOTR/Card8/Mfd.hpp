@@ -45,11 +45,16 @@ struct Mfd {
         "        sections\n\n"
         "If the Iverf value is 0, this value is ignored.";
   }
+
   static Value_t defaultValue( const int ){ return std::nullopt; }
+
   static bool verify( const Value_t m, const int iverf ){
+
+    static constexpr auto validValues = 
+      hana::make_set( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 23, 26, 27, 
+                     28, 30, 31, 32, 33, 34, 35, 39, 40 );
+
     if( iverf == 0 ) return true;
-    return ( ( *m > 0 and *m < 11 ) or ( *m > 11 and *m < 16 ) or ( *m == 23 )
-          or ( *m > 25 and *m < 29 ) or ( *m > 29 and *m < 36 ) or ( *m == 39 )
-          or ( *m == 40 ) );
+    return ( hana::contains( validValues, *m ) );
   }
 };

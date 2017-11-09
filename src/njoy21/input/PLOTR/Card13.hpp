@@ -24,16 +24,12 @@ public:
       xerr1( argument::extract< Xerr1 >( is ) ),
       xerr2( argument::extract< Xerr2 >( is ) )
       {
-        if( this->yerr2.value != std::nullopt and 
-            *( this->yerr2.value ) == 0.0 ) 
-                                     this->yerr2.value = *( this->yerr1.value );
-        if( this->xerr2.value != std::nullopt and 
-            *( this->xerr2.value ) == 0.0 )
-                                     this->xerr2.value = *( this->xerr1.value );
+        if( this->yerr2.value == 0.0 ) this->yerr2.value = this->yerr1.value;
+        if( this->xerr2.value == 0.0 ) this->xerr2.value = this->xerr1.value;
         Card::clear( is );
       }
     catch( std::exception& e ){
-      Log::info( "Trouble validating PLOTR Card13" );
+      Log::info( "Trouble validating Card13" );
       throw e;
     }
 };

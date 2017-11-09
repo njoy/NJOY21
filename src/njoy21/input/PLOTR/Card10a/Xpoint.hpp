@@ -7,7 +7,4 @@ struct Xpoint {
       "pointing from the tag title to the curve.\n\n"
       "A value of less than or equal to zero is used to omit the vector.";
   }
-  static bool verify( Value_t ){
-    return true;
-  }
 };

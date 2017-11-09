@@ -6,7 +6,4 @@ struct Ydata {
       "The ydata argument specifies the y-value for the data point.\n";
   }
   static Value_t defaultValue(){ return std::nullopt; }
-  static bool verify( Value_t ){
-    return true;
-  }
 };

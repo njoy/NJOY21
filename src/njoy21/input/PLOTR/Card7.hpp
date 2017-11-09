@@ -9,16 +9,16 @@ public:
   Argument< Rstep > rstep;
 
   template< typename Char >
-  Card7 ( iRecordStream< Char >& is, const int jtype )
+  Card7 ( iRecordStream< Char >& is )
     try:
-      rbot( argument::extract< Rbot >( is, jtype ) ),
+      rbot( argument::extract< Rbot >( is ) ),
       rtop( argument::extract< Rtop >( is, this->rbot.value ) ),
       rstep( argument::extract< Rstep >( is ) )
       {
         Card::clear( is );
       }
     catch( std::exception& e ){
-      Log::info( "Trouble validating PLOTR Card7" );
+      Log::info( "Trouble validating Card7" );
       throw e;
     }
 };

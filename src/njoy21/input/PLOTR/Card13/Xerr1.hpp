@@ -8,6 +8,6 @@ struct Xerr1 {
   }
   static Value_t defaultValue(){ return std::nullopt; }
   static bool verify( const Value_t v ){
-    return ( *v >= 0.0 ) or ( v == std::nullopt );
+    return v >= 0.0;
   }
 };

@@ -21,8 +21,7 @@ class Curves {
   {
   }
   catch( std::exception& e ){
-    Log::info( "Trouble validating PLOTR Curve input\n"
-               "(Card2-13)." );
+    Log::info( "Trouble validating Curve input (Card2-13)." );
     throw e;
   }
 };

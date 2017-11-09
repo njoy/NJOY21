@@ -10,5 +10,12 @@ readCard13List( Istream& is, const int nform ){
     card13List.push_back( std::move(tmp13) );
     tmp13 = PLOTR::Card13( is );
   }
+
+  if( card13List.size() == 0 ){
+    Log::error( "No values were provided for PLOTR Card 13 when they were"
+                "expected." );
+    throw std::exception();
+  }
+
   return card13List;
 }

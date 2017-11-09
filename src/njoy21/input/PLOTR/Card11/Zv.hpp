@@ -8,5 +8,4 @@ struct Zv {
       "The default value is 15.0.";
   }
   static Value_t defaultValue(){ return 15.0; }
-  static bool verify( Value_t ){ return true; }
 };

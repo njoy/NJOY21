@@ -424,43 +424,43 @@ SCENARIO( "Parsing valid PLOTR input" ){
 
     THEN( "the Card13 input values can be verified" ){
       REQUIRE( Approx( 1.0 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(0).xdata.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(0).xdata.value ) );
       REQUIRE( Approx( 2.0 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(0).ydata.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(0).ydata.value ) );
       REQUIRE( Approx( 1.5 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(0).yerr1.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(0).yerr1.value ) );
       REQUIRE( Approx( 2.5 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(0).yerr2.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(0).yerr2.value ) );
       REQUIRE( Approx( 0.5 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(0).xerr1.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(0).xerr1.value ) );
       REQUIRE( Approx( 1.5 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(0).xerr2.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(0).xerr2.value ) );
 
       REQUIRE( Approx( 5.0 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(1).xdata.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(1).xdata.value ) );
       REQUIRE( Approx( 5.0 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(1).ydata.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(1).ydata.value ) );
       REQUIRE( Approx( 0.0 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(1).yerr1.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(1).yerr1.value ) );
       REQUIRE( Approx( 0.0 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(1).yerr2.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(1).yerr2.value ) );
       REQUIRE( Approx( 0.0 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(1).xerr1.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(1).xerr1.value ) );
       REQUIRE( Approx( 0.0 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(1).xerr2.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(1).xerr2.value ) );
 
       REQUIRE( Approx( 20.1 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(2).xdata.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(2).xdata.value ) );
       REQUIRE( Approx( 21.2 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(2).ydata.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(2).ydata.value ) );
       REQUIRE( Approx( 10.0 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(2).yerr1.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(2).yerr1.value ) );
       REQUIRE( Approx( 30.0 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(2).yerr2.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(2).yerr2.value ) );
       REQUIRE( Approx( 10.0 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(2).xerr1.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(2).xerr1.value ) );
       REQUIRE( Approx( 25.0 ) ==
-            *( plotr.curves[0].second.freeform->card13->at(2).xerr2.value ) );
+            *( plotr.curves[0].second.freeform->card13List->at(2).xerr2.value ) );
     }
 
     THEN( "the remaining cards are empty" ){
@@ -689,43 +689,43 @@ SCENARIO( "Parsing valid PLOTR input" ){
 
     THEN( "the second Card13 input values can be verified" ){
       REQUIRE( Approx( 1.0 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(0).xdata.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(0).xdata.value ) );
       REQUIRE( Approx( 2.0 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(0).ydata.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(0).ydata.value ) );
       REQUIRE( Approx( 1.5 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(0).yerr1.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(0).yerr1.value ) );
       REQUIRE( Approx( 2.5 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(0).yerr2.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(0).yerr2.value ) );
       REQUIRE( Approx( 0.5 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(0).xerr1.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(0).xerr1.value ) );
       REQUIRE( Approx( 1.5 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(0).xerr2.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(0).xerr2.value ) );
 
       REQUIRE( Approx( 5.0 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(1).xdata.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(1).xdata.value ) );
       REQUIRE( Approx( 5.0 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(1).ydata.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(1).ydata.value ) );
       REQUIRE( Approx( 0.0 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(1).yerr1.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(1).yerr1.value ) );
       REQUIRE( Approx( 0.0 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(1).yerr2.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(1).yerr2.value ) );
       REQUIRE( Approx( 0.0 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(1).xerr1.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(1).xerr1.value ) );
       REQUIRE( Approx( 0.0 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(1).xerr2.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(1).xerr2.value ) );
 
       REQUIRE( Approx( 20.1 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(2).xdata.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(2).xdata.value ) );
       REQUIRE( Approx( 21.2 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(2).ydata.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(2).ydata.value ) );
       REQUIRE( Approx( 10.0 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(2).yerr1.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(2).yerr1.value ) );
       REQUIRE( Approx( 30.0 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(2).yerr2.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(2).yerr2.value ) );
       REQUIRE( Approx( 10.0 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(2).xerr1.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(2).xerr1.value ) );
       REQUIRE( Approx( 25.0 ) ==
-            *( plotr.curves[1].second.freeform->card13->at(2).xerr2.value ) );
+            *( plotr.curves[1].second.freeform->card13List->at(2).xerr2.value ) );
     }
 
     THEN( "the remaining cards are empty for the second curve" ){
