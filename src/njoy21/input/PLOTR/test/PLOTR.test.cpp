@@ -264,11 +264,11 @@ SCENARIO( "Parsing valid PLOTR input" ){
 
     THEN( "the Card7 input values can be verified: -10.0 10.0 0.001" ){
       REQUIRE( Approx( -10.0 ) == 
-               plotr.curves[0].second.plot->card7->first.rbot.value );
+               *( plotr.curves[0].second.plot->card7->first.rbot.value ) );
       REQUIRE( Approx(  10.0 ) == 
-               plotr.curves[0].second.plot->card7->first.rtop.value );
+               *( plotr.curves[0].second.plot->card7->first.rtop.value ) );
       REQUIRE( Approx( 0.001 ) == 
-               plotr.curves[0].second.plot->card7->first.rstep.value );
+               *( plotr.curves[0].second.plot->card7->first.rstep.value ) );
     }
     THEN( "the Card7a input values can be verified" ){
       REQUIRE( sCard7a_2 == 

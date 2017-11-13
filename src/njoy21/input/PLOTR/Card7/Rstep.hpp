@@ -1,5 +1,5 @@
 struct Rstep {
-  using Value_t = double;
+  using Value_t = optional< double >;
   static std::string name(){ return "rstep"; }
   static std::string description(){
     return
@@ -8,8 +8,15 @@ struct Rstep {
       "The default behavior is automatic scaling.  The value is ignored if\n"
       "log scaling is used.";
   }
-  static Value_t defaultValue(){ return 1.0; }
-  static bool verify( Value_t v ){
-    return ( v > 0 );
+  static Value_t defaultValue( const Value_t rbot ){
+    if( rbot ){
+      Log::error( "When using default values in PLOTR::Card7, all values"
+                  "should be defaulted." );
+      throw std::exception();
+    }
+    return std::nullopt;
+  }
+  static bool verify( const Value_t v, const Value_t ){
+    return *v > 0.0;
   }
 };

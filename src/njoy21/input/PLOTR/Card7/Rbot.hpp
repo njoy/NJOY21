@@ -1,5 +1,5 @@
 struct Rbot {
-  using Value_t = double;
+  using Value_t = optional< double >;
   static std::string name(){ return "rbot"; }
   static std::string description(){
     return
@@ -7,6 +7,6 @@ struct Rbot {
       "or the z-axis.";
   }
   static Value_t defaultValue(){
-    return 0.0;
+    return std::nullopt;
   }
 };

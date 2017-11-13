@@ -13,7 +13,7 @@ public:
     try:
       rbot( argument::extract< Rbot >( is ) ),
       rtop( argument::extract< Rtop >( is, this->rbot.value ) ),
-      rstep( argument::extract< Rstep >( is ) )
+      rstep( argument::extract< Rstep >( is, this->rbot.value ) )
       {
         Card::clear( is );
       }
