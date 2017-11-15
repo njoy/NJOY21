@@ -88,6 +88,15 @@ public:
         }
 
       } while( true );
+
+      for( unsigned int i = 1; i < cardSequence.size(); i++ ){
+        if( std::get<Card3>(cardSequence.at(i)).mat.value <
+              std::get<Card3>(cardSequence.at(i-1)).mat.value ){
+          Log::error( "Materials in RECONR::Card3 should be specified in\n"
+                      "ascending order." );
+          throw std::exception();
+        }
+      }
     }
     catch( std::exception& e ){
       Log::info( "Trouble validating RECONR input" );
