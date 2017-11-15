@@ -22,10 +22,20 @@ public:
       card4( is, this->card2.ntemp2, this->card2.istrap, this->card2.temp1 ){
   	Card5 card5( is );
   	if ( card5.mat1.value ){
+          if( card5.mat1.value < this->card2.mat1.value ){
+            Log::error("BROADR materials must be entered in ascending order." );
+            throw std::exception();
+          }
   	  this->card5List = std::vector< Card5 >();
   	  this->card5List->push_back( std::move(card5) );
   	  do {
   	    this->card5List->emplace_back( is );
+            if( this->card5List->back().mat1.value and
+              ( this->card5List->back().mat1.value <
+                this->card5List->at( this->card5List->size() - 2 ).mat1.value ) ){
+              Log::error("BROADR materials must be entered in ascending order.");
+              throw std::exception();
+            }
   	  } while ( this->card5List->back().mat1.value );
   	  this->card5List->pop_back();
   	}
