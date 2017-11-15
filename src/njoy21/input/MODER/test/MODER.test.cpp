@@ -43,5 +43,14 @@ SCENARIO( "bugged" ){
       "0 /"
       ) );
     REQUIRE_THROWS( MODER( iss ) );
+  }{
+    iRecordStream<char> iss( std::istringstream(
+      "1 -22 \n"
+      "'my simple pendf tape'\n"
+      "21 124\n"
+      "23 122\n"
+      "0/"
+      ) );
+    REQUIRE_THROWS( MODER( iss ) );
   }
 }

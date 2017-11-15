@@ -37,6 +37,13 @@ public:
             card3List->emplace_back( is, this->card1.nout );
           }
           card3List->pop_back();
+          for( auto i = 1; i < card3List->size(); i++ ){
+            if( card3List->at(i).matd.value < card3List->at(i-1).matd.value ){
+              Log::error( "Materials specified in MODER::Card3 must be in\n"
+                          "ascending order." );
+              throw std::exception();
+            }
+          }
         }
     } catch( std::exception& e ){
       Log::info("Trouble while validating MODER input");
