@@ -1,11 +1,11 @@
 
 add_executable( njoy21.input.argument.parser.test
                 Discriminating.test.cpp
-                Defaulted.test.cpp
-                Required.test.cpp
-                Base.test.cpp
+                Optional.test.cpp
                 parser.test.cpp
-                Optional.test.cpp )
+                Required.test.cpp
+                Defaulted.test.cpp
+                Base.test.cpp )
 target_compile_options( njoy21.input.argument.parser.test PRIVATE ${${PREFIX}_common_flags}
 $<$<BOOL:${strict}>:${${PREFIX}_strict_flags}>$<$<CONFIG:DEBUG>:
 ${${PREFIX}_DEBUG_flags}
