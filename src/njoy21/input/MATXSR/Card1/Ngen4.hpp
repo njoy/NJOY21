@@ -7,7 +7,7 @@ struct Ngen4{
            "The allowable values have absolute values between 20 and 99,\n"
            "inclusively.  If the value is negative, it means that the file\n"
            "is in binary format.  If it is positive, the file is in\n"
-           "plaintext.\n\n"
+           "plaintext. A value of 0 is also allowed.\n\n"
            "The default value is 0, meaning no data is provided.";
   }
   static Value_t defaultValue( const Value_t, const Value_t,
@@ -20,11 +20,7 @@ struct Ngen4{
                       const Value_t nmatx,
                       const Value_t ngen2,
                       const Value_t ngen1 ){
-    return ngen4 == 0 or 
-           ( argument::common::Nin::verify( ngen4 ) and
-             std::abs( ngen4 ) != std::abs( ngen3 ) and
-             std::abs( ngen4 ) != std::abs( nmatx ) and
-             std::abs( ngen4 ) != std::abs( ngen2 ) and
-             std::abs( ngen4 ) != std::abs( ngen1 ) );
+    return MATXSR::Card1::Ngen3::verify( ngen4, nmatx, ngen2, ngen1 ) and
+             std::abs( ngen4 ) != std::abs( ngen3 );
   }
 };

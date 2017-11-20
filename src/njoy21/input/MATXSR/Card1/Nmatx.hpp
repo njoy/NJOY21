@@ -6,14 +6,12 @@ struct Nmatx{
            "module.  The allowable values have absolute values between 20 and\n"
            "99, inclusively.  If the value is negative, it means that the \n"
            "file is in binary format.  If it is positive, the file is in\n"
-           "plaintext.";
+           "plaintext. A value of 0 is also allowed.";
   }
   static bool verify( const Value_t nmatx,
                       const Value_t ngen2,
                       const Value_t ngen1 ){
-    return nmatx == 0 or
-           ( argument::common::Nin::verify( nmatx ) and
-             std::abs( nmatx ) != std::abs( ngen2 ) and
-             std::abs( nmatx ) != std::abs( ngen1 ) );
+    return MATXSR::Card1::Ngen2::verify( nmatx, ngen1 ) and
+             std::abs( nmatx ) != std::abs( ngen2 );
   }
 };

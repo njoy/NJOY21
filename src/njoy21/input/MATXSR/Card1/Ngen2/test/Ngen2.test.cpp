@@ -13,7 +13,7 @@ SCENARIO( "MATXSR Card1 Ngen2 values",
 
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
-      for( auto i : {-99,-40,-20,20,97,99} ){
+      for( auto i : {-99,-40,-20,0,20,97,99} ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
@@ -26,7 +26,7 @@ SCENARIO( "MATXSR Card1 Ngen2 values",
 
   GIVEN( "invalid inputs" ){
     WHEN( "invalid inputs are provided" ){
-      for( auto i : {-100,-24,-19,0,19,24,100} ){
+      for( auto i : {-100,-24,-19,19,24,100} ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){
