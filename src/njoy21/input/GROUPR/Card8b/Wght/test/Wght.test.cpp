@@ -16,7 +16,7 @@ SCENARIO( "Wght input values", "[Card8b], [Wght]" ){
     THEN( "the returned TAB1 has the correct values" ){
       iRecordStream<char> iss( ( std::istringstream( sTAB1 ) ) );
 
-      njoy::ENDFtk::UnivariateTabulation TAB1 = argument::extract< 
+      njoy::ENDFtk::TabulationRecord TAB1 = argument::extract< 
           GROUPR::Card8b::Wght >( iss ).value;
 
       REQUIRE( 1 == TAB1.NR() );

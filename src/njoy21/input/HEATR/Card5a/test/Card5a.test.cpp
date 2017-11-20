@@ -4,7 +4,7 @@
 
 using namespace njoy::njoy21::input;
 
-extern std::function< njoy::ENDFtk::UnivariateTabulation() > makeTAB1;
+extern std::function< njoy::ENDFtk::TabulationRecord() > makeTAB1;
 
 SCENARIO( "Verifying HEATR Card5a input", 
   "[HEATR], [Card5a]" ){

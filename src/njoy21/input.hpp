@@ -23,4 +23,5 @@ using iRecordStream =
 #include "njoy21/input/DTFR.hpp"
 #include "njoy21/input/THERMR.hpp"
 #include "njoy21/input/LEAPR.hpp"
+#include "njoy21/input/MATXSR.hpp"
 }
