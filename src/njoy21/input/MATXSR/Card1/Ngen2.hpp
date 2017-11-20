@@ -9,7 +9,8 @@ struct Ngen2{
            "file is in plaintext.";
   }
   static bool verify( const Value_t ngen2, const Value_t ngen1 ){
-    return ( argument::common::Nin::verify( ngen2 ) and
+    return ngen2 == 0 or
+           ( argument::common::Nin::verify( ngen2 ) and
              std::abs(ngen2) != std::abs(ngen1) );
   }
 };

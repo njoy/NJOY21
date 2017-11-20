@@ -13,5 +13,13 @@ std::vector< Card10 > readCard10List( Istream& is, const unsigned int nmat )
     }
   }
 
-  return card10List;
+  try{
+    card10List.emplace_back( is );
+  }
+  catch( std::exception& e ){
+    return card10List;
+  }
+
+  Log::error( "More Card10 values were found than were specified in Card3::nmat." );
+  throw std::exception();
 }

@@ -24,7 +24,8 @@ struct Ngen7{
                       const Value_t nmatx,
                       const Value_t ngen2,
                       const Value_t ngen1 ){
-    return ( argument::common::Nin::verify( ngen7 ) and
+    return ngen7 == 0 or 
+           ( argument::common::Nin::verify( ngen7 ) and
              std::abs( ngen7 ) != std::abs( ngen6 ) and
              std::abs( ngen7 ) != std::abs( ngen5 ) and
              std::abs( ngen7 ) != std::abs( ngen4 ) and

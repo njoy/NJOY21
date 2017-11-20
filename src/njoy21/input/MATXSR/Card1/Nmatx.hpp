@@ -11,7 +11,8 @@ struct Nmatx{
   static bool verify( const Value_t nmatx,
                       const Value_t ngen2,
                       const Value_t ngen1 ){
-    return ( argument::common::Nin::verify( nmatx ) and
+    return nmatx == 0 or
+           ( argument::common::Nin::verify( nmatx ) and
              std::abs( nmatx ) != std::abs( ngen2 ) and
              std::abs( nmatx ) != std::abs( ngen1 ) );
   }

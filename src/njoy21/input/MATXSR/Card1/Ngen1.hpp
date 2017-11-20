@@ -9,6 +9,6 @@ struct Ngen1{
            "file is in plaintext.";
   }
   static bool verify( const Value_t ngen1 ){
-    return argument::common::Nin::verify( ngen1 );
+    return ( ngen1 == 0 or argument::common::Nin::verify( ngen1 ) );
   }
 };
