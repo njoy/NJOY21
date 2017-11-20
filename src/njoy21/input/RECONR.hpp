@@ -89,13 +89,18 @@ public:
 
       } while( true );
 
-      for( unsigned int i = 1; i < cardSequence.size(); i++ ){
-        if( std::get<Card3>(cardSequence.at(i)).mat.value <
-              std::get<Card3>(cardSequence.at(i-1)).mat.value ){
-          Log::error( "Materials in RECONR::Card3 should be specified in\n"
-                      "ascending order." );
-          throw std::exception();
-        }
+      auto unsortedStart = std::is_sorted_until( cardSequence.begin(),
+           cardSequence.end(), []( RECONR_tuple first,
+                                   RECONR_tuple second )->bool{
+        return std::get<Card3>(first).mat.value <
+               std::get<Card3>(second).mat.value; } );
+      if( unsortedStart != cardSequence.end() ){
+        Log::error( "Materials in RECONR::Card3 should be specified in\n"
+                    "ascending order." );
+        Log::info( "Card3 material {} > material {}.",
+                   std::get<Card3>(unsortedStart[-1]).mat.value,
+                   std::get<Card3>(*(unsortedStart)).mat.value );
+        throw std::exception();
       }
     }
     catch( std::exception& e ){
