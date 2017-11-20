@@ -17,7 +17,7 @@ struct Nout {
       "and 99, inclusively, and are required to have the same signedness as\n"
       "(and different absolute value than) the corresponding nin argument.";
   }
-  
+
   static bool verify( const Value_t v ){
     return std::abs(v) > 19 && std::abs(v) < 100;
   }

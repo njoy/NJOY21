@@ -112,13 +112,6 @@ read( iRecordStream<Char>& is, std::optional<ENDFtk::TAB1>& tab1, Args&&... ){
   return true;
 }
 
-template< typename Char, typename T, typename... Args >
-std::enable_if_t< std::is_default_constructible<T>::value, bool >
-read( iRecordStream<Char>& is, std::optional<T>& value, Args&&... args ){
-  value = T{};
-  return read( is, *value, std::forward<Args>(args)... );
-}
-
 template< typename T, typename = void >
 struct BasicReadable{
   static constexpr bool value = false;
@@ -152,4 +145,16 @@ template< typename Char, typename T, typename... Args >
 std::enable_if_t< Readable<T>::value, bool >
 read( iRecordStream<Char>& is, T& i, Args&&... ){
   is >> i; validate(is); return true;
+}
+
+template< typename Char, typename T, typename... Args >
+auto
+read( iRecordStream<Char>& is, std::optional<T>& value, Args&&... args ) 
+-> std::enable_if_t
+   < std::is_default_constructible<T>::value, 
+     std::conditional_t
+     < true, bool, 
+       decltype( read( is, *value, std::forward<Args>(args)... ) ) > >{
+  value = T{};
+  return read( is, *value, std::forward<Args>(args)... );
 }

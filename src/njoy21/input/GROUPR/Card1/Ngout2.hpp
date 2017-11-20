@@ -23,6 +23,9 @@ struct Ngout2 : public argument::common::Nout {
       "ngout1=0) the GENDF tape is written to ngout2.";
   }
 
+  static int defaultValue( const Argument< Nendf >&,
+                           const Argument< Npend >&,
+                           const Argument< Ngout1 >& ){ return 0; }
   static bool verify( const Value_t v, 
                      const Argument< Nendf >& nendf,
                      const Argument< Npend >& npend,
