@@ -7,9 +7,9 @@ struct Joutp{
   }
   static bool verify( const Value_t joutpList, const unsigned int ntype ){
     if( joutpList.size() != ntype ) return false;
-    for( auto joutp : joutpList ){
-      if( joutp < 0 ) return false;
-    }
+    auto pos = std::find_if( joutpList.begin(), joutpList.end(),
+                             []( const int joutp )->bool{ return joutp < 0; } );
+    if( pos != joutpList.end() ) return false;
     return true;
   }
 };
