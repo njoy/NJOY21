@@ -5,18 +5,19 @@ class Card2a {
   #include "njoy21/input/WIMSR/Card2a/Nrg.hpp"
   #include "njoy21/input/WIMSR/Card2a/Igref.hpp"
 
-  Ngnd ngnd;
-  Nfg nfg;
-  Nrg nrg;
-  Igref igref;
+  Argument< Ngnd > ngnd;
+  Argument< Nfg > nfg;
+  Argument< Nrg > nrg;
+  Argument< Igref > igref;
 
   template< typename Istream >
   Card2a( Istream& is )
   try:
-    ngnd( is ),
-    nfg( is ),
-    nrg( is ),
-    igref( is, this->nfg.value, this->ngnd.value )
+    ngnd( argument::extract< WIMSR::Card2a::Ngnd >( is ) ),
+    nfg( argument::extract< WIMSR::Card2a::Nfg >( is ) ),
+    nrg( argument::extract< WIMSR::Card2a::Nrg >( is ) ),
+    igref( argument::extract< WIMSR::Card2a::Igref >( is, this->nfg.value,
+           this->ngnd.value ) )
   {
   }
   catch( std::exception& e ){

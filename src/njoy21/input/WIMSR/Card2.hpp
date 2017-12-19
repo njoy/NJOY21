@@ -4,16 +4,16 @@ class Card2 {
   #include "njoy21/input/WIMSR/Card2/Iverw.hpp"
   #include "njoy21/input/WIMSR/Card2/Igroup.hpp"
 
-  Iprint iprint;
-  Iverw iverw;
-  Igroup igroup;
+  Argument< Iprint > iprint;
+  Argument< Iverw > iverw;
+  Argument< Igroup > igroup;
 
   template< typename Istream >
   Card2( Istream& is )
   try:
-    iprint( is ),
-    iverw( is ),
-    igroup( is )
+    iprint( argument::extract< WIMSR::Card2::Iprint >( is ) ),
+    iverw( argument::extract< WIMSR::Card2::Iverw >( is ) ),
+    igroup( argument::extract< WIMSR::Card2::Igroup >( is ) )
   {
   }
   catch( std::exception& e ){
