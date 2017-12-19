@@ -3,12 +3,12 @@ public:
 
   #include "njoy21/input/MATXSR/Card6/Ngrp.hpp"
 
-  Argument< Ngrp > ngrp;
+  Argument< Ngrp > ngrpList;
 
   template< typename Istream >
-  Card6( Istream& is )
+  Card6( Istream& is, const unsigned int npart )
   try:
-    ngrp( argument::extract< Ngrp >( is ) )
+    ngrpList( argument::extract<MATXSR::Card6::Ngrp>( is, npart ) )
   {
     Card::clear( is );
   }

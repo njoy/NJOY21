@@ -10,12 +10,20 @@ SCENARIO( "MATXSR Card8",
           "[MATXSR], [Card8]" ){
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
-      for( auto i : { 0, 1, 10, 100 } ){
-        iRecordStream<char> iss( std::istringstream( std::to_string( i ) + " /" ) );
+      std::vector< std::string > validInputs{
+        " 0 /",
+        " 0 1 /",
+        " 0 1 10 /",
+        " 0 1 10 100 /" };
+      for( unsigned int i = 0; i < validInputs.size(); i++ ){
+        iRecordStream<char> iss( std::istringstream( validInputs.at( i ) ) );
 
-        MATXSR::Card8 card8( iss );
+        MATXSR::Card8 card8( iss, i+1 );
         THEN( "the value can be verified" ){
-          REQUIRE( i == card8.jinp.value );
+          REQUIRE( 0 == card8.jinpList.value.at(0) );
+          if( i >= 1 ) REQUIRE( 1 == card8.jinpList.value.at(1) );
+          if( i >= 2 ) REQUIRE( 10 == card8.jinpList.value.at(2) );
+          if( i >= 3 ) REQUIRE( 100 == card8.jinpList.value.at(3) );
         }
       }
     }
@@ -26,7 +34,7 @@ SCENARIO( "MATXSR Card8",
       iRecordStream<char> iss( std::istringstream( " /" ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( MATXSR::Card8( iss ) );
+        REQUIRE_THROWS( MATXSR::Card8( iss, 1 ) );
       }
     }
 
@@ -34,7 +42,7 @@ SCENARIO( "MATXSR Card8",
       iRecordStream<char> iss( std::istringstream( " 1 1 /" ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( MATXSR::Card8( iss ) );
+        REQUIRE_THROWS( MATXSR::Card8( iss, 1 ) );
       }
     }
 
@@ -42,7 +50,7 @@ SCENARIO( "MATXSR Card8",
       iRecordStream<char> iss( std::istringstream( " -1 /" ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( MATXSR::Card8( iss ) );
+        REQUIRE_THROWS( MATXSR::Card8( iss, 1 ) );
       }
     }
   } // GIVEN

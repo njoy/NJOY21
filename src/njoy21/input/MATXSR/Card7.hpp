@@ -3,12 +3,12 @@ public:
 
   #include "njoy21/input/MATXSR/Card7/Htype.hpp"
 
-  Argument< Htype > htype;
+  Argument< Htype > htypeList;
 
   template< typename Istream >
-  Card7( Istream& is )
+  Card7( Istream& is, const int ntype )
   try:
-    htype( argument::extract< Htype >( is ) )
+    htypeList( argument::extract<MATXSR::Card7::Htype>( is, ntype ) )
   {
     Card::clear( is );
   }

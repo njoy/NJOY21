@@ -10,11 +10,22 @@ SCENARIO( "MATXSR Card5 hpart",
           "[MATXSR], [Card5], [Hpart]" ){
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
-      for( std::string i : { "", "12345", "12345678" } ){
-        iRecordStream<char> iss( std::istringstream( "'" + i + "'" ) );
+      std::vector< std::string > validValues{
+        "''",
+        "'' '12345'",
+        "'' '12345' '12345678'" };
+      for( unsigned int i = 0; i < validValues.size(); i++ ){
+        iRecordStream<char> iss( std::istringstream( validValues.at(i) ) );
 
         THEN( "the value is verified" ){
-          REQUIRE( i == argument::extract< MATXSR::Card5::Hpart >( iss ).value );
+          REQUIRE( "''" == argument::extract< MATXSR::Card5::Hpart >
+                         ( iss, i+1 ).value.at(0) );
+          if( i >= 1 ) REQUIRE( "12345" == 
+                                argument::extract< MATXSR::Card5::Hpart >
+                                ( iss, i+1 ).value.at(1) );
+          if( i >= 2 ) REQUIRE( "12345678" == 
+                                argument::extract< MATXSR::Card5::Hpart >
+                                ( iss, i+1 ).value.at(2) );
         }
       }
     }
@@ -22,10 +33,10 @@ SCENARIO( "MATXSR Card5 hpart",
 
   GIVEN( "invalid inputs" ){
     WHEN( "no value is provided" ){
-      iRecordStream<char> iss( std::istringstream( " /" ) );
+      iRecordStream<char> iss( std::istringstream( " " ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( argument::extract< MATXSR::Card5::Hpart >( iss ) );
+        REQUIRE_THROWS( argument::extract< MATXSR::Card5::Hpart >( iss, 1 ) );
       }
     }
 
@@ -33,7 +44,7 @@ SCENARIO( "MATXSR Card5 hpart",
       iRecordStream<char> iss( std::istringstream( "'123456789'" ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( argument::extract< MATXSR::Card5::Hpart >( iss ) );
+        REQUIRE_THROWS( argument::extract< MATXSR::Card5::Hpart >( iss, 1 ) );
       }
     }
   } // GIVEN

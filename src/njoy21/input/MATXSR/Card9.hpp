@@ -3,12 +3,12 @@ public:
 
   #include "njoy21/input/MATXSR/Card9/Joutp.hpp"
 
-  Argument< Joutp > joutp;
+  Argument< Joutp > joutpList;
 
   template< typename Istream >
-  Card9( Istream& is )
+  Card9( Istream& is, const int ntype )
   try:
-    joutp( argument::extract< Joutp >( is ) )
+    joutpList( argument::extract<MATXSR::Card9::Joutp>( is, ntype ) )
   {
     Card::clear( is );
   }

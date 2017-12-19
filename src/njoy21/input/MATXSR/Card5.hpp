@@ -3,12 +3,12 @@ public:
 
   #include "njoy21/input/MATXSR/Card5/Hpart.hpp"
 
-  Argument< Hpart > hpart;
+  Argument< Hpart > hpartList;
 
   template< typename Istream >
-  Card5( Istream& is )
+  Card5( Istream& is, const unsigned int npart )
   try:
-    hpart( argument::extract< Hpart >( is ) )
+    hpartList( argument::extract< MATXSR::Card5::Hpart >( is, npart ) )
   {
     Card::clear( is );
   }

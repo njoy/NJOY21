@@ -3,12 +3,12 @@ public:
 
   #include "njoy21/input/MATXSR/Card8/Jinp.hpp"
 
-  Argument< Jinp > jinp;
+  Argument< Jinp > jinpList;
 
   template< typename Istream >
-  Card8( Istream& is )
+  Card8( Istream& is, const int ntype )
   try:
-    jinp( argument::extract< Jinp >( is ) )
+    jinpList( argument::extract<MATXSR::Card8::Jinp>( is, ntype ) )
   {
     Card::clear( is );
   }
