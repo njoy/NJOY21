@@ -1,0 +1,20 @@
+class Card6a {
+
+  #include "njoy21/input/WIMSR/Card6a/Identa.hpp"
+  #include "njoy21/input/WIMSR/Card6a/Yield.hpp"
+
+  Argument< Identa > identa;
+  Argument< Yield > yield;
+
+  template< typename Istream >
+  Card6a( Istream& is )
+  try:
+    identa( argument::extract< WIMSR::Card6a::Identa >( is ) ),
+    yield( argument::extract< WIMSR::Card6a::Yield >( is ) )
+  {
+  }
+  catch( std::exception& e ){
+    Log::info( "Trouble reading Card 6a." );
+    throw e;
+  }
+};
