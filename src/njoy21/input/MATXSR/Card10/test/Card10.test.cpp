@@ -21,12 +21,12 @@ SCENARIO( "MATXSR Card10",
     }
 
     WHEN( "the final value uses the default" ){
-      iRecordStream<char> iss( std::istringstream( "'test' 1800 /" ) );
+      iRecordStream<char> iss( std::istringstream( "'test' 1855 /" ) );
 
       MATXSR::Card10 card10( iss );
       THEN( "the values, including the default, can be verified" ){
         REQUIRE( "test" == card10.hmat.value );
-        REQUIRE( 1800 == card10.matno.value );
+        REQUIRE( 1855 == card10.matno.value );
         REQUIRE( 1800 == card10.matgg.value );
       }
     }
