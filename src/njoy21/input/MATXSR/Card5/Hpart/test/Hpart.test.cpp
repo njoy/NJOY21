@@ -18,7 +18,7 @@ SCENARIO( "MATXSR Card5 hpart",
         iRecordStream<char> iss( std::istringstream( validValues.at(i) ) );
 
         THEN( "the value is verified" ){
-          REQUIRE( "''" == argument::extract< MATXSR::Card5::Hpart >
+          REQUIRE( "" == argument::extract< MATXSR::Card5::Hpart >
                          ( iss, i+1 ).value.at(0) );
           if( i >= 1 ) REQUIRE( "12345" == 
                                 argument::extract< MATXSR::Card5::Hpart >
