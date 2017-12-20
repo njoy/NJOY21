@@ -18,12 +18,12 @@ SCENARIO( "MATXSR Card7 htype",
         iRecordStream<char> iss( std::istringstream( validValues.at(i) ) );
 
         THEN( "the value is verified" ){
-          REQUIRE( "''" == argument::extract< MATXSR::Card7::Htype >
+          REQUIRE( "" == argument::extract< MATXSR::Card7::Htype >
                                       ( iss, i+1 ).value.at(0) );
-          if( i >= 1 ) REQUIRE( "'12345'" ==
+          if( i >= 1 ) REQUIRE( "12345" ==
                                 argument::extract< MATXSR::Card7::Htype >
                                 ( iss, i+1 ).value.at(1) );
-          if( i >= 2 ) REQUIRE( "'12345678'" ==
+          if( i >= 2 ) REQUIRE( "12345678" ==
                                 argument::extract< MATXSR::Card7 ::Htype >
                                 ( iss, i+1 ).value.at(2) );
         }

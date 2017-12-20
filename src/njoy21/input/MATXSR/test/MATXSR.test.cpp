@@ -51,11 +51,11 @@ SCENARIO( "MATXSR", "[MATXSR]" ){
         REQUIRE( "12-group photon interaction library" ==
                  matxsr.card4List.at(0).hsetid.value );
 
-        REQUIRE( "'g'" == matxsr.card5.hpartList.value.at(0) );
+        REQUIRE( "g" == matxsr.card5.hpartList.value.at(0) );
 
         REQUIRE( 12 == matxsr.card6.ngrpList.value.at(0) );
 
-        REQUIRE( "'gscat'" == matxsr.card7.htypeList.value.at(0) );
+        REQUIRE( "gscat" == matxsr.card7.htypeList.value.at(0) );
 
         REQUIRE( 1 == matxsr.card8.jinpList.value.at(0) );
 
@@ -148,18 +148,18 @@ SCENARIO( "MATXSR", "[MATXSR]" ){
         REQUIRE( tCard4_2 == matxsr.card4List.at(1).hsetid.value );
         REQUIRE( tCard4_3 == matxsr.card4List.at(2).hsetid.value );
 
-        REQUIRE( "'g'" == matxsr.card5.hpartList.value.at(0) );
-        REQUIRE( "'n'" == matxsr.card5.hpartList.value.at(1) );
-        REQUIRE( "'p'" == matxsr.card5.hpartList.value.at(2) );
+        REQUIRE( "g" == matxsr.card5.hpartList.value.at(0) );
+        REQUIRE( "n" == matxsr.card5.hpartList.value.at(1) );
+        REQUIRE( "p" == matxsr.card5.hpartList.value.at(2) );
 
         REQUIRE( 12 == matxsr.card6.ngrpList.value.at(0) );
         REQUIRE( 24 == matxsr.card6.ngrpList.value.at(1) );
         REQUIRE( 35 == matxsr.card6.ngrpList.value.at(2) );
 
-        REQUIRE( "'ng'" == matxsr.card7.htypeList.value.at(0) );
-        REQUIRE( "'pn'" == matxsr.card7.htypeList.value.at(1) );
-        REQUIRE( "'nscat'" == matxsr.card7.htypeList.value.at(2) );
-        REQUIRE( "'gscat'" == matxsr.card7.htypeList.value.at(3) );
+        REQUIRE( "ng" == matxsr.card7.htypeList.value.at(0) );
+        REQUIRE( "pn" == matxsr.card7.htypeList.value.at(1) );
+        REQUIRE( "nscat" == matxsr.card7.htypeList.value.at(2) );
+        REQUIRE( "gscat" == matxsr.card7.htypeList.value.at(3) );
 
         REQUIRE( 2 == matxsr.card8.jinpList.value.at(0) );
         REQUIRE( 3 == matxsr.card8.jinpList.value.at(1) );

@@ -10,8 +10,7 @@ struct Hpart{
     if( hpartList.size() != npart ) return false;
     for( auto hpart : hpartList ){
         if( hpart.size() > 8 ){
-        Log::info( "hpart argument : {} is longer than 8 characters\n", hpart );
-        Log::info( "or the string is not delimited by quotes." );
+        Log::info( "hpart argument : {} is longer than 8 characters.\n", hpart);
         return false;
       }
     }

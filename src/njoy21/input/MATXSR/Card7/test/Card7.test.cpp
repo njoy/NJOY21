@@ -19,9 +19,9 @@ SCENARIO( "MATXSR Card7",
 
         MATXSR::Card7 card7( iss, i+1 );
         THEN( "the value can be verified" ){
-          REQUIRE( "''" == card7.htypeList.value.at(0) );
-          if( i >= 1 ) REQUIRE( "'12345'" == card7.htypeList.value.at(1) );
-          if( i >= 2 ) REQUIRE( "'12345678'" == card7.htypeList.value.at(2) );
+          REQUIRE( "" == card7.htypeList.value.at(0) );
+          if( i >= 1 ) REQUIRE( "12345" == card7.htypeList.value.at(1) );
+          if( i >= 2 ) REQUIRE( "12345678" == card7.htypeList.value.at(2) );
         }
       }
     }
