@@ -7,9 +7,9 @@ struct Ngrp {
   }
   static bool verify( const Value_t ngrpList, const unsigned int npart ){
     if( ngrpList.size() != npart ) return false;
-    for( auto ngrp : ngrpList ){
-      if( ngrp < 0 ) return false;
-    }
+    auto pos = std::find_if( ngrpList.begin(), ngrpList.end(),
+                             []( const int ngrp )->bool{ return ngrp < 0; } );
+    if( pos != ngrpList.end() ) return false;
     return true;
   }
 };
