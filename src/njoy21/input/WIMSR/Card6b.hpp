@@ -10,7 +10,7 @@ class Card6b {
   Card6b( Istream& is )
   try:
     identa( argument::extract< WIMSR::Card6b::Identa >( is ) ),
-    lambda( argument::extract< WISMR::Card6b::Lambda >( is ) )
+    lambda( argument::extract< WIMSR::Card6b::Lambda >( is ) )
   {
   }
   catch( std::exception& e ){

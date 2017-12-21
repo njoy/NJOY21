@@ -14,7 +14,8 @@ SCENARIO( "WIMSR, Card1, Nout",
         iRecordStream<char> iss( std::istringstream( std::to_string( nout ) ) );
 
         THEN( "the value can be validated" ){
-          REQUIRE( nout == argument::extract< WIMSR::Card1::Nout >( iss ) );
+          REQUIRE( nout == argument::extract< WIMSR::Card1::Nout >(
+                           iss, ngendf ).value );
         }
       }
     }
@@ -25,7 +26,7 @@ SCENARIO( "WIMSR, Card1, Nout",
       iRecordStream<char> iss( std::istringstream( " /" ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( argument::extract< WIMSR::Card1::Nout >( iss ) );
+        REQUIRE_THROWS( argument::extract< WIMSR::Card1::Nout >( iss, ngendf ));
       }
     }
 
@@ -34,7 +35,7 @@ SCENARIO( "WIMSR, Card1, Nout",
         iRecordStream<char> iss( std::istringstream( std::to_string( nout ) ) );
 
         THEN( "an exception is thrown" ){
-          REQUIRE_THROWS( argument::extract< WIMSR::Card1::Nout >( iss ) );
+          REQUIRE_THROWS( argument::extract< WIMSR::Card1::Nout >(iss, ngendf));
         }
       }
     }

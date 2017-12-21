@@ -12,6 +12,6 @@ struct Nout {
   }
   static bool verify( const Value_t nout, const Value_t ngendf ){
     return ( nout > 0 and std::abs( nout ) != std::abs( ngendf ) and 
-             argument::common::nin::verify( nout ) );
+             argument::common::Nin::verify( nout ) );
   }
 };

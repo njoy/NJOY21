@@ -7,7 +7,7 @@ class Card5 {
   Argument< Efiss > efiss;
 
   template< typename Istream >
-  Card5( Istream& )
+  Card5( Istream& is )
   try:
     ntis( argument::extract< WIMSR::Card5::Ntis >( is ) ),
     efiss( argument::extract< WIMSR::Card5::Efiss >( is ) )

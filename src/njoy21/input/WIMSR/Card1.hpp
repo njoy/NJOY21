@@ -1,6 +1,7 @@
 class Card1 {
+public:
 
-  using Ngendf = argument::common::nin;
+  using Ngendf = argument::common::Nin;
   #include "njoy21/input/WIMSR/Card1/Nout.hpp"
 
   Argument< Ngendf > ngendf;
@@ -9,9 +10,10 @@ class Card1 {
   template< typename Istream >
   Card1( Istream& is )
   try:
-    ngendf( argument::extract< argument::common::nin >( is ) ),
-    nout( argument:;extract< WISMR::Card1::Nout >( is, this->ngendf.value ) )
+    ngendf( argument::extract< Ngendf >( is ) ),
+    nout( argument::extract< Nout >( is, this->ngendf.value ) )
   {
+    Card::clear( is );
   }
   catch( std::exception& e ){
     Log::info( "Trouble reading Card1." );

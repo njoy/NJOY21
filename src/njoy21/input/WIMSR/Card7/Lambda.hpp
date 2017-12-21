@@ -8,7 +8,7 @@ struct Lambda {
            "otherwise it has (Card2a:Nrg) values.";
   }
   static bool verify( const Value_t lambdaList, const int igroup,
-                      const int nrg ){
+                      const unsigned int nrg ){
     if( igroup == 0 and lambdaList.size() != 13 ) return false;
     if( lambdaList.size() != nrg ) return false;
     for( auto lambda : lambdaList ){

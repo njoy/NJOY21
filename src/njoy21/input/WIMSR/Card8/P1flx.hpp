@@ -1,5 +1,5 @@
 struct P1flx {
-  using Value_t = std::vector<double>
+  using Value_t = std::vector<double>;
 
   static std::string name(){ return "p1flx"; }
   static std::string description(){

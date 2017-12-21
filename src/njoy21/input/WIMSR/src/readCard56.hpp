@@ -6,10 +6,12 @@ optional< std::tuple< Card5, Card6a, Card6b,
   Card5 card5( is );
   Card6a card6a( is );
   Card6b card6b( is );
-  if( ntis < 3 ) return std::tuple< Card5, Card6a, Card6b, Card6c >(
+  if( card5.ntis.value < 3 ){
+    return std::tuple< Card5, Card6a, Card6b, Card6c >(
                                     card5, card6a, card6b, std::nullopt );
+  }
   std::vector< Card6c > card6cList;
-  for( auto i = 0; i < ntis - 2; i++ ){
+  for( auto i = 0; i < card5.ntis.value - 2; i++ ){
     card6cList.emplace_back( is );
   }
   return std::tuple< Card5, Card6a, Card6b, Card6c >(

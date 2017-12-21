@@ -34,10 +34,10 @@ public:
     card2( is ),
     card2a( readCard2a( is, this->card2.igroup.value ) ),
     card3( is ),
-    card4( is )
+    card4( is ),
     card56List( readCard56( is ) ),
-    card7( is, this->card2.igroup.value, this->card2a.nrg.value ),
-    card8( is, this->card2a.ngnd.value, this->card4.jp1.value )
+    card7( is, this->card2.igroup.value, this->card2a->nrg.value ),
+    card8( is, this->card2a->ngnd.value, this->card4.jp1.value )
   {
   }
   catch( std::exception& e ){

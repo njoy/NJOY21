@@ -16,7 +16,7 @@ SCENARIO( "WIMSR, Card1",
       for( auto valid : validValues ){
         iRecordStream<char> iss( std::istringstream( valid ) );
 
-        Card1 card1( is );
+        WIMSR::Card1 card1( iss );
         THEN( "the values can be validated" ){
           REQUIRE( stoi( valid.substr( 1, 2 ) ) == card1.ngendf.value );
           REQUIRE( stoi( valid.substr( 4, 2 ) ) == card1.nout.value );
@@ -25,7 +25,7 @@ SCENARIO( "WIMSR, Card1",
     }
   } // GIVEN
 
-  GIVEN( "invalid values" ){
-    WHEN( 
-  } // GIVEN
+//  GIVEN( "invalid values" ){
+//    WHEN( 
+//  } // GIVEN
 } // SCENARIO
