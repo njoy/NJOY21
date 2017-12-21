@@ -1,6 +1,6 @@
 struct Mtd {
   using Value_t = int;
-  static std::string name(){ return "mfd"; }
+  static std::string name(){ return "mtd"; }
 
   static std::string description(){
     return 

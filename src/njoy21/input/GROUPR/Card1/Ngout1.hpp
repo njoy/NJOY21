@@ -25,12 +25,14 @@ struct Ngout1 : public argument::common::Nout {
       "(and different absolute value than) the corresponding nendf argument.\n";
   }
 
+  static int defaultValue( const Argument< Nendf >&,
+                           const Argument< Npend >& ){ return 0; }
   static bool verify( const Value_t v, 
                      const Argument< Nendf >& nendf,
                      const Argument< Npend >& npend
                      ){
     return ( (v == 0) or argument::common::Nin::verify( v ) ) and
-        /* Make sure the ngout1 is not equal to other input tape numbers */
+    /* Make sure the ngout1 is not equal to other input tape numbers */
         ( std::abs( nendf.value ) != std::abs( v ) ) and
         ( std::abs( npend.value ) != std::abs( v ) );
   }
