@@ -5,7 +5,7 @@ class Card7 {
   Argument< Lambda > lambda;
 
   template< typename Istream >
-  Card7( Istream& is, const int igroup, const int nrg )
+  Card7( iRecordStream< Istream >& is, const int igroup, const int nrg )
   try:
     lambda( argument::extract< WIMSR::Card7::Lambda >( is, igroup, nrg ) )
   {

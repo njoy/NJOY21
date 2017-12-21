@@ -11,7 +11,7 @@ class Card3 {
   Argument< Iburn > iburn;
 
   template< typename Istream >
-  Card3( Istream& is )
+  Card3( iRecordStream< Istream >& is )
   try:
     mat( argument::extract< WIMSR::Card3::Mat >( is ) ),
     nfid( argument::extract< WIMSR::Card3::Nfid >( is ) ),

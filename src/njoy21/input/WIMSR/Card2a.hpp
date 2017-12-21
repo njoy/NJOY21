@@ -11,7 +11,7 @@ class Card2a {
   Argument< Igref > igref;
 
   template< typename Istream >
-  Card2a( Istream& is )
+  Card2a( iRecordStream< Istream >& is )
   try:
     ngnd( argument::extract< WIMSR::Card2a::Ngnd >( is ) ),
     nfg( argument::extract< WIMSR::Card2a::Nfg >( is ) ),

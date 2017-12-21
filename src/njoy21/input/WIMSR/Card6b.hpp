@@ -7,7 +7,7 @@ class Card6b {
   Argument< Lambda > lambda;
 
   template< typename Istream >
-  Card6b( Istream& is )
+  Card6b( iRecordStream< Istream >& is )
   try:
     identa( argument::extract< WIMSR::Card6b::Identa >( is ) ),
     lambda( argument::extract< WIMSR::Card6b::Lambda >( is ) )

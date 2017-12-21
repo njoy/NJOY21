@@ -27,7 +27,7 @@ class Card4 {
   Argument< Jp1 > jp1;
 
   template< typename Istream >
-  Card4( Istream& is )
+  Card4( iRecordStream< Istream >& is )
   try:
     ntemp( argument::extract< WIMSR::Card4::Ntemp >( is ) ),
     nsigz( argument::extract< WIMSR::Card4::Nsigz >( is ) ),

@@ -7,7 +7,7 @@ class Card6c {
   Argument< Yield > yield;
 
   template< typename Istream >
-  Card6c( Istream& is )
+  Card6c( iRecordStream< Istream >& is )
   try:
     identa( argument::extract< WIMSR::Card6c::Identa >( is ) ),
     yield( argument::extract< WIMSR::Card6c::Yield >( is ) )

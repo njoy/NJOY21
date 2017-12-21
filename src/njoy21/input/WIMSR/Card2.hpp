@@ -9,7 +9,7 @@ class Card2 {
   Argument< Igroup > igroup;
 
   template< typename Istream >
-  Card2( Istream& is )
+  Card2( iRecordStream< Istream >& is )
   try:
     iprint( argument::extract< WIMSR::Card2::Iprint >( is ) ),
     iverw( argument::extract< WIMSR::Card2::Iverw >( is ) ),

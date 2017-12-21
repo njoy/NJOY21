@@ -22,13 +22,13 @@ public:
   optional< Card2a > card2a;
   Card3 card3;
   Card4 card4;
-  optional< std::tuple< Card5, Card6a, Card6b, std::vector< Card6c > > >
-    card56List;
+  optional< std::tuple< Card5, Card6a, Card6b,
+            optional< std::vector< Card6c > > > > card56List;
   Card7 card7;
   optional< Card8 > card8;
 
   template< typename Istream >
-  WIMSR( Istream& is )
+  WIMSR( iRecordStream< Istream >& is )
   try:
     card1( is ),
     card2( is ),

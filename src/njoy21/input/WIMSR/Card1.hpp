@@ -8,7 +8,7 @@ public:
   Argument< Nout > nout;
 
   template< typename Istream >
-  Card1( Istream& is )
+  Card1( iRecordStream< Istream >& is )
   try:
     ngendf( argument::extract< Ngendf >( is ) ),
     nout( argument::extract< Nout >( is, this->ngendf.value ) )
