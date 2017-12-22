@@ -20,9 +20,9 @@ SCENARIO( "Validating card2 inputs",
       REQUIRE( 2 == card2.nmat.value );
       REQUIRE( 3 == card2.maxt.value );
       REQUIRE( 4 == card2.nholl.value );
-      REQUIRE( Approx( 0.1 ) == card2.efirst.value );
-      REQUIRE( Approx( 100.1 ) == card2.elast.value );
-      REQUIRE( Approx( 10.6 ) == card2.eps.value );
+      REQUIRE( 0.1*dimwits::electronVolt == card2.efirst.value );
+      REQUIRE( 100.1*dimwits::electronVolt == card2.elast.value );
+      REQUIRE( 10.6 == card2.eps.value );
     }
   } // GIVEN
 

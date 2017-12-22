@@ -29,8 +29,8 @@ SCENARIO( "Parsing RESXSR input" ){
       REQUIRE( 3 == resxsr.card2.nmat.value );
       REQUIRE( 1 == resxsr.card2.maxt.value );
       REQUIRE( 2 == resxsr.card2.nholl.value );
-      REQUIRE( Approx( 13.3 ) == resxsr.card2.efirst.value );
-      REQUIRE( Approx( 299.0 ) == resxsr.card2.elast.value );
+      REQUIRE( 13.3*dimwits::electronVolt == resxsr.card2.efirst.value );
+      REQUIRE( 299.0*dimwits::electronVolt == resxsr.card2.elast.value );
       REQUIRE( Approx( 2.2 ) == resxsr.card2.eps.value );
 
       REQUIRE( "123456" == resxsr.card3.huse.value );

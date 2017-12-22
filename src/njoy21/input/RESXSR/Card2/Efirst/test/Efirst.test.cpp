@@ -14,8 +14,8 @@ SCENARIO( "efirst values",
       THEN( "the correct value is returned" ){
         iRecordStream<char> issEfirst( std::istringstream(
                             std::to_string( efirst ) ) );
-        REQUIRE( efirst == argument::extract< RESXSR::Card2::Efirst >(
-                                     issEfirst ).value );
+        REQUIRE( efirst*dimwits::electronVolt ==
+                 argument::extract< RESXSR::Card2::Efirst >( issEfirst ).value);
       }
     }
   }

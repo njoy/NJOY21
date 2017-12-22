@@ -1,5 +1,5 @@
 struct Mat {
-  using Value_t = unsigned int;
+  using Value_t = int;
   static std::string name(){ return "mat"; }
   static std::string description(){
     return
@@ -9,5 +9,5 @@ struct Mat {
       "As a result, verification is minimal; the input value is required to be\n"
       "a positive value and less than 10000.";
   }
-  static bool verify( const Value_t i ){ return i < 10000; }
+  static bool verify( const Value_t i ){ return i < 10000 and i >= 0; }
 };

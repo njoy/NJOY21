@@ -1,5 +1,5 @@
 struct Elast {
-  using Value_t = double;
+  using Value_t = Quantity< ElectronVolt >;
   static std::string name(){ return "elast"; }
   static std::string description(){
     return "Upper energy limit in eV.  Must be greater than efirst.";
