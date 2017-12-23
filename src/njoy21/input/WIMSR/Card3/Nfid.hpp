@@ -7,7 +7,4 @@ struct Nfid {
            "the material used on the output WIMS library.";
   }
   static Value_t defaultValue(){ return 0; }
-  static bool verify( Value_t ){
-    return false;
-  }
 };

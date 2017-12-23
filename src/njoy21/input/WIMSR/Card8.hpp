@@ -1,4 +1,5 @@
 class Card8 {
+public:
 
   #include "njoy21/input/WIMSR/Card8/P1flx.hpp"
 
@@ -10,6 +11,7 @@ class Card8 {
   try:
     p1flx( argument::extract< WIMSR::Card8::P1flx >( is ) )
   {
+    Card::clear( is );
   }
   catch( std::exception& e ){
     Log::info( "Trouble reading Card 8." );

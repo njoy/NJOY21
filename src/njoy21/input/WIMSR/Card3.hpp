@@ -1,4 +1,5 @@
 class Card3 {
+public:
 
   using Mat = argument::common::Matd;
   #include "njoy21/input/WIMSR/Card3/Nfid.hpp"
@@ -18,6 +19,7 @@ class Card3 {
     rdfid( argument::extract< WIMSR::Card3::Rdfid >( is ) ),
     iburn( argument::extract< WIMSR::Card3::Iburn >( is ) )
   {
+    Card::clear( is );
   }
   catch( std::exception& e ){
     Log::info( "Trouble reading Card3." );

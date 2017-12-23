@@ -1,4 +1,5 @@
 class Card4 {
+public:
 
   #include "njoy21/input/WIMSR/Card4/Ntemp.hpp"
   #include "njoy21/input/WIMSR/Card4/Nsigz.hpp"
@@ -42,6 +43,7 @@ class Card4 {
     ifprod( argument::extract< WIMSR::Card4::Ifprod >( is ) ),
     jp1( argument::extract< WIMSR::Card4::Jp1 >( is ) )
   {
+    Card::clear( is );
   }
   catch( std::exception& e ){
     Log::info( "Trouble reading Card4." );

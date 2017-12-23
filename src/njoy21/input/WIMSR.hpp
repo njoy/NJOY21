@@ -28,7 +28,7 @@ public:
   optional< Card8 > card8;
 
   template< typename Istream >
-  WIMSR( iRecordStream< Istream >& is )
+  WIMSR( Istream& is )
   try:
     card1( is ),
     card2( is ),

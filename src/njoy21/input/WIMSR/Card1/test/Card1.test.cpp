@@ -14,8 +14,8 @@ SCENARIO( "WIMSR, Card1",
       " 98 99 /",
       " 20 99 /" };
     WHEN( "valid inputs are provided" ){
-      for( auto valid : validValues ){
-        iRecordStream<char> iss( std::istringstream( valid ) );
+      for( std::string valid : validValues ){
+        iRecordStream<char> iss( std::istringstream( valid.c_str() ) );
 
         WIMSR::Card1 card1( iss );
         THEN( "the values can be validated" ){

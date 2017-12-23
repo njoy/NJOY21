@@ -1,4 +1,5 @@
 class Card7 {
+public:
 
   #include "njoy21/input/WIMSR/Card7/Lambda.hpp"
 
@@ -9,6 +10,7 @@ class Card7 {
   try:
     lambda( argument::extract< WIMSR::Card7::Lambda >( is, igroup, nrg ) )
   {
+    Card::clear( is );
   }
   catch( std::exception& e ){
     Log::info( "Trouble reading Card 7." );

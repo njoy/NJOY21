@@ -808,53 +808,53 @@
     "src/njoy21/input/MODER/Card1/Nin.hpp",
     "src/njoy21/input/MODER/Card1/Nout.hpp",
     "src/njoy21/input/MODER/Card2/Tapeid.hpp",
-    "src/njoy21/input/WIMSR/Card4.hpp",
-    "src/njoy21/input/WIMSR/Card3.hpp",
-    "src/njoy21/input/WIMSR/Card6b.hpp",
-    "src/njoy21/input/WIMSR/Card2.hpp",
-    "src/njoy21/input/WIMSR/Card5.hpp",
-    "src/njoy21/input/WIMSR/Card6c.hpp",
-    "src/njoy21/input/WIMSR/Card8.hpp",
-    "src/njoy21/input/WIMSR/Card1.hpp",
     "src/njoy21/input/WIMSR/Card6a.hpp",
     "src/njoy21/input/WIMSR/Card2a.hpp",
+    "src/njoy21/input/WIMSR/Card8.hpp",
+    "src/njoy21/input/WIMSR/Card1.hpp",
     "src/njoy21/input/WIMSR/Card7.hpp",
-    "src/njoy21/input/WIMSR/Card1/Nout.hpp",
+    "src/njoy21/input/WIMSR/Card3.hpp",
+    "src/njoy21/input/WIMSR/Card4.hpp",
+    "src/njoy21/input/WIMSR/Card6c.hpp",
+    "src/njoy21/input/WIMSR/Card5.hpp",
+    "src/njoy21/input/WIMSR/Card2.hpp",
+    "src/njoy21/input/WIMSR/Card6b.hpp",
+    "src/njoy21/input/WIMSR/Card7/Lambda.hpp",
+    "src/njoy21/input/WIMSR/Card4/Inorf.hpp",
+    "src/njoy21/input/WIMSR/Card4/Ip1opt.hpp",
+    "src/njoy21/input/WIMSR/Card4/Ifprod.hpp",
+    "src/njoy21/input/WIMSR/Card4/Sigp.hpp",
+    "src/njoy21/input/WIMSR/Card4/Ntemp.hpp",
+    "src/njoy21/input/WIMSR/Card4/Jp1.hpp",
+    "src/njoy21/input/WIMSR/Card4/Ires.hpp",
+    "src/njoy21/input/WIMSR/Card4/Mtc.hpp",
+    "src/njoy21/input/WIMSR/Card4/Mti.hpp",
+    "src/njoy21/input/WIMSR/Card4/Isof.hpp",
+    "src/njoy21/input/WIMSR/Card4/Sgref.hpp",
+    "src/njoy21/input/WIMSR/Card4/Nsigz.hpp",
+    "src/njoy21/input/WIMSR/Card2a/Nfg.hpp",
+    "src/njoy21/input/WIMSR/Card2a/Nrg.hpp",
+    "src/njoy21/input/WIMSR/Card2a/Ngnd.hpp",
+    "src/njoy21/input/WIMSR/Card2a/Igref.hpp",
     "src/njoy21/input/WIMSR/Card6c/Yield.hpp",
     "src/njoy21/input/WIMSR/Card6c/Identa.hpp",
-    "src/njoy21/input/WIMSR/Card5/Efiss.hpp",
-    "src/njoy21/input/WIMSR/Card5/Ntis.hpp",
-    "src/njoy21/input/WIMSR/Card2a/Nrg.hpp",
-    "src/njoy21/input/WIMSR/Card2a/Igref.hpp",
-    "src/njoy21/input/WIMSR/Card2a/Ngnd.hpp",
-    "src/njoy21/input/WIMSR/Card2a/Nfg.hpp",
-    "src/njoy21/input/WIMSR/Card8/P1flx.hpp",
-    "src/njoy21/input/WIMSR/Card2/Igroup.hpp",
-    "src/njoy21/input/WIMSR/Card2/Iprint.hpp",
-    "src/njoy21/input/WIMSR/Card2/Iverw.hpp",
-    "src/njoy21/input/WIMSR/Card6a/Identa.hpp",
-    "src/njoy21/input/WIMSR/Card6a/Yield.hpp",
-    "src/njoy21/input/WIMSR/Card7/Lambda.hpp",
-    "src/njoy21/input/WIMSR/src/readCard56.hpp",
-    "src/njoy21/input/WIMSR/src/readCard8.hpp",
     "src/njoy21/input/WIMSR/src/readCard2a.hpp",
+    "src/njoy21/input/WIMSR/src/readCard8.hpp",
+    "src/njoy21/input/WIMSR/src/readCard56.hpp",
     "src/njoy21/input/WIMSR/Card3/Nfid.hpp",
-    "src/njoy21/input/WIMSR/Card3/Iburn.hpp",
     "src/njoy21/input/WIMSR/Card3/Rdfid.hpp",
-    "src/njoy21/input/WIMSR/Card4/Isof.hpp",
-    "src/njoy21/input/WIMSR/Card4/Mtc.hpp",
-    "src/njoy21/input/WIMSR/Card4/Jp1.hpp",
-    "src/njoy21/input/WIMSR/Card4/Sgref.hpp",
-    "src/njoy21/input/WIMSR/Card4/Ifprod.hpp",
-    "src/njoy21/input/WIMSR/Card4/Ip1opt.hpp",
-    "src/njoy21/input/WIMSR/Card4/Nsigz.hpp",
-    "src/njoy21/input/WIMSR/Card4/Sigp.hpp",
-    "src/njoy21/input/WIMSR/Card4/Inorf.hpp",
-    "src/njoy21/input/WIMSR/Card4/Ntemp.hpp",
-    "src/njoy21/input/WIMSR/Card4/Ires.hpp",
-    "src/njoy21/input/WIMSR/Card4/Mti.hpp",
+    "src/njoy21/input/WIMSR/Card3/Iburn.hpp",
+    "src/njoy21/input/WIMSR/Card6a/Yield.hpp",
+    "src/njoy21/input/WIMSR/Card6a/Identa.hpp",
+    "src/njoy21/input/WIMSR/Card1/Nout.hpp",
     "src/njoy21/input/WIMSR/Card6b/Lambda.hpp",
     "src/njoy21/input/WIMSR/Card6b/Identa.hpp",
+    "src/njoy21/input/WIMSR/Card8/P1flx.hpp",
+    "src/njoy21/input/WIMSR/Card2/Iverw.hpp",
+    "src/njoy21/input/WIMSR/Card2/Iprint.hpp",
+    "src/njoy21/input/WIMSR/Card2/Igroup.hpp",
+    "src/njoy21/input/WIMSR/Card5/Ntis.hpp",
+    "src/njoy21/input/WIMSR/Card5/Efiss.hpp",
     "src/njoy21/input/RECONR/Card4.hpp",
     "src/njoy21/input/RECONR/Card3.hpp",
     "src/njoy21/input/RECONR/Card2.hpp",
@@ -2318,6 +2318,69 @@
     ],
     "njoy21.input.WIMSR.Card2.Iverw": [
       "src/njoy21/input/WIMSR/Card2/Iverw/test/Iverw.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card2a": [
+      "src/njoy21/input/WIMSR/Card2a/test/Card2a.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card2a.Igref": [
+      "src/njoy21/input/WIMSR/Card2a/Igref/test/Igref.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card2a.Nfg": [
+      "src/njoy21/input/WIMSR/Card2a/Nfg/test/Nfg.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card2a.Ngnd": [
+      "src/njoy21/input/WIMSR/Card2a/Ngnd/test/Ngnd.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card2a.Nrg": [
+      "src/njoy21/input/WIMSR/Card2a/Nrg/test/Nrg.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card3": [
+      "src/njoy21/input/WIMSR/Card3/test/Card3.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card3.Iburn": [
+      "src/njoy21/input/WIMSR/Card3/Iburn/test/Iburn.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card3.Nfid": [
+      "src/njoy21/input/WIMSR/Card3/Nfid/test/Nfid.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card3.Rdfid": [
+      "src/njoy21/input/WIMSR/Card3/Rdfid/test/Rdfid.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card4.Ifprod": [
+      "src/njoy21/input/WIMSR/Card4/Ifprod/test/Ifprod.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card4.Inorf": [
+      "src/njoy21/input/WIMSR/Card4/Inorf/test/Inorf.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card4.Ip1opt": [
+      "src/njoy21/input/WIMSR/Card4/Ip1opt/test/Ip1opt.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card4.Ires": [
+      "src/njoy21/input/WIMSR/Card4/Ires/test/Ires.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card4.Isof": [
+      "src/njoy21/input/WIMSR/Card4/Isof/test/Isof.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card4.Jp1": [
+      "src/njoy21/input/WIMSR/Card4/Jp1/test/Jp1.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card4.Mtc": [
+      "src/njoy21/input/WIMSR/Card4/Mtc/test/Mtc.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card4.Mti": [
+      "src/njoy21/input/WIMSR/Card4/Mti/test/Mti.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card4.Nsigz": [
+      "src/njoy21/input/WIMSR/Card4/Nsigz/test/Nsigz.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card4.Ntemp": [
+      "src/njoy21/input/WIMSR/Card4/Ntemp/test/Ntemp.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card4.Sgref": [
+      "src/njoy21/input/WIMSR/Card4/Sgref/test/Sgref.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card4.Sigp": [
+      "src/njoy21/input/WIMSR/Card4/Sigp/test/Sigp.test.cpp"
     ],
     "njoy21.input.argument": [
       "src/njoy21/input/argument/test/argument.test.cpp",

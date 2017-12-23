@@ -1,4 +1,5 @@
 class Card5 {
+public:
 
   #include "njoy21/input/WIMSR/Card5/Ntis.hpp"
   #include "njoy21/input/WIMSR/Card5/Efiss.hpp"
@@ -12,6 +13,7 @@ class Card5 {
     ntis( argument::extract< WIMSR::Card5::Ntis >( is ) ),
     efiss( argument::extract< WIMSR::Card5::Efiss >( is ) )
   {
+    Card::clear( is );
   }
   catch( std::exception& e ){
     Log::info( "Trouble reading Card 5." );

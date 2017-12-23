@@ -9,7 +9,7 @@ struct Igroup {
            "structure on Card2a.";
   }
   static Value_t defaultValue(){ return 0; }
-  static bool defaultValue( const Value_t igroup ){
+  static bool verify( const Value_t igroup ){
     return igroup == 0 or igroup == 9;
   }
 };
