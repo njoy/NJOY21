@@ -2346,6 +2346,9 @@
     "njoy21.input.WIMSR.Card3.Rdfid": [
       "src/njoy21/input/WIMSR/Card3/Rdfid/test/Rdfid.test.cpp"
     ],
+    "njoy21.input.WIMSR.Card4": [
+      "src/njoy21/input/WIMSR/Card4/test/Card4.test.cpp"
+    ],
     "njoy21.input.WIMSR.Card4.Ifprod": [
       "src/njoy21/input/WIMSR/Card4/Ifprod/test/Ifprod.test.cpp"
     ],
