@@ -7,6 +7,6 @@ struct Yield {
            "product from the burnup of Card3::Mat.";
   }
   static bool verify( const Value_t yield ){
-    return yield > 0.0 and yield <= 1.0;
+    return yield > 0.0 and yield <= 2.0;
   }
 };
