@@ -13,13 +13,13 @@ SCENARIO( "WIMSR, Card7, Lambda",
       const int igroup = 0;
       const unsigned int nrg = 13;
       std::vector<double> res = {0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,
-                                 1.0, 1.2, 1.3};
+                                 1.0, 1.1, 1.2, 1.3};
       iRecordStream<char> iss( std::istringstream(
                    " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 1.3" ) );
 
       THEN( "the values can be verified" ){
-        auto res_val = argument::extract< WIMSR::Card7::Lambda >( iss, igroup,
-                                                                  nrg ).value;
+        auto res_val = argument::extract< WIMSR::Card7::Lambda >(iss, nrg,
+                                                                 igroup ).value;
         REQUIRE( res == res_val );
       }
     } // WHEN
@@ -33,8 +33,8 @@ SCENARIO( "WIMSR, Card7, Lambda",
                    " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2" ) );
 
       THEN( "the values can be verified" ){
-        auto res_val = argument::extract< WIMSR::Card7::Lambda >( iss, igroup,
-                                                                  nrg ).value;
+        auto res_val = argument::extract< WIMSR::Card7::Lambda >(iss, nrg,
+                                                                 igroup ).value;
 
         REQUIRE( res == res_val );
       }
@@ -50,19 +50,19 @@ SCENARIO( "WIMSR, Card7, Lambda",
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( argument::extract< WIMSR::Card7::Lambda >(
-                        iss, igroup, nrg ) );
+                        iss, nrg, igroup ) );
       }
     } // WHEN
 
-    WHEN( "the number of values doesn't match nrg" ){
+    WHEN( "too few elements are provided" ){
       const int igroup = 1;
-      const unsigned int nrg = 13;
+      const unsigned int nrg = 12;
       iRecordStream<char> iss( std::istringstream(
-                   " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2" ) );
+                   " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( argument::extract< WIMSR::Card7::Lambda >(
-                        iss, igroup, nrg ) );
+                        iss, nrg, igroup ) );
       }
     } // WHEN
 
@@ -74,7 +74,7 @@ SCENARIO( "WIMSR, Card7, Lambda",
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( argument::extract< WIMSR::Card7::Lambda >(
-                        iss, igroup, nrg ) );
+                        iss, nrg, igroup ) );
       }
     } // WHEN
   } // GIVEN

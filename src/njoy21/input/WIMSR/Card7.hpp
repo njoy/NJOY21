@@ -8,7 +8,7 @@ public:
   template< typename Istream >
   Card7( iRecordStream< Istream >& is, const int igroup, const int nrg )
   try:
-    lambda( argument::extract< WIMSR::Card7::Lambda >( is, igroup, nrg ) )
+    lambda( argument::extract< WIMSR::Card7::Lambda >( is, nrg, igroup ) )
   {
     Card::clear( is );
   }
