@@ -12,28 +12,31 @@ SCENARIO( "WIMSR, Card7, Lambda",
     WHEN( "valid inputs are provided using default igroup structure" ){
       const int igroup = 0;
       const unsigned int nrg = 13;
+      std::vector<double> res = {0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,
+                                 1.0, 1.2, 1.3};
       iRecordStream<char> iss( std::istringstream(
-                   " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 1.3 /" ) );
+                   " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 1.3" ) );
 
       THEN( "the values can be verified" ){
-        for( int i = 0; i < 13; i++ ){
-          REQUIRE( Approx( 0.1*(i+1) ) == argument::extract<
-                   WIMSR::Card7::Lambda >( iss, igroup, nrg ).value.at(i) );
-        }
+        auto res_val = argument::extract< WIMSR::Card7::Lambda >( iss, igroup,
+                                                                  nrg ).value;
+        REQUIRE( res == res_val );
       }
     } // WHEN
 
     WHEN( "valid inputs are provided using non-default igroup structure" ){
       const int igroup = 1;
       const unsigned int nrg = 12;
+      std::vector<double> res {0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,
+                               1.0, 1.1, 1.2};
       iRecordStream<char> iss( std::istringstream(
-                   " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 /" ) );
+                   " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2" ) );
 
       THEN( "the values can be verified" ){
-        for( int i = 0; i < 12; i++ ){
-          REQUIRE( Approx( 0.1*(i+1) ) == argument::extract<
-                   WIMSR::Card7::Lambda >( iss, igroup, nrg ).value.at(i) );
-        }
+        auto res_val = argument::extract< WIMSR::Card7::Lambda >( iss, igroup,
+                                                                  nrg ).value;
+
+        REQUIRE( res == res_val );
       }
     } // WHEN
   } // GIVEN
@@ -43,7 +46,7 @@ SCENARIO( "WIMSR, Card7, Lambda",
       const int igroup = 0;
       const unsigned int nrg = 12;
       iRecordStream<char> iss( std::istringstream(
-                   " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 /" ) );
+                   " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( argument::extract< WIMSR::Card7::Lambda >(
@@ -55,7 +58,7 @@ SCENARIO( "WIMSR, Card7, Lambda",
       const int igroup = 1;
       const unsigned int nrg = 13;
       iRecordStream<char> iss( std::istringstream(
-                   " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 /" ) );
+                   " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( argument::extract< WIMSR::Card7::Lambda >(
@@ -67,7 +70,7 @@ SCENARIO( "WIMSR, Card7, Lambda",
       const int igroup = 1;
       const unsigned int nrg = 12;
       iRecordStream<char> iss( std::istringstream(
-                   " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 -0.8 0.9 1.0 1.1 1.2 /" ) );
+                   " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 -0.8 0.9 1.0 1.1 1.2" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( argument::extract< WIMSR::Card7::Lambda >(
