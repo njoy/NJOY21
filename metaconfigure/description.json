@@ -2427,6 +2427,12 @@
     "njoy21.input.WIMSR.Card7.Lambda": [
       "src/njoy21/input/WIMSR/Card7/Lambda/test/Lambda.test.cpp"
     ],
+    "njoy21.input.WIMSR.Card8": [
+      "src/njoy21/input/WIMSR/Card8/test/Card8.test.cpp"
+    ],
+    "njoy21.input.WIMSR.Card8.P1flx": [
+      "src/njoy21/input/WIMSR/Card8/P1flx/test/P1flx.test.cpp"
+    ],
     "njoy21.input.argument": [
       "src/njoy21/input/argument/test/argument.test.cpp",
       "src/njoy21/input/argument/test/extract.test.cpp",

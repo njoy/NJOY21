@@ -9,7 +9,7 @@ public:
   Card8( iRecordStream< Istream >& is, const unsigned int ngnd,
          const unsigned int jp1 )
   try:
-    p1flx( argument::extract< WIMSR::Card8::P1flx >( is ) )
+    p1flx( argument::extract< WIMSR::Card8::P1flx >( is, jp1, ngnd ) )
   {
     Card::clear( is );
   }
