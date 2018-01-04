@@ -2301,6 +2301,9 @@
     "njoy21.input.VIEWR.Card1.Nps": [
       "src/njoy21/input/VIEWR/Card1/Nps/test/Nps.test.cpp"
     ],
+    "njoy21.input.WIMSR": [
+      "src/njoy21/input/WIMSR/test/WIMSR.test.cpp"
+    ],
     "njoy21.input.WIMSR.Card1": [
       "src/njoy21/input/WIMSR/Card1/test/Card1.test.cpp"
     ],

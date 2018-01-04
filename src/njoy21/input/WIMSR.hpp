@@ -15,6 +15,7 @@ public:
 
   #include "njoy21/input/WIMSR/src/readCard2a.hpp"
   #include "njoy21/input/WIMSR/src/readCard56.hpp"
+  #include "njoy21/input/WIMSR/src/readCard7.hpp"
   #include "njoy21/input/WIMSR/src/readCard8.hpp"
 
   Card1 card1;
@@ -35,9 +36,9 @@ public:
     card2a( readCard2a( is, this->card2.igroup.value ) ),
     card3( is ),
     card4( is ),
-    card56List( readCard56( is ) ),
-    card7( is, this->card2.igroup.value, this->card2a->nrg.value ),
-    card8( is, this->card2a->ngnd.value, this->card4.jp1.value )
+    card56List( readCard56( is, this->card3.iburn.value ) ),
+    card7( readCard7( is, this->card2.igroup.value, this->card2a ) ),
+    card8( readCard8( is, this->card2a, this->card4.jp1.value ) )
   {
   }
   catch( std::exception& e ){

@@ -10,11 +10,12 @@ SCENARIO( "WISMR, Card3, Rdfid",
           "[WIMSR] [Card3] [Rdfid]" ){
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
-      for( auto i : {1, 10, 100, 1000, 9999} ){
+      for( auto i : {1.0, 10.0, 100.0, 1000.0, 9999.0} ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
-          REQUIRE( i == argument::extract< WIMSR::Card3::Rdfid >( iss ).value );
+          REQUIRE( Approx( i ) == 
+                        argument::extract< WIMSR::Card3::Rdfid >( iss ).value );
         }
       }
     }
@@ -30,7 +31,7 @@ SCENARIO( "WISMR, Card3, Rdfid",
     }
 
     WHEN( "invalid values are provided" ){
-      for( auto i : {-1, 0, 10000} ){
+      for( auto i : {-1.0, 0.0, 10000.0} ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){

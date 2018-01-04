@@ -10,25 +10,25 @@ SCENARIO( "WIMSR, Card3",
           "[WIMSR] [Card3]" ){
   GIVEN( "valid inputs" ){
     WHEN( "all valid inputs are provided" ){
-      iRecordStream<char> iss( std::istringstream( " 9238 10 1 1 /" ) );
+      iRecordStream<char> iss( std::istringstream( " 9238 10 1. 1 /" ) );
 
       WIMSR::Card3 card3( iss );
       THEN( "the values can be verified" ){
         REQUIRE( 9238 == card3.mat.value );
         REQUIRE( 10 == card3.nfid.value );
-        REQUIRE( 1 == card3.rdfid.value );
+        REQUIRE( Approx( 1.0 ) == card3.rdfid.value );
         REQUIRE( 1 == card3.iburn.value );
       }
     }
 
     WHEN( "the final value is left to the default" ){
-      iRecordStream<char> iss( std::istringstream( " 9238 10 1 /" ) );
+      iRecordStream<char> iss( std::istringstream( " 9238 10 1. /" ) );
 
       WIMSR::Card3 card3( iss );
       THEN( "the values can be verified" ){
         REQUIRE( 9238 == card3.mat.value );
         REQUIRE( 10 == card3.nfid.value );
-        REQUIRE( 1 == card3.rdfid.value );
+        REQUIRE( Approx( 1.0 ) == card3.rdfid.value );
         REQUIRE( 0 == card3.iburn.value );
       }
     }
@@ -44,7 +44,7 @@ SCENARIO( "WIMSR, Card3",
     }
 
     WHEN( "too many values are provided" ){
-      iRecordStream<char> iss( std::istringstream( " 9238 10 1 1 1 /" ) );
+      iRecordStream<char> iss( std::istringstream( " 9238 10 1. 1 1 /" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( WIMSR::Card3( iss ) );
@@ -52,7 +52,7 @@ SCENARIO( "WIMSR, Card3",
     }
 
     WHEN( "one value is invalid" ){
-      iRecordStream<char> iss( std::istringstream( " -12 10 1 1 /" ) );
+      iRecordStream<char> iss( std::istringstream( " -12 10 1. 1 /" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( WIMSR::Card3( iss ) );
