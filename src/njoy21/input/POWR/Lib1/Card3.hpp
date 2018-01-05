@@ -20,7 +20,7 @@ optional< Izref > izref;
 template< typename Istream >
 Card3( Istream& is )
 try:
-  matd( is ),
+  matd( argument::extract< POWR::Lib1::Card3::Matd >( is ) ),
   rtemp( readRtemp( is, this->matd.value ) ),
   iff( readIff( is, this->matd.value ) ),
   nsgz( readNsgz( is, this->matd.value ) ),

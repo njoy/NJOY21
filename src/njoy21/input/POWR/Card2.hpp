@@ -11,9 +11,9 @@ Iclaps iclaps;
 template< typename Istream >
 Card2( Istream& is )
 try:
-  lib( is ),
-  iprint( is ),
-  iclaps( is )
+  lib( argument::extract< POWR::Card2::Lib >( is ) ),
+  iprint( argument::extract< POWR::Card2::Iprint >( is ) ),
+  iclaps( argument::extract< POWR::Card2::Iclaps >( is ) )
 {
   Card::clear( is );
 }
