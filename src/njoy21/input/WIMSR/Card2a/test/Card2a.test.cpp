@@ -20,18 +20,6 @@ SCENARIO( "WIMSR, Card2a",
         REQUIRE( 8 == card2a.igref.value );
       }
     }
-
-    WHEN( "no values are provided" ){
-      iRecordStream<char> iss( std::istringstream( " /" ) );
-
-      WIMSR::Card2a card2a( iss );
-      THEN( "the default values can be verified" ){
-        REQUIRE( 69 == card2a.ngnd.value );
-        REQUIRE( 14 == card2a.nfg.value );
-        REQUIRE( 13 == card2a.nrg.value );
-        REQUIRE( 14 == card2a.igref.value );
-      }
-    }
   } // GIVEN
 
   GIVEN( "invalid inputs" ){
@@ -45,6 +33,14 @@ SCENARIO( "WIMSR, Card2a",
 
     WHEN( "too many values are provided" ){
       iRecordStream<char> iss( std::istringstream( " 20 10 12 8 10 /" ) );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( WIMSR::Card2a( iss ) );
+      }
+    }
+
+    WHEN( "no values are provided" ){
+      iRecordStream<char> iss( std::istringstream( " /" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( WIMSR::Card2a( iss ) );

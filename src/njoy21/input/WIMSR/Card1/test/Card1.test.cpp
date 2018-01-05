@@ -26,7 +26,37 @@ SCENARIO( "WIMSR, Card1",
     }
   } // GIVEN
 
-//  GIVEN( "invalid values" ){
-//    WHEN( 
-//  } // GIVEN
+  GIVEN( "invalid values" ){
+    WHEN( "too few values are provided" ){
+      iRecordStream<char> iss( std::istringstream( " 20 /" ) );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( WIMSR::Card1( iss ) );
+      }
+    } // WHEN
+
+    WHEN( "too many values are provided" ){
+      iRecordStream<char> iss( std::istringstream( " 20 21 22 /" ) );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( WIMSR::Card1( iss ) );
+      }
+    } // WHEN
+
+    WHEN( "the same value is given twice" ){
+      iRecordStream<char> iss( std::istringstream( " 20 20 /" ) );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( WIMSR::Card1( iss ) );
+      }
+    } // WHEN
+
+    WHEN( "one value is invalid" ){
+      iRecordStream<char> iss( std::istringstream( " 20 -21 /" ) );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( WIMSR::Card1( iss ) );
+      }
+    } // WHEN
+  } // GIVEN
 } // SCENARIO

@@ -38,7 +38,7 @@ public:
     card4( is ),
     card56List( readCard56( is, this->card3.iburn.value ) ),
     card7( readCard7( is, this->card2.igroup.value, this->card2a ) ),
-    card8( readCard8( is, this->card2a, this->card4.jp1.value ) )
+    card8( readCard8( is, this->card4.jp1.value ) )
   {
   }
   catch( std::exception& e ){

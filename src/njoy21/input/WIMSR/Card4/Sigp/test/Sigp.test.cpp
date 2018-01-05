@@ -10,7 +10,7 @@ SCENARIO( "WIMSR, Card4, Sigp",
           "[WIMSR] [Card4] [Sigp]" ){
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
-      for( auto i : {0, 1, 10, 100} ){
+      for( auto i : {0.0, 1.0, 10.0, 100.0} ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
@@ -30,7 +30,7 @@ SCENARIO( "WIMSR, Card4, Sigp",
     }
 
     WHEN( "an invalid value is provided" ){
-      iRecordStream<char> iss( std::istringstream( "-1" ) );
+      iRecordStream<char> iss( std::istringstream( "-1.0" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( argument::extract< WIMSR::Card4::Sigp >( iss ) );

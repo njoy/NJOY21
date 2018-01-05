@@ -6,10 +6,9 @@ public:
   Argument< P1flx > p1flx;
 
   template< typename Istream >
-  Card8( iRecordStream< Istream >& is, const unsigned int ngnd,
-         const unsigned int jp1 )
+  Card8( iRecordStream< Istream >& is, const unsigned int jp1 )
   try:
-    p1flx( argument::extract< WIMSR::Card8::P1flx >( is, jp1, ngnd ) )
+    p1flx( argument::extract< WIMSR::Card8::P1flx >( is, jp1 ) )
   {
     Card::clear( is );
   }

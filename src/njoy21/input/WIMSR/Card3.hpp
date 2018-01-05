@@ -16,7 +16,7 @@ public:
   try:
     mat( argument::extract< WIMSR::Card3::Mat >( is ) ),
     nfid( argument::extract< WIMSR::Card3::Nfid >( is ) ),
-    rdfid( argument::extract< WIMSR::Card3::Rdfid >( is ) ),
+    rdfid( argument::extract< WIMSR::Card3::Rdfid >( is, this->mat.value ) ),
     iburn( argument::extract< WIMSR::Card3::Iburn >( is ) )
   {
     Card::clear( is );

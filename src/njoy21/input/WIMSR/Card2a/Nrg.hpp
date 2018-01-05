@@ -6,8 +6,7 @@ struct Nrg {
            "user specified group structure.  For example, in the default\n"
            "69-group structure, there are 13 resonance groups.";
   }
-  static Value_t defaultValue(){ return 13; }
-  static bool verify( const Value_t nrg ){
-    return nrg > 0;
+  static bool verify( const Value_t nrg, const int ngnd ){
+    return ( nrg > 0 and nrg <= ngnd );
   }
 };

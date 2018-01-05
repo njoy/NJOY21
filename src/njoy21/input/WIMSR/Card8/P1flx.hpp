@@ -7,8 +7,7 @@ struct P1flx {
            "are read and the rest are set with the default p1-flux calculated\n"
            "by njoy.";
   }
-  static bool verify( const Value_t p1flx, const unsigned int jp1,
-                      const unsigned int ngnd ){
-    return p1flx.size() == jp1 and p1flx.size() <= ngnd;
+  static bool verify( const Value_t p1flx, const unsigned int jp1 ){
+    return p1flx.size() == jp1;
   }
 };

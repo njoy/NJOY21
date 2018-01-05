@@ -15,8 +15,8 @@ public:
   Card2a( iRecordStream< Istream >& is )
   try:
     ngnd( argument::extract< WIMSR::Card2a::Ngnd >( is ) ),
-    nfg( argument::extract< WIMSR::Card2a::Nfg >( is ) ),
-    nrg( argument::extract< WIMSR::Card2a::Nrg >( is ) ),
+    nfg( argument::extract< WIMSR::Card2a::Nfg >( is, this->ngnd.value ) ),
+    nrg( argument::extract< WIMSR::Card2a::Nrg >( is, this->ngnd.value ) ),
     igref( argument::extract< WIMSR::Card2a::Igref >( is, this->nfg.value,
            this->ngnd.value ) )
   {

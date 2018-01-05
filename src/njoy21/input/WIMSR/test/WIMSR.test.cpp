@@ -255,59 +255,5 @@ SCENARIO( "WIMSR",
         REQUIRE_THROWS( WIMSR( iss ) );
       }
     } // WHEN
-
-/*
-    WHEN( "an extra card is added to the end" ){
-      std::string Card1( "-26 27\n" );
-      std::string Card2( "1/\n" );
-      std::string Card3( "1050 1 1050./\n" );
-      std::string Card4( "3 7 1e10 3 10.890 221 0/\n" );
-      std::string Card7( "1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1./" );
-      std::string CardBonus( "\n8 10 0/" );
-
-      iRecordStream<char> iss( std::istringstream( 
-        Card1 +
-        Card2 +
-        Card3 +
-        Card4 +
-        Card7 +
-        CardBonus) );
-
-      THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( WIMSR( iss ) );
-      }
-    } // WHEN
-
-    WHEN( "an unexpected Card8 is provided" ){
-      std::string Card1( " -26 27\n" );
-      std::string Card2( " 1 5 9/\n" );
-      std::string Card2a( " 15 4 5 6/\n" );
-      std::string Card3( " 1050 1 1050. 1/\n" );
-      std::string Card4( " 12 13 1.e12 14 0 0 0 1 0 0 2 0/\n" );
-      std::string Card5( " 4 4.8e5/\n" );
-      std::string Card6a( " 1051 1.0/\n" );
-      std::string Card6b( " 1030 0.062/\n" );
-      std::string Card6c( " 1010 0.4/\n 1011 0.6/\n" );
-      std::string Card7( " 0.1 0.2 0.3 0.4 0.5/\n" );
-      std::string Card8( " 0.6 0.7 0.8 0.9 1.0/\n" );
-
-      iRecordStream<char> iss( std::istringstream(
-        Card1 +
-        Card2 +
-        Card2a +
-        Card3 +
-        Card4 +
-        Card5 +
-        Card6a +
-        Card6b +
-        Card6c +
-        Card7 +
-        Card8 ) );
-
-      THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( WIMSR( iss ) );
-      }
-    } // WHEN
-*/
   } // GIVEN
 } // SCENARIO
