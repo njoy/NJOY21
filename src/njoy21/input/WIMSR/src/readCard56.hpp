@@ -14,6 +14,6 @@ readCard56( Istream& is, const int iburn ){
   for( auto i = 0; i < card5.ntis.value - 2; i++ ){
     card6cList.emplace_back( is );
   }
-  return std::tuple< Card5, Card6a, Card6b, std::vector< Card6c > >(
+  return std::tuple< Card5, Card6a, Card6b, optional< std::vector< Card6c > > >(
                      card5, card6a, card6b, card6cList );
 }
