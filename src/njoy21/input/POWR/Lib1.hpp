@@ -9,7 +9,7 @@ class Lib1 {
 #include "njoy21/input/POWR/Lib1/src/readCard6.hpp"
 
 Card3 card3;
-optional< std::tuple< Card4, Card5 > > card45;
+optional< std::pair< Card4, Card5 > > card45;
 optional< Card6 > card6;
 
 template< typename Istream >

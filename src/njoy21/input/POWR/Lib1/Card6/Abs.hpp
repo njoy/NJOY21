@@ -6,5 +6,7 @@ struct Abs{
            "69 values that can be entered.  The default values are all\n"
            "zeroes (0).";
   }
-  static Value_t defaultValue(){ return std::vector<double>(69,0.0); }
+  static Value_t defaultValue( const size_t ){
+    return std::vector<double>(69,0.0);
+  }
 };

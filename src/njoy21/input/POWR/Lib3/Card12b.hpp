@@ -1,8 +1,8 @@
 class Card12b{
 
-#include "njoy21/input/POWR/Card12b/Ia.hpp"
-#include "njoy21/input/POWR/Card12b/L1.hpp"
-#include "njoy21/input/POWR/Card12b/L2.hpp"
+#include "njoy21/input/POWR/Lib3/Card12b/Ia.hpp"
+#include "njoy21/input/POWR/Lib3/Card12b/L1.hpp"
+#include "njoy21/input/POWR/Lib3/Card12b/L2.hpp"
 
 Ia ia;
 L1 l1;
