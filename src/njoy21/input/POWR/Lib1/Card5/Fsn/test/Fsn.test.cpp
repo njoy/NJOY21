@@ -12,12 +12,12 @@ SCENARIO( "POWR, Lib1, Card5, Fsn",
     WHEN( "valid inputs are provided" ){
       for( std::string i : { "123456", "12345678901234567",
                                  "1234567890123456789012345678901234567890" } ){
-        std::string temp( " *" + i + "*/" );
-        iRecordStream<char> iss( std::istringstream( temp ) );
+        std::string temp( " '" + i + "'/" );
+        iRecordStream<char> iss{ std::istringstream{ temp } };
 
         THEN( "the value can be verified" ){
-          REQUIRE( i == argument::extract< POWR::Lib1::Card5::Fsn >(
-                                                                  iss ).value );
+          auto test = argument::extract< POWR::Lib1::Card5::Fsn >( iss );
+          REQUIRE( i == test.value );
         }
       }
     } // WHEN
@@ -35,7 +35,7 @@ SCENARIO( "POWR, Lib1, Card5, Fsn",
   GIVEN( "invalid inputs" ){
     WHEN( "an invalid value is provided" ){
       iRecordStream<char> iss( std::istringstream(
-                            " *12345678901234567890123456789012345678901*/" ) );
+                            " '12345678901234567890123456789012345678901'/" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( argument::extract< POWR::Lib1::Card5::Fsn >( iss ) );

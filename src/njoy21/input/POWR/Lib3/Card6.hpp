@@ -1,10 +1,11 @@
 class Card6{
+public:
 
 #include "njoy21/input/POWR/Lib3/Card6/Ntis.hpp"
 #include "njoy21/input/POWR/Lib3/Card6/Nfis.hpp"
 
-Ntis ntis;
-Nfis nfis;
+Argument< Ntis > ntis;
+Argument< Nfis > nfis;
 
 template< typename Istream >
 Card6( Istream& is )

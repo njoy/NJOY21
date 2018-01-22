@@ -1,4 +1,5 @@
 class Card3{
+public:
 
 #include "njoy21/input/POWR/Lib3/Card3/Nlib.hpp"
 #include "njoy21/input/POWR/Lib3/Card3/Idat.hpp"
@@ -8,13 +9,13 @@ class Card3{
 #include "njoy21/input/POWR/Lib3/Card3/If5.hpp"
 #include "njoy21/input/POWR/Lib3/Card3/If4.hpp"
 
-Nlib nlib;
-Idat idat;
-Newmat newmat;
-Iopt iopt;
-Mode mode;
-If5 if5;
-If4 if4;
+Argument< Nlib > nlib;
+Argument< Idat > idat;
+Argument< Newmat > newmat;
+Argument< Iopt > iopt;
+Argument< Mode > mode;
+Argument< If5 > if5;
+Argument< If4 > if4;
 
 template< typename Istream >
 Card3( Istream& is )

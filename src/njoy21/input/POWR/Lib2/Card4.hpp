@@ -1,12 +1,13 @@
 class Card4{
+public:
 
 #include "njoy21/input/POWR/Lib2/Card4/Itrc.hpp"
 #include "njoy21/input/POWR/Lib2/Card4/Mti.hpp"
 #include "njoy21/input/POWR/Lib2/Card4/Mtc.hpp"
 
-Itrc itrc;
-Mti mti;
-Mtc mtc;
+Argument< Itrc > itrc;
+Argument< Mti > mti;
+Argument< Mtc > mtc;
 
 template< typename Istream >
 Card4( Istream& is )

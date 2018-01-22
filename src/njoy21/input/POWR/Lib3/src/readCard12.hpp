@@ -1,7 +1,7 @@
 template< typename Istream >
 std::vector< optional< std::pair< Card12, 
     optional< std::pair< Card12a, std::vector< Card12b,
-    optional< Card12c > > > > > > > > >
+    optional< Card12c > > > > > > >
     readCard12( Istream& is, std::vector< Card5 > card5List ){
       std::vector< optional< std::pair< Card12, optional< std::pair< Card12a,
               std::vector< std::pair< Card12b, optional< Card12c > > > > > > > >
@@ -31,11 +31,11 @@ std::vector< optional< std::pair< Card12,
             continue;
           }
 
-          Card12c card12c( is );
+          Card12c card12c( is, card12b.l2.value - card12b.l1.value + 1 );
           bcList.push_back( std::make_pair( card12b, card12c ) );
         }
 
-        retval.pushback( std::make_pair( card12, std::make_pair( card12a,
+        retval.push_back( std::make_pair( card12, std::make_pair( card12a,
           bcList ) ) );
       }
 

@@ -1,13 +1,14 @@
 class Card4{
+public:
 
 #include "njoy21/input/POWR/Lib3/Card4/Mat.hpp"
 
-Mat mat;
+Argument< Mat > mat;
 
 template< typename Istream >
-Card4( Istream& is )
+Card4( Istream& is, const int newmat )
 try:
-  mat( argument::extract< POWR::Lib3::Card4::Mat >( is ) )
+  mat( argument::extract< POWR::Lib3::Card4::Mat >( is, newmat ) )
 {
   Card::clear( is );
 }

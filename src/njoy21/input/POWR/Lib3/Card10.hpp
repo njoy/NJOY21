@@ -1,13 +1,14 @@
 class Card10{
+public:
 
 #include "njoy21/input/POWR/Lib3/Card10/Lambda.hpp"
 
-Lambda lambda;
+Argument< Lambda > lambda;
 
 template< typename Istream >
-Card10( Istream& is )
+Card10( Istream& is, const int nres )
 try:
-  lambda( argument::extract< POWR::Lib3::Card10::Lambda >( is ) )
+  lambda( argument::extract< POWR::Lib3::Card10::Lambda >( is, nres ) )
 {
   Card::clear( is );
 }

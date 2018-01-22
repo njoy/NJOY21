@@ -1,8 +1,9 @@
 class Card6{
+public:
 
 #include "njoy21/input/POWR/Lib1/Card6/Abs.hpp"
 
-Abs abs;
+Argument< Abs > abs;
 
 template< typename Istream >
 Card6( Istream& is )

@@ -11,7 +11,7 @@ SCENARIO( "POWR, Lib1, Card3, Rtemp",
   GIVEN( "valid input" ){
     WHEN( "valid inputs are provided" ){
       for( double t : {0.0, 10.0, 100.0, 1000.0, 10000.0} ){
-        iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
+        iRecordStream<char> iss( std::istringstream( std::to_string( t ) ) );
 
         THEN( "the values can be verified" ){
           REQUIRE( t*dimwits::kelvin == argument::extract<
@@ -33,7 +33,7 @@ SCENARIO( "POWR, Lib1, Card3, Rtemp",
   GIVEN( "invalid input" ){
     WHEN( "invalid values are provided" ){
       for( auto t : {-100.0, -10.0, -1.0, -0.1} ){
-        iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
+        iRecordStream<char> iss( std::istringstream( std::to_string( t ) ) );
 
         THEN( "an exception is thrown" ){
           REQUIRE_THROWS( argument::extract< POWR::Lib1::Card3::Rtemp >(

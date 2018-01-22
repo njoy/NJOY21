@@ -1,4 +1,5 @@
 class Card5{
+public:
 
 #include "njoy21/input/POWR/Lib3/Card5/Nina.hpp"
 #include "njoy21/input/POWR/Lib3/Card5/Ntemp.hpp"
@@ -17,13 +18,14 @@ class Card5{
 #include "njoy21/input/POWR/Lib3/Card5/src/readNtapea0.hpp"
 #include "njoy21/input/POWR/Lib3/Card5/src/readMode0.hpp"
 
-Nina nina;
-Ntemp ntemp;
-Nsigz nsigz;
-Sgref sgref;
-optional< std::pair< Ires, Sigp > > nina03;
-optional< std::tuple< Mti, Mtc, Ip1opt, Inorf > > ntapea0;
-optional< std::pair< Pos, Posr > > mode0;
+Argument< Nina > nina;
+Argument< Ntemp > ntemp;
+Argument< Nsigz > nsigz;
+Argument< Sgref > sgref;
+optional< std::pair< Argument< Ires >, Argument< Sigp > > > nina03;
+optional< std::tuple< Argument< Mti >, Argument< Mtc >, Argument< Ip1opt >,
+                                                  Argument< Inorf > > > ntapea0;
+optional< std::pair< Argument< Pos >, Argument< Posr > > > mode0;
 
 template< typename Istream >
 Card5( Istream& is, const int mode )
@@ -31,7 +33,7 @@ try:
   nina( argument::extract< POWR::Lib3::Card5::Nina >( is ) ),
   ntemp( argument::extract< POWR::Lib3::Card5::Ntemp >( is ) ),
   nsigz( argument::extract< POWR::Lib3::Card5::Nsigz >( is ) ),
-  sgref( argument:extract< POWR::Lib3::Card5::Sgref >( is ) ),
+  sgref( argument::extract< POWR::Lib3::Card5::Sgref >( is ) ),
   nina03( readNina03( is, this->nina.value ) ),
   ntapea0( readNtapea0( is, 0 ) ),
   mode0( readMode0( is, mode ) )

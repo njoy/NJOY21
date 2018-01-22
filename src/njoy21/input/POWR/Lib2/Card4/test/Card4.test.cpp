@@ -39,7 +39,7 @@ SCENARIO( "POWR, Lib2, Card4",
       iRecordStream<char> iss( std::istringstream( " 0 1.0 2.0 3.0 /" ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THORWS( POWR::Lib2::Card4( iss ) );
+        REQUIRE_THROWS( POWR::Lib2::Card4( iss ) );
       }
     } // WHEN
 

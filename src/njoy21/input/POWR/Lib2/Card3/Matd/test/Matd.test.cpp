@@ -35,9 +35,9 @@ SCENARIO( "POWR, Lib2, Card3, Matd",
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){
-          REQUIRE_THROWS( argument::extract< POWR::Lib::Card3::Matd >( iss ) );
+          REQUIRE_THROWS( argument::extract< POWR::Lib2::Card3::Matd >( iss ) );
         }
       }
     } // WHEN
   } // GIVEN
-};
+}

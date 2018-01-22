@@ -1,12 +1,13 @@
 class Card2{
+public:
 
 #include "njoy21/input/POWR/Card2/Lib.hpp"
 #include "njoy21/input/POWR/Card2/Iprint.hpp"
 #include "njoy21/input/POWR/Card2/Iclaps.hpp"
 
-Lib lib;
-Iprint iprint;
-Iclaps iclaps;
+Argument< Lib > lib;
+Argument< Iprint > iprint;
+Argument< Iclaps > iclaps;
 
 template< typename Istream >
 Card2( Istream& is )

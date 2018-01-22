@@ -1,4 +1,5 @@
 class Card5{
+public:
 
 #include "njoy21/input/POWR/Lib2/Card5/Xi.hpp"
 #include "njoy21/input/POWR/Lib2/Card5/Alpha.hpp"
@@ -9,14 +10,14 @@ class Card5{
 #include "njoy21/input/POWR/Lib2/Card5/Lambda.hpp"
 #include "njoy21/input/POWR/Lib2/Card5/SigmaS.hpp"
 
-Xi xi;
-Alpha alpha;
-Mubar mubar;
-Nu nu;
-KappaFission kappaFission;
-KappaCapture kappaCapture;
-Lambda lambda;
-SigmaS sigmaS;
+Argument< Xi > xi;
+Argument< Alpha > alpha;
+Argument< Mubar > mubar;
+Argument< Nu > nu;
+Argument< KappaFission > kappaFission;
+Argument< KappaCapture > kappaCapture;
+Argument< Lambda > lambda;
+Argument< SigmaS > sigmaS;
 
 template< typename Istream >
 Card5( Istream& is )

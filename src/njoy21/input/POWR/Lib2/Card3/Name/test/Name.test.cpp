@@ -10,7 +10,7 @@ SCENARIO( "POWR, Lib2, Card3, Name",
           "[POWR] [Lib2] [Card3] [Name]" ){
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
-      iRecordStream<char> iss( std::istringstream( " *12345*/" ) );
+      iRecordStream<char> iss( std::istringstream( " '12345'/" ) );
 
       THEN( "the value can be verified" ){
         REQUIRE( "12345" == argument::extract< POWR::Lib2::Card3::Name >(
@@ -30,7 +30,7 @@ SCENARIO( "POWR, Lib2, Card3, Name",
 
   GIVEN( "invalid inputs" ){
     WHEN( "an invalid input is provided" ){
-      iRecordStream<char> iss( std::istringstream( " *123456789012*/" ) );
+      iRecordStream<char> iss( std::istringstream( " '123456789012'/" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( argument::extract< POWR::Lib2::Card3::Name >( iss ) );

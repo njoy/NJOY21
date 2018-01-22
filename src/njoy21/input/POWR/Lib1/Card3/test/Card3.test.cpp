@@ -12,13 +12,13 @@ SCENARIO( "POWR, Lib1, Card3",
     WHEN( "valid inputs are provided" ){
       iRecordStream<char> iss( std::istringstream( " 9235 301.0 0 12 2.1 / " ));
 
-      POWR::Card3 card3( iss );
+      POWR::Lib1::Card3 card3( iss );
 
       THEN( "the values can be verified" ){
         REQUIRE( 9235 == card3.matd.value );
-        REQUIRE( 301.0*dimwits::kelvin == card3.rtemp.value );
-        REQUIRE( 0 == card3.iff.value );
-        REQUIRE( 12 == card3.nsgz.value );
+        REQUIRE( 301.0*dimwits::kelvin == card3.rtemp->value );
+        REQUIRE( 0 == card3.iff->value );
+        REQUIRE( 12 == card3.nsgz->value );
         REQUIRE( Approx( 2.1 ) == card3.izref.value );
       }
     } // WHEN
@@ -26,13 +26,13 @@ SCENARIO( "POWR, Lib1, Card3",
     WHEN( "all defaults are used" ){
       iRecordStream<char> iss( std::istringstream( " 9235 /" ) );
 
-      POWR::Card3 card3( iss );
+      POWR::Lib1::Card3 card3( iss );
 
       THEN( "the default values can be verified" ){
         REQUIRE( 9235 == card3.matd.value );
-        REQUIRE( 300.0*dimwits::kelvin == card3.rtemp.value );
-        REQUIRE( 1 == card3.iff.value );
-        REQUIRE( 0 == card3.nsgz.value );
+        REQUIRE( 300.0*dimwits::kelvin == card3.rtemp->value );
+        REQUIRE( 1 == card3.iff->value );
+        REQUIRE( 0 == card3.nsgz->value );
         REQUIRE( Approx( 1.0 ) == card3.izref.value );
       }
     } // WHEN
@@ -43,7 +43,7 @@ SCENARIO( "POWR, Lib1, Card3",
       iRecordStream<char> iss( std::istringstream( " /" ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( POWR::Card3( iss ) );
+        REQUIRE_THROWS( POWR::Lib1::Card3( iss ) );
       }
     } // WHEN
 
@@ -51,7 +51,7 @@ SCENARIO( "POWR, Lib1, Card3",
       iRecordStream<char> iss( std::istringstream( " 9235 1.0 0 12 2.1 1 /" ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( POWR::Card3( iss ) );
+        REQUIRE_THROWS( POWR::Lib1::Card3( iss ) );
       }
     } // WHEN
 
@@ -59,7 +59,7 @@ SCENARIO( "POWR, Lib1, Card3",
       iRecordStream<char> iss( std::istringstream( " 9235 -1.0 /" ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( POWR::Card3( iss ) );
+        REQUIRE_THROWS( POWR::Lib1::Card3( iss ) );
       }
     } // WHEN
   } // GIVEN

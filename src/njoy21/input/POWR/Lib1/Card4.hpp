@@ -1,8 +1,9 @@
 class Card4{
+public:
 
 #include "njoy21/input/POWR/Lib1/Card4/Word.hpp"
 
-Word word;
+Argument< Word > word;
 
 template< typename Istream >
 Card4( Istream& is )

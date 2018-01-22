@@ -1,8 +1,9 @@
 class Card7{
+public:
 
 #include "njoy21/input/POWR/Lib3/Card7/Identb.hpp"
 
-Identb identb;
+Argument< Identb > identb;
 
 template< typename Istream >
 Card7( Istream& is, const int nfis )

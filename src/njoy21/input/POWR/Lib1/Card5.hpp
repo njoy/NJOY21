@@ -1,8 +1,9 @@
 class Card5{
+public:
 
 #include "njoy21/input/POWR/Lib1/Card5/Fsn.hpp"
 
-Fsn fsn;
+Argument< Fsn > fsn;
 
 template< typename Istream >
 Card5( Istream& is )

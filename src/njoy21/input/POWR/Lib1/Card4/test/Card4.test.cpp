@@ -10,7 +10,7 @@ SCENARIO( "POWR, Lib1, Card4",
           "[POWR] [Lib1] [Card4]" ){
   GIVEN( "valid inputs" ){
     WHEN( "valid input is provided" ){
-      iRecordStream<char> iss( std::istringstream( " *123456*/" ) );
+      iRecordStream<char> iss( std::istringstream( " '123456'/" ) );
 
       POWR::Lib1::Card4 card4( iss );
       THEN( "the value can be verified" ){
@@ -30,7 +30,7 @@ SCENARIO( "POWR, Lib1, Card4",
 
   GIVEN( "invalid inputs" ){
     WHEN( "invalid values are provided" ){
-      iRecordStream<char> iss( std::istringstream( " *12345678901234567*/" ) );
+      iRecordStream<char> iss( std::istringstream( " '12345678901234567'/" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( POWR::Lib1::Card4( iss ) );

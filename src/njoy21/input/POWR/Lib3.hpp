@@ -1,4 +1,5 @@
 class Lib3{
+public:
 
 #include "njoy21/input/POWR/Lib3/Card3.hpp"
 #include "njoy21/input/POWR/Lib3/Card4.hpp"
@@ -34,7 +35,7 @@ optional< std::vector< std::pair< Card12, optional< std::pair< Card12a,
   std::vector< std::pair< Card12b, optional< Card12c > > > > > > > > card12List;
 
 template< typename Istream >
-Lib3( Istream& is )
+Lib3( Istream& is, const int iclaps )
 try:
   card3( is ),
   card4( readCard4( is, this->card3.iopt.value ) ),
@@ -43,9 +44,9 @@ try:
   card678List( readCard678( is, this->card3.if5.value ) ),
   card9List( readCard9( is, this->card3.if5.value,
                         this->card4->mat.value.size() ) ),
-  card10List( readCard10( is, this->card5List ) ),
+  card10List( readCard10( is, this->card5List, iclaps ) ),
   card11List( readCard11( is, this->card5List ) ),
-  Card12List( readCard12( is, this->card5List ) )
+  card12List( readCard12( is, this->card5List ) )
 {
 }
 catch( std::exception& e ){

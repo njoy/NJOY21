@@ -11,7 +11,7 @@ SCENARIO( "POWR, Lib3, Card3, Nlib",
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
       for( auto i : {0, 1, 10, 100} ){
-        iRecordStream<char> iss( std::istringstream( std::to_string( iss ) ) );
+        iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
           REQUIRE( i == argument::extract< POWR::Lib3::Card3::Nlib >( iss

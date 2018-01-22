@@ -8,7 +8,7 @@ optional< std::tuple< Card6, Card7, std::vector< Card8 > > > readCard678(
   std::vector< Card8 > card8List;
 
   for( int i = 0; i < card6.ntis.value; i++ ){
-    card8List.emplace_back( is, card6.ntis.value, card6.nfis.value );
+    card8List.emplace_back( is, card6.nfis.value );
   }
 
   return std::make_tuple( card6, card7, card8List );

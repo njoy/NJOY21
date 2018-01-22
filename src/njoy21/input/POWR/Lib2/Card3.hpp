@@ -1,12 +1,13 @@
 class Card3{
+public:
 
 #include "njoy21/input/POWR/Lib2/Card3/Matd.hpp"
 #include "njoy21/input/POWR/Lib2/Card3/Idtemp.hpp"
 #include "njoy21/input/POWR/Lib2/Card3/Name.hpp"
 
-Matd matd;
-Idtemp idtemp;
-Name name;
+Argument< Matd > matd;
+Argument< Idtemp > idtemp;
+Argument< Name > name;
 
 template< typename Istream >
 Card3( Istream& is )

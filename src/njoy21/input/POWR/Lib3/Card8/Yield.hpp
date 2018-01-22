@@ -1,5 +1,5 @@
 struct Yield{
-  using Value_t = double;
+  using Value_t = std::vector< double >;
   static std::string name(){ return "yield"; }
   static std::string description(){
     return "The yield parameter specifies the yields of this isotope from\n"

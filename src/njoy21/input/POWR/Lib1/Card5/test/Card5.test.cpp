@@ -10,7 +10,7 @@ SCENARIO( "POWR, Lib1, Card5",
           "[POWR] [Lib1] [Card5]" ){
   GIVEN( "valid inputs" ){
     WHEN( "valid value is provided" ){
-      iRecordStream<char> iss( std::istringstream( " *1234567*/" ) );
+      iRecordStream<char> iss( std::istringstream( " '1234567'/" ) );
 
       POWR::Lib1::Card5 card5( iss );
 
@@ -33,15 +33,7 @@ SCENARIO( "POWR, Lib1, Card5",
   GIVEN( "invalid inputs" ){
     WHEN( "an invalid input is provided" ){
       iRecordStream<char> iss( std::istringstream(
-                             "*12345678901234567890123456789012345678901*/" ) );
-
-      THEN( "an argument is thrown" ){
-        REQUIRE_THROWS( POWR::Lib1::Card5( iss ) );
-      }
-    } // WHEN
-
-    WHEN( "an extra value is provided" ){
-      iRecordStream<char> iss( std::istringstream( " *123456*/ 12" ) );
+                             "'12345678901234567890123456789012345678901'/" ) );
 
       THEN( "an argument is thrown" ){
         REQUIRE_THROWS( POWR::Lib1::Card5( iss ) );

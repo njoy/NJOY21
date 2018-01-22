@@ -1,4 +1,5 @@
 class Lib2 {
+public:
 
 #include "njoy21/input/POWR/Lib2/Card3.hpp"
 #include "njoy21/input/POWR/Lib2/Card4.hpp"

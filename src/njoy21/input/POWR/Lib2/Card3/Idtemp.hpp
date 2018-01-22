@@ -1,5 +1,5 @@
 struct Idtemp{
-  using Value_t = Quantity< Kevin >;
+  using Value_t = Quantity< Kelvin >;
   static std::string name(){ return "idtemp"; }
   static std::string description(){
     return "The idtemp parameter specifies the temperature ID in Kelvin.\n"

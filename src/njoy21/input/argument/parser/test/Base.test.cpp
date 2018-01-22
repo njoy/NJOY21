@@ -108,6 +108,22 @@ SCENARIO("Base"){
     }
   }
 
+  SECTION( "Vector of doubles" ){
+    std::vector< double > sink;
+    std::vector< double > reference{10.0, 20.0, 30.0};
+    MyArg arg{3};
+    SECTION( "correct number of entries" ){
+      iRecordStream<char> iss( std::istringstream("   10.0 20.0 30.0") );
+      REQUIRE( Base< std::vector< double > >::read( iss, sink, arg ) );
+      REQUIRE( sink == reference );
+    }
+    SECTION( "Incorrect number of entries" ){
+      iRecordStream<char> iss( std::istringstream("   10.0 20.0") );
+      REQUIRE( Base< std::vector< double > >::read( iss, sink, arg ) );
+      REQUIRE( iss.fail() );
+    }
+  }
+
   SECTION( "Vector of Quanitities" ){
     std::vector< dimwits::Quantity< dimwits::Meter > > lengths;
     std::vector< dimwits::Quantity< dimwits::Meter > > reflengths

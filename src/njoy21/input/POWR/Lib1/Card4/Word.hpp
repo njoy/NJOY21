@@ -4,7 +4,7 @@ struct Word{
   static std::string description(){
     return "The word parameter specifies a description of the nuclide.\n"
            "The description can be up to 16 characters, is delimited by\n"
-           "asterisks (*), ends with a forward slash (/), and defaults to\n"
+           "apostrophes ('), ends with a forward slash (/), and defaults to\n"
            "being blank.";
   }
   static Value_t defaultValue(){ return ""; }

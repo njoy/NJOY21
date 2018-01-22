@@ -3,9 +3,10 @@ struct L1{
   static std::string name(){ return "l1"; }
   static std::string description(){
     return "The l1 parameter specifies the lowest energy group to which\n"
-           "scattering occurs.";
+           "scattering occurs. The value must be greater than or zero and\n"
+           "less than (ngnd - 1).";
   }
   static bool verify( const Value_t l1, const int ngnd ){
-    return ( l1 >= 0 and l1 < ngnd );
+    return ( l1 >= 0 and l1 < ( ngnd - 1 ) );
   }
 };

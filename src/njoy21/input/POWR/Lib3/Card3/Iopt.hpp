@@ -7,5 +7,6 @@ struct Iopt{
            " 1 = us all materials found on ngendf";
   }
   static bool verify( const Value_t iopt ){
-    return ( iopt == 1 or iopt 0 );
+    return ( iopt == 1 or iopt == 0 );
+  }
 };

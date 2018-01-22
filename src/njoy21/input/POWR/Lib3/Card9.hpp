@@ -1,19 +1,20 @@
 class Card9{
+public:
 
 #include "njoy21/input/POWR/Lib3/Card9/Aw.hpp"
 #include "njoy21/input/POWR/Lib3/Card9/Indfis.hpp"
 #include "njoy21/input/POWR/Lib3/Card9/Ntemp.hpp"
 
-Aw aw;
-Indfis indfis;
-Ntemp ntemp;
+Argument< Aw > aw;
+Argument< Indfis > indfis;
+Argument< Ntemp > ntemp;
 
 template< typename Istream >
 Card9( Istream& is )
 try:
   aw( argument::extract< POWR::Lib3::Card9::Aw >( is ) ),
   indfis( argument::extract< POWR::Lib3::Card9::Indfis >( is ) ),
-  Ntemp( argument::extract< POWR::Lib3::Card9::Ntemp >( is ) )
+  ntemp( argument::extract< POWR::Lib3::Card9::Ntemp >( is ) )
 {
   Card::clear( is );
 }

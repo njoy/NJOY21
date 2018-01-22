@@ -1,4 +1,5 @@
 class POWR {
+public:
 
 using Card1 = WIMSR::Card1;
 #include "njoy21/input/POWR/Card2.hpp"

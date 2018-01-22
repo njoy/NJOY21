@@ -1,11 +1,12 @@
 class Card11a{
+public:
 
 #include "njoy21/input/POWR/Lib3/Card11a/Tot.hpp"
 
-Tot tot;
+Argument< Tot > tot;
 
 template< typename Istream >
-Card11a( Istream& e )
+Card11a( Istream& is )
 try:
   tot( argument::extract< POWR::Lib3::Card11a::Tot >( is, 69 ) )
 {

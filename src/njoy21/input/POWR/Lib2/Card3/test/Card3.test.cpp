@@ -10,7 +10,7 @@ SCENARIO( "POWR, Lib2, Card3",
           "[POWR] [Lib2] [Card3]" ){
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
-      iRecordStream<char> iss( std::istringstream( " 9235 301.0 *123*/" ) );
+      iRecordStream<char> iss( std::istringstream( " 9235 301.0 '123'/" ) );
 
       POWR::Lib2::Card3 card3( iss );
       THEN( "the values can be verified" ){

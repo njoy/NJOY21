@@ -1,8 +1,9 @@
 class Card11{
+public:
 
 #include "njoy21/input/POWR/Lib3/Card11/Resnu.hpp"
 
-Resnu resnu;
+Argument< Resnu > resnu;
 
 template< typename Istream >
 Card11( Istream& is )

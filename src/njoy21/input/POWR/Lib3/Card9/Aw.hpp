@@ -8,4 +8,4 @@ struct Aw{
   static bool verify( const Value_t aw ){
     return aw > 0.0;
   }
-}
+};
