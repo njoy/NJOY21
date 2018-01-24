@@ -15,8 +15,8 @@ SCENARIO( "POWR, Lib2, Card3",
       POWR::Lib2::Card3 card3( iss );
       THEN( "the values can be verified" ){
         REQUIRE( 9235 == card3.matd.value );
-        REQUIRE( 301.0*dimwits::kelvin == card3.idtemp.value );
-        REQUIRE( "123" == card3.name.value );
+        REQUIRE( 301.0*dimwits::kelvin == card3.rest->second.value );
+        REQUIRE( "123" == card3.rest->first.value );
       }
     } // WHEN
 
@@ -27,9 +27,20 @@ SCENARIO( "POWR, Lib2, Card3",
 
       THEN( "the defaults can be verified" ){
         REQUIRE( 9235 == card3.matd.value );
-        REQUIRE( 300.0*dimwits::kelvin == card3.idtemp.value );
-        REQUIRE( "" == card3.name.value );
+        REQUIRE( 300.0*dimwits::kelvin == card3.rest->second.value );
+        REQUIRE( "" == card3.rest->first.value );
       } // THEN
+    } // WHEN
+
+    WHEN( "the material is zero" ){
+      iRecordStream<char> iss( std::istringstream( " 0 /" ) );
+
+      THEN( "the value can be verified and the rest are unused" ){
+        POWR::Lib2::Card3 card3( iss );
+
+        REQUIRE( 0 == card3.matd.value );
+        REQUIRE( std::nullopt == card3.rest );
+      }
     } // WHEN
   } // GIVEN
 

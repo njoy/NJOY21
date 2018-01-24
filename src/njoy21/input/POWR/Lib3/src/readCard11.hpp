@@ -10,9 +10,8 @@ std::vector< optional< std::pair< Card11, Card11a > > > readCard11( Istream& is,
     }
 
     Card11 card11( is );
-    Card11a card11a( is );
 
-    card11List.push_back( std::make_pair( card11, card11a ) );
+    card11List.push_back( std::make_pair( std::move( card11 ), Card11a( is ) ));
   }
 
   return card11List;

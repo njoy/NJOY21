@@ -9,8 +9,8 @@ optional< std::vector< Lib2 > > readLib2( Istream& is, const int lib ){
 
   while( lib2List.back().card3.matd.value != 0 ){
     if( std::find( tempList.begin(), tempList.end(),
-        lib2List.back().card3.idtemp.value ) == tempList.end() ){
-      tempList.emplace_back( lib2List.back().card3.idtemp.value );
+        lib2List.back().card3.rest->second.value ) == tempList.end() ){
+      tempList.emplace_back( lib2List.back().card3.rest->second.value );
     }
     if( tempList.size() > 7 ){
       Log::error( "A maximum of 7 temperatures are allowed." );

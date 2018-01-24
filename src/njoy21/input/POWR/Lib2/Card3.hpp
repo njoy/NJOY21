@@ -5,16 +5,16 @@ public:
 #include "njoy21/input/POWR/Lib2/Card3/Idtemp.hpp"
 #include "njoy21/input/POWR/Lib2/Card3/Name.hpp"
 
+#include "njoy21/input/POWR/Lib2/Card3/src/readRest.hpp"
+
 Argument< Matd > matd;
-Argument< Idtemp > idtemp;
-Argument< Name > name;
+optional< std::pair< Argument< Name >, Argument< Idtemp > > > rest;
 
 template< typename Istream >
 Card3( Istream& is )
 try:
   matd( argument::extract< POWR::Lib2::Card3::Matd >( is ) ),
-  idtemp( argument::extract< POWR::Lib2::Card3::Idtemp >( is ) ),
-  name( argument::extract< POWR::Lib2::Card3::Name >( is ) )
+  rest( readRest( is, this->matd.value ) )
 {
   Card::clear( is );
 }

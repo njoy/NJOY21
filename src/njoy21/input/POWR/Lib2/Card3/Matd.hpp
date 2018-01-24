@@ -5,6 +5,6 @@ struct Matd{
     return "The matd parameter specifies the material to be processed.";
   }
   static bool verify( const Value_t matd ){
-    return ( matd > 0 and matd < 10000 );
+    return ( matd >= 0 and matd < 10000 );
   }
 };

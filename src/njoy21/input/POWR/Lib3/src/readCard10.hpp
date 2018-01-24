@@ -14,7 +14,8 @@ std::vector< optional< Card10 > > readCard10( Istream& is,
   for( auto card5 : card5List ){
     if(card5.nina.value == 0 or card5.nina.value == 3 or
        card5.nina03->first.value == 1){
-      card10List.emplace_back( is, nres );
+      Card10 card10( is, nres );
+      card10List.push_back( std::move( card10 ) );
       continue;
     }
     card10List.push_back( std::nullopt );
