@@ -1,5 +1,5 @@
 template< typename Istream >
-optional< std::vector< Lib2 > > readLib2( Istream& is, const int lib ){
+static optional< std::vector< Lib2 > > readLib2( Istream& is, const int lib ){
   if( lib != 2 ) return std::nullopt;
 
   std::vector< Lib2 > lib2List;

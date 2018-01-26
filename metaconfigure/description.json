@@ -2249,6 +2249,9 @@
     "njoy21.input.PLOTR.Card9.Ithick": [
       "src/njoy21/input/PLOTR/Card9/Ithick/test/Ithick.test.cpp"
     ],
+    "njoy21.input.POWR": [
+      "src/njoy21/input/POWR/test/POWR.test.cpp"
+    ],
     "njoy21.input.POWR.Card2": [
       "src/njoy21/input/POWR/Card2/test/Card2.test.cpp"
     ],

@@ -25,7 +25,7 @@ try:
   card2( is ),
   lib1( readLib1( is, this->card2.lib.value ) ),
   lib2( readLib2( is, this->card2.lib.value ) ),
-  lib3( readLib3( is, this->card2.lib.value ) )
+  lib3( readLib3( is, this->card2.lib.value, this->card2.iclaps.value ) )
 {
 }
 catch( std::exception& e ){

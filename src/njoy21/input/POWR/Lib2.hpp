@@ -16,7 +16,6 @@ try:
   card3( is ),
   card45( readCard45( is, this->card3.matd.value ) )
 {
-  Card::clear( is );
 }
 catch( std::exception& e ){
   Log::info( "Trouble reading cards for lib=2." );
