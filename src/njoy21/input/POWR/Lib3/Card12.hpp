@@ -10,11 +10,11 @@ Argument< Temp > temp;
 Argument< Fpa > fpa;
 
 template< typename Istream >
-Card12( Istream& is )
+Card12( Istream& is, const size_t ngnd )
 try:
   aw( argument::extract< POWR::Lib3::Card12::Aw >( is ) ),
   temp( argument::extract< POWR::Lib3::Card12::Temp >( is ) ),
-  fpa( argument::extract< POWR::Lib3::Card12::Fpa >( is, 69 ) )
+  fpa( argument::extract< POWR::Lib3::Card12::Fpa >( is, ngnd ) )
 {
   Card::clear( is );
 }

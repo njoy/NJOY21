@@ -10,11 +10,11 @@ Argument< Fis > fis;
 Argument< Xtr > xtr;
 
 template< typename Istream >
-Card12a( Istream& is )
+Card12a( Istream& is, const size_t ngnd )
 try:
-  nus( argument::extract< POWR::Lib3::Card12a::Nus >( is, 69 ) ),
-  fis( argument::extract< POWR::Lib3::Card12a::Fis >( is, 69 ) ),
-  xtr( argument::extract< POWR::Lib3::Card12a::Xtr >( is, 69 ) )
+  nus( argument::extract< POWR::Lib3::Card12a::Nus >( is, ngnd ) ),
+  fis( argument::extract< POWR::Lib3::Card12a::Fis >( is, ngnd ) ),
+  xtr( argument::extract< POWR::Lib3::Card12a::Xtr >( is, ngnd ) )
 {
   Card::clear( is );
 }

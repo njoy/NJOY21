@@ -45,8 +45,8 @@ try:
   card9List( readCard9( is, this->card3.if5.value,
                         this->card4->mat.value.size() ) ),
   card10List( readCard10( is, this->card5List, iclaps ) ),
-  card11List( readCard11( is, this->card5List ) ),
-  card12List( readCard12( is, this->card5List ) )
+  card11List( readCard11( is, this->card5List, this->card10List ) ),
+  card12List( readCard12( is, this->card5List, iclaps ) )
 {
 }
 catch( std::exception& e ){

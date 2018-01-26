@@ -6,9 +6,9 @@ public:
 Argument< Tot > tot;
 
 template< typename Istream >
-Card11a( Istream& is )
+Card11a( Istream& is, const int nrg )
 try:
-  tot( argument::extract< POWR::Lib3::Card11a::Tot >( is, 69 ) )
+  tot( argument::extract< POWR::Lib3::Card11a::Tot >( is, nrg ) )
 {
   Card::clear( is );
 }

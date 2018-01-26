@@ -6,9 +6,9 @@ public:
 Argument< Resnu > resnu;
 
 template< typename Istream >
-Card11( Istream& is )
+Card11( Istream& is, const int nrg )
 try:
-  resnu( argument::extract< POWR::Lib3::Card11::Resnu >( is, 69 ) )
+  resnu( argument::extract< POWR::Lib3::Card11::Resnu >( is, nrg ) )
 {
   Card::clear( is );
 }
