@@ -36,7 +36,7 @@ SCENARIO( "POWR, Lib3, Card12a",
       iRecordStream<char> iss{ std::istringstream{ inp } };
 
       THEN( "the values can be verified" ){
-        POWR::Lib3::Card12a card12a( iss );
+        POWR::Lib3::Card12a card12a( iss, 69 );
 
         for( int i = 0; i < 69; i++ ){
           double d( i*0.1 );
@@ -76,7 +76,7 @@ SCENARIO( "POWR, Lib3, Card12a",
       iRecordStream<char> iss{ std::istringstream{ inp } };
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( POWR::Lib3::Card12a( iss ) );
+        REQUIRE_THROWS( POWR::Lib3::Card12a( iss, 69 ) );
       }
     } // WHEN
 
@@ -107,7 +107,7 @@ SCENARIO( "POWR, Lib3, Card12a",
       iRecordStream<char> iss{ std::istringstream{ inp } };
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( POWR::Lib3::Card12a( iss ) );
+        REQUIRE_THROWS( POWR::Lib3::Card12a( iss, 69 ) );
       }
     } // WHEN
   } // GIVEN

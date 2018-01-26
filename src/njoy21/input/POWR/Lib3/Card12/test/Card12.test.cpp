@@ -23,7 +23,7 @@ SCENARIO( "POWR, Lib3, Card12",
       iRecordStream<char> iss{ std::istringstream{ inp } };
 
       THEN( "the values can be verified" ){
-        POWR::Lib3::Card12 card12( iss );
+        POWR::Lib3::Card12 card12( iss, 69 );
 
         REQUIRE( Approx( 235.555 ) == card12.aw.value );
         REQUIRE( 99.1*dimwits::kelvin == card12.temp.value );
@@ -51,7 +51,7 @@ SCENARIO( "POWR, Lib3, Card12",
       iRecordStream<char> iss{ std::istringstream{ inp } };
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( POWR::Lib3::Card12( iss ) );
+        REQUIRE_THROWS( POWR::Lib3::Card12( iss, 69 ) );
       }
     } // WHEN
 
@@ -69,7 +69,7 @@ SCENARIO( "POWR, Lib3, Card12",
       iRecordStream<char> iss{ std::istringstream{ inp } };
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( POWR::Lib3::Card12( iss ) );
+        REQUIRE_THROWS( POWR::Lib3::Card12( iss, 69 ) );
       }
     } // WHEN
 
@@ -87,7 +87,7 @@ SCENARIO( "POWR, Lib3, Card12",
       iRecordStream<char> iss{ std::istringstream{ inp } };
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( POWR::Lib3::Card12( iss ) );
+        REQUIRE_THROWS( POWR::Lib3::Card12( iss, 69 ) );
       }
     } // WHEN
   } // GIVEN
