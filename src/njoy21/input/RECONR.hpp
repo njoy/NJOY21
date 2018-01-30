@@ -10,11 +10,12 @@ public:
 
   Card1 card1;
   Card2 card2;
-  using RECONR_tuple = std::tuple< 
-                        Card3, Card4, 
-                        optional< std::vector< Card5 > >, 
-                        optional< Card6 > >;
-  
+
+  using RECONR_tuple =
+    std::tuple< Card3, Card4,
+                optional< std::vector< Card5 > >,
+                optional< Card6 > >;
+
   std::vector< RECONR_tuple > cardSequence;
 
   template< typename Char >
@@ -81,7 +82,7 @@ public:
         if( card3.mat.value == 0 ){ break; }
         int previousMat = std::get<Card3>(cardSequence.back()).mat.value;
         if( previousMat > card3.mat.value ){
-          Log::info( "mat value {} followed by mat value {}", 
+          Log::info( "mat value {} followed by mat value {}",
             previousMat, card3.mat.value );
           Log::info( "mat values should be provided in increasing order" );
           throw std::exception();
