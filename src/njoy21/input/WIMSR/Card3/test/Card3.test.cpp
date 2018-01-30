@@ -52,7 +52,7 @@ SCENARIO( "WIMSR, Card3",
     }
 
     WHEN( "one value is invalid" ){
-      iRecordStream<char> iss( std::istringstream( " -12 10 -12. 1 /" ) );
+      iRecordStream<char> iss( std::istringstream( " 9238 10 -12. 1 /" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( WIMSR::Card3( iss ) );

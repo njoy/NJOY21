@@ -18,17 +18,17 @@ SCENARIO( "WIMSR, Card2a, Ngnd",
         }
       }
     }
-
-    WHEN( "no input is provided" ){
-      iRecordStream<char> iss( std::istringstream( " /" ) );
-
-      THEN( "the default is returned" ){
-        REQUIRE( 69 == argument::extract< WIMSR::Card2a::Ngnd >( iss ).value );
-      }
-    }
   } // GIVEN
 
   GIVEN( "invalid inputs" ){
+    WHEN( "no input is provided" ){
+      iRecordStream<char> iss( std::istringstream( " /" ) );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( argument::extract< WIMSR::Card2a::Ngnd >( iss ) );
+      }
+    }
+
     WHEN( "an invalid input is provided" ){
       iRecordStream<char> iss( std::istringstream( " -1 /" ) );
 
