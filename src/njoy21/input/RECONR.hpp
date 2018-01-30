@@ -89,6 +89,20 @@ public:
         }
 
       } while( true );
+
+      auto unsortedStart = std::is_sorted_until( cardSequence.begin(),
+           cardSequence.end(), []( RECONR_tuple first,
+                                   RECONR_tuple second )->bool{
+        return std::get<Card3>(first).mat.value <
+               std::get<Card3>(second).mat.value; } );
+      if( unsortedStart != cardSequence.end() ){
+        Log::error( "Materials in RECONR::Card3 should be specified in\n"
+                    "ascending order." );
+        Log::info( "Card3 material {} > material {}.",
+                   std::get<Card3>(unsortedStart[-1]).mat.value,
+                   std::get<Card3>(*(unsortedStart)).mat.value );
+        throw std::exception();
+      }
     }
     catch( std::exception& e ){
       Log::info( "Trouble validating RECONR input" );
