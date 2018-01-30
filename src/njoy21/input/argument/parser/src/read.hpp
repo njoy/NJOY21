@@ -51,6 +51,11 @@ bool read( iRecordStream<Char>& is, std::string& string, Args&&... ){
   return true;
 }
 
+// Reading in vectors of values requires that the value immediately
+// after the stringstream from which the values will be read be the number
+// of values being read.
+//
+// Ex. - WIMSR::Card8( is, [# of values], [other arguments as needed])
 template< typename Char, typename T, typename Size, typename... Args >
 std::conditional_t
 < true, std::enable_if_t
