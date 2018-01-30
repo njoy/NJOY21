@@ -29,4 +29,5 @@ using iRecordStream =
 #include "njoy21/input/PLOTR.hpp"
 #include "njoy21/input/WIMSR.hpp"
 #include "njoy21/input/POWR.hpp"
+#include "njoy21/input/CCCCR.hpp"
 }
