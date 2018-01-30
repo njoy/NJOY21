@@ -10,11 +10,12 @@ public:
 
   Card1 card1;
   Card2 card2;
-  using RECONR_tuple = std::tuple< 
-                        Card3, Card4, 
-                        optional< std::vector< Card5 > >, 
-                        optional< Card6 > >;
-  
+
+  using RECONR_tuple =
+    std::tuple< Card3, Card4,
+                optional< std::vector< Card5 > >,
+                optional< Card6 > >;
+
   std::vector< RECONR_tuple > cardSequence;
 
   template< typename Char >
@@ -81,13 +82,27 @@ public:
         if( card3.mat.value == 0 ){ break; }
         int previousMat = std::get<Card3>(cardSequence.back()).mat.value;
         if( previousMat > card3.mat.value ){
-          Log::info( "mat value {} followed by mat value {}", 
+          Log::info( "mat value {} followed by mat value {}",
             previousMat, card3.mat.value );
           Log::info( "mat values should be provided in increasing order" );
           throw std::exception();
         }
 
       } while( true );
+
+      auto unsortedStart = std::is_sorted_until( cardSequence.begin(),
+           cardSequence.end(), []( RECONR_tuple first,
+                                   RECONR_tuple second )->bool{
+        return std::get<Card3>(first).mat.value <
+               std::get<Card3>(second).mat.value; } );
+      if( unsortedStart != cardSequence.end() ){
+        Log::error( "Materials in RECONR::Card3 should be specified in\n"
+                    "ascending order." );
+        Log::info( "Card3 material {} > material {}.",
+                   std::get<Card3>(unsortedStart[-1]).mat.value,
+                   std::get<Card3>(*(unsortedStart)).mat.value );
+        throw std::exception();
+      }
     }
     catch( std::exception& e ){
       Log::info( "Trouble validating RECONR input" );
