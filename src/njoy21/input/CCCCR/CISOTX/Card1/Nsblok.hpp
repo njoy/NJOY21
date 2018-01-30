@@ -5,7 +5,7 @@ struct Nsblok {
     return "The nsblok parameter specifies the subblocking option for the\n"
            "scattering matrix.  The options are 1 or ngrup sub-blocks.";
   }
-  static bool verify( const Value_t nsblok ){
+  static bool verify( const Value_t nsblok, const Value_t ngroup ){
     return ( nsblok == 1 or nsblok == ngroup );
   }
 };
