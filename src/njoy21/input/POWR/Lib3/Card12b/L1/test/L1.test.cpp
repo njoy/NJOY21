@@ -31,7 +31,7 @@ SCENARIO( "POWR, Lib3, Card12b, L1",
     } // WHEN
 
     WHEN( "invalid inputs are provided" ){
-      for( auto i : {-1, 11} ){
+      for( auto i : {-1, 12} ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){

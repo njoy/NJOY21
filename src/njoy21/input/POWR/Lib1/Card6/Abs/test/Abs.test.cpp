@@ -25,9 +25,9 @@ SCENARIO( "POWR, Lib1, Card6, Abs",
       iRecordStream<char> iss( std::istringstream( " /" ) );
 
       THEN( "the default can be verified" ){
-        auto abs = argument::extract< POWR::Lib1::Card6::Abs >( iss, 69 ).value;
+        auto abs = argument::extract< POWR::Lib1::Card6::Abs >( iss, 68 ).value;
 
-        REQUIRE( abs.size() == 69 );
+        REQUIRE( abs.size() == 68 );
 
         for( auto i : abs ){
           REQUIRE( Approx( 0.0 ) == i );

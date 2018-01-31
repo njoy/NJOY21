@@ -8,7 +8,7 @@ Argument< Abs > abs;
 template< typename Istream >
 Card6( Istream& is )
 try:
-  abs( argument::extract< POWR::Lib1::Card6::Abs >( is, 69 ) )
+  abs( argument::extract< POWR::Lib1::Card6::Abs >( is, 68 ) )
 {
   Card::clear( is );
 }

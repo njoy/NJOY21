@@ -22,7 +22,7 @@ SCENARIO( "POWR",
  std::string( " 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9\n" ) +
  std::string( " 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9\n" ) +
  std::string( " 5.0 5.1 5.2 5.3 5.4 5.5 5.6 5.7 5.8 5.9\n" ) +
- std::string( " 6.0 6.1 6.2 6.3 6.4 6.5 6.6 6.7 6.8 /\n" ) + // Card6
+ std::string( " 6.0 6.1 6.2 6.3 6.4 6.5 6.6 6.7 /\n" ) + // Card6
  std::string( " 0 /" ) // Terminating Card3
       );
 
@@ -38,20 +38,26 @@ SCENARIO( "POWR",
         REQUIRE( 0 == powr.card2.iprint.value );
         REQUIRE( 0 == powr.card2.iclaps.value );
 
-        REQUIRE( 9439 == powr.lib1->at(0).card3.matd.value );
+        REQUIRE( 9439 == std::experimental::get<0>( powr.lib ).at(0).card3.matd.value );
         REQUIRE( 279.0*dimwits::kelvin ==
-                        std::get<0>( *( powr.lib1->at(0).card3.rest ) ).value );
-        REQUIRE( 0 == std::get<1>( *( powr.lib1->at(0).card3.rest ) ).value );
-        REQUIRE( 2 == std::get<2>( *( powr.lib1->at(0).card3.rest ) ).value );
-        REQUIRE( 2 == std::get<3>( *( powr.lib1->at(0).card3.rest ) ).value );
+                std::get<0>( *( std::experimental::get<0>( powr.lib ).at(0).card3.rest ) ).value );
+        REQUIRE( 0 == 
+                std::get<1>( *( std::experimental::get<0>( powr.lib ).at(0).card3.rest ) ).value );
+        REQUIRE( 2 ==
+                std::get<2>( *( std::experimental::get<0>( powr.lib ).at(0).card3.rest ) ).value );
+        REQUIRE( 2 == 
+                std::get<3>( *( std::experimental::get<0>( powr.lib ).at(0).card3.rest ) ).value );
 
-        REQUIRE( "word value" == powr.lib1->at(0).card45->second.word.value );
+        REQUIRE( "word value" == 
+                      std::experimental::get<0>( powr.lib ).at(0).card45->second.word.value );
 
-        REQUIRE( "fsn value" == powr.lib1->at(0).card45->first.fsn.value );
+        REQUIRE( "fsn value" == 
+                        std::experimental::get<0>( powr.lib ).at(0).card45->first.fsn.value );
 
-        for( int i = 0; i < 69; i++ ){
+        for( int i = 0; i < 68; i++ ){
           double d( i*0.1 );
-          REQUIRE( Approx( d ) == powr.lib1->at(0).card6->abs.value.at(i) );
+          REQUIRE( Approx( d ) == 
+                         std::experimental::get<0>( powr.lib ).at(0).card6->abs.value.at(i) );
         }
       }
     } // WHEN
@@ -61,7 +67,7 @@ SCENARIO( "POWR",
  std::string( " 95 99 /\n" ) + // Card1
  std::string( " 2 1 0 /\n" ) + // Card2
  std::string( " 2345 3.14 'hollerith' /\n" ) + // Card3
- std::string( " 1 2.0 3.0 /\n" ) + // Card4
+ std::string( " 1 2 3 /\n" ) + // Card4
  std::string( " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 /\n" ) + // Card5
  std::string( " 0 /" ) // Terminating Card3
       );
@@ -78,25 +84,32 @@ SCENARIO( "POWR",
         REQUIRE( 1 == powr.card2.iprint.value );
         REQUIRE( 0 == powr.card2.iclaps.value );
 
-        REQUIRE( 2345 == powr.lib2->at(0).card3.matd.value );
+        REQUIRE( 2345 == std::experimental::get<1>( powr.lib ).at(0).card3.matd.value );
         REQUIRE( 3.14*dimwits::kelvin == 
-                                    powr.lib2->at(0).card3.rest->second.value );
-        REQUIRE( "hollerith" == powr.lib2->at(0).card3.rest->first.value );
+                       std::experimental::get<1>( powr.lib ).at(0).card3.rest->second.value );
+        REQUIRE( "hollerith" == 
+                        std::experimental::get<1>( powr.lib ).at(0).card3.rest->first.value );
 
-        REQUIRE( 1 == powr.lib2->at(0).card45->second.itrc.value );
-        REQUIRE( Approx( 2.0 ) == powr.lib2->at(0).card45->second.mti.value );
-        REQUIRE( Approx( 3.0 ) == powr.lib2->at(0).card45->second.mtc.value );
+        REQUIRE( 1 == std::experimental::get<1>( powr.lib ).at(0).card45->second.itrc.value );
+        REQUIRE( 2 == std::experimental::get<1>( powr.lib ).at(0).card45->second.mti.value );
+        REQUIRE( 3 == std::experimental::get<1>( powr.lib ).at(0).card45->second.mtc.value );
 
-        REQUIRE( Approx( 0.1 ) == powr.lib2->at(0).card45->first.xi.value );
-        REQUIRE( Approx( 0.2 ) == powr.lib2->at(0).card45->first.alpha.value );
-        REQUIRE( Approx( 0.3 ) == powr.lib2->at(0).card45->first.mubar.value );
-        REQUIRE( Approx( 0.4 ) == powr.lib2->at(0).card45->first.nu.value );
+        REQUIRE( Approx( 0.1 ) ==
+                         std::experimental::get<1>( powr.lib ).at(0).card45->first.xi.value );
+        REQUIRE( Approx( 0.2 ) ==
+                      std::experimental::get<1>( powr.lib ).at(0).card45->first.alpha.value );
+        REQUIRE( Approx( 0.3 ) ==
+                      std::experimental::get<1>( powr.lib ).at(0).card45->first.mubar.value );
+        REQUIRE( Approx( 0.4 ) ==
+                         std::experimental::get<1>( powr.lib ).at(0).card45->first.nu.value );
         REQUIRE( Approx( 0.5 ) == 
-                            powr.lib2->at(0).card45->first.kappaFission.value );
+               std::experimental::get<1>( powr.lib ).at(0).card45->first.kappaFission.value );
         REQUIRE( Approx( 0.6 ) == 
-                            powr.lib2->at(0).card45->first.kappaCapture.value );
-        REQUIRE( Approx( 0.7 ) == powr.lib2->at(0).card45->first.lambda.value );
-        REQUIRE( Approx( 0.8 ) == powr.lib2->at(0).card45->first.sigmaS.value );
+               std::experimental::get<1>( powr.lib ).at(0).card45->first.kappaCapture.value );
+        REQUIRE( Approx( 0.7 ) ==
+                     std::experimental::get<1>( powr.lib ).at(0).card45->first.lambda.value );
+        REQUIRE( Approx( 0.8 ) ==
+                     std::experimental::get<1>( powr.lib ).at(0).card45->first.sigmaS.value );
       }
     } // WHEN
 
@@ -106,8 +119,8 @@ SCENARIO( "POWR",
  std::string( " 3 0 0 /\n" ) + // Card2
  std::string( " 1 20000201 2 0 0 2 1 /\n" ) + // Card3
  std::string( " 1200 9439 /\n" ) + // Card4
- std::string( " 3 2 3 4.0 1 5.0 6.0 7.0 0 0 8 9 /\n" ) + // Card5-1
- std::string( " 1 0 0 1.0 2.0 3.0 0 1 4 5 /\n" ) + // Card5-2
+ std::string( " 3 2 3 4.0 1 5.0 6 7 0 0 8 9 /\n" ) + // Card5-1
+ std::string( " 1 0 0 1.0 2 3 0 1 4 5 /\n" ) + // Card5-2
  std::string( " 2 1 /\n" ) + // Card6
  std::string( " 9439 /\n" ) + // Card7
  std::string( " 1200 0.5 /\n" ) + // Card8-1
@@ -297,153 +310,172 @@ SCENARIO( "POWR",
         REQUIRE( 0 == powr.card2.iprint.value );
         REQUIRE( 0 == powr.card2.iclaps.value );
 
-        REQUIRE( 1 == powr.lib3->card3.nlib.value );
-        REQUIRE( 20000201 == powr.lib3->card3.idat.value );
-        REQUIRE( 2 == powr.lib3->card3.newmat.value );
-        REQUIRE( 0 == powr.lib3->card3.iopt.value );
-        REQUIRE( 0 == powr.lib3->card3.mode.value );
-        REQUIRE( 2 == powr.lib3->card3.if5.value );
-        REQUIRE( 1 == powr.lib3->card3.if4.value );
+        REQUIRE( 1 == std::experimental::get<2>( powr.lib ).card3.nlib.value );
+        REQUIRE( 20000201 == std::experimental::get<2>( powr.lib ).card3.idat.value );
+        REQUIRE( 2 == std::experimental::get<2>( powr.lib ).card3.newmat.value );
+        REQUIRE( 0 == std::experimental::get<2>( powr.lib ).card3.iopt.value );
+        REQUIRE( 0 == std::experimental::get<2>( powr.lib ).card3.mode.value );
+        REQUIRE( 2 == std::experimental::get<2>( powr.lib ).card3.if5.value );
+        REQUIRE( 1 == std::experimental::get<2>( powr.lib ).card3.if4.value );
 
-        REQUIRE( 1200 == powr.lib3->card4->mat.value.at(0) );
-        REQUIRE( 9439 == powr.lib3->card4->mat.value.at(1) );
+        REQUIRE( 1200 == std::experimental::get<2>( powr.lib ).card4->mat.value.at(0) );
+        REQUIRE( 9439 == std::experimental::get<2>( powr.lib ).card4->mat.value.at(1) );
 
-        REQUIRE( 3 == powr.lib3->card5List.at(0).nina.value );
-        REQUIRE( 2 == powr.lib3->card5List.at(0).ntemp.value );
-        REQUIRE( 3 == powr.lib3->card5List.at(0).nsigz.value );
-        REQUIRE( Approx( 4.0 ) == powr.lib3->card5List.at(0).sgref.value );
-        REQUIRE( 1 == powr.lib3->card5List.at(0).nina03->first.value );
-        REQUIRE( Approx( 5.0 ) == powr.lib3->card5List.at(0).nina03->second.value );
-        REQUIRE( Approx( 6.0 ) == std::get<0>( *( powr.lib3->card5List.at(0).ntapea0 )
-                                                                      ).value );
-        REQUIRE( Approx( 7.0 ) == std::get<1>( *( powr.lib3->card5List.at(0).ntapea0 )
-                                                                      ).value );
-        REQUIRE( 0 == std::get<2>( *( powr.lib3->card5List.at(0).ntapea0 ) ).value );
-        REQUIRE( 0 == std::get<3>( *( powr.lib3->card5List.at(0).ntapea0 ) ).value );
-        REQUIRE( 8 == powr.lib3->card5List.at(0).mode0->first.value );
-        REQUIRE( 9 == powr.lib3->card5List.at(0).mode0->second.value );
+        REQUIRE( 3 == std::experimental::get<2>( powr.lib ).card5List.at(0).nina.value );
+        REQUIRE( 2 == std::experimental::get<2>( powr.lib ).card5List.at(0).ntemp.value );
+        REQUIRE( 3 == std::experimental::get<2>( powr.lib ).card5List.at(0).nsigz.value );
+        REQUIRE( Approx( 4.0 ) ==
+                          std::experimental::get<2>( powr.lib ).card5List.at(0).sgref.value );
+        REQUIRE( 1 ==
+                  std::experimental::get<2>( powr.lib ).card5List.at(0).nina03->first.value );
+        REQUIRE( Approx( 5.0 ) ==
+                 std::experimental::get<2>( powr.lib ).card5List.at(0).nina03->second.value );
+        REQUIRE( 6 == std::get<0>( *( std::experimental::get<2>( powr.lib
+                                          ).card5List.at(0).ntapea0 ) ).value );
+        REQUIRE( 7 == std::get<1>( *( std::experimental::get<2>( powr.lib
+                                          ).card5List.at(0).ntapea0 ) ).value );
+        REQUIRE( 0 == std::get<2>( *( std::experimental::get<2>( powr.lib
+                                          ).card5List.at(0).ntapea0 ) ).value );
+        REQUIRE( 0 == std::get<3>( *( std::experimental::get<2>( powr.lib
+                                          ).card5List.at(0).ntapea0 ) ).value );
+        REQUIRE( 8 ==
+                   std::experimental::get<2>( powr.lib ).card5List.at(0).mode0->first.value );
+        REQUIRE( 9 ==
+                  std::experimental::get<2>( powr.lib ).card5List.at(0).mode0->second.value );
 
-        REQUIRE( 1 == powr.lib3->card5List.at(1).nina.value );
-        REQUIRE( 0 == powr.lib3->card5List.at(1).ntemp.value );
-        REQUIRE( 0 == powr.lib3->card5List.at(1).nsigz.value );
-        REQUIRE( Approx( 1.0 ) == powr.lib3->card5List.at(1).sgref.value );
-        REQUIRE( Approx( 2.0 ) == std::get<0>( *( powr.lib3->card5List.at(1).ntapea0 )
-                                                                      ).value );
-        REQUIRE( Approx( 3.0 ) == std::get<1>( *( powr.lib3->card5List.at(1).ntapea0 )
-                                                                      ).value );
-        REQUIRE( 0 == std::get<2>( *( powr.lib3->card5List.at(1).ntapea0 ) ).value );
-        REQUIRE( 1 == std::get<3>( *( powr.lib3->card5List.at(1).ntapea0 ) ).value );
-        REQUIRE( 4 == powr.lib3->card5List.at(1).mode0->first.value );
-        REQUIRE( 5 == powr.lib3->card5List.at(1).mode0->second.value );
+        REQUIRE( 1 == std::experimental::get<2>( powr.lib ).card5List.at(1).nina.value );
+        REQUIRE( 0 == std::experimental::get<2>( powr.lib ).card5List.at(1).ntemp.value );
+        REQUIRE( 0 == std::experimental::get<2>( powr.lib ).card5List.at(1).nsigz.value );
+        REQUIRE( Approx( 1.0 ) ==
+                          std::experimental::get<2>( powr.lib ).card5List.at(1).sgref.value );
+        REQUIRE( 2 == std::get<0>( *( std::experimental::get<2>( powr.lib
+                                          ).card5List.at(1).ntapea0 ) ).value );
+        REQUIRE( 3 == std::get<1>( *( std::experimental::get<2>( powr.lib
+                                          ).card5List.at(1).ntapea0 ) ).value );
+        REQUIRE( 0 == std::get<2>( *( std::experimental::get<2>( powr.lib
+                                          ).card5List.at(1).ntapea0 ) ).value );
+        REQUIRE( 1 == std::get<3>( *( std::experimental::get<2>( powr.lib
+                                          ).card5List.at(1).ntapea0 ) ).value );
+        REQUIRE( 4 ==
+                   std::experimental::get<2>( powr.lib ).card5List.at(1).mode0->first.value );
+        REQUIRE( 5 ==
+                  std::experimental::get<2>( powr.lib ).card5List.at(1).mode0->second.value );
 
-        REQUIRE( 2 == std::get<0>( *( powr.lib3->card678List ) ).ntis.value );
-        REQUIRE( 1 == std::get<0>( *( powr.lib3->card678List ) ).nfis.value );
+        REQUIRE( 2 == std::get<0>( *( std::experimental::get<2>( powr.lib ).card678List )
+                                                                 ).ntis.value );
+        REQUIRE( 1 == std::get<0>( *( std::experimental::get<2>( powr.lib ).card678List )
+                                                                 ).nfis.value );
 
-        REQUIRE( 9439 == std::get<1>( *( powr.lib3->card678List )
+        REQUIRE( 9439 == std::get<1>( *( std::experimental::get<2>( powr.lib ).card678List )
                                                          ).identb.value.at(0) );
 
-        REQUIRE( 1200 == std::get<2>( *( powr.lib3->card678List )
+        REQUIRE( 1200 == std::get<2>( *( std::experimental::get<2>( powr.lib ).card678List )
                                                          ).at(0).identa.value );
-        REQUIRE( Approx( 0.5 ) == std::get<2>( *( powr.lib3->card678List )
-                                                          ).at(0).decay.value );
-        REQUIRE( Approx( 0.0 ) == std::get<2>( *( powr.lib3->card678List )
-                                                    ).at(0).yield.value.at(0) );
-        REQUIRE( Approx( 0.0 ) == std::get<2>( *( powr.lib3->card678List )
-                                                    ).at(0).yield.value.at(1) );
-        REQUIRE( Approx( 0.0 ) == std::get<2>( *( powr.lib3->card678List )
-                                                    ).at(0).yield.value.at(2) );
+        REQUIRE( Approx( 0.5 ) == std::get<2>( *( std::experimental::get<2>( powr.lib
+                                          ).card678List ) ).at(0).decay.value );
+        REQUIRE( Approx( 0.0 ) == std::get<2>( *( std::experimental::get<2>( powr.lib
+                                    ).card678List ) ).at(0).yield.value.at(0) );
+        REQUIRE( Approx( 0.0 ) == std::get<2>( *( std::experimental::get<2>( powr.lib
+                                    ).card678List ) ).at(0).yield.value.at(1) );
+        REQUIRE( Approx( 0.0 ) == std::get<2>( *( std::experimental::get<2>( powr.lib
+                                    ).card678List ) ).at(0).yield.value.at(2) );
 
-        REQUIRE( 9439 == std::get<2>( *( powr.lib3->card678List )
+        REQUIRE( 9439 == std::get<2>( *( std::experimental::get<2>( powr.lib ).card678List )
                                                          ).at(1).identa.value );
-        REQUIRE( Approx( 1.0 ) == std::get<2>( *( powr.lib3->card678List )
-                                                          ).at(1).decay.value );
-        REQUIRE( Approx( 0.2 ) == std::get<2>( *( powr.lib3->card678List )
-                                                    ).at(1).yield.value.at(0) );
-        REQUIRE( Approx( 0.3 ) == std::get<2>( *( powr.lib3->card678List )
-                                                    ).at(1).yield.value.at(1) );
-        REQUIRE( Approx( 0.5 ) == std::get<2>( *( powr.lib3->card678List )
-                                                    ).at(1).yield.value.at(2) );
+        REQUIRE( Approx( 1.0 ) == std::get<2>( *( std::experimental::get<2>( powr.lib
+                                          ).card678List ) ).at(1).decay.value );
+        REQUIRE( Approx( 0.2 ) == std::get<2>( *( std::experimental::get<2>( powr.lib
+                                    ).card678List ) ).at(1).yield.value.at(0) );
+        REQUIRE( Approx( 0.3 ) == std::get<2>( *( std::experimental::get<2>( powr.lib
+                                    ).card678List ) ).at(1).yield.value.at(1) );
+        REQUIRE( Approx( 0.5 ) == std::get<2>( *( std::experimental::get<2>( powr.lib
+                                    ).card678List ) ).at(1).yield.value.at(2) );
 
-        REQUIRE( Approx( 1200.0 ) == powr.lib3->card9List->at(0).aw.value );
-        REQUIRE( 0 == powr.lib3->card9List->at(0).indfis.value );
-        REQUIRE( 1 == powr.lib3->card9List->at(0).ntemp.value );
+        REQUIRE( Approx( 1200.0 ) == std::experimental::get<2>( powr.lib ).card9List->
+                                                               at(0).aw.value );
+        REQUIRE( 0 == std::experimental::get<2>( powr.lib ).card9List->at(0).indfis.value );
+        REQUIRE( 1 == std::experimental::get<2>( powr.lib ).card9List->at(0).ntemp.value );
 
         for( size_t i = 0; i < 13; i++ ){
           double d( 0.1*i );
-          REQUIRE( Approx( d ) == powr.lib3->card10List.at(0)->lambda.value.at(i) );
+          REQUIRE( Approx( d ) == std::experimental::get<2>( powr.lib ).card10List.at(0)->
+                                                           lambda.value.at(i) );
           double e( 0.1*i + 2.0 );
-          REQUIRE( Approx( e ) == powr.lib3->card11List.at(0)->first.
-                                                            resnu.value.at(i) );
+          REQUIRE( Approx( e ) == std::experimental::get<2>( powr.lib ).card11List.at(0)->
+                                                      first.resnu.value.at(i) );
           double f( 0.1*i + 4.0 );
-          REQUIRE(Approx( f ) == powr.lib3->card11List.at(0)->second.tot.value.at(i));
+          REQUIRE(Approx( f ) == std::experimental::get<2>( powr.lib ).card11List.at(0)->
+                                                        second.tot.value.at(i));
         }
 
-        REQUIRE( Approx( 100.0 ) == powr.lib3->card12List->at(0)->first.aw.value );
+        REQUIRE( Approx( 100.0 ) == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                                               first.aw.value );
         REQUIRE( 101.0*dimwits::kelvin == 
-                                     powr.lib3->card12List->at(0)->first.temp.value );
+                  std::experimental::get<2>( powr.lib ).card12List->at(0)->first.temp.value );
 
         for( size_t i = 0; i < 69; i++ ){
           double d( 0.1*i );
-          REQUIRE(Approx( d ) == powr.lib3->card12List->at(0)->first.fpa.value.at(i));
+          REQUIRE(Approx( d ) == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                                         first.fpa.value.at(i));
           double e( 0.1*i + 7.0 );
-          REQUIRE( Approx( e ) ==
-                   powr.lib3->card12List->at(0)->second.first.nus.value.at(i) );
+          REQUIRE( Approx( e ) == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                                 second.first.nus.value.at(i) );
           double f( 0.1*i + 14.0 );
-          REQUIRE( Approx( f ) ==
-                   powr.lib3->card12List->at(0)->second.first.fis.value.at(i) );
+          REQUIRE( Approx( f ) == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                                 second.first.fis.value.at(i) );
           double g( 0.1*i + 21.0 );
-          REQUIRE( Approx( g ) ==
-                   powr.lib3->card12List->at(0)->second.first.xtr.value.at(i) );
+          REQUIRE( Approx( g ) == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                                 second.first.xtr.value.at(i) );
         }
 
-        REQUIRE( 1 ==
-                   powr.lib3->card12List->at(0)->second.second.at(0).first.ia.value );
-        REQUIRE( 1 ==
-                   powr.lib3->card12List->at(0)->second.second.at(0).first.l1.value );
-        REQUIRE( 3 ==
-                   powr.lib3->card12List->at(0)->second.second.at(0).first.l2.value );
+        REQUIRE( 1 == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                           second.second.at(0).first.ia.value );
+        REQUIRE( 1 == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                           second.second.at(0).first.l1.value );
+        REQUIRE( 3 == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                           second.second.at(0).first.l2.value );
 
-        REQUIRE( Approx( 100.0 ) ==
-         powr.lib3->card12List->at(0)->second.second.at(0).second->scat.value.at(0) );
-        REQUIRE( Approx( 100.1 ) ==
-         powr.lib3->card12List->at(0)->second.second.at(0).second->scat.value.at(1) );
-        REQUIRE( Approx( 100.2 ) ==
-         powr.lib3->card12List->at(0)->second.second.at(0).second->scat.value.at(2) );
+        REQUIRE( Approx( 100.0 ) == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                 second.second.at(0).second->scat.value.at(0) );
+        REQUIRE( Approx( 100.1 ) == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                 second.second.at(0).second->scat.value.at(1) );
+        REQUIRE( Approx( 100.2 ) == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                 second.second.at(0).second->scat.value.at(2) );
 
         for( int i = 1; i < 67; i++ ){
-          REQUIRE( i+1 ==
-                   powr.lib3->card12List->at(0)->second.second.at(i).first.ia.value );
-          REQUIRE( i ==
-                   powr.lib3->card12List->at(0)->second.second.at(i).first.l1.value );
-          REQUIRE( i+3 ==
-                   powr.lib3->card12List->at(0)->second.second.at(i).first.l2.value );
+          REQUIRE( i+1 == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                           second.second.at(i).first.ia.value );
+          REQUIRE( i == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                           second.second.at(i).first.l1.value );
+          REQUIRE( i+3 == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                           second.second.at(i).first.l2.value );
         }
 
-        REQUIRE( 68 ==
-                  powr.lib3->card12List->at(0)->second.second.at(67).first.ia.value );
-        REQUIRE( 67 ==
-                  powr.lib3->card12List->at(0)->second.second.at(67).first.l1.value );
-        REQUIRE( 69 ==
-                  powr.lib3->card12List->at(0)->second.second.at(67).first.l2.value );
+        REQUIRE( 68 == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                          second.second.at(67).first.ia.value );
+        REQUIRE( 67 == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                          second.second.at(67).first.l1.value );
+        REQUIRE( 69 == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                          second.second.at(67).first.l2.value );
 
-        REQUIRE( Approx( 167.0 ) ==
-        powr.lib3->card12List->at(0)->second.second.at(67).second->scat.value.at(0) );
-        REQUIRE( Approx( 167.1 ) ==
-        powr.lib3->card12List->at(0)->second.second.at(67).second->scat.value.at(1) );
-        REQUIRE( Approx( 167.2 ) ==
-        powr.lib3->card12List->at(0)->second.second.at(67).second->scat.value.at(2) );
+        REQUIRE( Approx( 167.0 ) == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                second.second.at(67).second->scat.value.at(0) );
+        REQUIRE( Approx( 167.1 ) == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                second.second.at(67).second->scat.value.at(1) );
+        REQUIRE( Approx( 167.2 ) == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                second.second.at(67).second->scat.value.at(2) );
 
-        REQUIRE( 69 ==
-                  powr.lib3->card12List->at(0)->second.second.at(68).first.ia.value );
-        REQUIRE( 68 ==
-                  powr.lib3->card12List->at(0)->second.second.at(68).first.l1.value );
-        REQUIRE( 69 ==
-                  powr.lib3->card12List->at(0)->second.second.at(68).first.l2.value );
+        REQUIRE( 69 == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                          second.second.at(68).first.ia.value );
+        REQUIRE( 68 == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                          second.second.at(68).first.l1.value );
+        REQUIRE( 69 == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                          second.second.at(68).first.l2.value );
 
-        REQUIRE( Approx( 168.0 ) ==
-        powr.lib3->card12List->at(0)->second.second.at(68).second->scat.value.at(0) );
-        REQUIRE( Approx( 168.1 ) ==
-        powr.lib3->card12List->at(0)->second.second.at(68).second->scat.value.at(1) );
+        REQUIRE( Approx( 168.0 ) == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                second.second.at(68).second->scat.value.at(0) );
+        REQUIRE( Approx( 168.1 ) == std::experimental::get<2>( powr.lib ).card12List->at(0)->
+                                second.second.at(68).second->scat.value.at(1) );
       }
     } // WHEN
   } // GIVEN
@@ -462,28 +494,28 @@ SCENARIO( "POWR",
  std::string( " 95 99 /\n" ) + // Card1
  std::string( " 2 1 0 /\n" ) + // Card2
  std::string( " 2345 3.14 'hollerith' /\n" ) + // Card3
- std::string( " 1 2.0 3.0 /\n" ) + // Card4
+ std::string( " 1 2 3 /\n" ) + // Card4
  std::string( " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 /\n" ) + // Card5
  std::string( " 2345 3.10 'hollerith' /\n" ) + // Card3
- std::string( " 1 2.0 3.0 /\n" ) + // Card4
+ std::string( " 1 2 3 /\n" ) + // Card4
  std::string( " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 /\n" ) + // Card5
  std::string( " 2345 3.11 'hollerith' /\n" ) + // Card3
- std::string( " 1 2.0 3.0 /\n" ) + // Card4
+ std::string( " 1 2 3 /\n" ) + // Card4
  std::string( " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 /\n" ) + // Card5
  std::string( " 2345 3.12 'hollerith' /\n" ) + // Card3
- std::string( " 1 2.0 3.0 /\n" ) + // Card4
+ std::string( " 1 2 3 /\n" ) + // Card4
  std::string( " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 /\n" ) + // Card5
  std::string( " 2345 3.13 'hollerith' /\n" ) + // Card3
- std::string( " 1 2.0 3.0 /\n" ) + // Card4
+ std::string( " 1 2 3 /\n" ) + // Card4
  std::string( " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 /\n" ) + // Card5
  std::string( " 2345 3.15 'hollerith' /\n" ) + // Card3
- std::string( " 1 2.0 3.0 /\n" ) + // Card4
+ std::string( " 1 2 3 /\n" ) + // Card4
  std::string( " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 /\n" ) + // Card5
  std::string( " 2345 3.16 'hollerith' /\n" ) + // Card3
- std::string( " 1 2.0 3.0 /\n" ) + // Card4
+ std::string( " 1 2 3 /\n" ) + // Card4
  std::string( " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 /\n" ) + // Card5
  std::string( " 2345 3.17 'hollerith' /\n" ) + // Card3
- std::string( " 1 2.0 3.0 /\n" ) + // Card4
+ std::string( " 1 2 3 /\n" ) + // Card4
  std::string( " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 /\n" ) + // Card5
  std::string( " 0 /" ) // Terminating Card3
       );
@@ -500,7 +532,7 @@ SCENARIO( "POWR",
  std::string( " 95 99 /\n" ) + // Card1
  std::string( " 2 1 2 /\n" ) + // Card2
  std::string( " 2345 3.14 'hollerith' /\n" ) + // Card3
- std::string( " 1 2.0 3.0 /\n" ) + // Card4
+ std::string( " 1 2 3 /\n" ) + // Card4
  std::string( " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 /\n" ) + // Card5
  std::string( " 0 /" )
       );

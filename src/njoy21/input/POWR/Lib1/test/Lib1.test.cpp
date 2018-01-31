@@ -42,7 +42,6 @@ SCENARIO( "POWR, Lib1",
  std::string( " /\n" ) +
  std::string( " /\n" )
       );
-//      iRecordStream<char> iss( std::istringstream( " 9439 /" ) );
       iRecordStream<char> iss{ std::istringstream{ inp } };
 
       THEN( "the value and default values can be verified" ){
@@ -59,7 +58,7 @@ SCENARIO( "POWR, Lib1",
 
         REQUIRE( "" == lib1.card45->first.fsn.value );
 
-        REQUIRE( std::vector<double>( 69, 0.0 ) == lib1.card6->abs.value );
+        REQUIRE( std::vector<double>( 68, 0.0 ) == lib1.card6->abs.value );
       }
     } // WHEN
 
@@ -74,7 +73,7 @@ SCENARIO( "POWR, Lib1",
  std::string( " 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9\n" ) +
  std::string( " 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9\n" ) +
  std::string( " 5.0 5.1 5.2 5.3 5.4 5.5 5.6 5.7 5.8 5.9\n" ) +
- std::string( " 6.0 6.1 6.2 6.3 6.4 6.5 6.6 6.7 6.8 /" )
+ std::string( " 6.0 6.1 6.2 6.3 6.4 6.5 6.6 6.7 /" )
       );
 
       iRecordStream<char> iss{ std::istringstream{ inp } };
@@ -93,7 +92,7 @@ SCENARIO( "POWR, Lib1",
 
         REQUIRE( "fsn value" == lib1.card45->first.fsn.value );
 
-        for( int i = 0; i < 69; i++ ){
+        for( int i = 0; i < 68; i++ ){
           double d( i*0.1 );
           REQUIRE( Approx( d ) == lib1.card6->abs.value.at(i) );
         }

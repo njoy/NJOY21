@@ -38,8 +38,8 @@ SCENARIO( "POWR, Lib3",
       std::string inp(
  std::string( " 27 19990101 2 0 1 0 0 /\n" ) +                                   // Card3
  std::string( " 9235 9238 /\n" ) +                                               // Card4
- std::string( " 1 2 2 0.1 1.0 1.1 0 0 /\n" ) +                                   // Card5-1
- std::string( " 1 2 2 0.1 1.0 1.1 0 0 /\n" )                                     // Card5-2
+ std::string( " 1 2 2 0.1 1 2 0 0 /\n" ) +                                   // Card5-1
+ std::string( " 1 2 2 0.1 1 2 0 0 /\n" )                                     // Card5-2
       );
 
       iRecordStream<char> iss{ std::istringstream{ inp } };
@@ -64,10 +64,8 @@ SCENARIO( "POWR, Lib3",
         REQUIRE( 2 == lib3.card5List.at(0).ntemp.value );
         REQUIRE( 2 == lib3.card5List.at(0).nsigz.value );
         REQUIRE( Approx( 0.1 ) == lib3.card5List.at(0).sgref.value );
-        REQUIRE( Approx( 1.0 ) == std::get<0>( *( lib3.card5List.at(0).ntapea0 )
-                                                                      ).value );
-        REQUIRE( Approx( 1.1 ) == std::get<1>( *( lib3.card5List.at(0).ntapea0 )
-                                                                      ).value );
+        REQUIRE( 1 == std::get<0>( *( lib3.card5List.at(0).ntapea0 ) ).value );
+        REQUIRE( 2 == std::get<1>( *( lib3.card5List.at(0).ntapea0 ) ).value );
         REQUIRE( 0 == std::get<2>( *( lib3.card5List.at(0).ntapea0 ) ).value );
         REQUIRE( 0 == std::get<3>( *( lib3.card5List.at(0).ntapea0 ) ).value );
 
@@ -75,12 +73,12 @@ SCENARIO( "POWR, Lib3",
         REQUIRE( 2 == lib3.card5List.at(1).ntemp.value );
         REQUIRE( 2 == lib3.card5List.at(1).nsigz.value );
         REQUIRE( Approx( 0.1 ) == lib3.card5List.at(1).sgref.value );
-        REQUIRE( Approx( 1.0 ) == std::get<0>( *( lib3.card5List.at(0).ntapea0 )
+        REQUIRE( 1 == std::get<0>( *( lib3.card5List.at(1).ntapea0 )
                                                                       ).value );
-        REQUIRE( Approx( 1.1 ) == std::get<1>( *( lib3.card5List.at(0).ntapea0 )
+        REQUIRE( 2 == std::get<1>( *( lib3.card5List.at(1).ntapea0 )
                                                                       ).value );
-        REQUIRE( 0 == std::get<2>( *( lib3.card5List.at(0).ntapea0 ) ).value );
-        REQUIRE( 0 == std::get<3>( *( lib3.card5List.at(0).ntapea0 ) ).value );
+        REQUIRE( 0 == std::get<2>( *( lib3.card5List.at(1).ntapea0 ) ).value );
+        REQUIRE( 0 == std::get<3>( *( lib3.card5List.at(1).ntapea0 ) ).value );
 
         REQUIRE( std::nullopt == lib3.card678List );
         REQUIRE( std::nullopt == lib3.card9List );
@@ -99,8 +97,8 @@ SCENARIO( "POWR, Lib3",
       std::string inp(
  std::string( " 1 20000201 2 0 0 2 1 /\n" ) + // Card3
  std::string( " 1200 9439 /\n" ) + // Card4
- std::string( " 3 2 3 4.0 1 5.0 6.0 7.0 0 0 8 9 /\n" ) + // Card5-1
- std::string( " 1 0 0 1.0 2.0 3.0 0 1 4 5 /\n" ) + // Card5-2
+ std::string( " 3 2 3 4.0 1 5.0 6 7 0 0 8 9 /\n" ) + // Card5-1
+ std::string( " 1 0 0 1.0 2 3 0 1 4 5 /\n" ) + // Card5-2
  std::string( " 2 1 /\n" ) + // Card6
  std::string( " 9439 /\n" ) + // Card7
  std::string( " 1200 0.5 /\n" ) + // Card8-1
@@ -300,10 +298,8 @@ SCENARIO( "POWR, Lib3",
         REQUIRE( Approx( 4.0 ) == lib3.card5List.at(0).sgref.value );
         REQUIRE( 1 == lib3.card5List.at(0).nina03->first.value );
         REQUIRE( Approx( 5.0 ) == lib3.card5List.at(0).nina03->second.value );
-        REQUIRE( Approx( 6.0 ) == std::get<0>( *( lib3.card5List.at(0).ntapea0 )
-                                                                      ).value );
-        REQUIRE( Approx( 7.0 ) == std::get<1>( *( lib3.card5List.at(0).ntapea0 )
-                                                                      ).value );
+        REQUIRE( 6 == std::get<0>( *( lib3.card5List.at(0).ntapea0 ) ).value );
+        REQUIRE( 7 == std::get<1>( *( lib3.card5List.at(0).ntapea0 ) ).value );
         REQUIRE( 0 == std::get<2>( *( lib3.card5List.at(0).ntapea0 ) ).value );
         REQUIRE( 0 == std::get<3>( *( lib3.card5List.at(0).ntapea0 ) ).value );
         REQUIRE( 8 == lib3.card5List.at(0).mode0->first.value );
@@ -313,10 +309,8 @@ SCENARIO( "POWR, Lib3",
         REQUIRE( 0 == lib3.card5List.at(1).ntemp.value );
         REQUIRE( 0 == lib3.card5List.at(1).nsigz.value );
         REQUIRE( Approx( 1.0 ) == lib3.card5List.at(1).sgref.value );
-        REQUIRE( Approx( 2.0 ) == std::get<0>( *( lib3.card5List.at(1).ntapea0 )
-                                                                      ).value );
-        REQUIRE( Approx( 3.0 ) == std::get<1>( *( lib3.card5List.at(1).ntapea0 )
-                                                                      ).value );
+        REQUIRE( 2 == std::get<0>( *( lib3.card5List.at(1).ntapea0 ) ).value );
+        REQUIRE( 3 == std::get<1>( *( lib3.card5List.at(1).ntapea0 ) ).value );
         REQUIRE( 0 == std::get<2>( *( lib3.card5List.at(1).ntapea0 ) ).value );
         REQUIRE( 1 == std::get<3>( *( lib3.card5List.at(1).ntapea0 ) ).value );
         REQUIRE( 4 == lib3.card5List.at(1).mode0->first.value );

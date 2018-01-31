@@ -32,8 +32,8 @@ SCENARIO( "POWR, Lib2",
         REQUIRE( "" == lib2.card3.rest->first.value );
 
         REQUIRE( 0 == lib2.card45->second.itrc.value );
-        REQUIRE( Approx( 0.0 ) == lib2.card45->second.mti.value );
-        REQUIRE( Approx( 0.0 ) == lib2.card45->second.mtc.value );
+        REQUIRE( 0 == lib2.card45->second.mti.value );
+        REQUIRE( 0 == lib2.card45->second.mtc.value );
 
         REQUIRE( Approx( 0.0 ) == lib2.card45->first.xi.value );
         REQUIRE( Approx( 0.0 ) == lib2.card45->first.alpha.value );
@@ -49,7 +49,7 @@ SCENARIO( "POWR, Lib2",
     WHEN( "all values are provided" ){
       std::string inp(
  std::string( " 2345 3.14 'hollerith' /\n" ) +
- std::string( " 1 2.0 3.0 /\n" ) +
+ std::string( " 1 2 3 /\n" ) +
  std::string( " 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 /" )
       );
 
@@ -63,8 +63,8 @@ SCENARIO( "POWR, Lib2",
         REQUIRE( "hollerith" == lib2.card3.rest->first.value );
 
         REQUIRE( 1 == lib2.card45->second.itrc.value );
-        REQUIRE( Approx( 2.0 ) == lib2.card45->second.mti.value );
-        REQUIRE( Approx( 3.0 ) == lib2.card45->second.mtc.value );
+        REQUIRE( 2 == lib2.card45->second.mti.value );
+        REQUIRE( 3 == lib2.card45->second.mtc.value );
 
         REQUIRE( Approx( 0.1 ) == lib2.card45->first.xi.value );
         REQUIRE( Approx( 0.2 ) == lib2.card45->first.alpha.value );
