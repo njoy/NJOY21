@@ -227,4 +227,13 @@ SCENARIO( "Parsing invalid RECONR input" ){
       REQUIRE_THROWS( RECONR(iss) );
     }
   }
+  WHEN( "Cards 3,4,5,6,3,4,3 with materials specified in descending order" ){
+    iRecordStream<char> iss
+      ( std::istringstream( card1 + card2 + " 1306 1 3\n" + card4 + card5
+  			    + card6 + " 1305 0 0\n" + card4 + "0/\n" ) );
+
+    THEN( "an exception is thrown" ){
+      REQUIRE_THROWS( RECONR( iss ) );
+    }
+  }
 }
