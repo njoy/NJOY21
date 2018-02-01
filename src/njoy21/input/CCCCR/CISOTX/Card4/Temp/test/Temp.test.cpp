@@ -15,7 +15,7 @@ SCENARIO( "CCCCR, CISOTX, Card4, Temp",
 
         THEN( "the value can be verified" ){
           REQUIRE( d*dimwits::kelvin == argument::extract<
-                                    CCCCR::CISTOX::Card4::Temp >( iss ).value );
+                                    CCCCR::CISOTX::Card4::Temp >( iss ).value );
         }
       }
     } // WHEN

@@ -20,7 +20,7 @@ SCENARIO( "CCCCR, CISOTX, Card3",
 
         for( int i = 0; i < ichix; i++ ){
           for( int j = 0; j < ngroup; j++ ){
-            REQUIRE( Approx( i*1.0 + j*0.1 ) == card3.spec.at(i).at(j);
+            REQUIRE( Approx( i*1.0 + j*0.1 ) == card3.spec.value.at(i).at(j) );
           }
         }
       }

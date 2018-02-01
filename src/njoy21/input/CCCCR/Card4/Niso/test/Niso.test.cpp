@@ -10,7 +10,7 @@ SCENARIO( "CCCCR, Card4, Niso",
           "[CCCCR] [Card4] [Niso]" ){
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
-      for( auto i : {1, 10, 100} ){
+      for( auto i : {1, 10, 100, 200} ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
@@ -30,10 +30,12 @@ SCENARIO( "CCCCR, Card4, Niso",
     } // WHEN
 
     WHEN( "an invalid value is provided" ){
-      iRecordStream<char> iss( std::istringstream( " 0 /" ) );
-
-      THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( argument::extract< CCCCR::Card4::Niso >( iss ) );
+      for( auto i : {0, 201} ){
+        iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
+  
+        THEN( "an exception is thrown" ){
+          REQUIRE_THROWS( argument::extract< CCCCR::Card4::Niso >( iss ) );
+        }
       }
     } // WHEN
   } // GIVEN

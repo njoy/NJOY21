@@ -14,7 +14,8 @@ SCENARIO( "CCCCR, CISOTX, Card1, Ichix",
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
-          REQUIRE(i == argument::extract< CCCCR::CISOTX::Card1::Ichix >( iss ));
+          REQUIRE( i == argument::extract< CCCCR::CISOTX::Card1::Ichix >(
+                                                                  iss ).value );
         }
       }
     } // WHEN

@@ -11,7 +11,7 @@ SCENARIO( "CCCCR, CISOTX, Card1, Nsblok",
   const int ngroup = 12;
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
-      for( auto i : {0, ngroup} ){
+      for( auto i : {1, ngroup} ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
@@ -28,17 +28,17 @@ SCENARIO( "CCCCR, CISOTX, Card1, Nsblok",
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( argument::extract< CCCCR::CISOTX::Card1::Nsblok >(
-                                                                        iss ) );
+                                                                iss, ngroup ) );
       }
     } // WHEN
 
     WHEN( "invalid values are provided" ){
-      for( auto i : {-1, 1, 10, 13} ){
+      for( auto i : {-1, 0, 10, 13} ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){
           REQUIRE_THROWS( argument::extract< CCCCR::CISOTX::Card1::Nsblok >(
-                                                                        iss ) );
+                                                                iss, ngroup ) );
         }
       }
     } // WHEN

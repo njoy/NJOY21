@@ -8,7 +8,7 @@ Argument< Nti > nti;
 Argument< Nzi > nzi;
 
 template< typename Istream >
-Card1( Istream& )
+Card1( Istream& is )
 try:
   nti( argument::extract< CCCCR::CBRKXS::Card1::Nti >( is ) ),
   nzi( argument::extract< CCCCR::CBRKXS::Card1::Nzi >( is ) )

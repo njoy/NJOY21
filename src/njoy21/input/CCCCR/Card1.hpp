@@ -1,10 +1,10 @@
 class Card1 {
 public:
 
-using argument::common::Nin;
-#include "njoy21/input/CCCCR/Card1/Nisot.hpp";
-#include "njoy21/input/CCCCR/Card1/Nbrks.hpp";
-#include "njoy21/input/CCCCR/Card1/Ndlay.hpp";
+using Nin = argument::common::Nin;
+#include "njoy21/input/CCCCR/Card1/Nisot.hpp"
+#include "njoy21/input/CCCCR/Card1/Nbrks.hpp"
+#include "njoy21/input/CCCCR/Card1/Ndlay.hpp"
 
 Argument< Nin > nin;
 Argument< Nisot > nisot;

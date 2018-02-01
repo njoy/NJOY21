@@ -11,7 +11,7 @@ SCENARIO( "CCCCR, CISOTX, Card4, Sigpot",
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
       for( double d : {0.0, 0.1, 1.0, 10.0} ){
-        iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
+        iRecordStream<char> iss( std::istringstream( std::to_string( d ) ) );
 
         THEN( "the value is verified" ){
           REQUIRE( Approx( d ) == argument::extract<

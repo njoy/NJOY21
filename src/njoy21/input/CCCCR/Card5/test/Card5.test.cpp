@@ -9,7 +9,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "CCCCR, Card5",
           "[CCCCR] [Card5]" ){
   GIVEN( "valid inputs" ){
-    WHEN( "a valid input is provided" {
+    WHEN( "a valid input is provided" ){
       iRecordStream<char> iss( std::istringstream(
                          " 'test01' 'test02' 'test03' 'test04' 1234 12.3 /" ) );
 

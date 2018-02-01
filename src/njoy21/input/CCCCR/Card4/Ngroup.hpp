@@ -5,7 +5,7 @@ struct Ngroup{
     return "The ngroup parameter specifies the number of neutron energy\n"
            "groups.";
   }
-  static bool verify( const Value_t ngroup; ){
+  static bool verify( const Value_t ngroup ){
     return ngroup > 0;
   }
 };

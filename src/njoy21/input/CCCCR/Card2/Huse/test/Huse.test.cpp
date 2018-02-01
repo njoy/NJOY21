@@ -10,8 +10,9 @@ SCENARIO( "CCCCR, Card2, Huse",
           "[CCCCR] [Card2] [Huse]" ){
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
-      for( std::string s : {"'12' /", "'1234' /", "'123456789012' /"} ){
-        iRecordStream<char> iss( std::istringstream( s ) );
+      for( std::string s : {"12", "1234", "123456789012"} ){
+        std::string inp( std::string( "'" ) + s + std::string( "' /" ) );
+        iRecordStream<char> iss{ std::istringstream{ inp } };
 
         THEN( "the value can be verified" ){
           REQUIRE( s == argument::extract< CCCCR::Card2::Huse >( iss ).value );

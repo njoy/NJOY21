@@ -5,9 +5,9 @@ struct Atem {
     return "The atem parameter specifies the values of the desired\n"
            "temperatures in Kelvin.";
   }
-  static bool verify( const Value_t atem ){
+  static bool verify( const Value_t atem, const int ){
     for( auto t : atem ){
-      if( t < 0.0*dimwits::Kelvin ) return false;
+      if( t < 0.0*dimwits::kelvin ) return false;
     }
     return true;
   }

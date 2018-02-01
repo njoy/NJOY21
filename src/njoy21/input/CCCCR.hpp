@@ -7,6 +7,8 @@ public:
 #include "njoy21/input/CCCCR/Card4.hpp"
 #include "njoy21/input/CCCCR/Card5.hpp"
 
+#include "njoy21/input/CCCCR/src/readCard5.hpp"
+
 #include "njoy21/input/CCCCR/CISOTX.hpp"
 #include "njoy21/input/CCCCR/CBRKXS.hpp"
 
@@ -17,7 +19,7 @@ Card1 card1;
 Card2 card2;
 Card3 card3;
 Card4 card4;
-Card5 card5;
+std::vector< Card5 > card5;
 optional< CISOTX > cisotx;
 optional< CBRKXS > cbrkxs;
 
@@ -28,9 +30,10 @@ try:
   card2( is ),
   card3( is ),
   card4( is ),
-  card5( is ),
-  cisotx( readCISOTX( is ) ),
-  cbrkxs( readCBRKXS( is ) )
+  card5( readCard5( is, this->card4.niso.value ) ),
+  cisotx( readCISOTX( is, this->card1.nisot.value, this->card4.ngroup.value,
+                      this->card4.niso.value ) ),
+  cbrkxs( readCBRKXS( is, this->card1.nbrks.value ) )
 {
 }
 catch( std::exception& e ){
