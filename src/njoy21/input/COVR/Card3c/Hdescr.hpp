@@ -9,6 +9,6 @@ struct Hdescr {
       "\n"
       "hdescr has a maximum length of 21 characters.";
   }
-  static bool verify( Value_t str ){ return str.length() <= 21; } 
+  static bool verify( const Value_t str ){ return str.length() <= 21; } 
 };
 

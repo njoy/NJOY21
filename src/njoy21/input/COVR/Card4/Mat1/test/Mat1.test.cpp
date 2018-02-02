@@ -1,41 +1,42 @@
 #define CATCH_CONFIG_MAIN
+
 #include "catch.hpp"
+
 #include "njoy21.hpp"
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "Card4 mat1 input values",
-  "[COVR], [Card4], [Mat1]" ){
-  GIVEN( "mat1 tape values are valid" ){
-    std::vector<int> validValues{1, 125, 9998, 9999};
-    WHEN( "a mat1 value is provided" ){
-      THEN( "the returned class has the correct tape value" ){
-        for( auto mat1 : validValues ){
-          iRecordStream<char> iss(
-            std::istringstream( std::to_string( mat1 ) ) );
-          REQUIRE( mat1 == argument::extract< 
-            COVR::Card4::Mat1 >( iss ).value );
+SCENARIO( "COVR, Card4, Mat1",
+          "[COVR] [Card4] [Mat1]" ){
+  GIVEN( "valid inputs" ){
+    WHEN( "valid inputs are provided" ){
+      for( int i : {-9999, -1000, 0, 1000, 9999} ){
+        iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
+
+        THEN( "the value can be verified" ){
+          REQUIRE( i == argument::extract< COVR::Card4::Mat1 >( iss ).value );
         }
-      } // THEN
+      }
     } // WHEN
-    WHEN( "no mat1 value is provided" ){
-      THEN( "the default value is substituted" ){    
-        iRecordStream<char> iss( std::istringstream( " / " ) );
-        REQUIRE( 0 == argument::extract< 
-          COVR::Card4::Mat1 >( iss ).value );
-      } // THEN
+
+    WHEN( "no value is provided" ){
+      iRecordStream<char> iss( std::istringstream( " /" ) );
+
+      THEN( "the default value can be verified" ){
+        REQUIRE( 0 == argument::extract< COVR::Card4::Mat1 >( iss ).value );
+      }
     } // WHEN
   } // GIVEN
 
-  GIVEN( "mat1 tape values are invalid" ){
-    std::vector<int> invalidValues{-20, -1, 0, 10000, 10001};
-    THEN( "an exception is thrown" ){
-      for( auto mat1 : invalidValues ){
-        iRecordStream<char> iss(
-          std::istringstream( std::to_string( mat1 ) ) );
-        REQUIRE_THROWS( argument::extract< 
-          COVR::Card4::Mat1 >( iss ) );
+  GIVEN( "invalid inputs" ){
+    WHEN( "invalid inputs are provided" ){
+      for( int i : {-10000, 10000} ){
+        iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
+
+        THEN( "an exception is thrown" ){
+          REQUIRE_THROWS( argument::extract< COVR::Card4::Mat1 >( iss ) );
+        }
       }
-    } // THEN
+    } // WHEN
   } // GIVEN
 } // SCENARIO

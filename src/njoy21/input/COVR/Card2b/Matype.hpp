@@ -13,7 +13,7 @@ struct Matype {
       "matype has a default value of 3.";
   } 
   
-  static Value_t defaultValue( ){ return 3; }
+  static Value_t defaultValue(){ return 3; }
   
   static bool verify( const Value_t i ){ return i == 3 or i == 4; }
 };

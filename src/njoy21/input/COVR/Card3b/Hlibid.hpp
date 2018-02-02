@@ -12,6 +12,6 @@ struct Hlibid {
       "The hlibid input can have up to 6 characters.";
   }
 
-  static bool verify( Value_t str ){ return str.length() <= 6; } 
+  static bool verify( const Value_t str ){ return str.length() <= 6; } 
 };
 

@@ -9,9 +9,8 @@ SCENARIO( "icolor output values",
 
   GIVEN( "valid inputs for nin, nout, and npend" ){
     WHEN( "the icolor value is valid" ){
-      std::vector<int> validValues{0, 1, 2};
       THEN( "the returned class has the correct tape value" ){
-        for( auto& icolor : validValues ){
+        for( auto& icolor : {0, 1, 2} ){
           iRecordStream<char> iss(
             std::istringstream( std::to_string( icolor ) ) );
           REQUIRE( icolor == argument::extract< 
@@ -29,9 +28,8 @@ SCENARIO( "icolor output values",
     } // WHEN
   
     WHEN( "icolor tapes are out of range" ){
-      std::vector<int> invalidValues{-1, 3, 4};
       THEN( "an exception is thrown" ){
-        for( auto& icolor : invalidValues ){
+        for( auto& icolor : {-1, 3, 4} ){
           iRecordStream<char> iss(
             std::istringstream( std::to_string( icolor ) ) );
           REQUIRE_THROWS( argument::extract<

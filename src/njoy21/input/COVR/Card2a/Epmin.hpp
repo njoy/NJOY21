@@ -9,7 +9,7 @@ struct Epmin {
       "the correlation and standard deviation plots, or to display high-\n"
       "energy regions with greater resolution.";
   }  
-  static Value_t defaultValue( ){ return 0.0; }
+  static Value_t defaultValue(){ return 0.0; }
   
   static bool verify( const Value_t epmin ){ return epmin >= 0.0; }
 };

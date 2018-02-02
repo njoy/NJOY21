@@ -4,7 +4,7 @@
 
 using namespace njoy::njoy21::input;
 
-extern std::function< njoy::ENDFtk::UnivariateTabulation() > makeTAB1;
+extern std::function< njoy::ENDFtk::TAB1() > makeTAB1;
 
 SCENARIO( "HEATR qbar values",
   "[HEATR], [Card5a], [Qbar]"){
@@ -23,9 +23,9 @@ SCENARIO( "HEATR qbar values",
     iRecordStream<char> iss2( ( std::istringstream( tab2 ) ) );
     
     THEN( "the returned values are correct" ){
-      njoy::ENDFtk::UnivariateTabulation TAB1 = argument::extract< 
+      njoy::ENDFtk::TAB1 TAB1 = argument::extract< 
         HEATR::Card5a::Qbar >( iss1 ).value;
-      njoy::ENDFtk::UnivariateTabulation TAB2 = argument::extract<
+      njoy::ENDFtk::TAB1 TAB2 = argument::extract<
         HEATR::Card5a::Qbar >( iss2 ).value;
 
       REQUIRE( 1 == TAB1.NR() ); REQUIRE( 6 == TAB1.NP() );

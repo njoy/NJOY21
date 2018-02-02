@@ -16,5 +16,5 @@ struct Noleg {
   
   static Value_t defaultValue( ){ return 0; }
   
-  static bool verify( const Value_t n ){ return n == 0 or n == 1 or n == -1; }
+  static bool verify( const Value_t n ){ return n == -1 or n == 0 or n == 1; }
 };

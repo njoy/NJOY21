@@ -10,7 +10,7 @@ class Card2z {
     Card2z( iRecordStream<Char>& is )
     try:
       nlev ( argument::extract< Nlev >( is ) ),
-      tlev ( argument::extract< Tlev >( is ) )
+      tlev ( argument::extract< Tlev >( is, this->nlev.value ) )
       {
         Card::clear( is );
       }

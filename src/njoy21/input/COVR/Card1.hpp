@@ -18,7 +18,8 @@ class Card1 {
         if( nout.value == 0 and nplot.value == 0 ){
           Log::info( "Both nout and nplot are set to zero, meaning that\n"
                      "no output format is chosen." );
-	  throw( "Invalid output format selected" );
+          Log::error( "Invalid output format selected." );
+	  throw std::exception();
 	}
         Card::clear( is );
       }

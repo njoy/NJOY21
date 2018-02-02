@@ -5,31 +5,38 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "COVR hdescr",
-  "[COVR], [Card3c], [Hdescr]"){
+          "[COVR], [Card3c], [Hdescr]"){
 
   GIVEN( "valid (short) hdescr entry" ){
-    THEN( "the returned class has the correct value" ){
-      iRecordStream<char> iss( std::istringstream( "h" ) );
-      REQUIRE( "h" == argument::extract< 
-        COVR::Card3c::Hdescr >( iss ).value);
-    } // THEN
-  } // GIVEN
+    WHEN( "a valid value is provided" ){
+      for( std::string hdescr : {"", "1", "123456789012345678901"} ){
+        std::string inp( std::string ("'") + hdescr + std::string( "' /" ) );
+        iRecordStream<char> iss{ std::istringstream{ inp } };
 
-  GIVEN( "valid (medium) hdescr entry" ){
-    THEN( "the returned class has the correct value" ){
-      iRecordStream<char> iss( std::istringstream( 
-        "'123456789 123456789 1'" ) );
-      REQUIRE( "123456789 123456789 1" == argument::extract< 
-        COVR::Card3c::Hdescr >( iss ).value );
-    } // THEN
+        THEN( "the value can be verified" ){
+          REQUIRE( hdescr == argument::extract< COVR::Card3c::Hdescr
+                                                                >( iss ).value);
+        }
+      }
+    } // WHEN
   } // GIVEN
 
   GIVEN( "invalid (long) hdescr values" ){
-    THEN( "an exception is thrown" ){
+    WHEN( "no value is provided" ){
+      iRecordStream<char> iss( std::istringstream( " /" ) );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( argument::extract< COVR::Card3c::Hdescr >( iss ) );
+      }
+    } // WHEN
+
+    WHEN( "an invalid (long) value is provided" ){
       iRecordStream<char> iss( std::istringstream( 
-        "'123456789 123456789 12'"  ) );
-      REQUIRE_THROWS( argument::extract< 
-        COVR::Card3c::Hdescr >( iss ) );
-    } // THEN
+                                              "'123456789 123456789 12' /"  ) );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( argument::extract< COVR::Card3c::Hdescr >( iss ) );
+      }
+    } // WHEN
   } // GIVEN
 } // SCENARIO

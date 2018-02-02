@@ -20,28 +20,15 @@ struct Tlev {
       "be provided, thus invoking nlev default value of 6.";
   } 
   
-  static bool verify( const Value_t& tlevs,
-                      const Argument< COVR::Card2z::Nlev > & ){
-
-    // Make sure all tlev values are positive
-    auto found = std::find_if( tlevs.begin(), tlevs.end(),
-      [](auto& t){ return t <= 0.0 or t > 1.0; });
-    if ( found != tlevs.end() ){
-      Log::info( "Invalid tlev value ({}) found at index {}",
-      *found, std::distance(tlevs.begin(), found));
-      return false;
-    }
-    // Make sure tlev values are in increasing order
+  static bool verify( const Value_t& tlevs, const int ){
     auto unsortedStart = std::is_sorted_until( tlevs.begin(), tlevs.end() );
-    if( unsortedStart != tlevs.end() ){
-      auto dis = std::distance( tlevs.begin(), unsortedStart );
-      Log::warning( "tlev values are not in increasing order.");
-      Log::info( "tlev value at index {} ({}) > tlev value at index {} ({})",
-        dis-1, *(unsortedStart-1), dis, *(unsortedStart));
-      return false;
+
+    if( unsortedStart != tlevs.end() ) return false;
+
+    for( auto t : tlevs ){
+      if( t <= 0.0 or t > 1.0 ) return false;
     }
 
-    // If we haven't returned false yet...
     return true;
   }
 };

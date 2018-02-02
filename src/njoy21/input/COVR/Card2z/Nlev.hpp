@@ -13,6 +13,6 @@ struct Nlev {
   } 
   
   static bool verify( const Value_t& nlev ){
-    return 0 < nlev and nlev < 10;
+    return nlev > 0 and nlev < 10;
   }
 };

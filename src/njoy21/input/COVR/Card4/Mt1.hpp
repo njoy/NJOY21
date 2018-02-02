@@ -11,6 +11,5 @@ struct Mt1 {
       "or the delayed fission neutron yield."; 
   }
   static Value_t defaultValue(){ return 0; }
-  static bool verify( Value_t i ){ return 0 <= i; } 
 };
 

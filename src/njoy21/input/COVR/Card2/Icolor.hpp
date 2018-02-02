@@ -17,7 +17,6 @@ struct Icolor {
   static Value_t defaultValue( ){ return 0; }
   
   static bool verify( const Value_t icolor ){
-    if( icolor == 0 or icolor == 1 or icolor == 2 ){ return true; }
-    return false;
+    return ( icolor == 0 or icolor == 1 or icolor == 2 );
   }
 };
