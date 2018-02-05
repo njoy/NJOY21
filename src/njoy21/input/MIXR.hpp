@@ -19,7 +19,7 @@ public:
  try:
    card1( is ),
    card2( is ),
-   card3( is ),
+   card3( is, this->card1.nin.size() ),
    card4( is ),
    card5( is ),
    card6( is )

@@ -1,35 +1,30 @@
 template< typename Istream >
 static std::vector< Argument< Mtn > > readMtn( Istream& is ){
   std::vector< Argument< Mtn > > mtnList;
-  std::vector< int > usedList;
+  std::vector< int > usedValues;
 
-  do {
-    try{
-      Card::clear( is );
-      if( mtnList.size() == 0 ){
-        Log::error( "No values provided for mtn." );
-        break;
-      }
-      return mtnList;
-    }
-    catch( ... ){
-    }
+  static constexpr size_t nmtmx = 20;
 
+  for( size_t i = 0; i < nmtmx; i++ ){
     auto mtn_tmp = argument::extract< MIXR::Card2::Mtn >( is );
 
-    if( std::find( usedList.begin(), usedList.end(), mtn_tmp.value ) == usedList.end() ){
-      usedList.push_back( mtn_tmp.value );
-      mtnList.push_back( std::move( mtn_tmp ) );
-    } else {
-      Log::error( "MIXR mt number {} used more than once.", mtn_tmp.value );
-      break;
+    if( std::find( usedValues.begin(), usedValues.end(),
+                                          mtn_tmp.value ) != usedValues.end() ){
+      Log::error( "MIXR mtn value {} used more than once.", mtn_tmp.value );
+      throw std::exception();
     }
 
-    if( usedList.size() > 20 ){
-      Log::error( "Too many mt numbers provided." );
-      break;
-    }
+    if( mtn_tmp.value == 0 ) break;
+
+    usedValues.push_back( mtn_tmp.value );
+
+    mtnList.push_back( std::move( mtn_tmp ) );
   }
 
-  throw std::exception();
+  if( mtnList.size() == 0 ){
+    Log::error( "No values provided for mtn." );
+    throw std::exception();
+  }
+
+  return mtnList;
 }

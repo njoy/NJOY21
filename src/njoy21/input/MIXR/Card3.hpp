@@ -9,9 +9,9 @@ public:
 std::vector< std::pair< Argument< Matn >, Argument< Wtn > > > matnWtnList;
 
 template< typename Istream >
-Card3( Istream& is )
+Card3( Istream& is, const size_t nnin )
 try:
-  matnWtnList( readMatnWtnList( is ) )
+  matnWtnList( readMatnWtnList( is, nnin ) )
 {
 }
 catch( std::exception& e ){

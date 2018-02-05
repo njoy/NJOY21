@@ -15,9 +15,9 @@ SCENARIO( "MIXR, Card2",
       THEN( "the values can be verified" ){
         MIXR::Card2 card2( iss );
 
-        REQUIRE( 1 == card2.mtn.at( 0 ).value );
-        REQUIRE( 8 == card2.mtn.at( 1 ).value );
-        REQUIRE( 12 == card2.mtn.at( 2 ).value );
+        REQUIRE( 1 == card2.mtnList.at( 0 ).value );
+        REQUIRE( 8 == card2.mtnList.at( 1 ).value );
+        REQUIRE( 12 == card2.mtnList.at( 2 ).value );
       }
     } // WHEN
 
@@ -29,7 +29,7 @@ SCENARIO( "MIXR, Card2",
         MIXR::Card2 card2( iss );
 
         for( int i = 0; i < 20; i++ ){
-          REQUIRE( ( i + 1 ) == card2.mtn.at( i ).value );
+          REQUIRE( ( i + 1 ) == card2.mtnList.at( i ).value );
         }
       }
     } // WHEN

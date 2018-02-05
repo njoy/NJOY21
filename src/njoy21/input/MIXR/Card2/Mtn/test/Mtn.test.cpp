@@ -18,17 +18,17 @@ SCENARIO( "MIXR, Card2, Mtn",
         }
       }
     } // WHEN
-  } // GIVEN
 
-  GIVEN( "invalid inputs" ){
     WHEN( "no value is provided" ){
       iRecordStream<char> iss( std::istringstream( " /" ) );
 
-      THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( argument::extract< MIXR::Card2::Mtn >( iss ) );
+      THEN( "a predefined, unallowable value is provided" ){
+        REQUIRE( 0 == argument::extract< MIXR::Card2::Mtn >( iss ).value );
       }
     } // WHEN
+  } // GIVEN
 
+  GIVEN( "invalid inputs" ){
     WHEN( "invalid values are provided" ){
       for( int i : {-1, 0, 1000} ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );

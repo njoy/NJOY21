@@ -12,6 +12,7 @@ public:
   try:
     mtnList( readMtn( is ) )
   {
+    Card::clear( is );
   }
   catch( std::exception& e ){
     Log::info( "Trouble reading Card2." );
