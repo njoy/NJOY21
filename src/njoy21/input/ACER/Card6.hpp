@@ -9,7 +9,7 @@ public:
 
   template< typename Char >
   Card6( iRecordStream< Char >& is, 
-          Argument< ACER::Card1::Ngend >& ngend )
+         const Argument< ACER::Card1::Ngend >& ngend )
     try:
       newfor( argument::extract< Newfor >( is ) ),
       iopp( argument::extract< Iopp >( is, ngend ) )

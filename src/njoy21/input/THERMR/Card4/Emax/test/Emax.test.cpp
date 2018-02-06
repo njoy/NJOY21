@@ -5,7 +5,7 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "THERMR emax values",
-  "[THERMR],[Card4], [Emax]"){
+  "[THERMR], [Card4], [Emax]"){
 
   GIVEN( "valid emax values" ){
     std::vector<double> validValues{0.001, 0.001, 0.09, 1.0, 1.5};
@@ -13,7 +13,7 @@ SCENARIO( "THERMR emax values",
       for( double emax : validValues ){
         iRecordStream<char> iss( 
           std::istringstream( std::to_string( emax ) ) );
-        REQUIRE( emax == argument::extract< 
+        REQUIRE( emax * dimwits::electronVolts == argument::extract< 
           THERMR::Card4::Emax >( iss ).value );
       }
     } // THEN

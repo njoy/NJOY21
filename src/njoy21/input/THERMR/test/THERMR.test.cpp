@@ -35,7 +35,7 @@ SCENARIO( "THERMR input",
         REQUIRE( thermr.card3.tempr.value[1] == 450.0 * dimwits::kelvin );
 
         REQUIRE( thermr.card4.tol.value  == 0.05 );
-        REQUIRE( thermr.card4.emax.value == 1.2  );
+        REQUIRE( thermr.card4.emax.value == 1.2 * dimwits::electronVolts );
       } // THEN
     } // WHEN
     WHEN( "optional parameter not provided" ){

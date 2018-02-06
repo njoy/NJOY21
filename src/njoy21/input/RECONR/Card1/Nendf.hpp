@@ -1,6 +1,6 @@
 struct Nendf : public argument::common::Nin {
   using Value_t = argument::common::Nin::Value_t;
-  
+  static std::string name(){ return "nendf"; }
   static std::string description(){
     return
       "The nendf argument specifies the io unit used internally by the\n"

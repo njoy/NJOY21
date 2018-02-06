@@ -5,27 +5,29 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "Ntemp output values", 
+SCENARIO( "ntemp output values", 
   "[THERMR],[Card2], [Ntemp]"){
-  GIVEN( "valid Ntemp parameters" ){
+  GIVEN( "valid ntemp parameters" ){
     std::vector<int> validValues = { 2, 4, 10, 50 };
-    THEN( "the returned class has the correct value" ){
-      for( int ntemp : validValues ){
-        iRecordStream<char> iss( 
-          std::istringstream( std::to_string( ntemp ) ) );
-        REQUIRE( ntemp == argument::extract< 
-          THERMR::Card2::Ntemp > ( iss ).value );
-      }
-    } // THEN
+    WHEN( "ntemp value provided" ){
+      THEN( "the returned class has the correct value" ){
+        for( int ntemp : validValues ){
+          iRecordStream<char> iss( 
+            std::istringstream( std::to_string( ntemp ) ) );
+          REQUIRE( ntemp == argument::extract< 
+            THERMR::Card2::Ntemp > ( iss ).value );
+        }
+      } // THEN
+    } // WHEN
+    WHEN( "no ntemp value provided" ){
+      THEN( "the default value is returned" ){
+        iRecordStream<char> iss( std::istringstream( "/") );
+        REQUIRE( 1 == argument::extract< 
+          THERMR::Card2::Ntemp >( iss ).value );
+      } // THEN
+    } // WHEN
   } // GIVEN
-  GIVEN( "no ntemp value" ){
-    THEN( "the default value is returned" ){
-      iRecordStream<char> iss( std::istringstream( "/") );
-      REQUIRE( 1 == argument::extract< 
-        THERMR::Card2::Ntemp >( iss ).value );
-    } // THEN
-  } // GIVEN
-  GIVEN( "invalid Ntemp parameters" ){
+  GIVEN( "invalid ntemp parameters" ){
     std::vector<int> invalidValues{ -2, -1, 0 };
     THEN( "an exception is thrown" ){
       for( auto ntemp : invalidValues ){

@@ -6,7 +6,7 @@ public:
 
   template< typename Char >
   Card4( iRecordStream< Char >& is,
-         Argument< ACER::Card2::Nxtra >& nxtra )
+         const Argument< ACER::Card2::Nxtra >& nxtra )
     try:
       izaw( argument::extract< Izaw >( is, nxtra ) )
     {

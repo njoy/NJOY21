@@ -1,5 +1,5 @@
 struct Awr {
-  using Value_t = float;
+  using Value_t = double;
   static std::string name(){ return "awr"; }
   static std::string description(){
     return
