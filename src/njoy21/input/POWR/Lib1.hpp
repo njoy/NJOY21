@@ -10,7 +10,7 @@ public:
 #include "njoy21/input/POWR/Lib1/src/readCard6.hpp"
 
 Card3 card3;
-optional< std::pair< Card5, Card4 > > card45;
+optional< std::pair< Card4, Card5 > > card45;
 optional< Card6 > card6;
 
 template< typename Istream >

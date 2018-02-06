@@ -28,21 +28,21 @@ SCENARIO( "POWR, Lib2",
         POWR::Lib2 lib2( iss );
 
         REQUIRE( 1234 == lib2.card3.matd.value );
-        REQUIRE( 300*dimwits::kelvin == lib2.card3.rest->second.value );
-        REQUIRE( "" == lib2.card3.rest->first.value );
+        REQUIRE( 300*dimwits::kelvin == lib2.card3.rest->first.value );
+        REQUIRE( "" == lib2.card3.rest->second.value );
 
-        REQUIRE( 0 == lib2.card45->second.itrc.value );
-        REQUIRE( 0 == lib2.card45->second.mti.value );
-        REQUIRE( 0 == lib2.card45->second.mtc.value );
+        REQUIRE( 0 == lib2.card45->first.itrc.value );
+        REQUIRE( 0 == lib2.card45->first.mti.value );
+        REQUIRE( 0 == lib2.card45->first.mtc.value );
 
-        REQUIRE( Approx( 0.0 ) == lib2.card45->first.xi.value );
-        REQUIRE( Approx( 0.0 ) == lib2.card45->first.alpha.value );
-        REQUIRE( Approx( 0.0 ) == lib2.card45->first.mubar.value );
-        REQUIRE( Approx( 0.0 ) == lib2.card45->first.nu.value );
-        REQUIRE( Approx( 0.0 ) == lib2.card45->first.kappaFission.value );
-        REQUIRE( Approx( 0.0 ) == lib2.card45->first.kappaCapture.value );
-        REQUIRE( Approx( 0.0 ) == lib2.card45->first.lambda.value );
-        REQUIRE( Approx( 0.0 ) == lib2.card45->first.sigmaS.value );
+        REQUIRE( Approx( 0.0 ) == lib2.card45->second.xi.value );
+        REQUIRE( Approx( 0.0 ) == lib2.card45->second.alpha.value );
+        REQUIRE( Approx( 0.0 ) == lib2.card45->second.mubar.value );
+        REQUIRE( Approx( 0.0 ) == lib2.card45->second.nu.value );
+        REQUIRE( Approx( 0.0 ) == lib2.card45->second.kappaFission.value );
+        REQUIRE( Approx( 0.0 ) == lib2.card45->second.kappaCapture.value );
+        REQUIRE( Approx( 0.0 ) == lib2.card45->second.lambda.value );
+        REQUIRE( Approx( 0.0 ) == lib2.card45->second.sigmaS.value );
       }
     } // WHEN
 
@@ -59,21 +59,21 @@ SCENARIO( "POWR, Lib2",
         POWR::Lib2 lib2( iss );
 
         REQUIRE( 2345 == lib2.card3.matd.value );
-        REQUIRE( 3.14*dimwits::kelvin == lib2.card3.rest->second.value );
-        REQUIRE( "hollerith" == lib2.card3.rest->first.value );
+        REQUIRE( 3.14*dimwits::kelvin == lib2.card3.rest->first.value );
+        REQUIRE( "hollerith" == lib2.card3.rest->second.value );
 
-        REQUIRE( 1 == lib2.card45->second.itrc.value );
-        REQUIRE( 2 == lib2.card45->second.mti.value );
-        REQUIRE( 3 == lib2.card45->second.mtc.value );
+        REQUIRE( 1 == lib2.card45->first.itrc.value );
+        REQUIRE( 2 == lib2.card45->first.mti.value );
+        REQUIRE( 3 == lib2.card45->first.mtc.value );
 
-        REQUIRE( Approx( 0.1 ) == lib2.card45->first.xi.value );
-        REQUIRE( Approx( 0.2 ) == lib2.card45->first.alpha.value );
-        REQUIRE( Approx( 0.3 ) == lib2.card45->first.mubar.value );
-        REQUIRE( Approx( 0.4 ) == lib2.card45->first.nu.value );
-        REQUIRE( Approx( 0.5 ) == lib2.card45->first.kappaFission.value );
-        REQUIRE( Approx( 0.6 ) == lib2.card45->first.kappaCapture.value );
-        REQUIRE( Approx( 0.7 ) == lib2.card45->first.lambda.value );
-        REQUIRE( Approx( 0.8 ) == lib2.card45->first.sigmaS.value );
+        REQUIRE( Approx( 0.1 ) == lib2.card45->second.xi.value );
+        REQUIRE( Approx( 0.2 ) == lib2.card45->second.alpha.value );
+        REQUIRE( Approx( 0.3 ) == lib2.card45->second.mubar.value );
+        REQUIRE( Approx( 0.4 ) == lib2.card45->second.nu.value );
+        REQUIRE( Approx( 0.5 ) == lib2.card45->second.kappaFission.value );
+        REQUIRE( Approx( 0.6 ) == lib2.card45->second.kappaCapture.value );
+        REQUIRE( Approx( 0.7 ) == lib2.card45->second.lambda.value );
+        REQUIRE( Approx( 0.8 ) == lib2.card45->second.sigmaS.value );
       }
     } // WHEN
   } // GIVEN

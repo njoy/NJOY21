@@ -15,8 +15,8 @@ SCENARIO( "POWR, Lib2, Card3",
       POWR::Lib2::Card3 card3( iss );
       THEN( "the values can be verified" ){
         REQUIRE( 9235 == card3.matd.value );
-        REQUIRE( 301.0*dimwits::kelvin == card3.rest->second.value );
-        REQUIRE( "123" == card3.rest->first.value );
+        REQUIRE( 301.0*dimwits::kelvin == card3.rest->first.value );
+        REQUIRE( "123" == card3.rest->second.value );
       }
     } // WHEN
 
@@ -27,8 +27,8 @@ SCENARIO( "POWR, Lib2, Card3",
 
       THEN( "the defaults can be verified" ){
         REQUIRE( 9235 == card3.matd.value );
-        REQUIRE( 300.0*dimwits::kelvin == card3.rest->second.value );
-        REQUIRE( "" == card3.rest->first.value );
+        REQUIRE( 300.0*dimwits::kelvin == card3.rest->first.value );
+        REQUIRE( "" == card3.rest->second.value );
       } // THEN
     } // WHEN
 

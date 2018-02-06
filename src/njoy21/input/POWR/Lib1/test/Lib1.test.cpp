@@ -54,9 +54,9 @@ SCENARIO( "POWR, Lib1",
         REQUIRE( 0 == std::get<2>( *( lib1.card3.rest ) ).value );
         REQUIRE( 1 == std::get<3>( *( lib1.card3.rest ) ).value );
 
-        REQUIRE( "" == lib1.card45->second.word.value );
+        REQUIRE( "" == lib1.card45->first.word.value );
 
-        REQUIRE( "" == lib1.card45->first.fsn.value );
+        REQUIRE( "" == lib1.card45->second.fsn.value );
 
         REQUIRE( std::vector<double>( 68, 0.0 ) == lib1.card6->abs.value );
       }
@@ -88,9 +88,9 @@ SCENARIO( "POWR, Lib1",
         REQUIRE( 2 == std::get<2>( *( lib1.card3.rest ) ).value );
         REQUIRE( 2 == std::get<3>( *( lib1.card3.rest ) ).value );
 
-        REQUIRE( "word value" == lib1.card45->second.word.value );
+        REQUIRE( "word value" == lib1.card45->first.word.value );
 
-        REQUIRE( "fsn value" == lib1.card45->first.fsn.value );
+        REQUIRE( "fsn value" == lib1.card45->second.fsn.value );
 
         for( int i = 0; i < 68; i++ ){
           double d( i*0.1 );

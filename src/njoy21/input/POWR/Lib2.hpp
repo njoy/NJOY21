@@ -8,7 +8,7 @@ public:
 #include "njoy21/input/POWR/Lib2/src/readCard45.hpp"
 
 Card3 card3;
-optional< std::pair< Card5, Card4 > > card45;
+optional< std::pair< Card4, Card5 > > card45;
 
 template< typename Istream >
 Lib2( Istream& is )

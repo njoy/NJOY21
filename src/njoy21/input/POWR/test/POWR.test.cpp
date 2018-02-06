@@ -11,19 +11,19 @@ SCENARIO( "POWR",
   GIVEN( "valid inputs" ){
     WHEN( "using lib=1" ){
       std::string inp(
- std::string( " 27 29 /\n" ) + // Card1
- std::string( " 1 0 0 /\n" ) + // Card2
- std::string( " 9439 279.0 0 2 2 /\n" ) + // Card3
- std::string( " 'word value' /\n" ) + // Card4
- std::string( " 'fsn value' /\n" ) + // Card5
- std::string( " 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9\n" ) +
- std::string( " 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9\n" ) +
- std::string( " 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9\n" ) +
- std::string( " 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9\n" ) +
- std::string( " 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9\n" ) +
- std::string( " 5.0 5.1 5.2 5.3 5.4 5.5 5.6 5.7 5.8 5.9\n" ) +
- std::string( " 6.0 6.1 6.2 6.3 6.4 6.5 6.6 6.7 /\n" ) + // Card6
- std::string( " 0 /" ) // Terminating Card3
+ " 27 29 /\n" // Card1
+ " 1 0 0 /\n" // Card2
+ " 9439 279.0 0 2 2 /\n" // Card3
+ " 'word value' /\n" // Card4
+ " 'fsn value' /\n" // Card5
+ " 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9\n" 
+ " 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9\n" 
+ " 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9\n" 
+ " 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9\n" 
+ " 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9\n" 
+ " 5.0 5.1 5.2 5.3 5.4 5.5 5.6 5.7 5.8 5.9\n" 
+ " 6.0 6.1 6.2 6.3 6.4 6.5 6.6 6.7 /\n" // Card6
+ " 0 /" // Terminating Card3
       );
 
       iRecordStream<char> iss{ std::istringstream{ inp } };
@@ -49,10 +49,10 @@ SCENARIO( "POWR",
                 std::get<3>( *( std::experimental::get<0>( powr.lib ).at(0).card3.rest ) ).value );
 
         REQUIRE( "word value" == 
-                      std::experimental::get<0>( powr.lib ).at(0).card45->second.word.value );
+                      std::experimental::get<0>( powr.lib ).at(0).card45->first.word.value );
 
         REQUIRE( "fsn value" == 
-                        std::experimental::get<0>( powr.lib ).at(0).card45->first.fsn.value );
+                        std::experimental::get<0>( powr.lib ).at(0).card45->second.fsn.value );
 
         for( int i = 0; i < 68; i++ ){
           double d( i*0.1 );
@@ -86,30 +86,30 @@ SCENARIO( "POWR",
 
         REQUIRE( 2345 == std::experimental::get<1>( powr.lib ).at(0).card3.matd.value );
         REQUIRE( 3.14*dimwits::kelvin == 
-                       std::experimental::get<1>( powr.lib ).at(0).card3.rest->second.value );
+                       std::experimental::get<1>( powr.lib ).at(0).card3.rest->first.value );
         REQUIRE( "hollerith" == 
-                        std::experimental::get<1>( powr.lib ).at(0).card3.rest->first.value );
+                        std::experimental::get<1>( powr.lib ).at(0).card3.rest->second.value );
 
-        REQUIRE( 1 == std::experimental::get<1>( powr.lib ).at(0).card45->second.itrc.value );
-        REQUIRE( 2 == std::experimental::get<1>( powr.lib ).at(0).card45->second.mti.value );
-        REQUIRE( 3 == std::experimental::get<1>( powr.lib ).at(0).card45->second.mtc.value );
+        REQUIRE( 1 == std::experimental::get<1>( powr.lib ).at(0).card45->first.itrc.value );
+        REQUIRE( 2 == std::experimental::get<1>( powr.lib ).at(0).card45->first.mti.value );
+        REQUIRE( 3 == std::experimental::get<1>( powr.lib ).at(0).card45->first.mtc.value );
 
         REQUIRE( Approx( 0.1 ) ==
-                         std::experimental::get<1>( powr.lib ).at(0).card45->first.xi.value );
+                         std::experimental::get<1>( powr.lib ).at(0).card45->second.xi.value );
         REQUIRE( Approx( 0.2 ) ==
-                      std::experimental::get<1>( powr.lib ).at(0).card45->first.alpha.value );
+                      std::experimental::get<1>( powr.lib ).at(0).card45->second.alpha.value );
         REQUIRE( Approx( 0.3 ) ==
-                      std::experimental::get<1>( powr.lib ).at(0).card45->first.mubar.value );
+                      std::experimental::get<1>( powr.lib ).at(0).card45->second.mubar.value );
         REQUIRE( Approx( 0.4 ) ==
-                         std::experimental::get<1>( powr.lib ).at(0).card45->first.nu.value );
+                         std::experimental::get<1>( powr.lib ).at(0).card45->second.nu.value );
         REQUIRE( Approx( 0.5 ) == 
-               std::experimental::get<1>( powr.lib ).at(0).card45->first.kappaFission.value );
+               std::experimental::get<1>( powr.lib ).at(0).card45->second.kappaFission.value );
         REQUIRE( Approx( 0.6 ) == 
-               std::experimental::get<1>( powr.lib ).at(0).card45->first.kappaCapture.value );
+               std::experimental::get<1>( powr.lib ).at(0).card45->second.kappaCapture.value );
         REQUIRE( Approx( 0.7 ) ==
-                     std::experimental::get<1>( powr.lib ).at(0).card45->first.lambda.value );
+                     std::experimental::get<1>( powr.lib ).at(0).card45->second.lambda.value );
         REQUIRE( Approx( 0.8 ) ==
-                     std::experimental::get<1>( powr.lib ).at(0).card45->first.sigmaS.value );
+                     std::experimental::get<1>( powr.lib ).at(0).card45->second.sigmaS.value );
       }
     } // WHEN
 
