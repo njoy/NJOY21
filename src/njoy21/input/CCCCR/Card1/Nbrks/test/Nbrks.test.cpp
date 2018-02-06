@@ -12,7 +12,7 @@ SCENARIO( "CCCCR, Card1, Nbrks",
   const int nin = 23;
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
-      for( auto i : {0, -20, -55, -99} ){
+      for( auto i : {99, 87, 20, 0, -20, -55, -99} ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
@@ -34,7 +34,7 @@ SCENARIO( "CCCCR, Card1, Nbrks",
 
   GIVEN( "invalid inputs" ){
     WHEN( "invalid inputs are provided" ){
-      for( auto i : {-100, -23, -22, -19, -1, 1, 19, 20, 22, 23, 99, 100} ){
+      for( auto i : {-100, -23, -22, -19, -1, 1, 19, 22, 23, 100} ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){

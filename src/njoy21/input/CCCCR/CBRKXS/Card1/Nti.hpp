@@ -6,4 +6,7 @@ struct Nti {
            "A negative value specifies that the first n temperatures should\n"
            "be accepted.";
   }
+  static bool verify( const Value_t nti ){
+    return ( nti != 0 and std::abs( nti ) < 21 );
+  }
 };

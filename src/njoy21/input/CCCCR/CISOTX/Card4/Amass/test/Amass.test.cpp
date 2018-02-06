@@ -14,8 +14,8 @@ SCENARIO( "CCCCR, CISOTX, Card4, Amass",
         iRecordStream<char> iss( std::istringstream( std::to_string( d ) ) );
 
         THEN( "the value can be verified" ){
-          REQUIRE( Approx( d ) == argument::extract< CCCCR::CISOTX::Card4::Amass
-                                                               >( iss ).value );
+          REQUIRE( d * dimwits::gram ==
+                argument::extract< CCCCR::CISOTX::Card4::Amass >( iss ).value );
         }
       }
     } // WHEN

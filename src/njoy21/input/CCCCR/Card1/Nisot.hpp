@@ -7,7 +7,7 @@ struct Nisot{
   }
   static Value_t defaultValue( const Value_t ){ return 0; }
   static bool verify( const Value_t nisot, const Value_t nin ){
-    return ( nisot == 0 or ( nisot > -100 and nisot < -19
-             and std::abs( nisot ) != nin ) );
+    return ( nisot == 0 or ( std::abs( nisot ) != std::abs( nin ) and 
+                             argument::common::Nin::verify( nisot ) ) );
   }
 };

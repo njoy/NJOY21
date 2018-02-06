@@ -8,7 +8,8 @@ struct Nbrks{
   static Value_t defaultValue( const Value_t, const Value_t ){ return 0; }
   static bool verify( const Value_t nbrks, const Value_t nisot,
                       const Value_t nin ){
-    return ( nbrks == 0 or ( nbrks > -100 and nbrks < -19
-             and nbrks != nisot and std::abs( nbrks ) != nin ) );
+    return ( nbrks == 0 or ( std::abs( nbrks ) != std::abs( nisot ) and
+                             std::abs( nbrks ) != std::abs( nin ) and
+                             argument::common::Nin::verify( nbrks ) ) );
   }
 };

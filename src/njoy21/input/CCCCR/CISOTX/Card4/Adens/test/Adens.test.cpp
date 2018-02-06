@@ -6,6 +6,9 @@
 
 using namespace njoy::njoy21::input;
 
+using gcm3 = 1000 * dimwits::grams / dimwits::meter / dimwits::meter /
+             dimwits::meter;
+
 SCENARIO( "CCCCR, CISOTX, Card4, Adens",
           "[CCCCR] [CISOTX] [Card4] [Adens]" ){
   GIVEN( "valid inputs" ){
@@ -14,8 +17,8 @@ SCENARIO( "CCCCR, CISOTX, Card4, Adens",
         iRecordStream<char> iss( std::istringstream( std::to_string( d ) ) );
 
         THEN( "the value can be verified" ){
-          REQUIRE( Approx( d ) == argument::extract< CCCCR::CISOTX::Card4::Adens
-                                                               >( iss ).value );
+          REQUIRE( d * gcm3 ==
+                argument::extract< CCCCR::CISOTX::Card4::Adens >( iss ).value );
         }
       }
     } // WHEN

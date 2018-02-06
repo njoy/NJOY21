@@ -46,7 +46,7 @@ SCENARIO( "CCCCR, Card1",
     } // WHEN
 
     WHEN( "an invalid value is provided" ){
-      iRecordStream<char> iss( std::istringstream( " 28 -29 30 -31 /" ) );
+      iRecordStream<char> iss( std::istringstream( " 28 -29 3 -31 /" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( CCCCR::Card1( iss ) );

@@ -6,4 +6,7 @@ struct Nzi {
            "A negative value specifies that the first n sigpo values should\n"
            "be accepted.";
   }
+  static bool verify( const Value_t nzi ){
+    return ( nzi != 0 and std::abs( nzi ) < 21 );
+  }
 };

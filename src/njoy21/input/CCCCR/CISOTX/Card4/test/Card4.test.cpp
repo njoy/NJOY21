@@ -6,6 +6,9 @@
 
 using namespace njoy::njoy21::input;
 
+using gcm3 = 1000 * dimwits::grams / dimwits::meter / dimwits::meter /
+             dimwits::meter;
+
 SCENARIO( "CCCCR, CISOTX, Card4",
           "[CCCCR] [CISOTX] [Card4]" ){
   GIVEN( "valid inputs" ){
@@ -17,12 +20,12 @@ SCENARIO( "CCCCR, CISOTX, Card4",
         CCCCR::CISOTX::Card4 card4( iss );
 
         REQUIRE( -10 == card4.kbr.value );
-        REQUIRE( Approx( 1.0 ) == card4.amass.value );
+        REQUIRE( 1.0 * dimwits::gram == card4.amass.value );
         REQUIRE( Approx( 2.0 ) == card4.efiss.value );
         REQUIRE( Approx( 3.0 ) == card4.ecapt.value );
         REQUIRE( 4.0*dimwits::kelvin == card4.temp.value );
         REQUIRE( Approx( 5.0 ) == card4.sigpot.value );
-        REQUIRE( Approx( 6.0 ) == card4.adens.value );
+        REQUIRE( 6.0 * gcm3 == card4.adens.value );
       }
     } // WHEN
   } // GIVEN
