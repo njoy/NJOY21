@@ -6,6 +6,6 @@ struct Imat{
            "using the ENDF material number.";
   }
   static bool verify( const Value_t imat ){
-    return imat > 0;
+    return ( imat > 0 and imat < 10000 );
   }
 };

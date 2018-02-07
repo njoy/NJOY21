@@ -150,7 +150,8 @@ SCENARIO( "CCCCR",
 
         for( int i = 0; i < 4; i++ ){
           REQUIRE( i+1 == ccccr.cisotx->card4.at(i).kbr.value );
-          REQUIRE( Approx( i+1.0 ) == ccccr.cisotx->card4.at(i).amass.value );
+          REQUIRE( ( i+1.0 )*dimwits::gram ==
+                                        ccccr.cisotx->card4.at(i).amass.value );
           REQUIRE( Approx( i+1.1 ) == ccccr.cisotx->card4.at(i).efiss.value );
           REQUIRE( Approx( i+1.2 ) == ccccr.cisotx->card4.at(i).ecapt.value );
           REQUIRE( ( i + 1.3 )*dimwits::kelvin ==

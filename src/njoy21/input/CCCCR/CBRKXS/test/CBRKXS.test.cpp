@@ -148,5 +148,18 @@ SCENARIO( "CCCCR, CBRKXS",
         REQUIRE_THROWS( CCCCR::CBRKXS( iss ) );
       }
     } // WHEN
+
+    WHEN( "an invalid value is provided" ){
+      std::string inp(
+ std::string( " 0 5 /\n /\n" ) +
+ std::string( " 0.1 0.2 0.3 0.4 0.5 /\n" )
+      );
+
+      iRecordStream<char> iss{ std::istringstream{ inp } };
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( CCCCR::CBRKXS( iss ) );
+      }
+    } // WHEN
   } // GIVEN
 } // SCENARIO

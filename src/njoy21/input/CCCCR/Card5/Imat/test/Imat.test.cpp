@@ -10,7 +10,7 @@ SCENARIO( "CCCCR, Card5, Imat",
           "[CCCCR] [Card5] [Imat]" ){
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
-      for( auto i : { 1, 10, 100 } ){
+      for( auto i : { 1, 10, 100, 1000, 9999 } ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
@@ -30,7 +30,7 @@ SCENARIO( "CCCCR, Card5, Imat",
     } // WHEN
 
     WHEN( "invalid values are provided" ){
-      for( auto i : {-10, -1, 0} ){
+      for( auto i : {-10, -1, 0, 10000} ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){

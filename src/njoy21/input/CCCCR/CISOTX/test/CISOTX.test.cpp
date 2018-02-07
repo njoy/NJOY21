@@ -36,7 +36,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( 4 == cisotx.card4.size() );
 
         REQUIRE( 123 == cisotx.card4.at(0).kbr.value );
-        REQUIRE( Approx( 201.0 ) == cisotx.card4.at(0).amass.value );
+        REQUIRE( 201.0*dimwits::gram == cisotx.card4.at(0).amass.value );
         REQUIRE( Approx( 12.0 ) == cisotx.card4.at(0).efiss.value );
         REQUIRE( Approx( 13.0 ) == cisotx.card4.at(0).ecapt.value );
         REQUIRE( 14.0*dimwits::kelvin == cisotx.card4.at(0).temp.value );
@@ -44,7 +44,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 16.0 ) == cisotx.card4.at(0).adens.value );
 
         REQUIRE( 223 == cisotx.card4.at(1).kbr.value );
-        REQUIRE( Approx( 301.0 ) == cisotx.card4.at(1).amass.value );
+        REQUIRE( 301.0*dimwits::gram == cisotx.card4.at(1).amass.value );
         REQUIRE( Approx( 22.0 ) == cisotx.card4.at(1).efiss.value );
         REQUIRE( Approx( 23.0 ) == cisotx.card4.at(1).ecapt.value );
         REQUIRE( 24.0*dimwits::kelvin == cisotx.card4.at(1).temp.value );
@@ -52,7 +52,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 26.0 ) == cisotx.card4.at(1).adens.value );
 
         REQUIRE( 323 == cisotx.card4.at(2).kbr.value );
-        REQUIRE( Approx( 401.0 ) == cisotx.card4.at(2).amass.value );
+        REQUIRE( 401.0*dimwits::gram == cisotx.card4.at(2).amass.value );
         REQUIRE( Approx( 32.0 ) == cisotx.card4.at(2).efiss.value );
         REQUIRE( Approx( 33.0 ) == cisotx.card4.at(2).ecapt.value );
         REQUIRE( 34.0*dimwits::kelvin == cisotx.card4.at(2).temp.value );
@@ -60,7 +60,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 36.0 ) == cisotx.card4.at(2).adens.value );
 
         REQUIRE( 423 == cisotx.card4.at(3).kbr.value );
-        REQUIRE( Approx( 501.0 ) == cisotx.card4.at(3).amass.value );
+        REQUIRE( 501.0*dimwits::gram == cisotx.card4.at(3).amass.value );
         REQUIRE( Approx( 42.0 ) == cisotx.card4.at(3).efiss.value );
         REQUIRE( Approx( 43.0 ) == cisotx.card4.at(3).ecapt.value );
         REQUIRE( 44.0*dimwits::kelvin == cisotx.card4.at(3).temp.value );
@@ -98,7 +98,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( 4 == cisotx.card4.size() );
 
         REQUIRE( 123 == cisotx.card4.at(0).kbr.value );
-        REQUIRE( Approx( 201.0 ) == cisotx.card4.at(0).amass.value );
+        REQUIRE( 201.0*dimwits::gram == cisotx.card4.at(0).amass.value );
         REQUIRE( Approx( 12.0 ) == cisotx.card4.at(0).efiss.value );
         REQUIRE( Approx( 13.0 ) == cisotx.card4.at(0).ecapt.value );
         REQUIRE( 14.0*dimwits::kelvin == cisotx.card4.at(0).temp.value );
@@ -106,7 +106,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 16.0 ) == cisotx.card4.at(0).adens.value );
 
         REQUIRE( 223 == cisotx.card4.at(1).kbr.value );
-        REQUIRE( Approx( 301.0 ) == cisotx.card4.at(1).amass.value );
+        REQUIRE( 301.0*dimwits::gram == cisotx.card4.at(1).amass.value );
         REQUIRE( Approx( 22.0 ) == cisotx.card4.at(1).efiss.value );
         REQUIRE( Approx( 23.0 ) == cisotx.card4.at(1).ecapt.value );
         REQUIRE( 24.0*dimwits::kelvin == cisotx.card4.at(1).temp.value );
@@ -114,7 +114,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 26.0 ) == cisotx.card4.at(1).adens.value );
 
         REQUIRE( 323 == cisotx.card4.at(2).kbr.value );
-        REQUIRE( Approx( 401.0 ) == cisotx.card4.at(2).amass.value );
+        REQUIRE( 401.0*dimwits::gram == cisotx.card4.at(2).amass.value );
         REQUIRE( Approx( 32.0 ) == cisotx.card4.at(2).efiss.value );
         REQUIRE( Approx( 33.0 ) == cisotx.card4.at(2).ecapt.value );
         REQUIRE( 34.0*dimwits::kelvin == cisotx.card4.at(2).temp.value );
@@ -122,7 +122,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 36.0 ) == cisotx.card4.at(2).adens.value );
 
         REQUIRE( 423 == cisotx.card4.at(3).kbr.value );
-        REQUIRE( Approx( 501.0 ) == cisotx.card4.at(3).amass.value );
+        REQUIRE( 501.0*dimwits::gram == cisotx.card4.at(3).amass.value );
         REQUIRE( Approx( 42.0 ) == cisotx.card4.at(3).efiss.value );
         REQUIRE( Approx( 43.0 ) == cisotx.card4.at(3).ecapt.value );
         REQUIRE( 44.0*dimwits::kelvin == cisotx.card4.at(3).temp.value );
@@ -165,7 +165,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( 4 == cisotx.card4.size() );
 
         REQUIRE( 123 == cisotx.card4.at(0).kbr.value );
-        REQUIRE( Approx( 201.0 ) == cisotx.card4.at(0).amass.value );
+        REQUIRE( 201.0*dimwits::gram == cisotx.card4.at(0).amass.value );
         REQUIRE( Approx( 12.0 ) == cisotx.card4.at(0).efiss.value );
         REQUIRE( Approx( 13.0 ) == cisotx.card4.at(0).ecapt.value );
         REQUIRE( 14.0*dimwits::kelvin == cisotx.card4.at(0).temp.value );
@@ -173,7 +173,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 16.0 ) == cisotx.card4.at(0).adens.value );
 
         REQUIRE( 223 == cisotx.card4.at(1).kbr.value );
-        REQUIRE( Approx( 301.0 ) == cisotx.card4.at(1).amass.value );
+        REQUIRE( 301.0*dimwits::gram == cisotx.card4.at(1).amass.value );
         REQUIRE( Approx( 22.0 ) == cisotx.card4.at(1).efiss.value );
         REQUIRE( Approx( 23.0 ) == cisotx.card4.at(1).ecapt.value );
         REQUIRE( 24.0*dimwits::kelvin == cisotx.card4.at(1).temp.value );
@@ -181,7 +181,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 26.0 ) == cisotx.card4.at(1).adens.value );
 
         REQUIRE( 323 == cisotx.card4.at(2).kbr.value );
-        REQUIRE( Approx( 401.0 ) == cisotx.card4.at(2).amass.value );
+        REQUIRE( 401.0*dimwits::gram == cisotx.card4.at(2).amass.value );
         REQUIRE( Approx( 32.0 ) == cisotx.card4.at(2).efiss.value );
         REQUIRE( Approx( 33.0 ) == cisotx.card4.at(2).ecapt.value );
         REQUIRE( 34.0*dimwits::kelvin == cisotx.card4.at(2).temp.value );
@@ -189,7 +189,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 36.0 ) == cisotx.card4.at(2).adens.value );
 
         REQUIRE( 423 == cisotx.card4.at(3).kbr.value );
-        REQUIRE( Approx( 501.0 ) == cisotx.card4.at(3).amass.value );
+        REQUIRE( 501.0*dimwits::gram == cisotx.card4.at(3).amass.value );
         REQUIRE( Approx( 42.0 ) == cisotx.card4.at(3).efiss.value );
         REQUIRE( Approx( 43.0 ) == cisotx.card4.at(3).ecapt.value );
         REQUIRE( 44.0*dimwits::kelvin == cisotx.card4.at(3).temp.value );
