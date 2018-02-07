@@ -8,7 +8,7 @@ public:
 #include "njoy21/input/POWR/Lib2/Card3/src/readRest.hpp"
 
 Argument< Matd > matd;
-optional< std::pair< Argument< Name >, Argument< Idtemp > > > rest;
+optional< std::pair< Argument< Idtemp >, Argument< Name > > > rest;
 
 template< typename Istream >
 Card3( Istream& is )

@@ -10,11 +10,11 @@ SCENARIO( "POWR, Lib3, Card5, Mtc",
           "[POWR] [Lib3] [Card5] [Mtc]" ){
   GIVEN( "valid inputs" ){
     WHEN( "valid inputs are provided" ){
-      for( double d : {0.0, 0.1, 1.0, 10.0} ){
-        iRecordStream<char> iss( std::istringstream( std::to_string( d ) ) );
+      for( auto i : {1, 10, 100, 1000, 9999} ){
+        iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
-          REQUIRE( Approx( d ) == argument::extract< POWR::Lib3::Card5::Mtc >(
+          REQUIRE( i == argument::extract< POWR::Lib3::Card5::Mtc >(
                                                                   iss ).value );
         }
       }
@@ -32,8 +32,8 @@ SCENARIO( "POWR, Lib3, Card5, Mtc",
     } // WHEN
 
     WHEN( "invalid values are provided" ){
-      for( double d : {-10.0, -1.0, -0.1} ){
-        iRecordStream<char> iss( std::istringstream( std::to_string( d ) ) );
+      for( auto i : {-100, -10, -1, 0, 10000} ){
+        iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){
           REQUIRE_THROWS( argument::extract< POWR::Lib3::Card5::Mtc >( iss ));

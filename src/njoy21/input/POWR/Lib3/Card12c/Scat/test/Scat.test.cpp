@@ -35,6 +35,15 @@ SCENARIO( "POWR, Lib3, Card12c, Scat",
       }
     } // WHEN
 
+    WHEN( "too few values are provided" ){
+      iRecordStream<char> iss( std::istringstream( " 0.1 0.2 0.3 /" ) );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( argument::extract< POWR::Lib3::Card12c::Scat >(
+                                                                     iss, 4 ) );
+      }
+    } // WHEN
+
     WHEN( "an invalid value is provided" ){
       iRecordStream<char> iss( std::istringstream( " 0.1 0.2 0.3 -0.4 /" ) );
 

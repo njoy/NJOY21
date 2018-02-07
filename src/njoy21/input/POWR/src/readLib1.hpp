@@ -1,7 +1,5 @@
 template< typename Istream >
-optional< std::vector< Lib1 > > readLib1( Istream& is, const int lib ){
-  if( lib != 1 ) return std::nullopt;
-
+static std::vector< Lib1 > readLib1( Istream& is ){
   std::vector< Lib1 > lib1List;
 
   lib1List.emplace_back( is );

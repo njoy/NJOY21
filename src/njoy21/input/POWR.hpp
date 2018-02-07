@@ -10,22 +10,19 @@ using Card1 = WIMSR::Card1;
 
 #include "njoy21/input/POWR/src/readLib1.hpp"
 #include "njoy21/input/POWR/src/readLib2.hpp"
-#include "njoy21/input/POWR/src/readLib3.hpp"
+
+#include "njoy21/input/POWR/src/readLib.hpp"
 
 Card1 card1;
 Card2 card2;
-optional< std::vector< Lib1 > > lib1;
-optional< std::vector< Lib2 > > lib2;
-optional< Lib3 > lib3;
+std::variant< std::vector< Lib1 >, std::vector< Lib2 >, Lib3 > lib;
 
 template< typename Istream >
 POWR( Istream& is )
 try:
   card1( is ),
   card2( is ),
-  lib1( readLib1( is, this->card2.lib.value ) ),
-  lib2( readLib2( is, this->card2.lib.value ) ),
-  lib3( readLib3( is, this->card2.lib.value, this->card2.iclaps.value ) )
+  lib( readLib( is, this->card2.lib.value, this->card2.iclaps.value ) )
 {
 }
 catch( std::exception& e ){

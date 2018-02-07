@@ -11,5 +11,6 @@ optional< std::tuple< Card6, Card7, std::vector< Card8 > > > readCard678(
     card8List.emplace_back( is, card6.nfis.value );
   }
 
-  return std::make_tuple( std::move( card6 ), std::move( card7 ), card8List );
+  return std::make_tuple( std::move( card6 ), std::move( card7 ),
+                          std::move( card8List ) );
 }

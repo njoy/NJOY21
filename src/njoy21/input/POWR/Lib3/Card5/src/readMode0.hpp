@@ -6,5 +6,5 @@ readMode0( Istream& is, const int mode ){
   Argument< Pos > pos( argument::extract< POWR::Lib3::Card5::Pos >( is ) );
   Argument< Posr > posr( argument::extract< POWR::Lib3::Card5::Posr >( is ) );
 
-  return std::make_pair( pos, posr );
+  return std::make_pair( std::move( pos ), std::move( posr ) );
 }

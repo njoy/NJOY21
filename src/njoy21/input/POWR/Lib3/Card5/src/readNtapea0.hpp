@@ -9,5 +9,6 @@ readNtapea0( Istream& is, const int ntapea ){
   Argument< Ip1opt > ip1opt(argument::extract< POWR::Lib3::Card5::Ip1opt >(is));
   Argument< Inorf > inorf( argument::extract< POWR::Lib3::Card5::Inorf >( is ));
 
-  return std::make_tuple( mti, mtc, ip1opt, inorf );
+  return std::make_tuple( std::move( mti ), std::move( mtc ),
+                          std::move( ip1opt ), std::move( inorf ) );
 }
