@@ -8,17 +8,17 @@ public:
 #include "njoy21/input/ERRORR/Card1/Nin.hpp"
 #include "njoy21/input/ERRORR/Card1/Nstan.hpp"
 
+#include "njoy21/input/ERRORR/Card1/src/readRest.hpp"
+
 Argument< Nendf > nendf;
-Argument< Npend > npend;
-Argument< Ngout > ngout;
-Argument< Nout > nout;
-Argument< Nin > nin;
-Argument< Nstan > nstan;
+optional< std::tuple< Argument< Npend >, Argument< Ngout >, Argument< Nout >,
+                      Argument< Nin >, Argument< Nstan > > > rest;
 
 template< typename Istream >
 Card1( Istream& is )
 try:
   nendf( argument::extract< ERRORR::Card1::Nendf >( is ) ),
+  rest( readRest( is, this->nendf.value ) )
   npend( argument::extract< ERRORR::Card1::Npend >( is, this->nendf.value ) ),
   ngout( argument::extract< ERRORR::Card1::Ngout >( is, this->nendf.value,
                                                           this->npend.value ) ),

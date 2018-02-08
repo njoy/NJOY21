@@ -1,8 +1,8 @@
 class Card3 {
 public:
 
-#include "njoy21/input/ERRORR/Card3/Mprint.hpp"
-#include "njoy21/input/ERRORR/Card3/Tempin.hpp"
+#include "njoy21/input/ERRORR/Rest/Card3/Mprint.hpp"
+#include "njoy21/input/ERRORR/Rest/Card3/Tempin.hpp"
 
 Argument< Mprint > mprint;
 Argument< Tempin > tempin;
@@ -10,8 +10,8 @@ Argument< Tempin > tempin;
 template< typename Istream >
 Card3( Istream& is )
 try:
-  mprint( argument::extract< ERRORR::Card3::Mprint >( is ) ),
-  tempin( argument::extract< ERRORR::Card3::Tempin >( is ) )
+  mprint( argument::extract< ERRORR::Rest::Card3::Mprint >( is ) ),
+  tempin( argument::extract< ERRORR::Rest::Card3::Tempin >( is ) )
 {
   Card::clear( is );
 }
