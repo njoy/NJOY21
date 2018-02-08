@@ -6,5 +6,5 @@ std::vector< Card5 > readCard5( Istream& is, const int niso ){
     card5List.emplace_back( is );
   }
 
-  return std::move( card5List );
+  return  card5List;
 }
