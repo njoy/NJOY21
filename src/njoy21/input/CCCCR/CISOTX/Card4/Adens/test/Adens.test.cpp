@@ -13,9 +13,11 @@ SCENARIO( "CCCCR, CISOTX, Card4, Adens",
       for( double d : {0.0, 0.1, 1.0, 10.0} ){
         iRecordStream<char> iss( std::istringstream( std::to_string( d ) ) );
 
+
         THEN( "the value can be verified" ){
-          REQUIRE( Approx( d ) ==
-                argument::extract< CCCCR::CISOTX::Card4::Adens >( iss ).value );
+          REQUIRE( d ==
+                argument::extract< CCCCR::CISOTX::Card4::Adens >( 
+                    iss ).value.value );
         }
       }
     } // WHEN
