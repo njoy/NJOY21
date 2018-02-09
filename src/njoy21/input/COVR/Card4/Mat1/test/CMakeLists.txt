@@ -9,6 +9,6 @@ ${${PREFIX}_RELEASE_flags}
 $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}>
 $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
 
-${CXX_appended_flags} ${NJOY21_appended_flags} )
-target_link_libraries( njoy21.input.COVR.Card4.Mat1.test PUBLIC NJOY21 ) 
+${CXX_appended_flags} ${njoy21_appended_flags} )
+target_link_libraries( njoy21.input.COVR.Card4.Mat1.test PUBLIC njoy21 ) 
 add_test( NAME njoy21.input.COVR.Card4.Mat1 COMMAND njoy21.input.COVR.Card4.Mat1.test )

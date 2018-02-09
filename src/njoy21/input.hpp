@@ -30,4 +30,5 @@ using iRecordStream =
 #include "njoy21/input/COVR.hpp"
 #include "njoy21/input/WIMSR.hpp"
 #include "njoy21/input/POWR.hpp"
+#include "njoy21/input/CCCCR.hpp"
 }
