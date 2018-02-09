@@ -27,6 +27,7 @@ using iRecordStream =
 #include "njoy21/input/MATXSR.hpp"
 #include "njoy21/input/GAMINR.hpp"
 #include "njoy21/input/PLOTR.hpp"
+#include "njoy21/input/COVR.hpp"
 #include "njoy21/input/WIMSR.hpp"
 #include "njoy21/input/POWR.hpp"
 #include "njoy21/input/CCCCR.hpp"
