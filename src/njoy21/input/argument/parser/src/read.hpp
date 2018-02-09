@@ -63,9 +63,30 @@ std::conditional_t
     decltype( int( std::declval< std::decay_t<Size> >() ) ) >
 read( iRecordStream<Char>& is, std::vector<T>& vector, Size&& size, Args&&... ){
   vector.resize( size );
-  // is >> vector;
   for( auto& entry : vector ){
     read( is, entry );
+  }
+  return true;
+}
+
+// Reading in vectors of values requires that the value immediately
+// after the stringstream from which the values will be read be the number
+// of values being read.
+//
+// Ex. - WIMSR::Card8( is, [# of values], [other arguments as needed])
+template< typename Char, typename T, typename Size, typename... Args >
+std::conditional_t
+< true, std::enable_if_t
+  < std::is_default_constructible<T>::value, bool >,
+    decltype( int( std::declval< std::decay_t<Size> >() ) ) >
+read( iRecordStream<Char>& is, std::vector<std::vector<T>>& vector, Size&& size,
+      Size&& size2, Args&&... ){
+  vector.resize( size2 );
+  for( auto& vec : vector ){
+    vec.resize( size );
+    for( auto& entry : vec ){
+      read( is, entry );
+    }
   }
   return true;
 }
