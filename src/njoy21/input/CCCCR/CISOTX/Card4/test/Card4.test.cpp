@@ -22,7 +22,7 @@ SCENARIO( "CCCCR, CISOTX, Card4",
         REQUIRE( Approx( 3.0 ) == card4.ecapt.value );
         REQUIRE( 4.0*dimwits::kelvin == card4.temp.value );
         REQUIRE( Approx( 5.0 ) == card4.sigpot.value );
-        REQUIRE( Approx( 6.0 ) == card4.adens.value );
+        REQUIRE( Approx( 6.0 ) == card4.adens.value.value );
       }
     } // WHEN
   } // GIVEN

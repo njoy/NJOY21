@@ -41,7 +41,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 13.0 ) == cisotx.card4.at(0).ecapt.value );
         REQUIRE( 14.0*dimwits::kelvin == cisotx.card4.at(0).temp.value );
         REQUIRE( Approx( 15.0 ) == cisotx.card4.at(0).sigpot.value );
-        REQUIRE( Approx( 16.0 ) == cisotx.card4.at(0).adens.value );
+        REQUIRE( Approx( 16.0 ) == cisotx.card4.at(0).adens.value.value );
 
         REQUIRE( 223 == cisotx.card4.at(1).kbr.value );
         REQUIRE( 301.0*dimwits::gram == cisotx.card4.at(1).amass.value );
@@ -49,7 +49,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 23.0 ) == cisotx.card4.at(1).ecapt.value );
         REQUIRE( 24.0*dimwits::kelvin == cisotx.card4.at(1).temp.value );
         REQUIRE( Approx( 25.0 ) == cisotx.card4.at(1).sigpot.value );
-        REQUIRE( Approx( 26.0 ) == cisotx.card4.at(1).adens.value );
+        REQUIRE( Approx( 26.0 ) == cisotx.card4.at(1).adens.value.value );
 
         REQUIRE( 323 == cisotx.card4.at(2).kbr.value );
         REQUIRE( 401.0*dimwits::gram == cisotx.card4.at(2).amass.value );
@@ -57,7 +57,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 33.0 ) == cisotx.card4.at(2).ecapt.value );
         REQUIRE( 34.0*dimwits::kelvin == cisotx.card4.at(2).temp.value );
         REQUIRE( Approx( 35.0 ) == cisotx.card4.at(2).sigpot.value );
-        REQUIRE( Approx( 36.0 ) == cisotx.card4.at(2).adens.value );
+        REQUIRE( Approx( 36.0 ) == cisotx.card4.at(2).adens.value.value );
 
         REQUIRE( 423 == cisotx.card4.at(3).kbr.value );
         REQUIRE( 501.0*dimwits::gram == cisotx.card4.at(3).amass.value );
@@ -65,7 +65,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 43.0 ) == cisotx.card4.at(3).ecapt.value );
         REQUIRE( 44.0*dimwits::kelvin == cisotx.card4.at(3).temp.value );
         REQUIRE( Approx( 45.0 ) == cisotx.card4.at(3).sigpot.value );
-        REQUIRE( Approx( 46.0 ) == cisotx.card4.at(3).adens.value );
+        REQUIRE( Approx( 46.0 ) == cisotx.card4.at(3).adens.value.value );
       }
     } // WHEN
 
@@ -103,7 +103,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 13.0 ) == cisotx.card4.at(0).ecapt.value );
         REQUIRE( 14.0*dimwits::kelvin == cisotx.card4.at(0).temp.value );
         REQUIRE( Approx( 15.0 ) == cisotx.card4.at(0).sigpot.value );
-        REQUIRE( Approx( 16.0 ) == cisotx.card4.at(0).adens.value );
+        REQUIRE( Approx( 16.0 ) == cisotx.card4.at(0).adens.value.value );
 
         REQUIRE( 223 == cisotx.card4.at(1).kbr.value );
         REQUIRE( 301.0*dimwits::gram == cisotx.card4.at(1).amass.value );
@@ -111,7 +111,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 23.0 ) == cisotx.card4.at(1).ecapt.value );
         REQUIRE( 24.0*dimwits::kelvin == cisotx.card4.at(1).temp.value );
         REQUIRE( Approx( 25.0 ) == cisotx.card4.at(1).sigpot.value );
-        REQUIRE( Approx( 26.0 ) == cisotx.card4.at(1).adens.value );
+        REQUIRE( Approx( 26.0 ) == cisotx.card4.at(1).adens.value.value );
 
         REQUIRE( 323 == cisotx.card4.at(2).kbr.value );
         REQUIRE( 401.0*dimwits::gram == cisotx.card4.at(2).amass.value );
@@ -119,7 +119,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 33.0 ) == cisotx.card4.at(2).ecapt.value );
         REQUIRE( 34.0*dimwits::kelvin == cisotx.card4.at(2).temp.value );
         REQUIRE( Approx( 35.0 ) == cisotx.card4.at(2).sigpot.value );
-        REQUIRE( Approx( 36.0 ) == cisotx.card4.at(2).adens.value );
+        REQUIRE( Approx( 36.0 ) == cisotx.card4.at(2).adens.value.value );
 
         REQUIRE( 423 == cisotx.card4.at(3).kbr.value );
         REQUIRE( 501.0*dimwits::gram == cisotx.card4.at(3).amass.value );
@@ -127,7 +127,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 43.0 ) == cisotx.card4.at(3).ecapt.value );
         REQUIRE( 44.0*dimwits::kelvin == cisotx.card4.at(3).temp.value );
         REQUIRE( Approx( 45.0 ) == cisotx.card4.at(3).sigpot.value );
-        REQUIRE( Approx( 46.0 ) == cisotx.card4.at(3).adens.value );
+        REQUIRE( Approx( 46.0 ) == cisotx.card4.at(3).adens.value.value );
       }
     } // WHEN
 
@@ -170,7 +170,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 13.0 ) == cisotx.card4.at(0).ecapt.value );
         REQUIRE( 14.0*dimwits::kelvin == cisotx.card4.at(0).temp.value );
         REQUIRE( Approx( 15.0 ) == cisotx.card4.at(0).sigpot.value );
-        REQUIRE( Approx( 16.0 ) == cisotx.card4.at(0).adens.value );
+        REQUIRE( Approx( 16.0 ) == cisotx.card4.at(0).adens.value.value );
 
         REQUIRE( 223 == cisotx.card4.at(1).kbr.value );
         REQUIRE( 301.0*dimwits::gram == cisotx.card4.at(1).amass.value );
@@ -178,7 +178,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 23.0 ) == cisotx.card4.at(1).ecapt.value );
         REQUIRE( 24.0*dimwits::kelvin == cisotx.card4.at(1).temp.value );
         REQUIRE( Approx( 25.0 ) == cisotx.card4.at(1).sigpot.value );
-        REQUIRE( Approx( 26.0 ) == cisotx.card4.at(1).adens.value );
+        REQUIRE( Approx( 26.0 ) == cisotx.card4.at(1).adens.value.value );
 
         REQUIRE( 323 == cisotx.card4.at(2).kbr.value );
         REQUIRE( 401.0*dimwits::gram == cisotx.card4.at(2).amass.value );
@@ -186,7 +186,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 33.0 ) == cisotx.card4.at(2).ecapt.value );
         REQUIRE( 34.0*dimwits::kelvin == cisotx.card4.at(2).temp.value );
         REQUIRE( Approx( 35.0 ) == cisotx.card4.at(2).sigpot.value );
-        REQUIRE( Approx( 36.0 ) == cisotx.card4.at(2).adens.value );
+        REQUIRE( Approx( 36.0 ) == cisotx.card4.at(2).adens.value.value );
 
         REQUIRE( 423 == cisotx.card4.at(3).kbr.value );
         REQUIRE( 501.0*dimwits::gram == cisotx.card4.at(3).amass.value );
@@ -194,7 +194,7 @@ SCENARIO( "CCCCR, CISOTX",
         REQUIRE( Approx( 43.0 ) == cisotx.card4.at(3).ecapt.value );
         REQUIRE( 44.0*dimwits::kelvin == cisotx.card4.at(3).temp.value );
         REQUIRE( Approx( 45.0 ) == cisotx.card4.at(3).sigpot.value );
-        REQUIRE( Approx( 46.0 ) == cisotx.card4.at(3).adens.value );
+        REQUIRE( Approx( 46.0 ) == cisotx.card4.at(3).adens.value.value );
       }
     } // WHEN
   } // GIVEN
