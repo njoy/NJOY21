@@ -3,6 +3,8 @@ std::vector< std::pair< Argument< Matn >, Argument< Wtn > > >
                               readMatnWtnList( Istream& is, const size_t nnin ){
   std::vector< std::pair< Argument< Matn >, Argument< Wtn > > > matnWtnList;
   std::vector< int > matnList;
+  Argument< Matn > matn_tmp;
+  Argument< Wtn > wtn_tmp;
 
   if( nnin > 10 ){
     Log::error( "The maximum number of materials allowed is 10." );
@@ -10,8 +12,8 @@ std::vector< std::pair< Argument< Matn >, Argument< Wtn > > >
   }
 
   for( size_t i = 0; i < nnin; i++ ){
-    auto matn_tmp = argument::extract< MIXR::Card3::Matn >( is );
-    auto wtn_tmp = argument::extract< MIXR::Card3::Wtn >( is );
+    matn_tmp = argument::extract< MIXR::Card3::Matn >( is );
+    wtn_tmp = argument::extract< MIXR::Card3::Wtn >( is );
 
     if( std::find( matnList.begin(), matnList.end(), matn_tmp.value ) !=
                                                                matnList.end() ){
