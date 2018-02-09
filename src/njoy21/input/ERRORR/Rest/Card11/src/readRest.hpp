@@ -1,5 +1,5 @@
 template< typename Istream >
-optional< std::tuple< Argument< Mtb >, Argument< Matc >, Argument< Mtc > >
+optional< std::tuple< Argument< Mtb >, Argument< Matc >, Argument< Mtc > > >
                                         readRest( Istream& is, const int matb ){
   if( matb == 0 ) return std::nullopt;
 

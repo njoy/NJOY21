@@ -18,7 +18,7 @@ public:
 #include "njoy21/input/ERRORR/Rest/src/readIread1.hpp"
 #include "njoy21/input/ERRORR/Rest/src/readCard10List.hpp"
 #include "njoy21/input/ERRORR/Rest/src/readCard11.hpp"
-#include "njoy21/input/ERRORR/Rest/src/readCard12a.hpp"
+#include "njoy21/input/ERRORR/Rest/src/readCard12ab.hpp"
 #include "njoy21/input/ERRORR/Rest/src/readCard13.hpp"
 #include "njoy21/input/ERRORR/Rest/src/readCard13b.hpp"
 
@@ -29,8 +29,7 @@ optional< std::tuple< Card8, Card8a, optional< std::pair< Card8b,
                                             std::vector< Card9 > > > > > iread1;
 optional< std::vector< Card10 > > card10List;
 optional< Card11 > card11;
-optional< Card12a > card12a;
-Card12b card12b;
+optional< std::pair< Card12a, Card12b > > card12ab;
 optional< Card13 > card13;
 optional< Card13b > card13b;
 
@@ -41,10 +40,9 @@ try:
   card3( is ),
   card7( is, ngout ),
   iread1( readIread1( is, this->card7.iread.value ) ),
-  card10( readCard10List( is, this->card7.iread.value ) ),
+  card10List( readCard10List( is, this->card7.iread.value ) ),
   card11( readCard11( is, nstan ) ),
-  card12a( readCard12a( is, this->card2.ign.value ) ),
-  card12b( is ),
+  card12ab( readCard12ab( is, this->card2.ign.value ) ),
   card13( readCard13( is, this->card2.iwt.value ) ),
   card13b( readCard13b( is, this->card2.iwt.value ) )
 {

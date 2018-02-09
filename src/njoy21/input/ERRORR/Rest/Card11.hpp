@@ -9,7 +9,8 @@ public:
 #include "njoy21/input/ERRORR/Rest/Card11/src/readRest.hpp"
 
 Argument< Matb > matb;
-optional< std::tuple< Argument< Mtb >, Argument< Matc >, Argument< Mtc > > rest;
+optional< std::tuple< Argument< Mtb >, Argument< Matc >, Argument< Mtc > > >
+                                                                           rest;
 
 template< typename Istream >
 Card11( Istream& is )

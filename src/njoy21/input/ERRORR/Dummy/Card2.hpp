@@ -10,7 +10,7 @@ Argument< Nout > nout;
 template< typename Istream >
 Card2( Istream& is )
 try:
-  nin( argument::extract< ERRORR::Dummy::Card2::Nin >( is ),
+  nin( argument::extract< ERRORR::Dummy::Card2::Nin >( is ) ),
   nout( argument::extract< ERRORR::Dummy::Card2::Nout >( is, this->nin.value ) )
 {
   Card::clear( is );

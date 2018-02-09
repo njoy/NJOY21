@@ -1,7 +1,7 @@
 struct Iread {
   using Value_t = int;
-  static name(){ return "iread"; }
-  static description(){
+  static std::string name(){ return "iread"; }
+  static std::string description(){
     return "The iread parameter specifies the method of mt and ek\n"
            "generation.\n\n"
            "value      meaning\n"

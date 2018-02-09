@@ -7,4 +7,5 @@ struct Nendf {
   static bool verify( const Value_t nendf ){
     return ( nendf == 999 or ( std::abs( nendf ) > 19 and
                                std::abs( nendf ) < 100 ) );
+  }
 };

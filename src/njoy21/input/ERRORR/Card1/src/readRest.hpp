@@ -8,13 +8,13 @@ readRest( Istream& is, const int nendf ){
   Argument< Npend > npend(
                        argument::extract< ERRORR::Card1::Npend >( is, nendf ) );
   Argument< Ngout > ngout( argument::extract< ERRORR::Card1::Ngout >( is, nendf,
-                                                          this->npend.value ) );
+                                                                npend.value ) );
   Argument< Nout > nout( argument::extract< ERRORR::Card1::Nout >( is, nendf,
-                                       this->npend.value, this->ngout.value ) );
+                                                   npend.value, ngout.value ) );
   Argument< Nin > nin( argument::extract< ERRORR::Card1::Nin >( is, nendf,
-                     this->npend.value, this->ngout.value, this->nout.value ) );
+                                       npend.value, ngout.value, nout.value ) );
   Argument< Nstan > nstan( argument::extract< ERRORR::Card1::Nstan >( is, nendf,
-    this->npend.value, this->ngout.value, this->nout.value, this->nin.value ) );
+                            npend.value, ngout.value, nout.value, nin.value ) );
 
   return std::make_tuple( std::move( npend ), std::move( ngout ),
                           std::move( nout ), std::move( nin ),

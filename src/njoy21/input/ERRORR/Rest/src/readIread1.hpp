@@ -5,19 +5,19 @@ readIread1( Istream& is, const int iread ){
   if( iread != 1 ) return std::nullopt;
 
   Card8 card8( is );
-  Card8a card8a( is, this->card8.nmt.value );
+  Card8a card8a( is, card8.nmt.value );
 
-  if( nek == 0 ){
+  if( card8.nek.value == 0 ){
     return std::make_tuple( std::move( card8 ), std::move( card8a ),
                             std::nullopt );
   } else {
-    Card8b card8b( is, this->card8.nek.value );
+    Card8b card8b( is, card8.nek.value );
 
     std::vector< Card9 > card9List;
 
-    for( size_t i = 0; i < this->card8.nek.value; i++ ){
-      for( size_t j = 0; j < this->card8.nmt.value; j++ ){
-        card9List.emplace_back( is, this->card8.nmt.value, j+1 );
+    for( size_t i = 0; i < card8.nek.value; i++ ){
+      for( size_t j = 0; j < card8.nmt.value; j++ ){
+        card9List.emplace_back( is, card8.nmt.value, j );
       }
     }
 

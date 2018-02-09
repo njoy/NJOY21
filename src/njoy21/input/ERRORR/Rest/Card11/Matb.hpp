@@ -6,6 +6,6 @@ struct Matb {
            "will be replaced by the materal/MT specified later in this card.";
   }
   static bool verify( const Value_t matb ){
-    return ( argument::common::Matb::verify( std::abs( matb ) ) or matb == 0 );
+    return ( argument::common::Matd::verify( std::abs( matb ) ) or matb == 0 );
   }
 };

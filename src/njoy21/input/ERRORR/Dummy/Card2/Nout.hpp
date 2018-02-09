@@ -1,4 +1,4 @@
-struct {
+struct Nout {
   using Value_t = int;
   static std::string name(){ return "nout"; }
   static std::string description(){

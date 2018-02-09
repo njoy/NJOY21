@@ -19,15 +19,6 @@ Card1( Istream& is )
 try:
   nendf( argument::extract< ERRORR::Card1::Nendf >( is ) ),
   rest( readRest( is, this->nendf.value ) )
-  npend( argument::extract< ERRORR::Card1::Npend >( is, this->nendf.value ) ),
-  ngout( argument::extract< ERRORR::Card1::Ngout >( is, this->nendf.value,
-                                                          this->npend.value ) ),
-  nout( argument::extract< ERRORR::Card1::Nout >( is, this->nendf.value,
-                                       this->npend.value, this->ngout.value ) ),
-  nin( argument::extract< ERRORR::Card1::Nin >( is, this->nendf.value,
-                     this->npend.value, this->ngout.value, this->nout.value ) ),
-  nstan( argument::extract< ERRORR::Card1::Nstan >( is, this->nendf.value,
-     this->npend.value, this->ngout.value, this->nout.value, this->nin.value ) )
 {
   Card::clear( is );
 }

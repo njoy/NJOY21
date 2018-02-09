@@ -6,7 +6,7 @@ readIfisspEfmean( Istream& is, const int mfcov ){
   auto ifissp = argument::extract< ERRORR::Rest::Card7::Ifissp >( is );
 
   auto efmean = argument::extract< ERRORR::Rest::Card7::Efmean >( is,
-                                                           this->ifissp.value );
+                                                                 ifissp.value );
 
   return std::make_pair( std::move( ifissp ), std::move( efmean ) );
 }
