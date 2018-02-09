@@ -13,7 +13,7 @@ SCENARIO( "epmin output values",
         for( auto& epmin : {0.0, 1.0, 2.0} ){
           iRecordStream<char> iss(
             std::istringstream( std::to_string( epmin ) ) );
-          REQUIRE( Approx( epmin ) == argument::extract< 
+          REQUIRE( epmin*dimwits::electronVolt == argument::extract< 
             COVR::Card2a::Epmin >( iss ).value );
         }
       } // THEN
@@ -22,7 +22,7 @@ SCENARIO( "epmin output values",
     WHEN( "no epmin value given " ){
       THEN( "default value is substituted in" ){
         iRecordStream<char> iss( std::istringstream( "  /" ) );
-        REQUIRE( Approx( 0.0 ) == argument::extract<
+        REQUIRE( 0.0*dimwits::electronVolt == argument::extract<
           COVR::Card2a::Epmin > ( iss ).value );
       } // THEN
     } // WHEN

@@ -18,16 +18,21 @@ struct Tlev {
       "                 0.001, 0.1, 0.2, 0.3, 0.6, 1.0  \n"
       "is used. However, if the default value is used, then no nlev input may\n"
       "be provided, thus invoking nlev default value of 6.";
-  } 
-  
+  }
+  static Value_t defaultValue( const int nlev ){
+    if( nlev != 6 ){
+      Log::error( "There is only a default set of tlev values for nlev=6." );
+      throw std::exception();
+    }
+    return std::vector< double>{ 0.001, 0.1, 0.2, 0.3, 0.6, 1.0 };
+  }
   static bool verify( const Value_t& tlevs, const int ){
     auto unsortedStart = std::is_sorted_until( tlevs.begin(), tlevs.end() );
 
     if( unsortedStart != tlevs.end() ) return false;
 
-    for( auto t : tlevs ){
-      if( t <= 0.0 or t > 1.0 ) return false;
-    }
+    if( tlevs.front() <= 0.0 ) return false;
+    if( tlevs.back() > 1.0 ) return false;
 
     return true;
   }

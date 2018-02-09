@@ -19,6 +19,12 @@ SCENARIO( "nout output values",
         }
       } // THEN
     } // WHEN
+    WHEN( "no input is provided" ){
+      iRecordStream<char> iss( std::istringstream( " /" ) );
+      THEN( "the default value is provided" ){
+        REQUIRE( 0 == argument::extract< COVR::Card1::Nout >( iss, nin).value );
+      } // THEN
+    } // WHEN
     WHEN( "nout input is equal to nin value" ){
       THEN( "an exception is thrown" ){
         iRecordStream<char> iss(

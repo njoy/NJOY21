@@ -4,7 +4,7 @@ std::vector< Card4 > readCard4List( Istream& is,
  optional< std::tuple< Card2b, Card3b, Card3c > > ){
   int ncase;
   if( card23a != std::nullopt and card23b != std::nullopt ){
-    Log::info( "Both Card23a and Card23b exist, but only one is required." );
+    Log::error( "Both Card23a and Card23b exist, but only one is required." );
     throw std::exception();
   } else if( card23a != std::nullopt ){
     ncase = std::get< Card3a >( *( card23a ) ).ncase.value;

@@ -21,7 +21,7 @@ SCENARIO( "COVR",
 
       iRecordStream<char> iss{ std::istringstream{ inp } };
 
-      THEN( "an exception is thrown" ){
+      THEN( "the values can be verified" ){
         COVR covr( iss );
 
         REQUIRE( 22 == covr.card1.nin.value );
@@ -40,7 +40,7 @@ SCENARIO( "COVR",
         REQUIRE( Approx( 1.0 ) ==
                        std::get< 1 >( *( covr.card23a ) )->tlev.value.at( 3 ) );
 
-        REQUIRE( Approx( 0.001 ) ==
+        REQUIRE( 0.001*dimwits::electronVolt ==
                                std::get< 2 >( *( covr.card23a ) ).epmin.value );
 
         REQUIRE( 1 == std::get< 3 >( *( covr.card23a ) ).irelco.value );
@@ -72,7 +72,7 @@ SCENARIO( "COVR",
 
       iRecordStream<char> iss{ std::istringstream{ inp } };
 
-      THEN( "an exception is thrown" ){
+      THEN( "the values can be verified" ){
         COVR covr( iss );
 
         REQUIRE( 22 == covr.card1.nin.value );
@@ -124,7 +124,8 @@ SCENARIO( "COVR",
         REQUIRE( 1 == std::get< 0 >( *( covr.card23a ) ).icolor.value );
         REQUIRE( std::nullopt == std::get< 1 >( *( covr.card23a ) ) );
 
-        REQUIRE( Approx( 0.0 ) == std::get< 2 >( *(covr.card23a) ).epmin.value);
+        REQUIRE( 0.0*dimwits::electronVolt ==
+                                  std::get< 2 >( *(covr.card23a) ).epmin.value);
 
         REQUIRE( 1 == std::get< 3 >( *( covr.card23a ) ).irelco.value );
         REQUIRE( 1 == std::get< 3 >( *( covr.card23a ) ).ncase.value );
@@ -162,7 +163,8 @@ SCENARIO( "COVR",
         REQUIRE( 1 == std::get< 0 >( *( covr.card23a ) ).icolor.value );
         REQUIRE( std::nullopt == std::get< 1 >( *( covr.card23a ) ) );
 
-        REQUIRE( Approx( 0.0 ) == std::get< 2 >( *(covr.card23a) ).epmin.value);
+        REQUIRE( 0.0*dimwits::electronVolt ==
+                                  std::get< 2 >( *(covr.card23a) ).epmin.value);
 
         REQUIRE( 1 == std::get< 3 >( *( covr.card23a ) ).irelco.value );
         REQUIRE( 1 == std::get< 3 >( *( covr.card23a ) ).ncase.value );
@@ -213,7 +215,8 @@ SCENARIO( "COVR",
         REQUIRE( 1 == std::get< 0 >( *( covr.card23a ) ).icolor.value );
         REQUIRE( std::nullopt == std::get< 1 >( *( covr.card23a ) ) );
 
-        REQUIRE( Approx( 0.0 ) == std::get< 2 >( *(covr.card23a) ).epmin.value);
+        REQUIRE( 0.0*dimwits::electronVolt ==
+                                  std::get< 2 >( *(covr.card23a) ).epmin.value);
 
         REQUIRE( 1 == std::get< 3 >( *( covr.card23a ) ).irelco.value );
         REQUIRE( 14 == std::get< 3 >( *( covr.card23a ) ).ncase.value );
@@ -316,7 +319,8 @@ SCENARIO( "COVR",
         REQUIRE( 1 == std::get< 0 >( *( covr.card23a ) ).icolor.value );
         REQUIRE( std::nullopt == std::get< 1 >( *( covr.card23a ) ) );
 
-        REQUIRE( Approx( 0.0 ) == std::get< 2 >( *(covr.card23a) ).epmin.value);
+        REQUIRE( 0.0*dimwits::electronVolt ==
+                                  std::get< 2 >( *(covr.card23a) ).epmin.value);
 
         REQUIRE( 1 == std::get< 3 >( *( covr.card23a ) ).irelco.value );
         REQUIRE( 1 == std::get< 3 >( *( covr.card23a ) ).ncase.value );
@@ -354,7 +358,7 @@ SCENARIO( "COVR",
         REQUIRE( 1 == std::get< 0 >( *( covr.card23a ) ).icolor.value );
         REQUIRE( std::nullopt == std::get< 1 >( *( covr.card23a ) ) );
 
-        REQUIRE( Approx( 1000.0 ) ==
+        REQUIRE( 1000.0*dimwits::electronVolt ==
                                std::get< 2 >( *( covr.card23a ) ).epmin.value );
 
         REQUIRE( 1 == std::get< 3 >( *( covr.card23a ) ).irelco.value );

@@ -17,9 +17,33 @@ SCENARIO( "Tlev input values",
         REQUIRE( refTlevs == tlevs.value );
       }
     } // WHEN
+
+    WHEN( "no value is provided" ){
+      iRecordStream<char> iss( std::istringstream( " /" ) );
+
+      THEN( "the default values can be verified" ){
+        auto tlev = argument::extract< COVR::Card2z::Tlev >( iss, 6 ).value;
+
+        REQUIRE( tlev.size() == 6 );
+
+        REQUIRE( Approx( 0.001 ) == tlev.at( 0 ) );
+        REQUIRE( Approx( 0.1 ) == tlev.at( 1 ) );
+        REQUIRE( Approx( 0.2 ) == tlev.at( 2 ) );
+        REQUIRE( Approx( 0.3 ) == tlev.at( 3 ) );
+        REQUIRE( Approx( 0.6 ) == tlev.at( 4 ) );
+        REQUIRE( Approx( 1.0 ) == tlev.at( 5 ) );
+      }
+    } // WHEN
   } // GIVEN
   
   GIVEN( "invalid inputs" ){
+    WHEN( "no value is provided, but the wrong nlev is given" ){
+      iRecordStream<char> iss( std::istringstream( " /" ) );
+
+      THEN( "an exception is thrown" ){
+        REQUIRE_THROWS( argument::extract< COVR::Card2z::Tlev >( iss, 7 ) );
+      }
+    } // WHEN
     WHEN( "the tlev values are invalid" ){
       for( std::string entry : {"0.0 0.5 1.0", "-0.1 0.3 1.0", "0.1 0.5 1.1"} ){
         iRecordStream<char> iss{ std::istringstream{ entry } };

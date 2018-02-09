@@ -9,7 +9,7 @@ struct Irelco {
       "produced the covariances to be plotted.\n"
       "\n"
       "irelco accepts a value of either 0 or 1, which indicate absolute\n"
-      "and relative covariances, respectively. irelco has a default value\n"
+      "or relative covariances, respectively. irelco has a default value\n"
       "of 1.";
   } 
   

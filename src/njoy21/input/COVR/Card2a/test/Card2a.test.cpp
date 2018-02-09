@@ -14,7 +14,7 @@ SCENARIO( "COVR card2a values",
           iRecordStream<char> iss(
             std::istringstream( std::to_string( epmin ) ) );
 	  COVR::Card2a card2a( iss );
-	  REQUIRE( Approx( epmin ) == card2a.epmin.value );
+	  REQUIRE( epmin*dimwits::electronVolt == card2a.epmin.value );
         }
       } // THEN
     } // WHEN
@@ -23,7 +23,7 @@ SCENARIO( "COVR card2a values",
       THEN( "default card2a value is substituted in" ){
         iRecordStream<char> iss( std::istringstream( "  /" ) );
 	COVR::Card2a card2a( iss );
-	REQUIRE( Approx( 0.0 ) == card2a.epmin.value );
+	REQUIRE( 0.0*dimwits::electronVolt == card2a.epmin.value );
       } // THEN
     } // WHEN
   } // GIVEN
