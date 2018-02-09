@@ -37,6 +37,17 @@ public:
             card3List->emplace_back( is, this->card1.nout );
           }
           card3List->pop_back();
+          auto unsortedStart = std::is_sorted_until( card3List->begin(),
+               card3List->end(), []( Card3 first, Card3 second )->bool{
+                 return first.matd.value < second.matd.value; } );
+          if( unsortedStart != card3List->end() ){
+            Log::error( "Materials specified in MODER::Card3 must be in\n"
+                        "ascending order." );
+            Log::info( "MODER::Card3 material {} > material {}",
+                       unsortedStart[-1].matd.value,
+                       unsortedStart->matd.value );
+            throw std::exception();
+          }
         }
     } catch( std::exception& e ){
       Log::info("Trouble while validating MODER input");

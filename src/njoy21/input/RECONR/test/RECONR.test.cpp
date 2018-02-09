@@ -156,6 +156,14 @@ SCENARIO( "Parsing valid RECONR input" ){
 
 SCENARIO( "Parsing invalid RECONR input" ){
   std::istringstream iss;
+  WHEN( "Card 3 mat values not in increasing order" ){
+    iRecordStream<char> iss( std::istringstream( 
+      card1 + card2 + "1306 1 3\n" + card4 + card5 + card6 + 
+      "125 0 0\n" + card4 + "0/\n" ) );
+    THEN( "an exception is thrown" ){
+      REQUIRE_THROWS( RECONR(iss) );
+    }
+  }
 
   WHEN( "Only terminating Card3" ){
     THEN( "an exception is thrown" ){
@@ -217,6 +225,15 @@ SCENARIO( "Parsing invalid RECONR input" ){
 	( std::istringstream( card1 + card2 + "1306 1 0\n"
 			      + card4 + "'abcd\n" + "0/\n" ) );
       REQUIRE_THROWS( RECONR(iss) );
+    }
+  }
+  WHEN( "Cards 3,4,5,6,3,4,3 with materials specified in descending order" ){
+    iRecordStream<char> iss
+      ( std::istringstream( card1 + card2 + " 1306 1 3\n" + card4 + card5
+  			    + card6 + " 1305 0 0\n" + card4 + "0/\n" ) );
+
+    THEN( "an exception is thrown" ){
+      REQUIRE_THROWS( RECONR( iss ) );
     }
   }
 }

@@ -25,6 +25,13 @@ SCENARIO( "ngout2 output values", "[GROUPR],[Card1], [Ngout2]"){
         }
       }
     }
+    WHEN( "the ngout2 value is not given" ){
+      iRecordStream<char> issNgout2( std::istringstream( " /" ) );
+      THEN( "the default value is verified" ){
+        REQUIRE( 0 == argument::extract< GROUPR::Card1::Ngout2 >(
+                           issNgout2, nendf, npend, ngout1 ).value );
+      }
+    }
     WHEN( "the npend, nendf, or ngout1 value and ngout2 values are the same" ){
       THEN( "an exception is thrown" ){
         int ngout2 = 23;
