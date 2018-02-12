@@ -6,7 +6,7 @@ struct Nstan {
            "tape.  The default value is zero.";
   }
   static Value_t defaultValue( const int, const int, const int, const int,
-                               const int, const int ){
+                               const int ){
     return 0;
   }
   static bool verify( const int nstan, const int nendf, const int npend,

@@ -5,8 +5,7 @@ struct Nin {
     return "The nin parameter specifies the unit for input covariance\n"
            "input tape.  the default value is zero.";
   }
-  static Value_t defaultValue( const int, const int, const int, const int,
-                               const int ){
+  static Value_t defaultValue( const int, const int, const int, const int ){
     return 0;
   }
   static bool verify( const int nin, const int nendf, const int npend,

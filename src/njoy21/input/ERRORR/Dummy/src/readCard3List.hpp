@@ -5,7 +5,8 @@ std::vector< Card3 > readCard3List( Istream& is ){
 
   do{
     card3List.emplace_back( is );
-    if( std::find( matList.begin(), matList.end(), card3List.back().mt.value ) != matList.end() ){
+    if( std::find( matList.begin(), matList.end(), card3List.back().mt.value )
+                                                             != matList.end() ){
       Log::error( "Same material number ({}) provided twice.",
                                                     card3List.back().mt.value );
       throw std::exception();
@@ -21,6 +22,15 @@ std::vector< Card3 > readCard3List( Istream& is ){
     throw std::exception();
   } else if( card3List.size() > 5 ){
     Log::error( "Too many materials ( >5 ) provided." );
+    throw std::exception();
+  } else if( card3List.end() != std::is_sorted_until( card3List.begin(),
+                                                      card3List.end(),
+                                                      []( auto& c31, auto& c32)
+                                                      ->bool{
+                                                        return c31.mt.value <
+                                                               c32.mt.value;
+                                                      } ) ){
+    Log::error( "Materials are not provided in ascending order." );
     throw std::exception();
   }
 

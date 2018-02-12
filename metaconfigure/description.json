@@ -56,7 +56,9 @@
       "linux": {
         "flags": {
           "base project": [],
-          "common": [],
+          "common": [
+            "-Wno-subobject-linkage"
+          ],
           "coverage": [
             "--coverage"
           ],
@@ -597,6 +599,7 @@
     "src/njoy21/input/ERRORR/Dummy.hpp",
     "src/njoy21/input/ERRORR/Dummy/Card3.hpp",
     "src/njoy21/input/ERRORR/Dummy/Card2.hpp",
+    "src/njoy21/input/ERRORR/Dummy/Card3/Mt.hpp",
     "src/njoy21/input/ERRORR/Dummy/src/readCard3List.hpp",
     "src/njoy21/input/ERRORR/Dummy/Card2/Nout.hpp",
     "src/njoy21/input/ERRORR/Card1/Nstan.hpp",
@@ -618,7 +621,6 @@
     "src/njoy21/input/ERRORR/Rest/Card2.hpp",
     "src/njoy21/input/ERRORR/Rest/Card13.hpp",
     "src/njoy21/input/ERRORR/Rest/Card8b.hpp",
-    "src/njoy21/input/ERRORR/Rest/Akxy.hpp",
     "src/njoy21/input/ERRORR/Rest/Card3.hpp",
     "src/njoy21/input/ERRORR/Rest/Card12b/Egn.hpp",
     "src/njoy21/input/ERRORR/Rest/Card13/Wght.hpp",
@@ -1775,6 +1777,66 @@
     ],
     "njoy21.input.DTFR.Card8.Mat": [
       "src/njoy21/input/DTFR/Card8/Mat/test/Mat.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Card1": [
+      "src/njoy21/input/ERRORR/Card1/test/Card1.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Card1.Nendf": [
+      "src/njoy21/input/ERRORR/Card1/Nendf/test/Nendf.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Card1.Ngout": [
+      "src/njoy21/input/ERRORR/Card1/Ngout/test/Ngout.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Card1.Nin": [
+      "src/njoy21/input/ERRORR/Card1/Nin/test/Nin.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Card1.Nout": [
+      "src/njoy21/input/ERRORR/Card1/Nout/test/Nout.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Card1.Npend": [
+      "src/njoy21/input/ERRORR/Card1/Npend/test/Npend.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Card1.Nstan": [
+      "src/njoy21/input/ERRORR/Card1/Nstan/test/Nstan.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Dummy": [
+      "src/njoy21/input/ERRORR/Dummy/test/Dummy.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Dummy.Card2": [
+      "src/njoy21/input/ERRORR/Dummy/Card2/test/Card2.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Dummy.Card2.Nout": [
+      "src/njoy21/input/ERRORR/Dummy/Card2/Nout/test/Nout.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Dummy.Card3": [
+      "src/njoy21/input/ERRORR/Dummy/Card3/test/Card3.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Dummy.Card3.Mt": [
+      "src/njoy21/input/ERRORR/Dummy/Card3/Mt/test/Mt.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card2": [
+      "src/njoy21/input/ERRORR/Rest/Card2/test/Card2.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card2.Ign": [
+      "src/njoy21/input/ERRORR/Rest/Card2/Ign/test/Ign.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card2.Iprint": [
+      "src/njoy21/input/ERRORR/Rest/Card2/Iprint/test/Iprint.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card2.Irelco": [
+      "src/njoy21/input/ERRORR/Rest/Card2/Irelco/test/Irelco.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card2.Iwt": [
+      "src/njoy21/input/ERRORR/Rest/Card2/Iwt/test/Iwt.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card3": [
+      "src/njoy21/input/ERRORR/Rest/Card3/test/Card3.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card3.Mprint": [
+      "src/njoy21/input/ERRORR/Rest/Card3/Mprint/test/Mprint.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card3.Tempin": [
+      "src/njoy21/input/ERRORR/Rest/Card3/Tempin/test/Tempin.test.cpp"
     ],
     "njoy21.input.GAMINR": [
       "src/njoy21/input/GAMINR/test/GAMINR.test.cpp"

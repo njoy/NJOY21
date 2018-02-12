@@ -5,7 +5,7 @@ struct Nout {
     return "The nout parameter specifies the unit for the output\n"
            "covariance tape.  The default value is zero.";
   }
-  static Value_t defaultValue( const int, const int, const int, const int ){
+  static Value_t defaultValue( const int, const int, const int ){
     return 0;
   }
   static bool verify( const int nout, const int nendf, const int npend,
