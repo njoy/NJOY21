@@ -5,8 +5,12 @@ struct Ek {
     return "The ek parameter specifies the nek+1 energy bin boundaries for\n"
            "the derived cross section covariances, in eV.";
   }
-  static bool verify( const Value_t ek ){
+  static bool verify( const Value_t ek, const int ){
     std::vector< Quantity< ElectronVolt > > used;
+    if( ek.size() == 0 ){
+      Log::error( "No energy bins were provided." );
+      return false;
+    }
     for( auto i : ek ){
 // Check for duplicates
       if( std::find( used.begin(), used.end(), i ) != used.end() ){
@@ -18,6 +22,7 @@ struct Ek {
         Log::info( "Energy bin boundary value {} is invalid.", i );
         return false;
       }
+      used.push_back( i );
     }
 // Check for ascending order
     auto unsortedStart = std::is_sorted_until( ek.begin(), ek.end() );

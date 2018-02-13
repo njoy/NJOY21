@@ -5,7 +5,11 @@ struct Mts {
     return "The mts parameter specifies the nmt material values. The values\n"
            "should be valid mt values, in ascending order with no duplicates.";
   }
-  static bool verify( const Value_t mts ){
+  static bool verify( const Value_t mts, const int ){
+    if( mts.size() == 0 ){
+      Log::error( "No materials were provided." );
+      return false;
+    }
     std::vector< int > used;
     for( auto i : mts ){
 // Check for duplicates

@@ -1814,6 +1814,30 @@
     "njoy21.input.ERRORR.Dummy.Card3.Mt": [
       "src/njoy21/input/ERRORR/Dummy/Card3/Mt/test/Mt.test.cpp"
     ],
+    "njoy21.input.ERRORR.Rest.Card10": [
+      "src/njoy21/input/ERRORR/Rest/Card10/test/Card10.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card10.Mat1": [
+      "src/njoy21/input/ERRORR/Rest/Card10/Mat1/test/Mat1.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card10.Mt1": [
+      "src/njoy21/input/ERRORR/Rest/Card10/Mt1/test/Mt1.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card11": [
+      "src/njoy21/input/ERRORR/Rest/Card11/test/Card11.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card11.Matb": [
+      "src/njoy21/input/ERRORR/Rest/Card11/Matb/test/Matb.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card11.Matc": [
+      "src/njoy21/input/ERRORR/Rest/Card11/Matc/test/Matc.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card11.Mtb": [
+      "src/njoy21/input/ERRORR/Rest/Card11/Mtb/test/Mtb.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card11.Mtc": [
+      "src/njoy21/input/ERRORR/Rest/Card11/Mtc/test/Mtc.test.cpp"
+    ],
     "njoy21.input.ERRORR.Rest.Card2": [
       "src/njoy21/input/ERRORR/Rest/Card2/test/Card2.test.cpp"
     ],
@@ -1861,6 +1885,33 @@
     ],
     "njoy21.input.ERRORR.Rest.Card7.Mfcov": [
       "src/njoy21/input/ERRORR/Rest/Card7/Mfcov/test/Mfcov.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card8": [
+      "src/njoy21/input/ERRORR/Rest/Card8/test/Card8.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card8.Nek": [
+      "src/njoy21/input/ERRORR/Rest/Card8/Nek/test/Nek.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card8.Nmt": [
+      "src/njoy21/input/ERRORR/Rest/Card8/Nmt/test/Nmt.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card8a": [
+      "src/njoy21/input/ERRORR/Rest/Card8a/test/Card8a.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card8a.Mts": [
+      "src/njoy21/input/ERRORR/Rest/Card8a/Mts/test/Mts.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card8b": [
+      "src/njoy21/input/ERRORR/Rest/Card8b/test/Card8b.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card8b.Ek": [
+      "src/njoy21/input/ERRORR/Rest/Card8b/Ek/test/Ek.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card9": [
+      "src/njoy21/input/ERRORR/Rest/Card9/test/Card9.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card9.Akxy": [
+      "src/njoy21/input/ERRORR/Rest/Card9/Akxy/test/Akxy.test.cpp"
     ],
     "njoy21.input.GAMINR": [
       "src/njoy21/input/GAMINR/test/GAMINR.test.cpp"

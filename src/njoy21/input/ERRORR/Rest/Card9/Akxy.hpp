@@ -9,11 +9,20 @@ struct Akxy {
            "for each energy group.";
   }
   static Value_t defaultValue( const int nmt, const int diag ){
+    if( diag >= nmt ){
+      Log::error( "Diag value cannot be greater than the number of materials.");
+      throw std::exception();
+    }
     std::vector< double > retval( nmt, 0.0 );
     retval.at(diag) = 1.0;
     return retval;
   }
-  static bool verify( const Value_t akxy, const int ){
+  static bool verify( const Value_t akxy, const int nmt, const int diag ){
+    if( diag >= nmt ){
+      Log::error( "Diag value cannot be greater than the number of materials.");
+      throw std::exception();
+    }
+
     auto a = std::find_if( akxy.begin(), akxy.end(), [](double d){
                                             return ( std::abs( d ) > 1.0 ); } );
 
