@@ -1838,6 +1838,30 @@
     "njoy21.input.ERRORR.Rest.Card3.Tempin": [
       "src/njoy21/input/ERRORR/Rest/Card3/Tempin/test/Tempin.test.cpp"
     ],
+    "njoy21.input.ERRORR.Rest.Card7": [
+      "src/njoy21/input/ERRORR/Rest/Card7/test/Card7.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card7.Dap": [
+      "src/njoy21/input/ERRORR/Rest/Card7/Dap/test/Dap.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card7.Efmean": [
+      "src/njoy21/input/ERRORR/Rest/Card7/Efmean/test/Efmean.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card7.Ifissp": [
+      "src/njoy21/input/ERRORR/Rest/Card7/Ifissp/test/Ifissp.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card7.Iread": [
+      "src/njoy21/input/ERRORR/Rest/Card7/Iread/test/Iread.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card7.Irespr": [
+      "src/njoy21/input/ERRORR/Rest/Card7/Irespr/test/Irespr.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card7.Legord": [
+      "src/njoy21/input/ERRORR/Rest/Card7/Legord/test/Legord.test.cpp"
+    ],
+    "njoy21.input.ERRORR.Rest.Card7.Mfcov": [
+      "src/njoy21/input/ERRORR/Rest/Card7/Mfcov/test/Mfcov.test.cpp"
+    ],
     "njoy21.input.GAMINR": [
       "src/njoy21/input/GAMINR/test/GAMINR.test.cpp"
     ],
