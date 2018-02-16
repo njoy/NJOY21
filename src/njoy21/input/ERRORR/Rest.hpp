@@ -28,7 +28,7 @@ Card7 card7;
 optional< std::tuple< Card8, Card8a, optional< std::pair< Card8b,
                                             std::vector< Card9 > > > > > iread1;
 optional< std::vector< Card10 > > card10List;
-optional< Card11 > card11;
+optional< std::vector< Card11 > > card11List;
 optional< std::pair< Card12a, Card12b > > card12ab;
 optional< Card13 > card13;
 optional< Card13b > card13b;
@@ -41,7 +41,7 @@ try:
   card7( is, ngout ),
   iread1( readIread1( is, this->card7.iread.value ) ),
   card10List( readCard10List( is, this->card7.iread.value ) ),
-  card11( readCard11( is, nstan ) ),
+  card11List( readCard11( is, nstan ) ),
   card12ab( readCard12ab( is, this->card2.ign.value ) ),
   card13( readCard13( is, this->card2.iwt.value ) ),
   card13b( readCard13b( is, this->card2.iwt.value ) )

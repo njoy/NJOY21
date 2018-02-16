@@ -5,7 +5,7 @@ struct Npend {
     return "The npend parameter specifies the unit for the pendf tape.";
   }
   static bool verify( const Value_t npend, const int nendf ){
-    return ( argument::common::Nin::verify( npend ) and
-             std::abs( npend ) != std::abs( nendf ) );
+    return ( npend == 0 or ( argument::common::Nin::verify( npend ) and
+             std::abs( npend ) != std::abs( nendf ) ) );
   }
 };

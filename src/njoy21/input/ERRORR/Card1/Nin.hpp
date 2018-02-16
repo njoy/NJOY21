@@ -10,10 +10,10 @@ struct Nin {
   }
   static bool verify( const int nin, const int nendf, const int npend,
                       const int ngout, const int nout ){
-    return ( argument::common::Nin::verify( nin ) and
-             std::abs( nin ) != std::abs( nendf ) and
-             std::abs( nin ) != std::abs( npend ) and
-             std::abs( nin ) != std::abs( ngout ) and
-             std::abs( nin ) != std::abs( nout ) );
+    return ( nin == 0 or ( argument::common::Nin::verify( nin ) and
+                           std::abs( nin ) != std::abs( nendf ) and
+                           std::abs( nin ) != std::abs( npend ) and
+                           std::abs( nin ) != std::abs( ngout ) and
+                           std::abs( nin ) != std::abs( nout ) ) );
   }
 };

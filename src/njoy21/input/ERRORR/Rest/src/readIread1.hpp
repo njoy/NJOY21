@@ -15,8 +15,8 @@ readIread1( Istream& is, const int iread ){
 
     std::vector< Card9 > card9List;
 
-    for( size_t i = 0; i < card8.nek.value; i++ ){
-      for( size_t j = 0; j < card8.nmt.value; j++ ){
+    for( int i = 0; i < card8.nek.value; i++ ){
+      for( int j = 0; j < card8.nmt.value; j++ ){
         card9List.emplace_back( is, card8.nmt.value, j );
       }
     }

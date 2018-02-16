@@ -18,5 +18,12 @@ optional< std::vector< Card10 > > readCard10List( Istream& is, const int iread )
     used.push_back( card10List.back().mat1.value );
   } while( card10List.back().mat1.value != 0 );
 
+  card10List.pop_back();
+
+  if( card10List.size() == 0 ){
+    Log::error( "No valid Card10 values were provided." );
+    throw std::exception();
+  }
+
   return card10List;
 }

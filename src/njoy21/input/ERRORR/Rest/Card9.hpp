@@ -6,7 +6,7 @@ public:
 Argument< Akxy > akxy;
 
 template< typename Istream >
-Card9( Istream& is, const int nmt, const size_t diag )
+Card9( Istream& is, const int nmt, const int diag )
 try:
   akxy( argument::extract< ERRORR::Rest::Card9::Akxy >( is, nmt, diag ) )
 {

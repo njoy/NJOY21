@@ -11,11 +11,11 @@ struct Nstan {
   }
   static bool verify( const int nstan, const int nendf, const int npend,
                       const int ngout, const int nout, const int nin ){
-    return ( argument::common::Nin::verify( nstan ) and
-             std::abs( nstan ) != std::abs( nendf ) and
-             std::abs( nstan ) != std::abs( npend ) and
-             std::abs( nstan ) != std::abs( ngout ) and
-             std::abs( nstan ) != std::abs( nout ) and
-             std::abs( nstan ) != std::abs( nin ) );
+    return ( nstan == 0 or ( argument::common::Nin::verify( nstan ) and
+                             std::abs( nstan ) != std::abs( nendf ) and
+                             std::abs( nstan ) != std::abs( npend ) and
+                             std::abs( nstan ) != std::abs( ngout ) and
+                             std::abs( nstan ) != std::abs( nout ) and
+                             std::abs( nstan ) != std::abs( nin ) ) );
   }
 };

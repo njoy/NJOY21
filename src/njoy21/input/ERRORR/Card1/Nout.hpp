@@ -10,9 +10,9 @@ struct Nout {
   }
   static bool verify( const int nout, const int nendf, const int npend,
                       const int ngout ){
-    return ( argument::common::Nin::verify( nout ) and
-             std::abs( nout ) != std::abs( nendf ) and
-             std::abs( nout ) != std::abs( npend ) and
-             std::abs( nout ) != std::abs( ngout ) );
+    return ( nout == 0 or ( argument::common::Nin::verify( nout ) and
+                            std::abs( nout ) != std::abs( nendf ) and
+                            std::abs( nout ) != std::abs( npend ) and
+                            std::abs( nout ) != std::abs( ngout ) ) );
   }
 };
