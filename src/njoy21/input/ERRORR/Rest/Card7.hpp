@@ -9,27 +9,28 @@ public:
 #include "njoy21/input/ERRORR/Rest/Card7/Efmean.hpp"
 #include "njoy21/input/ERRORR/Rest/Card7/Dap.hpp"
 
-#include "njoy21/input/ERRORR/Rest/Card7/src/readIrespr.hpp"
-#include "njoy21/input/ERRORR/Rest/Card7/src/readLegord.hpp"
-#include "njoy21/input/ERRORR/Rest/Card7/src/readIfisspEfmean.hpp"
-#include "njoy21/input/ERRORR/Rest/Card7/src/readDap.hpp"
-
 Argument< Iread > iread;
 Argument< Mfcov > mfcov;
-optional< Argument< Irespr > > irespr;
-optional< Argument< Legord > > legord;
-optional< std::pair< Argument< Ifissp >, Argument< Efmean > > > ifisspEfmean;
-optional< Argument< Dap > > dap;
+Argument< Irespr > irespr;
+Argument< Legord > legord;
+Argument< Ifissp > ifissp;
+Argument< Efmean > efmean;
+Argument< Dap > dap;
 
 template< typename Istream >
 Card7( Istream& is, const int ngout )
 try:
   iread( argument::extract< ERRORR::Rest::Card7::Iread >( is, ngout ) ),
   mfcov( argument::extract< ERRORR::Rest::Card7::Mfcov >( is, ngout ) ),
-  irespr( readIrespr( is, this->mfcov.value ) ), // mf = 32
-  legord( readLegord( is, this->mfcov.value ) ), // mf = 34
-  ifisspEfmean( readIfisspEfmean( is, this->mfcov.value ) ), // mf = 35
-  dap( readDap( is, this->mfcov.value ) ) // mf = 33
+  irespr( argument::extract< ERRORR::Rest::Card7::Irespr >( is,
+                                                          this->mfcov.value ) ),
+  legord( argument::extract< ERRORR::Rest::Card7::Legord >( is,
+                                                          this->mfcov.value ) ),
+  ifissp( argument::extract< ERRORR::Rest::Card7::Ifissp >( is,
+                                                          this->mfcov.value ) ),
+  efmean( argument::extract< ERRORR::Rest::Card7::Efmean >( is,
+                                      this->ifissp.value, this->mfcov.value ) ),
+  dap( argument::extract< ERRORR::Rest::Card7::Dap >( is, this->mfcov.value ) )
 {
   Card::clear( is );
 }

@@ -281,7 +281,7 @@ SCENARIO( "ERRORR, Rest",
       iRecordStream<char> iss( std::istringstream(
  " 600 12 3 0 0 /\n" // matd, ign, iwt, iprint, irelco
  " 1 314.15 /\n" // mprint, tempin
- " 0 33 0 0.3 /" // iread, mfcov
+ " 0 33 0 1 -1 2.0 0.3 /" // iread, mfcov
       ) );
 
       THEN( "the values can be verified" ){
@@ -298,8 +298,8 @@ SCENARIO( "ERRORR, Rest",
 
         REQUIRE( 0 == rest.card7.iread.value );
         REQUIRE( 33 == rest.card7.mfcov.value );
-        REQUIRE( 0 == rest.card7.irespr->value );
-        REQUIRE( Approx( 0.3 ) == rest.card7.dap->value );
+        REQUIRE( 0 == rest.card7.irespr.value );
+        REQUIRE( Approx( 0.3 ) == rest.card7.dap.value );
       }
     } // WHEN
 
@@ -307,7 +307,7 @@ SCENARIO( "ERRORR, Rest",
       iRecordStream<char> iss( std::istringstream(
  " 600 12 3 0 0 /\n" // matd, ign, iwt, iprint, irelco
  " 1 314.15 /\n" // mprint, tempin
- " 0 34 1 /" // iread, mfcov
+ " 0 34 1 1 /" // iread, mfcov
       ) );
 
       THEN( "the values can be verified" ){
@@ -324,7 +324,7 @@ SCENARIO( "ERRORR, Rest",
 
         REQUIRE( 0 == rest.card7.iread.value );
         REQUIRE( 34 == rest.card7.mfcov.value );
-        REQUIRE( 1 == rest.card7.legord->value );
+        REQUIRE( 1 == rest.card7.legord.value );
       }
     } // WHEN
 
@@ -332,7 +332,7 @@ SCENARIO( "ERRORR, Rest",
       iRecordStream<char> iss( std::istringstream(
  " 600 12 3 0 0 /\n" // matd, ign, iwt, iprint, irelco
  " 1 314.15 /\n" // mprint, tempin
- " 0 35 1 2.2e5 /" // iread, mfcov
+ " 0 35 1 1 1 2.2e5 /" // iread, mfcov
       ) );
 
       THEN( "the values can be verified" ){
@@ -349,9 +349,8 @@ SCENARIO( "ERRORR, Rest",
 
         REQUIRE( 0 == rest.card7.iread.value );
         REQUIRE( 35 == rest.card7.mfcov.value );
-        REQUIRE( 1 == rest.card7.ifisspEfmean->first.value );
-        REQUIRE( 2.2e5*dimwits::electronVolt ==
-                                        rest.card7.ifisspEfmean->second.value );
+        REQUIRE( 1 == rest.card7.ifissp.value );
+        REQUIRE( 2.2e5*dimwits::electronVolt == rest.card7.efmean.value );
       }
     } // WHEN
   } // GIVEN

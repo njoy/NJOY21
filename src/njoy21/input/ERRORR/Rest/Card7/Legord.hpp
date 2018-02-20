@@ -7,8 +7,8 @@ struct Legord {
            "value is 1.\n\n"
            "At this time, this value is hardcoded to only allow legord = 1.";
   }
-  static Value_t defaultValue(){ return 1; }
-  static bool verify( const Value_t legord ){
-    return ( legord == 1 );
+  static Value_t defaultValue( const int ){ return 1; }
+  static bool verify( const Value_t legord, const int mfcov ){
+    return ( mfcov != 34 or legord == 1 );
   }
 };

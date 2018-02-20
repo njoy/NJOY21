@@ -9,8 +9,8 @@ struct Dap {
            "will be used in lieu of any data that might have been read from\n"
            "the nendf tape.";
   }
-  static Value_t defaultValue(){ return 0.0; }
-  static bool verify( const Value_t dap ){
-    return ( dap >= 0.0 and dap <= 1.0 );
+  static Value_t defaultValue( const int ){ return 0.0; }
+  static bool verify( const Value_t dap, const int mfcov ){
+    return ( mfcov != 33 or ( dap >= 0.0 and dap <= 1.0 ) );
   }
 };

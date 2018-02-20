@@ -19,10 +19,11 @@ SCENARIO( "ERRORR, Rest, Card7",
 
         REQUIRE( 0 == card7.iread.value );
         REQUIRE( 31 == card7.mfcov.value );
-        REQUIRE( std::nullopt == card7.irespr );
-        REQUIRE( std::nullopt == card7.legord );
-        REQUIRE( std::nullopt == card7.ifisspEfmean );
-        REQUIRE( std::nullopt == card7.dap );
+        REQUIRE( 1 == card7.irespr.value );
+        REQUIRE( 1 == card7.legord.value );
+        REQUIRE( -1 == card7.ifissp.value );
+        REQUIRE( 2.e6*dimwits::electronVolt == *( card7.efmean.value ) );
+        REQUIRE( Approx( 0.0 ) == card7.dap.value );
       }
     } // WHEN
 
@@ -30,16 +31,18 @@ SCENARIO( "ERRORR, Rest, Card7",
       const int ngout = 35;
 
       THEN( "the values can be verified" ){
-        iRecordStream<char> iss( std::istringstream( " 1 33 0 0.6 /" ) );
+        iRecordStream<char> iss( std::istringstream(
+                                                 " 1 33 0 2 -1 -10.0 0.6 /" ) );
 
         ERRORR::Rest::Card7 card7( iss, ngout );
 
         REQUIRE( 1 == card7.iread.value );
         REQUIRE( 33 == card7.mfcov.value );
-        REQUIRE( 0 == card7.irespr->value );
-        REQUIRE( std::nullopt == card7.legord );
-        REQUIRE( std::nullopt == card7.ifisspEfmean );
-        REQUIRE( Approx( 0.6 ) == card7.dap->value );
+        REQUIRE( 0 == card7.irespr.value );
+        REQUIRE( 2 == card7.legord.value );
+        REQUIRE( -1 == card7.ifissp.value );
+        REQUIRE( -10.0*dimwits::electronVolt == *( card7.efmean.value ) );
+        REQUIRE( Approx( 0.6 ) == card7.dap.value );
       }
 
       THEN( "the default values can be verified" ){
@@ -49,10 +52,11 @@ SCENARIO( "ERRORR, Rest, Card7",
 
         REQUIRE( 1 == card7.iread.value );
         REQUIRE( 33 == card7.mfcov.value );
-        REQUIRE( 1 == card7.irespr->value );
-        REQUIRE( std::nullopt == card7.legord );
-        REQUIRE( std::nullopt == card7.ifisspEfmean );
-        REQUIRE( Approx( 0.0 ) == card7.dap->value );
+        REQUIRE( 1 == card7.irespr.value );
+        REQUIRE( 1 == card7.legord.value );
+        REQUIRE( -1 == card7.ifissp.value );
+        REQUIRE( 2.e6*dimwits::electronVolt == *( card7.efmean.value ) );
+        REQUIRE( Approx( 0.0 ) == card7.dap.value );
       }
 
       THEN( "all default values can be verified" ){
@@ -62,10 +66,11 @@ SCENARIO( "ERRORR, Rest, Card7",
 
         REQUIRE( 0 == card7.iread.value );
         REQUIRE( 33 == card7.mfcov.value );
-        REQUIRE( 1 == card7.irespr->value );
-        REQUIRE( std::nullopt == card7.legord );
-        REQUIRE( std::nullopt == card7.ifisspEfmean );
-        REQUIRE( Approx( 0.0 ) == card7.dap->value );
+        REQUIRE( 1 == card7.irespr.value );
+        REQUIRE( 1 == card7.legord.value );
+        REQUIRE( -1 == card7.ifissp.value );
+        REQUIRE( 2.e6*dimwits::electronVolt == *( card7.efmean.value ) );
+        REQUIRE( Approx( 0.0 ) == card7.dap.value );
       }
     } // WHEN
 
@@ -73,16 +78,17 @@ SCENARIO( "ERRORR, Rest, Card7",
       const int ngout = 35;
 
       THEN( "the values can be verified" ){
-        iRecordStream<char> iss( std::istringstream( " 2 34 1 /" ) );
+        iRecordStream<char> iss( std::istringstream( " 2 34 0 1 /" ) );
 
         ERRORR::Rest::Card7 card7( iss, ngout );
 
         REQUIRE( 2 == card7.iread.value );
         REQUIRE( 34 == card7.mfcov.value );
-        REQUIRE( std::nullopt == card7.irespr );
-        REQUIRE( 1 == card7.legord->value );
-        REQUIRE( std::nullopt == card7.ifisspEfmean );
-        REQUIRE( std::nullopt == card7.dap );
+        REQUIRE( 0 == card7.irespr.value );
+        REQUIRE( 1 == card7.legord.value );
+        REQUIRE( -1 == card7.ifissp.value );
+        REQUIRE( 2.e6*dimwits::electronVolt == *( card7.efmean.value ) );
+        REQUIRE( Approx( 0.0 ) == card7.dap.value );
       }
 
       THEN( "the default values can be verified" ){
@@ -92,10 +98,11 @@ SCENARIO( "ERRORR, Rest, Card7",
 
         REQUIRE( 2 == card7.iread.value );
         REQUIRE( 34 == card7.mfcov.value );
-        REQUIRE( std::nullopt == card7.irespr );
-        REQUIRE( 1 == card7.legord->value );
-        REQUIRE( std::nullopt == card7.ifisspEfmean );
-        REQUIRE( std::nullopt == card7.dap );
+        REQUIRE( 1 == card7.irespr.value );
+        REQUIRE( 1 == card7.legord.value );
+        REQUIRE( -1 == card7.ifissp.value );
+        REQUIRE( 2.e6*dimwits::electronVolt == *( card7.efmean.value ) );
+        REQUIRE( Approx( 0.0 ) == card7.dap.value );
       }
     } // WHEN
 
@@ -103,18 +110,17 @@ SCENARIO( "ERRORR, Rest, Card7",
       const int ngout = 35;
 
       THEN( "the values can be verified" ){
-        iRecordStream<char> iss( std::istringstream( " 0 35 12 2.e5 /" ) );
+        iRecordStream<char> iss( std::istringstream( " 0 35 1 1 12 2.e5 /" ) );
 
         ERRORR::Rest::Card7 card7( iss, ngout );
 
         REQUIRE( 0 == card7.iread.value );
         REQUIRE( 35 == card7.mfcov.value );
-        REQUIRE( std::nullopt == card7.irespr );
-        REQUIRE( std::nullopt == card7.legord );
-        REQUIRE( 12 == card7.ifisspEfmean->first.value );
-        REQUIRE( 2.0e5*dimwits::electronVolt ==
-                                        *( card7.ifisspEfmean->second.value ) );
-        REQUIRE( std::nullopt == card7.dap );
+        REQUIRE( 1 == card7.irespr.value );
+        REQUIRE( 1 == card7.legord.value );
+        REQUIRE( 12 == card7.ifissp.value );
+        REQUIRE( 2.0e5*dimwits::electronVolt == *( card7.efmean.value ) );
+        REQUIRE( Approx( 0.0 ) == card7.dap.value );
       }
 
       THEN( "the default values can be verified" ){
@@ -124,26 +130,25 @@ SCENARIO( "ERRORR, Rest, Card7",
 
         REQUIRE( 0 == card7.iread.value );
         REQUIRE( 35 == card7.mfcov.value );
-        REQUIRE( std::nullopt == card7.irespr );
-        REQUIRE( std::nullopt == card7.legord );
-        REQUIRE( -1 == card7.ifisspEfmean->first.value );
-        REQUIRE( 2.0e6*dimwits::electronVolt ==
-                                        *( card7.ifisspEfmean->second.value ) );
-        REQUIRE( std::nullopt == card7.dap );
+        REQUIRE( 1 == card7.irespr.value );
+        REQUIRE( 1 == card7.legord.value );
+        REQUIRE( -1 == card7.ifissp.value );
+        REQUIRE( 2.0e6*dimwits::electronVolt == *( card7.efmean.value ) );
+        REQUIRE( Approx( 0.0 ) == card7.dap.value );
       }
 
       THEN( "the default values can be verified" ){
-        iRecordStream<char> iss( std::istringstream( " 0 35 1 /" ) );
+        iRecordStream<char> iss( std::istringstream( " 0 35 1 1 1 /" ) );
 
         ERRORR::Rest::Card7 card7( iss, ngout );
 
         REQUIRE( 0 == card7.iread.value );
         REQUIRE( 35 == card7.mfcov.value );
-        REQUIRE( std::nullopt == card7.irespr );
-        REQUIRE( std::nullopt == card7.legord );
-        REQUIRE( 1 == card7.ifisspEfmean->first.value );
-        REQUIRE( std::nullopt == card7.ifisspEfmean->second.value );
-        REQUIRE( std::nullopt == card7.dap );
+        REQUIRE( 1 == card7.irespr.value );
+        REQUIRE( 1 == card7.legord.value );
+        REQUIRE( 1 == card7.ifissp.value );
+        REQUIRE( std::nullopt == card7.efmean.value );
+        REQUIRE( Approx( 0.0 ) == card7.dap.value );
       }
     } // WHEN
   } // GIVEN
@@ -151,7 +156,8 @@ SCENARIO( "ERRORR, Rest, Card7",
   GIVEN( "invalid inputs" ){
     WHEN( "too many values are provided" ){
       const int ngout = 35;
-      iRecordStream<char> iss( std::istringstream( " 0 40 0.2 /" ) );
+      iRecordStream<char> iss( std::istringstream(
+                                                 " 0 40 1 1 -1 0.2 0.2 1 /" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( ERRORR::Rest::Card7( iss, ngout ) );
@@ -181,7 +187,7 @@ SCENARIO( "ERRORR, Rest, Card7",
 
     WHEN( "an invalid value is provided" ){
       const int ngout = 35;
-      iRecordStream<char> iss( std::istringstream( " 1 33 0 1.6 /" ) );
+      iRecordStream<char> iss( std::istringstream( " 1 33 1 1 -1 0 1.6 /" ) );
 
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( ERRORR::Rest::Card7( iss, ngout ) );

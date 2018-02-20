@@ -9,8 +9,8 @@ struct Ifissp {
            "equal the subsection containing efmean.  This parameter is only\n"
            "used if mfcov = 35.";
   }
-  static Value_t defaultValue(){ return -1; }
-  static bool verify( const Value_t ifissp ){
-    return ( ifissp == -1 or ifissp > 0 );
+  static Value_t defaultValue( const int ){ return -1; }
+  static bool verify( const Value_t ifissp, const int mfcov ){
+    return ( mfcov != 35 or ( ifissp == -1 or ifissp > 0 ) );
   }
 };

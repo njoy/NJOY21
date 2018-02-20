@@ -10,8 +10,8 @@ struct Irespr {
            "  0      area sensitivity method\n"
            "  1      1% sensitivity method       ( default )";
   }
-  static Value_t defaultValue(){ return 1; }
-  static bool verify( const Value_t irespr ){
-    return ( irespr == 0 or irespr == 1 );
+  static Value_t defaultValue( const int ){ return 1; }
+  static bool verify( const Value_t irespr, const int mfcov ){
+    return ( mfcov != 33 or ( irespr == 0 or irespr == 1 ) );
   }
 };
