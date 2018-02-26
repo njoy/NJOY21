@@ -19,11 +19,11 @@ struct Nendf : public argument::common::Nin {
       "ACER uses the information from the nendf tape for angle, energy, \n"
       "energy-angle, and photon emission distribitons.\n"
       "\n"
-      "Note that the nendf tape specifies an ENDF input (as apposed to an\n"
+      "Note that the nendf tape specifies an ENDF input (as opposed to an\n"
       "PENDF, or GENDF input.";
   }
   static bool verify( const Value_t v ){
-    return argument::common::Nin::verify(v);
+    return ( v == 0 ) or argument::common::Nin::verify(v);
   }
 }; // struct Nendf
 

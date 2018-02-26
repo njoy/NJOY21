@@ -7,10 +7,9 @@
 using namespace njoy::njoy21::input;
 
 SCENARIO( "GAMINR Card6 Mmtname", "[Card6], [Mmtname]"){
-  Argument< GAMINR::Card6::Mfd > mfd;
   GIVEN( "valid mtname values" ){
     WHEN( "mfd=3" ){
-      mfd.value = 3;
+      const int mfd = 3;
       std::vector< std::string > validValues{ "total", "elastic", "(n,2n)" };
       THEN( "the mtname value is correctly read and returned" ){
         for( auto& mtname : validValues ){
@@ -23,7 +22,7 @@ SCENARIO( "GAMINR Card6 Mmtname", "[Card6], [Mmtname]"){
     }
 
     WHEN( "mfd =0" ){
-      mfd.value = 0;
+      const int mfd = 0;
 
       THEN( "the mtname value is correctly empty" ){
         iRecordStream<char> iss( std::istringstream( " /" ) );
@@ -33,7 +32,7 @@ SCENARIO( "GAMINR Card6 Mmtname", "[Card6], [Mmtname]"){
   }
 
   GIVEN( "invalid mtname values" ){
-    mfd.value = 3;
+    const int mfd = 3;
     THEN( "an exception is thrown" ){
       iRecordStream<char> iss( std::istringstream( "'123456789 123456'" ) );
       REQUIRE_THROWS( argument::extract< GAMINR::Card6::Mtname >( iss, mfd ) );

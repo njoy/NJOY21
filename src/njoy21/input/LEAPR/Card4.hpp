@@ -4,11 +4,13 @@ class Card4 {
   #include "njoy21/input/LEAPR/Card4/Za.hpp"
   #include "njoy21/input/LEAPR/Card4/Isabt.hpp"
   #include "njoy21/input/LEAPR/Card4/Ilog.hpp"
+  #include "njoy21/input/LEAPR/Card4/Smin.hpp"
 
   Argument< Mat   > mat;
   Argument< Za    > za;
   Argument< Isabt > isabt;
   Argument< Ilog  > ilog;
+  Argument< Smin  > smin;
 
   template< typename Char >
   Card4( iRecordStream<Char>& is )
@@ -16,7 +18,8 @@ class Card4 {
     mat  ( argument::extract< Mat   >( is ) ),
     za   ( argument::extract< Za    >( is ) ),
     isabt( argument::extract< Isabt >( is ) ),
-    ilog ( argument::extract< Ilog  >( is ) )
+    ilog ( argument::extract< Ilog  >( is ) ),
+    smin ( argument::extract< Smin >( is ) )
   {
     Card::clear( is );
   }

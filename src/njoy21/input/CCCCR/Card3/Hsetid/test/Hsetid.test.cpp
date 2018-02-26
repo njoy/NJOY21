@@ -29,13 +29,13 @@ SCENARIO( "CCCCR, Card3, Hsetid",
     } // WHEN
   } // GIVEN
 
-  GIVEN( "invalid inputs" ){
-    WHEN( "an invalid inputs is provided" ){
-      iRecordStream<char> iss( std::istringstream( "'1234567890123'/" ) );
-
-      THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( argument::extract< CCCCR::Card3::Hsetid >( iss ) );
-      }
-    } // WHEN
-  } // GIVEN
+//  GIVEN( "invalid inputs" ){
+//    WHEN( "an invalid inputs is provided" ){
+//      iRecordStream<char> iss( std::istringstream( "'1234567890123'/" ) );
+//
+//      THEN( "an exception is thrown" ){
+//        REQUIRE_THROWS( argument::extract< CCCCR::Card3::Hsetid >( iss ) );
+//      }
+//    } // WHEN
+//  } // GIVEN
 } // SCENARIO

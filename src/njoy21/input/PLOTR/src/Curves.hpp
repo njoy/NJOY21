@@ -2,7 +2,7 @@ class Curves {
   public:
   optional< Plot > plot;
   Card8 card8;
-  Card9 card9;
+  optional< Card9 > card9;
   optional< Card10 > card10;
   optional< Card10a > card10a;
   optional< Card11 > card11;
@@ -13,7 +13,7 @@ class Curves {
   try:
     plot( readPlot( is, iplot ) ),
     card8( is, this->plot->card4.jtype.value ),
-    card9( is ),
+    card9( readCard9( is, this->plot->card4.itype.value ) ),
     card10( readCard10(is, this->plot->card4.ileg.value ) ),
     card10a( readCard10a(is, this->plot->card4.ileg.value ) ),
     card11( readCard11(is, this->plot->card4.itype.value ) ),

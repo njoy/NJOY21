@@ -52,7 +52,7 @@ public:
         readArbitraryGammaStructure( is, card2.igg.value ) ),
     card8a( readFluxCalculatorParameters( is, card2.iwt.value, card1 ) ),
     card8Variant( readFluxParameters( is, card2.iwt.value, card1 ) ),
-    card9List( readCard9List( is ) ),
+    card9List( readCard9List( is, card2.ntemp.value ) ),
     card10List( readCard10List( is ) )
   {
   }

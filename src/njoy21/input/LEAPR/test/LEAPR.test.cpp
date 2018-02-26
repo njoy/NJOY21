@@ -8,20 +8,20 @@ SCENARIO( "LEAPR input",
   "[LEAPR]" ){
   auto InvAngstrom = dimwits::pow( 1.0 * dimwits::angstrom, 
                                          dimwits::Ratio<-1> );
-  std::string card1         = "20\n";
-  std::string card2         = "'graphite, endf model'\n";
-  std::string card3_1_temp  = "1 0 101\n";
-  std::string card3_2_temps = "2 0 101\n";
-  std::string card4         = "31 6012 1 1\n";
-  std::string card5_vineyard = "11.898 4.7392 1 1 1 1\n";
-  std::string card5_skold    = "11.898 4.7392 1 1 1 2\n";
+  std::string card1         = "20/\n";
+  std::string card2         = "'graphite, endf model'/\n";
+  std::string card3_1_temp  = "1 0 101/\n";
+  std::string card3_2_temps = "2 0 101/\n";
+  std::string card4         = "31 6012 1 1/\n";
+  std::string card5_vineyard = "11.898 4.7392 1 1 1 1/\n";
+  std::string card5_skold    = "11.898 4.7392 1 1 1 2/\n";
   std::string card6_no_secondary_scatter = "0/\n";
-  std::string card7         = "3 5 1\n";
+  std::string card7         = "3 5 1/\n";
   std::string card8         = "2.5e-1 7.5e-1 1.0/\n"; 
   std::string card9         = "0.0 0.2 0.4 0.6 0.8/\n";
   std::string card20        = "'test run for njoy leapr'\n"
                               "' where this fun comment spans'\n" 
-                              "' multiple lines.'\n";       
+                              "' multiple lines.'/\n";       
 
 	  
   GIVEN( "valid LEAPR input" ){
@@ -36,16 +36,16 @@ SCENARIO( "LEAPR input",
         card7 +                                 // Card7
         card8 +                  		// Card8
         card9 + 				// Card9
-        "293/\n"                                // Card10 --
-        ".03 4\n"                               // Card11  |
-        "1.0 2.0 3.0 4.0\n"                     // Card12  |
-        "0.0192 0.0 0.4904\n"                   // Card13  |
-        "2\n"                                   // Card14  |- Temp Loop 1
-        "0.205 0.436\n"                         // Card15  |
-        "0.163467 0.326933\n"                   // Card16  |
-        "2 0.001\n"                             // Card17  |
-        "1.5 2.0\n"                             // Card18 -- 
-        "0.1\n" +                               // Card19 
+        "293/\n"                                 // Card10 --
+        ".03 4/\n"                               // Card11  |
+        "1.0 2.0 3.0 4.0/\n"                     // Card12  |
+        "0.0192 0.0 0.4904/\n"                   // Card13  |
+        "2/\n"                                   // Card14  |- Temp Loop 1
+        "0.205 0.436/\n"                         // Card15  |
+        "0.163467 0.326933/\n"                   // Card16  |
+        "2 0.001/\n"                             // Card17  |
+        "1.5 2.0/\n"                             // Card18 -- 
+        "0.1/\n" +                               // Card19 
 	card20 +
         "/ "
       ) );
@@ -64,6 +64,7 @@ SCENARIO( "LEAPR input",
         REQUIRE( leapr.card4.za.value    == 6012.0 );
         REQUIRE( leapr.card4.isabt.value == 1      );
         REQUIRE( leapr.card4.ilog.value  == 1      );
+        REQUIRE( leapr.card4.smin.value  == 1e-75  );
       
         REQUIRE( leapr.card5.awr.value   == 11.898 );
         REQUIRE( leapr.card5.spr.value   == 4.7392 * dimwits::barn );

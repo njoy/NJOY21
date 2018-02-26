@@ -29,13 +29,13 @@ SCENARIO( "LEAPR Card18 skappa input values",
           LEAPR::Card18::Skappa >( iss, nka ) );
       } // THEN
     } // WHEN
-    WHEN( "the skappa values are not in increasing order" ){
-      iRecordStream< char> iss( std::istringstream("1.0 3.0 2.0") );
-      THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( argument::extract< 
-          LEAPR::Card18::Skappa >( iss, nka ) );
-      } // THEN
-    } // WHEN
+//    WHEN( "the skappa values are not in increasing order" ){
+//      iRecordStream< char> iss( std::istringstream("1.0 3.0 2.0") );
+//      THEN( "an exception is thrown" ){
+//        REQUIRE_THROWS( argument::extract< 
+//          LEAPR::Card18::Skappa >( iss, nka ) );
+//      } // THEN
+//    } // WHEN
     WHEN( "too few skappa values are provided" ){
       iRecordStream< char> iss( std::istringstream("1.0 2.0") );
       THEN( "an exception is thrown" ){

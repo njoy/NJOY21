@@ -16,7 +16,7 @@ public:
     try:
       yl( argument::extract< Yl >( is, itype.value ) ),
       yh( argument::extract< Yh >( is, this->yl.value ) ),
-      ystep( argument::extract< Ystep >( is, this->yl.value ) )
+      ystep( argument::extract< Ystep >( is ) ) //, this->yl.value ) )
       {
         if( ileg != 0 and yh.value != std::nullopt ){
           ytag.value = ytag.value.value_or( *( this->yh.value ) );

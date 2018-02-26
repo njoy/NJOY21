@@ -5,8 +5,7 @@ public:
   extract( iRecordStream< Char >& is ){
     std::basic_string< Char > line;
     auto continueReading = []( auto& line ){
-      if ( line.length() > 2
-	   && line[0] == '-' && line[1] == '-' && line[2] == ' ' ){
+      if ( line.length() > 1 && line[0] == '-' && line[1] == '-' ){
 	return true;
       }
       return "" == utility::string::trim(line);

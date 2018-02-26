@@ -19,15 +19,18 @@ struct Skappa {
       return false;
     } 
 
-    // Make sure skappa values are in increasing order
-    auto unsortedStart = std::is_sorted_until( skappas.begin(), skappas.end() );
-    if( unsortedStart != skappas.end() ){
-      auto dis = std::distance( skappas.begin(), unsortedStart );
-      Log::warning( "Kappa values are not in increasing order.");
-      Log::info( "kappa at index {} ({}) > kappa at index {} ({})",
-                   dis-1, unsortedStart[-1], dis, *(unsortedStart));
-      return false;
-    }
+//    While the manual says they need to be in increasing order, test problem
+//    23 (not found in the manual) contains values in non-increasing order
+//    and NJOY2016 seems to not have a problem with it.
+//    // Make sure skappa values are in increasing order
+//    auto unsortedStart = std::is_sorted_until( skappas.begin(), skappas.end() );
+//    if( unsortedStart != skappas.end() ){
+//      auto dis = std::distance( skappas.begin(), unsortedStart );
+//      Log::warning( "Kappa values are not in increasing order.");
+//      Log::info( "kappa at index {} ({}) > kappa at index {} ({})",
+//                   dis-1, unsortedStart[-1], dis, *(unsortedStart));
+//      return false;
+//    }
 
     // If we haven't returned false yet...
     return true;

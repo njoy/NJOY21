@@ -16,7 +16,7 @@ struct Suff {
 
   static Value_t defaultValue(){ return ".00"; }
   static bool verify( Value_t s ){ 
-    static std::regex verifyPattern( "[-]?\\.[0-9]{2}",  
+    static std::regex verifyPattern( "[-]?\\.?[0-9][0-9]?",
                                      std::regex_constants::ECMAScript);
     return std::regex_match( s, verifyPattern );
   }

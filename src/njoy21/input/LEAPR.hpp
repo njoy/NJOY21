@@ -68,7 +68,7 @@ template <typename Char>
     card7( iss ),
     card8( iss, this->card7.nalpha ),
     card9( iss, this->card7.nbeta  ),
-    tempLoop( buildTempLoop( iss, this->card3, this->card5 ) )
+    tempLoop( buildTempLoop( iss, this->card3, this->card5, this->card6 ) )
     {
       if( this->card5.nsk.value == 2 ){ this->card19 = Card19( iss ); }
       card20List = buildCard20List( iss );
