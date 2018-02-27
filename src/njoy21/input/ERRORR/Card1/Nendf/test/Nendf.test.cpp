@@ -9,15 +9,16 @@ using namespace njoy::njoy21::input;
 SCENARIO( "ERRORR, Card1, Nendf",
           "[ERRORR] [Card1] [Nendf]" ){
   GIVEN( "valid inputs" ){
-    WHEN( "valid inputs are provided" ){
-      for( auto i : {-99, -40, -20, 20, 49, 99, 999} ){
+    for( auto i : {-99, -40, -20, 20, 49, 99, 999} ){
+      std::string situ( "valid input " + std::to_string(i) + " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
           REQUIRE( i == argument::extract< ERRORR::Card1::Nendf >( iss ).value);
         }
-      }
-    } // WHEN
+      } // WHEN
+    }
   } // GIVEN
 
   GIVEN( "invalid inputs" ){
@@ -29,14 +30,15 @@ SCENARIO( "ERRORR, Card1, Nendf",
       }
     } // WHEN
 
-    WHEN( "invalid values are provided" ){
-      for( auto i : {-999, -100, -19, 0, 19, 100} ){
+    for( auto i : {-999, -100, -19, 0, 19, 100} ){
+      std::string situ( "invalid input " + std::to_string(i) + " is provided.");
+      WHEN( "invalid values are provided" ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){
           REQUIRE_THROWS( argument::extract< ERRORR::Card1::Nendf >( iss ) );
         }
-      }
-    } // WHEN
+      } // WHEN
+    }
   } // GIVEN
 } // SCENARIO

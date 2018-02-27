@@ -25,19 +25,19 @@ SCENARIO( "ERRORR",
         REQUIRE( 0 == std::get<1>( *( errorr.card1.rest ) ).value );
         REQUIRE( 33 == std::get<2>( *( errorr.card1.rest ) ).value );
 
-        REQUIRE( std::nullopt == errorr.dummy );
+        REQUIRE( std::nullopt == errorr.dummyMF33 );
 
-        REQUIRE( 525 == errorr.rest->card2.matd.value );
-        REQUIRE( 3 == errorr.rest->card2.ign.value );
-        REQUIRE( 9 == errorr.rest->card2.iwt.value );
-        REQUIRE( 1 == errorr.rest->card2.iprint.value );
-        REQUIRE( 1 == errorr.rest->card2.irelco.value );
+        REQUIRE( 525 == errorr.normal->card2.matd.value );
+        REQUIRE( 3 == errorr.normal->card2.ign.value );
+        REQUIRE( 9 == errorr.normal->card2.iwt.value );
+        REQUIRE( 1 == errorr.normal->card2.iprint.value );
+        REQUIRE( 1 == errorr.normal->card2.irelco.value );
 
-        REQUIRE( 0 == errorr.rest->card3.mprint.value );
-        REQUIRE( 0.0*dimwits::kelvin == errorr.rest->card3.tempin.value );
+        REQUIRE( 0 == errorr.normal->card3.mprint.value );
+        REQUIRE( 0.0*dimwits::kelvin == errorr.normal->card3.tempin.value );
 
-        REQUIRE( 0 == errorr.rest->card7.iread.value );
-        REQUIRE( 33 == errorr.rest->card7.mfcov.value );
+        REQUIRE( 0 == errorr.normal->card7.iread.value );
+        REQUIRE( 33 == errorr.normal->card7.mfcov.value );
       }
     } // WHEN
 
@@ -66,34 +66,34 @@ SCENARIO( "ERRORR",
         REQUIRE( 24 == std::get<1>( *( errorr.card1.rest ) ).value );
         REQUIRE( 25 == std::get<2>( *( errorr.card1.rest ) ).value );
 
-        REQUIRE( std::nullopt == errorr.dummy );
+        REQUIRE( std::nullopt == errorr.dummyMF33 );
 
-        REQUIRE( 1398 == errorr.rest->card2.matd.value );
-        REQUIRE( 19 == errorr.rest->card2.ign.value );
-        REQUIRE( 1 == errorr.rest->card2.iwt.value );
-        REQUIRE( 1 == errorr.rest->card2.iprint.value );
-        REQUIRE( 1 == errorr.rest->card2.irelco.value ); // default
+        REQUIRE( 1398 == errorr.normal->card2.matd.value );
+        REQUIRE( 19 == errorr.normal->card2.ign.value );
+        REQUIRE( 1 == errorr.normal->card2.iwt.value );
+        REQUIRE( 1 == errorr.normal->card2.iprint.value );
+        REQUIRE( 1 == errorr.normal->card2.irelco.value ); // default
 
-        REQUIRE( 0 == errorr.rest->card3.mprint.value );
-        REQUIRE( 0.*dimwits::kelvin == errorr.rest->card3.tempin.value );
+        REQUIRE( 0 == errorr.normal->card3.mprint.value );
+        REQUIRE( 0.*dimwits::kelvin == errorr.normal->card3.tempin.value );
 
-        REQUIRE( 2 == errorr.rest->card7.iread.value );
-        REQUIRE( 31 == errorr.rest->card7.mfcov.value );
+        REQUIRE( 2 == errorr.normal->card7.iread.value );
+        REQUIRE( 31 == errorr.normal->card7.mfcov.value );
 
-        REQUIRE( 1380 == errorr.rest->card10List->at(0).mat1.value );
-        REQUIRE( 452 == errorr.rest->card10List->at(0).mt1->value );
+        REQUIRE( 1380 == errorr.normal->card10List->at(0).mat1.value );
+        REQUIRE( 452 == errorr.normal->card10List->at(0).mt1->value );
 
-        REQUIRE( 1381 == errorr.rest->card10List->at(1).mat1.value );
-        REQUIRE( 452 == errorr.rest->card10List->at(1).mt1->value );
+        REQUIRE( 1381 == errorr.normal->card10List->at(1).mat1.value );
+        REQUIRE( 452 == errorr.normal->card10List->at(1).mt1->value );
 
-        REQUIRE( 1390 == errorr.rest->card10List->at(2).mat1.value );
-        REQUIRE( 452 == errorr.rest->card10List->at(2).mt1->value );
+        REQUIRE( 1390 == errorr.normal->card10List->at(2).mat1.value );
+        REQUIRE( 452 == errorr.normal->card10List->at(2).mt1->value );
 
-        REQUIRE( 1395 == errorr.rest->card10List->at(3).mat1.value );
-        REQUIRE( 452 == errorr.rest->card10List->at(3).mt1->value );
+        REQUIRE( 1395 == errorr.normal->card10List->at(3).mat1.value );
+        REQUIRE( 452 == errorr.normal->card10List->at(3).mt1->value );
 
-        REQUIRE( 1399 == errorr.rest->card10List->at(4).mat1.value );
-        REQUIRE( 452 == errorr.rest->card10List->at(4).mt1->value );
+        REQUIRE( 1399 == errorr.normal->card10List->at(4).mat1.value );
+        REQUIRE( 452 == errorr.normal->card10List->at(4).mt1->value );
       }
     } // WHEN
 */
