@@ -9,7 +9,7 @@ readIread1( Istream& is, const int iread ){
 
   if( card8.nek.value == 0 ){
     return std::make_tuple( std::move( card8 ), std::move( card8a ),
-                            std::nullopt );
+       optional< std::pair< Card8b, std::vector< Card9 > > > {} );
   } else {
     Card8b card8b( is, card8.nek.value );
 
@@ -22,7 +22,7 @@ readIread1( Istream& is, const int iread ){
     }
 
     return std::make_tuple( std::move( card8 ), std::move( card8a ),
-                            std::make_pair( std::move( card8b ),
-                                            card9List ) );
+      std::make_optional( 
+          std::make_pair( std::move( card8b ), std::move( card9List ) ) ) );
   }
 }
