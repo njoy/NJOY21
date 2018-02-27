@@ -11,8 +11,9 @@ SCENARIO( "ERRORR, Card1, Ngout",
   const int nendf = 50;
   const int npend = 49;
   GIVEN( "valid inputs" ){
-    WHEN( "valid inputs are provided" ){
-      for( auto i : {-99, -30, -20, 20, 30, 99} ){
+    for( auto i : {-99, -30, -20, 20, 30, 99} ){
+      std::string situ( "valid input " + std::to_string(i) + " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
@@ -33,15 +34,16 @@ SCENARIO( "ERRORR, Card1, Ngout",
   } // GIVEN
 
   GIVEN( "invalid inputs" ){
-    WHEN( "invalid values are provided" ){
-      for( auto i : {-100, -50, -49, -19, 0, 19, 49, 50, 100} ){
+    for( auto i : {-100, -50, -49, -19, 0, 19, 49, 50, 100} ){
+      std::string situ( "invalid input " + std::to_string(i) + " is provided.");
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){
           REQUIRE_THROWS( argument::extract< ERRORR::Card1::Ngout >(
                                                           iss, nendf, npend ) );
         }
-      }
-    } // WHEN
+      } // WHEN
+    }
   } // GIVEN
 } // SCENARIO
