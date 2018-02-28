@@ -12,10 +12,12 @@ SCENARIO( "El output values", "[PLOTR],[Card5], [El]"){
 
   GIVEN( "Valid entries" ){
 
-    WHEN( "correct values are used with linear scaling" ){
+    for( auto itype : {-2,-1,1,2} ){
+      std::string situ( "valid El value with itype == linear (" +
+                                               std::to_string( itype ) + ")." );
+      WHEN( situ.c_str() ){
       std::vector<double> validValues{0.0,0.1,0.5,0.8,1.0,2.0,80.0};
 
-      for( auto itype : {-2,-1,1,2} ){
         THEN( "the returned class has the correct value" ){
           for( auto el : validValues ){
             iRecordStream<char> issEl( 
@@ -28,10 +30,12 @@ SCENARIO( "El output values", "[PLOTR],[Card5], [El]"){
       }
     }
 
-    WHEN( "valid El parameters with itype == logarithmic (3 or 4)" ){
-      std::vector<double> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
+    for( auto itype : {-4,-3,3,4} ){
+      std::string situ( "valid El value with itype == logarithmic (" +
+                                               std::to_string( itype ) + ")." );
+      WHEN( situ.c_str() ){
+        std::vector<double> validValues{0.1,0.5,0.8,1.0,2.0,80.0};
   
-      for( auto itype : {-4,-3,3,4} ){
         THEN( "the returned class has the correct value" ){
           for( auto el : validValues ){
             iRecordStream<char> issEl( 
@@ -44,10 +48,12 @@ SCENARIO( "El output values", "[PLOTR],[Card5], [El]"){
       }
     }
 
-    WHEN( "the default value is used" ){
+    for( auto itype : {-4,-3,-2,-1,1,2,3,4} ){
+      std::string situ( "default value is used with itype = " +
+                                                      std::to_string( itype ) );
+      WHEN( situ.c_str() ){
       iRecordStream<char> issEl( std::istringstream( " /" ) );
   
-      for( auto itype : {-4,-3,-2,-1,1,2,3,4} ){
         THEN( "default value is returned" ){
           auto el_arg = argument::extract< PLOTR::Card5::El >( issEl, itype);
           REQUIRE( el_arg.defaulted );

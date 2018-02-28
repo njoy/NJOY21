@@ -14,8 +14,9 @@ SCENARIO( "MATXSR Card1 Ngen3 values",
   const int nmatx = 26;
 
   GIVEN( "valid inputs" ){
-    WHEN( "valid inputs are provided" ){
-      for( auto i : {-99,-40,-20,0,20,97,99} ){
+    for( auto i : {-99,-40,-20,0,20,97,99} ){
+      std::string situ( "valid input " + std::to_string(i) + " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
@@ -36,8 +37,9 @@ SCENARIO( "MATXSR Card1 Ngen3 values",
   } // GIVEN
 
   GIVEN( "invalid inputs" ){
-    WHEN( "invalid inputs are provided" ){
-      for( auto i : {-100,-26,-25,-24,-19,19,24,25,26,100} ){
+    for( auto i : {-100,-26,-25,-24,-19,19,24,25,26,100} ){
+      std::string situ( "invalid input " + std::to_string(i) + " is provided.");
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){

@@ -11,7 +11,9 @@ SCENARIO( "efirst values",
 
   GIVEN( "valid values" ){
     for( auto efirst : { 0.0, 0.1, 2.0, 20.1, 4002.1 } ){
-      THEN( "the correct value is returned" ){
+    std::string situ( "valid value " + std::to_string( efirst ) +
+                                                              " is provided." );
+      THEN( situ.c_str() ){
         iRecordStream<char> issEfirst( std::istringstream(
                             std::to_string( efirst ) ) );
         REQUIRE( efirst*dimwits::electronVolt ==
@@ -22,7 +24,9 @@ SCENARIO( "efirst values",
 
   GIVEN( "invalid values" ){
     for( auto efirst : { -10.0, -2.0 } ){
-      THEN( "an exception is thrown" ){
+      std::string situ( "invalid value " + std::to_string( efirst ) +
+                                                              " is provided." );
+      THEN( situ.c_str() ){
         iRecordStream<char> issEfirst( std::istringstream(
                             std::to_string( efirst ) ) );
         REQUIRE_THROWS( argument::extract< RESXSR::Card2::Efirst >(
