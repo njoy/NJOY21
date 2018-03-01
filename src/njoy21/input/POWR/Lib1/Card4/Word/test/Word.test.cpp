@@ -9,9 +9,9 @@ using namespace njoy::njoy21::input;
 SCENARIO( "POWR, Lib1, Card4, Word",
           "[POWR] [Lib1] [Card4] [Word]" ){
   GIVEN( "valid inputs" ){
-    WHEN( "valid inputs are provided" ){
-      for( std::string i : { "12345",
-                             "1234567890123456" } ){
+    for( std::string i : { "12345", "1234567890123456" } ){
+      std::string situ( "valid input " + i + " is provided." );
+      WHEN( situ.c_str() ){
         std::string tmp( "'" + i + "'/" );
         iRecordStream<char> iss{ std::istringstream{ tmp } };
 

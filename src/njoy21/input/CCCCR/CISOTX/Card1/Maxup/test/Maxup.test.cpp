@@ -28,8 +28,9 @@ SCENARIO( "CCCCR, CISOTX, Card1, Maxup",
       }
     } // WHEN
 
-    WHEN( "invalid values are provided" ){
-      for( auto i : {-1, 1, 5} ){
+    for( auto i : {-1, 1, 5} ){
+      std::string situ( "invalid input " + std::to_string(i) + " is provided.");
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){

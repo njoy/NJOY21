@@ -6,15 +6,16 @@
 
 using namespace njoy::njoy21::input;
 
-SCENARIO( "WIMSR, Card4, Mti",
-          "[WIMSR] [Card4] [Mti]" ){
+SCENARIO( "WIMSR, Card4, Mtc",
+          "[WIMSR] [Card4] [Mtc]" ){
   GIVEN( "valid inputs" ){
-    WHEN( "valid values are provided" ){
-      for( auto i : {0, 1, 10, 100} ){
+    for( auto i : {0, 1, 10, 100} ){
+      std::string situ( "valid input " + std::to_string(i) + " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
-          REQUIRE( i == argument::extract< WIMSR::Card4::Mti >( iss ).value );
+          REQUIRE( i == argument::extract< WIMSR::Card4::Mtc >( iss ).value );
         }
       }
     }
@@ -23,7 +24,7 @@ SCENARIO( "WIMSR, Card4, Mti",
       iRecordStream<char> iss( std::istringstream( " /" ) );
 
       THEN( "the default value is returned" ){
-        REQUIRE( 0 == argument::extract< WIMSR::Card4::Mti >( iss ).value );
+        REQUIRE( 0 == argument::extract< WIMSR::Card4::Mtc >( iss ).value );
       }
     }
   } // GIVEN
@@ -33,7 +34,7 @@ SCENARIO( "WIMSR, Card4, Mti",
       iRecordStream<char> iss( std::istringstream( "-1" ) );
 
       THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( argument::extract< WIMSR::Card4::Mti >( iss ) );
+        REQUIRE_THROWS( argument::extract< WIMSR::Card4::Mtc >( iss ) );
       }
     }
   } // GIVEN

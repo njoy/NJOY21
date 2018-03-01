@@ -9,8 +9,9 @@ using namespace njoy::njoy21::input;
 SCENARIO( "WIMSR, Card3, Nfid",
           "[WIMSR] [Card3] [Nfid]" ){
   GIVEN( "valid inputs" ){
-    WHEN( "any input is provided" ){
-      for( auto i : {-10, 0, 1, 10} ){
+    for( auto i : {-10, 0, 1, 10} ){
+      std::string situ( "valid input " + std::to_string(i) + " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "it doesn't really matter, but the value is returned" ){

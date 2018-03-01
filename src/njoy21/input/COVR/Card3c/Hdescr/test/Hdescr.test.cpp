@@ -8,8 +8,9 @@ SCENARIO( "COVR hdescr",
           "[COVR], [Card3c], [Hdescr]"){
 
   GIVEN( "valid (short) hdescr entry" ){
-    WHEN( "a valid value is provided" ){
-      for( std::string hdescr : {"", "1", "123456789012345678901"} ){
+    for( std::string hdescr : {"", "1", "123456789012345678901"} ){
+      std::string situ( "valid input " + hdescr + " is provided." );
+      WHEN( situ.c_str() ){
         std::string inp( std::string ("'") + hdescr + std::string( "' /" ) );
         iRecordStream<char> iss{ std::istringstream{ inp } };
 
