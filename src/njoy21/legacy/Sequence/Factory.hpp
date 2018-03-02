@@ -22,7 +22,7 @@ protected:
         PAIR( GROUPR ), PAIR( VIEWR ), PAIR( MIXR ), PAIR( DTFR ),
         PAIR( THERMR ), PAIR( LEAPR ), PAIR( RESXSR ), PAIR( MATXSR ),
         PAIR( GAMINR ), PAIR( PLOTR ), PAIR( COVR ), PAIR( WIMSR ),
-        PAIR( POWR ), PAIR( CCCCR ) };
+        PAIR( POWR ), PAIR( CCCCR ), PAIR( ERRORR ) };
     return parserMap.at( label )( input );
   }
 

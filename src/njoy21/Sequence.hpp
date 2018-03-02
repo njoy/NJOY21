@@ -47,6 +47,7 @@ protected:
   DEFINE_ROUTINE( WIMSR )
   DEFINE_ROUTINE( POWR )
   DEFINE_ROUTINE( CCCCR )
+  DEFINE_ROUTINE( ERRORR )
 #define DEFINE_ROUTINE
 
   std::vector< std::unique_ptr< interface::Routine > > sequence;
@@ -156,6 +157,10 @@ public:
 	  ( "CCCCR",
 	    []( auto& inputStream )
 	    { return std::make_unique< CCCCR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "ERRORR",
+	    []( auto& inputStream )
+	    { return std::make_unique< ERRORR >( inputStream ); } ),
 	std::make_pair< std::string, parser >
       return parserMap[label]( input );      
     }
