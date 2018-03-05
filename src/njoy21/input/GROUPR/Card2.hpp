@@ -8,6 +8,7 @@ public:
   #include "njoy21/input/GROUPR/Card2/Ntemp.hpp"
   #include "njoy21/input/GROUPR/Card2/Nsigz.hpp"
   #include "njoy21/input/GROUPR/Card2/Iprint.hpp"
+  #include "njoy21/input/GROUPR/Card2/Ismooth.hpp"
 
   Argument< Matb > matb;
   Argument< Ign > ign;
@@ -17,6 +18,7 @@ public:
   Argument< Ntemp > ntemp;
   Argument< Nsigz > nsigz;
   Argument< Iprint > iprint;
+  Argument< Ismooth > ismooth;
 
   template< typename Char >
   Card2( iRecordStream< Char >& is )
@@ -28,7 +30,8 @@ public:
       lord( argument::extract< Lord >( is ) ),
       ntemp( argument::extract< Ntemp >( is ) ),
       nsigz( argument::extract< Nsigz >( is ) ),
-      iprint( argument::extract< Iprint >( is ) )
+      iprint( argument::extract< Iprint >( is ) ),
+      ismooth( argument::extract< Ismooth >( is ) )
     {   
       Card::clear( is );
     }

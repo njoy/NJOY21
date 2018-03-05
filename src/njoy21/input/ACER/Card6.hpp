@@ -3,16 +3,19 @@ public:
 
   #include "njoy21/input/ACER/Card6/Newfor.hpp"
   #include "njoy21/input/ACER/Card6/Iopp.hpp"
+  #include "njoy21/input/ACER/Card6/Ismooth.hpp"
 
   Argument< Newfor > newfor;
   Argument< Iopp > iopp;
+  Argument< Ismooth > ismooth;
 
   template< typename Char >
   Card6( iRecordStream< Char >& is, 
          const Argument< ACER::Card1::Ngend >& ngend )
     try:
       newfor( argument::extract< Newfor >( is ) ),
-      iopp( argument::extract< Iopp >( is, ngend ) )
+      iopp( argument::extract< Iopp >( is, ngend ) ),
+      ismooth( argument::extract< Ismooth >( is ) )
   {
     Card::clear( is );
   }
