@@ -8,8 +8,9 @@ using namespace njoy::njoy21::input;
 SCENARIO( "WIMSR, Card2, Igroup",
           "[WIMSR] [Card2] [Igroup]" ){
   GIVEN( "valid inputs" ){
-    WHEN( "valid inputs are provided" ){
-      for( auto i : {0, 9} ){
+    for( auto i : {0, 9} ){
+      std::string situ( "valid input " + std::to_string(i) + " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be validated" ){
@@ -28,8 +29,9 @@ SCENARIO( "WIMSR, Card2, Igroup",
   } // GIVEN
 
   GIVEN( "invalid inputs" ){
-    WHEN( "invalid inputs are provided" ){
-      for( auto i : {-1, 1, 8, 10} ){
+    for( auto i : {-1, 1, 8, 10} ){
+      std::string situ( "invalid input " + std::to_string(i) + " is provided.");
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){

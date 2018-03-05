@@ -10,8 +10,9 @@ SCENARIO( "MATXSR Card2 ivers",
           "[MATXSR], [Card2], [Ivers]" ){
 
   GIVEN( "valid inputs" ){
-    WHEN( "valid inputs are provided" ){
-      for( unsigned int i : { 0, 1, 301 } ){
+    for( unsigned int i : { 0, 1, 301 } ){
+      std::string situ( "valid input " + std::to_string(i) + " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){

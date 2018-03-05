@@ -13,8 +13,9 @@ SCENARIO( "WIMSR, Card1",
       " 20 21 /",
       " 98 99 /",
       " 20 99 /" };
-    WHEN( "valid inputs are provided" ){
-      for( std::string valid : validValues ){
+    for( std::string valid : validValues ){
+      std::string situ( "valid input " + valid + " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( valid.c_str() ) );
 
         WIMSR::Card1 card1( iss );

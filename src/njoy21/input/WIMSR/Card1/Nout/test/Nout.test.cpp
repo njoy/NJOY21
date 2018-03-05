@@ -9,8 +9,10 @@ SCENARIO( "WIMSR, Card1, Nout",
           "[WIMSR] [Card1] [Nout]" ){
   int ngendf = -24;
   GIVEN( "valid inputs" ){
-    WHEN( "valid inputs are provided" ){
-      for( auto nout : {20, 42, 99} ){
+    for( auto nout : {20, 42, 99} ){
+      std::string situ( "valid input " + std::to_string( nout ) +
+                                                              " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( nout ) ) );
 
         THEN( "the value can be validated" ){
@@ -30,8 +32,10 @@ SCENARIO( "WIMSR, Card1, Nout",
       }
     }
 
-    WHEN( "invalid values are provided" ){
-      for( auto nout : {-99,-55,-20,0,19,100} ){
+    for( auto nout : {-99,-55,-20,0,19,100} ){
+      std::string situ( "invalid input " + std::to_string( nout ) +
+                                                              " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( nout ) ) );
 
         THEN( "an exception is thrown" ){
