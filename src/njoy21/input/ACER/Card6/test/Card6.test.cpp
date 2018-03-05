@@ -11,14 +11,15 @@ SCENARIO( "Verifying ACER Card6 input",
   Argument< ACER::Card1::Ngend > ngend;
   ngend.value = 22;
 
-  GIVEN( "both entries" ){
+  GIVEN( "all entries" ){
 
     THEN( "the appropriate values are returned" ){
-      iRecordStream<char> issCard6( std::istringstream( " 0 0 /" ) );
+      iRecordStream<char> issCard6( std::istringstream( " 0 0 0 /" ) );
       ACER::Card6 card6( issCard6, ngend );
 
       REQUIRE( 0 == card6.newfor.value );
       REQUIRE( 0 == card6.iopp.value );
+      REQUIRE( 0 == card6.ismooth.value );
     }
   }
   GIVEN( "only the newfor entry" ){
@@ -29,6 +30,18 @@ SCENARIO( "Verifying ACER Card6 input",
 
       REQUIRE( 0 == card6.newfor.value );
       REQUIRE( 1 == card6.iopp.value );
+      REQUIRE( 1 == card6.ismooth.value );
+    }
+  }
+  GIVEN( "only newfor and iopp entry" ){
+
+    THEN( "the the appropriate values are returned" ){
+      iRecordStream<char> issCard6( std::istringstream( " 0 0 /" ) );
+      ACER::Card6 card6( issCard6, ngend );
+
+      REQUIRE( 0 == card6.newfor.value );
+      REQUIRE( 0 == card6.iopp.value );
+      REQUIRE( 1 == card6.ismooth.value );
     }
   }
   GIVEN( "no entries---default" ){
@@ -39,10 +52,17 @@ SCENARIO( "Verifying ACER Card6 input",
 
       REQUIRE( 1 == card6.newfor.value );
       REQUIRE( 1 == card6.iopp.value );
+      REQUIRE( 1 == card6.ismooth.value );
     }
   }
   GIVEN( "invalid entries" ){
-      iRecordStream<char> issCard6( std::istringstream( " 2 2 /" ) );
+      iRecordStream<char> issCard6( std::istringstream( " 2 /" ) );
+      REQUIRE_THROWS( ACER::Card6( issCard6, ngend ) );
+
+      issCard6 = iRecordStream<char>( std::istringstream( " 0 2 /" ) );
+      REQUIRE_THROWS( ACER::Card6( issCard6, ngend ) );
+
+      issCard6 = iRecordStream<char>( std::istringstream( " 0 0 2 /" ) );
       REQUIRE_THROWS( ACER::Card6( issCard6, ngend ) );
   }
 } // SCENARIO
