@@ -48,9 +48,11 @@ SCENARIO( "Ystep output values", "[PLOTR],[Card6], [Ystep]"){
       }
     }
 
-    WHEN( "ystep uses invalid values" ){
-      std::vector<double> invalidValues{ -2.0, -1.1, 0.0 };
-      for( auto ystep : invalidValues ){
+    std::vector<double> invalidValues{ -2.0, -1.1, 0.0 };
+    for( auto ystep : invalidValues ){
+      std::string situ( "invalid value " + std::to_string( ystep ) +
+                                                              " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> issYstep( 
             std::istringstream( std::to_string( ystep ) ) );
 

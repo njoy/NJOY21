@@ -9,8 +9,9 @@ using namespace njoy::njoy21::input;
 SCENARIO( "MATXSR Card10 Matgg",
           "[MATXSR], [Card10], [Matgg]" ){
   GIVEN( "valid inputs" ){
-    WHEN( "valid values are provided" ){
-      for( int i : { 1, 99, 101, 1000, 1234, 4890, 9999 } ){
+    for( int i : { 1, 99, 101, 1000, 1234, 4890, 9999 } ){
+      std::string situ( "valid input " + std::to_string(i) + " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
@@ -29,8 +30,9 @@ SCENARIO( "MATXSR Card10 Matgg",
   } // GIVEN
 
   GIVEN( "invalid inputs" ){
-    WHEN( "invalid inputs are provided ( zero )" ){
-      for( int i : { -5000, 0, 10000 } ){
+    for( int i : { -5000, 0, 10000 } ){
+      std::string situ( "invalid input " + std::to_string(i) + " is provided.");
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){

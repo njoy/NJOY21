@@ -14,7 +14,9 @@ SCENARIO( "RESXSR card5 unit",
       for( auto unit : {-99, -54, -20, 20, 45, 99} ){
         iRecordStream<char> issUnit( std::istringstream( std::to_string( unit ) ) );
 
-        THEN( "the value can be verified" ){
+        std::string situ( "the value " + std::to_string( unit ) +
+                                                          " can be verified." );
+        THEN( situ.c_str() ){
           REQUIRE( unit ==
                    argument::extract< RESXSR::Card5::Unit >( issUnit ).value );
         }
@@ -27,7 +29,9 @@ SCENARIO( "RESXSR card5 unit",
       for( auto unit : {-100, -19, 0, 19, 100} ){
         iRecordStream<char> issUnit( std::istringstream( std::to_string( unit ) ) );
 
-        THEN( "an exception is thrown" ){
+        std::string situ( "an exception is thrown for invalid value " +
+                                                       std::to_string( unit ) );
+        THEN( situ.c_str() ){
           REQUIRE_THROWS( argument::extract< RESXSR::Card5::Unit >( issUnit ) );
         }
       }

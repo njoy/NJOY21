@@ -29,10 +29,12 @@ SCENARIO( "expected successes" ){
 SCENARIO( "expected failures" ){
   Argument< PLOTR::Card0::Nplt > nplt; nplt.value = 57;
   GIVEN( "invalid nplt0 values" ){
-    WHEN( "an unallowed value is given" ){
-      std::vector<int> invalidVals{-100,-57,-19,19,57,100};
+    std::vector<int> invalidVals{-100,-57,-19,19,57,100};
+    for( auto val : invalidVals ){
+      std::string situ( "disallowed value " + std::to_string(val ) +
+                                                                  " is used." );
+      WHEN( situ.c_str() ){
 
-      for( auto val : invalidVals ){
 
         iRecordStream<char> iss( std::istringstream( std::to_string( val ) ) );
         THEN( "an exception is thrown" ){

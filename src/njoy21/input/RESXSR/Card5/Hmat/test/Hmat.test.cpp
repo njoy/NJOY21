@@ -19,7 +19,8 @@ SCENARIO( "RESXSR card5 hmat",
       for( auto hmat : hmatList ){
         iRecordStream<char> issHmat( std::istringstream( "'" + hmat + "'" ) );
 
-        THEN( "the value can be verified" ){
+        std::string situ( "the value " + hmat + " can be verified." );
+        THEN( situ.c_str() ){
           REQUIRE( hmat ==
                    argument::extract< RESXSR::Card5::Hmat >( issHmat ).value );
         }

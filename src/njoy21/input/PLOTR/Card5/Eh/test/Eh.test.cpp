@@ -62,8 +62,9 @@ SCENARIO( "Eh output values", "[PLOTR],[Card5], [Eh]"){
 
     std::vector<double> invalidValues{ -2.0, -1.1, 4.5 };
 
-    WHEN( "eh has a value less than el" ){
-      for( auto eh : invalidValues ){
+    for( auto eh : invalidValues ){
+      std::string situ("eh has value " + std::to_string(eh) + " less than el.");
+      WHEN( situ.c_str() ){
         iRecordStream<char> issEh( 
             std::istringstream( std::to_string( eh ) ) );
 

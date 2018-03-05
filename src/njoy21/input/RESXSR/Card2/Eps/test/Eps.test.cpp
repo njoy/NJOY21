@@ -11,7 +11,9 @@ SCENARIO( "eps values",
 
   GIVEN( "valid values" ){
     for( auto eps: {0.01,0.1,1.0,10.0,100.0} ){
-      THEN( "the correct value is returned" ){
+      std::string situ( "valid value " + std::to_string( eps ) +
+                                                              " is provided." );
+      THEN( situ.c_str() ){
         iRecordStream<char> issEps( std::istringstream(
                                     std::to_string( eps ) ) );
 
@@ -22,8 +24,10 @@ SCENARIO( "eps values",
   } // GIVEN
 
   GIVEN( "invalid values" ){
-    WHEN( "the value is invalid" ){
-      for( auto eps: {-10.0, -1.0, -0.1, 0.0} ){
+    for( auto eps: {-10.0, -1.0, -0.1, 0.0} ){
+      std::string situ( "invalid value " + std::to_string( eps ) +
+                                                              " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> issEps( std::istringstream(
                                     std::to_string( eps ) ) );
   
