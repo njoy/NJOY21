@@ -54,6 +54,7 @@ SCENARIO( "Parsing valid ACER input" ){
       const auto& card6 = std::get<1>( fastCards );
       REQUIRE( 0 == card6.newfor.value );
       REQUIRE( 1 == card6.iopp.value );
+      REQUIRE( 1 == card6.ismooth.value );
 
       // Card7
       const auto& card7 = std::get<2>( fastCards );

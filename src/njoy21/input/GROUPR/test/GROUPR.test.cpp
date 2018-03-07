@@ -27,7 +27,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
   WHEN( "reading in a very generic input" ){
     iRecordStream<char> iss( std::istringstream(
       sCard1
-      + "125 2 0 2 4 2 2 1 /\n"         // Card2
+      + "125 2 0 2 4 2 2 1 0 /\n"         // Card2
       + "'" + sCard3 + "' /\n"
       + sCard4
       + sCard5
@@ -51,6 +51,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
       REQUIRE( 2 == groupr.card2.ntemp.value );
       REQUIRE( 2 == groupr.card2.nsigz.value );
       REQUIRE( 1 == groupr.card2.iprint.value );
+      REQUIRE( 0 == groupr.card2.ismooth.value );
     }
     THEN( "the Card3 input values can be verified" ){
       REQUIRE( sCard3 == groupr.card3.title.value );
@@ -142,6 +143,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
       REQUIRE( 2 == groupr.card2.ntemp.value );
       REQUIRE( 2 == groupr.card2.nsigz.value );
       REQUIRE( 0 == groupr.card2.iprint.value );
+      REQUIRE( 1 == groupr.card2.ismooth.value );
     }
     THEN( "the Card3 input values can be verified" ){
       REQUIRE( sCard3 == groupr.card3.title.value );
@@ -278,6 +280,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
       REQUIRE( 2 == groupr.card2.ntemp.value );
       REQUIRE( 2 == groupr.card2.nsigz.value );
       REQUIRE( 1 == groupr.card2.iprint.value );
+      REQUIRE( 1 == groupr.card2.ismooth.value );
     }
     THEN( "the Card3 input values can be verified" ){
       REQUIRE( sCard3 == groupr.card3.title.value );
@@ -366,6 +369,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
       REQUIRE( 2 == groupr.card2.ntemp.value );
       REQUIRE( 2 == groupr.card2.nsigz.value );
       REQUIRE( 1 == groupr.card2.iprint.value );
+      REQUIRE( 1 == groupr.card2.ismooth.value );
     }
     THEN( "the Card3 input values can be verified" ){
       REQUIRE( sCard3 == groupr.card3.title.value );
