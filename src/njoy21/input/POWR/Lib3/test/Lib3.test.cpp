@@ -25,7 +25,7 @@ SCENARIO( "POWR, Lib3",
         
         REQUIRE( std::nullopt == lib3.card4 );
 
-        REQUIRE( 0 == lib3.card5List.size() );
+        REQUIRE( lib3.card5List.empty() );
 
         REQUIRE( std::nullopt == lib3.card678List );
         REQUIRE( std::nullopt == lib3.card9List );
