@@ -8,7 +8,8 @@ struct Skappa {
       "function S(kappa) (also known as the 'static structure factor'). The\n"
       "kappa values are entered in units of inverse angstroms, and there \n"
       "should be nka-many entries (nka is a Card17 input). All kappa inputs\n"
-      "must be positive, and given in increasing order.";
+      "must be positive, and given in increasing order of energy, but not in\n"
+      "increasing order themselves.";
   }
 
   static bool verify( const Value_t& skappas,
@@ -18,19 +19,6 @@ struct Skappa {
       Log::info( "Negative skappa found" );
       return false;
     } 
-
-//    While the manual says they need to be in increasing order, test problem
-//    23 (not found in the manual) contains values in non-increasing order
-//    and NJOY2016 seems to not have a problem with it.
-//    // Make sure skappa values are in increasing order
-//    auto unsortedStart = std::is_sorted_until( skappas.begin(), skappas.end() );
-//    if( unsortedStart != skappas.end() ){
-//      auto dis = std::distance( skappas.begin(), unsortedStart );
-//      Log::warning( "Kappa values are not in increasing order.");
-//      Log::info( "kappa at index {} ({}) > kappa at index {} ({})",
-//                   dis-1, unsortedStart[-1], dis, *(unsortedStart));
-//      return false;
-//    }
 
     // If we haven't returned false yet...
     return true;
