@@ -10,11 +10,10 @@ public:
   Argument< Ismooth > ismooth;
 
   template< typename Char >
-  Card6( iRecordStream< Char >& is, 
-         const Argument< ACER::Card1::Ngend >& ngend )
+  Card6( iRecordStream< Char >& is )
     try:
       newfor( argument::extract< Newfor >( is ) ),
-      iopp( argument::extract< Iopp >( is, ngend ) ),
+      iopp( argument::extract< Iopp >( is ) ),
       ismooth( argument::extract< Ismooth >( is ) )
   {
     Card::clear( is );
