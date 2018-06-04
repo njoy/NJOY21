@@ -21,7 +21,7 @@ SCENARIO( "LEAPR card2",
       } 
     } // THEN
   } // GIVEN
-  GIVEN( "invalid card2 input" ){
+  GIVEN( "invalid card2 input (too long)" ){
     std::string value(
       "123456789 123456789 123456789 123456789 123456789 123456789" 
       "123456789 123456789 12");

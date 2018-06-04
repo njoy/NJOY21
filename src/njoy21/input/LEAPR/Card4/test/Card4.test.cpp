@@ -32,7 +32,7 @@ SCENARIO( "LEAPR Card4 input",
   GIVEN( "invalid card4 inputs" ){
     WHEN( "card4 input value is out of range" ){
       iRecordStream<char> is1( std::istringstream( "-1  1001   1  1/" ) );
-      iRecordStream<char> is2( std::istringstream( "1   999    1  1/" ) );
+      iRecordStream<char> is2( std::istringstream( "1   99     1  1/" ) );
       iRecordStream<char> is3( std::istringstream( "1   1001  -1  1/" ) );
       iRecordStream<char> is4( std::istringstream( "1   1001   1 -1/" ) );
       THEN( "an exception is thrown" ){
