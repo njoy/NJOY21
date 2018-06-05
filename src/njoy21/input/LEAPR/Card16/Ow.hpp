@@ -31,6 +31,6 @@ struct Ow {
 
     const auto totalWeight = std::accumulate( ows.begin(), ows.end(), 
 		                              twt.value + tbeta.value );
-    return std::abs( totalWeight - 1.0 ) < 1e-7;
+    return std::abs( totalWeight - 1.0 ) < 1e-4;
   }
 };

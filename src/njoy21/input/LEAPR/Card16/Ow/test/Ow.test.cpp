@@ -31,7 +31,7 @@ SCENARIO( "LEAPR Card16 ow input values",
       } // THEN
     } // WHEN
     WHEN ("ow sum conflicts with card13's twt and tbeta values" ){
-      iRecordStream< char> iss( std::istringstream("0.163467 0.326932") );
+      iRecordStream< char> iss( std::istringstream("0.163467 0.316933") );
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( argument::extract< 
           LEAPR::Card16::Ow >( iss, nd, twt, tbeta ) );
