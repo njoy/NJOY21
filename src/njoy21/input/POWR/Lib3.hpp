@@ -40,7 +40,7 @@ try:
   card3( is ),
   card4( readCard4( is, this->card3.iopt.value, this->card3.newmat.value ) ),
   card5List( readCard5( is, this->card3.mode.value,
-                        this->card4->mat.value.size() ) ),
+                        this->card4 ? this->card4->mat.value.size() : 0 ) ),
   card678List( readCard678( is, this->card3.if5.value ) ),
   card9List( readCard9( is, this->card3.if5.value,
                         this->card4->mat.value.size() ) ),
