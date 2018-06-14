@@ -7,7 +7,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "LEAPR Card18 skappa input values",
   "[LEAPR], [Card18], [Skappa]" ){
   GIVEN( "a value for nka" ){
-    auto InvAng =  dimwits::pow( 1.0 * dimwits::angstrom, dimwits::Ratio<-1> );
+    auto InvAng =  pow( 1.0 * dimwits::angstrom, dimwits::Ratio<-1> );
     Argument< LEAPR::Card17::Nka > nka;
     nka.value = 3;
 

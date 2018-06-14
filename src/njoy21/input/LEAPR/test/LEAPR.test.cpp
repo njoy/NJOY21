@@ -6,8 +6,7 @@ using namespace njoy::njoy21::input;
 
 SCENARIO( "LEAPR input",
   "[LEAPR]" ){
-  auto InvAngstrom = dimwits::pow( 1.0 * dimwits::angstrom, 
-                                         dimwits::Ratio<-1> );
+  auto InvAngstrom = pow( 1.0 * dimwits::angstrom, dimwits::Ratio<-1> );
   std::string card1         = "20/\n";
   std::string card2         = "'graphite, endf model'/\n";
   std::string card3_1_temp  = "1 0 101/\n";
