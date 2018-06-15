@@ -8,16 +8,12 @@ public:
 
  Argument< Mfd > mfd;
  optional< std::pair< Argument< Mtd >, Argument< Mtname > > > rest;
-// Argument< Mtd > mtd;
-// Argument< Mtname > mtname;
 
   template< typename Char >
   Card6( iRecordStream< Char >& is )
     try:
       mfd( argument::extract< Mfd >( is ) ),
       rest( readRest( is, this->mfd.value ) )
-//      mtd( argument::extract< Mtd >( is ) ),
-//      mtname( argument::extract< Mtname >( is, this->mfd ) )
     {   
       Card::clear( is );
     }
