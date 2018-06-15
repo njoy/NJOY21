@@ -18,16 +18,16 @@ SCENARIO( "Mtd output values", "[PLOTR],[Card8], [Mtd]"){
         iRecordStream<char> issMtd( 
             std::istringstream( std::to_string( mtd ) ) );
 
-        REQUIRE( mtd == *( argument::extract< PLOTR::Card8::Mtd >( 
-                          issMtd, iverf ).value ) );
+        REQUIRE( mtd == argument::extract< PLOTR::Card8::Mtd >( 
+                          issMtd, iverf ).value );
       }
     }
     WHEN( "no value is specified" ){
       THEN( "the default value is returned" ){
         iRecordStream<char> issMtd( std::istringstream( "/" ) );
 
-        REQUIRE( 0 == *( argument::extract< PLOTR::Card8::Mtd >(
-                                         issMtd, iverf ).value ) );
+        REQUIRE( 0 == argument::extract< PLOTR::Card8::Mtd >(
+                                         issMtd, iverf ).value );
       }
     }
   } // GIVEN

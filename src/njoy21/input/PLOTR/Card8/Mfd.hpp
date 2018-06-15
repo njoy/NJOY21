@@ -1,5 +1,5 @@
 struct Mfd {
-  using Value_t = optional< int >;
+  using Value_t = int;
   static std::string name(){ return "mfd"; }
   static std::string description(){
     return 
@@ -46,7 +46,7 @@ struct Mfd {
         "If the Iverf value is 0, this value is ignored.";
   }
 
-  static Value_t defaultValue( const int ){ return std::nullopt; }
+  static Value_t defaultValue( const int ){ return 0; }
 
   static bool verify( const Value_t m, const int iverf ){
 
@@ -55,6 +55,6 @@ struct Mfd {
                      28, 30, 31, 32, 33, 34, 35, 39, 40 );
 
     if( iverf == 0 ) return true;
-    return ( hana::contains( validValues, *m ) );
+    return ( hana::contains( validValues, m ) );
   }
 };

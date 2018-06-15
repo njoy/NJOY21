@@ -1,5 +1,5 @@
 struct Mtd{
-  using Value_t = optional< GROUPR::Card9::Mtd::Value_t >;
+  using Value_t = GROUPR::Card9::Mtd::Value_t;
   static std::string name(){ return "mtd"; }
   static std::string description(){
     return 
@@ -20,12 +20,11 @@ struct Mtd{
         "If the Iverf value is 0, this value is ignored.\n";
   }
 
-  static Value_t defaultValue( const int iverf ){
-    if( iverf == 0 ) return std::nullopt;
+  static Value_t defaultValue( const int ){
     return 0;
   }
   static bool verify( const Value_t M, const int iverf ){
     if( iverf == 0 ) return true;
-    return ( *M >= 0 and *M < 1000 );
+    return ( M >= 0 and M < 1000 );
   }
 };

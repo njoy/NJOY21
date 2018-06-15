@@ -1,5 +1,5 @@
 struct Nth{
-  using Value_t = optional< int >;
+  using Value_t = int;
   static std::string name(){ return "nth"; }
   static std::string description(){
     return
@@ -20,19 +20,37 @@ struct Nth{
         "or beta).";
   }
   static Value_t defaultValue( const int, const int iverf, const int ){ 
-    if( iverf == 0 ) return std::nullopt;
+    if( iverf == 0 ) return 0;
     return 1;
   }
   static bool verify( Value_t v, int mfd, int iverf, int jtype ){
+    Log::info( "Nth: {}, mfd: {}, iverf: {}, jtype: {}",
+              v, mfd, iverf, jtype );
     if( iverf == 0 ) return true;
     if( iverf == 1 ){ // GENDF
-      if( mfd == 3 ) return ( v == 0 or v == 1 );
-      if( mfd == 6 and jtype == 0 ) return ( v > 0 ); // 2-D plots
+      if( mfd == 3 ){
+        return ( ( v == 0 ) or 
+                 ( v == 1 ) );
+      }
+      if( ( mfd == 6 ) and ( jtype == 0 ) ){
+        return ( v > 0 ); // 2-D plots
+      }
     } else{
-      if( mfd == 3 or mfd == 5 ) return ( v > 0 );
-      if( mfd == 4 ) return ( v >= 0 and v < 65 );
-      if( mfd == 6 ) return ( v >= 0 and v < 2000 );
-      if( mfd == 7 ) return ( v >= 0 );
+      if( ( mfd == 3 ) or ( mfd == 5 ) ){
+        Log::info( "found that mfd==3or5" );
+        return ( v > 0 );
+      }
+      if( mfd == 4 ){
+        return ( ( v >= 0 ) and 
+                 ( v < 65 ) );
+      }
+      if( mfd == 6 ){
+        return ( ( v >= 0 ) and 
+                 ( v < 2000 ) );
+      }
+      if( mfd == 7 ){
+        return ( v >= 0 );
+      }
     }
     return false;
   }

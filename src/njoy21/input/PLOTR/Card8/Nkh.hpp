@@ -1,5 +1,5 @@
 struct Nkh{
-  using Value_t = optional< int >;
+  using Value_t = int;
   static std::string name(){ return "nkh"; }
   static std::string description(){
     return
@@ -18,10 +18,10 @@ struct Nkh{
     return 1;
   }
   static bool verify( Value_t v, int mfd, int iverf ){
-    if( iverf == 0 or v == std::nullopt ) return true;
-    if( iverf == 1 and mfd == 3 ) return ( *v == 1 or *v == 2 );
-    if( iverf != 1 and mfd == 6 ) return ( *v > 0 );
-    if( mfd == 7 ) return ( *v == 1 or *v == 2 or *v == 3 );
+    if( iverf == 0 ) return true;
+    if( iverf == 1 and mfd == 3 ) return ( v == 1 or v == 2 );
+    if( iverf != 1 and mfd == 6 ) return ( v > 0 );
+    if( mfd == 7 ) return ( v == 1 or v == 2 or v == 3 );
     return false;
   }
 };

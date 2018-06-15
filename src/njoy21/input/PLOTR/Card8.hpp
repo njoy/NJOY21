@@ -29,9 +29,9 @@ public:
       mfd( argument::extract< Mfd >( is, this->iverf.value ) ),
       mtd( argument::extract< Mtd >( is, this->iverf.value ) ),
       temper( argument::extract< Temper >( is, this->iverf.value ) ),
-      nth( argument::extract< Nth >( is, *( this->mfd.value ),
+      nth( argument::extract< Nth >( is, this->mfd.value,
                                      this->iverf.value, jtype ) ),
-      ntpnkh( readNtpNkh( is, *( this->mfd.value ), this->iverf.value ) )
+      ntpnkh( readNtpNkh( is, this->mfd.value, this->iverf.value ) )
       {
         Card::clear( is );
       }

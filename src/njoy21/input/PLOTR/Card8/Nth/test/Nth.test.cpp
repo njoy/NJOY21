@@ -140,10 +140,14 @@ SCENARIO( "Nth input values", "[PLOTR], [Card8], [Nth]" ){
   }//GIVEN
   GIVEN( "invalid nth values" ){
     WHEN( "mfd = 3 and iverf != 1" ){
-      std::vector<int> invalidNth{ -10, -1, 0};
+      std::vector<int> invalidNth{ -10, -1,
+        0
+      };
       int mfd = 3; int iverf = 2; int jtype = 0;
       THEN( "an exception is thrown" ){
         for( auto nth : invalidNth ){
+          njoy::Log::info( "nth: {}", nth );
+
           iRecordStream<char> issNth( std::istringstream(
                                std::to_string(nth) ) );
           REQUIRE_THROWS( argument::extract< PLOTR::Card8::Nth >(
