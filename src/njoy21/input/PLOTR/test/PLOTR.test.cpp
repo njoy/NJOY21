@@ -176,7 +176,7 @@ SCENARIO( "Parsing valid PLOTR input" ){
   }//WHEN
 
   WHEN( "reading in an input with 3-D axes" ){
-    iRecordStream<char> iss( std::istringstream(
+    std::string str{
       sCard0
       + sCard1
       + sCard2_1
@@ -190,10 +190,12 @@ SCENARIO( "Parsing valid PLOTR input" ){
       + sCard7_2 // -10.0 10.0 0.001
       + "'" + sCard7a_2 + "' /\n" // ALTERNATE AXIS TITLE (UNITS) TEST
       + sCard8_1
-//      + sCard9_1
+     // + sCard9_1
       + " /\n" // Card 11 - All default values (15,-15,15; 2.5,6.5,2.5)
-      + sCard2_2
-    ) );
+      + sCard2_2};
+
+    njoy::Log::info( str );
+    iRecordStream<char> iss{ std::istringstream( str ) };
 
     PLOTR plotr( iss );
 

@@ -4,7 +4,6 @@ auto extract( iRecordStream< Char >& is, Args&&... args ){
   typename Parser::Value_t value;
   try {
     bool success = not Parser::read( is, value, std::forward<Args>(args)... );
-    Log::info( "found success = {}", success );
     return construct< Policy >( value, success );
   } catch ( std::ios_base::failure& f ){
     Log::error( "Failed to read {} from input", Policy::name() );
@@ -17,3 +16,5 @@ auto extract( iRecordStream< Char >& is, Args&&... args ){
     throw de;
   }
 }
+
+

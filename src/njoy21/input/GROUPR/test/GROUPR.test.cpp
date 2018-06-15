@@ -192,7 +192,6 @@ SCENARIO( "Parsing valid GROUPR input" ){
     THEN( "the Card10 input values can be verified" ){
       REQUIRE( 1 == groupr.card10List.size() );
       REQUIRE( 9235 == groupr.card10List[0].matd.value );
-      REQUIRE( 0 == groupr.card10List[1].matd.value );
     }
 
     THEN( "the Card6a input values can be verified" ){
@@ -329,7 +328,6 @@ SCENARIO( "Parsing valid GROUPR input" ){
     THEN( "the Card10 input values can be verified" ){
       REQUIRE( 1 == groupr.card10List.size() );
       REQUIRE( 9235 == groupr.card10List[0].matd.value );
-      REQUIRE( 0 == groupr.card10List[1].matd.value );
     }
 
     THEN( "the card8c input values can be verified" ){
@@ -418,7 +416,6 @@ SCENARIO( "Parsing valid GROUPR input" ){
     THEN( "the Card10 input values can be verified" ){
       REQUIRE( 1 == groupr.card10List.size() );
       REQUIRE( 9235 == groupr.card10List[0].matd.value );
-      REQUIRE( 0 == groupr.card10List[1].matd.value );
     }
 
     THEN( "the card8d input value can be verified" ){

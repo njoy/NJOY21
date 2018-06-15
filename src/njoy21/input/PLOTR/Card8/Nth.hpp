@@ -2,7 +2,7 @@ struct Nth{
   using Value_t = int;
   static std::string name(){ return "nth"; }
   static std::string description(){
-    return
+    return 
         "The nth variable's purpose changes depending on the mfd value.\n\n"
         "For mfd=3 or 5, nth is the number of the subsection to plot.\n"
         "   - This works for isomer production, delayed neutron, etc.\n\n"
@@ -24,8 +24,6 @@ struct Nth{
     return 1;
   }
   static bool verify( Value_t v, int mfd, int iverf, int jtype ){
-    Log::info( "Nth: {}, mfd: {}, iverf: {}, jtype: {}",
-              v, mfd, iverf, jtype );
     if( iverf == 0 ) return true;
     if( iverf == 1 ){ // GENDF
       if( mfd == 3 ){
@@ -37,7 +35,6 @@ struct Nth{
       }
     } else{
       if( ( mfd == 3 ) or ( mfd == 5 ) ){
-        Log::info( "found that mfd==3or5" );
         return ( v > 0 );
       }
       if( mfd == 4 ){
