@@ -5,14 +5,14 @@ readRest( Istream& is, const int mfd ){
     try{
       Argument< Mtd > mtd( argument::extract< Mtd >( is ) );
       Argument< Mtname > mtname( argument::extract< Mtname >( is, mfd ) );
+      
+      return std::make_pair( std::move( mtd ), std::move( mtname ) );
     }
     catch( ... ){}
 
     return std::nullopt;
   }
-
-  Argument< Mtd > mtd( argument::extract< Mtd >( is ) );
-  Argument< Mtname > mtname( argument::extract< Mtname >( is, mfd ) );
-
-  return std::make_pair( std::move( mtd ), std::move( mtname ) );
+  else{
+    return std::nullopt;
+  }
 }
