@@ -25,8 +25,8 @@ SCENARIO( "Temper input values", "[PLOTR], [Card8], [Temper]" ){
     THEN( "the default value is returned" ){
       iRecordStream<char> iss( std::istringstream( "/") );
       REQUIRE( 0*dimwits::kelvin == 
-            argument::extract< PLOTR::Card8::Temper >( 
-                                                iss, iverf.value ).value );
+            *( argument::extract< PLOTR::Card8::Temper >( 
+                                                iss, iverf.value ).value ) );
     }
   }//GIVEN
   GIVEN( "invalid temper values" ){

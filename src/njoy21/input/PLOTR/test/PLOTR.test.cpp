@@ -140,13 +140,13 @@ SCENARIO( "Parsing valid PLOTR input" ){
 
     THEN( "the Card8 input values can be verified: 1 23 9439 3 90 25.5 1" ){
       REQUIRE( 2 == plotr.curves[0].second.card8.iverf.value );
-      REQUIRE( 23 == plotr.curves[0].second.card8.nin.value );
-      REQUIRE( 9439 == plotr.curves[0].second.card8.matd.value );
-      REQUIRE( 5 == plotr.curves[0].second.card8.mfd.value );
-      REQUIRE( 90 == plotr.curves[0].second.card8.mtd.value );
+      REQUIRE( 23 == *( plotr.curves[0].second.card8.nin.value ) );
+      REQUIRE( 9439 == *( plotr.curves[0].second.card8.matd.value ) );
+      REQUIRE( 5 == *( plotr.curves[0].second.card8.mfd.value ) );
+      REQUIRE( 90 == *( plotr.curves[0].second.card8.mtd.value ) );
       REQUIRE( 25.5 * dimwits::kelvin == 
-               plotr.curves[0].second.card8.temper.value );
-      REQUIRE( 1 == plotr.curves[0].second.card8.nth.value );
+               *( plotr.curves[0].second.card8.temper.value ) );
+      REQUIRE( 1 == *( plotr.curves[0].second.card8.nth.value ) );
       REQUIRE( std::nullopt == plotr.curves[0].second.card8.ntpnkh );
     }
 
@@ -176,7 +176,7 @@ SCENARIO( "Parsing valid PLOTR input" ){
   }//WHEN
 
   WHEN( "reading in an input with 3-D axes" ){
-    std::string str{
+    iRecordStream<char> iss( std::istringstream(
       sCard0
       + sCard1
       + sCard2_1
@@ -190,12 +190,10 @@ SCENARIO( "Parsing valid PLOTR input" ){
       + sCard7_2 // -10.0 10.0 0.001
       + "'" + sCard7a_2 + "' /\n" // ALTERNATE AXIS TITLE (UNITS) TEST
       + sCard8_1
-     // + sCard9_1
+//      + sCard9_1
       + " /\n" // Card 11 - All default values (15,-15,15; 2.5,6.5,2.5)
-      + sCard2_2};
-
-    njoy::Log::info( str );
-    iRecordStream<char> iss{ std::istringstream( str ) };
+      + sCard2_2
+    ) );
 
     PLOTR plotr( iss );
 
@@ -280,23 +278,19 @@ SCENARIO( "Parsing valid PLOTR input" ){
 
     THEN( "the Card8 input values can be verified: 1 23 9439 3 90 25.5 1" ){
       REQUIRE( 2 == plotr.curves[0].second.card8.iverf.value );
-      REQUIRE( 23 == plotr.curves[0].second.card8.nin.value );
-      REQUIRE( 9439 == plotr.curves[0].second.card8.matd.value );
-      REQUIRE( 5 == plotr.curves[0].second.card8.mfd.value );
-      REQUIRE( 90 == plotr.curves[0].second.card8.mtd.value );
+      REQUIRE( 23 == *( plotr.curves[0].second.card8.nin.value ) );
+      REQUIRE( 9439 == *( plotr.curves[0].second.card8.matd.value ) );
+      REQUIRE( 5 == *( plotr.curves[0].second.card8.mfd.value ) );
+      REQUIRE( 90 == *( plotr.curves[0].second.card8.mtd.value ) );
       REQUIRE( 25.5 * dimwits::kelvin == 
-               plotr.curves[0].second.card8.temper.value );
-      REQUIRE( 1 == plotr.curves[0].second.card8.nth.value );
+               *( plotr.curves[0].second.card8.temper.value ) );
+      REQUIRE( 1 == *( plotr.curves[0].second.card8.nth.value ) );
       REQUIRE( std::nullopt == plotr.curves[0].second.card8.ntpnkh );
     }
 
-    THEN( "the Card9 input values can be verified: 5 1 1 1 1 0" ){
-      REQUIRE( 5 == plotr.curves[0].second.card9->icon.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9->isym.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9->idash.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9->iccol.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9->ithick.value );
-      REQUIRE( 0 == plotr.curves[0].second.card9->ishade.value );
+    THEN( "Card9 and Card10 are non-existent" ){
+      REQUIRE( std::nullopt == plotr.curves[0].second.card9 );
+      REQUIRE( std::nullopt == plotr.curves[0].second.card10 );
     }
 
     THEN( "the Card11 input values can be verified: 15,-15,15,2.5,6.5,2.5" ){
@@ -404,13 +398,12 @@ SCENARIO( "Parsing valid PLOTR input" ){
 
     THEN( "the Card8 input values can be verified: 0" ){
       REQUIRE( 0 == plotr.curves[0].second.card8.iverf.value );
-      REQUIRE( 0 == plotr.curves[0].second.card8.nin.value );
-      REQUIRE( 0 == plotr.curves[0].second.card8.matd.value );
-      REQUIRE( 0 == plotr.curves[0].second.card8.mfd.value );
-      REQUIRE( 0 == plotr.curves[0].second.card8.mtd.value );
-      REQUIRE( 0*dimwits::kelvin == 
-               plotr.curves[0].second.card8.temper.value );
-      REQUIRE( 0 == plotr.curves[0].second.card8.nth.value );
+      REQUIRE( std::nullopt == plotr.curves[0].second.card8.nin.value );
+      REQUIRE( std::nullopt == plotr.curves[0].second.card8.matd.value );
+      REQUIRE( std::nullopt == plotr.curves[0].second.card8.mfd.value );
+      REQUIRE( std::nullopt == plotr.curves[0].second.card8.mtd.value );
+      REQUIRE( std::nullopt == plotr.curves[0].second.card8.temper.value );
+      REQUIRE( std::nullopt == plotr.curves[0].second.card8.nth.value );
       REQUIRE( std::nullopt == plotr.curves[0].second.card8.ntpnkh );
     }
 
@@ -583,13 +576,13 @@ SCENARIO( "Parsing valid PLOTR input" ){
     THEN( "the first Card8 input values can be verified:"
           "1 23 9439 3 90 25.5 1" ){
       REQUIRE( 2 == plotr.curves[0].second.card8.iverf.value );
-      REQUIRE( 23 == plotr.curves[0].second.card8.nin.value );
-      REQUIRE( 9439 == plotr.curves[0].second.card8.matd.value );
-      REQUIRE( 5 == plotr.curves[0].second.card8.mfd.value );
-      REQUIRE( 90 == plotr.curves[0].second.card8.mtd.value );
+      REQUIRE( 23 == *( plotr.curves[0].second.card8.nin.value ) );
+      REQUIRE( 9439 == *( plotr.curves[0].second.card8.matd.value ) );
+      REQUIRE( 5 == *( plotr.curves[0].second.card8.mfd.value ) );
+      REQUIRE( 90 == *( plotr.curves[0].second.card8.mtd.value ) );
       REQUIRE( 25.5 * dimwits::kelvin == 
-               plotr.curves[0].second.card8.temper.value );
-      REQUIRE( 1 == plotr.curves[0].second.card8.nth.value );
+               *( plotr.curves[0].second.card8.temper.value ) );
+      REQUIRE( 1 == *( plotr.curves[0].second.card8.nth.value ) );
       REQUIRE( std::nullopt == plotr.curves[0].second.card8.ntpnkh );
     }
 
@@ -670,12 +663,12 @@ SCENARIO( "Parsing valid PLOTR input" ){
 
     THEN( "the second Card8 input values can be verified: 0" ){
       REQUIRE( 0 == plotr.curves[1].second.card8.iverf.value );
-      REQUIRE( 0 == plotr.curves[1].second.card8.nin.value );
-      REQUIRE( 0 == plotr.curves[1].second.card8.matd.value );
-      REQUIRE( 0 == plotr.curves[1].second.card8.mfd.value );
-      REQUIRE( 0 == plotr.curves[1].second.card8.mtd.value );
-      REQUIRE( 0*dimwits::kelvin == plotr.curves[1].second.card8.temper.value );
-      REQUIRE( 0 == plotr.curves[1].second.card8.nth.value );
+      REQUIRE( std::nullopt == plotr.curves[1].second.card8.nin.value );
+      REQUIRE( std::nullopt == plotr.curves[1].second.card8.matd.value );
+      REQUIRE( std::nullopt == plotr.curves[1].second.card8.mfd.value );
+      REQUIRE( std::nullopt == plotr.curves[1].second.card8.mtd.value );
+      REQUIRE( std::nullopt == plotr.curves[1].second.card8.temper.value );
+      REQUIRE( std::nullopt == plotr.curves[1].second.card8.nth.value );
       REQUIRE( std::nullopt == plotr.curves[1].second.card8.ntpnkh );
     }
 
