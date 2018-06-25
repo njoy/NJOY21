@@ -44,8 +44,9 @@ SCENARIO( "Tlev input values",
         REQUIRE_THROWS( argument::extract< COVR::Card2z::Tlev >( iss, 7 ) );
       }
     } // WHEN
-    WHEN( "the tlev values are invalid" ){
-      for( std::string entry : {"0.0 0.5 1.0", "-0.1 0.3 1.0", "0.1 0.5 1.1"} ){
+    for( std::string entry : {"0.0 0.5 1.0", "-0.1 0.3 1.0", "0.1 0.5 1.1"} ){
+      std::string situ( "invalid input " + entry + " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss{ std::istringstream{ entry } };
   
         THEN( "an exception is thrown" ){

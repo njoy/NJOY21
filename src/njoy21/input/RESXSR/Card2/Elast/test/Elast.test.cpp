@@ -13,7 +13,9 @@ SCENARIO( "elast values",
 
   GIVEN( "valid values" ){
     for( auto elast : { 2.2, 9.1, 1000.0, 103303.1 } ){
-      THEN( "the correct value is returned" ){
+      std::string situ( "valid value " + std::to_string( elast ) +
+                                                              " is provided." );
+      THEN( situ.c_str() ){
         iRecordStream<char> issElast( std::istringstream(
                                       std::to_string( elast ) ) );
         REQUIRE( elast*dimwits::electronVolt ==
@@ -25,7 +27,9 @@ SCENARIO( "elast values",
 
   GIVEN( "invalid values" ){
     for( auto elast : { -20.0, -1.0, 0.0, 1.9, 2.0 } ){
-      THEN( "an exception is thrown" ){
+      std::string situ( "invalid value " + std::to_string( elast ) +
+                                                              " is provided." );
+      THEN( situ.c_str() ){
         iRecordStream<char> issElast( std::istringstream(
                                       std::to_string( elast ) ) );
         REQUIRE_THROWS( argument::extract< RESXSR::Card2::Elast >(

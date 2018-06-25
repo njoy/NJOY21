@@ -10,8 +10,9 @@ SCENARIO( "CCCCR, CISOTX, Card1, Maxdn",
           "[CCCCR] [CISOTX] [Card1] [Maxdn]" ){
   const int ngroup = 12;
   GIVEN( "valid inputs" ){
-    WHEN( "valid inputs are provided" ){
-      for( auto i = 0; i < ngroup+1; i++ ){
+    for( auto i = 0; i < ngroup+1; i++ ){
+      std::string situ( "valid input " + std::to_string(i) + " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "the value can be verified" ){
@@ -32,8 +33,9 @@ SCENARIO( "CCCCR, CISOTX, Card1, Maxdn",
       }
     } // WHEN
 
-    WHEN( "invalid inputs are provided" ){
-      for( auto i : {-1, ngroup+1} ){
+    for( auto i : {-1, ngroup+1} ){
+      std::string situ( "invalid input " + std::to_string(i) + " is provided.");
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( i ) ) );
 
         THEN( "an exception is thrown" ){

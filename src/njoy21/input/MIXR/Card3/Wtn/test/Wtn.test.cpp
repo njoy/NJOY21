@@ -9,8 +9,9 @@ using namespace njoy::njoy21::input;
 SCENARIO( "MIXR, Card3, Wtn",
           "[MIXR] [Card3] [Wtn]" ){
   GIVEN( "valid inputs" ){
-    WHEN( "valid inputs are provided" ){
-      for( double d : {0.1, 0.5, 1.0} ){
+    for( double d : {0.1, 0.5, 1.0} ){
+      std::string situ( "valid input " + std::to_string(d) + " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( d ) ) );
 
         THEN( "an exception is thrown" ){
@@ -30,8 +31,9 @@ SCENARIO( "MIXR, Card3, Wtn",
       }
     } // WHEN
 
-    WHEN( "invalid values are provided" ){
-      for( double d : { 0.0, 1.01 } ){
+    for( double d : { 0.0, 1.01 } ){
+      std::string situ( "invalid input " + std::to_string(d) + " is provided.");
+      WHEN( situ.c_str() ){
         iRecordStream<char> iss( std::istringstream( std::to_string( d ) ) );
 
         THEN( "an exception is thrown" ){

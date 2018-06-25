@@ -57,8 +57,10 @@ SCENARIO( "Xstep output values", "[PLOTR],[Card5], [Xstep]"){
 
     std::vector<double> invalidValues{ -2.0, -1.1, 0.0 };
 
-    WHEN( "el and eh have values but the xstep value is wrong" ){
-      for( auto xstep : invalidValues ){
+    for( auto xstep : invalidValues ){
+      std::string situ( "invalid xstep value " + std::to_string( xstep ) +
+                                                              " is provided." );
+      WHEN( situ.c_str() ){
         iRecordStream<char> issXstep( 
             std::istringstream( std::to_string( xstep ) ) );
 
