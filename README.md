@@ -5,7 +5,14 @@ NJOY21 is the modernized version of NJOY---suitable for computing in the 21st Ce
 NJOY21 is the modern successor to NJOY2016. It is backwards compatible with NJOY2016---except for a few small changes. 
 
 - NJOY21 writes everything to the screen instead of to the `output` file. This can be changed by using the `-o` and providing a filename when running NJOY21.
-- NJOY21 verifies all the input parameters before performing any processing. This provides a good mechanism to know if your input is valid and provides lots of information if it is not. (Note: we *cannot* ensure that it is correct; that is your responsibility.) The input verification is very strict; if your input does not conform to what is said in the manual, it will not run in NJOY21. 
+- The preferred method for using an input file for NJOY21 is to use the `-i` command-line option. 
+
+    ```
+    njoy21 -i U235.inp -o output
+    ```
+  While you can redirect input and output using `<` and `>` as before, it is preferred to use `-i` and `-o`.
+
+- NJOY21 verifies all the input parameters before performing any processing. This provides a good mechanism to know if your input is valid and provides lots of information if it is not. (Note: we *cannot* ensure that it is correct; that is your responsibility.) The input verification is very strict; if your input does not conform to what is documented in the [manual](https://github.com/njoy/NJOY2016-manual/blob/master/njoy16.pdf), it will not run in NJOY21. 
 
 ## NJOY21 Development
 NJOY21 is primarily written in modern C++. It consists of many subprojects that are used together to accomplish the entire work that NJOY performs. Initially, NJOY21 is just delegates to NJOY2016; this will ensure backwards compatibility. As the different modules/components of NJOY are modernized, the calls to the Fortran modules (i.e., NJOY2016) will be replaced with calls to the modernized code.
