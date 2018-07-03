@@ -6,7 +6,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "LEAPR Card18 input values",
   "[LEAPR], [Card18]" ){
   GIVEN( "a value for nka" ){
-    auto InvAng =  dimwits::pow( 1.0 * dimwits::angstrom, dimwits::Ratio<-1> );
+    auto InvAng =  pow( 1.0 * dimwits::angstrom, dimwits::Ratio<-1> );
     Argument< LEAPR::Card17::Nka > nka;
     nka.value = 3;
 
@@ -27,12 +27,12 @@ SCENARIO( "LEAPR Card18 input values",
         REQUIRE_THROWS( LEAPR::Card18( iss, nka ) );
       } // THEN
     } // WHEN
-    WHEN( "the card18 input values are not in increasing order" ){
-      iRecordStream< char> iss( std::istringstream("1.0 3.0 2.0") );
-      THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( LEAPR::Card18( iss, nka ) );
-      } // THEN
-    } // WHEN
+//    WHEN( "the card18 input values are not in increasing order" ){
+//      iRecordStream< char> iss( std::istringstream("1.0 3.0 2.0") );
+//      THEN( "an exception is thrown" ){
+//        REQUIRE_THROWS( LEAPR::Card18( iss, nka ) );
+//      } // THEN
+//    } // WHEN
     WHEN( "too few card18 input values are provided" ){
       iRecordStream< char> iss( std::istringstream("1.0 2.0") );
       THEN( "an exception is thrown" ){

@@ -64,26 +64,30 @@ SCENARIO( "Parsing valid GAMINR input" ){
       int i;
       { i = 0;
         REQUIRE( 3 == gaminr.materials.at(0).card6.at(i).mfd.value );
-        REQUIRE( 18 == gaminr.materials.at(0).card6.at(i).mtd.value );
-        REQUIRE( "MF3 MT18" == gaminr.materials.at(0).card6.at(i).mtname.value );
+        REQUIRE( 18 == gaminr.materials.at(0).card6.at(i).rest->first.value );
+        REQUIRE( "MF3 MT18" ==
+                        gaminr.materials.at(0).card6.at(i).rest->second.value );
       }
       { i = 1;
         REQUIRE( 3 == gaminr.materials.at(0).card6.at(i).mfd.value );
-        REQUIRE( 102 == gaminr.materials.at(0).card6.at(i).mtd.value );
-        REQUIRE( "MF3 MT102" == gaminr.materials.at(0).card6.at(i).mtname.value );
+        REQUIRE( 102 == gaminr.materials.at(0).card6.at(i).rest->first.value );
+        REQUIRE( "MF3 MT102" ==
+                        gaminr.materials.at(0).card6.at(i).rest->second.value );
       }
       { i = 2;
         REQUIRE( 10 == gaminr.materials.at(0).card6.at(i).mfd.value );
-        REQUIRE( 18 == gaminr.materials.at(0).card6.at(i).mtd.value );
-        REQUIRE( "Test3" == gaminr.materials.at(0).card6.at(i).mtname.value );
+        REQUIRE( 18 == gaminr.materials.at(0).card6.at(i).rest->first.value );
+        REQUIRE( "Test3" ==
+                        gaminr.materials.at(0).card6.at(i).rest->second.value );
       }
 
       REQUIRE( 9235 == gaminr.materials.at(0).card7.matd.value );
 
       { i = 0;
         REQUIRE( 3 == gaminr.materials.at(1).card6.at(i).mfd.value );
-        REQUIRE( 18 == gaminr.materials.at(1).card6.at(i).mtd.value );
-        REQUIRE( "MF3 MT18" == gaminr.materials.at(1).card6.at(i).mtname.value );
+        REQUIRE( 18 == gaminr.materials.at(1).card6.at(i).rest->first.value );
+        REQUIRE( "MF3 MT18" ==
+                        gaminr.materials.at(1).card6.at(i).rest->second.value );
       }
 
       REQUIRE( 0 == gaminr.materials.at(1).card7.matd.value );
@@ -127,26 +131,30 @@ SCENARIO( "Parsing valid GAMINR input" ){
       int i;
       { i = 0;
         REQUIRE( 3 == gaminr.materials.at(0).card6.at(i).mfd.value );
-        REQUIRE( 18 == gaminr.materials.at(0).card6.at(i).mtd.value );
-        REQUIRE( "MF3 MT18" == gaminr.materials.at(0).card6.at(i).mtname.value );
+        REQUIRE( 18 == gaminr.materials.at(0).card6.at(i).rest->first.value );
+        REQUIRE( "MF3 MT18" ==
+                        gaminr.materials.at(0).card6.at(i).rest->second.value );
       }
       { i = 1;
         REQUIRE( 3 == gaminr.materials.at(0).card6.at(i).mfd.value );
-        REQUIRE( 102 == gaminr.materials.at(0).card6.at(i).mtd.value );
-        REQUIRE( "MF3 MT102" == gaminr.materials.at(0).card6.at(i).mtname.value );
+        REQUIRE( 102 == gaminr.materials.at(0).card6.at(i).rest->first.value );
+        REQUIRE( "MF3 MT102" ==
+                        gaminr.materials.at(0).card6.at(i).rest->second.value );
       }
       { i = 2;
         REQUIRE( 10 == gaminr.materials.at(0).card6.at(i).mfd.value );
-        REQUIRE( 18 == gaminr.materials.at(0).card6.at(i).mtd.value );
-        REQUIRE( "Test3" == gaminr.materials.at(0).card6.at(i).mtname.value );
+        REQUIRE( 18 == gaminr.materials.at(0).card6.at(i).rest->first.value );
+        REQUIRE( "Test3" ==
+                        gaminr.materials.at(0).card6.at(i).rest->second.value );
       }
 
       REQUIRE( 9235 == gaminr.materials.at(0).card7.matd.value );
 
       { i = 0;
         REQUIRE( 3 == gaminr.materials.at(1).card6.at(i).mfd.value );
-        REQUIRE( 18 == gaminr.materials.at(1).card6.at(i).mtd.value );
-        REQUIRE( "MF3 MT18" == gaminr.materials.at(1).card6.at(i).mtname.value );
+        REQUIRE( 18 == gaminr.materials.at(1).card6.at(i).rest->first.value );
+        REQUIRE( "MF3 MT18" ==
+                        gaminr.materials.at(1).card6.at(i).rest->second.value );
       }
 
       REQUIRE( 0 == gaminr.materials.at(1).card7.matd.value );

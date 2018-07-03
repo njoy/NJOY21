@@ -8,7 +8,7 @@ struct Hsetid{
            "slash (/).  The default value is a blank string.";
   }
   static Value_t defaultValue(){ return ""; }
-  static bool verify( const Value_t hsetid ){
-    return hsetid.size() < 13;
-  }
+//  static bool verify( const Value_t hsetid ){
+//    return hsetid.size() < 13;
+//  }
 };

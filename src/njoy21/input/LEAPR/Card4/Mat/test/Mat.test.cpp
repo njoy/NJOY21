@@ -8,7 +8,7 @@ SCENARIO( "LEAPR Card4 mat values",
   "[LEAPR], [Card4], [Mat]"){
 
   GIVEN( "valid mat values" ){
-    std::vector<int> validValues{1, 2, 99};
+    std::vector<int> validValues{1, 2, 99, 100, 101, 9999};
     THEN( "the returned class has the correct value" ){
       for( auto& mat : validValues ){
         iRecordStream<char> iss( 
@@ -20,7 +20,7 @@ SCENARIO( "LEAPR Card4 mat values",
   } // GIVEN
 
   GIVEN( "invalid mat values" ){
-    std::vector<int> invalidValues{-1, 0, 100, 101};
+    std::vector<int> invalidValues{-1, 0, 10000};
     THEN( "an exception is thrown" ){
       for( auto& mat : invalidValues ){
         iRecordStream<char> iss( 

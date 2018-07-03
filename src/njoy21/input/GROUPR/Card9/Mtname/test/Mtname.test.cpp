@@ -27,7 +27,8 @@ SCENARIO( "GROUPR Card9 Mmtname", "[Card9], [Mmtname]"){
 
       THEN( "the mtname value is correctly empty" ){
         iRecordStream<char> iss( std::istringstream( " /" ) );
-        REQUIRE( "" == argument::extract< GROUPR::Card9::Mtname >( iss, mfd ).value );
+        REQUIRE( "" == argument::extract< GROUPR::Card9::Mtname >(
+                                                             iss, mfd ).value );
       }
     }
   }

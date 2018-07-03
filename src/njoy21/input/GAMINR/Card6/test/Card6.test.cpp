@@ -14,8 +14,8 @@ SCENARIO( "Validating card6 inputs", "[GAMINR], [Card6]" ){
 
     THEN( "the card6 values can be verified" ){
       REQUIRE( 3 == card6.mfd.value );
-      REQUIRE( 18 == card6.mtd.value );
-      REQUIRE( "MF3 MT18" == card6.mtname.value );
+      REQUIRE( 18 == card6.rest->first.value );
+      REQUIRE( "MF3 MT18" == card6.rest->second.value );
     }
   }
   GIVEN( "mfd=0" ){
@@ -25,8 +25,8 @@ SCENARIO( "Validating card6 inputs", "[GAMINR], [Card6]" ){
 
     THEN( "the card6 values can be verified" ){
       REQUIRE( 0 == card6.mfd.value );
-      REQUIRE( 0 == card6.mtd.value );
-      REQUIRE( "" == card6.mtname.value );
+      REQUIRE( 0 == card6.rest->first.value );
+      REQUIRE( "" == card6.rest->second.value );
     }
   }
   GIVEN( "mfd=-1" ){
@@ -36,8 +36,7 @@ SCENARIO( "Validating card6 inputs", "[GAMINR], [Card6]" ){
 
     THEN( "the card6 values can be verified" ){
       REQUIRE( -1 == card6.mfd.value );
-      REQUIRE( 0 == card6.mtd.value );
-      REQUIRE( "" == card6.mtname.value );
+      REQUIRE( std::nullopt == card6.rest );
     }
   }
 
@@ -52,18 +51,6 @@ SCENARIO( "Validating card6 inputs", "[GAMINR], [Card6]" ){
     WHEN( "mfd=1000001" ){
       iRecordStream<char> issCard6( std::istringstream( "1000001 /" ) );
 
-      THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( GAMINR::Card6( issCard6 ) );
-      }
-    }
-    WHEN( "mtd=0" ){
-      iRecordStream<char> issCard6( std::istringstream( "-1 0 /" ) );
-      THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( GAMINR::Card6( issCard6 ) );
-      }
-    }
-    WHEN( "mtd=1000" ){
-      iRecordStream<char> issCard6( std::istringstream( "-1 1000 /" ) );
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( GAMINR::Card6( issCard6 ) );
       }

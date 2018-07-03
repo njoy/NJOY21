@@ -7,16 +7,16 @@ struct Ystep {
       "The default behavior is automatic scaling.  The value is ignored if\n"
       "log scaling is used.";
   }
-  static Value_t defaultValue( const Value_t yl ){
-    if( yl != std::nullopt ){
-      Log::info( "When using default values in PLOTR::Card6, the default\n"
-                 "values should be used for all parameters.");
-      std::exception e;
-      throw e;
-    }
+  static Value_t defaultValue(){ // const Value_t yl ){
+//    if( yl != std::nullopt ){
+//      Log::info( "When using default values in PLOTR::Card6, the default\n"
+//                 "values should be used for all parameters.");
+//      std::exception e;
+//      throw e;
+//    }
     return std::nullopt;
   }
-  static bool verify( const Value_t v, const Value_t ){
+  static bool verify( const Value_t v ){ //, const Value_t ){
     return ( *v > 0 );
   }
 };

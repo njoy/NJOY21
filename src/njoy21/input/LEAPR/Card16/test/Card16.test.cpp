@@ -29,7 +29,7 @@ SCENARIO( "LEAPR Card16 input values",
       } // THEN
     } // WHEN
     WHEN ("sum of card16 input values conflicts with twt and tbeta values" ){
-      iRecordStream< char> iss( std::istringstream("0.163467 0.326932") );
+      iRecordStream< char> iss( std::istringstream("0.163467 0.316933") );
       THEN( "an exception is thrown" ){
         REQUIRE_THROWS( LEAPR::Card16( iss, nd, twt, tbeta ) );
       } // THEN

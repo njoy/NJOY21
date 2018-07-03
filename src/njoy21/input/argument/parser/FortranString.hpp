@@ -2,17 +2,24 @@ template< typename Char >
 class FortranString {
   std::basic_string<Char>& core;
   typename std::char_traits<Char>::int_type buffer;
-  
+  char quote;
+
+  bool isQuote( char c ){
+    if ( ( c == '\'' ) or ( c == '*' ) ){
+      quote = c;
+      return true;
+    }
+    return false;
+  }
+
   void quoted( std::basic_istream< Char >& is ){
     do {
-      this->core.push_back( is.get() );
-    } while ( is.good() and ( core.back() != '\'') );
+      char c = is.get();
+      if ( c != '\n' ) this->core.push_back( c );
+    } while ( is.good() and ( core.back() != quote ) );
     if ( is.good() ){
       this->core.pop_back();
       is.peek(); // pull the next character into the buffer
-    }
-    if ( is.eof() ){
-      is.setstate( std::ios::failbit );
     }
   }
 
@@ -44,6 +51,7 @@ public:
       is.setstate( std::ios::failbit );
     }
     if ( not is.good() ){ return; }    
-    ( this->buffer == '\'' ) ? this->quoted(is) : this->unquoted(is);
+    ( this->isQuote( this->buffer ) ) ? this->quoted( is )
+                                      : this->unquoted( is );
   }
 };

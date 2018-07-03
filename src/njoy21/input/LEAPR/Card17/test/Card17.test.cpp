@@ -11,7 +11,7 @@ SCENARIO( "LEAPR Card17 input values",
       LEAPR::Card17 card17( iss );
       REQUIRE( card17.nka.value == 1 );
       REQUIRE( card17.dka.value == 0.001 * 
-        dimwits::pow( 1.0 * dimwits::angstrom, dimwits::Ratio<-1> ) );
+        pow( 1.0 * dimwits::angstrom, dimwits::Ratio<-1> ) );
     } // THEN
   } // GIVEN
 

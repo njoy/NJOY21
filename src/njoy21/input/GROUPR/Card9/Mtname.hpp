@@ -5,18 +5,23 @@ struct Mtname {
   static std::string description(){
     return 
         "The mtname argument is a textual description of the ENDF Section to\n"
-        "be processed.\n"
-        "\n"
-        "The argument must be less than 16 characters long.";
+        "be processed.";//\n"
+//        "\n"
+//        "The argument must be less than 16 characters long.";
   }
 
   static Value_t defaultValue( const Argument< Mfd >& ){ return ""; }
-  static bool verify( const Value_t M, const Argument< Mfd >& mfd ){ 
+  static bool verify( const Value_t , const Argument< Mfd >& mfd ){ 
     if( mfd.value == 0 ){
       return true;
     }
     else{
-      return ( M.size() < 16 ) and ( M.size() > 0 );
+//      Commented because, while the fortran seems to suggest that the max
+//      accepted characters is 15, the NJOY2016 output is able to reproduce
+//      longer strings and test problem 1 uses longer strings.
+//
+//      return ( M.size() < 16 ) and ( M.size() > 0 );
+      return true;
     }
   }
 };

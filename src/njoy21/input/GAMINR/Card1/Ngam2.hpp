@@ -29,9 +29,9 @@ struct Ngam2{
                       const Argument< Npend >& npend,
                       const Argument< Ngam1 >& ngam1){
     return (v == 0) or (
-             ( argument::common::Nout::verify(v, nendf)) and
+             ( argument::common::Nout::verify( v ) ) and
+             ( std::abs( nendf.value ) != std::abs( v ) ) and
              ( std::abs( npend.value ) != std::abs( v ) ) and
-             ( std::abs( ngam1.value ) != std::abs( v ) ) and
-             ( v*ngam1.value >= 0 ) );
+             ( std::abs( ngam1.value ) != std::abs( v ) ) );
   }
 };

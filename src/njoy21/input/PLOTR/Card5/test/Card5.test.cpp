@@ -89,12 +89,12 @@ SCENARIO( "Validating card5 inputs",
         REQUIRE_THROWS( PLOTR::Card5(issCard5, xtag, itype, ileg) );
       }
     }//WHEN
-    WHEN( "Only one default is used" ){
-      iRecordStream<char> issCard5( std::istringstream(" 500.0 400000.0 / " ) );
-
-      THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( PLOTR::Card5( issCard5, xtag, itype, ileg ) );
-      }
-    } //WHEN
+//    WHEN( "Only one default is used" ){
+//      iRecordStream<char> issCard5( std::istringstream(" 500.0 400000.0 / " ) );
+//
+//      THEN( "an exception is thrown" ){
+//        REQUIRE_THROWS( PLOTR::Card5( issCard5, xtag, itype, ileg ) );
+//      }
+//    } //WHEN
   }//GIVEN
 }//SCENARIO

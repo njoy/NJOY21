@@ -36,19 +36,7 @@ read( iRecordStream<Char>& is, T& i, Args&&... ){
 
 template< typename Char, typename... Args >
 bool read( iRecordStream<Char>& is, std::string& string, Args&&... ){
-  is >> FortranString<Char>( string );
-
-  bool wasQuoted = (is.buffer.back() == '\'') and ( string.back() != '\'');
-
-  if ( wasQuoted ){
-    validate(is);
-    if ( is.fail() and ( is.buffer.back() == '\'' ) ){ is.clear(); }
-    if ( not is.fail() ){
-      string.erase( std::remove( std::begin(string), std::end(string), '\n' ),
-		    std::end(string) );
-    }
-  }
-  return true;
+  is >> FortranString<Char>( string ); return true;
 }
 
 // Reading in vectors of values requires that the value immediately

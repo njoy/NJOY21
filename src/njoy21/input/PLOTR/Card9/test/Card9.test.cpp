@@ -26,14 +26,15 @@ SCENARIO( "Validating card9 inputs",
             for( auto iccol : validIccol ){
               for( auto ithick : validIthick ){
                 for( auto ishade : validIshade ){
-                  iRecordStream<char> issCard9( std::istringstream(
+                  auto str = 
                     std::to_string(icon) + " " +
                     std::to_string(isym) + " " +
                     std::to_string(idash) + " " +
                     std::to_string(iccol) + " " +
                     std::to_string(ithick) + " " +
-                    std::to_string(ishade) + " /" ) );
+                    std::to_string(ishade) + " /";
 
+                  iRecordStream<char> issCard9( std::istringstream{ str } );
                   PLOTR::Card9 card9(issCard9);
 
                   THEN( "the members can be tested" ){

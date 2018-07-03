@@ -8,14 +8,17 @@ using namespace njoy::njoy21::input;
 
 std::string sCard1( "-30 -32 0 -34 /\n" );
 std::string sCard3( "GROUPR Card3 title for testing" );
-std::string sCard4( "293.6 600 800/\n" );
+std::string sCard4( "293.6 600/\n" );
 std::string sCard5( "1E6 1E-10 /\n" );
 std::string sCard9_10{
       "3 18 'MF3 MT18' /\n"         // Card 9.1
       "3 102 'MF3 MT102' /\n"       // Card 9.2
       "10 /\n"                      // Card 9.3
       "0 /\n"                       // Card 9.4
-      "9235 /\n"                       // Card10
+      "3 18 'MF3 MT18' /\n"         // Card 9.1
+      "3 102 'MF3 MT102' /\n"       // Card 9.2
+      "0 /\n"                       // Card 9.4
+      "9235 /\n"                    // Card10
       "0 /\n"                       // Card10
 };
 
@@ -24,7 +27,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
   WHEN( "reading in a very generic input" ){
     iRecordStream<char> iss( std::istringstream(
       sCard1
-      + "125 2 0 2 4 3 2 1 /\n"         // Card2
+      + "125 2 0 2 4 2 2 1 0 /\n"         // Card2
       + "'" + sCard3 + "' /\n"
       + sCard4
       + sCard5
@@ -45,18 +48,18 @@ SCENARIO( "Parsing valid GROUPR input" ){
       REQUIRE( 0 == groupr.card2.igg.value );
       REQUIRE( 2 == groupr.card2.iwt.value );
       REQUIRE( 4 == groupr.card2.lord.value );
-      REQUIRE( 3 == groupr.card2.ntemp.value );
+      REQUIRE( 2 == groupr.card2.ntemp.value );
       REQUIRE( 2 == groupr.card2.nsigz.value );
       REQUIRE( 1 == groupr.card2.iprint.value );
+      REQUIRE( 0 == groupr.card2.ismooth.value );
     }
     THEN( "the Card3 input values can be verified" ){
       REQUIRE( sCard3 == groupr.card3.title.value );
     }
     THEN( "the Card4 input values can be verified" ){
-      REQUIRE( 3 == groupr.card4.temp.value.size() );
+      REQUIRE( 2 == groupr.card4.temp.value.size() );
       REQUIRE( 293.6*dimwits::kelvin == groupr.card4.temp.value[0] );
       REQUIRE( 600*dimwits::kelvin == groupr.card4.temp.value[1] );
-      REQUIRE( 800*dimwits::kelvin == groupr.card4.temp.value[2] );
     }
     THEN( "the Card5 input values can be verified" ){
       REQUIRE( 2 == groupr.card5.sigz.value.size() );
@@ -71,7 +74,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
 
     THEN( "the Card9 input values can be verified" ){
 
-      REQUIRE( 3 == groupr.card9List.size() );
+      REQUIRE( 5 == groupr.card9List.size() );
       int i;
       { i = 0;
         REQUIRE( 3 == groupr.card9List[i].mfd.value );
@@ -89,21 +92,25 @@ SCENARIO( "Parsing valid GROUPR input" ){
         REQUIRE( "" == groupr.card9List[i].mtname.value );
       }
       { i = 3;
-        REQUIRE( 0 == groupr.card9List[i].mfd.value );
-        REQUIRE( 0 == groupr.card9List[i].mtd.value );
-        REQUIRE( "" == groupr.card9List[i].mtname.value );
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 18 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
+      }
+      { i = 4;
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 102 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
       }
     }
     THEN( "the Card10 input values can be verified" ){
       REQUIRE( 1 == groupr.card10List.size() );
       REQUIRE( 9235 == groupr.card10List[0].matd.value );
-      REQUIRE( 0 == groupr.card10List[1].matd.value );
     }
   }
   WHEN( "reading in a more complicated input, ign=1, ign=1, iwt=-1" ){
     iRecordStream<char> iss( std::istringstream(
       sCard1
-      + "125 1 1 -1 4 3 2 0 /\n"         // Card2
+      + "125 1 1 -1 4 2 2 0 /\n"         // Card2
       + "'" + sCard3 + "' /\n"
       + sCard4
       + sCard5
@@ -133,18 +140,18 @@ SCENARIO( "Parsing valid GROUPR input" ){
       REQUIRE( 1 == groupr.card2.igg.value );
       REQUIRE( -1 == groupr.card2.iwt.value );
       REQUIRE( 4 == groupr.card2.lord.value );
-      REQUIRE( 3 == groupr.card2.ntemp.value );
+      REQUIRE( 2 == groupr.card2.ntemp.value );
       REQUIRE( 2 == groupr.card2.nsigz.value );
       REQUIRE( 0 == groupr.card2.iprint.value );
+      REQUIRE( 1 == groupr.card2.ismooth.value );
     }
     THEN( "the Card3 input values can be verified" ){
       REQUIRE( sCard3 == groupr.card3.title.value );
     }
     THEN( "the Card4 input values can be verified" ){
-      REQUIRE( 3 == groupr.card4.temp.value.size() );
+      REQUIRE( 2 == groupr.card4.temp.value.size() );
       REQUIRE( 293.6*dimwits::kelvin == groupr.card4.temp.value[0] );
       REQUIRE( 600*dimwits::kelvin == groupr.card4.temp.value[1] );
-      REQUIRE( 800*dimwits::kelvin == groupr.card4.temp.value[2] );
     }
     THEN( "the Card5 input values can be verified" ){
       REQUIRE( 2 == groupr.card5.sigz.value.size() );
@@ -154,7 +161,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card9 input values can be verified" ){
 
-      REQUIRE( 3 == groupr.card9List.size() );
+      REQUIRE( 5 == groupr.card9List.size() );
       int i;
       { i = 0;
         REQUIRE( 3 == groupr.card9List[i].mfd.value );
@@ -172,15 +179,19 @@ SCENARIO( "Parsing valid GROUPR input" ){
         REQUIRE( "" == groupr.card9List[i].mtname.value );
       }
       { i = 3;
-        REQUIRE( 0 == groupr.card9List[i].mfd.value );
-        REQUIRE( 0 == groupr.card9List[i].mtd.value );
-        REQUIRE( "" == groupr.card9List[i].mtname.value );
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 18 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
+      }
+      { i = 4;
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 102 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
       }
     }
     THEN( "the Card10 input values can be verified" ){
       REQUIRE( 1 == groupr.card10List.size() );
       REQUIRE( 9235 == groupr.card10List[0].matd.value );
-      REQUIRE( 0 == groupr.card10List[1].matd.value );
     }
 
     THEN( "the Card6a input values can be verified" ){
@@ -243,7 +254,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
   WHEN( "reading in an input where iwt=4" ){
     iRecordStream<char> iss( std::istringstream(
       sCard1
-      + "125 2 0 4 4 3 2 1 /\n"         // Card2
+      + "125 2 0 4 4 2 2 1 /\n"         // Card2
       + "'" + sCard3 + "' /\n"
       + sCard4
       + sCard5
@@ -265,18 +276,18 @@ SCENARIO( "Parsing valid GROUPR input" ){
       REQUIRE( 0 == groupr.card2.igg.value );
       REQUIRE( 4 == groupr.card2.iwt.value );
       REQUIRE( 4 == groupr.card2.lord.value );
-      REQUIRE( 3 == groupr.card2.ntemp.value );
+      REQUIRE( 2 == groupr.card2.ntemp.value );
       REQUIRE( 2 == groupr.card2.nsigz.value );
       REQUIRE( 1 == groupr.card2.iprint.value );
+      REQUIRE( 1 == groupr.card2.ismooth.value );
     }
     THEN( "the Card3 input values can be verified" ){
       REQUIRE( sCard3 == groupr.card3.title.value );
     }
     THEN( "the Card4 input values can be verified" ){
-      REQUIRE( 3 == groupr.card4.temp.value.size() );
+      REQUIRE( 2 == groupr.card4.temp.value.size() );
       REQUIRE( 293.6*dimwits::kelvin == groupr.card4.temp.value[0] );
       REQUIRE( 600*dimwits::kelvin == groupr.card4.temp.value[1] );
-      REQUIRE( 800*dimwits::kelvin == groupr.card4.temp.value[2] );
     }
     THEN( "the Card5 input values can be verified" ){
       REQUIRE( 2 == groupr.card5.sigz.value.size() );
@@ -286,7 +297,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card9 input values can be verified" ){
 
-      REQUIRE( 3 == groupr.card9List.size() );
+      REQUIRE( 5 == groupr.card9List.size() );
       int i;
       { i = 0;
         REQUIRE( 3 == groupr.card9List[i].mfd.value );
@@ -304,15 +315,19 @@ SCENARIO( "Parsing valid GROUPR input" ){
         REQUIRE( "" == groupr.card9List[i].mtname.value );
       }
       { i = 3;
-        REQUIRE( 0 == groupr.card9List[i].mfd.value );
-        REQUIRE( 0 == groupr.card9List[i].mtd.value );
-        REQUIRE( "" == groupr.card9List[i].mtname.value );
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 18 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
+      }
+      { i = 4;
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 102 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
       }
     }
     THEN( "the Card10 input values can be verified" ){
       REQUIRE( 1 == groupr.card10List.size() );
       REQUIRE( 9235 == groupr.card10List[0].matd.value );
-      REQUIRE( 0 == groupr.card10List[1].matd.value );
     }
 
     THEN( "the card8c input values can be verified" ){
@@ -327,7 +342,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
   WHEN( "reading in an input where iwt=0" ){
     iRecordStream<char> iss( std::istringstream(
       sCard1
-      + "125 2 0 0 4 3 2 1 /\n"         // Card2
+      + "125 2 0 0 4 2 2 1 /\n"         // Card2
       + "'" + sCard3 + "' /\n"
       + sCard4
       + sCard5
@@ -349,18 +364,18 @@ SCENARIO( "Parsing valid GROUPR input" ){
       REQUIRE( 0 == groupr.card2.igg.value );
       REQUIRE( 0 == groupr.card2.iwt.value );
       REQUIRE( 4 == groupr.card2.lord.value );
-      REQUIRE( 3 == groupr.card2.ntemp.value );
+      REQUIRE( 2 == groupr.card2.ntemp.value );
       REQUIRE( 2 == groupr.card2.nsigz.value );
       REQUIRE( 1 == groupr.card2.iprint.value );
+      REQUIRE( 1 == groupr.card2.ismooth.value );
     }
     THEN( "the Card3 input values can be verified" ){
       REQUIRE( sCard3 == groupr.card3.title.value );
     }
     THEN( "the Card4 input values can be verified" ){
-      REQUIRE( 3 == groupr.card4.temp.value.size() );
+      REQUIRE( 2 == groupr.card4.temp.value.size() );
       REQUIRE( 293.6*dimwits::kelvin == groupr.card4.temp.value[0] );
       REQUIRE( 600*dimwits::kelvin == groupr.card4.temp.value[1] );
-      REQUIRE( 800*dimwits::kelvin == groupr.card4.temp.value[2] );
     }
     THEN( "the Card5 input values can be verified" ){
       REQUIRE( 2 == groupr.card5.sigz.value.size() );
@@ -370,7 +385,7 @@ SCENARIO( "Parsing valid GROUPR input" ){
     }
     THEN( "the Card9 input values can be verified" ){
 
-      REQUIRE( 3 == groupr.card9List.size() );
+      REQUIRE( 5 == groupr.card9List.size() );
       int i;
       { i = 0;
         REQUIRE( 3 == groupr.card9List[i].mfd.value );
@@ -388,15 +403,19 @@ SCENARIO( "Parsing valid GROUPR input" ){
         REQUIRE( "" == groupr.card9List[i].mtname.value );
       }
       { i = 3;
-        REQUIRE( 0 == groupr.card9List[i].mfd.value );
-        REQUIRE( 0 == groupr.card9List[i].mtd.value );
-        REQUIRE( "" == groupr.card9List[i].mtname.value );
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 18 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
+      }
+      { i = 4;
+        REQUIRE( 3 == groupr.card9List[i].mfd.value );
+        REQUIRE( 102 == groupr.card9List[i].mtd.value );
+        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
       }
     }
     THEN( "the Card10 input values can be verified" ){
       REQUIRE( 1 == groupr.card10List.size() );
       REQUIRE( 9235 == groupr.card10List[0].matd.value );
-      REQUIRE( 0 == groupr.card10List[1].matd.value );
     }
 
     THEN( "the card8d input value can be verified" ){
@@ -411,7 +430,7 @@ SCENARIO( "Parsing invalid GROUPR input" ){
   WHEN( "too many neutron groups" ){
     iRecordStream<char> iss( std::istringstream(
       sCard1
-      + "125 1 0 2 4 3 2 1 /\n"         // Card2
+      + "125 1 0 2 4 2 2 1 /\n"         // Card2
       + "'" + sCard3 + "' /\n"
       + sCard4
       + sCard5
@@ -427,7 +446,7 @@ SCENARIO( "Parsing invalid GROUPR input" ){
   WHEN( "too few neutron groups" ){
     iRecordStream<char> iss( std::istringstream(
       sCard1
-      + "125 1 0 2 4 3 2 1 /\n"         // Card2
+      + "125 1 0 2 4 2 2 1 /\n"         // Card2
       + "'" + sCard3 + "' /\n"
       + sCard4
       + sCard5
@@ -443,7 +462,7 @@ SCENARIO( "Parsing invalid GROUPR input" ){
   WHEN( "too many gamm groups" ){
     iRecordStream<char> iss( std::istringstream(
       sCard1
-      + "125 2 1 2 4 3 2 1 /\n"         // Card2
+      + "125 2 1 2 4 2 2 1 /\n"         // Card2
       + "'" + sCard3 + "' /\n"
       + sCard4
       + sCard5
@@ -459,7 +478,7 @@ SCENARIO( "Parsing invalid GROUPR input" ){
   WHEN( "too few gamma groups" ){
     iRecordStream<char> iss( std::istringstream(
       sCard1
-      + "125 2 1 2 4 3 2 1 /\n"         // Card2
+      + "125 2 1 2 4 2 2 1 /\n"         // Card2
       + "'" + sCard3 + "' /\n"
       + sCard4
       + sCard5
@@ -475,13 +494,16 @@ SCENARIO( "Parsing invalid GROUPR input" ){
   WHEN( "No terminating mfd=0" ){
     iRecordStream<char> iss( std::istringstream(
       sCard1
-      + "125 2 0 2 4 3 2 1 /\n"         // Card2
+      + "125 2 0 2 4 2 2 1 /\n"         // Card2
       + "'" + sCard3 + "' /\n"
       + sCard4
       + sCard5
       + "3 18 'MF3 MT18' /\n"         // Card 9.1
       + "3 102 'MF3 MT102' /\n"       // Card 9.2
       + "10 /\n"                      // Card 9.3
+      + "0 /\n"                       // Card 9.4
+      + "3 18 'MF3 MT18' /\n"         // Card 9.1
+      + "3 102 'MF3 MT102' /\n"       // Card 9.2
       // + "0 /\n"                       // Card 9.4
       + "9235 /\n"                       // Card10
       + "0 /\n"                       // Card10
@@ -494,13 +516,16 @@ SCENARIO( "Parsing invalid GROUPR input" ){
   WHEN( "No terminating matd=0" ){
     iRecordStream<char> iss( std::istringstream(
       sCard1
-      + "125 2 0 2 4 3 2 1 /\n"         // Card2
+      + "125 2 0 2 4 2 2 1 /\n"         // Card2
       + "'" + sCard3 + "' /\n"
       + sCard4
       + sCard5
       + "3 18 'MF3 MT18' /\n"         // Card 9.1
       + "3 102 'MF3 MT102' /\n"       // Card 9.2
       + "10 /\n"                      // Card 9.3
+      + "0 /\n"                       // Card 9.4
+      + "3 18 'MF3 MT18' /\n"         // Card 9.1
+      + "3 102 'MF3 MT102' /\n"       // Card 9.2
       + "0 /\n"                       // Card 9.4
       + "9235 /\n"                       // Card10
       // + "0 /\n"                       // Card10

@@ -28,10 +28,26 @@ protected:
   DEFINE_ROUTINE( MODER )
   DEFINE_ROUTINE( RECONR )
   DEFINE_ROUTINE( BROADR )
-  DEFINE_ROUTINE( GASPR )
-  DEFINE_ROUTINE( UNRESR )
   DEFINE_ROUTINE( PURR )
+  DEFINE_ROUTINE( UNRESR )
   DEFINE_ROUTINE( ACER )
+  DEFINE_ROUTINE( GASPR )
+  DEFINE_ROUTINE( HEATR )
+  DEFINE_ROUTINE( GROUPR )
+  DEFINE_ROUTINE( VIEWR )
+  DEFINE_ROUTINE( MIXR )
+  DEFINE_ROUTINE( DTFR )
+  DEFINE_ROUTINE( THERMR )
+  DEFINE_ROUTINE( LEAPR )
+  DEFINE_ROUTINE( RESXSR )
+  DEFINE_ROUTINE( MATXSR )
+  DEFINE_ROUTINE( GAMINR )
+  DEFINE_ROUTINE( PLOTR )
+  DEFINE_ROUTINE( COVR )
+  DEFINE_ROUTINE( WIMSR )
+  DEFINE_ROUTINE( POWR )
+  DEFINE_ROUTINE( CCCCR )
+  DEFINE_ROUTINE( ERRORR )
 #define DEFINE_ROUTINE
 
   std::vector< std::unique_ptr< interface::Routine > > sequence;
@@ -66,17 +82,86 @@ public:
 	    []( auto& inputStream )
 	    { return std::make_unique< BROADR >( inputStream ); } ),
 	std::make_pair< std::string, parser >
-	  ( "GASPR",
+	  ( "PURR",
 	    []( auto& inputStream )
-	    { return std::make_unique< GASPR >( inputStream ); } ),
+	    { return std::make_unique< PURR >( inputStream ); } ) };
 	std::make_pair< std::string, parser >
 	  ( "UNRESR",
 	    []( auto& inputStream )
 	    { return std::make_unique< UNRESR >( inputStream ); } ),
 	std::make_pair< std::string, parser >
-	  ( "PURR",
+	  ( "ACER",
 	    []( auto& inputStream )
-	    { return std::make_unique< PURR >( inputStream ); } ) };
+	    { return std::make_unique< ACER >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "GASPR",
+	    []( auto& inputStream )
+	    { return std::make_unique< GASPR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "HEATR",
+	    []( auto& inputStream )
+	    { return std::make_unique< HEATR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "GROUPR",
+	    []( auto& inputStream )
+	    { return std::make_unique< GROUPR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "VIEWR",
+	    []( auto& inputStream )
+	    { return std::make_unique< VIEWR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "MIXR",
+	    []( auto& inputStream )
+	    { return std::make_unique< MIXR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "DTFR",
+	    []( auto& inputStream )
+	    { return std::make_unique< DTFR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "THERMR",
+	    []( auto& inputStream )
+	    { return std::make_unique< THERMR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "LEAPR",
+	    []( auto& inputStream )
+	    { return std::make_unique< LEAPR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "RESXSR",
+	    []( auto& inputStream )
+	    { return std::make_unique< RESXSR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "MATXSR",
+	    []( auto& inputStream )
+	    { return std::make_unique< MATXSR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "GAMINR",
+	    []( auto& inputStream )
+	    { return std::make_unique< GAMINR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "PLOTR",
+	    []( auto& inputStream )
+	    { return std::make_unique< PLOTR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "COVR",
+	    []( auto& inputStream )
+	    { return std::make_unique< COVR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "WIMSR",
+	    []( auto& inputStream )
+	    { return std::make_unique< WIMSR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "POWR",
+	    []( auto& inputStream )
+	    { return std::make_unique< POWR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "CCCCR",
+	    []( auto& inputStream )
+	    { return std::make_unique< CCCCR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
+	  ( "ERRORR",
+	    []( auto& inputStream )
+	    { return std::make_unique< ERRORR >( inputStream ); } ),
+	std::make_pair< std::string, parser >
       return parserMap[label]( input );      
     }
     

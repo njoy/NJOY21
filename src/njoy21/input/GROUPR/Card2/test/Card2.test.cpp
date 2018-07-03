@@ -9,7 +9,7 @@ using namespace njoy::njoy21::input;
 SCENARIO( "Validating card2 inputs", "[GROUPR], [Card2]" ){
   WHEN( "all optional values are are given" ){
     iRecordStream<char> issCard2( 
-        std::istringstream( "9238 1 3 3 4 3 5 0 /" ) );
+        std::istringstream( "9238 1 3 3 4 3 5 0 0 /" ) );
     GROUPR::Card2 card2( issCard2 );
 
     THEN( "the card2 values can be verified" ){
@@ -21,6 +21,7 @@ SCENARIO( "Validating card2 inputs", "[GROUPR], [Card2]" ){
       REQUIRE( 3 == card2.ntemp.value );
       REQUIRE( 5 == card2.nsigz.value );
       REQUIRE( 0 == card2.iprint.value );
+      REQUIRE( 0 == card2.ismooth.value );
     }
   }
   WHEN( "none of the optional values are given" ){
@@ -36,6 +37,7 @@ SCENARIO( "Validating card2 inputs", "[GROUPR], [Card2]" ){
       REQUIRE( 1 == card2.ntemp.value );
       REQUIRE( 1 == card2.nsigz.value );
       REQUIRE( 1 == card2.iprint.value );
+      REQUIRE( 1 == card2.ismooth.value );
     }
   }
 

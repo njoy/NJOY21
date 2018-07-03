@@ -11,7 +11,7 @@ SCENARIO( "bugless" ){
     BROADR::Card3 card3( iss );
     REQUIRE( card3.errthn.value == 1.0E-3 );
     REQUIRE( card3.thnmax.value
-	     == 1.0 * dimwits::mega( dimwits::electronVolts ) );
+	     == 0.0 * dimwits::mega( dimwits::electronVolts ) );
     REQUIRE( card3.errmax.value
 	     == 10 * card3.errthn.value );
     REQUIRE( card3.errint.value.value

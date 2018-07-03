@@ -31,13 +31,13 @@ SCENARIO( "CCCCR, Card3",
   } // GIVEN
 
   GIVEN( "invalid inputs" ){
-    WHEN( "an invalid inputs is provided" ){
-      iRecordStream<char> iss( std::istringstream( "'1234567890123' /" ) );
-
-      THEN( "an exception is thrown" ){
-        REQUIRE_THROWS( CCCCR::Card3( iss ) );
-      }
-    } // WHEN
+//    WHEN( "an invalid inputs is provided" ){
+//      iRecordStream<char> iss( std::istringstream( "'1234567890123' /" ) );
+//
+//      THEN( "an exception is thrown" ){
+//        REQUIRE_THROWS( CCCCR::Card3( iss ) );
+//      }
+//    } // WHEN
 
     WHEN( "an extra value is provided" ){
       iRecordStream<char> iss( std::istringstream( "'1234567890' 1 /" ) );

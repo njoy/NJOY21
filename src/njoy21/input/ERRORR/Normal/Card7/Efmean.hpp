@@ -12,7 +12,9 @@ struct Efmean {
            "only if mfcov = 35.";
   }
   static Value_t defaultValue( const int ifissp, const int ){
-    if( ifissp == -1 ) return 2.0E+06*electronVolt;
+    if( ifissp == -1 ){
+      return 2.0E+06*electronVolt;
+    }
     return std::nullopt;
   }
   static bool verify( const Value_t efmean, const int, const int mfcov ){

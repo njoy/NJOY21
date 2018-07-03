@@ -11,9 +11,8 @@ SCENARIO( "LEAPR Card17 dka input values",
     THEN( "the returned class has the correct value" ){
       for( auto& dka : validDka ){
         iRecordStream<char> iss( std::istringstream( std::to_string(dka) ) );
-        REQUIRE( dka * dimwits::pow( 1.0 * dimwits::angstrom, 
-          dimwits::Ratio<-1> ) == ( argument::extract< 
-          LEAPR::Card17::Dka >( iss ) ).value );
+        REQUIRE( dka * pow( 1.0 * dimwits::angstrom, dimwits::Ratio<-1> ) == 
+                ( argument::extract< LEAPR::Card17::Dka >( iss ) ).value );
       }
     } // THEN
   } // GIVEN

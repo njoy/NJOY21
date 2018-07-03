@@ -39,7 +39,7 @@ std::string sCard6_3( " /\n" );
 std::string sCard6a_3( " /\n" );
 // No card 7 or 7a.
 std::string sCard8_3( " 0 /\n" );
-// No card 10 or 10a or 11.
+// No card 9 or 10 or 10a or 11.
 std::string sCard12_3( " 0 /\n" );
 std::string sCard13_3_1( " 1.0 2.0 1.5 2.5 0.5 1.5 /\n" );
 std::string sCard13_3_2( " 5.0 5.0 0 0 0 0 /\n" );
@@ -151,12 +151,12 @@ SCENARIO( "Parsing valid PLOTR input" ){
     }
 
     THEN( "the Card9 input values can be verified: 5 1 1 1 1 0" ){
-      REQUIRE( 5 == plotr.curves[0].second.card9.icon.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.isym.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.idash.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.iccol.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.ithick.value );
-      REQUIRE( 0 == plotr.curves[0].second.card9.ishade.value );
+      REQUIRE( 5 == plotr.curves[0].second.card9->icon.value );
+      REQUIRE( 1 == plotr.curves[0].second.card9->isym.value );
+      REQUIRE( 1 == plotr.curves[0].second.card9->idash.value );
+      REQUIRE( 1 == plotr.curves[0].second.card9->iccol.value );
+      REQUIRE( 1 == plotr.curves[0].second.card9->ithick.value );
+      REQUIRE( 0 == plotr.curves[0].second.card9->ishade.value );
     }
 
     THEN( "the Card10 input values can be verified" ){
@@ -174,6 +174,7 @@ SCENARIO( "Parsing valid PLOTR input" ){
       REQUIRE( std::nullopt == plotr.curves[0].second.freeform );
     }
   }//WHEN
+
   WHEN( "reading in an input with 3-D axes" ){
     iRecordStream<char> iss( std::istringstream(
       sCard0
@@ -189,7 +190,7 @@ SCENARIO( "Parsing valid PLOTR input" ){
       + sCard7_2 // -10.0 10.0 0.001
       + "'" + sCard7a_2 + "' /\n" // ALTERNATE AXIS TITLE (UNITS) TEST
       + sCard8_1
-      + sCard9_1
+//      + sCard9_1
       + " /\n" // Card 11 - All default values (15,-15,15; 2.5,6.5,2.5)
       + sCard2_2
     ) );
@@ -287,13 +288,9 @@ SCENARIO( "Parsing valid PLOTR input" ){
       REQUIRE( std::nullopt == plotr.curves[0].second.card8.ntpnkh );
     }
 
-    THEN( "the Card9 input values can be verified: 5 1 1 1 1 0" ){
-      REQUIRE( 5 == plotr.curves[0].second.card9.icon.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.isym.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.idash.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.iccol.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.ithick.value );
-      REQUIRE( 0 == plotr.curves[0].second.card9.ishade.value );
+    THEN( "Card9 and Card10 are non-existent" ){
+      REQUIRE( std::nullopt == plotr.curves[0].second.card9 );
+      REQUIRE( std::nullopt == plotr.curves[0].second.card10 );
     }
 
     THEN( "the Card11 input values can be verified: 15,-15,15,2.5,6.5,2.5" ){
@@ -411,12 +408,12 @@ SCENARIO( "Parsing valid PLOTR input" ){
     }
 
     THEN( "the Card9 input values can be verified: 5 1 1 1 1 0" ){
-      REQUIRE( 5 == plotr.curves[0].second.card9.icon.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.isym.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.idash.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.iccol.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.ithick.value );
-      REQUIRE( 0 == plotr.curves[0].second.card9.ishade.value );
+      REQUIRE( 5 == plotr.curves[0].second.card9->icon.value );
+      REQUIRE( 1 == plotr.curves[0].second.card9->isym.value );
+      REQUIRE( 1 == plotr.curves[0].second.card9->idash.value );
+      REQUIRE( 1 == plotr.curves[0].second.card9->iccol.value );
+      REQUIRE( 1 == plotr.curves[0].second.card9->ithick.value );
+      REQUIRE( 0 == plotr.curves[0].second.card9->ishade.value );
     }
     THEN( "the Card12 input values can be verified: 0" ){
       REQUIRE( 0 == plotr.curves[0].second.freeform->card12.nform.value );
@@ -590,12 +587,12 @@ SCENARIO( "Parsing valid PLOTR input" ){
     }
 
     THEN( "the first Card9 input values can be verified: 5 1 1 1 1 0" ){
-      REQUIRE( 5 == plotr.curves[0].second.card9.icon.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.isym.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.idash.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.iccol.value );
-      REQUIRE( 1 == plotr.curves[0].second.card9.ithick.value );
-      REQUIRE( 0 == plotr.curves[0].second.card9.ishade.value );
+      REQUIRE( 5 == plotr.curves[0].second.card9->icon.value );
+      REQUIRE( 1 == plotr.curves[0].second.card9->isym.value );
+      REQUIRE( 1 == plotr.curves[0].second.card9->idash.value );
+      REQUIRE( 1 == plotr.curves[0].second.card9->iccol.value );
+      REQUIRE( 1 == plotr.curves[0].second.card9->ithick.value );
+      REQUIRE( 0 == plotr.curves[0].second.card9->ishade.value );
     }
 
     THEN( "the first Card10 input values can be verified" ){
@@ -676,12 +673,12 @@ SCENARIO( "Parsing valid PLOTR input" ){
     }
 
     THEN( "the second Card9 input values can be verified: 5 1 1 1 1 0" ){
-      REQUIRE( 5 == plotr.curves[1].second.card9.icon.value );
-      REQUIRE( 1 == plotr.curves[1].second.card9.isym.value );
-      REQUIRE( 1 == plotr.curves[1].second.card9.idash.value );
-      REQUIRE( 1 == plotr.curves[1].second.card9.iccol.value );
-      REQUIRE( 1 == plotr.curves[1].second.card9.ithick.value );
-      REQUIRE( 0 == plotr.curves[1].second.card9.ishade.value );
+      REQUIRE( 5 == plotr.curves[1].second.card9->icon.value );
+      REQUIRE( 1 == plotr.curves[1].second.card9->isym.value );
+      REQUIRE( 1 == plotr.curves[1].second.card9->idash.value );
+      REQUIRE( 1 == plotr.curves[1].second.card9->iccol.value );
+      REQUIRE( 1 == plotr.curves[1].second.card9->ithick.value );
+      REQUIRE( 0 == plotr.curves[1].second.card9->ishade.value );
     }
     THEN( "the second Card12 input values can be verified: 0" ){
       REQUIRE( 0 == plotr.curves[1].second.freeform->card12.nform.value );

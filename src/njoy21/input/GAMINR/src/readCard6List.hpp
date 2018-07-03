@@ -9,6 +9,7 @@ static std::vector< Card6 > readCard6List( Istream& is ){
   do {
     card6List.emplace_back( is );
   } while ( card6List.back().mfd.value > 0 );
+
   if( card6List.back().mfd.value == -1 ){
     Log::info( "Mfd value is -1 after reading 1 or more sections." );
     throw std::exception();

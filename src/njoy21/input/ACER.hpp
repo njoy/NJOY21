@@ -32,13 +32,13 @@ public:
       std::nullopt;
   }
 
-  template< typename Istream, typename Ngend >
-  DataVariant readDataVariant( Istream& is, int iopt, const Ngend& ngend ){
+  template< typename Istream >
+  DataVariant readDataVariant( Istream& is, int iopt ){
     assert( (iopt > 0) and (iopt < 6) );
     switch( iopt ){
     case 1: {
       Card5 card5( is );
-      Card6 card6( is, ngend );
+      Card6 card6( is );
       Card7 card7( is );
       return std::make_tuple< Card5, Card6, Card7 >( std::move( card5 ),
                                                      std::move( card6 ),
@@ -74,11 +74,10 @@ public:
       dataVariant( ( this->card2.iopt.value < 6 ) ?
                    std::optional<DataVariant>{
                      readDataVariant( is,
-                                      this->card2.iopt.value,
-                                      this->card1.ngend )
+                                      this->card2.iopt.value )
                    } : std::nullopt ){
    } catch( std::exception& e ) {
-     Log::info( "Troble validating ACER input." );
+     Log::info( "Trouble validating ACER input." );
      throw e;
    }
 
