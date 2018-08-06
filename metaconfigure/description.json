@@ -94,7 +94,8 @@
           "warning": [
             "-Wall",
             "-Wextra",
-            "-Wpedantic"
+            "-Wpedantic",
+            "-Wno-maybe-uninitialized"
           ]
         },
         "standard": {
