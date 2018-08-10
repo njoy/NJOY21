@@ -5,7 +5,7 @@ class FortranString {
   char quote;
 
   bool isQuote( char c ){
-    if ( ( c == '\'' ) or ( c == '*' ) ){
+    if ( ( c == '\'' ) or ( c == '*' ) or ( c == '"' ) ){
       quote = c;
       return true;
     }
