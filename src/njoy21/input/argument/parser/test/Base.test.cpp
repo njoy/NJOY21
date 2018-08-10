@@ -115,6 +115,13 @@ SCENARIO("Base"){
       REQUIRE( iss.fail() );
     }
 
+    SECTION("incomplete \" quotes"){
+      std::string sink = "";
+      iRecordStream<char> iss( std::istringstream("   \"Lorem Ipsum ") );
+      REQUIRE( Base< std::string >::read( iss, sink ) );
+      REQUIRE( iss.fail() );
+    }
+
     SECTION("trailing slash"){
       std::string sink = "";
       iRecordStream<char> iss( std::istringstream(" hello/world ") );
