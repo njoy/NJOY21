@@ -45,6 +45,29 @@ SCENARIO("Base"){
       }
     }
 
+    GIVEN("a string with \" quotes"){
+      std::string sink = "";
+      iRecordStream<char> iss( std::istringstream("   \"Lorem Ipsum\"") );
+      THEN( "the string will be read successfully"){
+        REQUIRE( Base< std::string >::read( iss, sink ) );
+        AND_THEN("the string will be read until the matching quote"){
+          REQUIRE( sink == "Lorem Ipsum" );
+        }
+      }
+    }
+
+    GIVEN("a string with \" quotes across multiple lines"){
+      std::string sink = "";
+      iRecordStream<char> iss( std::istringstream("   \"Lorem \nIpsum\"") );
+      THEN( "the string will be read successfully"){
+        REQUIRE( Base< std::string >::read( iss, sink ) );
+        AND_THEN("the string will be read until the"
+                 " matching quote with newlines stripped"){
+          REQUIRE( sink == "Lorem Ipsum" );
+        }
+      }
+    }
+
     GIVEN("a string with * quotes"){
       std::string sink = "";
       iRecordStream<char> iss( std::istringstream("   *Lorem Ipsum*") );
@@ -88,6 +111,13 @@ SCENARIO("Base"){
     SECTION("incomplete * quotes"){
       std::string sink = "";
       iRecordStream<char> iss( std::istringstream("   *Lorem Ipsum ") );
+      REQUIRE( Base< std::string >::read( iss, sink ) );
+      REQUIRE( iss.fail() );
+    }
+
+    SECTION("incomplete \" quotes"){
+      std::string sink = "";
+      iRecordStream<char> iss( std::istringstream("   \"Lorem Ipsum ") );
       REQUIRE( Base< std::string >::read( iss, sink ) );
       REQUIRE( iss.fail() );
     }

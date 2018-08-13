@@ -1,3 +1,5 @@
+[![Build Status](http://jenkins.njoy21.io:8080/buildStatus/icon?job=NJOY21-Testing-Docker&build=63)](http://jenkins.njoy21.io:8080/view/NJOY21/job/NJOY21-Testing-Docker/63/)
+
 # NJOY21 --- NJOY for the 21st Century
 NJOY21 is the modernized version of NJOY---suitable for computing in the 21st Century. It is based on [NJOY2016](https://njoy.github.io/NJOY21).
 
@@ -30,3 +32,4 @@ NJOY has long benefited from contributors outside of Los Alamos National Laborat
 
 ## LICENSE
 This software is copyrighted by Los Alamos National Laboratory and distributed according to the conditions in the accompanying [LICENSE](LICENSE) file. 
+
