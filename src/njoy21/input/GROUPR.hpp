@@ -23,8 +23,8 @@ public:
   #include "njoy21/input/GROUPR/src/readArbitraryGammaStructure.hpp"
   #include "njoy21/input/GROUPR/src/readFluxCalculatorParameters.hpp"
   #include "njoy21/input/GROUPR/src/readFluxParameters.hpp"
+  #include "njoy21/input/GROUPR/src/readReactionMatrix.hpp"
   #include "njoy21/input/GROUPR/src/readCard9List.hpp"
-  #include "njoy21/input/GROUPR/src/readCard10List.hpp"
 
   Card1 card1;
   Card2 card2;
@@ -35,8 +35,7 @@ public:
   optional< std::pair< Card7a, Card7b > > arbitraryGammaStructureCards;
   optional< Card8a > card8a;
   Card8Variant card8Variant;
-  std::vector< Card9 > card9List;
-  std::vector< Card10 > card10List;
+  std::vector< std::pair< std::vector< Card9 >, Card10 > > reactionMatrix;
 
   template< typename Istream >
   GROUPR( Istream& is )
@@ -52,8 +51,7 @@ public:
         readArbitraryGammaStructure( is, card2.igg.value ) ),
     card8a( readFluxCalculatorParameters( is, card2.iwt.value, card1 ) ),
     card8Variant( readFluxParameters( is, card2.iwt.value, card1 ) ),
-    card9List( readCard9List( is, card2.ntemp.value ) ),
-    card10List( readCard10List( is ) )
+    reactionMatrix( readReactionMatrix( is, card2.ntemp.value ) )
   {
   }
   catch( std::exception& e ){
