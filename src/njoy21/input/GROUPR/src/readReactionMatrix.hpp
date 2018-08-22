@@ -1,13 +1,18 @@
 template< typename Istream >
-static std::vector< std::pair< std::vector< Card9 >, Card10 > >
-readReactionMatrix( Istream& is, const int ntemp ){
-  std::vector< std::pair< std::vector< Card9 >, Card10 > > matrix;
+static reactionMatrix_t
+readReactionMatrix( Istream& is, Argument< Card2::Matb > matb, const Card4& card4 ){
+  reactionMatrix_t matrix;
 
-  for( int i = 0; i < ntemp; i++ ){
-    matrix.emplace_back( 
-        std::make_pair( readCard9List( is ), Card10{ is } )
-    );
+  std::vector< reactionList_t > reactions;
+  for( auto& temp : card4.temp.value ){
+    reactions.emplace_back( temp.value, readCard9List( is ) );
   }
+  matrix.emplace_back( std::make_pair( matb.value, reactions ) );
+  // for( int i = 0; i < ntemp; i++ ){
+  //   matrix.emplace_back( 
+  //       std::make_pair( readCard9List( is ), Card10{ is } )
+  //   );
+  // }
 
   return matrix;
 }

@@ -18,6 +18,10 @@ public:
   #include "njoy21/input/GROUPR/Card10.hpp"
 
   using Card8Variant = std::variant< std::monostate, Card8b, Card8c, Card8d >;
+  using temp_t = std::vector< Quantity< Kelvin > >;
+  using reactionList_t = std::pair< temp_t, std::vector< Card9 > >;
+  using reactionMatrix_t = std::vector< 
+      std::pair< Card10::Matd::Value_t, std::vector< reactionList_t > > >;
 
   #include "njoy21/input/GROUPR/src/readArbitraryNeutronStructure.hpp"
   #include "njoy21/input/GROUPR/src/readArbitraryGammaStructure.hpp"
@@ -35,7 +39,7 @@ public:
   optional< std::pair< Card7a, Card7b > > arbitraryGammaStructureCards;
   optional< Card8a > card8a;
   Card8Variant card8Variant;
-  std::vector< std::pair< std::vector< Card9 >, Card10 > > reactionMatrix;
+  reactionMatrix_t reactionMatrix;
 
   template< typename Istream >
   GROUPR( Istream& is )
@@ -51,7 +55,7 @@ public:
         readArbitraryGammaStructure( is, card2.igg.value ) ),
     card8a( readFluxCalculatorParameters( is, card2.iwt.value, card1 ) ),
     card8Variant( readFluxParameters( is, card2.iwt.value, card1 ) ),
-    reactionMatrix( readReactionMatrix( is, card2.ntemp.value ) )
+    reactionMatrix( readReactionMatrix( is, card2.matb, card4 ) )
   {
   }
   catch( std::exception& e ){

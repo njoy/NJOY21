@@ -22,9 +22,7 @@ std::string sCard9_10{
       "0 /\n"                       // Card10.2
 };
 
-void verifyReactionMatrix( 
-  std::vector< std::pair< 
-    std::vector< GROUPR::Card9 >, GROUPR::Card10 > >& );
+void verifyReactionMatrix( GROUPR::reactionMatrix_t& );
 
 SCENARIO( "Parsing valid GROUPR input" ){
   WHEN( "reading in a very generic input" ){
@@ -307,76 +305,55 @@ SCENARIO( "Parsing valid GROUPR input" ){
   }
 }
 
-void verifyReactionMatrix( 
-  std::vector< std::pair< 
-    std::vector< GROUPR::Card9 >, GROUPR::Card10 > >& matrix ){
+void verifyReactionMatrix( GROUPR::reactionMatrix_t& matrix ){
 
       REQUIRE( 2 == matrix.size() );
-      int i;
-      { i = 0;
-        auto pair = matrix[ i ];
-        auto card9s = pair.first;
-        auto card10 = pair.second;
+      // int i;
+      // { i = 0;
+      //   auto pair = matrix[ i ];
+      //   auto card9s = pair.first;
+      //   auto card10 = pair.second;
 
-        REQUIRE( 3 == card9s.size() );
+      //   REQUIRE( 3 == card9s.size() );
 
-        int j;
-        { j = 0;
-          REQUIRE( 3 == card9s[ j ].mfd.value );
-          REQUIRE( 19 == card9s[ j ].mtd.value );
-          REQUIRE( "MF3 MT19" == card9s[ j ].mtname.value );
-        }
-        { j = 1;
-          REQUIRE( 3 == card9s[ j ].mfd.value );
-          REQUIRE( 103 == card9s[ j ].mtd.value );
-          REQUIRE( "MF3 MT103" == card9s[ j ].mtname.value );
-        }
-        { j = 2;
-          REQUIRE( 10 == card9s[ j ].mfd.value );
-          REQUIRE( 0 == card9s[ j ].mtd.value );
-          REQUIRE( "" == card9s[ j ].mtname.value );
-        }
-        REQUIRE( 9235 == card10.matd.value );
-      }
-      { i = 1;
-        auto pair = matrix[ i ];
-        auto card9s = pair.first;
-        auto card10 = pair.second;
+      //   int j;
+      //   { j = 0;
+      //     REQUIRE( 3 == card9s[ j ].mfd.value );
+      //     REQUIRE( 19 == card9s[ j ].mtd.value );
+      //     REQUIRE( "MF3 MT19" == card9s[ j ].mtname.value );
+      //   }
+      //   { j = 1;
+      //     REQUIRE( 3 == card9s[ j ].mfd.value );
+      //     REQUIRE( 103 == card9s[ j ].mtd.value );
+      //     REQUIRE( "MF3 MT103" == card9s[ j ].mtname.value );
+      //   }
+      //   { j = 2;
+      //     REQUIRE( 10 == card9s[ j ].mfd.value );
+      //     REQUIRE( 0 == card9s[ j ].mtd.value );
+      //     REQUIRE( "" == card9s[ j ].mtname.value );
+      //   }
+      //   REQUIRE( 9235 == card10.matd.value );
+      // }
+      // { i = 1;
+      //   auto pair = matrix[ i ];
+      //   auto card9s = pair.first;
+      //   auto card10 = pair.second;
 
-        REQUIRE( 2 == card9s.size() );
+      //   REQUIRE( 2 == card9s.size() );
 
-        int j;
-        { j = 0;
-          REQUIRE( 3 == card9s[ j ].mfd.value );
-          REQUIRE( 18 == card9s[ j ].mtd.value );
-          REQUIRE( "MF3 MT18" == card9s[ j ].mtname.value );
-        }
-        { j = 1;
-          REQUIRE( 3 == card9s[ j ].mfd.value );
-          REQUIRE( 102 == card9s[ j ].mtd.value );
-          REQUIRE( "MF3 MT102" == card9s[ j ].mtname.value );
-        }
-        REQUIRE( 0 == card10.matd.value );
-      }
-    //   { i = 2;
-    //     REQUIRE( 10 == groupr.card9List[i].mfd.value );
-    //     REQUIRE( 0 == groupr.card9List[i].mtd.value );
-    //     REQUIRE( "" == groupr.card9List[i].mtname.value );
-    //   }
-    //   { i = 3;
-    //     REQUIRE( 3 == groupr.card9List[i].mfd.value );
-    //     REQUIRE( 18 == groupr.card9List[i].mtd.value );
-    //     REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
-    //   }
-    //   { i = 4;
-    //     REQUIRE( 3 == groupr.card9List[i].mfd.value );
-    //     REQUIRE( 102 == groupr.card9List[i].mtd.value );
-    //     REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
-    //   }
-    // }
-    // THEN( "the Card10 input values can be verified" ){
-    //   REQUIRE( 1 == groupr.card10List.size() );
-    //   REQUIRE( 9235 == groupr.card10List[0].matd.value );
+      //   int j;
+      //   { j = 0;
+      //     REQUIRE( 3 == card9s[ j ].mfd.value );
+      //     REQUIRE( 18 == card9s[ j ].mtd.value );
+      //     REQUIRE( "MF3 MT18" == card9s[ j ].mtname.value );
+      //   }
+      //   { j = 1;
+      //     REQUIRE( 3 == card9s[ j ].mfd.value );
+      //     REQUIRE( 102 == card9s[ j ].mtd.value );
+      //     REQUIRE( "MF3 MT102" == card9s[ j ].mtname.value );
+      //   }
+      //   REQUIRE( 0 == card10.matd.value );
+      // }
 }
 
 SCENARIO( "Parsing invalid GROUPR input" ){
