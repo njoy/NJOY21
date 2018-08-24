@@ -1,3 +1,6 @@
+template< typename T >
+struct echo;
+
 class GROUPR {
 public:
   /* nested types */
@@ -18,16 +21,20 @@ public:
   #include "njoy21/input/GROUPR/Card10.hpp"
 
   using Card8Variant = std::variant< std::monostate, Card8b, Card8c, Card8d >;
-  using temp_t = std::vector< Quantity< Kelvin > >;
-  using reactionList_t = std::pair< temp_t, std::vector< Card9 > >;
-  using reactionMatrix_t = std::vector< 
-      std::pair< Card10::Matd::Value_t, std::vector< reactionList_t > > >;
+
+  using reactionList_t = std::vector< Card9 >;
+  using tempReactionListPair_t = std::vector< std::pair< 
+      Quantity< Kelvin >, reactionList_t > >;
+  using materialReactionsPair_t = std::pair< 
+      Card10::Matd::Value_t, tempReactionListPair_t >;
+  using reactionMatrix_t = std::vector< materialReactionsPair_t >;
 
   #include "njoy21/input/GROUPR/src/readArbitraryNeutronStructure.hpp"
   #include "njoy21/input/GROUPR/src/readArbitraryGammaStructure.hpp"
   #include "njoy21/input/GROUPR/src/readFluxCalculatorParameters.hpp"
   #include "njoy21/input/GROUPR/src/readFluxParameters.hpp"
   #include "njoy21/input/GROUPR/src/readReactionMatrix.hpp"
+  #include "njoy21/input/GROUPR/src/makeMaterialReactions.hpp"
   #include "njoy21/input/GROUPR/src/readCard9List.hpp"
 
   Card1 card1;

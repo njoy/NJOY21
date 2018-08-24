@@ -14,11 +14,18 @@ std::string sCard9_10{
       "3 19 'MF3 MT19' /\n"         // Card 9.1.1
       "3 103 'MF3 MT103' /\n"       // Card 9.1.2
       "10 /\n"                      // Card 9.1.3
-      "0 /\n"                       // Card 9.1.4
+      "0 /\n"                       // Card 9.2.4
+      "3 20 'MF3 MT20' /\n"         // Card 9.2.1
+      "6 104 'MF6 MT104' /\n"       // Card 9.2.2
+      "12 /\n"                      // Card 9.2.3
+      "0 /\n"                       // Card 9.2.4
       "9235 /\n"                    // Card10.1
-      "3 18 'MF3 MT18' /\n"         // Card 9.2.1
-      "3 102 'MF3 MT102' /\n"       // Card 9.2.2
-      "0 /\n"                       // Card 9.2.3
+      "3 18 'MF3 MT18' /\n"         // Card 9.3.1
+      "3 102 'MF3 MT102' /\n"       // Card 9.3.2
+      "0 /\n"                       // Card 9.3.3
+      "5 17 'MF5 MT17' /\n"         // Card 9.4.1
+      "8 100 'MF8 MT100' /\n"       // Card 9.4.2
+      "0 /\n"                       // Card 9.4.3
       "0 /\n"                       // Card10.2
 };
 
@@ -307,53 +314,108 @@ SCENARIO( "Parsing valid GROUPR input" ){
 
 void verifyReactionMatrix( GROUPR::reactionMatrix_t& matrix ){
 
-      REQUIRE( 2 == matrix.size() );
-      // int i;
-      // { i = 0;
-      //   auto pair = matrix[ i ];
-      //   auto card9s = pair.first;
-      //   auto card10 = pair.second;
+  REQUIRE( 2 == matrix.size() );
+  int i;
+  { i = 0;
+    auto pair = matrix[ i ];
+    REQUIRE( 125 == pair.first );
+    auto tempPairs = pair.second;
 
-      //   REQUIRE( 3 == card9s.size() );
+    REQUIRE( 2 == tempPairs.size() );
 
-      //   int j;
-      //   { j = 0;
-      //     REQUIRE( 3 == card9s[ j ].mfd.value );
-      //     REQUIRE( 19 == card9s[ j ].mtd.value );
-      //     REQUIRE( "MF3 MT19" == card9s[ j ].mtname.value );
-      //   }
-      //   { j = 1;
-      //     REQUIRE( 3 == card9s[ j ].mfd.value );
-      //     REQUIRE( 103 == card9s[ j ].mtd.value );
-      //     REQUIRE( "MF3 MT103" == card9s[ j ].mtname.value );
-      //   }
-      //   { j = 2;
-      //     REQUIRE( 10 == card9s[ j ].mfd.value );
-      //     REQUIRE( 0 == card9s[ j ].mtd.value );
-      //     REQUIRE( "" == card9s[ j ].mtname.value );
-      //   }
-      //   REQUIRE( 9235 == card10.matd.value );
-      // }
-      // { i = 1;
-      //   auto pair = matrix[ i ];
-      //   auto card9s = pair.first;
-      //   auto card10 = pair.second;
+    int j;
+    { j = 0;
+      auto tPair = tempPairs[ j ];
+      REQUIRE( 293.6*dimwits::kelvin == tPair.first );
+      auto reactions = tPair.second;
+      REQUIRE( 3 == reactions.size() );
+      
+      int k;
+      { k = 0;
+        REQUIRE( 3 == reactions[ k ].mfd.value );
+        REQUIRE( 19 == reactions[ k ].mtd.value );
+        REQUIRE( "MF3 MT19" == reactions[ k ].mtname.value );
+      }
+      { k = 1;
+        REQUIRE( 3 == reactions[ k ].mfd.value );
+        REQUIRE( 103 == reactions[ k ].mtd.value );
+        REQUIRE( "MF3 MT103" == reactions[ k ].mtname.value );
+      }
+      { k = 2;
+        REQUIRE( 10 == reactions[ k ].mfd.value );
+        REQUIRE( 0 == reactions[ k ].mtd.value );
+        REQUIRE( "" == reactions[ k ].mtname.value );
+      }
+    }
+    { j = 1;
+      auto tPair = tempPairs[ j ];
+      REQUIRE( 600*dimwits::kelvin == tPair.first );
+      auto reactions = tPair.second;
+      REQUIRE( 3 == reactions.size() );
+      
+      int k;
+      { k = 0;
+        REQUIRE( 3 == reactions[ k ].mfd.value );
+        REQUIRE( 20 == reactions[ k ].mtd.value );
+        REQUIRE( "MF3 MT20" == reactions[ k ].mtname.value );
+      }
+      { k = 1;
+        REQUIRE( 6 == reactions[ k ].mfd.value );
+        REQUIRE( 104 == reactions[ k ].mtd.value );
+        REQUIRE( "MF6 MT104" == reactions[ k ].mtname.value );
+      }
+      { k = 2;
+        REQUIRE( 12 == reactions[ k ].mfd.value );
+        REQUIRE( 0 == reactions[ k ].mtd.value );
+        REQUIRE( "" == reactions[ k ].mtname.value );
+      }
+    }
+  }
+  { i = 1;
+    auto pair = matrix[ i ];
+    REQUIRE( 9235 == pair.first );
+    auto tempPairs = pair.second;
 
-      //   REQUIRE( 2 == card9s.size() );
+    REQUIRE( 2 == tempPairs.size() );
 
-      //   int j;
-      //   { j = 0;
-      //     REQUIRE( 3 == card9s[ j ].mfd.value );
-      //     REQUIRE( 18 == card9s[ j ].mtd.value );
-      //     REQUIRE( "MF3 MT18" == card9s[ j ].mtname.value );
-      //   }
-      //   { j = 1;
-      //     REQUIRE( 3 == card9s[ j ].mfd.value );
-      //     REQUIRE( 102 == card9s[ j ].mtd.value );
-      //     REQUIRE( "MF3 MT102" == card9s[ j ].mtname.value );
-      //   }
-      //   REQUIRE( 0 == card10.matd.value );
-      // }
+    int j;
+    { j = 0;
+      auto tPair = tempPairs[ j ];
+      REQUIRE( 293.6*dimwits::kelvin == tPair.first );
+      auto reactions = tPair.second;
+      REQUIRE( 2 == reactions.size() );
+      
+      int k;
+      { k = 0;
+        REQUIRE( 3 == reactions[ k ].mfd.value );
+        REQUIRE( 18 == reactions[ k ].mtd.value );
+        REQUIRE( "MF3 MT18" == reactions[ k ].mtname.value );
+      }
+      { k = 1;
+        REQUIRE( 3 == reactions[ k ].mfd.value );
+        REQUIRE( 102 == reactions[ k ].mtd.value );
+        REQUIRE( "MF3 MT102" == reactions[ k ].mtname.value );
+      }
+    }
+    { j = 1;
+      auto tPair = tempPairs[ j ];
+      REQUIRE( 600*dimwits::kelvin == tPair.first );
+      auto reactions = tPair.second;
+      REQUIRE( 2 == reactions.size() );
+      
+      int k;
+      { k = 0;
+        REQUIRE( 5 == reactions[ k ].mfd.value );
+        REQUIRE( 17 == reactions[ k ].mtd.value );
+        REQUIRE( "MF5 MT17" == reactions[ k ].mtname.value );
+      }
+      { k = 1;
+        REQUIRE( 8 == reactions[ k ].mfd.value );
+        REQUIRE( 100 == reactions[ k ].mtd.value );
+        REQUIRE( "MF8 MT100" == reactions[ k ].mtname.value );
+      }
+    }
+  }
 }
 
 SCENARIO( "Parsing invalid GROUPR input" ){

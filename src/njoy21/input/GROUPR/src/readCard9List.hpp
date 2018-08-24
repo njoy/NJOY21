@@ -1,6 +1,7 @@
 template< typename Istream >
-static std::vector< Card9 > readCard9List( Istream& is ){
-  std::vector< Card9 > card9List;
+static reactionList_t
+readCard9List( Istream& is ){
+  reactionList_t card9List;
 
   do {
     card9List.emplace_back( is );

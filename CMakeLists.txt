@@ -670,6 +670,7 @@ add_library( njoy21 ${njoy21_library_linkage}
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/input/GROUPR/Card9/Mfd.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/input/GROUPR/Card9/Mtd.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/input/GROUPR/Card9/Mtname.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/input/GROUPR/src/makeMaterialReactions.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/input/GROUPR/src/readArbitraryGammaStructure.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/input/GROUPR/src/readArbitraryNeutronStructure.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/input/GROUPR/src/readCard9List.hpp"
