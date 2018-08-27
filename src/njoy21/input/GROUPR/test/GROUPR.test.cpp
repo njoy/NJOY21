@@ -11,17 +11,25 @@ std::string sCard3( "GROUPR Card3 title for testing" );
 std::string sCard4( "293.6 600/\n" );
 std::string sCard5( "1E6 1E-10 /\n" );
 std::string sCard9_10{
-      "3 18 'MF3 MT18' /\n"         // Card 9.1
-      "3 102 'MF3 MT102' /\n"       // Card 9.2
-      "10 /\n"                      // Card 9.3
-      "0 /\n"                       // Card 9.4
-      "3 18 'MF3 MT18' /\n"         // Card 9.1
-      "3 102 'MF3 MT102' /\n"       // Card 9.2
-      "0 /\n"                       // Card 9.4
-      "9235 /\n"                    // Card10
-      "0 /\n"                       // Card10
+      "3 19 'MF3 MT19' /\n"         // Card 9.1.1
+      "3 103 'MF3 MT103' /\n"       // Card 9.1.2
+      "10 /\n"                      // Card 9.1.3
+      "0 /\n"                       // Card 9.2.4
+      "3 20 'MF3 MT20' /\n"         // Card 9.2.1
+      "6 104 'MF6 MT104' /\n"       // Card 9.2.2
+      "12 /\n"                      // Card 9.2.3
+      "0 /\n"                       // Card 9.2.4
+      "9235 /\n"                    // Card10.1
+      "3 18 'MF3 MT18' /\n"         // Card 9.3.1
+      "3 102 'MF3 MT102' /\n"       // Card 9.3.2
+      "0 /\n"                       // Card 9.3.3
+      "5 17 'MF5 MT17' /\n"         // Card 9.4.1
+      "8 100 'MF8 MT100' /\n"       // Card 9.4.2
+      "0 /\n"                       // Card 9.4.3
+      "0 /\n"                       // Card10.2
 };
 
+void verifyReactionMatrix( GROUPR::reactionMatrix_t& );
 
 SCENARIO( "Parsing valid GROUPR input" ){
   WHEN( "reading in a very generic input" ){
@@ -72,40 +80,10 @@ SCENARIO( "Parsing valid GROUPR input" ){
       REQUIRE( not groupr.card8Variant.index() );
     }
 
-    THEN( "the Card9 input values can be verified" ){
+    THEN( "the Card9 and Card10 values can be verified" ){
+      verifyReactionMatrix( groupr.reactionMatrix );
+    }
 
-      REQUIRE( 5 == groupr.card9List.size() );
-      int i;
-      { i = 0;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 18 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
-      }
-      { i = 1;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 102 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
-      }
-      { i = 2;
-        REQUIRE( 10 == groupr.card9List[i].mfd.value );
-        REQUIRE( 0 == groupr.card9List[i].mtd.value );
-        REQUIRE( "" == groupr.card9List[i].mtname.value );
-      }
-      { i = 3;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 18 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
-      }
-      { i = 4;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 102 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
-      }
-    }
-    THEN( "the Card10 input values can be verified" ){
-      REQUIRE( 1 == groupr.card10List.size() );
-      REQUIRE( 9235 == groupr.card10List[0].matd.value );
-    }
   }
   WHEN( "reading in a more complicated input, ign=1, ign=1, iwt=-1" ){
     iRecordStream<char> iss( std::istringstream(
@@ -159,39 +137,8 @@ SCENARIO( "Parsing valid GROUPR input" ){
                groupr.card5.sigz.value[0] );
       REQUIRE( 1E-10*dimwits::barn == groupr.card5.sigz.value[1] );
     }
-    THEN( "the Card9 input values can be verified" ){
-
-      REQUIRE( 5 == groupr.card9List.size() );
-      int i;
-      { i = 0;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 18 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
-      }
-      { i = 1;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 102 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
-      }
-      { i = 2;
-        REQUIRE( 10 == groupr.card9List[i].mfd.value );
-        REQUIRE( 0 == groupr.card9List[i].mtd.value );
-        REQUIRE( "" == groupr.card9List[i].mtname.value );
-      }
-      { i = 3;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 18 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
-      }
-      { i = 4;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 102 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
-      }
-    }
-    THEN( "the Card10 input values can be verified" ){
-      REQUIRE( 1 == groupr.card10List.size() );
-      REQUIRE( 9235 == groupr.card10List[0].matd.value );
+    THEN( "the Card9 and Card10 values can be verified" ){
+      verifyReactionMatrix( groupr.reactionMatrix );
     }
 
     THEN( "the Card6a input values can be verified" ){
@@ -295,41 +242,6 @@ SCENARIO( "Parsing valid GROUPR input" ){
                groupr.card5.sigz.value[0] );
       REQUIRE( 1E-10*dimwits::barn == groupr.card5.sigz.value[1] );
     }
-    THEN( "the Card9 input values can be verified" ){
-
-      REQUIRE( 5 == groupr.card9List.size() );
-      int i;
-      { i = 0;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 18 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
-      }
-      { i = 1;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 102 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
-      }
-      { i = 2;
-        REQUIRE( 10 == groupr.card9List[i].mfd.value );
-        REQUIRE( 0 == groupr.card9List[i].mtd.value );
-        REQUIRE( "" == groupr.card9List[i].mtname.value );
-      }
-      { i = 3;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 18 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
-      }
-      { i = 4;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 102 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
-      }
-    }
-    THEN( "the Card10 input values can be verified" ){
-      REQUIRE( 1 == groupr.card10List.size() );
-      REQUIRE( 9235 == groupr.card10List[0].matd.value );
-    }
-
     THEN( "the card8c input values can be verified" ){
       auto& card8c = std::experimental::get<GROUPR::Card8c>( 
           groupr.card8Variant );
@@ -338,6 +250,10 @@ SCENARIO( "Parsing valid GROUPR input" ){
       REQUIRE( 820.3E3*dimwits::electronVolt == card8c.ec.value );
       REQUIRE( 1.4E6*dimwits::electronVolt == card8c.tc.value );
     }
+    THEN( "the Card9 and Card10 values can be verified" ){
+      verifyReactionMatrix( groupr.reactionMatrix );
+    }
+
   }
   WHEN( "reading in an input where iwt=0" ){
     iRecordStream<char> iss( std::istringstream(
@@ -383,45 +299,121 @@ SCENARIO( "Parsing valid GROUPR input" ){
                groupr.card5.sigz.value[0] );
       REQUIRE( 1E-10*dimwits::barn == groupr.card5.sigz.value[1] );
     }
-    THEN( "the Card9 input values can be verified" ){
+    THEN( "the Card9 and Card10 values can be verified" ){
+      verifyReactionMatrix( groupr.reactionMatrix );
+    }
 
-      REQUIRE( 5 == groupr.card9List.size() );
-      int i;
-      { i = 0;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 18 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
-      }
-      { i = 1;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 102 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
-      }
-      { i = 2;
-        REQUIRE( 10 == groupr.card9List[i].mfd.value );
-        REQUIRE( 0 == groupr.card9List[i].mtd.value );
-        REQUIRE( "" == groupr.card9List[i].mtname.value );
-      }
-      { i = 3;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 18 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT18" == groupr.card9List[i].mtname.value );
-      }
-      { i = 4;
-        REQUIRE( 3 == groupr.card9List[i].mfd.value );
-        REQUIRE( 102 == groupr.card9List[i].mtd.value );
-        REQUIRE( "MF3 MT102" == groupr.card9List[i].mtname.value );
-      }
-    }
-    THEN( "the Card10 input values can be verified" ){
-      REQUIRE( 1 == groupr.card10List.size() );
-      REQUIRE( 9235 == groupr.card10List[0].matd.value );
-    }
 
     THEN( "the card8d input value can be verified" ){
       auto& card8d = std::experimental::get<GROUPR::Card8d>( 
           groupr.card8Variant );
       REQUIRE( 22 == card8d.ninwt.value );
+    }
+  }
+}
+
+void verifyReactionMatrix( GROUPR::reactionMatrix_t& matrix ){
+
+  REQUIRE( 2 == matrix.size() );
+  int i;
+  { i = 0;
+    auto pair = matrix[ i ];
+    REQUIRE( 125 == pair.first );
+    auto tempPairs = pair.second;
+
+    REQUIRE( 2 == tempPairs.size() );
+
+    int j;
+    { j = 0;
+      auto tPair = tempPairs[ j ];
+      REQUIRE( 293.6*dimwits::kelvin == tPair.first );
+      auto reactions = tPair.second;
+      REQUIRE( 3 == reactions.size() );
+      
+      int k;
+      { k = 0;
+        REQUIRE( 3 == reactions[ k ].mfd.value );
+        REQUIRE( 19 == reactions[ k ].mtd.value );
+        REQUIRE( "MF3 MT19" == reactions[ k ].mtname.value );
+      }
+      { k = 1;
+        REQUIRE( 3 == reactions[ k ].mfd.value );
+        REQUIRE( 103 == reactions[ k ].mtd.value );
+        REQUIRE( "MF3 MT103" == reactions[ k ].mtname.value );
+      }
+      { k = 2;
+        REQUIRE( 10 == reactions[ k ].mfd.value );
+        REQUIRE( 0 == reactions[ k ].mtd.value );
+        REQUIRE( "" == reactions[ k ].mtname.value );
+      }
+    }
+    { j = 1;
+      auto tPair = tempPairs[ j ];
+      REQUIRE( 600*dimwits::kelvin == tPair.first );
+      auto reactions = tPair.second;
+      REQUIRE( 3 == reactions.size() );
+      
+      int k;
+      { k = 0;
+        REQUIRE( 3 == reactions[ k ].mfd.value );
+        REQUIRE( 20 == reactions[ k ].mtd.value );
+        REQUIRE( "MF3 MT20" == reactions[ k ].mtname.value );
+      }
+      { k = 1;
+        REQUIRE( 6 == reactions[ k ].mfd.value );
+        REQUIRE( 104 == reactions[ k ].mtd.value );
+        REQUIRE( "MF6 MT104" == reactions[ k ].mtname.value );
+      }
+      { k = 2;
+        REQUIRE( 12 == reactions[ k ].mfd.value );
+        REQUIRE( 0 == reactions[ k ].mtd.value );
+        REQUIRE( "" == reactions[ k ].mtname.value );
+      }
+    }
+  }
+  { i = 1;
+    auto pair = matrix[ i ];
+    REQUIRE( 9235 == pair.first );
+    auto tempPairs = pair.second;
+
+    REQUIRE( 2 == tempPairs.size() );
+
+    int j;
+    { j = 0;
+      auto tPair = tempPairs[ j ];
+      REQUIRE( 293.6*dimwits::kelvin == tPair.first );
+      auto reactions = tPair.second;
+      REQUIRE( 2 == reactions.size() );
+      
+      int k;
+      { k = 0;
+        REQUIRE( 3 == reactions[ k ].mfd.value );
+        REQUIRE( 18 == reactions[ k ].mtd.value );
+        REQUIRE( "MF3 MT18" == reactions[ k ].mtname.value );
+      }
+      { k = 1;
+        REQUIRE( 3 == reactions[ k ].mfd.value );
+        REQUIRE( 102 == reactions[ k ].mtd.value );
+        REQUIRE( "MF3 MT102" == reactions[ k ].mtname.value );
+      }
+    }
+    { j = 1;
+      auto tPair = tempPairs[ j ];
+      REQUIRE( 600*dimwits::kelvin == tPair.first );
+      auto reactions = tPair.second;
+      REQUIRE( 2 == reactions.size() );
+      
+      int k;
+      { k = 0;
+        REQUIRE( 5 == reactions[ k ].mfd.value );
+        REQUIRE( 17 == reactions[ k ].mtd.value );
+        REQUIRE( "MF5 MT17" == reactions[ k ].mtname.value );
+      }
+      { k = 1;
+        REQUIRE( 8 == reactions[ k ].mfd.value );
+        REQUIRE( 100 == reactions[ k ].mtd.value );
+        REQUIRE( "MF8 MT100" == reactions[ k ].mtname.value );
+      }
     }
   }
 }

@@ -1,3 +1,6 @@
+template< typename T >
+struct echo;
+
 class GROUPR {
 public:
   /* nested types */
@@ -19,12 +22,20 @@ public:
 
   using Card8Variant = std::variant< std::monostate, Card8b, Card8c, Card8d >;
 
+  using reactionList_t = std::vector< Card9 >;
+  using tempReactionListPair_t = std::vector< std::pair< 
+      Quantity< Kelvin >, reactionList_t > >;
+  using materialReactionsPair_t = std::pair< 
+      Card10::Matd::Value_t, tempReactionListPair_t >;
+  using reactionMatrix_t = std::vector< materialReactionsPair_t >;
+
   #include "njoy21/input/GROUPR/src/readArbitraryNeutronStructure.hpp"
   #include "njoy21/input/GROUPR/src/readArbitraryGammaStructure.hpp"
   #include "njoy21/input/GROUPR/src/readFluxCalculatorParameters.hpp"
   #include "njoy21/input/GROUPR/src/readFluxParameters.hpp"
+  #include "njoy21/input/GROUPR/src/readReactionMatrix.hpp"
+  #include "njoy21/input/GROUPR/src/makeMaterialReactions.hpp"
   #include "njoy21/input/GROUPR/src/readCard9List.hpp"
-  #include "njoy21/input/GROUPR/src/readCard10List.hpp"
 
   Card1 card1;
   Card2 card2;
@@ -35,8 +46,7 @@ public:
   optional< std::pair< Card7a, Card7b > > arbitraryGammaStructureCards;
   optional< Card8a > card8a;
   Card8Variant card8Variant;
-  std::vector< Card9 > card9List;
-  std::vector< Card10 > card10List;
+  reactionMatrix_t reactionMatrix;
 
   template< typename Istream >
   GROUPR( Istream& is )
@@ -52,8 +62,7 @@ public:
         readArbitraryGammaStructure( is, card2.igg.value ) ),
     card8a( readFluxCalculatorParameters( is, card2.iwt.value, card1 ) ),
     card8Variant( readFluxParameters( is, card2.iwt.value, card1 ) ),
-    card9List( readCard9List( is, card2.ntemp.value ) ),
-    card10List( readCard10List( is ) )
+    reactionMatrix( readReactionMatrix( is, card2.matb, card4 ) )
   {
   }
   catch( std::exception& e ){
