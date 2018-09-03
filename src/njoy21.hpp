@@ -24,6 +24,7 @@
 #include "dimwits.hpp"
 #include "Log.hpp"
 #include "utility.hpp"
+#include "lipservice.hpp"
 
 #include "njoy_c.h"
 
@@ -39,7 +40,6 @@ namespace modern{ class Sequence; }
 struct CommandLine;
 
 #include "njoy21/banner.hpp"
-#include "njoy21/input.hpp"
 #include "njoy21/io.hpp"
 #include "njoy21/interface.hpp"
 #include "njoy21/legacy.hpp"

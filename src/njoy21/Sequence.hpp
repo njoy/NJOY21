@@ -21,7 +21,7 @@ protected:
 #define DEFINE_ROUTINE( MODULE )                                               \
   struct MODULE : public interface::Routine {                                  \
     template< typename Char >                                                  \
-    MODULE( iRecordStream< Char >& input ){ input::MODULE commands( input ); } \
+    MODULE( iRecordStream< Char >& input ){ lipservice::MODULE commands( input ); } \
     void operator()(){ ::MODULE(); }                                           \
   };
 

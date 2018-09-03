@@ -1,6 +1,6 @@
 class Manager {
   
-  input::iRecordStream< char > inputStream;
+  lipservice::iRecordStream< char > inputStream;
   optional<std::string> outputPath;
   utility::stream::TemporaryFileStream legacyBuffer;
 
@@ -8,7 +8,7 @@ class Manager {
 
 protected:
   
-  Manager( input::iRecordStream< char >&& input,
+  Manager( lipservice::iRecordStream< char >&& input,
 	   optional< std::string >&& outputPath ) :
     inputStream( std::move(input) ),
     outputPath( std::move(outputPath) ),
@@ -19,7 +19,7 @@ protected:
 
 public:
 
-  input::iRecordStream< char >&
+  lipservice::iRecordStream< char >&
   input(){ return this->inputStream; }
 
   FileGaurd

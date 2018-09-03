@@ -70,7 +70,7 @@ public:
     auto legacyProcessor = makeProcessor( this->legacy, legacyFactory );
     auto modernProcessor = makeProcessor( this->modern, modernFactory );
     Queue queue;
-    auto label = input::Label::extract( manager->input() );
+    auto label = lipservice::Label::extract( manager->input() );
     this->legacy.count( label ) ?
       cycle( legacyProcessor, modernProcessor, label, queue ) :
       cycle( modernProcessor, legacyProcessor, label, queue );

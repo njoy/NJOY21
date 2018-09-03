@@ -22,3 +22,6 @@
 [submodule "dependencies/variant-adapter"]
 	path = dependencies/variant-adapter
 	url = https://github.com/njoy/variant-adapter.git
+[submodule "dependencies/lipservice"]
+	path = dependencies/lipservice
+	url = https://github.com/njoy/lipservice.git

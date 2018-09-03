@@ -3,7 +3,7 @@ protected:
     
   using parser =
     std::function
-    < std::unique_ptr< interface::Routine >( input::iRecordStream< char >& ) >;
+    < std::unique_ptr< interface::Routine >( lipservice::iRecordStream< char >& ) >;
 
   io::Manager& manager;
   std::unordered_set< std::string >& permittedRoutines;
@@ -11,11 +11,11 @@ protected:
   #define PAIR( routine ) \
     std::make_pair< std::string, parser >                              \
     ( #routine,                                                        \
-      []( input::iRecordStream< char >& inputStream ) -> std::unique_ptr< interface::Routine > \
+      []( lipservice::iRecordStream< char >& inputStream ) -> std::unique_ptr< interface::Routine > \
       { return std::make_unique< routine >( inputStream ); } )
   
   std::unique_ptr< interface::Routine >
-  parse( std::string& label, input::iRecordStream< char >& input ){
+  parse( std::string& label, lipservice::iRecordStream< char >& input ){
     static const std::unordered_map< std::string, parser > parserMap =
       { PAIR( MODER ), PAIR( RECONR ), PAIR( BROADR ), PAIR( PURR ),
         PAIR( UNRESR ), PAIR( ACER ), PAIR( GASPR ), PAIR( HEATR ),
@@ -50,7 +50,7 @@ public:
           sequence.push_back( this->parse( label, input ) );
 	  input.rdbuf( readBuffer );
 	}
-        label = input::Label::extract( input );
+        label = lipservice::Label::extract( input );
       } while ( this->permittedRoutines.count( label ) );
       return std::make_unique< Sequence >
 	       ( Sequence( manager, std::move( sequence ) ) );
