@@ -17,7 +17,9 @@ CommandLine( int argc, char* argv[] ){
     verifyOnly( "v", "verify-only",
     "Verify the input deck without executing commands" );
 
-  TCLAP::CmdLine cmd("NJOY21: NJOY for the 21st Century", ' ', "0.1" );
+  TCLAP::CmdLine cmd("NJOY21: NJOY for the 21st Century", 
+                      ' ', 
+                      Version::version );
   cmd.add( inputPath );
   cmd.add( outputPath );
   cmd.add( legacySwitch );

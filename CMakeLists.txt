@@ -279,6 +279,8 @@ add_library( njoy21 ${njoy21_library_linkage}
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Sequence.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Version.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/CommandLine/src/ctor.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/Builder.hpp"

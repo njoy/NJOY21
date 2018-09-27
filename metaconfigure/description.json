@@ -378,6 +378,8 @@
     "src/njoy21/io.hpp",
     "src/njoy21/legacy.hpp",
     "src/njoy21/Sequence.hpp",
+    "src/njoy21/Version.hpp",
+    "src/njoy21/CommandLine/src/ctor.hpp",
     "src/njoy21/Driver/Factory.hpp",
     "src/njoy21/io/Manager.hpp",
     "src/njoy21/io/Manager/Builder.hpp",
