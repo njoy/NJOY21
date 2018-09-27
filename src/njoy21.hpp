@@ -43,6 +43,7 @@ struct CommandLine;
 #include "njoy21/io.hpp"
 #include "njoy21/interface.hpp"
 #include "njoy21/legacy.hpp"
+#include "njoy21/Version.hpp"
 
 }
 }
