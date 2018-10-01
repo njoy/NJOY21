@@ -1,12 +1,12 @@
-FileGaurd output( legacy::Sequence* ){
+FileGuard output( legacy::Sequence* ){
   if ( not this->openedBuffer ){
     auto bufferPath = this->legacyBuffer.filename();
     this->legacyBuffer.flush();
     njoy_setup_input_file( &( bufferPath[0] ), bufferPath.length() );   
   }
   
-  if ( not this->outputPath ) return FileGaurd();
-  return FileGaurd( *outputPath );
+  if ( not this->outputPath ) return FileGuard();
+  return FileGuard( *outputPath );
 }
 
 std::unique_ptr< std::ostream > output( modern::Sequence* ){

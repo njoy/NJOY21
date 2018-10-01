@@ -15,7 +15,7 @@ protected:
     legacyBuffer( utility::stream::TemporaryFileStream() ){}
  
 #include "njoy21/io/Manager/Builder.hpp"
-#include "njoy21/io/Manager/FileGaurd.hpp"
+#include "njoy21/io/Manager/FileGuard.hpp"
 
 public:
 
