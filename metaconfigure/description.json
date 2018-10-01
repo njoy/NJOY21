@@ -389,6 +389,7 @@
     "src/njoy21/io/Manager/Builder.hpp",
     "src/njoy21/io/Manager/FileGaurd.hpp",
     "src/njoy21/io/Manager/FortranOutput.hpp",
+    "src/njoy21/io/Manager/src/output.hpp",
     "src/njoy21/legacy/Sequence.hpp",
     "src/njoy21/legacy/Sequence/Factory.hpp",
     "src/njoy21/legacy/Sequence/routines.hpp"
