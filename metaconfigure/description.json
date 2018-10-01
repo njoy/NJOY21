@@ -388,7 +388,7 @@
     "src/njoy21/io/Manager.hpp",
     "src/njoy21/io/Manager/Builder.hpp",
     "src/njoy21/io/Manager/FileGuard.hpp",
-    "src/njoy21/io/Manager/FortranOutput.hpp",
+    "src/njoy21/io/Manager/Builder/src/construct.hpp",
     "src/njoy21/io/Manager/src/output.hpp",
     "src/njoy21/legacy/Sequence.hpp",
     "src/njoy21/legacy/Sequence/Factory.hpp",

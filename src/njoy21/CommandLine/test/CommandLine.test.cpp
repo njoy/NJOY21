@@ -20,6 +20,7 @@ SCENARIO( "Parsing a command-line interface for options and flags" ){
     REQUIRE( not CL.outputPath );
     REQUIRE( not CL.legacySwitch );
     REQUIRE( not CL.verifyOnly );    
+    REQUIRE( not CL.signature );
   }
   GIVEN( "An instance of the Commandline with an input path" ){
     std::vector< std::string > arguments = { "njoy21", "--input", "/my/path" };

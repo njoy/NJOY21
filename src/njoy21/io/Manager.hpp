@@ -14,10 +14,11 @@ protected:
     outputPath( std::move(outputPath) ),
     legacyBuffer( utility::stream::TemporaryFileStream() ){}
  
+public:
+
 #include "njoy21/io/Manager/Builder.hpp"
 #include "njoy21/io/Manager/FileGuard.hpp"
 
-public:
 
   lipservice::iRecordStream< char >&
   input(){ return this->inputStream; }

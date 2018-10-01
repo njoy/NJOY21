@@ -1,5 +1,3 @@
-public:
-
 struct FileGuard {
 protected:
   bool owning = true;

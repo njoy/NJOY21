@@ -26,14 +26,9 @@ CommandLine( int argc, char* argv[] ){
     verifyOnly( "v", "verify-only",
     "Verify the input deck without executing commands", cmd );
 
-
-  // cmd.add( inputPath );
-  // cmd.add( outputPath );
-  // cmd.add( legacySwitch );
-  // cmd.add( verifyOnly );
-  // cmd.add( signature );
-
-  try{ cmd.parse( argc, argv ); } catch ( TCLAP::ArgException& e ){
+  try{ 
+    cmd.parse( argc, argv ); 
+  } catch ( TCLAP::ArgException& e ){
     Log::error("{} for argument {}", e.error(), e.argId() );
     throw std::exception();
   }

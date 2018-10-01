@@ -310,7 +310,7 @@ add_library( njoy21 ${njoy21_library_linkage}
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/Builder.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/FileGuard.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/FortranOutput.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/Builder/src/construct.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/src/output.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy/Sequence.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy/Sequence/Factory.hpp"

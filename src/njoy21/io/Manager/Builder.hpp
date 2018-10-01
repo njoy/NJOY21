@@ -1,12 +1,18 @@
-public:
-
 class Builder{
   optional<std::string> inputPath;    
   optional<std::string> outputPath;
 
 public:
+  Builder() = default;
+
+  Builder( optional< std::string > input, optional< std::string > output ):
+    inputPath( input ),
+    outputPath( output )
+  { }
+
   Builder& input( const std::string& path ){
-    this->inputPath = path; return *this;
+    this->inputPath = path; 
+    return *this;
   }
 
   const optional<std::string>& input() const {
@@ -14,25 +20,14 @@ public:
   }
 
   Builder& output( const std::string& path ){
-    this->outputPath = path; return *this;
+    this->outputPath = path; 
+    return *this;
   }
 
   const optional<std::string>& output() const {
     return this->outputPath;
   }
 
-  Manager construct() {
-    auto input = []( auto& input ){
-      if ( not input ){ return lipservice::iRecordStream< char >( std::cin ); }
-      auto stream = std::ifstream( input->c_str() );
-      if ( not stream.good() ){
-        Log::error( "Could not open input file" );
-        Log::info( "Specified input path: {}", *(input) );
-        throw std::exception();
-      }
-      return lipservice::iRecordStream< char >( std::move(stream) );
-    };
+#include "njoy21/io/Manager/Builder/src/construct.hpp"
 
-    return Manager( input( this->inputPath ), std::move( this->outputPath ) );
-  }
 };
