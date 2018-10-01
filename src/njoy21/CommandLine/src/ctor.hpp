@@ -20,17 +20,21 @@ CommandLine( int argc, char* argv[] ){
   TCLAP::CmdLine cmd("NJOY21: NJOY for the 21st Century", 
                       ' ', 
                       Version::version );
+
   cmd.add( inputPath );
   cmd.add( outputPath );
   cmd.add( legacySwitch );
   cmd.add( verifyOnly );
+
   try{ cmd.parse( argc, argv ); } catch ( TCLAP::ArgException& e ){
     Log::error("{} for argument {}", e.error(), e.argId() );
     throw std::exception();
   }
+
   this->inputPath = inputPath.getValue();
   this->outputPath = outputPath.getValue();
   this->legacySwitch = legacySwitch.getValue();
   this->verifyOnly = verifyOnly.getValue();
+  // this->signature = signature.getValue();
 }
 
