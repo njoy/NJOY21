@@ -367,6 +367,9 @@
       "cxx",
       "cpp",
       "cc"
+    ],
+    "configure files": [
+      "in"
     ]
   },
   "header files": [

@@ -67,7 +67,7 @@ def signature():
         execute_process( COMMAND ${PYTHON_EXECUTABLE} ./metaconfigure/signature.py ${CMAKE_BINARY_DIR}/signature
                             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
                             RESULT_VARIABLE signature_failure )
-        file( READ "${CMAKE_BINARY_DIR}/signature.json" signature )
+        file( READ "${CMAKE_BINARY_DIR}/signature.json" SIGNATURE )
         """)
 
     return contents

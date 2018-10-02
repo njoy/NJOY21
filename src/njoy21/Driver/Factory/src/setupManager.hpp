@@ -1,8 +1,8 @@
 static io::Manager setupManager( CommandLine& commandLine ){
   io::Manager::Builder builder;
   if( commandLine.signature ){
-    njoy::Log::info( "signature: {}", Signature::signature );
-    return builder.construct();
+    std::cout << Signature::signature << std::endl;
+    std::exit( 0 );
   }
 
   if ( commandLine.inputPath ){

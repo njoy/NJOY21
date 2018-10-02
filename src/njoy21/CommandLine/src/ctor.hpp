@@ -13,10 +13,10 @@ CommandLine( int argc, char* argv[] ){
       "path to file where NJOY21 output ought to be directed. (defaults to standard output)",
       false, optional< std::string >(), " output path", cmd );
 
-  TCLAP::ValueArg< optional< std::string > >
+  TCLAP::SwitchArg
     signature( "", "signature", 
       "Write signature to standard output or to file (if path is given)", 
-      false, optional< std::string >(), "signature path", cmd );
+      cmd );
 
   TCLAP::SwitchArg
     legacySwitch( "L", "legacy",

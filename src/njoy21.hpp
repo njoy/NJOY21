@@ -19,6 +19,7 @@
 #include <queue>
 #include <iomanip>
 #include <regex>
+#include <cstdlib>
 
 #include "ENDFtk.hpp"
 #include "dimwits.hpp"

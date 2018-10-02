@@ -13,9 +13,9 @@ struct njoy::njoy21::CommandLine {
   /* fields (with default initialization) */
   optional< std::string > inputPath;
   optional< std::string > outputPath;
-  optional< std::string > signature;
   bool legacySwitch;
   bool verifyOnly;
+  bool signature;
   
   /* methods */
 #include "njoy21/CommandLine/src/ctor.hpp"
