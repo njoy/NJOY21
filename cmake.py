@@ -67,7 +67,7 @@ def signature():
         execute_process( COMMAND ${PYTHON_EXECUTABLE} ./metaconfigure/signature.py ${CMAKE_BINARY_DIR}/signature
                             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
                             RESULT_VARIABLE signature_failure )
-        file( READ "${CMAKE_BINARY_DIR}/signature.json" signature )
+        file( READ "${CMAKE_BINARY_DIR}/signature.json" SIGNATURE )
         """)
 
     return contents
@@ -399,9 +399,8 @@ def print_banner(state):
 
 def link_dependencies(state):
     contents=''
-    name=state['name']
     if len(state['subprojects']) > 0 :
-        contents += '\ntarget_link_libraries( {name}'
+        contents += '\ntarget_link_libraries( {name}'.format(name=state['name'])
         for name, subproject in state['subprojects'].items():
             contents += (' PUBLIC {}' if has_library(state) else ' INTERFACE {}').format(name)
 
@@ -411,49 +410,70 @@ def link_dependencies(state):
 
 
 def add_targets(state):
+    format = {"name": state['name']}
+
+    contents = ""
     sources=[]
     for group in state['file extension']:
+        if group == 'configure files':
+            continue
         sources.extend(state[group])
+    sources = '"\n             "${CMAKE_CURRENT_SOURCE_DIR}/'.join(sources)
 
-    sources='"\n             "${CMAKE_CURRENT_SOURCE_DIR}/'.join(sources)
-    policy="PUBLIC" if has_library(state) else "INTERFACE"
-    compile_flags=target_flags_expression(state)
-    link_flags=lto_flags_expression(state)
+    for conf in state['configure files']:
+        hpp = conf[:-3]
+        contents += textwrap.dedent("""
+            configure_file( "${{CMAKE_CURRENT_SOURCE_DIR}}/{conf}"
+                            "${{CMAKE_CURRENT_BINARY_DIR}}/{hpp}" )
+        """.format( conf=conf, hpp=hpp ))
+        sources += '"\n             "${CMAKE_CURRENT_BINARY_DIR}/' + hpp
+
+    format['policy']  ="PUBLIC" if has_library(state) else "INTERFACE"
+    format['compile_flags'] = target_flags_expression(state)
+    format['link_flags'] = lto_flags_expression(state)
+    format['sources'] = sources
+    format['include_path'] = (
+        state['include path'] if 'include path' in state else '')
+    format['include_binary_path'] = "${CMAKE_CURRENT_BINARY_DIR}/src"
+    format['language'] = language[state['language']]
+    format['driver'] = state['driver'] if 'driver' in state else ''
+    format['indented_compile_flags'] = (
+        format['compile_flags'].replace('\n', '\n    '))
 
     if has_library(state):
-        contents="""
+        contents+="""
 add_library( {name} ${{{name}_library_linkage}}
              "${{CMAKE_CURRENT_SOURCE_DIR}}/{sources}" )
-        """
+        """.format(**format)
     else:
-        contents="""
+        contents+="""
 add_library( {name} INTERFACE )
 target_sources( {name} INTERFACE "${{CMAKE_CURRENT_SOURCE_DIR}}/{sources}" )
-        """
+        """.format(**format)
 
     if state['language'] == 'fortran':
         contents += """
 target_include_directories( {name} PUBLIC "${{CMAKE_Fortran_MODULE_DIRECTORY}}" )
-        """
+        """.format(**format)
 
     if 'include path' in state:
         contents += """
-target_include_directories( {name} {policy} {include_path} )
-        """
+target_include_directories( {name} {policy} {include_binary_path} {include_path} )
+        """.format(**format)
 
     if has_library(state) or has_executable(state) or has_tests(state):
         contents += """
 set( PREFIX {name}_${{CMAKE_{language}_COMPILER_ID}}_${{CMAKE_SYSTEM_NAME}} )
-        """
+        """.format(**format)
 
     if has_library(state):
         contents += """
 target_compile_options( {name} PRIVATE {compile_flags} )
-        """
+        """.format(**format)
 
     contents += """
 target_link_libraries( {name} {policy} {link_flags} )
-    """
+    """.format(**format)
     contents += link_dependencies(state)
 
     if has_executable(state):
@@ -465,17 +485,9 @@ if ( NOT is_subproject )
     target_compile_options( {name}_executable PRIVATE {indented_compile_flags} )
     target_link_libraries( {name}_executable {policy} {name} )
 endif()
-        """)
+        """.format(**format))
 
-    return textwrap.dedent(contents.format(name=state['name'],
-                                           driver=(state['driver'] if 'driver' in state else ''),
-                                           language=language[state['language']],
-                                           policy=policy,
-                                           sources=sources,
-                                           compile_flags=compile_flags,
-                                           indented_compile_flags=compile_flags.replace('\n', '\n    '),
-                                           link_flags=link_flags,
-                                           include_path=state['include path'] if 'include path' in state else ''))
+    return textwrap.dedent(contents)
 
 
 def add_tests(state):
@@ -641,11 +653,12 @@ def install(state):
         contents += """ )
         """
 
-    contents = contents.format(name=state['name'],
-                               targets=targets,
-                               include_path=state['include path'] if 'include path' in state else '',
-                               regex='|'.join(regex),
-                               gid=state['group id'] if 'group id' in state else '')
+    contents = contents.format(
+        name=state['name'],
+        targets=targets,
+        include_path=state['include path'] if 'include path' in state else '',
+        regex='|'.join(regex),
+        gid=state['group id'] if 'group id' in state else '')
 
     return textwrap.dedent(contents)
 
