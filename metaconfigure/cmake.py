@@ -55,19 +55,21 @@ def signature():
     """
     contents = textwrap.dedent(
         """
-        if( NOT ROOT_DIRECTORY )
-            set( ROOT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
-        endif()
-        if ( NOT PYTHON_EXECUTABLE )
-            find_package( PythonInterp )
-            if ( NOT PYTHONINTERP_FOUND )
-                message( FATAL_ERROR "Python interpeter installation was not found." )
+        if( NOT is_subproject )
+            if( NOT ROOT_DIRECTORY )
+                set( ROOT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
             endif()
+            if ( NOT PYTHON_EXECUTABLE )
+                find_package( PythonInterp )
+                if ( NOT PYTHONINTERP_FOUND )
+                    message( FATAL_ERROR "Python interpreter installation was not found." )
+                endif()
+            endif()
+            execute_process( COMMAND ${PYTHON_EXECUTABLE} ./metaconfigure/signature.py ${CMAKE_BINARY_DIR}/signature
+                                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                                RESULT_VARIABLE signature_failure )
+            file( READ "${CMAKE_BINARY_DIR}/signature.json" SIGNATURE )
         endif()
-        execute_process( COMMAND ${PYTHON_EXECUTABLE} ./metaconfigure/signature.py ${CMAKE_BINARY_DIR}/signature
-                            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-                            RESULT_VARIABLE signature_failure )
-        file( READ "${CMAKE_BINARY_DIR}/signature.json" SIGNATURE )
         """)
 
     return contents
@@ -424,7 +426,7 @@ def add_targets(state):
         hpp = conf[:-3]
         contents += textwrap.dedent("""
             configure_file( "${{CMAKE_CURRENT_SOURCE_DIR}}/{conf}"
-                            "${{CMAKE_CURRENT_BINARY_DIR}}/{hpp}" )
+                            "${{CMAKE_CURRENT_BINARY_DIR}}/{hpp}" @ONLY )
         """.format( conf=conf, hpp=hpp ))
         sources += '"\n             "${CMAKE_CURRENT_BINARY_DIR}/' + hpp
 
@@ -616,6 +618,12 @@ def install(state):
                 regex.append(".*\\.{0}$".format(extension).replace('+', '[+]'))
 
             contents += """
+        install( FILES "${{CMAKE_BINARY_DIR}}/signature.json"
+                 DESTINATION share/${{CMAKE_PROJECT_NAME}}
+                 PERMISSIONS OWNER_READ OWNER_WRITE
+                             GROUP_READ
+                             WORLD_READ
+        )
         install( DIRECTORY {include_path}/ DESTINATION include
                  FILE_PERMISSIONS OWNER_READ OWNER_WRITE
                                   GROUP_READ
@@ -671,8 +679,7 @@ cmake_minimum_required( VERSION 3.2 )
 set( CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Supported configuration types" FORCE )
         """
     contents += fetch_subprojects(state)
-    if state["signature"]:
-        contents += signature()
+    contents += signature()
     contents += project_statement(state)
     if not state['is external project']:
         contents += compiler_minimum(state)
