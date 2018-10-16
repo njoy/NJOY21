@@ -25,10 +25,12 @@ def generate( name = None ):
     git = {}
     git[ project_name ] = project_signature()
     root = os.getcwd()
-    for subproject in os.listdir( "subprojects" ):
-        os.chdir(os.path.join("subprojects", subproject))
-        git[subproject] = project_signature()
-        os.chdir(root)
+
+    if os.path.isdir( "subprojects" ):
+        for subproject in os.listdir( "subprojects" ):
+            os.chdir(os.path.join("subprojects", subproject))
+            git[subproject] = project_signature()
+            os.chdir(root)
 
     with open ( name + ".json", "w" ) as json_file:
         json_file.write( json.dumps( { 'git' : git }, indent=0 ) )
