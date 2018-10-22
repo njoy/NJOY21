@@ -84,19 +84,15 @@ fi
 rm testing.txt
 
 if $coverage; then
-  wget http://downloads.sourceforge.net/ltp/lcov-1.13.tar.gz
-  tar xvfz lcov-1.11.tar.gz;
-  make -C lcov-1.13
-  export PATH=$(pwd)/lcov-1.11/bin/:$PATH
-  lcov --capture \
-       --directory . \
-       --base-directory ../src/njoy21 \
-       --output-file coverage.info
-  lcov --extract coverage.info "*njoy21*" \
-       --output-file coverage.info
-  lcov --remove coverage.info "*test*" \
-       --output-file coverage.info
-  bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+  pip install --user cpp-coveralls &> coverage_upload.txt
+  echo "failed while loading coverage information"
+  coveralls  --exclude-pattern "/usr/include/.*|.*/CMakeFiles/.*|.*subprojects.*|.*dependencies.*|.*test\.cpp" --root ".." --build-root "." --gcov-options '\-lp' >> coverage_upload.txt 2>&1
+  if [ $? -ne 0 ];
+  then
+     echo "failed while coverage report!"
+     cat coverage_upload.txt
+     exit 1
+  fi
 fi
 
 exit 0
