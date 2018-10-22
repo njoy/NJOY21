@@ -29,19 +29,21 @@ if( NOT ROOT_DIRECTORY )
     endif()
 endif()
 
-if( NOT ROOT_DIRECTORY )
-    set( ROOT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
-endif()
-if ( NOT PYTHON_EXECUTABLE )
-    find_package( PythonInterp )
-    if ( NOT PYTHONINTERP_FOUND )
-        message( FATAL_ERROR "Python interpeter installation was not found." )
+if( NOT is_subproject )
+    if( NOT ROOT_DIRECTORY )
+        set( ROOT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
     endif()
+    if ( NOT PYTHON_EXECUTABLE )
+        find_package( PythonInterp )
+        if ( NOT PYTHONINTERP_FOUND )
+            message( FATAL_ERROR "Python interpreter installation was not found." )
+        endif()
+    endif()
+    execute_process( COMMAND ${PYTHON_EXECUTABLE} ./metaconfigure/signature.py ${CMAKE_BINARY_DIR}/signature
+                        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                        RESULT_VARIABLE signature_failure )
+    file( READ "${CMAKE_BINARY_DIR}/signature.json" SIGNATURE )
 endif()
-execute_process( COMMAND ${PYTHON_EXECUTABLE} ./metaconfigure/signature.py ${CMAKE_BINARY_DIR}/signature
-                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-                    RESULT_VARIABLE signature_failure )
-file( READ "${CMAKE_BINARY_DIR}/signature.json" SIGNATURE )
 
 project( njoy21 LANGUAGES CXX )
 get_directory_property( is_subproject PARENT_DIRECTORY )
@@ -292,7 +294,7 @@ message( STATUS "" )
 message( STATUS "-----------------------------------------------------------" )
 
 configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Signature.hpp.in"
-                "${CMAKE_CURRENT_BINARY_DIR}/src/njoy21/Signature.hpp" )
+                "${CMAKE_CURRENT_BINARY_DIR}/src/njoy21/Signature.hpp" @ONLY )
 
 add_library( njoy21 ${njoy21_library_linkage}
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21.hpp"
@@ -392,6 +394,12 @@ install( TARGETS ${installation_targets}
                      GROUP_EXECUTE GROUP_READ
                      WORLD_EXECUTE WORLD_READ )
 
+install( FILES "${CMAKE_BINARY_DIR}/signature.json"
+         DESTINATION share/${CMAKE_PROJECT_NAME}
+         PERMISSIONS OWNER_READ OWNER_WRITE
+                     GROUP_READ
+                     WORLD_READ
+)
 install( DIRECTORY src/ DESTINATION include
          FILE_PERMISSIONS OWNER_READ OWNER_WRITE
                           GROUP_READ
