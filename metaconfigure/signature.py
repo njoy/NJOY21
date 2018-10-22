@@ -13,8 +13,9 @@ def project_signature():
     if os.name == "nt":
         invocation.insert( 0, "powershell" )
 
-    hash_value = subprocess.run( invocation, stdout=subprocess.PIPE ).stdout
-    return hash_value.strip().decode("utf-8")
+    process = subprocess.Popen( invocation, stdout=subprocess.PIPE )
+    hash_value = process.communicate()
+    return hash_value[0].strip().decode("utf-8")
 
 def generate( name = None ):
 
