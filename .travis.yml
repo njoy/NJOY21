@@ -18,14 +18,17 @@ before_install:
 - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then brew update && brew upgrade python3; fi
 language: cpp
 compiler:
-- gcc
-- clang
+  - gcc
+  - clang
 os:
-- linux
-- osx
+  - linux
+  - osx
+
 osx_image: xcode8
+
 script: "./.travis/build.sh"
 after_success: "./.travis/signature.sh"
+
 env:
   matrix:
   - build_type=debug static_libraries=FALSE
@@ -34,17 +37,23 @@ env:
   - build_type=release static_libraries=TRUE
   global:
     secure: plUDJs3n7DrcEKGTQLVDQGWvOkPNLzR5vES9wxg6LkvwiMsIwYtEcwbKgjn3SRqQL9+iGVImRRR8nuOYLRVX+XQU1863QXmg74zOtjXfdux9/ArHyiJAsiQRgngCK+6s9mUpP9KpeSIso1yaFOMFC6VPbxGBDL11I1SbTbbgL46dcLdgDCf1NcJS88e049nZdW9c7qU5ZnnzY0wtY0w3DeG6Kv+ryybYOBUZcWf/Ax9vzG7Zr+iQa8SldwW6wN/FFk/Xu2akpkLDiJpBIBwoZkhtoFRkJyFFhHXzf+ZBsYFHf4ZZA2ckLkDF/A+f+CgTYfxJpKykfC7NRGgqiykOeJ4qGf0s/tKGCID6X1JQzDchmEQ7N7GitdUcepSy9F+m79LESpot2CyfQA2XW8VF8IcW9PnttEQ44m9QsZyesUID6FHTPv25a2SUclYPfaUR9ctlJJ6YWWSl+i2qQVBt/TKCVLhxAmc9norHe7d+OqFi/Ksmxz3AGLzqxS52W6U5HMDhz/Ha5N6yUhifNf7Nm2ALMQrmD1Ixh3WBShPBiXXUCe19CjcMUafQ30SFIdt7W6UFv9v0yTLpK7m0b9MyO/sH2bpKzLtLSwoGF4xeai75FyuX/sy48Kshs9+p2u7wL7mD/KPjwI8YKm42u0y3x3N2Ma3k5xZOKGLR9tBlX34=
+
 matrix:
   include:
   - os: linux
     compiler: gcc
-    env: build_type=coverage static_libraries=FALSE
+    env:
+      build_type=coverage
+      static_libraries=FALSE
   - os: linux
     compiler: clang
-    env: build_type=debug static_libraries=FALSE appended_flags="-fsanitize=address;-fno-omit-frame-pointer;"
+    env:
+      build_type=debug
+      static_libraries=FALSE
+      appended_flags="-fsanitize=address;-fno-omit-frame-pointer;"
   - os: linux
     compiler: clang
-    env: build_type=debug static_libraries=FALSE appended_flags="-fsanitize=undefined;-fno-omit-frame-pointer;"
-  exclude:
-  - os: osx
-    compiler: gcc
+    env:
+      build_type=debug
+      static_libraries=FALSE
+      appended_flags="-fsanitize=undefined;-fsanitize=integer;-fno-omit-frame-pointer;"

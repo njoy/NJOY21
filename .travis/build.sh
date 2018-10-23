@@ -1,14 +1,6 @@
 #!/bin/bash
 set -x
 
-function repeat {
-    while true
-    do
-        sleep $1
-        ${@:2}
-    done
-}
-       
 if [ "$TRAVIS_OS_NAME" = "linux" ]; then
   sudo update-alternatives \
     --install /usr/bin/gcc gcc /usr/bin/gcc-6 90 \
@@ -30,7 +22,6 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
 else
   export NPROC=$(sysctl -n hw.physicalcpu)
 fi
-
 
 if [ "$build_type" = "coverage" ]; then
   export build_type=DEBUG
@@ -65,5 +56,5 @@ fi
 if $coverage; then
   pip install --user cpp-coveralls
   echo "loading coverage information"
-  coveralls  --exclude-pattern "/usr/include/.*|.*/CMakeFiles/.*|.*subprojects.*|.*dependencies.*|.*test\.cpp" --root ".." --build-root "." --gcov-options '\-lp' >> coverage_upload.txt 2>&1
+  coveralls  --exclude-pattern "/usr/include/.*|.*/CMakeFiles/.*|.*subprojects.*|.*dependencies.*|.*test\.cpp" --root ".." --build-root "." --gcov-options '\-lp'
 fi
