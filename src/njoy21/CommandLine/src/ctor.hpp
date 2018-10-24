@@ -1,7 +1,7 @@
 CommandLine( int argc, char* argv[] ){
   TCLAP::CmdLine cmd("NJOY21: NJOY for the 21st Century", 
                       ' ', 
-                      Version::version );
+                      Version::version() );
 
   TCLAP::ValueArg< optional< std::string > >
     inputPath( "i", "input",                                                         

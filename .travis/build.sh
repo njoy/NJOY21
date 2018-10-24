@@ -36,7 +36,7 @@ cd build
        
 cmake -D CMAKE_BUILD_TYPE=$build_type \
       -D static_libraries=$static_libraries \
-      -D NJOY21_appended_flags="$appended_flags" \
+      -D njoy21_appended_flags="$appended_flags" \
       $CUSTOM ..
 make VERBOSE=1 -j$NPROC
 export COMPILATION_FAILURE=$?

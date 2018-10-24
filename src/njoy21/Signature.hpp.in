@@ -1,10 +1,6 @@
 class Signature{
 public:
-  static const std::string signature;
+  static const std::string signature(){
+    return R"signature( @SIGNATURE@ )signature";
+  }
 };
-
-const std::string Signature::signature = 
-
-R"signature( 
-@SIGNATURE@
-)signature";
