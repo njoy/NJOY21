@@ -1,6 +1,5 @@
 class Driver {
-  using Queue =
-    std::queue< std::unique_ptr< interface::Routine::Sequence > >;
+  using Queue = std::queue< std::unique_ptr< interface::Routine::Sequence > >;
 
   std::unique_ptr< io::Manager > manager;
   Queue queue;
@@ -15,11 +14,5 @@ public:
   Driver( int argc, char* argv[] ) :
     Driver( Factory( argc, argv )() ){}
 
-  void operator()(){
-    while ( this->queue.size() ){
-      auto& routine = *( this->queue.front() );
-      routine();
-      this->queue.pop();
-    }
-  }
+  #include "njoy21/Driver/src/callOperator.hpp"
 };

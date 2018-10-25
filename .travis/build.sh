@@ -1,14 +1,6 @@
 #!/bin/bash
 set -x
 
-function repeat {
-    while true
-    do
-        sleep $1
-        ${@:2}
-    done
-}
-       
 if [ "$TRAVIS_OS_NAME" = "linux" ]; then
   sudo update-alternatives \
     --install /usr/bin/gcc gcc /usr/bin/gcc-6 90 \
@@ -31,7 +23,6 @@ else
   export NPROC=$(sysctl -n hw.physicalcpu)
 fi
 
-
 if [ "$build_type" = "coverage" ]; then
   export build_type=DEBUG
   export coverage=true
@@ -45,58 +36,25 @@ cd build
        
 cmake -D CMAKE_BUILD_TYPE=$build_type \
       -D static_libraries=$static_libraries \
-      -D NJOY21_appended_flags="$appended_flags" \
-      $CUSTOM .. &> configuration.txt
-export CONFIGURATION_FAILURE=$?
-
-if [ $CONFIGURATION_FAILURE -ne 0 ];
-then
-  echo "failed while configuring"
-  cat configuration.txt
-  exit 1
-fi
-rm configuration.txt
-
-repeat 300 echo "Still building..."&
-export EKG=$!
-       
-make VERBOSE=1 -j$NPROC &> compilation.txt
+      -D njoy21_appended_flags="$appended_flags" \
+      $CUSTOM ..
+make VERBOSE=1 -j$NPROC
 export COMPILATION_FAILURE=$?
 
 if [ $COMPILATION_FAILURE -ne 0 ];
 then
-  echo "failed while compiling"
-  cat compilation.txt  
   exit 1
 fi
-rm compilation.txt
 
-kill $EKG
-
-ctest --output-on-failure -j$NPROC &> testing.txt
+ctest --output-on-failure -j$NPROC
 export TEST_FAILURE=$?
 if [ $TEST_FAILURE -ne 0 ];
 then
-    echo "failed while testing"
-    cat testing.txt  
     exit 1
 fi
-rm testing.txt
 
 if $coverage; then
-  wget http://downloads.sourceforge.net/ltp/lcov-1.13.tar.gz
-  tar xvfz lcov-1.11.tar.gz;
-  make -C lcov-1.13
-  export PATH=$(pwd)/lcov-1.11/bin/:$PATH
-  lcov --capture \
-       --directory . \
-       --base-directory ../src/njoy21 \
-       --output-file coverage.info
-  lcov --extract coverage.info "*njoy21*" \
-       --output-file coverage.info
-  lcov --remove coverage.info "*test*" \
-       --output-file coverage.info
-  bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+  pip install --user cpp-coveralls
+  echo "loading coverage information"
+  coveralls  --exclude-pattern "/usr/include/.*|.*/CMakeFiles/.*|.*subprojects.*|.*dependencies.*|.*test\.cpp" --root ".." --build-root "." --gcov-options '\-lp'
 fi
-
-exit 0
