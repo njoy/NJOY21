@@ -4,7 +4,7 @@ public:
   // Change whenever new capability is implemented
   static constexpr int minorVersion{0};
   // Change whenever merge to master branch is done
-  static constexpr int patchVersion{0};
+  static constexpr int patchVersion{1};
 
   static std::string version(){ 
     return std::to_string( majorVersion ) + "." + 

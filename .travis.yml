@@ -34,6 +34,10 @@ osx_image: xcode9
 script: "./.travis/build.sh"
 after_success: "./.travis/signature.sh"
 
+branches:
+  except:
+    - gh-pages
+
 env:
   matrix:
   - build_type=debug static_libraries=FALSE
