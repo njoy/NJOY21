@@ -27,3 +27,4 @@ baseurl: "" # the subpath of your site, e.g. /blog
 
 exclude: [vendor]
 include: ['Developers', 'Build', 'LICENSE.md']
+github: [metadata]
