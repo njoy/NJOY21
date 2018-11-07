@@ -12,8 +12,7 @@ email: njoy@lanl.gov
 
 description: NJOY nuclear data processing from LANL
 
-url: "http://njoy.lanl.gov" # the base hostname & protocol for your site
-#twitter_username: jekyllrb
+url: "http://www.njoy21.io" # the base hostname & protocol for your site
 github_username:  njoy
 
 markdown: kramdown
