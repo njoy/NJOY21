@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>NJOY</title>
+  <meta name="description" content="NJOY nuclear data processing from LANL">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:8000/README-jekyll.html">
+  <link rel="alternate" type="application/rss+xml" title="NJOY" href="http://localhost:8000/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="https://njoy.github.io/">NJOY</a>
+
+    <nav class="site-nav">
+  <div class="menu-icon">
+    <svg viewBox="0 0 18 15">
+      <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+      <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+      <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+    </svg>
+  </div>
+
+  <div class="trigger">
+    
+      
+      <a class="page-link" href="https://njoy.github.io/Build/index.html">
+        Getting NJOY
+      </a>
+
+      
+    
+      
+      <a class="page-link" href="https://njoy.github.io/DevelopersGuide">
+        Developers
+      </a>
+
+      
+    
+      
+      <a class="page-link" href="https://njoy.github.io/Projects.html">
+        Projects
+      </a>
+
+      
+    
+      
+      <a class="page-link" href="https://njoy.github.io/about/index.html">
+        About
+      </a>
+
+      
+    
+  </div>
+</nav>
+
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="jekyll-website">Jekyll-website</h1>
+<p>This repository contains the required stuff to make the NJOY website and keep it consistent across all the projects.</p>
+
+<h2 id="using-jekyll-website">Using jekyll-website</h2>
+<p>For all projects under the NJOY organization, this repository should be created as a git ‘subtree’ in the <code class="highlighter-rouge">docs</code> directory. This will ensure consistency across all the projects as well as make the documentation for each accessible from the website.</p>
+
+<p>In order to prevent pushing to this repository one should set the push url for this remote in git like this:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>git remote <span class="nb">set</span>-url --push &lt;name&gt; no_push
+</code></pre>
+</div>
+<p>Here <code class="highlighter-rouge">&lt;name&gt;</code> is the name of the remote (probably <code class="highlighter-rouge">jekyll</code>). What this tells git is whenever you try to push to this remote, simply push to the url <code class="highlighter-rouge">no_push</code> which doesn’t exist.</p>
+
+<p>Alternatively, you can set the push url to the url of the remote of the real repository like:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>git remote <span class="nb">set</span>-url --push jekyll git@github.com:njoy/njoy.github.io.git
+</code></pre>
+</div>
+<p>as is done for the <a href="https://github.com/njoy/njoy.github.io">njoy.github.io</a> repository.</p>
+
+<h2 id="license">License</h2>
+<p>This repository—and all repositories under the NJOY organization—are licensed according to the <a href="/LICENSE.html">LICENSE</a> file</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>NJOY</li>
+          <li><a href="mailto:njoy@lanl.gov">njoy@lanl.gov</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>NJOY nuclear data processing from LANL
+          Website for documentation and code for the development of NJOY, a nuclear data processing code from Los Alamos National Laboratory. All source code as part of the NJOY project—including this website—is covered by the BSD, 3-clause license, as detailed in the <a href="https://njoy.github.io/LICENSE.html">license</a> file. LANL code designation LA-CC-15-092.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
