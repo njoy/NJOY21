@@ -1,7 +1,1 @@
-subprojects
-bin
-build
-__pycache__
-*.pyc
-*#*
-*~
+_site

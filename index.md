@@ -1,6 +1,6 @@
 ---
 layout: page
-title: NJOY21&mdash;NJOY for the 21st Century
+title: NJOY21—NJOY for the 21st Century
 ---
 
 NJOY21 is the current production version of NJOY. It is being developed as a modern version of [NJOY2016](https://njoy.github.io/NJOY2016/). NJOY21 is a ground-up rewrite of NJOY2016 and is backwards compatible; that is, input decks that work with NJOY2016, will continue to work with NJOY21. 
