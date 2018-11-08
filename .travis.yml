@@ -34,6 +34,10 @@ osx_image: xcode9
 script: "./.travis/build.sh"
 after_success: "./.travis/signature.sh"
 
+branches:
+  except:
+    - gh-pages
+
 env:
   matrix:
   - build_type=debug static_libraries=FALSE
@@ -50,12 +54,12 @@ matrix:
     env:
       build_type=coverage
       static_libraries=FALSE
-  - os: linux
-    compiler: clang
-    env:
-      build_type=debug
-      static_libraries=FALSE
-      appended_flags="-fsanitize=address;-fno-omit-frame-pointer;"
+  # - os: linux
+  #   compiler: clang
+  #   env:
+  #     build_type=debug
+  #     static_libraries=FALSE
+  #     appended_flags="-fsanitize=address;-fno-omit-frame-pointer;"
   - os: linux
     compiler: clang
     env:
