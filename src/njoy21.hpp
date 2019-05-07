@@ -2,9 +2,10 @@
 #define NJOY21
 
 #include <variant>
+#include <map>
 
 
-#ifdef USING_CPP17
+#if __cplusplus >= 201703L
   #include <optional>
 #else 
   #include <experimental/optional>
