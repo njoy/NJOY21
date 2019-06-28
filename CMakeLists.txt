@@ -195,20 +195,20 @@ list( INSERT 0 CMAKE_INSTALL_RPATH "${rpath_prefix}/../lib" )
 set( CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE )
 get_directory_property( is_subproject PARENT_DIRECTORY )
 
+if( NOT TARGET range-v3-adapter )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/range-v3-adapter )
+endif()
+
 if( NOT TARGET catch-adapter )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/catch-adapter )
 endif()
 
-if( NOT TARGET hana-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/hana-adapter )
-endif()
-
-if( NOT TARGET dimwits )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/dimwits )
-endif()
-
 if( NOT TARGET disco )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/disco )
+endif()
+
+if( NOT TARGET hana-adapter )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/hana-adapter )
 endif()
 
 if( NOT TARGET fmt-adapter )
@@ -227,14 +227,6 @@ if( NOT TARGET header-utilities )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/header-utilities )
 endif()
 
-if( NOT TARGET hopscotch-map-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/hopscotch-map-adapter )
-endif()
-
-if( NOT TARGET range-v3-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/range-v3-adapter )
-endif()
-
 if( NOT TARGET variant-adapter )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/variant-adapter )
 endif()
@@ -243,12 +235,8 @@ if( NOT TARGET ENDFtk )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/ENDFtk )
 endif()
 
-if( NOT TARGET utility )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/utility )
-endif()
-
-if( NOT TARGET lipservice )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/lipservice )
+if( NOT TARGET tclap-adapter )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/tclap-adapter )
 endif()
 
 if( NOT TARGET njoy )
@@ -259,8 +247,16 @@ if( NOT TARGET njoy_c_bindings )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/njoy_c_bindings )
 endif()
 
-if( NOT TARGET tclap-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/tclap-adapter )
+if( NOT TARGET dimwits )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/dimwits )
+endif()
+
+if( NOT TARGET utility )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/utility )
+endif()
+
+if( NOT TARGET lipservice )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/lipservice )
 endif()
 
 
@@ -300,26 +296,26 @@ add_library( njoy21 ${njoy21_library_linkage}
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/banner.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/CommandLine.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Sequence.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/interface.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Sequence.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Version.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/CommandLine/src/ctor.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory/src/callOperator.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory/src/setupLegacyDirectory.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory/src/setupManager.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory/src/callOperator.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/src/callOperator.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/Builder.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/FileGuard.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/Builder.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/Builder/src/construct.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/src/output.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy/Sequence.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy/Sequence/Factory.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy/Sequence/routines.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/CommandLine/src/ctor.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp"
              "${CMAKE_CURRENT_BINARY_DIR}/src/njoy21/Signature.hpp" )
 
@@ -346,7 +342,7 @@ ${CXX_appended_flags} ${njoy21_appended_flags} )
 
 target_link_libraries( njoy21 PUBLIC "$<$<AND:$<CONFIG:RELEASE>,$<BOOL:${link_time_optimization}>>:${${PREFIX}_RELEASE_flags};${${PREFIX}_link_time_optimization_flags}$<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags};>$<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags};>$<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags};>>$<$<CONFIG:DEBUG>:$<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags};>>$<$<BOOL:CXX_appended_flags>:${CXX_appended_flags};>$<$<BOOL:njoy21_appended_flags>:${njoy21_appended_flags};>" )
 
-target_link_libraries( njoy21 PUBLIC dimwits PUBLIC ENDFtk PUBLIC lipservice PUBLIC njoy_c_bindings PUBLIC tclap-adapter PUBLIC utility PUBLIC variant-adapter )
+target_link_libraries( njoy21 PUBLIC ENDFtk PUBLIC tclap-adapter PUBLIC njoy_c_bindings PUBLIC variant-adapter PUBLIC lipservice PUBLIC dimwits PUBLIC utility )
 
 if ( NOT is_subproject )
     add_executable( njoy21_executable src/main.cpp )
