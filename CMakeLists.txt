@@ -117,18 +117,6 @@ set( njoy21_GNU_Windows_link_time_optimization_flags "-flto" )
 set( njoy21_GNU_Windows_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
 set( njoy21_GNU_Windows_nonportable_optimization_flags "-march=native" )
 set( njoy21_GNU_Windows_static_flags "-static" )
-set( njoy21_GNU_Linux_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-Wno-maybe-uninitialized" "-std=c++14" )
-set( njoy21_GNU_Linux_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
-set( njoy21_GNU_Linux_RELEASE_flags "-O3" "-DNDEBUG" )
-set( njoy21_GNU_Linux_strict_flags "-Werror" )
-set( njoy21_GNU_Linux_coverage_flags "--coverage" )
-set( njoy21_GNU_Linux_subproject_flags  )
-set( njoy21_GNU_Linux_base_project_flags  )
-set( njoy21_GNU_Linux_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
-set( njoy21_GNU_Linux_link_time_optimization_flags "-flto" )
-set( njoy21_GNU_Linux_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
-set( njoy21_GNU_Linux_nonportable_optimization_flags "-march=native" )
-set( njoy21_GNU_Linux_static_flags "-static" )
 set( njoy21_GNU_Darwin_common_flags "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
 set( njoy21_GNU_Darwin_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
 set( njoy21_GNU_Darwin_RELEASE_flags "-O3" "-DNDEBUG" )
@@ -141,6 +129,18 @@ set( njoy21_GNU_Darwin_link_time_optimization_flags "-flto" )
 set( njoy21_GNU_Darwin_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
 set( njoy21_GNU_Darwin_nonportable_optimization_flags "-march=native" )
 set( njoy21_GNU_Darwin_static_flags "-static" )
+set( njoy21_GNU_Linux_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-Wno-maybe-uninitialized" "-std=c++14" )
+set( njoy21_GNU_Linux_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
+set( njoy21_GNU_Linux_RELEASE_flags "-O3" "-DNDEBUG" )
+set( njoy21_GNU_Linux_strict_flags "-Werror" )
+set( njoy21_GNU_Linux_coverage_flags "--coverage" )
+set( njoy21_GNU_Linux_subproject_flags  )
+set( njoy21_GNU_Linux_base_project_flags  )
+set( njoy21_GNU_Linux_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_GNU_Linux_link_time_optimization_flags "-flto" )
+set( njoy21_GNU_Linux_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_GNU_Linux_nonportable_optimization_flags "-march=native" )
+set( njoy21_GNU_Linux_static_flags "-static" )
 set( njoy21_Clang_Windows_common_flags "-stdlib=libc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
 set( njoy21_Clang_Windows_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
 set( njoy21_Clang_Windows_RELEASE_flags "-O3" "-DNDEBUG" )
@@ -153,18 +153,6 @@ set( njoy21_Clang_Windows_link_time_optimization_flags "-flto" )
 set( njoy21_Clang_Windows_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
 set( njoy21_Clang_Windows_nonportable_optimization_flags "-march=native" )
 set( njoy21_Clang_Windows_static_flags "-static" )
-set( njoy21_Clang_Linux_common_flags "-stdlib=libstdc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
-set( njoy21_Clang_Linux_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
-set( njoy21_Clang_Linux_RELEASE_flags "-O3" "-DNDEBUG" )
-set( njoy21_Clang_Linux_strict_flags "-Werror" )
-set( njoy21_Clang_Linux_coverage_flags "--coverage" )
-set( njoy21_Clang_Linux_subproject_flags  )
-set( njoy21_Clang_Linux_base_project_flags  )
-set( njoy21_Clang_Linux_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
-set( njoy21_Clang_Linux_link_time_optimization_flags "-flto" )
-set( njoy21_Clang_Linux_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
-set( njoy21_Clang_Linux_nonportable_optimization_flags "-march=native" )
-set( njoy21_Clang_Linux_static_flags "-static" )
 set( njoy21_Clang_Darwin_common_flags "-stdlib=libc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
 set( njoy21_Clang_Darwin_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
 set( njoy21_Clang_Darwin_RELEASE_flags "-O3" "-DNDEBUG" )
@@ -177,6 +165,18 @@ set( njoy21_Clang_Darwin_link_time_optimization_flags "-flto" )
 set( njoy21_Clang_Darwin_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
 set( njoy21_Clang_Darwin_nonportable_optimization_flags "-march=native" )
 set( njoy21_Clang_Darwin_static_flags "-static" )
+set( njoy21_Clang_Linux_common_flags "-stdlib=libstdc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
+set( njoy21_Clang_Linux_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
+set( njoy21_Clang_Linux_RELEASE_flags "-O3" "-DNDEBUG" )
+set( njoy21_Clang_Linux_strict_flags "-Werror" )
+set( njoy21_Clang_Linux_coverage_flags "--coverage" )
+set( njoy21_Clang_Linux_subproject_flags  )
+set( njoy21_Clang_Linux_base_project_flags  )
+set( njoy21_Clang_Linux_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_Clang_Linux_link_time_optimization_flags "-flto" )
+set( njoy21_Clang_Linux_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_Clang_Linux_nonportable_optimization_flags "-march=native" )
+set( njoy21_Clang_Linux_static_flags "-static" )
 
 if ( static_njoy21 )
     set( njoy21_library_linkage STATIC )
@@ -195,60 +195,16 @@ list( INSERT 0 CMAKE_INSTALL_RPATH "${rpath_prefix}/../lib" )
 set( CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE )
 get_directory_property( is_subproject PARENT_DIRECTORY )
 
-if( NOT TARGET catch-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/catch-adapter )
-endif()
-
-if( NOT TARGET hana-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/hana-adapter )
-endif()
-
-if( NOT TARGET dimwits )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/dimwits )
-endif()
-
-if( NOT TARGET disco )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/disco )
-endif()
-
 if( NOT TARGET fmt-adapter )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/fmt-adapter )
-endif()
-
-if( NOT TARGET spdlog-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/spdlog-adapter )
-endif()
-
-if( NOT TARGET Log )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/Log )
-endif()
-
-if( NOT TARGET header-utilities )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/header-utilities )
-endif()
-
-if( NOT TARGET hopscotch-map-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/hopscotch-map-adapter )
-endif()
-
-if( NOT TARGET range-v3-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/range-v3-adapter )
 endif()
 
 if( NOT TARGET variant-adapter )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/variant-adapter )
 endif()
 
-if( NOT TARGET ENDFtk )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/ENDFtk )
-endif()
-
-if( NOT TARGET utility )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/utility )
-endif()
-
-if( NOT TARGET lipservice )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/lipservice )
+if( NOT TARGET spdlog-adapter )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/spdlog-adapter )
 endif()
 
 if( NOT TARGET njoy )
@@ -259,8 +215,48 @@ if( NOT TARGET njoy_c_bindings )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/njoy_c_bindings )
 endif()
 
+if( NOT TARGET hana-adapter )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/hana-adapter )
+endif()
+
 if( NOT TARGET tclap-adapter )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/tclap-adapter )
+endif()
+
+if( NOT TARGET range-v3-adapter )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/range-v3-adapter )
+endif()
+
+if( NOT TARGET catch-adapter )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/catch-adapter )
+endif()
+
+if( NOT TARGET Log )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/Log )
+endif()
+
+if( NOT TARGET dimwits )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/dimwits )
+endif()
+
+if( NOT TARGET header-utilities )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/header-utilities )
+endif()
+
+if( NOT TARGET utility )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/utility )
+endif()
+
+if( NOT TARGET disco )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/disco )
+endif()
+
+if( NOT TARGET ENDFtk )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/ENDFtk )
+endif()
+
+if( NOT TARGET lipservice )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/lipservice )
 endif()
 
 
@@ -300,26 +296,26 @@ add_library( njoy21 ${njoy21_library_linkage}
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/banner.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/CommandLine.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Sequence.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/interface.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Sequence.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Version.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/CommandLine/src/ctor.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory/src/callOperator.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory/src/setupLegacyDirectory.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory/src/setupManager.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory/src/callOperator.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/src/callOperator.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/Builder.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/FileGuard.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/Builder.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/Builder/src/construct.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager/src/output.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy/Sequence.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy/Sequence/Factory.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy/Sequence/routines.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/CommandLine/src/ctor.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp"
              "${CMAKE_CURRENT_BINARY_DIR}/src/njoy21/Signature.hpp" )
 
@@ -346,7 +342,7 @@ ${CXX_appended_flags} ${njoy21_appended_flags} )
 
 target_link_libraries( njoy21 PUBLIC "$<$<AND:$<CONFIG:RELEASE>,$<BOOL:${link_time_optimization}>>:${${PREFIX}_RELEASE_flags};${${PREFIX}_link_time_optimization_flags}$<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags};>$<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags};>$<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags};>>$<$<CONFIG:DEBUG>:$<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags};>>$<$<BOOL:CXX_appended_flags>:${CXX_appended_flags};>$<$<BOOL:njoy21_appended_flags>:${njoy21_appended_flags};>" )
 
-target_link_libraries( njoy21 PUBLIC dimwits PUBLIC ENDFtk PUBLIC lipservice PUBLIC njoy_c_bindings PUBLIC tclap-adapter PUBLIC utility PUBLIC variant-adapter )
+target_link_libraries( njoy21 PUBLIC njoy_c_bindings PUBLIC variant-adapter PUBLIC lipservice PUBLIC tclap-adapter PUBLIC ENDFtk PUBLIC dimwits PUBLIC utility )
 
 if ( NOT is_subproject )
     add_executable( njoy21_executable src/main.cpp )
@@ -373,10 +369,10 @@ endif()
 if( NOT is_subproject )
     enable_testing() 
     if ( unit_tests )
-        add_subdirectory( src/njoy21/CommandLine/test )
         add_subdirectory( src/njoy21/Driver/test )
-        add_subdirectory( src/njoy21/io/Manager/test )
         add_subdirectory( src/njoy21/legacy/Sequence/test )
+        add_subdirectory( src/njoy21/CommandLine/test )
+        add_subdirectory( src/njoy21/io/Manager/test )
     endif() 
     add_subdirectory( tests )
 endif()
