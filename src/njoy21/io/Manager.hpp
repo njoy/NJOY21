@@ -2,6 +2,7 @@ class Manager {
   
   lipservice::iRecordStream< char > inputStream;
   optional<std::string> outputPath;
+  optional<std::string> errorPath;
   utility::stream::TemporaryFileStream legacyBuffer;
 
   bool openedBuffer = false;
@@ -9,9 +10,11 @@ class Manager {
 protected:
   
   Manager( lipservice::iRecordStream< char >&& input,
-	   optional< std::string >&& outputPath ) :
+           optional< std::string >&& outputPath,
+           optional< std::string >&& errorPath ) :
     inputStream( std::move(input) ),
     outputPath( std::move(outputPath) ),
+    errorPath( std::move(errorPath) ),
     legacyBuffer( utility::stream::TemporaryFileStream() ){}
  
 public:

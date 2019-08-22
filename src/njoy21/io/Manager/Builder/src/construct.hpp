@@ -11,6 +11,8 @@ Manager construct() {
     return lipservice::iRecordStream< char >( std::move(stream) );
   };
 
-  return Manager( input( this->inputPath ), std::move( this->outputPath ) );
+  return Manager( input( this->inputPath ), 
+                  std::move( this->outputPath ),
+                  std::move( this->errorPath ) );
 }
 

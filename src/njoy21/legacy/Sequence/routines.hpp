@@ -4,10 +4,10 @@ static void ignore( T&& ){}
 #define DEFINE_ROUTINE( MODULE )					\
   struct MODULE : public interface::Routine {                                  \
     template< typename Char >                                                  \
-    MODULE( lipservice::iRecordStream< Char >& stream ){                            \
-      lipservice::MODULE command( stream );                                         \
+    MODULE( lipservice::iRecordStream< Char >& stream ){                       \
+      lipservice::MODULE command( stream );                                    \
       ignore(command);                                                         \
-    }									       \
+    }									                                                         \
     void operator()(){ njoy_c_##MODULE(); }                                    \
   };
 

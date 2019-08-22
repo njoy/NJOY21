@@ -11,5 +11,8 @@ static io::Manager setupManager( CommandLine& commandLine ){
   if ( commandLine.outputPath ){
     builder.output( *(commandLine.outputPath) );
   }
+  if ( commandLine.errorPath ){
+    builder.error( *(commandLine.errorPath) );
+  }
   return builder.construct();      
 }

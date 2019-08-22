@@ -13,9 +13,14 @@ CommandLine( int argc, char* argv[] ){
       "path to file where NJOY21 output ought to be directed. (defaults to standard output)",
       false, optional< std::string >(), " output path", cmd );
 
+  TCLAP::ValueArg< optional< std::string > >
+    errorPath( "e", "error",                                                         
+      "path to file where NJOY21 error ought to be directed. (defaults to standard error)",
+      false, optional< std::string >(), " error path", cmd );
+
   TCLAP::SwitchArg
     signature( "", "signature", 
-      "Write signature to standard output or to file (if path is given)", 
+      "Write signature to standard output", 
       cmd );
 
   TCLAP::SwitchArg
@@ -35,6 +40,7 @@ CommandLine( int argc, char* argv[] ){
 
   this->inputPath = inputPath.getValue();
   this->outputPath = outputPath.getValue();
+  this->errorPath = errorPath.getValue();
   this->legacySwitch = legacySwitch.getValue();
   this->verifyOnly = verifyOnly.getValue();
   this->signature = signature.getValue();

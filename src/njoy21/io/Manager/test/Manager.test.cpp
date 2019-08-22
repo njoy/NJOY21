@@ -14,6 +14,7 @@ SCENARIO("An io manager can be constructed using a builder"){
   {
     auto myManager = io::Manager::Builder().input("./helloworld.txt")
                                            .output("./output")
+                                           .error( "./output" )
                                            .construct();
   
     std::getline( myManager.input(), sink );

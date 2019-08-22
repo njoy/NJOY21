@@ -1,13 +1,17 @@
 class Builder{
   optional<std::string> inputPath;    
   optional<std::string> outputPath;
+  optional<std::string> errorPath;
 
 public:
   Builder() = default;
 
-  Builder( optional< std::string > input, optional< std::string > output ):
+  Builder( optional< std::string > input, 
+           optional< std::string > output,
+           optional< std::string > error ):
     inputPath( input ),
-    outputPath( output )
+    outputPath( output ),
+    errorPath( error )
   { }
 
   Builder& input( const std::string& path ){
@@ -26,6 +30,15 @@ public:
 
   const optional<std::string>& output() const {
     return this->outputPath;
+  }
+
+  Builder& error( const std::string& path ){
+    this->errorPath = path; 
+    return *this;
+  }
+
+  const optional<std::string>& error() const {
+    return this->errorPath;
   }
 
 #include "njoy21/io/Manager/Builder/src/construct.hpp"
