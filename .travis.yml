@@ -5,8 +5,7 @@ language: cpp
 script: "./.travis/signature.sh"
 
 branches:
-  except:
-    - gh-pages
+  - master
 
 env:
   global:
