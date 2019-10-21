@@ -11,10 +11,13 @@ This version adds the capability to split the output into stderr and stdout. It 
 
 This is a nice little addition because you can see the progress of NJOY21 as it moves through the different NJOY modules. This is also the same behavior as NJOY2016.
 
-## [NJOY21 1.0.2](https://github.com/njoy/NJOY21/pull/87/)
-This incorporates the addition of `Ngen8` parameter in MATXSR. This updated occured as a result of [Pull Request \#6](https://github.com/njoy/lipservice/pull/6) from [lipservice](https://github.com/njoy/lipservice).
-
 ## [NJOY21 1.0.3](https://github.com/njoy/NJOY21/pull/92)
 Changes in the ENDFtk parser (removing the hopscotch-map dependency) required changes to the build system CMakeLists.txt files. No other code was changed so NJOY21 1.0.3 is equivalent with NJOY21 1.0.2.
 
+## [NJOY21 1.0.2](https://github.com/njoy/NJOY21/pull/87/)
+This incorporates the addition of `Ngen8` parameter in MATXSR. This updated occured as a result of [Pull Request \#6](https://github.com/njoy/lipservice/pull/6) from [lipservice](https://github.com/njoy/lipservice).
+
+The manual doesn't state it, but the code allows the parameter `Ngen8` in MATXSR Card1. The updated to lipservice (and thus NJOY21) provides this parameter.
+
 ## [NJOY21 1.0.1](https://github.com/njoy/NJOY21/pull/92)
+This simply separates the documentation from the code. 
