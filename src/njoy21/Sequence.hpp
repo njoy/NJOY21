@@ -1,28 +1,14 @@
-namespace interface {
-
-struct Routine {
-
-  struct Sequence {
-    virtual ~Sequence() = default;
-    virtual void operator()() = 0;
-  };
-
-  virtual ~Routine() = default;
-  virtual void operator()() = 0;
-};
-
-}
-
 namespace legacy {
 
 struct Sequence : public interface::Routine::Sequence {
 protected: 
 
-#define DEFINE_ROUTINE( MODULE )                                               \
-  struct MODULE : public interface::Routine {                                  \
-    template< typename Char >                                                  \
-    MODULE( iRecordStream< Char >& input ){ lipservice::MODULE commands( input ); } \
-    void operator()(){ ::MODULE(); }                                           \
+#define DEFINE_ROUTINE( MODULE )              \ 
+  struct MODULE : public interface::Routine { \
+    template< typename Char >                 \
+    MODULE( iRecordStream< Char >& input ){   \
+      lipservice::MODULE commands( input ); } \
+    void operator()(){ ::MODULE(); }          \
   };
 
   DEFINE_ROUTINE( MODER )
