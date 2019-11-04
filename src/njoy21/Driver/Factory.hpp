@@ -7,10 +7,7 @@ class Factory {
   
   #include "njoy21/Driver/Factory/src/setupManager.hpp"
   #include "njoy21/Driver/Factory/src/setupLegacyDirectory.hpp"
-
-  static Directory setupModernDirectory( CommandLine& commandLine ){
-    return ( commandLine.legacySwitch ) ? Directory() : Directory();
-  }
+  #include "njoy21/Driver/Factory/src/setupModernDirectory.hpp"
 
   template< typename First, typename Second, typename... Args >
   static void cycle( First&& first, Second&& second, Args&... args ){
