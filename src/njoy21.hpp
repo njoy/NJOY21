@@ -4,7 +4,6 @@
 #include <variant>
 #include <map>
 
-
 #if __cplusplus >= 201703L
   #include <optional>
 #else 
