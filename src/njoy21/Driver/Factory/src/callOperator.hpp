@@ -20,12 +20,16 @@ Driver operator()(){
   };
   auto legacyProcessor = makeProcessor( this->legacy, legacyFactory );
   auto modernProcessor = makeProcessor( this->modern, modernFactory );
-  Queue queue;
+
+  Queue queue; 
   auto label = lipservice::Label::extract( manager->input() );
 
+  auto cycle = [&]( auto& first, auto& second ){
+    while( first( label, queue ) and second( label, queue ) ){ }
+  };
   this->legacy.count( label ) ?
-    cycle( legacyProcessor, modernProcessor, label, queue ) :
-    cycle( modernProcessor, legacyProcessor, label, queue );
+    cycle( legacyProcessor, modernProcessor ) :
+    cycle( modernProcessor, legacyProcessor );
 
   if ( label != "STOP" ){
     Log::error( "Unrecognized routine label on line {}",

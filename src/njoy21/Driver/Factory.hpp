@@ -9,11 +9,6 @@ class Factory {
   #include "njoy21/Driver/Factory/src/setupLegacyDirectory.hpp"
   #include "njoy21/Driver/Factory/src/setupModernDirectory.hpp"
 
-  template< typename First, typename Second, typename... Args >
-  static void cycle( First&& first, Second&& second, Args&... args ){
-    while ( first( args... ) and second( args... ) ){}    
-  }
-  
 public:
   Factory( int argc, char* argv[] ) :
     commandLine( argc, argv ),
