@@ -3,7 +3,7 @@
 namespace TCLAP {
 
 template<>
-struct ArgTraits< std::experimental::optional< std::string > > {
+struct ArgTraits< std::optional< std::string > > {
   using ValueCategory = StringLike;
 };
 

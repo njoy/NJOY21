@@ -7,10 +7,12 @@ Driver operator()(){
   output->flush();
 
   legacy::Sequence::Factory legacyFactory( *(this->manager), this->legacy );
-  legacy::Sequence::Factory modernFactory( *(this->manager), this->modern ); //placeholder    
+  // Placeholder
+  legacy::Sequence::Factory modernFactory( *(this->manager), this->modern );
 
   auto makeProcessor = []( auto& set, auto& factory ){
     return [&]( auto& label, auto& queue ){
+      // If the label is among the allowed modules in factory
       if ( set.count(label) ){
         queue.push( factory( label ) );
         return true;
@@ -39,5 +41,6 @@ Driver operator()(){
   }
 
   if ( this->commandLine.verifyOnly ){ queue = Queue(); }
+
   return Driver( std::move(this->manager), std::move(queue) );
 }

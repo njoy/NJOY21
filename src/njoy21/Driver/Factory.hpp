@@ -12,8 +12,8 @@ class Factory {
 public:
   Factory( int argc, char* argv[] ) :
     commandLine( argc, argv ),
-    manager( std::make_unique< io::Manager >
-	     ( setupManager( this->commandLine ) ) ),
+    manager( 
+      std::make_unique< io::Manager > ( setupManager( this->commandLine ) ) ),
     legacy( setupLegacyDirectory( this->commandLine ) ),
     modern( setupModernDirectory( this->commandLine ) ){}
 
