@@ -7,7 +7,6 @@ operator()( std::string& label ){
   auto readBuffer = input.rdbuf();
   try {
     std::vector< std::unique_ptr< interface::Routine > > sequence;
-
     do {
       TeeBuffer teeBuffer( readBuffer, manager.buffer().rdbuf() );
       input.rdbuf( &teeBuffer );
@@ -17,8 +16,8 @@ operator()( std::string& label ){
       label = lipservice::Label::extract( input );
     } while ( this->permittedRoutines.count( label ) );
 
-    return std::make_unique< Sequence >( 
-      Sequence( manager, std::move( sequence ) ) );
+    return std::make_unique< Sequence >
+        ( Sequence( manager, std::move( sequence ) ) );
   } catch ( std::exception& e ){
     input.rdbuf( readBuffer );
     throw e;

@@ -383,6 +383,7 @@
     "src/njoy21/io.hpp",
     "src/njoy21/Driver.hpp",
     "src/njoy21/Version.hpp",
+    "src/njoy21/modern.hpp",
     "src/njoy21/legacy.hpp",
     "src/njoy21/Driver/Factory.hpp",
     "src/njoy21/Driver/Factory/src/setupLegacyDirectory.hpp",
@@ -400,7 +401,12 @@
     "src/njoy21/legacy/Sequence/routines.hpp",
     "src/njoy21/legacy/Sequence/Factory/src/callOperator.hpp",
     "src/njoy21/legacy/Sequence/Factory/src/parse.hpp",
-    "src/njoy21/CommandLine/src/ctor.hpp"
+    "src/njoy21/CommandLine/src/ctor.hpp",
+    "src/njoy21/modern/Sequence.hpp",
+    "src/njoy21/modern/Sequence/Factory.hpp",
+    "src/njoy21/modern/Sequence/routines.hpp",
+    "src/njoy21/modern/Sequence/Factory/src/callOperator.hpp",
+    "src/njoy21/modern/Sequence/Factory/src/parse.hpp"
   ],
   "ignore pattern": "$^",
   "implementation files": [
@@ -432,6 +438,9 @@
     ],
     "njoy21.legacy.Sequence": [
       "src/njoy21/legacy/Sequence/test/Sequence.test.cpp"
+    ],
+    "njoy21.modern.Sequence": [
+      "src/njoy21/modern/Sequence/test/Sequence.test.cpp"
     ]
   },
   "update": true

@@ -9,12 +9,6 @@ using namespace njoy::njoy21;
 
 SCENARIO( "Sequence can be constructed" ){
 
-  std::string moderInput(
-    "1 -22 \n"
-    "'my simple pendf tape'\n"
-    "21 125\n"
-    "0/\n" );
-
   std::string reconrInput(
     " 21 22\n"
     "'This is a sample Card2'\n"
@@ -22,10 +16,7 @@ SCENARIO( "Sequence can be constructed" ){
     "0.005 0 0.1 5e-07\n"
     "0/\n" );
 
-  std::istringstream mockInput( moderInput
-                                + "RECONR\n"
-                                + reconrInput 
-                                + "GROUPR\n" );
+  std::istringstream mockInput( reconrInput + "GROUPR\n" );
 
   auto cin_buffer = std::cin.rdbuf();
   std::cin.rdbuf( mockInput.rdbuf() );
@@ -36,12 +27,13 @@ SCENARIO( "Sequence can be constructed" ){
   auto buffer_buffer = manager.buffer().rdbuf();
   manager.buffer().rdbuf( mockBuffer.rdbuf() );
     
-  std::unordered_set< std::string > permittedRoutines = { "MODER", "RECONR" };
-  std::string label("MODER");
-  legacy::Sequence::Factory myFactory( manager, permittedRoutines );
+  std::string label("RECONR");
+
+  modern::Sequence::Factory myFactory( manager );
   auto mySequence = myFactory( label );
+
   CHECK( label == "GROUPR" );
-  CHECK( mockBuffer.str() == moderInput + reconrInput );
+  CHECK( mockBuffer.str() == reconrInput );
 
   std::cin.rdbuf( cin_buffer );
   manager.buffer().rdbuf( buffer_buffer );
