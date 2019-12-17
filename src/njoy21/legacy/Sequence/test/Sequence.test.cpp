@@ -7,7 +7,7 @@
 
 using namespace njoy::njoy21;
 
-SCENARIO( "Sequence can be constructed" ){
+SCENARIO( "Legacy Sequence can be constructed" ){
 
   std::string moderInput(
     "1 -22 \n"

@@ -7,7 +7,7 @@
 
 using namespace njoy::njoy21;
 
-SCENARIO( "Sequence can be constructed" ){
+SCENARIO( "Modern Sequence can be constructed" ){
 
   std::string reconrInput(
     " 21 22\n"

@@ -7,8 +7,7 @@ Driver operator()(){
   output->flush();
 
   legacy::Sequence::Factory legacyFactory( *(this->manager), this->legacy );
-  // Placeholder
-  legacy::Sequence::Factory modernFactory( *(this->manager), this->modern );
+  modern::Sequence::Factory modernFactory( *(this->manager) );
 
   auto makeProcessor = []( auto& set, auto& factory ){
     return [&]( auto& label, auto& queue ){

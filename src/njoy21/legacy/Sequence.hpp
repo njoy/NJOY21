@@ -9,7 +9,9 @@ protected:
   List sequence;
 
   Sequence( io::Manager& manager, List&& sequence ) :
-    manager( manager ), sequence( std::move(sequence) ){}
+    manager( manager ), 
+    sequence( std::move(sequence) )
+  {}
   
 public:
   

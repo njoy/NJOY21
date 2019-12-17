@@ -10,8 +10,6 @@ parse( std::string& label, lipservice::iRecordStream< char >& input ){
   static const std::unordered_map< std::string, parser > parserMap =
     { PAIR( RECONR ) };
       
-  auto& parsed = parserMap.at( label );
-  return parsed( input );
-  // return parserMap.at( label )( input );
+  return parserMap.at( label )( input );
 }
 #undef PAIR
