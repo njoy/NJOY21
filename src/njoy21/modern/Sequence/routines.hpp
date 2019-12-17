@@ -3,12 +3,18 @@ static void ignore( T&& ){}
 
 #define DEFINE_ROUTINE( MODULE )					\
   struct MODULE : public interface::Routine {                                  \
+    nlohmann::json jMODULE;                                                    \
+                                                                               \
     template< typename Char >                                                  \
     MODULE( lipservice::iRecordStream< Char >& stream ){                       \
-      lipservice::MODULE command( stream );                                    \
-      ignore(command);                                                         \
+      this->jMODULE = lipservice::MODULE{ stream };                            \
     }									                                                         \
-    void operator()(){ Log::info( "In modern MODULE module." ); }              \
+    void operator()(){                                                         \
+      Log::info( "In modern MODULE module." );                                 \
+      Log::info( "JSON representation:\n{}", this->jMODULE );                  \
+
+      // MODULE();
+    }                                                                          \
   };
 
   DEFINE_ROUTINE( RECONR )

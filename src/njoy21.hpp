@@ -21,6 +21,8 @@
 #include <regex>
 #include <cstdlib>
 
+#include "json.hpp"
+
 #include "ENDFtk.hpp"
 #include "dimwits.hpp"
 #include "Log.hpp"
