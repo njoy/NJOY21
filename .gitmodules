@@ -25,3 +25,6 @@
 [submodule "dependencies/lipservice"]
 	path = dependencies/lipservice
 	url = https://github.com/njoy/lipservice.git
+[submodule "dependencies/RECONR"]
+	path = dependencies/RECONR
+	url = https://github.com/njoy/RECONR.git

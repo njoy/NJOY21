@@ -28,6 +28,7 @@
 #include "Log.hpp"
 #include "utility.hpp"
 #include "lipservice.hpp"
+#include "RECONR.hpp"
 
 #include "njoy_c.h"
 

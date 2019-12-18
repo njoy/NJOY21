@@ -1,21 +1,16 @@
-template< typename T >
-static void ignore( T&& ){}
-
-#define DEFINE_ROUTINE( MODULE )					\
+#define DEFINE_ROUTINE( MODULE )                                               \
   struct MODULE : public interface::Routine {                                  \
-    nlohmann::json jMODULE;                                                    \
+    nlohmann::json j##MODULE;                                                  \
                                                                                \
     template< typename Char >                                                  \
     MODULE( lipservice::iRecordStream< Char >& stream ){                       \
-      this->jMODULE = lipservice::MODULE{ stream };                            \
-    }									                                                         \
+      lipservice::MODULE command( stream );                                    \
+      this->j##MODULE = command;                                               \
+    }                                                                          \
     void operator()(){                                                         \
-      Log::info( "In modern MODULE module." );                                 \
-      Log::info( "JSON representation:\n{}", this->jMODULE );                  \
-
-      // MODULE();
+      njoy::MODULE::MODULE{ this->j##MODULE };                                       \
     }                                                                          \
   };
 
-  DEFINE_ROUTINE( RECONR )
+  DEFINE_ROUTINE( RECONR )                                                      
 #undef DEFINE_ROUTINE
