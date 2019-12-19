@@ -17,10 +17,10 @@ public:
   
   #include "njoy21/modern/Sequence/Factory.hpp"
   
-  void operator()(){
+  void operator()( const nlohmann::json& args ){
     auto fileGaurd = manager.output( this );
     for ( auto& routine : this->sequence ){ 
-      (*routine)(); 
+      (*routine)( args ); 
     }
   }
 };

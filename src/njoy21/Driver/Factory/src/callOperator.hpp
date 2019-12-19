@@ -1,6 +1,10 @@
 Driver operator()(){
+
+  // For passing arbitrary arguments to modules
+  auto args = nlohmann::json::object();
+
   auto outputPair = this->manager->output( 
-      static_cast<modern::Sequence*>(nullptr) );
+      static_cast< modern::Sequence*>(nullptr) );
   const auto& output = outputPair.first;
   // const auto& error = outputPair.second;
   (*output) << banner;
@@ -41,5 +45,7 @@ Driver operator()(){
 
   if ( this->commandLine.verifyOnly ){ queue = Queue(); }
 
-  return Driver( std::move(this->manager), std::move(queue) );
+  return Driver( std::move( this->manager ), 
+                 std::move( queue ), 
+                 std::move( args ) );
 }

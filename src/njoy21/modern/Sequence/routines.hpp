@@ -7,8 +7,8 @@
       lipservice::MODULE command( stream );                                    \
       this->j##MODULE = command;                                               \
     }                                                                          \
-    void operator()(){                                                         \
-      njoy::MODULE::MODULE{ this->j##MODULE };                                       \
+    void operator()( const nlohmann::json& args ){                              \
+      njoy::MODULE::MODULE{ this->j##MODULE, args };                           \
     }                                                                          \
   };
 
