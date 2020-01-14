@@ -1,7 +1,7 @@
 # Release Notes&mdash;NJOY21
 Given here are some release notes for NJOY21. Each release is made through a formal [Pull Request](https://github.com/njoy/NJOY21/pulls) made on GitHub. There are links in this document that point to each of those Pull Requests, where you can see in great details the changes that were made. Often the Pull Requests are made in response to an [issue](https://github.com/njoy/NJOY21/issues). In such cases, links to those issues are also given.
 
-## [NJOY21 1.0.7](https://github.com/njoy/NJOY21/pull/99)
+## [NJOY21 1.0.7](https://github.com/njoy/NJOY21/pull/101)
 This update fixes a bug in the error checking for ACER. This bug was fixed in lipservice:
 
 - [ACER NGEND=0](https://github.com/njoy/lipservice/pull/14) which resolves [Issue #15](https://github.com/njoy/lipservice/issues/15)
