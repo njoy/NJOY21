@@ -1,7 +1,12 @@
 # Release Notes&mdash;NJOY21
 Given here are some release notes for NJOY21. Each release is made through a formal [Pull Request](https://github.com/njoy/NJOY21/pulls) made on GitHub. There are links in this document that point to each of those Pull Requests, where you can see in great details the changes that were made. Often the Pull Requests are made in response to an [issue](https://github.com/njoy/NJOY21/issues). In such cases, links to those issues are also given.
 
-## [NJOY21 1.0.5](https://github.com/njoy/NJOY21/pull/99)
+## [NJOY21 1.0.7](https://github.com/njoy/NJOY21/pull/99)
+This update fixes a bug in the error checking for ACER. This bug was fixed in lipservice:
+
+- [ACER NGEND=0](https://github.com/njoy/lipservice/pull/14) which resolves [Issue #15](https://github.com/njoy/lipservice/issues/15)
+
+## [NJOY21 1.0.6](https://github.com/njoy/NJOY21/pull/99)
 This update adds to NJOY21 the NJOY2016 capability of >3 IZA values in ACER. This was added in NJOY2016 in [Pull Request #41](https://github.com/njoy/NJOY2016/pull/141). A few updates from lipservice are also included:
 
 - [Removal of dimwits units](https://github.com/njoy/lipservice/pull/10)
