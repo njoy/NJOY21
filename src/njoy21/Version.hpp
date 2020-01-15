@@ -6,8 +6,7 @@ public:
   // Change whenever merge to master branch is done
   static constexpr int patchVersion{7};
 
-  static constexpr 
-  std::string version(){
+  static std::string version(){
     return std::to_string( majorVersion ) + "." +
            std::to_string( minorVersion ) + "." +
            std::to_string( patchVersion );
