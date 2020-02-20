@@ -3,7 +3,7 @@
 namespace TCLAP {
 
 template<>
-struct ArgTraits< std::experimental::optional< std::string > > {
+struct ArgTraits< std::optional< std::string > > {
   using ValueCategory = StringLike;
 };
 
@@ -11,9 +11,9 @@ struct ArgTraits< std::experimental::optional< std::string > > {
 
 struct njoy::njoy21::CommandLine {
   /* fields (with default initialization) */
-  optional< std::string > inputPath;
-  optional< std::string > outputPath;
-  optional< std::string > errorPath;
+  std::optional< std::string > inputPath;
+  std::optional< std::string > outputPath;
+  std::optional< std::string > errorPath;
   bool legacySwitch;
   bool verifyOnly;
   bool signature;
