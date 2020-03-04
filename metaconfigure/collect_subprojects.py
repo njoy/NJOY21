@@ -25,7 +25,7 @@ def traverse_dependencies( destination, traversed ):
     """
     if not os.path.isdir( dependency_directory() ):
         return
-    
+
     os.chdir( dependency_directory() )
 
     for dependency in os.listdir( os.getcwd() ) :
@@ -48,14 +48,14 @@ def traverse_dependencies( destination, traversed ):
 
             traverse_dependencies( destination, traversed )
             os.chdir( ".." )
-            
+
     os.chdir( os.path.join( ".." ) )
 
 def collect_subprojects():
     destination = os.path.join( os.getcwd(), "subprojects" )
     if not os.path.isdir( destination ):
         os.makedirs( destination )
-        
+
     traverse_dependencies( destination, set() )
 
 collect_subprojects()

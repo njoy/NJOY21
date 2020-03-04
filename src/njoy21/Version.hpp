@@ -2,9 +2,9 @@ class Version{
 public:
   static constexpr int majorVersion{1}; // Do not change
   // Change whenever new capability is implemented
-  static constexpr int minorVersion{0};
+  static constexpr int minorVersion{1};
   // Change whenever merge to master branch is done
-  static constexpr int patchVersion{7};
+  static constexpr int patchVersion{0};
 
   static std::string version(){
     return std::to_string( majorVersion ) + "." +

@@ -2,12 +2,12 @@ import copy
 
 languages = {'c' : {}, 'c++' : {}, 'fortran' : {} }
 
-for langauge in languages.keys():
-    languages[langauge]['file extension'] = {}
-    languages[langauge]['compiler'] = {}
+for language in languages.keys():
+    languages[language]['file extension'] = {}
+    languages[language]['compiler'] = {}
 
 languages['c']['standards'] = ['c89', 'c99', 'c11']
-languages['c++']['standards'] = ['c++98', 'c++11', 'c++14']
+languages['c++']['standards'] = ['c++98', 'c++11', 'c++14', 'c++17']
 languages['fortran']['standards'] = ['fortran77', 'fortran90', 'fortran95', 'fortran2003', 'fortran2008']
 
 languages['c']['file extension']['implementation files'] = ['c']
@@ -52,7 +52,8 @@ languages['c']['compiler']['gcc']['linux']['standard'] = {'c89' : '-std=c90',
 languages['c++']['compiler']['g++']['linux'] = {}
 languages['c++']['compiler']['g++']['linux']['standard'] = {'c++98' : '-std=c++98',
                                                             'c++11' : '-std=c++11',
-                                                            'c++14' : '-std=c++14'}
+                                                            'c++14' : '-std=c++14',
+                                                            'c++17' : '-std=c++17'}
 
 languages['fortran']['compiler']['gfortran']['linux']['standard'] = {'fortran77' : '-std=legacy' ,
                                                                      'fortran95' : '-std=f95',
@@ -114,11 +115,13 @@ languages['c++']['compiler']['llvm clang++']['linux']['flags']['debug'].remove('
 
 languages['c++']['compiler']['llvm clang++']['cygwin']['standard'] = {'c++98' : '-std=gnu++98',
                                                                       'c++11' : '-std=gnu++11',
-                                                                      'c++14' : '-std=gnu++14'}
+                                                                      'c++14' : '-std=gnu++14',
+                                                                      'c++17' : '-std=gnu++17'}
 
 languages['c++']['compiler']['g++']['cygwin']['standard'] = {'c++98' : '-std=gnu++98',
                                                              'c++11' : '-std=gnu++11',
-                                                             'c++14' : '-std=gnu++14'}
+                                                             'c++14' : '-std=gnu++14',
+                                                             'c++17' : '-std=gnu++17'}
 
 languages['c++']['compiler']['llvm clang++']['osx']['flags'] = copy.deepcopy(languages['c++']['compiler']['llvm clang++']['linux']['flags'])
 languages['c++']['compiler']['llvm clang++']['osx']['flags']['common'] = ['-stdlib=libc++']

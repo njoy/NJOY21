@@ -3,20 +3,20 @@ CommandLine( int argc, char* argv[] ){
                       ' ', 
                       Version::version() );
 
-  TCLAP::ValueArg< optional< std::string > >
+  TCLAP::ValueArg< std::optional< std::string > >
     inputPath( "i", "input",                                                         
       "path to file providing NJOY21 input. (defaults to standard input)",
-      false, optional< std::string >(), "input path", cmd );
+      false, std::optional< std::string >(), "input path", cmd );
 
-  TCLAP::ValueArg< optional< std::string > >
+  TCLAP::ValueArg< std::optional< std::string > >
     outputPath( "o", "output",                                                         
       "path to file where NJOY21 output ought to be directed. (defaults to standard output)",
-      false, optional< std::string >(), " output path", cmd );
+      false, std::optional< std::string >(), " output path", cmd );
 
-  TCLAP::ValueArg< optional< std::string > >
+  TCLAP::ValueArg< std::optional< std::string > >
     errorPath( "e", "error",                                                         
       "path to file where NJOY21 error ought to be directed. (defaults to standard error)",
-      false, optional< std::string >(), " error path", cmd );
+      false, std::optional< std::string >(), " error path", cmd );
 
   TCLAP::SwitchArg
     signature( "", "signature", 

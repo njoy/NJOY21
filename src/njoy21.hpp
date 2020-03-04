@@ -5,16 +5,7 @@
 #include <map>
 
 
-#if __cplusplus >= 201703L
-  #include <optional>
-#else 
-  #include <experimental/optional>
-
-  namespace std {
-    using namespace std::experimental;
-  }
-#endif
-
+#include <optional>
 #include <sstream>
 #include <unordered_set>
 #include <queue>
@@ -33,7 +24,6 @@
 namespace njoy{
 namespace njoy21{
 
-using namespace std::experimental;
 using namespace dimwits;
 
 namespace legacy{ class Sequence; }

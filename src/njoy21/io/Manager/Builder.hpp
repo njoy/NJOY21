@@ -1,14 +1,14 @@
 class Builder{
-  optional<std::string> inputPath;    
-  optional<std::string> outputPath;
-  optional<std::string> errorPath;
+  std::optional<std::string> inputPath;    
+  std::optional<std::string> outputPath;
+  std::optional<std::string> errorPath;
 
 public:
   Builder() = default;
 
-  Builder( optional< std::string > input, 
-           optional< std::string > output,
-           optional< std::string > error ):
+  Builder( std::optional< std::string > input, 
+           std::optional< std::string > output,
+           std::optional< std::string > error ):
     inputPath( input ),
     outputPath( output ),
     errorPath( error )
@@ -19,7 +19,7 @@ public:
     return *this;
   }
 
-  const optional<std::string>& input() const {
+  const std::optional<std::string>& input() const {
     return this->inputPath;
   }
 
@@ -28,7 +28,7 @@ public:
     return *this;
   }
 
-  const optional<std::string>& output() const {
+  const std::optional<std::string>& output() const {
     return this->outputPath;
   }
 
@@ -37,7 +37,7 @@ public:
     return *this;
   }
 
-  const optional<std::string>& error() const {
+  const std::optional<std::string>& error() const {
     return this->errorPath;
   }
 
