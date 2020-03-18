@@ -1,6 +1,9 @@
 # Release Notes&mdash;NJOY21
 Given here are some release notes for NJOY21. Each release is made through a formal [Pull Request](https://github.com/njoy/NJOY21/pulls) made on GitHub. There are links in this document that point to each of those Pull Requests, where you can see in great details the changes that were made. Often the Pull Requests are made in response to an [issue](https://github.com/njoy/NJOY21/issues). In such cases, links to those issues are also given.
 
+## pNJOY21 1.1.1](https://github.com/njoy/NJOY21/pull/107)
+This update fixes an issue where GCC would complain about a "maybe" uninitialized variable in [lipservice](https://github.com/njoy/lipservice). This only happens when compiled in release mode with GCC. Using the clang/LLVM compiler does not invoke this warning/error.
+
 ## [NJOY21 1.1.0](https://github.com/njoy/NJOY21/pull/104)
 This update moves the C++ standard to C++17; thus, a c++17-compliant compiler is needed to build NJOY21. Fortunately, C++17-compliant compilers have been available for several years.
 
