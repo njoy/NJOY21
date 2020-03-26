@@ -3,17 +3,7 @@
 
 #include <variant>
 #include <map>
-
-#if __cplusplus >= 201703L
-  #include <optional>
-#else 
-  #include <experimental/optional>
-
-  namespace std {
-    using namespace std::experimental;
-  }
-#endif
-
+#include <optional>
 #include <sstream>
 #include <unordered_set>
 #include <queue>
@@ -27,7 +17,10 @@
 #include "dimwits.hpp"
 #include "Log.hpp"
 #include "utility.hpp"
-#include "lipservice.hpp"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+  #include "lipservice.hpp"
+#pragma GCC diagnostic pop
 #include "RECONR.hpp"
 
 #include "njoy_c.h"

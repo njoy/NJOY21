@@ -32,7 +32,7 @@ def fetch_subprojects(state):
                 if ( NOT PYTHON_EXECUTABLE )
                     find_package( PythonInterp 3.4 )
                     if ( NOT PYTHONINTERP_FOUND )
-                        message( FATAL_ERROR "Python interpeter installation was not found." )
+                        message( FATAL_ERROR "Python interpreter installation was not found." )
                     endif()
                 endif()
                 execute_process( COMMAND ${PYTHON_EXECUTABLE} "./metaconfigure/fetch_subprojects.py"
@@ -172,7 +172,7 @@ def define_options(state):
 
     # additional optimizations
     option( link_time_optimization "Enable link time optimization in the RELEASE configuration" )
-    option( profile_use "In the RELEASE configuration, leverage previously generated exeution profile to inform optimization decisions" )
+    option( profile_use "In the RELEASE configuration, leverage previously generated execution profile to inform optimization decisions" )
     option( nonportable_optimization "Enable optimizations which compromise portability of resulting binary in the RELEASE configuration" )
 
     # libraries and linking

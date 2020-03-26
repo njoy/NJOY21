@@ -15,7 +15,7 @@ if( NOT ROOT_DIRECTORY )
         if ( NOT PYTHON_EXECUTABLE )
             find_package( PythonInterp 3.4 )
             if ( NOT PYTHONINTERP_FOUND )
-                message( FATAL_ERROR "Python interpeter installation was not found." )
+                message( FATAL_ERROR "Python interpreter installation was not found." )
             endif()
         endif()
         execute_process( COMMAND ${PYTHON_EXECUTABLE} "./metaconfigure/fetch_subprojects.py"
@@ -71,7 +71,7 @@ option( profile_generate "Enable binary instrumentation to generation execution 
 
 # additional optimizations
 option( link_time_optimization "Enable link time optimization in the RELEASE configuration" )
-option( profile_use "In the RELEASE configuration, leverage previously generated exeution profile to inform optimization decisions" )
+option( profile_use "In the RELEASE configuration, leverage previously generated execution profile to inform optimization decisions" )
 option( nonportable_optimization "Enable optimizations which compromise portability of resulting binary in the RELEASE configuration" )
 
 # libraries and linking
@@ -93,7 +93,7 @@ if ( profile_generate )
     file( MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/profiling" )
 endif()
 
-set( njoy21_AppleClang_Darwin_common_flags "-stdlib=libc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
+set( njoy21_AppleClang_Darwin_common_flags "-stdlib=libc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++17" )
 set( njoy21_AppleClang_Darwin_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
 set( njoy21_AppleClang_Darwin_RELEASE_flags "-O3" "-DNDEBUG" )
 set( njoy21_AppleClang_Darwin_strict_flags "-Werror" )
@@ -105,19 +105,7 @@ set( njoy21_AppleClang_Darwin_link_time_optimization_flags "-flto" )
 set( njoy21_AppleClang_Darwin_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
 set( njoy21_AppleClang_Darwin_nonportable_optimization_flags "-march=native" )
 set( njoy21_AppleClang_Darwin_static_flags "-static" )
-set( njoy21_GNU_Windows_common_flags "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
-set( njoy21_GNU_Windows_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
-set( njoy21_GNU_Windows_RELEASE_flags "-O3" "-DNDEBUG" )
-set( njoy21_GNU_Windows_strict_flags "-Werror" )
-set( njoy21_GNU_Windows_coverage_flags "--coverage" )
-set( njoy21_GNU_Windows_subproject_flags  )
-set( njoy21_GNU_Windows_base_project_flags  )
-set( njoy21_GNU_Windows_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
-set( njoy21_GNU_Windows_link_time_optimization_flags "-flto" )
-set( njoy21_GNU_Windows_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
-set( njoy21_GNU_Windows_nonportable_optimization_flags "-march=native" )
-set( njoy21_GNU_Windows_static_flags "-static" )
-set( njoy21_GNU_Darwin_common_flags "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
+set( njoy21_GNU_Darwin_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=c++17" )
 set( njoy21_GNU_Darwin_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
 set( njoy21_GNU_Darwin_RELEASE_flags "-O3" "-DNDEBUG" )
 set( njoy21_GNU_Darwin_strict_flags "-Werror" )
@@ -129,7 +117,7 @@ set( njoy21_GNU_Darwin_link_time_optimization_flags "-flto" )
 set( njoy21_GNU_Darwin_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
 set( njoy21_GNU_Darwin_nonportable_optimization_flags "-march=native" )
 set( njoy21_GNU_Darwin_static_flags "-static" )
-set( njoy21_GNU_Linux_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-Wno-maybe-uninitialized" "-std=c++14" )
+set( njoy21_GNU_Linux_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=c++17" )
 set( njoy21_GNU_Linux_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
 set( njoy21_GNU_Linux_RELEASE_flags "-O3" "-DNDEBUG" )
 set( njoy21_GNU_Linux_strict_flags "-Werror" )
@@ -141,19 +129,43 @@ set( njoy21_GNU_Linux_link_time_optimization_flags "-flto" )
 set( njoy21_GNU_Linux_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
 set( njoy21_GNU_Linux_nonportable_optimization_flags "-march=native" )
 set( njoy21_GNU_Linux_static_flags "-static" )
-set( njoy21_Clang_Windows_common_flags "-stdlib=libc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
-set( njoy21_Clang_Windows_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
-set( njoy21_Clang_Windows_RELEASE_flags "-O3" "-DNDEBUG" )
-set( njoy21_Clang_Windows_strict_flags "-Werror" )
-set( njoy21_Clang_Windows_coverage_flags "--coverage" )
-set( njoy21_Clang_Windows_subproject_flags  )
-set( njoy21_Clang_Windows_base_project_flags  )
-set( njoy21_Clang_Windows_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
-set( njoy21_Clang_Windows_link_time_optimization_flags "-flto" )
-set( njoy21_Clang_Windows_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
-set( njoy21_Clang_Windows_nonportable_optimization_flags "-march=native" )
-set( njoy21_Clang_Windows_static_flags "-static" )
-set( njoy21_Clang_Darwin_common_flags "-stdlib=libc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
+set( njoy21_GNU_CYGWIN_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=gnu++17" )
+set( njoy21_GNU_CYGWIN_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
+set( njoy21_GNU_CYGWIN_RELEASE_flags "-O3" "-DNDEBUG" )
+set( njoy21_GNU_CYGWIN_strict_flags "-Werror" )
+set( njoy21_GNU_CYGWIN_coverage_flags "--coverage" )
+set( njoy21_GNU_CYGWIN_subproject_flags  )
+set( njoy21_GNU_CYGWIN_base_project_flags  )
+set( njoy21_GNU_CYGWIN_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_GNU_CYGWIN_link_time_optimization_flags "-flto" )
+set( njoy21_GNU_CYGWIN_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_GNU_CYGWIN_nonportable_optimization_flags "-march=native" )
+set( njoy21_GNU_CYGWIN_static_flags "-static" )
+set( njoy21_GNU_MinGW_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=c++17" )
+set( njoy21_GNU_MinGW_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
+set( njoy21_GNU_MinGW_RELEASE_flags "-O3" "-DNDEBUG" )
+set( njoy21_GNU_MinGW_strict_flags "-Werror" )
+set( njoy21_GNU_MinGW_coverage_flags "--coverage" )
+set( njoy21_GNU_MinGW_subproject_flags  )
+set( njoy21_GNU_MinGW_base_project_flags  )
+set( njoy21_GNU_MinGW_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_GNU_MinGW_link_time_optimization_flags "-flto" )
+set( njoy21_GNU_MinGW_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_GNU_MinGW_nonportable_optimization_flags "-march=native" )
+set( njoy21_GNU_MinGW_static_flags "-static" )
+set( njoy21_GNU_Windows_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=c++17" )
+set( njoy21_GNU_Windows_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
+set( njoy21_GNU_Windows_RELEASE_flags "-O3" "-DNDEBUG" )
+set( njoy21_GNU_Windows_strict_flags "-Werror" )
+set( njoy21_GNU_Windows_coverage_flags "--coverage" )
+set( njoy21_GNU_Windows_subproject_flags  )
+set( njoy21_GNU_Windows_base_project_flags  )
+set( njoy21_GNU_Windows_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_GNU_Windows_link_time_optimization_flags "-flto" )
+set( njoy21_GNU_Windows_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_GNU_Windows_nonportable_optimization_flags "-march=native" )
+set( njoy21_GNU_Windows_static_flags "-static" )
+set( njoy21_Clang_Darwin_common_flags "-stdlib=libc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++17" )
 set( njoy21_Clang_Darwin_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
 set( njoy21_Clang_Darwin_RELEASE_flags "-O3" "-DNDEBUG" )
 set( njoy21_Clang_Darwin_strict_flags "-Werror" )
@@ -165,7 +177,7 @@ set( njoy21_Clang_Darwin_link_time_optimization_flags "-flto" )
 set( njoy21_Clang_Darwin_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
 set( njoy21_Clang_Darwin_nonportable_optimization_flags "-march=native" )
 set( njoy21_Clang_Darwin_static_flags "-static" )
-set( njoy21_Clang_Linux_common_flags "-stdlib=libstdc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
+set( njoy21_Clang_Linux_common_flags "-stdlib=libstdc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++17" )
 set( njoy21_Clang_Linux_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
 set( njoy21_Clang_Linux_RELEASE_flags "-O3" "-DNDEBUG" )
 set( njoy21_Clang_Linux_strict_flags "-Werror" )
@@ -177,6 +189,42 @@ set( njoy21_Clang_Linux_link_time_optimization_flags "-flto" )
 set( njoy21_Clang_Linux_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
 set( njoy21_Clang_Linux_nonportable_optimization_flags "-march=native" )
 set( njoy21_Clang_Linux_static_flags "-static" )
+set( njoy21_Clang_CYGWIN_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=gnu++17" )
+set( njoy21_Clang_CYGWIN_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
+set( njoy21_Clang_CYGWIN_RELEASE_flags "-O3" "-DNDEBUG" )
+set( njoy21_Clang_CYGWIN_strict_flags "-Werror" )
+set( njoy21_Clang_CYGWIN_coverage_flags "--coverage" )
+set( njoy21_Clang_CYGWIN_subproject_flags  )
+set( njoy21_Clang_CYGWIN_base_project_flags  )
+set( njoy21_Clang_CYGWIN_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_Clang_CYGWIN_link_time_optimization_flags "-flto" )
+set( njoy21_Clang_CYGWIN_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_Clang_CYGWIN_nonportable_optimization_flags "-march=native" )
+set( njoy21_Clang_CYGWIN_static_flags "-static" )
+set( njoy21_Clang_MinGW_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=c++17" )
+set( njoy21_Clang_MinGW_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
+set( njoy21_Clang_MinGW_RELEASE_flags "-O3" "-DNDEBUG" )
+set( njoy21_Clang_MinGW_strict_flags "-Werror" )
+set( njoy21_Clang_MinGW_coverage_flags "--coverage" )
+set( njoy21_Clang_MinGW_subproject_flags  )
+set( njoy21_Clang_MinGW_base_project_flags  )
+set( njoy21_Clang_MinGW_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_Clang_MinGW_link_time_optimization_flags "-flto" )
+set( njoy21_Clang_MinGW_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_Clang_MinGW_nonportable_optimization_flags "-march=native" )
+set( njoy21_Clang_MinGW_static_flags "-static" )
+set( njoy21_Clang_Windows_common_flags "-stdlib=libc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++17" )
+set( njoy21_Clang_Windows_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
+set( njoy21_Clang_Windows_RELEASE_flags "-O3" "-DNDEBUG" )
+set( njoy21_Clang_Windows_strict_flags "-Werror" )
+set( njoy21_Clang_Windows_coverage_flags "--coverage" )
+set( njoy21_Clang_Windows_subproject_flags  )
+set( njoy21_Clang_Windows_base_project_flags  )
+set( njoy21_Clang_Windows_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_Clang_Windows_link_time_optimization_flags "-flto" )
+set( njoy21_Clang_Windows_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
+set( njoy21_Clang_Windows_nonportable_optimization_flags "-march=native" )
+set( njoy21_Clang_Windows_static_flags "-static" )
 
 if ( static_njoy21 )
     set( njoy21_library_linkage STATIC )
@@ -227,10 +275,6 @@ if( NOT TARGET header-utilities )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/header-utilities )
 endif()
 
-if( NOT TARGET variant-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/variant-adapter )
-endif()
-
 if( NOT TARGET ENDFtk )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/ENDFtk )
 endif()
@@ -251,10 +295,6 @@ if( NOT TARGET json-adapter )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/json-adapter )
 endif()
 
-if( NOT TARGET dimwits )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/dimwits )
-endif()
-
 if( NOT TARGET utility )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/utility )
 endif()
@@ -263,16 +303,8 @@ if( NOT TARGET lipservice )
     add_subdirectory( ${ROOT_DIRECTORY}/subprojects/lipservice )
 endif()
 
-if( NOT TARGET pdqsort-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/pdqsort-adapter )
-endif()
-
-if( NOT TARGET twig )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/twig )
-endif()
-
-if( NOT TARGET RECONR )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/RECONR )
+if( NOT TARGET dimwits )
+    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/dimwits )
 endif()
 
 
@@ -312,16 +344,15 @@ add_library( njoy21 ${njoy21_library_linkage}
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/banner.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/CommandLine.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Sequence.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/interface.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Version.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/modern.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory/src/setupLegacyDirectory.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory/src/setupManager.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory/src/setupModernDirectory.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/Factory/src/callOperator.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Driver/src/callOperator.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/io/Manager.hpp"
@@ -332,18 +363,11 @@ add_library( njoy21 ${njoy21_library_linkage}
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy/Sequence.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy/Sequence/Factory.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy/Sequence/routines.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy/Sequence/Factory/src/callOperator.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/legacy/Sequence/Factory/src/parse.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/CommandLine/src/ctor.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/modern/Sequence.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/modern/Sequence/Factory.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/modern/Sequence/routines.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/modern/Sequence/Factory/src/callOperator.hpp"
-             "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/modern/Sequence/Factory/src/parse.hpp"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp"
              "${CMAKE_CURRENT_BINARY_DIR}/src/njoy21/Signature.hpp" )
 
-target_include_directories( njoy21 PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/src src )
+target_include_directories( njoy21 PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/src src/ )
 
 set( PREFIX njoy21_${CMAKE_CXX_COMPILER_ID}_${CMAKE_SYSTEM_NAME} )
 
@@ -366,7 +390,7 @@ ${CXX_appended_flags} ${njoy21_appended_flags} )
 
 target_link_libraries( njoy21 PUBLIC "$<$<AND:$<CONFIG:RELEASE>,$<BOOL:${link_time_optimization}>>:${${PREFIX}_RELEASE_flags};${${PREFIX}_link_time_optimization_flags}$<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags};>$<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags};>$<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags};>>$<$<CONFIG:DEBUG>:$<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags};>>$<$<BOOL:CXX_appended_flags>:${CXX_appended_flags};>$<$<BOOL:njoy21_appended_flags>:${njoy21_appended_flags};>" )
 
-target_link_libraries( njoy21 PUBLIC ENDFtk PUBLIC tclap-adapter PUBLIC njoy_c_bindings PUBLIC variant-adapter PUBLIC lipservice PUBLIC RECONR PUBLIC dimwits PUBLIC utility )
+target_link_libraries( njoy21 PUBLIC ENDFtk PUBLIC tclap-adapter PUBLIC njoy_c_bindings PUBLIC lipservice PUBLIC dimwits PUBLIC utility )
 
 if ( NOT is_subproject )
     add_executable( njoy21_executable src/main.cpp )
@@ -397,7 +421,6 @@ if( NOT is_subproject )
         add_subdirectory( src/njoy21/Driver/test )
         add_subdirectory( src/njoy21/io/Manager/test )
         add_subdirectory( src/njoy21/legacy/Sequence/test )
-        add_subdirectory( src/njoy21/modern/Sequence/test )
     endif() 
     add_subdirectory( tests )
 endif()
@@ -421,7 +444,7 @@ install( FILES "${CMAKE_BINARY_DIR}/signature.json"
                      GROUP_READ
                      WORLD_READ
 )
-install( DIRECTORY src/ DESTINATION include
+install( DIRECTORY src// DESTINATION include
          FILE_PERMISSIONS OWNER_READ OWNER_WRITE
                           GROUP_READ
                           WORLD_READ
