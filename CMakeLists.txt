@@ -2,49 +2,6 @@
 cmake_minimum_required( VERSION 3.2 )
 set( CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Supported configuration types" FORCE )
         
-if ( NOT GIT_EXECUTABLE )
-    find_package( Git 2.1 )
-    if ( NOT GIT_FOUND )
-        message( FATAL_ERROR "git installation was not found." )
-    endif()
-endif()
-
-if( NOT ROOT_DIRECTORY )
-    set( ROOT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
-    if ( NOT fetched_subprojects )
-        if ( NOT PYTHON_EXECUTABLE )
-            find_package( PythonInterp 3.4 )
-            if ( NOT PYTHONINTERP_FOUND )
-                message( FATAL_ERROR "Python interpreter installation was not found." )
-            endif()
-        endif()
-        execute_process( COMMAND ${PYTHON_EXECUTABLE} "./metaconfigure/fetch_subprojects.py"
-                         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-                         RESULT_VARIABLE fetch_failure )
-        if ( NOT fetch_failure )
-            set( fetched_subprojects TRUE CACHE BOOL "fetch script ran" )
-        else()
-            message( FATAL_ERROR "Failed to fetch dependencies" )
-        endif()
-    endif()
-endif()
-
-if( NOT is_subproject )
-    if( NOT ROOT_DIRECTORY )
-        set( ROOT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
-    endif()
-    if ( NOT PYTHON_EXECUTABLE )
-        find_package( PythonInterp )
-        if ( NOT PYTHONINTERP_FOUND )
-            message( FATAL_ERROR "Python interpreter installation was not found." )
-        endif()
-    endif()
-    execute_process( COMMAND ${PYTHON_EXECUTABLE} ./metaconfigure/signature.py ${CMAKE_BINARY_DIR}/signature
-                        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-                        RESULT_VARIABLE signature_failure )
-    file( READ "${CMAKE_BINARY_DIR}/signature.json" SIGNATURE )
-endif()
-
 project( njoy21 LANGUAGES CXX )
 get_directory_property( is_subproject PARENT_DIRECTORY )
 include( CMakeDependentOption REQUIRED )
@@ -243,99 +200,24 @@ list( INSERT 0 CMAKE_INSTALL_RPATH "${rpath_prefix}/../lib" )
 set( CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE )
 get_directory_property( is_subproject PARENT_DIRECTORY )
 
-if( NOT TARGET range-v3-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/range-v3-adapter )
-endif()
+# add dependencies
+add_subdirectory( dependencies/range-v3-adapter )
+add_subdirectory( dependencies/catch-adapter )
+add_subdirectory( dependencies/disco )
+add_subdirectory( dependencies/hana-adapter )
+add_subdirectory( dependencies/fmt-adapter )
+add_subdirectory( dependencies/spdlog-adapter )
+add_subdirectory( dependencies/Log )
+add_subdirectory( dependencies/header-utilities )
+add_subdirectory( dependencies/ENDFtk )
+add_subdirectory( dependencies/tclap-adapter )
+add_subdirectory( dependencies/njoy )
+add_subdirectory( dependencies/njoy_c_bindings )
+add_subdirectory( dependencies/json-adapter )
+add_subdirectory( dependencies/utility )
+add_subdirectory( dependencies/lipservice )
+add_subdirectory( dependencies/dimwits )
 
-if( NOT TARGET catch-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/catch-adapter )
-endif()
-
-if( NOT TARGET disco )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/disco )
-endif()
-
-if( NOT TARGET hana-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/hana-adapter )
-endif()
-
-if( NOT TARGET fmt-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/fmt-adapter )
-endif()
-
-if( NOT TARGET spdlog-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/spdlog-adapter )
-endif()
-
-if( NOT TARGET Log )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/Log )
-endif()
-
-if( NOT TARGET header-utilities )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/header-utilities )
-endif()
-
-if( NOT TARGET ENDFtk )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/ENDFtk )
-endif()
-
-if( NOT TARGET tclap-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/tclap-adapter )
-endif()
-
-if( NOT TARGET njoy )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/njoy )
-endif()
-
-if( NOT TARGET njoy_c_bindings )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/njoy_c_bindings )
-endif()
-
-if( NOT TARGET json-adapter )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/json-adapter )
-endif()
-
-if( NOT TARGET utility )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/utility )
-endif()
-
-if( NOT TARGET lipservice )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/lipservice )
-endif()
-
-if( NOT TARGET dimwits )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/dimwits )
-endif()
-
-
-if ( NOT GIT_EXECUTABLE )
-    find_package( Git )
-    if ( NOT GIT_FOUND )
-        message( FATAL_ERROR "git installation was not found." )
-    endif()
-endif()
-
-execute_process(
-    COMMAND ${GIT_EXECUTABLE} rev-parse --abbrev-ref HEAD
-    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-    OUTPUT_VARIABLE GIT_BRANCH
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-)
-execute_process(
-    COMMAND ${GIT_EXECUTABLE} rev-parse HEAD
-    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-    OUTPUT_VARIABLE GIT_HASH
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-) 
-
-message( STATUS "" )
-message( STATUS "-----------------------------------------------------------" )
-message( STATUS "" )
-message( STATUS "njoy21" )
-message( STATUS "Git current branch: ${GIT_BRANCH}" )
-message( STATUS "Git commit hash: ${GIT_HASH}" )
-message( STATUS "" )
-message( STATUS "-----------------------------------------------------------" )
 
 configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Signature.hpp.in"
                 "${CMAKE_CURRENT_BINARY_DIR}/src/njoy21/Signature.hpp" @ONLY )
