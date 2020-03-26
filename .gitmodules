@@ -1,0 +1,48 @@
+[submodule "dependencies/ENDFtk"]
+	path = dependencies/ENDFtk
+	url = https://github.com/njoy/ENDFtk
+[submodule "dependencies/disco"]
+	path = dependencies/disco
+	url = https://github.com/njoy/disco
+[submodule "dependencies/Log"]
+	path = dependencies/Log
+	url = https://github.com/njoy/Log
+[submodule "dependencies/njoy_c_bindings"]
+	path = dependencies/njoy_c_bindings
+	url = https://github.com/njoy/njoy_c_bindings
+[submodule "dependencies/NJOY2016"]
+	path = dependencies/NJOY2016
+	url = https://github.com/njoy/NJOY2016
+[submodule "dependencies/header-utilities"]
+	path = dependencies/header-utilities
+	url = https://github.com/njoy/header-utilities
+[submodule "dependencies/lipservice"]
+	path = dependencies/lipservice
+	url = https://github.com/njoy/lipservice
+[submodule "dependencies/dimwits"]
+	path = dependencies/dimwits
+	url = https://github.com/njoy/DimensionalAnalysis
+[submodule "dependencies/third_party/catch-adapter"]
+	path = dependencies/third_party/catch-adapter
+	url = https://github.com/njoy/catch-adapter
+[submodule "dependencies/third_party/hana-adapter"]
+	path = dependencies/third_party/hana-adapter
+	url = https://github.com/njoy/hana-adapter
+[submodule "dependencies/third_party/range-v3-adapter"]
+	path = dependencies/third_party/range-v3-adapter
+	url = https://github.com/njoy/range-v3-adapter
+[submodule "dependencies/third_party/fmt-adapter"]
+	path = dependencies/third_party/fmt-adapter
+	url = https://github.com/njoy/fmt-adapter
+[submodule "dependencies/third_party/spdlog-adapter"]
+	path = dependencies/third_party/spdlog-adapter
+	url = https://github.com/njoy/spdlog-adapter
+[submodule "dependencies/third_party/tclap-adapter"]
+	path = dependencies/third_party/tclap-adapter
+	url = https://github.com/njoy/tclap-adapter
+[submodule "dependencies/third_party/json-adapter"]
+	path = dependencies/third_party/json-adapter
+	url = https://github.com/njoy/json-adapter
+[submodule "dependencies/utility"]
+	path = dependencies/utility
+	url = https://github.com/njoy/utility

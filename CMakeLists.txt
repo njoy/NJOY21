@@ -200,24 +200,25 @@ list( INSERT 0 CMAKE_INSTALL_RPATH "${rpath_prefix}/../lib" )
 set( CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE )
 get_directory_property( is_subproject PARENT_DIRECTORY )
 
-# add dependencies
-add_subdirectory( dependencies/range-v3-adapter )
-add_subdirectory( dependencies/catch-adapter )
+# add NJOY components
 add_subdirectory( dependencies/disco )
-add_subdirectory( dependencies/hana-adapter )
-add_subdirectory( dependencies/fmt-adapter )
-add_subdirectory( dependencies/spdlog-adapter )
 add_subdirectory( dependencies/Log )
 add_subdirectory( dependencies/header-utilities )
 add_subdirectory( dependencies/ENDFtk )
-add_subdirectory( dependencies/tclap-adapter )
-add_subdirectory( dependencies/njoy )
+add_subdirectory( dependencies/NJOY2016 )
 add_subdirectory( dependencies/njoy_c_bindings )
-add_subdirectory( dependencies/json-adapter )
 add_subdirectory( dependencies/utility )
 add_subdirectory( dependencies/lipservice )
 add_subdirectory( dependencies/dimwits )
 
+# add third party components
+add_subdirectory( dependencies/third_party/range-v3-adapter )
+add_subdirectory( dependencies/third_party/catch-adapter )
+add_subdirectory( dependencies/third_party/hana-adapter )
+add_subdirectory( dependencies/third_party/fmt-adapter )
+add_subdirectory( dependencies/third_party/spdlog-adapter )
+add_subdirectory( dependencies/third_party/tclap-adapter )
+add_subdirectory( dependencies/third_party/json-adapter )
 
 configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Signature.hpp.in"
                 "${CMAKE_CURRENT_BINARY_DIR}/src/njoy21/Signature.hpp" @ONLY )
