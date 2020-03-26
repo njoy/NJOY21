@@ -3,8 +3,6 @@
 
 #include <variant>
 #include <map>
-
-
 #include <optional>
 #include <sstream>
 #include <unordered_set>
@@ -13,11 +11,12 @@
 #include <regex>
 #include <cstdlib>
 
+#include "json.hpp"
+
 #include "ENDFtk.hpp"
 #include "dimwits.hpp"
 #include "Log.hpp"
 #include "utility.hpp"
-
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
   #include "lipservice.hpp"
@@ -39,6 +38,7 @@ struct CommandLine;
 #include "njoy21/io.hpp"
 #include "njoy21/interface.hpp"
 #include "njoy21/legacy.hpp"
+#include "njoy21/modern.hpp"
 #include "njoy21/Version.hpp"
 #include "njoy21/Signature.hpp"
 

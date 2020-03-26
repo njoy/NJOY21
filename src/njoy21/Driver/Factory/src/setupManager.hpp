@@ -5,14 +5,9 @@ static io::Manager setupManager( CommandLine& commandLine ){
     std::exit( 0 );
   }
 
-  if ( commandLine.inputPath ){
-    builder.input( *(commandLine.inputPath) );
-  }
-  if ( commandLine.outputPath ){
-    builder.output( *(commandLine.outputPath) );
-  }
-  if ( commandLine.errorPath ){
-    builder.error( *(commandLine.errorPath) );
-  }
+  if ( commandLine.inputPath ){  builder.input(  *(commandLine.inputPath) ); }
+  if ( commandLine.outputPath ){ builder.output( *(commandLine.outputPath) ); }
+  if ( commandLine.errorPath ){  builder.error(  *(commandLine.errorPath) ); }
+
   return builder.construct();      
 }
