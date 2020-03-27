@@ -1,16 +1,16 @@
-
+# CMake configuration
 cmake_minimum_required( VERSION 3.2 )
 set( CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Supported configuration types" FORCE )
-        
+
+# proejct setup        
 project( njoy21 LANGUAGES CXX )
-get_directory_property( is_subproject PARENT_DIRECTORY )
 include( CMakeDependentOption REQUIRED )
 enable_language( Fortran )
 
+# check compilers
 set( njoy21_AppleClang_minimum_version 8.0 )
 set( njoy21_GNU_minimum_version 6.2 )
 set( njoy21_Clang_minimum_version 3.8 )
-
 if( njoy21_${CMAKE_CXX_COMPILER_ID}_minimum_version )
     if( CMAKE_CXX_COMPILER_VERSION AND
         CMAKE_CXX_COMPILER_VERSION VERSION_LESS
@@ -50,6 +50,8 @@ if ( profile_generate )
     file( MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/profiling" )
 endif()
 
+# compiler flags
+# gotta be a way to clean this up...
 set( njoy21_AppleClang_Darwin_common_flags "-stdlib=libc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++17" )
 set( njoy21_AppleClang_Darwin_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
 set( njoy21_AppleClang_Darwin_RELEASE_flags "-O3" "-DNDEBUG" )
@@ -183,12 +185,15 @@ set( njoy21_Clang_Windows_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/
 set( njoy21_Clang_Windows_nonportable_optimization_flags "-march=native" )
 set( njoy21_Clang_Windows_static_flags "-static" )
 
+# static versus shared
 if ( static_njoy21 )
     set( njoy21_library_linkage STATIC )
 else ()
     set( njoy21_library_linkage SHARED )
 endif ()
 
+# rpath stuff
+# no idea what this does yet...
 set( CMAKE_SKIP_BUILD_RPATH FALSE )
 set( CMAKE_BUILD_WITH_INSTALL_RPATH FALSE )
 if ( CMAKE_SYSTEM_NAME STREQUAL "Darwin" )
@@ -198,17 +203,25 @@ else()
 endif()
 list( INSERT 0 CMAKE_INSTALL_RPATH "${rpath_prefix}/../lib" )
 set( CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE )
-get_directory_property( is_subproject PARENT_DIRECTORY )
 
 # add NJOY components
+set( disco_DEPENDENCIES FALSE )
 add_subdirectory( dependencies/disco )
+set( Log_DEPENDENCIES FALSE )
 add_subdirectory( dependencies/Log )
+set( header-utilities_DEPENDENCIES FALSE )
 add_subdirectory( dependencies/header-utilities )
+set( ENDFtk_DEPENDENCIES FALSE )
 add_subdirectory( dependencies/ENDFtk )
+set( NJOY2016_DEPENDENCIES FALSE )
 add_subdirectory( dependencies/NJOY2016 )
+set( njoy_c_bindings_DEPENDENCIES FALSE )
 add_subdirectory( dependencies/njoy_c_bindings )
+set( utility_DEPENDENCIES FALSE )
 add_subdirectory( dependencies/utility )
+set( lipservice_DEPENDENCIES FALSE )
 add_subdirectory( dependencies/lipservice )
+set( dimwits_DEPENDENCIES FALSE )
 add_subdirectory( dependencies/dimwits )
 
 # add third party components
@@ -255,78 +268,81 @@ target_include_directories( njoy21 PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/src src/ )
 set( PREFIX njoy21_${CMAKE_CXX_COMPILER_ID}_${CMAKE_SYSTEM_NAME} )
 
 target_compile_options( njoy21 PRIVATE 
-${${PREFIX}_common_flags}
-$<$<BOOL:${njoy21_strict}>:${${PREFIX}_strict_flags}>
-$<$<BOOL:${static}>:${${PREFIX}_static_flags}>
-$<$<BOOL:${is_subproject}>:${${PREFIX}_subproject_flags}>
-$<$<NOT:$<BOOL:${is_subproject}>>:${${PREFIX}_base_project_flags}>
-$<$<CONFIG:DEBUG>:
-${${PREFIX}_DEBUG_flags} 
-$<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags}>>
-$<$<CONFIG:RELEASE>:
-${${PREFIX}_RELEASE_flags} 
-$<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags}> 
-$<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags}> 
-$<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}> 
-$<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
-${CXX_appended_flags} ${njoy21_appended_flags} )
+                            ${${PREFIX}_common_flags}
+                            $<$<BOOL:${njoy21_strict}>:${${PREFIX}_strict_flags}>
+                            $<$<BOOL:${static}>:${${PREFIX}_static_flags}>
+                            $<$<BOOL:${is_subproject}>:${${PREFIX}_subproject_flags}>
+                            $<$<NOT:$<BOOL:${is_subproject}>>:${${PREFIX}_base_project_flags}>
+                            $<$<CONFIG:DEBUG>:
+                            ${${PREFIX}_DEBUG_flags} 
+                            $<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags}>>
+                            $<$<CONFIG:RELEASE>:
+                            ${${PREFIX}_RELEASE_flags} 
+                            $<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags}> 
+                            $<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags}> 
+                            $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}> 
+                            $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
+                            ${CXX_appended_flags} ${njoy21_appended_flags}
+                            )
 
 target_link_libraries( njoy21 PUBLIC "$<$<AND:$<CONFIG:RELEASE>,$<BOOL:${link_time_optimization}>>:${${PREFIX}_RELEASE_flags};${${PREFIX}_link_time_optimization_flags}$<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags};>$<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags};>$<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags};>>$<$<CONFIG:DEBUG>:$<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags};>>$<$<BOOL:CXX_appended_flags>:${CXX_appended_flags};>$<$<BOOL:njoy21_appended_flags>:${njoy21_appended_flags};>" )
 
-target_link_libraries( njoy21 PUBLIC ENDFtk PUBLIC tclap-adapter PUBLIC njoy_c_bindings PUBLIC lipservice PUBLIC dimwits PUBLIC utility )
+target_link_libraries( njoy21 PUBLIC ENDFtk
+                              PUBLIC tclap-adapter
+                              PUBLIC njoy_c_bindings
+                              PUBLIC lipservice
+                              PUBLIC dimwits
+                              PUBLIC utility
+                              )
 
-if ( NOT is_subproject )
-    add_executable( njoy21_executable src/main.cpp )
-    set_target_properties( njoy21_executable PROPERTIES OUTPUT_NAME njoy21 )
-    target_compile_options( njoy21_executable PRIVATE 
-    ${${PREFIX}_common_flags}
-    $<$<BOOL:${njoy21_strict}>:${${PREFIX}_strict_flags}>
-    $<$<BOOL:${static}>:${${PREFIX}_static_flags}>
-    $<$<BOOL:${is_subproject}>:${${PREFIX}_subproject_flags}>
-    $<$<NOT:$<BOOL:${is_subproject}>>:${${PREFIX}_base_project_flags}>
-    $<$<CONFIG:DEBUG>:
-    ${${PREFIX}_DEBUG_flags} 
-    $<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags}>>
-    $<$<CONFIG:RELEASE>:
-    ${${PREFIX}_RELEASE_flags} 
-    $<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags}> 
-    $<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags}> 
-    $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}> 
-    $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
-    ${CXX_appended_flags} ${njoy21_appended_flags} )
-    target_link_libraries( njoy21_executable PUBLIC njoy21 )
-endif()
+# NJOY21 executable
+add_executable( njoy21_executable src/main.cpp )
+set_target_properties( njoy21_executable PROPERTIES OUTPUT_NAME njoy21 )
+target_compile_options( njoy21_executable PRIVATE 
+                            ${${PREFIX}_common_flags}
+                            $<$<BOOL:${njoy21_strict}>:${${PREFIX}_strict_flags}>
+                            $<$<BOOL:${static}>:${${PREFIX}_static_flags}>
+                            $<$<BOOL:${is_subproject}>:${${PREFIX}_subproject_flags}>
+                            $<$<NOT:$<BOOL:${is_subproject}>>:${${PREFIX}_base_project_flags}>
+                            $<$<CONFIG:DEBUG>:
+                            ${${PREFIX}_DEBUG_flags} 
+                            $<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags}>>
+                            $<$<CONFIG:RELEASE>:
+                            ${${PREFIX}_RELEASE_flags} 
+                            $<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags}> 
+                            $<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags}> 
+                            $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}> 
+                            $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
+                            ${CXX_appended_flags} ${njoy21_appended_flags}
+                            )
+target_link_libraries( njoy21_executable PUBLIC njoy21 )
 
-if( NOT is_subproject )
-    enable_testing() 
-    if ( unit_tests )
-        add_subdirectory( src/njoy21/CommandLine/test )
-        add_subdirectory( src/njoy21/Driver/test )
-        add_subdirectory( src/njoy21/io/Manager/test )
-        add_subdirectory( src/njoy21/legacy/Sequence/test )
-    endif() 
-    add_subdirectory( tests )
-endif()
+# testing
+enable_testing() 
+if ( unit_tests )
+    add_subdirectory( src/njoy21/CommandLine/test )
+    add_subdirectory( src/njoy21/Driver/test )
+    add_subdirectory( src/njoy21/io/Manager/test )
+    add_subdirectory( src/njoy21/legacy/Sequence/test )
+endif() 
+add_subdirectory( tests )
 
+# targets
 set( installation_targets njoy21 )
 if ( NOT is_subproject )
     list( APPEND installation_targets njoy21_executable )
 endif()
 
+# install
 install( TARGETS ${installation_targets}
          RUNTIME DESTINATION bin
          LIBRARY DESTINATION lib
          ARCHIVE DESTINATION lib
          PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                      GROUP_EXECUTE GROUP_READ
-                     WORLD_EXECUTE WORLD_READ )
+                     WORLD_EXECUTE WORLD_READ
+         )
 
-install( FILES "${CMAKE_BINARY_DIR}/signature.json"
-         DESTINATION share/${CMAKE_PROJECT_NAME}
-         PERMISSIONS OWNER_READ OWNER_WRITE
-                     GROUP_READ
-                     WORLD_READ
-)
 install( DIRECTORY src// DESTINATION include
          FILE_PERMISSIONS OWNER_READ OWNER_WRITE
                           GROUP_READ
@@ -336,5 +352,5 @@ install( DIRECTORY src// DESTINATION include
                                WORLD_READ
          FILES_MATCHING REGEX ".*\.h[+][+]$|.*\.hxx$|.*\.hpp$|.*\.hh$|.*\.h$"  )
 
-                    INCLUDE(CPack)
+INCLUDE(CPack)
                     
