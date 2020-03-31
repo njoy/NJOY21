@@ -21,6 +21,7 @@ endif()
 
 # general properties
 option( njoy21_strict "Compile time warnings are converted to errors" ON )
+option( unit_tests "Compile the njoy21 unit tests and integrate with ctest" ON ) 
 
 # binary instrumentation
 option( coverage "Enable binary instrumentation to collect test coverage information in the DEBUG configuration" )
@@ -40,8 +41,6 @@ endif()
 CMAKE_DEPENDENT_OPTION( static_libraries "Statically link component libraries" OFF "NOT static" ON )
 CMAKE_DEPENDENT_OPTION( static_njoy21 "Statically link the njoy21 component library" OFF "NOT static;NOT static_libraries" ON ) 
 
-option( unit_tests "Compile the njoy21 unit tests and integrate with ctest" ON ) 
-
 if ( profile_generate AND profile_use )
     message( FATAL_ERROR "Cannot both generate and use execution profile in the same configuration" )
 endif()
@@ -52,6 +51,7 @@ endif()
 
 # compiler flags
 # gotta be a way to clean this up...
+set( is_subproject FALSE )
 set( njoy21_AppleClang_Darwin_common_flags "-stdlib=libc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++17" )
 set( njoy21_AppleClang_Darwin_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
 set( njoy21_AppleClang_Darwin_RELEASE_flags "-O3" "-DNDEBUG" )
@@ -274,14 +274,14 @@ target_compile_options( njoy21 PRIVATE
                             $<$<BOOL:${is_subproject}>:${${PREFIX}_subproject_flags}>
                             $<$<NOT:$<BOOL:${is_subproject}>>:${${PREFIX}_base_project_flags}>
                             $<$<CONFIG:DEBUG>:
-                            ${${PREFIX}_DEBUG_flags} 
-                            $<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags}>>
+                                ${${PREFIX}_DEBUG_flags} 
+                                $<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags}>>
                             $<$<CONFIG:RELEASE>:
-                            ${${PREFIX}_RELEASE_flags} 
-                            $<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags}> 
-                            $<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags}> 
-                            $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}> 
-                            $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
+                                ${${PREFIX}_RELEASE_flags} 
+                                $<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags}> 
+                                $<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags}> 
+                                $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}> 
+                                $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
                             ${CXX_appended_flags} ${njoy21_appended_flags}
                             )
 
@@ -305,14 +305,14 @@ target_compile_options( njoy21_executable PRIVATE
                             $<$<BOOL:${is_subproject}>:${${PREFIX}_subproject_flags}>
                             $<$<NOT:$<BOOL:${is_subproject}>>:${${PREFIX}_base_project_flags}>
                             $<$<CONFIG:DEBUG>:
-                            ${${PREFIX}_DEBUG_flags} 
-                            $<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags}>>
+                                ${${PREFIX}_DEBUG_flags} 
+                                $<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags}>>
                             $<$<CONFIG:RELEASE>:
-                            ${${PREFIX}_RELEASE_flags} 
-                            $<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags}> 
-                            $<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags}> 
-                            $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}> 
-                            $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
+                                ${${PREFIX}_RELEASE_flags} 
+                                $<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags}> 
+                                $<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags}> 
+                                $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}> 
+                                $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
                             ${CXX_appended_flags} ${njoy21_appended_flags}
                             )
 target_link_libraries( njoy21_executable PUBLIC njoy21 )
