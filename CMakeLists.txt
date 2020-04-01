@@ -7,6 +7,9 @@ project( njoy21 LANGUAGES CXX )
 include( CMakeDependentOption REQUIRED )
 enable_language( Fortran )
 
+# subproject setup
+get_directory_property( is_subproject PARENT_DIRECTORY )
+
 # check compilers
 set( njoy21_AppleClang_minimum_version 8.0 )
 set( njoy21_GNU_minimum_version 6.2 )
@@ -51,7 +54,6 @@ endif()
 
 # compiler flags
 # gotta be a way to clean this up...
-set( is_subproject FALSE )
 set( njoy21_AppleClang_Darwin_common_flags "-stdlib=libc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++17" )
 set( njoy21_AppleClang_Darwin_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
 set( njoy21_AppleClang_Darwin_RELEASE_flags "-O3" "-DNDEBUG" )
@@ -296,26 +298,28 @@ target_link_libraries( njoy21 PUBLIC ENDFtk
                               )
 
 # NJOY21 executable
-add_executable( njoy21_executable src/main.cpp )
-set_target_properties( njoy21_executable PROPERTIES OUTPUT_NAME njoy21 )
-target_compile_options( njoy21_executable PRIVATE 
-                            ${${PREFIX}_common_flags}
-                            $<$<BOOL:${njoy21_strict}>:${${PREFIX}_strict_flags}>
-                            $<$<BOOL:${static}>:${${PREFIX}_static_flags}>
-                            $<$<BOOL:${is_subproject}>:${${PREFIX}_subproject_flags}>
-                            $<$<NOT:$<BOOL:${is_subproject}>>:${${PREFIX}_base_project_flags}>
-                            $<$<CONFIG:DEBUG>:
-                                ${${PREFIX}_DEBUG_flags} 
-                                $<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags}>>
-                            $<$<CONFIG:RELEASE>:
-                                ${${PREFIX}_RELEASE_flags} 
-                                $<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags}> 
-                                $<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags}> 
-                                $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}> 
-                                $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
-                            ${CXX_appended_flags} ${njoy21_appended_flags}
-                            )
-target_link_libraries( njoy21_executable PUBLIC njoy21 )
+if (NOT is_subproject)
+    add_executable( njoy21_executable src/main.cpp )
+    set_target_properties( njoy21_executable PROPERTIES OUTPUT_NAME njoy21 )
+    target_compile_options( njoy21_executable PRIVATE 
+                                ${${PREFIX}_common_flags}
+                                $<$<BOOL:${njoy21_strict}>:${${PREFIX}_strict_flags}>
+                                $<$<BOOL:${static}>:${${PREFIX}_static_flags}>
+                                $<$<BOOL:${is_subproject}>:${${PREFIX}_subproject_flags}>
+                                $<$<NOT:$<BOOL:${is_subproject}>>:${${PREFIX}_base_project_flags}>
+                                $<$<CONFIG:DEBUG>:
+                                    ${${PREFIX}_DEBUG_flags} 
+                                    $<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags}>>
+                                $<$<CONFIG:RELEASE>:
+                                    ${${PREFIX}_RELEASE_flags} 
+                                    $<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags}> 
+                                    $<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags}> 
+                                    $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}> 
+                                    $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
+                                ${CXX_appended_flags} ${njoy21_appended_flags}
+                                )
+    target_link_libraries( njoy21_executable PUBLIC njoy21 )
+endif()
 
 # testing
 enable_testing() 
