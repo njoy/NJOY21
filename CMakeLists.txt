@@ -4,6 +4,7 @@
 
 cmake_minimum_required( VERSION 3.16 )
 project( NJOY21 LANGUAGES CXX )
+enable_language( Fortran )
 
 
 #######################################################################
@@ -11,7 +12,7 @@ project( NJOY21 LANGUAGES CXX )
 #######################################################################
 
 # list( APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake )
-set( CMAKE_CXX_STANDARD 11 )
+set( CMAKE_CXX_STANDARD 17 )
 set( CMAKE_CXX_STANDARD_REQUIRED YES )
 
 
@@ -26,15 +27,22 @@ include( cmake/NJOY21_dependencies.cmake )
 # Main project targets
 #######################################################################
 
+configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Signature.hpp.in"
+                "${CMAKE_CURRENT_BINARY_DIR}/src/njoy21/Signature.hpp" @ONLY )
+
 add_library( njoy21 src/main.cpp )
-target_include_directories( njoy21 PUBLIC src/ )
-target_link_libraries( njoy21 PUBLIC ENDFtk
-                              PUBLIC tclap-adapter
-                              PUBLIC njoy_c_bindings
-                              PUBLIC lipservice
-                              PUBLIC dimwits
-                              PUBLIC utility
-                              )
+target_include_directories( njoy21 
+    PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/src/
+           src/
+    )
+target_link_libraries( njoy21
+    PUBLIC ENDFtk
+    PUBLIC tclap-adapter
+    PUBLIC njoy_c_bindings
+    PUBLIC lipservice
+    PUBLIC dimwits
+    PUBLIC utility
+    )
 
 
 #######################################################################
