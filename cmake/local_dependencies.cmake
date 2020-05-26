@@ -8,7 +8,7 @@ include( FetchContent )
 #######################################################################
 
 FetchContent_Declare( ENDFtk
-    URL     ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/ENDFtk/
+    URL     ${CMAKE_CURRENT_SOURCE_DIR}/subprojects/ENDFtk/
     )
 
 
