@@ -9,7 +9,12 @@ include( FetchContent )
 
 FetchContent_Declare( ENDFtk
     GIT_REPOSITORY  https://github.com/njoy/ENDFtk
-    GIT_TAG         0a1dae7910aa4bb402ec03537f87113394a6db1a
+    GIT_TAG         c10180074518a203de13cf41ff67b51fa6e002ac
+    )
+
+FetchContent_Declare( njoy
+    GIT_REPOSITORY  https://github.com/njoy/NJOY2016
+    GIT_TAG         2016.56
     )
 
 
