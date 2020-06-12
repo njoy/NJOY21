@@ -1,6 +1,3 @@
-[submodule "dependencies/utility"]
-	path = dependencies/utility
-	url = https://github.com/njoy/utility.git
 [submodule "dependencies/Log"]
 	path = dependencies/Log
 	url = https://github.com/njoy/Log.git
@@ -22,6 +19,3 @@
 [submodule "dependencies/lipservice"]
 	path = dependencies/lipservice
 	url = https://github.com/njoy/lipservice.git
-[submodule "dependencies/RECONR"]
-	path = dependencies/RECONR
-	url = https://github.com/njoy/RECONR.git
