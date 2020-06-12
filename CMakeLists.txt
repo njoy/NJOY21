@@ -54,6 +54,7 @@ target_include_directories( njoy21
     )
 target_link_libraries( njoy21
     PUBLIC ENDFtk
+    PUBLIC RECONR
     PUBLIC tclap-adapter
     PUBLIC njoy_c_bindings
     PUBLIC lipservice

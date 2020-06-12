@@ -19,6 +19,12 @@ FetchContent_Declare( ENDFtk
     GIT_SHALLOW     TRUE
     )
 
+FetchContent_Declare( RECONR
+    GIT_REPOSITORY  https://github.com/njoy/RECONR
+    GIT_TAG         origin/build/fetchcontent
+    GIT_SHALLOW     TRUE
+    )
+
 FetchContent_Declare( dimwits
     GIT_REPOSITORY  https://github.com/njoy/DimensionalAnalysis
     GIT_TAG         origin/build/fetchcontent
@@ -56,6 +62,7 @@ FetchContent_Declare( utility
 
 FetchContent_MakeAvailable(
     ENDFtk
+    RECONR
     dimwits
     lipservice
     njoy_c_bindings
