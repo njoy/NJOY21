@@ -20,7 +20,7 @@ public:
   void operator()( const nlohmann::json& args ){
     auto fileGuard = manager.output( this );
     for ( auto& routine : this->sequence ){ 
-      (*routine)( *fileGuard.first, args ); 
+      (*routine)( *fileGuard.first, *fileGuard.second, args ); 
     }
   }
 };

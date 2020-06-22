@@ -8,7 +8,7 @@ static void ignore( T&& ){}
       lipservice::MODULE command( stream );                                    \
       ignore(command);                                                         \
     }									                                                         \
-    void operator()( std::ostream&, const nlohmann::json& ){                    \
+    void operator()( std::ostream&, std::ostream&, const nlohmann::json& ){    \
       njoy_c_##MODULE();                                                       \
     }                                                                          \
   };

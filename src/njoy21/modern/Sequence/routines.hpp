@@ -7,9 +7,11 @@
       lipservice::MODULE command( stream );                                    \
       this->j##MODULE = command;                                               \
     }                                                                          \
-    void operator()( std::ostream& output, const nlohmann::json& args ){       \
+    void operator()( std::ostream& output,                                     \
+                     std::ostream& error,                                      \
+                     const nlohmann::json& args ){                             \
       njoy::MODULE::MODULE{}( std::move( this->j##MODULE ),                    \
-                              output,                                          \
+                              output, error,                                   \
                               args );                                          \
     }                                                                          \
   };

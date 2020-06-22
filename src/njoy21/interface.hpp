@@ -18,7 +18,8 @@ struct Routine {
   };
 
   virtual ~Routine() = default;
-  virtual void operator()( std::ostream&, const nlohmann::json& ) = 0;
+  virtual void operator()( std::ostream&, std::ostream&, 
+                           const nlohmann::json& ) = 0;
 };
 
 }
