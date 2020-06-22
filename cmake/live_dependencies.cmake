@@ -21,7 +21,7 @@ FetchContent_Declare( ENDFtk
 
 FetchContent_Declare( RECONR
     GIT_REPOSITORY  https://github.com/njoy/RECONR
-    GIT_TAG         origin/build/fetchcontent
+    GIT_TAG         origin/NJOY21/integration
     GIT_SHALLOW     TRUE
     )
 

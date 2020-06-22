@@ -8,7 +8,9 @@
       this->j##MODULE = command;                                               \
     }                                                                          \
     void operator()( const nlohmann::json& args ){                             \
-      njoy::MODULE::MODULE{ std::move( this->j##MODULE ), args };              \
+      njoy::MODULE::MODULE{}( std::move( this->j##MODULE ),                    \
+                              std::cout,                                       \
+                              args );                                          \
     }                                                                          \
   };
 

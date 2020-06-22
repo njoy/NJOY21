@@ -28,7 +28,6 @@
 namespace njoy{
 namespace njoy21{
 
-using namespace std::experimental;
 using namespace dimwits;
 
 namespace legacy{ class Sequence; }
