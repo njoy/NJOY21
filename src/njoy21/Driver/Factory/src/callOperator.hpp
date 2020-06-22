@@ -11,7 +11,7 @@ Driver operator()(){
   output->flush();
 
   legacy::Sequence::Factory legacyFactory( *(this->manager), this->legacy );
-  modern::Sequence::Factory modernFactory( *(this->manager) );
+  modern::Sequence::Factory modernFactory( *(this->manager), this->modern );
 
   auto makeProcessor = []( auto& set, auto& factory ){
     return [&]( auto& label, auto& queue ){

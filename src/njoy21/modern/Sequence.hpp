@@ -18,9 +18,9 @@ public:
   #include "njoy21/modern/Sequence/Factory.hpp"
   
   void operator()( const nlohmann::json& args ){
-    auto fileGaurd = manager.output( this );
+    auto fileGuard = manager.output( this );
     for ( auto& routine : this->sequence ){ 
-      (*routine)( args ); 
+      (*routine)( *fileGuard.first, args ); 
     }
   }
 };

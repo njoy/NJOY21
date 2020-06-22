@@ -27,9 +27,10 @@ SCENARIO( "Modern Sequence can be constructed" ){
   auto buffer_buffer = manager.buffer().rdbuf();
   manager.buffer().rdbuf( mockBuffer.rdbuf() );
     
+  std::unordered_set< std::string > permittedRoutines = { "RECONR" };
   std::string label("RECONR");
 
-  modern::Sequence::Factory myFactory( manager );
+  modern::Sequence::Factory myFactory( manager, permittedRoutines );
   auto mySequence = myFactory( label );
 
   CHECK( label == "GROUPR" );
