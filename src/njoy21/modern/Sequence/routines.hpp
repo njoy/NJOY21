@@ -3,7 +3,9 @@
     nlohmann::json j##MODULE;                                                  \
                                                                                \
     template< typename Char >                                                  \
-    MODULE( lipservice::iRecordStream< Char >& stream ){                       \
+    MODULE( lipservice::iRecordStream< Char >& stream ):                       \
+      interface::Routine( #MODULE )                                            \
+    {                                                                          \
       lipservice::MODULE command( stream );                                    \
       this->j##MODULE = command;                                               \
     }                                                                          \

@@ -27,10 +27,10 @@ public:
     for ( auto& routine : this->sequence ){ 
       (*routine)( *fileGuard.first, *fileGuard.second, args ); 
 
-      auto timeDiff = std::chrono::duration_cast< std::chrono::microseconds >(
-        std::chrono::steady_clock::now() - begin_ ).count();
+      auto timeDiff = std::chrono::duration_cast< std::chrono::milliseconds >(
+        std::chrono::steady_clock::now() - begin_ ).count() / 1000.0;
 
-      output << fmt::format( "{}... {:70.3f} s", routine->name(), timeDiff )
+      output << fmt::format( "{:s}... {:70.3f} s", routine->name(), timeDiff )
              << std::endl;
     }
   }

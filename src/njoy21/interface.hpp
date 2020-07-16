@@ -18,6 +18,10 @@ struct Routine {
   };
 
   std::string name_;
+  Routine( const std::string& name ):
+    name_( name )
+  {}
+
   virtual ~Routine() = default;
   virtual void operator()( std::ostream&, std::ostream&, 
                            const nlohmann::json& ) = 0;

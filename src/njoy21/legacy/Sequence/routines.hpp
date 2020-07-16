@@ -4,7 +4,9 @@ static void ignore( T&& ){}
 #define DEFINE_ROUTINE( MODULE )					                                     \
   struct MODULE : public interface::Routine {                                  \
     template< typename Char >                                                  \
-    MODULE( lipservice::iRecordStream< Char >& stream ){                       \
+    MODULE( lipservice::iRecordStream< Char >& stream ):                       \
+      interface::Routine( #MODULE )                                            \
+    {                                                                          \
       lipservice::MODULE command( stream );                                    \
       ignore(command);                                                         \
     }									                                                         \
