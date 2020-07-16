@@ -8,6 +8,11 @@ include( FetchContent )
 #######################################################################
 
 
+FetchContent_Declare( resonanceReconstruction
+  GIT_REPOSITORY  https://github.com/njoy/resonanceReconstruction
+    GIT_TAG         origin/build/fetchcontent-lrf7
+    GIT_SHALLOW     TRUE
+    )
 
 #######################################################################
 # Declare project dependencies

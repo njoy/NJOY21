@@ -17,9 +17,11 @@ struct Routine {
     virtual void operator()( const nlohmann::json& ) = 0;
   };
 
+  std::string name_;
   virtual ~Routine() = default;
   virtual void operator()( std::ostream&, std::ostream&, 
                            const nlohmann::json& ) = 0;
+  const std::string name() const { return this->name_; }
 };
 
 }

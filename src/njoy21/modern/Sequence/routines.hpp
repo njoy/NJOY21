@@ -14,7 +14,8 @@
                               output, error,                                   \
                               args );                                          \
     }                                                                          \
-  };
+    virtual std::string name(){ return #MODULE; }                              \
+  };                                                                           
 
   DEFINE_ROUTINE( RECONR )                                                      
 #undef DEFINE_ROUTINE
