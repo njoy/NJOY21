@@ -47,21 +47,6 @@ endif()
 configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Signature.hpp.in"
                 "${CMAKE_CURRENT_BINARY_DIR}/src/njoy21/Signature.hpp" @ONLY )
 
-add_library( njoy21 src/main.cpp )
-target_include_directories( njoy21 
-    PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/src/
-           src/
-    )
-target_link_libraries( njoy21
-    PUBLIC ENDFtk
-    PUBLIC RECONR
-    PUBLIC tclap-adapter
-    PUBLIC njoy_c_bindings
-    PUBLIC lipservice
-    PUBLIC dimwits
-    PUBLIC utility
-    )
-
 
 #######################################################################
 # Top-level Only
@@ -71,11 +56,25 @@ if( CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR )
 
     # add NJOY21 executable
     message( STATUS "Adding executable" )
-    add_executable( NJOY21_executable src/main.cpp )
-    set_target_properties( NJOY21_executable
+    add_executable( njoy21 src/main.cpp )
+    target_include_directories( njoy21 
+        PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/src/
+              src/
+        )
+
+    set_target_properties( njoy21
                            PROPERTIES OUTPUT_NAME njoy21
                            )
-    target_link_libraries( NJOY21_executable PUBLIC njoy21 )
+
+    target_link_libraries( njoy21
+        PUBLIC ENDFtk
+        PUBLIC RECONR
+        PUBLIC tclap-adapter
+        PUBLIC njoy_c_bindings
+        PUBLIC lipservice
+        PUBLIC dimwits
+        PUBLIC utility
+        )
 
     # unit testing
     if( unit_tests )
