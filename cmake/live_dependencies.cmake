@@ -24,6 +24,12 @@ FetchContent_Declare( RECONR
     GIT_SHALLOW     TRUE
     )
 
+FetchContent_Declare( resonanceReconstruction
+    GIT_REPOSITORY  https://github.com/njoy/resonanceReconstruction
+    GIT_TAG         origin/update/ENDFtk
+    GIT_SHALLOW     TRUE
+    )
+
 FetchContent_Declare( dimwits
     GIT_REPOSITORY  https://github.com/njoy/DimensionalAnalysis
     GIT_TAG         origin/build/fetchcontent
