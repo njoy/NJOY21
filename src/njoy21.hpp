@@ -15,7 +15,6 @@
 
 #include "json.hpp"
 
-#include "ENDFtk.hpp"
 #include "dimwits.hpp"
 #include "Log.hpp"
 #include "utility.hpp"

@@ -14,6 +14,10 @@ file( GLOB resources "resources/*" )
 foreach( resource ${resources})
     file( COPY "${resource}" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}" )
 endforeach()
+target_include_directories( njoy21.Driver.test
+    PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/src/
+          src/
+    )
 target_link_libraries( njoy21.Driver.test
     PUBLIC ENDFtk
     PUBLIC RECONR

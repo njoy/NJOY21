@@ -14,7 +14,7 @@ include( FetchContent )
 
 FetchContent_Declare( ENDFtk
     GIT_REPOSITORY  https://github.com/njoy/ENDFtk
-    GIT_TAG         origin/build/fetchcontent
+    GIT_TAG         origin/feature/guards
     GIT_SHALLOW     TRUE
     )
 
@@ -34,6 +34,11 @@ FetchContent_Declare( lipservice
     GIT_REPOSITORY  https://github.com/njoy/lipservice
     GIT_TAG         origin/build/fetchcontent
     GIT_SHALLOW     TRUE
+    )
+
+FetchContent_Declare( header-utilities
+    GIT_REPOSITORY  http://github.com/njoy/header-utilities
+    GIT_TAG         origin/build/fetchcontent-guards
     )
 
 FetchContent_Declare( njoy_c_bindings
