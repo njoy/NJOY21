@@ -4,7 +4,7 @@
 
 cmake_minimum_required( VERSION 3.14 )
 project( njoy21 LANGUAGES CXX )
-
+enable_language( Fortran )
 
 ########################################################################
 # Project-wide setup
@@ -13,9 +13,8 @@ project( njoy21 LANGUAGES CXX )
 set( CMAKE_CXX_STANDARD 17 )
 set( CMAKE_CXX_STANDARD_REQUIRED YES )
 
-#TODO Unit tests disabled until build system is fixed.
 option( njoy21_unit_tests
-    "Compile the njoy21 unit tests and integrate with ctest" OFF
+    "Compile the njoy21 unit tests and integrate with ctest" ON
     )
 option( strict_compile
     "Treat all warnings as errors." ON
@@ -56,34 +55,39 @@ endif()
 configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Signature.hpp.in"
                 "${CMAKE_CURRENT_BINARY_DIR}/src/njoy21/Signature.hpp" @ONLY )
 
-add_executable( njoy21
-    src/main.cpp
+add_library( njoy21_library INTERFACE
     )
-target_include_directories( njoy21
-    PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/src/
+target_include_directories( njoy21_library
+    INTERFACE ${CMAKE_CURRENT_BINARY_DIR}/src/
     src/
     )
-target_link_libraries( njoy21
-    PUBLIC ENDFtk
-    PUBLIC dimwits
-    PUBLIC lipservice
-    PUBLIC njoy_c_bindings
-    PUBLIC tclap-adapter
-    PUBLIC utility
+target_link_libraries( njoy21_library
+    INTERFACE ENDFtk
+    INTERFACE dimwits
+    INTERFACE lipservice
+    INTERFACE njoy_c_bindings
+    INTERFACE tclap-adapter
+    INTERFACE utility
     )
-target_compile_options( njoy21 PRIVATE
-    ${common_flags}
-    $<$<BOOL:${strict_compile}>:${strict_flags}>
-    $<$<CONFIG:DEBUG>:${debug_flags}>
-    $<$<CONFIG:RELEASE>:${release_flags}>
-    )
-
 
 #######################################################################
 # Top-level Only
 #######################################################################
 
 if( CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR )
+
+    add_executable( njoy21
+        src/main.cpp
+        )
+    target_link_libraries( njoy21
+        PUBLIC njoy21_library
+        )
+    target_compile_options( njoy21 PRIVATE
+        ${common_flags}
+        $<$<BOOL:${strict_compile}>:${strict_flags}>
+        $<$<CONFIG:DEBUG>:${debug_flags}>
+        $<$<CONFIG:RELEASE>:${release_flags}>
+        )
 
     # unit testing
     if( njoy21_unit_tests )
