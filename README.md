@@ -1,5 +1,3 @@
-[![Build Status](http://jenkins.njoy21.io:8080/buildStatus/icon?job=NJOY21-Testing-Docker&build=63)](http://jenkins.njoy21.io:8080/view/NJOY21/job/NJOY21-Testing-Docker/63/)
-
 # NJOY21 --- NJOY for the 21st Century
 NJOY21 is the modernized version of NJOY---suitable for computing in the 21st Century. It is based on [NJOY2016](https://njoy.github.io/NJOY21).
 
@@ -24,7 +22,7 @@ NJOY21 is primarily written in modern C++. It consists of many subprojects that 
 Please refer to the [Release Notes](ReleaseNotes.md) to see what has changed from one version to the next.
 
 ## Installation
-Instructions for building and installing NJOY21---as well as any of the subprojects---are found on our (admittedly inadequate) [website](https://njoy.github.io/Build/index.html).
+Instructions for building and installing NJOY21---as well as any of the subprojects---are found on our [website](https://docs.github.io/install.html).
 
 ## Version
 To see the version number for NJOY21, simply execute (after building):
@@ -36,27 +34,6 @@ NJOY21 roughly follows semantic versioning, where the version number is: `M.m.u`
 1. The major version number `M` is incremented whenever there is a backwards incompatible change. This doesn't happen very often.
 2. The minor version is incremented whenever a new capability is added.
 3. The update version is incremented whenever a new changed is added to the master (i.e., main or default) branch. This happens most often.
-
-### Signature
-NJOY21 has many dependencies that are updated independently of NJOY21. When NJOY21 is configured (using CMake), the latest production version of those dependencies is downloaded and used for compilation.
-
-If you need to build an older version of NJOY21&mdash;including older versions of all dependencies&mdash;you can do using the "signature" of that version of NJOY21. To obtain the signature simply execute:
-```bash
-njoy21 --signature
-```
-The signature (a JSON object) will be printed to the screen, which can be then be saved to a file, e.g., `signature.json`. Alternatively, `signature.json` is automatically created whenever NJOY21 is configured. The file is saved in the build directory (typically `bin`) and copied to the install directory during the `make install` phase.
-
-To configure with this signature file, do the following:
-```bash
-./metaconfigure/fetch_subprojects.py signature.json
-
-# Configure
-cmake -D fetched_subprojects=true </path/to/CMakeLists.txt>
-make
-make test
-make install
-```
-These are similar instructions to when you need to build NJOY21 without access to the internet.
 
 ## Manual
 The [NJOY2016 manual](https://github.com/njoy/NJOY2016-manual/blob/master/njoy16.pdf) ([download](https://github.com/njoy/NJOY2016-manual/raw/master/njoy16.pdf)) is the current manual for NJOY21.
