@@ -37,7 +37,7 @@ FetchContent_Declare( header-utilities
 
 FetchContent_Declare( lipservice
     GIT_REPOSITORY  https://github.com/njoy/lipservice
-    GIT_TAG         0d4b483755429af4cdf3b80e3c428767d3d3b1c7
+    GIT_TAG         a9b4696883f8b363b28b5b31eecb585ca4429c94
     )
 
 FetchContent_Declare( Log
