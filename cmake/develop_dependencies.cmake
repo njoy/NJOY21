@@ -5,6 +5,18 @@ include( FetchContent )
 # Declare project dependencies
 #######################################################################
 
+FetchContent_Declare( nlohmann_json
+    GIT_REPOSITORY  https://github.com/nlohmann/json
+    GIT_TAG         v3.7.3
+    )
+set(JSON_BuildTests OFF CACHE INTERNAL "")
+
+FetchContent_Declare( RECONR
+    GIT_REPOSITORY  https://github.com/njoy/RECONR
+    GIT_TAG         origin/NJOY21/integration
+    GIT_SHALLOW     TRUE
+    )
+
 FetchContent_Declare( ENDFtk
     GIT_REPOSITORY  https://github.com/njoy/ENDFtk
     GIT_TAG         origin/master
@@ -46,10 +58,12 @@ FetchContent_Declare( utility
 #######################################################################
 
 FetchContent_MakeAvailable(
+    RECONR
     ENDFtk
     dimwits
     lipservice
     njoy_c_bindings
     tclap-adapter
     utility
+    nlohmann_json
     )

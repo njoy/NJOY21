@@ -13,7 +13,7 @@
 #include <chrono>
 #include <string>
 
-#include "json.hpp"
+#include "nlohmann/json.hpp"
 
 #include "dimwits.hpp"
 #include "Log.hpp"
