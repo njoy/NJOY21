@@ -1,52 +1,74 @@
-#######################################################################
+########################################################################
 # Preamble
-#######################################################################
+########################################################################
 
-cmake_minimum_required( VERSION 3.16 )
-project( NJOY21 LANGUAGES CXX )
+cmake_minimum_required( VERSION 3.14 )
+project( njoy21 LANGUAGES CXX )
 enable_language( Fortran )
 
-
-#######################################################################
+########################################################################
 # Project-wide setup
-#######################################################################
+########################################################################
 
 set( CMAKE_CXX_STANDARD 17 )
 set( CMAKE_CXX_STANDARD_REQUIRED YES )
 
-option( unit_tests
+option( njoy21_unit_tests
     "Compile the njoy21 unit tests and integrate with ctest" ON
     )
-
-
-#######################################################################
-# Dependencies
-#######################################################################
-
-set( DEPENDENCY_REPOS "live"
-    CACHE STRING
-    "Options for where to fetch repositories: live, signature, local"
+option( strict_compile
+    "Treat all warnings as errors." ON
     )
 
-if( DEPENDENCY_REPOS STREQUAL "live" )
-    include( cmake/live_dependencies.cmake )
+# Compile flags
+set( common_flags "-Wall" "-Wextra" "-Wpedantic" )
+set( strict_flags "-Werror" )
+set( release_flags "-O3" )
+set( debug_flags "-O0" "-g" )
 
-elseif( DEPENDENCY_REPOS STREQUAL "signature" )
-    include( cmake/signature_dependencies.cmake )
 
-elseif( DEPENDENCY_REPOS STREQUAL "local" )
+########################################################################
+# Dependencies
+########################################################################
+
+set( REPOSITORIES "release"
+    CACHE STRING
+    "Options for where to fetch repositories: develop, release, local"
+    )
+
+if( REPOSITORIES STREQUAL "develop" )
+    include( cmake/develop_dependencies.cmake )
+
+elseif( REPOSITORIES STREQUAL "release" )
+    include( cmake/release_dependencies.cmake )
+
+elseif( REPOSITORIES STREQUAL "local" )
     include( cmake/local_dependencies.cmake )
 
 endif()
 
 
-#######################################################################
-# Main project targets
-#######################################################################
+########################################################################
+# Project targets
+########################################################################
 
 configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Signature.hpp.in"
                 "${CMAKE_CURRENT_BINARY_DIR}/src/njoy21/Signature.hpp" @ONLY )
 
+add_library( njoy21_library INTERFACE
+    )
+target_include_directories( njoy21_library
+    INTERFACE ${CMAKE_CURRENT_BINARY_DIR}/src/
+    src/
+    )
+target_link_libraries( njoy21_library
+    INTERFACE ENDFtk
+    INTERFACE dimwits
+    INTERFACE lipservice
+    INTERFACE njoy_c_bindings
+    INTERFACE tclap-adapter
+    INTERFACE utility
+    )
 
 #######################################################################
 # Top-level Only
@@ -54,30 +76,21 @@ configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Signature.hpp.in"
 
 if( CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR )
 
-    # add NJOY21 executable
-    message( STATUS "Adding executable" )
-    add_executable( njoy21 src/main.cpp )
-    target_include_directories( njoy21 
-        PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/src/
-              src/
+    add_executable( njoy21
+        src/main.cpp
         )
-
-    set_target_properties( njoy21
-                           PROPERTIES OUTPUT_NAME njoy21
-                           )
-
     target_link_libraries( njoy21
-        PUBLIC ENDFtk
-        PUBLIC RECONR
-        PUBLIC tclap-adapter
-        PUBLIC njoy_c_bindings
-        PUBLIC lipservice
-        PUBLIC dimwits
-        PUBLIC utility
+        PUBLIC njoy21_library
+        )
+    target_compile_options( njoy21 PRIVATE
+        ${common_flags}
+        $<$<BOOL:${strict_compile}>:${strict_flags}>
+        $<$<CONFIG:DEBUG>:${debug_flags}>
+        $<$<CONFIG:RELEASE>:${release_flags}>
         )
 
     # unit testing
-    if( unit_tests )
+    if( njoy21_unit_tests )
         include( cmake/unit_testing.cmake )
     endif()
 

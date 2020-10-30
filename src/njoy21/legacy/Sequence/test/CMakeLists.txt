@@ -10,17 +10,5 @@ $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}>
 $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
 
 ${CXX_appended_flags} ${njoy21_appended_flags} )
-target_include_directories( njoy21.legacy.Sequence.test
-    PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/src/
-          src/
-    )
-target_link_libraries( njoy21.legacy.Sequence.test
-    PUBLIC ENDFtk
-    PUBLIC RECONR
-    PUBLIC tclap-adapter
-    PUBLIC njoy_c_bindings
-    PUBLIC lipservice
-    PUBLIC dimwits
-    PUBLIC utility
-    )
+target_link_libraries( njoy21.legacy.Sequence.test PUBLIC njoy21_library ) 
 add_test( NAME njoy21.legacy.Sequence COMMAND njoy21.legacy.Sequence.test )
