@@ -22,6 +22,7 @@
 #include "lipservice.hpp"
 
 #include "njoy_c.h"
+#include "RECONR.hpp"
 
 namespace njoy{
 namespace njoy21{
