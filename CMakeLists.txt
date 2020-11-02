@@ -23,7 +23,7 @@ option( strict_compile
 # Compile flags
 set( common_flags "-Wall" "-Wextra" "-Wpedantic" )
 set( strict_flags "-Werror" )
-set( release_flags "-O3" )
+set( release_flags "-O3" "-Wno-unknown-warning-option" )
 set( debug_flags "-O0" "-g" )
 
 
