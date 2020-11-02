@@ -22,8 +22,8 @@ option( strict_compile
 
 # Compile flags
 set( common_flags "-Wall" "-Wextra" "-Wpedantic" )
-set( strict_flags "-Werror" )
-set( release_flags "-O3" "-Wno-unknown-warning-option" )
+set( strict_flags "-Werror" "-Wno-unknown-warning-option" )
+set( release_flags "-O3" )
 set( debug_flags "-O0" "-g" )
 
 
