@@ -18,7 +18,10 @@
 #include "Log.hpp"
 #include "utility.hpp"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
 #include "lipservice.hpp"
+#pragma GCC diagnostic pop
 
 #include "njoy_c.h"
 
