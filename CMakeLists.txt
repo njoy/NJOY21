@@ -52,9 +52,6 @@ endif()
 # Project targets
 ########################################################################
 
-configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Signature.hpp.in"
-                "${CMAKE_CURRENT_BINARY_DIR}/src/njoy21/Signature.hpp" @ONLY )
-
 add_library( njoy21_library INTERFACE
     )
 target_include_directories( njoy21_library
