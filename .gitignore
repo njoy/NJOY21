@@ -1,5 +1,5 @@
 subprojects
-bin
+bin*
 build
 __pycache__
 *.pyc

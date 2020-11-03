@@ -19,11 +19,6 @@ CommandLine( int argc, char* argv[] ){
       false, std::optional< std::string >(), " error path", cmd );
 
   TCLAP::SwitchArg
-    signature( "", "signature", 
-      "Write signature to standard output", 
-      cmd );
-
-  TCLAP::SwitchArg
     legacySwitch( "L", "legacy",
       "Call to Fortran routines even if C++ routines are available", cmd );
 
@@ -43,6 +38,5 @@ CommandLine( int argc, char* argv[] ){
   this->errorPath = errorPath.getValue();
   this->legacySwitch = legacySwitch.getValue();
   this->verifyOnly = verifyOnly.getValue();
-  this->signature = signature.getValue();
 }
 
