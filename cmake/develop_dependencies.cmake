@@ -11,6 +11,12 @@ FetchContent_Declare( nlohmann_json
     )
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 
+FetchContent_Declare( Log
+    GIT_REPOSITORY  https://github.com/njoy/Log
+    GIT_TAG         origin/master
+    GIT_SHALLOW     TRUE
+    )
+
 FetchContent_Declare( RECONR
     GIT_REPOSITORY  https://github.com/njoy/RECONR
     GIT_TAG         origin/NJOY21/integration
