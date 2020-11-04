@@ -10,7 +10,7 @@ $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}>
 $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
 
 ${CXX_appended_flags} ${njoy21_appended_flags} )
-target_link_libraries( njoy21.io.Manager.test PUBLIC njoy21 ) 
+target_link_libraries( njoy21.io.Manager.test PUBLIC njoy21_library ) 
 file( GLOB resources "resources/*" )
 foreach( resource ${resources})
     file( COPY "${resource}" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}" )
