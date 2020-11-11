@@ -5,6 +5,11 @@ include( FetchContent )
 # Declare project dependencies
 #######################################################################
 
+FetchContent_Declare( leapr
+    GIT_REPOSITORY  https://github.com/njoy/leapr
+    GIT_TAG         25f752ac315687f717e4da5a64d0b12c731dd003
+    )
+
 FetchContent_Declare( catch-adapter
     GIT_REPOSITORY  https://github.com/njoy/catch-adapter
     GIT_TAG         fb84b82ebf7a4789aa43cea560680cf745c6ee4f
@@ -87,6 +92,7 @@ FetchContent_Declare( utility
 #######################################################################
 
 FetchContent_MakeAvailable(
+    leapr
     catch-adapter
     dimwits
     disco

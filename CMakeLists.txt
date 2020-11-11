@@ -62,6 +62,7 @@ target_include_directories( njoy21_library
     src/
     )
 target_link_libraries( njoy21_library
+    INTERFACE leapr
     INTERFACE ENDFtk
     INTERFACE dimwits
     INTERFACE lipservice
