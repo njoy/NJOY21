@@ -17,8 +17,8 @@
                               args );                                          \
     }                                                                          \
     virtual std::string name(){ return #MODULE; }                              \
-  };                                                                           
+  };
 
-  //DEFINE_ROUTINE( RECONR )                                                      
-  DEFINE_ROUTINE( LEAPR )                                                      
+  //DEFINE_ROUTINE( RECONR )
+  DEFINE_ROUTINE( LEAPR )
 #undef DEFINE_ROUTINE

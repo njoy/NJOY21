@@ -1,5 +1,5 @@
 Driver operator()(){
-  auto outputPair = this->manager->output( 
+  auto outputPair = this->manager->output(
       static_cast<modern::Sequence*>(nullptr) );
   const auto& output = outputPair.first;
   // const auto& error = outputPair.second;
@@ -7,7 +7,7 @@ Driver operator()(){
   output->flush();
 
   legacy::Sequence::Factory legacyFactory( *(this->manager), this->legacy );
-  legacy::Sequence::Factory modernFactory( *(this->manager), this->modern ); //placeholder    
+  modern::Sequence::Factory modernFactory( *(this->manager), this->modern ); //placeholder    
 
   auto makeProcessor = []( auto& set, auto& factory ){
     return [&]( auto& label, auto& queue ){
