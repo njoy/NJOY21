@@ -17,15 +17,15 @@ FetchContent_Declare( Log
     GIT_SHALLOW     TRUE
     )
 
-FetchContent_Declare( RECONR
-    GIT_REPOSITORY  https://github.com/njoy/RECONR
-    GIT_TAG         origin/NJOY21/integration
+FetchContent_Declare( ENDFtk
+    GIT_REPOSITORY  https://github.com/njoy/ENDFtk
+    GIT_TAG         origin/develop
     GIT_SHALLOW     TRUE
     )
 
-FetchContent_Declare( ENDFtk
-    GIT_REPOSITORY  https://github.com/njoy/ENDFtk
-    GIT_TAG         origin/master
+FetchContent_Declare( RECONR
+    GIT_REPOSITORY  https://github.com/njoy/RECONR
+    GIT_TAG         origin/NJOY21/integration
     GIT_SHALLOW     TRUE
     )
 
@@ -64,8 +64,8 @@ FetchContent_Declare( utility
 #######################################################################
 
 FetchContent_MakeAvailable(
-    RECONR
     ENDFtk
+    RECONR
     dimwits
     lipservice
     njoy_c_bindings
