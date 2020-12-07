@@ -65,6 +65,7 @@ target_link_libraries( njoy21_library
     INTERFACE njoy_c_bindings
     INTERFACE tclap-adapter
     INTERFACE utility
+    INTERFACE catch-adapter
     )
 
 #######################################################################
