@@ -1,14 +1,19 @@
 template< typename T >
 static void ignore( T&& ){}
 
-#define DEFINE_ROUTINE( MODULE )					\
+#define DEFINE_ROUTINE( MODULE )					                                     \
   struct MODULE : public interface::Routine {                                  \
     template< typename Char >                                                  \
-    MODULE( lipservice::iRecordStream< Char >& stream ){                       \
+    MODULE( lipservice::iRecordStream< Char >& stream ):                       \
+      interface::Routine( #MODULE )                                            \
+    {                                                                          \
       lipservice::MODULE command( stream );                                    \
       ignore(command);                                                         \
     }									                                                         \
-    void operator()(){ njoy_c_##MODULE(); }                                    \
+    void operator()( std::ostream&, std::ostream&, const nlohmann::json& ){    \
+      njoy_c_##MODULE();                                                       \
+    }                                                                          \
+    virtual std::string name(){ return #MODULE; }                              \
   };
 
   DEFINE_ROUTINE( MODER )

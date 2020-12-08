@@ -3,10 +3,15 @@ class Driver {
 
   std::unique_ptr< io::Manager > manager;
   Queue queue;
+  nlohmann::json args;
 
-  Driver( std::unique_ptr< io::Manager >&& manager, Queue&& queue ) :
+  Driver( std::unique_ptr< io::Manager >&& manager, 
+          Queue&& queue, 
+          nlohmann::json&& args ) :
     manager( std::move(manager) ),
-    queue( std::move(queue) ){}
+    queue( std::move(queue) ),
+    args( std::move( args ) )
+  {}
 
   #include "njoy21/Driver/Factory.hpp"
   
