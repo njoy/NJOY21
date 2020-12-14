@@ -10,5 +10,5 @@ $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}>
 $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
 
 ${CXX_appended_flags} ${njoy21_appended_flags} )
-target_link_libraries( njoy21.CommandLine.test PUBLIC njoy21_library ) 
+target_link_libraries( njoy21.CommandLine.test PUBLIC njoy21_library catch-adapter ) 
 add_test( NAME njoy21.CommandLine COMMAND njoy21.CommandLine.test )

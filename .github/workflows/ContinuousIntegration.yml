@@ -1,0 +1,42 @@
+# GitHub workflow to enable continuous integration
+name: Continuous Integration
+
+# This workflow is triggered on pushes and pull requests to the repository.
+on: 
+  push:
+    branches: '**'
+  pull_request: 
+    branches: 'master'
+
+jobs:
+  build:
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ ubuntu-18.04, macos-10.15 ]
+        cxx: [ g++-8, clang++ ]
+        vFortran: [ gfortran-8 ]
+        build_type: [ Debug, Release ]
+
+    steps:
+    - name: which CXX
+      run: |
+        which ${{matrix.cxx}} 
+        ${{matrix.cxx}} --version
+    - name: which gfortran
+      run: |
+        which ${{matrix.vFortran}}
+        ${{matrix.vFortran}} --version
+    - uses: actions/checkout@v2
+    - name: mkdir bin
+      run: mkdir bin 
+    - name: cmake
+      run: cmake -D CMAKE_Fortran_COMPILER=`which ${{matrix.vFortran}}` -D CMAKE_CXX_COMPILER=`which ${{matrix.cxx}}` -D CMAKE_BUILD_TYPE=${{matrix.build_type}} ..  
+      working-directory: ./bin
+    - name: make
+      run: make -j2 VERBOSE=1
+      working-directory: ./bin
+    - name: ctest
+      run: ctest -j2 -R njoy21*
+      working-directory: ./bin
+  

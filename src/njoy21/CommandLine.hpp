@@ -16,7 +16,6 @@ struct njoy::njoy21::CommandLine {
   std::optional< std::string > errorPath;
   bool legacySwitch;
   bool verifyOnly;
-  bool signature;
   
   /* methods */
 #include "njoy21/CommandLine/src/ctor.hpp"

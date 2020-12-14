@@ -18,7 +18,11 @@
 #include "Log.hpp"
 #include "utility.hpp"
 
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
 #include "lipservice.hpp"
+#pragma GCC diagnostic pop
 
 #include "njoy_c.h"
 
@@ -37,7 +41,6 @@ struct CommandLine;
 #include "njoy21/interface.hpp"
 #include "njoy21/legacy.hpp"
 #include "njoy21/Version.hpp"
-#include "njoy21/Signature.hpp"
 
 }
 }

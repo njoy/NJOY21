@@ -22,7 +22,7 @@ option( strict_compile
 
 # Compile flags
 set( common_flags "-Wall" "-Wextra" "-Wpedantic" )
-set( strict_flags "-Werror" )
+set( strict_flags "-Werror" "-Wno-unknown-warning-option" )
 set( release_flags "-O3" )
 set( debug_flags "-O0" "-g" )
 
@@ -52,9 +52,6 @@ endif()
 # Project targets
 ########################################################################
 
-configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy21/Signature.hpp.in"
-                "${CMAKE_CURRENT_BINARY_DIR}/src/njoy21/Signature.hpp" @ONLY )
-
 add_library( njoy21_library INTERFACE
     )
 target_include_directories( njoy21_library
@@ -68,6 +65,7 @@ target_link_libraries( njoy21_library
     INTERFACE njoy_c_bindings
     INTERFACE tclap-adapter
     INTERFACE utility
+    INTERFACE catch-adapter
     )
 
 #######################################################################
