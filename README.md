@@ -22,7 +22,8 @@ NJOY21 is primarily written in modern C++. It consists of many subprojects that 
 Please refer to the [Release Notes](ReleaseNotes.md) to see what has changed from one version to the next.
 
 ## Installation
-Instructions for building and installing NJOY21---as well as any of the subprojects---are found on our [website](https://docs.github.io/install.html).
+Instructions for building and installing NJOY21---as well as any of the subprojects---are
+found on our [website](https://docs.njoy21.io/install.html).
 
 ## Version
 To see the version number for NJOY21, simply execute (after building):
