@@ -13,7 +13,7 @@ FetchContent_Declare( leapr
 
 FetchContent_Declare( ENDFtk
     GIT_REPOSITORY  https://github.com/njoy/ENDFtk
-    GIT_TAG         origin/feature/python-v2
+    GIT_TAG         origin/develop
     GIT_SHALLOW     TRUE
     )
 
