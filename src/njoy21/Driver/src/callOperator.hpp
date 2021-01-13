@@ -1,7 +1,7 @@
 void operator()(){
   while ( this->queue.size() ){
     auto& routine = *( this->queue.front() );
-    routine();
+    routine( this->args );
     this->queue.pop();
   }
 }

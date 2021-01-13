@@ -31,10 +31,12 @@ set( debug_flags "-O0" "-g" )
 # Dependencies
 ########################################################################
 
-set( REPOSITORIES "release"
+set( REPOSITORIES "develop"
     CACHE STRING
     "Options for where to fetch repositories: develop, release, local"
     )
+
+message( STATUS "Using ${REPOSITORIES} repositories" )
 
 if( REPOSITORIES STREQUAL "develop" )
     include( cmake/develop_dependencies.cmake )
@@ -59,12 +61,14 @@ target_include_directories( njoy21_library
     src/
     )
 target_link_libraries( njoy21_library
+    INTERFACE leapr
     INTERFACE ENDFtk
     INTERFACE dimwits
     INTERFACE lipservice
     INTERFACE njoy_c_bindings
     INTERFACE tclap-adapter
     INTERFACE utility
+    INTERFACE nlohmann_json
     INTERFACE catch-adapter
     )
 
