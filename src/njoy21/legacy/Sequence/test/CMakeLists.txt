@@ -10,5 +10,6 @@ $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}>
 $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
 
 ${CXX_appended_flags} ${njoy21_appended_flags} )
-target_link_libraries( njoy21.legacy.Sequence.test PUBLIC njoy21_library ) 
+target_link_libraries( njoy21.legacy.Sequence.test PUBLIC njoy21_library
+  catch-adapter ) 
 add_test( NAME njoy21.legacy.Sequence COMMAND njoy21.legacy.Sequence.test )

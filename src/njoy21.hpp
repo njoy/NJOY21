@@ -21,7 +21,7 @@
 
 
 #pragma GCC diagnostic push
-//#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
 #include "lipservice.hpp"
 #pragma GCC diagnostic pop
 

@@ -69,6 +69,7 @@ target_link_libraries( njoy21_library
     INTERFACE tclap-adapter
     INTERFACE utility
     INTERFACE nlohmann_json
+    INTERFACE catch-adapter
     )
 
 #######################################################################
