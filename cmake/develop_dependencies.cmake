@@ -19,8 +19,13 @@ FetchContent_Declare( dimwits
 
 FetchContent_Declare( lipservice
     GIT_REPOSITORY  https://github.com/njoy/lipservice
-    GIT_TAG         origin/master
+    GIT_TAG         origin/fix/ACERsuff
     GIT_SHALLOW     TRUE
+    )
+
+FetchContent_Declare( njoy
+    GIT_REPOSITORY  http://github.com/njoy/NJOY2016
+    GIT_TAG         2016.61
     )
 
 FetchContent_Declare( njoy_c_bindings
