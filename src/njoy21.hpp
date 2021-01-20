@@ -20,7 +20,9 @@
 
 
 #pragma GCC diagnostic push
+#if !defined(__has_warning) || __has_warning("-Wmaybe-uninitialized")
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+#endif
 #include "lipservice.hpp"
 #pragma GCC diagnostic pop
 
