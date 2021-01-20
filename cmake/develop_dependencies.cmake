@@ -19,7 +19,7 @@ FetchContent_Declare( dimwits
 
 FetchContent_Declare( lipservice
     GIT_REPOSITORY  https://github.com/njoy/lipservice
-    GIT_TAG         origin/fix/ACERsuff
+    GIT_TAG         origin/master
     GIT_SHALLOW     TRUE
     )
 
