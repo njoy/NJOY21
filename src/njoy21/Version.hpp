@@ -7,8 +7,6 @@ public:
   static constexpr int patchVersion{2};
 
   static std::string version(){
-    // return fmt::format( "{}.{}.{}", majorVersion, minorVersion, patchVersion );
-
     return std::to_string( majorVersion ) + "." +
            std::to_string( minorVersion ) + "." +
            std::to_string( patchVersion );
