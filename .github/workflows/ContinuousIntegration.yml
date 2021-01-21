@@ -37,6 +37,6 @@ jobs:
       run: make -j2 VERBOSE=1
       working-directory: ./bin
     - name: ctest
-      run: ctest -j2 -R njoy21*
+      run: ctest -j2
       working-directory: ./bin
   

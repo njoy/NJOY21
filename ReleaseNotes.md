@@ -1,6 +1,12 @@
 # Release Notes&mdash;NJOY21
 Given here are some release notes for NJOY21. Each release is made through a formal [Pull Request](https://github.com/njoy/NJOY21/pulls) made on GitHub. There are links in this document that point to each of those Pull Requests, where you can see in great details the changes that were made. Often the Pull Requests are made in response to an [issue](https://github.com/njoy/NJOY21/issues). In such cases, links to those issues are also given.
 
+## [NJOY21 1.2.2](https://github.com/njoy/NJOY21/pull/142)
+- Updating Legacy NJOY to NJOY2016.61. See [release 2016.61](https://github.com/njoy/NJOY2016/releases/tag/2016.61) for more information
+- Adding additional regression tests.
+
+This release is in preparation for the upcoming 1.3.0 release.
+
 ## [NJOY21 1.2.1](https://github.com/njoy/NJOY21/pull/126)
 This update removes the `--signature` command-line option as that was a feature of the previous build system. This also updates the GitHub Actions such that they now test all of the NJOY21 stuff, but not the integration tests.
 
