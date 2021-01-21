@@ -10,8 +10,6 @@ enable_language( Fortran )
 # Project-wide setup
 ########################################################################
 
-find_package( Python3 3.5 REQUIRED )
-
 set( CMAKE_CXX_STANDARD 17 )
 set( CMAKE_CXX_STANDARD_REQUIRED YES )
 
