@@ -29,6 +29,11 @@ FetchContent_Declare( lipservice
     GIT_SHALLOW     TRUE
     )
 
+FetchContent_Declare( njoy
+    GIT_REPOSITORY  http://github.com/njoy/NJOY2016
+    GIT_TAG         2016.61
+    )
+
 FetchContent_Declare( njoy_c_bindings
     GIT_REPOSITORY  https://github.com/njoy/njoy_c_bindings
     GIT_TAG         origin/master
