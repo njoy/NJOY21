@@ -15,6 +15,11 @@ See [Pull Request #144](https://github.com/njoy/NJOY21/pull/144)
 ### Regression Tests
 There are a number of [regression tests](https://www.njoy21.io/NJOY2016/testDescription.html) with NJOY21. These are the same as used in NJOY2016. Some of them are no longer valid with NJOY21. With NJOY21, features that are not included in ENDF/B-VII.0 or later, are not going to be supported in NJOY21. There are some regression tests that are no going to be supported in NJOY21. They are:
 
+- [Test01](https://www.njoy21.io/NJOY2016/testDescription.html#test-problem-1)
+- [Test02](https://www.njoy21.io/NJOY2016/testDescription.html#test-problem-2)
+- [Test03](https://www.njoy21.io/NJOY2016/testDescription.html#test-problem-3)
+- [Test04](https://www.njoy21.io/NJOY2016/testDescription.html#test-problem-4)
+
 ## [NJOY21 1.2.2](https://github.com/njoy/NJOY21/pull/142)
 - Updating Legacy NJOY to NJOY2016.61. See [release 2016.61](https://github.com/njoy/NJOY2016/releases/tag/2016.61) for more information
 - Adding additional regression tests.
