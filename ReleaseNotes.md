@@ -1,6 +1,20 @@
 # Release Notes&mdash;NJOY21
 Given here are some release notes for NJOY21. Each release is made through a formal [Pull Request](https://github.com/njoy/NJOY21/pulls) made on GitHub. There are links in this document that point to each of those Pull Requests, where you can see in great details the changes that were made. Often the Pull Requests are made in response to an [issue](https://github.com/njoy/NJOY21/issues). In such cases, links to those issues are also given.
 
+## [NJOY21 1.3.0](https://github.com/njoy/NJOY21/pull/143)
+
+### LEAPR
+See [Pull Request #127](https://github.com/njoy/NJOY21/pull/127)
+
+### RECONR
+See [Pull Request #118](https://github.com/njoy/NJOY21/pull/118)
+
+### THERMR
+See [Pull Request #144](https://github.com/njoy/NJOY21/pull/144)
+
+### Regression Tests
+There are a number of [regression tests](https://www.njoy21.io/NJOY2016/testDescription.html) with NJOY21. These are the same as used in NJOY2016. Some of them are no longer valid with NJOY21. With NJOY21, features that are not included in ENDF/B-VII.0 or later, are not going to be supported in NJOY21. There are some regression tests that are no going to be supported in NJOY21. They are:
+
 ## [NJOY21 1.2.2](https://github.com/njoy/NJOY21/pull/142)
 - Updating Legacy NJOY to NJOY2016.61. See [release 2016.61](https://github.com/njoy/NJOY2016/releases/tag/2016.61) for more information
 - Adding additional regression tests.
