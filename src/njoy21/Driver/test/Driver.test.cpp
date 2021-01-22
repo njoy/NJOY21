@@ -13,8 +13,8 @@ using namespace njoy::njoy21;
 
 SCENARIO("run a simple njoy problem"){
   {
-    std::vector< std::string > args =
-      { "./njoy21", "--input", "input.txt", "--output", "output.txt" };
+    std::vector< std::string > args = { 
+      "./njoy21", "--input", "input.njoy", "--output", "output.txt" };
     Driver driver( args.size(), argv(args) );
     driver();
   }

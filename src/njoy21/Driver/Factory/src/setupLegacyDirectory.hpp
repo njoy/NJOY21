@@ -6,6 +6,6 @@ static Directory setupLegacyDirectory( CommandLine& commandLine ){
                   "COVR", "WIMSR", "POWR", "CCCCR", "ERRORR" } ):
     Directory( { "MODER", "RECONR", "BROADR", "PURR", "UNRESR", "ACER",
                   "GASPR", "HEATR", "GROUPR", "VIEWR", "MIXR", "DTFR",
-                  "THERMR", "LEAPR", "RESXSR", "MATXSR", "GAMINR", "PLOTR",
+                  "LEAPR", "RESXSR", "MATXSR", "GAMINR", "PLOTR",
                   "COVR", "WIMSR", "POWR", "CCCCR", "ERRORR" } );
 }

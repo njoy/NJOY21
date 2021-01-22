@@ -15,18 +15,19 @@ protected:
     inputStream( std::move(input) ),
     outputPath( std::move(outputPath) ),
     errorPath( std::move(errorPath) ),
-    legacyBuffer( utility::stream::TemporaryFileStream() ){}
+    legacyBuffer( utility::stream::TemporaryFileStream() )
+  {}
  
 public:
 
-#include "njoy21/io/Manager/Builder.hpp"
-#include "njoy21/io/Manager/FileGuard.hpp"
+  #include "njoy21/io/Manager/Builder.hpp"
+  #include "njoy21/io/Manager/FileGuard.hpp"
 
 
   lipservice::iRecordStream< char >&
   input(){ return this->inputStream; }
 
-#include "njoy21/io/Manager/src/output.hpp"
+  #include "njoy21/io/Manager/src/output.hpp"
 
   std::ostream& buffer(){ return this->legacyBuffer; }
   
