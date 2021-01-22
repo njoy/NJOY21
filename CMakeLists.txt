@@ -61,6 +61,7 @@ target_include_directories( njoy21_library
     src/
     )
 target_link_libraries( njoy21_library
+    INTERFACE leapr
     INTERFACE RECONR
     INTERFACE ENDFtk
     INTERFACE dimwits
@@ -69,6 +70,7 @@ target_link_libraries( njoy21_library
     INTERFACE tclap-adapter
     INTERFACE utility
     INTERFACE nlohmann_json
+    INTERFACE catch-adapter
     )
 
 #######################################################################

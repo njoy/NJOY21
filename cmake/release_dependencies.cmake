@@ -5,6 +5,11 @@ include( FetchContent )
 # Declare project dependencies
 #######################################################################
 
+FetchContent_Declare( leapr
+    GIT_REPOSITORY  https://github.com/njoy/leapr
+    GIT_TAG         ff2a1fa90f28e29b5eda100428c35150d1ff89f7
+    )
+
 FetchContent_Declare( catch-adapter
     GIT_REPOSITORY  https://github.com/njoy/catch-adapter
     GIT_TAG         fb84b82ebf7a4789aa43cea560680cf745c6ee4f
@@ -22,7 +27,7 @@ FetchContent_Declare( disco
 
 FetchContent_Declare( ENDFtk
     GIT_REPOSITORY  https://github.com/njoy/ENDFtk
-    GIT_TAG         b6618b396f51e802b7ee19ba529533c27e6ac302 # tag: v0.1.0
+    GIT_TAG         d72711722a269919321e3f3df8a8b0cfe23ba6c7
     )
 
 FetchContent_Declare( hana-adapter
@@ -37,7 +42,7 @@ FetchContent_Declare( header-utilities
 
 FetchContent_Declare( lipservice
     GIT_REPOSITORY  https://github.com/njoy/lipservice
-    GIT_TAG         a9b4696883f8b363b28b5b31eecb585ca4429c94
+    GIT_TAG         1efa5e9452384a7bfc278fde57979c4d91e312c0
     )
 
 FetchContent_Declare( Log
@@ -47,7 +52,7 @@ FetchContent_Declare( Log
 
 FetchContent_Declare( njoy
     GIT_REPOSITORY  http://github.com/njoy/NJOY2016
-    GIT_TAG         b41e221c0752d5e03ed0a74d4cb6106023a59b99
+    GIT_TAG         e722511e88e4568502b51a15cebd38d03fd060a8 # tag: 2016.61
     )
 
 FetchContent_Declare( njoy_c_bindings
@@ -59,7 +64,6 @@ FetchContent_Declare( nlohmann_json
     GIT_REPOSITORY  https://github.com/nlohmann/json
     GIT_TAG         e7b3b40b5a95bc74b9a7f662830a27c49ffc01b4 # tag: v3.7.3
     )
-set(JSON_BuildTests OFF CACHE INTERNAL "")
 
 FetchContent_Declare( range-v3-adapter
     GIT_REPOSITORY  https://github.com/njoy/range-v3-adapter
@@ -70,7 +74,6 @@ FetchContent_Declare( spdlog
     GIT_REPOSITORY  https://github.com/gabime/spdlog
     GIT_TAG         a51b4856377a71f81b6d74b9af459305c4c644f8
     )
-set( SPDLOG_BUILD_TESTING CACHE BOOL OFF )
 
 FetchContent_Declare( tclap-adapter
     GIT_REPOSITORY  https://github.com/njoy/tclap-adapter
@@ -87,6 +90,7 @@ FetchContent_Declare( utility
 #######################################################################
 
 FetchContent_MakeAvailable(
+    leapr
     catch-adapter
     dimwits
     disco

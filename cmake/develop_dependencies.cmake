@@ -11,8 +11,14 @@ FetchContent_Declare( nlohmann_json
     )
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 
-FetchContent_Declare( Log
-    GIT_REPOSITORY  https://github.com/njoy/Log
+FetchContent_Declare( RECONR
+    GIT_REPOSITORY  https://github.com/njoy/RECONR
+    GIT_TAG         origin/master
+    GIT_SHALLOW     TRUE
+    )
+
+FetchContent_Declare( leapr
+    GIT_REPOSITORY  https://github.com/njoy/leapr
     GIT_TAG         origin/master
     GIT_SHALLOW     TRUE
     )
@@ -20,12 +26,6 @@ FetchContent_Declare( Log
 FetchContent_Declare( ENDFtk
     GIT_REPOSITORY  https://github.com/njoy/ENDFtk
     GIT_TAG         origin/develop
-    GIT_SHALLOW     TRUE
-    )
-
-FetchContent_Declare( RECONR
-    GIT_REPOSITORY  https://github.com/njoy/RECONR
-    GIT_TAG         origin/master
     GIT_SHALLOW     TRUE
     )
 
@@ -39,6 +39,11 @@ FetchContent_Declare( lipservice
     GIT_REPOSITORY  https://github.com/njoy/lipservice
     GIT_TAG         origin/master
     GIT_SHALLOW     TRUE
+    )
+
+FetchContent_Declare( njoy
+    GIT_REPOSITORY  http://github.com/njoy/NJOY2016
+    GIT_TAG         2016.61
     )
 
 FetchContent_Declare( njoy_c_bindings
@@ -70,12 +75,12 @@ FetchContent_Declare( utility
 #######################################################################
 
 FetchContent_MakeAvailable(
-    ENDFtk
+    leapr
     RECONR
+    ENDFtk
     dimwits
     lipservice
     njoy_c_bindings
     tclap-adapter
     utility
-    nlohmann_json
     )

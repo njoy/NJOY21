@@ -21,12 +21,15 @@
 
 
 #pragma GCC diagnostic push
+#if !defined( __clang__ )
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+#endif
 #include "lipservice.hpp"
 #pragma GCC diagnostic pop
 
 #include "njoy_c.h"
 #include "RECONR.hpp"
+#include "leapr.hpp"
 
 namespace njoy{
 namespace njoy21{

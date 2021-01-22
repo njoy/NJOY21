@@ -20,4 +20,5 @@
   };                                                                           
 
   DEFINE_ROUTINE( RECONR )                                                      
+  DEFINE_ROUTINE( LEAPR )
 #undef DEFINE_ROUTINE
