@@ -3,11 +3,13 @@ moder / Extract/convert neutron evaluated data
 moder / Extract/convert photo-atomic data
 40 -41
 reconr / Reconstruct XS for neutrons
--21 -22
+20 32
 'PENDF for 1-H-1'/
 125 0/
 0.001 0.0 0.002/
 0/
+moder
+ 32 -22/
 broadr / Doppler broaden XS
 -21 -22 -23
 125 1 0 0 0./

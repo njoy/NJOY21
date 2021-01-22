@@ -5,11 +5,13 @@ moder
 --
 -- Resonance reconstruction, to 0.1%.
 reconr
- -21 -22 /
+ 20 32 /
  'processing e70 252Cf with decay mf5/mt18 & mf35/mt18'/
  9999 0 0 /
  0.001 /
  0 /
+moder
+ 32 -22/
 --
 -- Doppler broaden to 300K.
 broadr

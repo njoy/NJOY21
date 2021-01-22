@@ -3,13 +3,15 @@ moder
 moder 
  21 -40
 reconr
- -30 -31 /
+ 20 41 /
  'PENDF tape for ENDF/B-VIII.0b6 H-1'/
  125 2 0 /
  0.001 /
  'H-1 from ENDF/B-VIII.0b6' /
  'processed at 0.1% tolerance' /
  0 /
+moder
+ 41 -31/
 broadr
  -30 -31 -32
  125 3 /

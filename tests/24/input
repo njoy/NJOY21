@@ -8,10 +8,12 @@ moder
  'moder iopt=1, extract mat 9437 from input tape'
  20 9437/
  0/
+moder
+ -21 41/
 --
 -- standard reconr/pointwise processing
 reconr
- -21 -22/
+ 41 42/
  'reconr/pendf tape for 9437'/
  9437 7/
  .001/
@@ -23,6 +25,8 @@ reconr
  '     mt301   total heating kerma factor'/
  '     mt444   total damage energy production'/
  0 /
+moder
+ 42 -22/
 --
 -- standard doppler broadening to room temp (293.6K)
 broadr
