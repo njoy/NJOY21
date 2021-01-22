@@ -5,9 +5,15 @@ include( FetchContent )
 # Declare project dependencies
 #######################################################################
 
+FetchContent_Declare( leapr
+    GIT_REPOSITORY  https://github.com/njoy/leapr
+    GIT_TAG         origin/master
+    GIT_SHALLOW     TRUE
+    )
+
 FetchContent_Declare( ENDFtk
     GIT_REPOSITORY  https://github.com/njoy/ENDFtk
-    GIT_TAG         origin/master
+    GIT_TAG         origin/develop
     GIT_SHALLOW     TRUE
     )
 
@@ -57,6 +63,7 @@ FetchContent_Declare( utility
 #######################################################################
 
 FetchContent_MakeAvailable(
+    leapr
     ENDFtk
     dimwits
     lipservice

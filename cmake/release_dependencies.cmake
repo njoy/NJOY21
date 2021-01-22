@@ -5,6 +5,11 @@ include( FetchContent )
 # Declare project dependencies
 #######################################################################
 
+FetchContent_Declare( leapr
+    GIT_REPOSITORY  https://github.com/njoy/leapr
+    GIT_TAG         ff2a1fa90f28e29b5eda100428c35150d1ff89f7
+    )
+
 FetchContent_Declare( catch-adapter
     GIT_REPOSITORY  https://github.com/njoy/catch-adapter
     GIT_TAG         fb84b82ebf7a4789aa43cea560680cf745c6ee4f
@@ -22,7 +27,7 @@ FetchContent_Declare( disco
 
 FetchContent_Declare( ENDFtk
     GIT_REPOSITORY  https://github.com/njoy/ENDFtk
-    GIT_TAG         b6618b396f51e802b7ee19ba529533c27e6ac302 # tag: v0.1.0
+    GIT_TAG         d72711722a269919321e3f3df8a8b0cfe23ba6c7
     )
 
 FetchContent_Declare( hana-adapter
@@ -85,6 +90,7 @@ FetchContent_Declare( utility
 #######################################################################
 
 FetchContent_MakeAvailable(
+    leapr
     catch-adapter
     dimwits
     disco
