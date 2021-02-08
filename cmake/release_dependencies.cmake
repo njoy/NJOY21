@@ -109,7 +109,7 @@ FetchContent_Declare( RECONR
 
 FetchContent_Declare( resonanceReconstruction
     GIT_REPOSITORY  https://github.com/njoy/resonanceReconstruction
-    GIT_TAG         47742369948a0cd262397700a41db19d1ca240d9
+    GIT_TAG         d54062b991c73e675f5afd2ba0db6c76eb2c2d9c
     )
 
 FetchContent_Declare( spdlog
