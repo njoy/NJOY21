@@ -19,6 +19,9 @@ operator()( std::string& label ){
     return std::make_unique< Sequence >
         ( Sequence( manager, std::move( sequence ) ) );
   } catch ( std::exception& e ){
+    Log::info( "Error while calling the modern::Sequence::Factory" );
+    Log::info( "\t{}", e.what() );
+
     input.rdbuf( readBuffer );
     throw e;
   }

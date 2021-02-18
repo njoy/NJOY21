@@ -3,17 +3,20 @@ static void ignore( T&& ){}
 
 #define DEFINE_ROUTINE( MODULE )					                                     \
   struct MODULE : public interface::Routine {                                  \
-    template< typename Char >                                                  \
-    MODULE( lipservice::iRecordStream< Char >& stream ):                       \
+    MODULE( lipservice::iRecordStream< char >& stream ):                       \
       interface::Routine( #MODULE )                                            \
     {                                                                          \
       lipservice::MODULE command( stream );                                    \
       ignore(command);                                                         \
     }									                                                         \
     void operator()( std::ostream&, std::ostream&, const nlohmann::json& ){    \
-      njoy_c_##MODULE();                                                       \
+      try {                                                                    \
+        njoy_c_##MODULE();                                                     \
+      } catch( ... ){                                                          \
+        Log::info( "Trouble running legacy routine: {}", #MODULE );            \
+        throw;                                                                 \
+      }                                                                        \
     }                                                                          \
-    virtual std::string name(){ return #MODULE; }                              \
   };
 
   DEFINE_ROUTINE( MODER )

@@ -38,8 +38,10 @@ SCENARIO( "Legacy Sequence can be constructed" ){
     
   std::unordered_set< std::string > permittedRoutines = { "MODER", "RECONR" };
   std::string label("MODER");
+
   legacy::Sequence::Factory myFactory( manager, permittedRoutines );
   auto mySequence = myFactory( label );
+
   CHECK( label == "GROUPR" );
   CHECK( mockBuffer.str() == moderInput + reconrInput );
 
