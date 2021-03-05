@@ -25,7 +25,7 @@ FetchContent_Declare( leapr
 
 FetchContent_Declare( ENDFtk
     GIT_REPOSITORY  https://github.com/njoy/ENDFtk
-    GIT_TAG         origin/develop
+    GIT_TAG         origin/release
     GIT_SHALLOW     TRUE
     )
 
@@ -48,7 +48,7 @@ FetchContent_Declare( njoy
 
 FetchContent_Declare( njoy_c_bindings
     GIT_REPOSITORY  https://github.com/njoy/njoy_c_bindings
-    GIT_TAG         origin/master
+    GIT_TAG         origin/feature/inputPosition
     GIT_SHALLOW     TRUE
     )
 

@@ -3,18 +3,26 @@ static void ignore( T&& ){}
 
 #define DEFINE_ROUTINE( MODULE )					                                     \
   struct MODULE : public interface::Routine {                                  \
+    using Stream = lipservice::iRecordStream< char >;                          \
+    int offset;                                                           \
     MODULE( lipservice::iRecordStream< char >& stream ):                       \
       interface::Routine( #MODULE )                                            \
     {                                                                          \
+      offset = stream.tellg();                                                 \
+      Log::info( "{} offset before: {}", this->name(), offset );               \
       lipservice::MODULE command( stream );                                    \
+      Log::info( "{} offset after: {}", this->name(), stream.tellg() );        \
       ignore(command);                                                         \
     }									                                                         \
     void operator()( std::ostream&, std::ostream&, const nlohmann::json& ){    \
       try {                                                                    \
+        Log::info( "() offset: {}", offset ); \
+        njoy_set_input_offset( offset );                                   \
         njoy_c_##MODULE();                                                     \
-      } catch( ... ){                                                          \
+      } catch( std::exception& e ){                                            \
         Log::info( "Trouble running legacy routine: {}", #MODULE );            \
-        throw;                                                                 \
+        Log::info( "{}", e.what() );                                           \
+        throw e;                                                               \
       }                                                                        \
     }                                                                          \
   };
