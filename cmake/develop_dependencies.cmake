@@ -48,7 +48,7 @@ FetchContent_Declare( njoy
 
 FetchContent_Declare( njoy_c_bindings
     GIT_REPOSITORY  https://github.com/njoy/njoy_c_bindings
-    GIT_TAG         origin/feature/inputPosition
+    GIT_TAG         origin/master
     GIT_SHALLOW     TRUE
     )
 
