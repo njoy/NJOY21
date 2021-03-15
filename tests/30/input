@@ -32,13 +32,13 @@ groupr / Prepare multigroup data for neutrons
 0/
 0/
 reconr / Reconstruct photo-atomic data
--41 -42
+40 45
 'PENDF photo-atomic data for 1-H-1'/
 100 0/
 0.001 0. 0.003/
 0/
 moder
--42 45
+45 -42
 gaminr / Prepare multigroup data for photons
 -41 -42 0 43/
 100 10 3 6 1/
