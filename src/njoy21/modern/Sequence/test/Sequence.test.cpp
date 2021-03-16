@@ -34,7 +34,7 @@ SCENARIO( "Modern Sequence can be constructed" ){
   auto mySequence = myFactory( label );
 
   CHECK( label == "GROUPR" );
-  CHECK( mockBuffer.str() == reconrInput );
+  CHECK( mockBuffer.str().empty() );
 
   std::cin.rdbuf( cin_buffer );
   manager.buffer().rdbuf( buffer_buffer );

@@ -101,5 +101,6 @@ if( CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR )
     message( STATUS "Adding integral testing" )
     enable_testing()
     add_subdirectory( tests )
+    configure_file( cmake/CTestCustom.cmake ${CMAKE_BINARY_DIR} )
 
 endif()
