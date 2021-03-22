@@ -7,7 +7,7 @@
 
 using namespace njoy::njoy21;
 
-SCENARIO( "Sequence can be constructed" ){
+SCENARIO( "Legacy Sequence can be constructed" ){
 
   std::string moderInput(
     "1 -22 \n"
@@ -38,10 +38,12 @@ SCENARIO( "Sequence can be constructed" ){
     
   std::unordered_set< std::string > permittedRoutines = { "MODER", "RECONR" };
   std::string label("MODER");
+
   legacy::Sequence::Factory myFactory( manager, permittedRoutines );
   auto mySequence = myFactory( label );
-  REQUIRE( label == "GROUPR" );
-  REQUIRE( mockBuffer.str() == moderInput + reconrInput );
+
+  CHECK( label == "GROUPR" );
+  CHECK( mockBuffer.str() == moderInput + reconrInput );
 
   std::cin.rdbuf( cin_buffer );
   manager.buffer().rdbuf( buffer_buffer );

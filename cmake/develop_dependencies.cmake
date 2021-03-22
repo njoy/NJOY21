@@ -5,6 +5,18 @@ include( FetchContent )
 # Declare project dependencies
 #######################################################################
 
+FetchContent_Declare( nlohmann_json
+    GIT_REPOSITORY  https://github.com/nlohmann/json
+    GIT_TAG         v3.7.3
+    )
+set(JSON_BuildTests OFF CACHE INTERNAL "")
+
+FetchContent_Declare( RECONR
+    GIT_REPOSITORY  https://github.com/njoy/RECONR
+    GIT_TAG         origin/master
+    GIT_SHALLOW     TRUE
+    )
+
 FetchContent_Declare( leapr
     GIT_REPOSITORY  https://github.com/njoy/leapr
     GIT_TAG         origin/master
@@ -13,7 +25,7 @@ FetchContent_Declare( leapr
 
 FetchContent_Declare( ENDFtk
     GIT_REPOSITORY  https://github.com/njoy/ENDFtk
-    GIT_TAG         origin/develop
+    GIT_TAG         origin/release
     GIT_SHALLOW     TRUE
     )
 
@@ -31,7 +43,7 @@ FetchContent_Declare( lipservice
 
 FetchContent_Declare( njoy
     GIT_REPOSITORY  http://github.com/njoy/NJOY2016
-    GIT_TAG         2016.61
+    GIT_TAG         origin/develop
     )
 
 FetchContent_Declare( njoy_c_bindings
@@ -64,6 +76,7 @@ FetchContent_Declare( utility
 
 FetchContent_MakeAvailable(
     leapr
+    RECONR
     ENDFtk
     dimwits
     lipservice

@@ -62,6 +62,7 @@ target_include_directories( njoy21_library
     )
 target_link_libraries( njoy21_library
     INTERFACE leapr
+    INTERFACE RECONR
     INTERFACE ENDFtk
     INTERFACE dimwits
     INTERFACE lipservice
@@ -100,5 +101,6 @@ if( CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR )
     message( STATUS "Adding integral testing" )
     enable_testing()
     add_subdirectory( tests )
+    configure_file( cmake/CTestCustom.cmake ${CMAKE_BINARY_DIR} )
 
 endif()

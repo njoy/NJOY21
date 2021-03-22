@@ -14,7 +14,7 @@ protected:
     sequence( std::move( sequence ) ),
     begin_( std::chrono::steady_clock::now() )
   {}
-  
+
 public:
   
   #include "njoy21/modern/Sequence/Factory.hpp"

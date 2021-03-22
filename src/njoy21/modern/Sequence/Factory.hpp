@@ -6,7 +6,8 @@ protected:
       lipservice::iRecordStream< char >& ) >;
 
   io::Manager& manager;
-  const std::unordered_set< std::string > permittedRoutines{ "LEAPR" };
+  const std::unordered_set< std::string > permittedRoutines{
+    "RECONR", "LEAPR" };
 
   #include "njoy21/modern/Sequence/Factory/src/parse.hpp"
     

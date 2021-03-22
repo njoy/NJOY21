@@ -1,7 +1,19 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
-#include "njoy21.hpp"
+#include "Log.hpp"
+
+namespace njoy{
+namespace njoy21{
+
+struct CommandLine;
+
+#include "njoy21/Version.hpp"
+
+} // namespace njoy21
+} // namespace njoy
+
+#include "njoy21/CommandLine.hpp"
 
 using namespace njoy::njoy21;
 

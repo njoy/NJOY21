@@ -28,6 +28,7 @@
 #pragma GCC diagnostic pop
 
 #include "njoy_c.h"
+#include "RECONR.hpp"
 #include "leapr.hpp"
 
 namespace njoy{

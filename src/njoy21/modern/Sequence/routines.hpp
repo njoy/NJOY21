@@ -2,8 +2,7 @@
   struct MODULE : public interface::Routine {                                  \
     nlohmann::json j##MODULE;                                                  \
                                                                                \
-    template< typename Char >                                                  \
-    MODULE( lipservice::iRecordStream< Char >& stream ):                       \
+    MODULE( lipservice::iRecordStream< char >& stream ):                       \
       interface::Routine( #MODULE )                                            \
     {                                                                          \
       lipservice::MODULE command( stream );                                    \
@@ -12,13 +11,18 @@
     void operator()( std::ostream& output,                                     \
                      std::ostream& error,                                      \
                      const nlohmann::json& args ){                             \
-      njoy::MODULE::MODULE{}( std::move( this->j##MODULE ),                    \
-                              output, error,                                   \
-                              args );                                          \
+      try {                                                                    \
+        njoy::MODULE::MODULE{}( std::move( this->j##MODULE ),                  \
+                                output, error,                                 \
+                                args );                                        \
+      } catch( std::exception& e ){                                            \
+        Log::info( "Trouble running modern routine: {}", #MODULE );            \
+        Log::info( "{}", e.what() );                                           \
+        throw e;                                                               \
+      }                                                                        \
     }                                                                          \
-    virtual std::string name(){ return #MODULE; }                              \
-  };
+  };                                                                           
 
-  //DEFINE_ROUTINE( RECONR )
+  DEFINE_ROUTINE( RECONR )                                                      
   DEFINE_ROUTINE( LEAPR )
 #undef DEFINE_ROUTINE
