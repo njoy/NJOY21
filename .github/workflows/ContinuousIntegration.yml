@@ -2,10 +2,13 @@
 name: Continuous Integration
 
 # This workflow is triggered on pushes and pull requests to the repository.
-on: 
+# This workflow will also run each Monday on the default branch (i.e. master)
+on:
+  schedule:
+    - cron: '0 0 * * 1'
   push:
     branches: '**'
-  pull_request: 
+  pull_request:
     branches: 'master'
 
 jobs:
@@ -13,30 +16,29 @@ jobs:
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
-        os: [ ubuntu-18.04, macos-10.15 ]
-        cxx: [ clang++ ]
-        vFortran: [ gfortran-8 ]
+        os: [ ubuntu-20.04, macos-11 ]
+        cxx: [ clang++, g++-10 ]
+        vFortran: [ gfortran-10 ]
         build_type: [ Debug, Release ]
 
     steps:
     - name: which CXX
       run: |
-        which ${{matrix.cxx}} 
+        which ${{matrix.cxx}}
         ${{matrix.cxx}} --version
     - name: which gfortran
       run: |
         which ${{matrix.vFortran}}
         ${{matrix.vFortran}} --version
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: mkdir bin
-      run: mkdir bin 
+      run: mkdir bin
     - name: cmake
-      run: cmake -D CMAKE_Fortran_COMPILER=`which ${{matrix.vFortran}}` -D CMAKE_CXX_COMPILER=`which ${{matrix.cxx}}` -D CMAKE_BUILD_TYPE=${{matrix.build_type}} ..  
+      run: cmake -D CMAKE_Fortran_COMPILER=`which ${{matrix.vFortran}}` -D CMAKE_CXX_COMPILER=`which ${{matrix.cxx}}` -D CMAKE_BUILD_TYPE=${{matrix.build_type}} .. 
       working-directory: ./bin
     - name: make
-      run: make -j2 VERBOSE=1
+      run: make -j2
       working-directory: ./bin
     - name: ctest
       run: ctest -j2
       working-directory: ./bin
-  
