@@ -20,7 +20,7 @@ acer
 acer
 0 31 33 34 35
 7 1 1 -1/
-'He3 IAEA photonuclear data - check tape'
+'He3 IAEA photonuclear data - check tape' /
 -- viewr plots from check tape
 viewr
 33 43
