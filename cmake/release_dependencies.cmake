@@ -47,7 +47,7 @@ FetchContent_Declare( Log
 
 FetchContent_Declare( njoy
     GIT_REPOSITORY  http://github.com/njoy/NJOY2016
-    GIT_TAG         e722511e88e4568502b51a15cebd38d03fd060a8 # tag: 2016.61
+    GIT_TAG         1f1fbe3dac01b47ca8c13fa50cfd93617dc1d1ad # tag: 2016.71
     )
 
 FetchContent_Declare( njoy_c_bindings
