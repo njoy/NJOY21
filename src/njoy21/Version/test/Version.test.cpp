@@ -4,13 +4,13 @@
 
 namespace njoy21 {
 #include "njoy21/Version.hpp"
-} // namespace 
+} // namespace
 
 // This was created in the hopes of avoiding to forget to change the Version
 // number in releases.
 // This is not a guarantee, but it should help.
 SCENARIO( "Testing NJOY21 version" ){
-  
-  CHECK( "1.2.2" == njoy21::Version::version() );
+
+  CHECK( "1.2.3" == njoy21::Version::version() );
 
 } // SCENARIO
