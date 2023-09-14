@@ -37,7 +37,7 @@ FetchContent_Declare( header-utilities
 
 FetchContent_Declare( lipservice
     GIT_REPOSITORY  https://github.com/njoy/lipservice
-    GIT_TAG         1efa5e9452384a7bfc278fde57979c4d91e312c0
+    GIT_TAG         6e037e5960d1049000a3471540908f5317429e24
     )
 
 FetchContent_Declare( Log
@@ -47,7 +47,7 @@ FetchContent_Declare( Log
 
 FetchContent_Declare( njoy
     GIT_REPOSITORY  http://github.com/njoy/NJOY2016
-    GIT_TAG         e722511e88e4568502b51a15cebd38d03fd060a8 # tag: 2016.61
+    GIT_TAG         1f1fbe3dac01b47ca8c13fa50cfd93617dc1d1ad # tag: 2016.71
     )
 
 FetchContent_Declare( njoy_c_bindings

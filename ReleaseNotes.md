@@ -2,6 +2,10 @@
 Given here are some release notes for NJOY21. Each release is made through a formal [Pull Request](https://github.com/njoy/NJOY21/pulls) made on GitHub. There are links in this document that point to each of those Pull Requests, where you can see in great details the changes that were made. Often the Pull Requests are made in response to an [issue](https://github.com/njoy/NJOY21/issues). In such cases, links to those issues are also given.
 
 ## [NJOY21 1.2.2](https://github.com/njoy/NJOY21/pull/142)
+- Updating NJOY2016 dependency to NJOY2016.71. See [release 2016.71](https://github.com/njoy/NJOY2016/releases/tag/2016.71) for more information
+- Adding additional regression tests from NJOY2016.
+
+## [NJOY21 1.2.2](https://github.com/njoy/NJOY21/pull/142)
 - Updating Legacy NJOY to NJOY2016.61. See [release 2016.61](https://github.com/njoy/NJOY2016/releases/tag/2016.61) for more information
 - Adding additional regression tests.
 
@@ -11,7 +15,7 @@ This release is in preparation for the upcoming 1.3.0 release.
 This update removes the `--signature` command-line option as that was a feature of the previous build system. This also updates the GitHub Actions such that they now test all of the NJOY21 stuff, but not the integration tests.
 
 ## [NJOY21 1.2.0](https://github.com/njoy/NJOY21/pull/122)
-This update makes significant changes to the build system. Instead of using a [homegrown](https://github.com/njoy/metaconfigure) method for handling dependencies, we now use the [`FetchContent`](https://cmake.org/cmake/help/v3.16/module/FetchContent.html) capabilities in CMake. We now require CMake 3.16 to configure and build NJOY21. 
+This update makes significant changes to the build system. Instead of using a [homegrown](https://github.com/njoy/metaconfigure) method for handling dependencies, we now use the [`FetchContent`](https://cmake.org/cmake/help/v3.16/module/FetchContent.html) capabilities in CMake. We now require CMake 3.16 to configure and build NJOY21.
 
 As part of this update, we have changed the install instructions, which can now be found at [docs.njoy21.io](https://docs.njoy21.io/install.html).
 
@@ -55,4 +59,4 @@ This incorporates the addition of `Ngen8` parameter in MATXSR. This updated occu
 The manual doesn't state it, but the code allows the parameter `Ngen8` in MATXSR Card1. The updated to lipservice (and thus NJOY21) provides this parameter.
 
 ## [NJOY21 1.0.1](https://github.com/njoy/NJOY21/pull/92)
-This simply separates the documentation from the code. 
+This simply separates the documentation from the code.
