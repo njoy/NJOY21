@@ -17,7 +17,7 @@ FetchContent_Declare( dimwits
 
 FetchContent_Declare( disco
     GIT_REPOSITORY  https://github.com/njoy/disco
-    GIT_TAG         a1a7ddb2c0f69465524d8640ee29988b714a881e
+    GIT_TAG         2606933a854bb0269c4ec37143e1236797e27838
     )
 
 FetchContent_Declare( ENDFtk
@@ -37,7 +37,7 @@ FetchContent_Declare( header-utilities
 
 FetchContent_Declare( lipservice
     GIT_REPOSITORY  https://github.com/njoy/lipservice
-    GIT_TAG         6e037e5960d1049000a3471540908f5317429e24
+    GIT_TAG         a8283142bdc57d3b407184a520b72a222e4ec065
     )
 
 FetchContent_Declare( Log
@@ -47,7 +47,7 @@ FetchContent_Declare( Log
 
 FetchContent_Declare( njoy
     GIT_REPOSITORY  http://github.com/njoy/NJOY2016
-    GIT_TAG         1f1fbe3dac01b47ca8c13fa50cfd93617dc1d1ad # tag: 2016.71
+    GIT_TAG         a1264c017f36aaeebc3d7c83f4ea43344dff730d # tag: 2016.72
     )
 
 FetchContent_Declare( njoy_c_bindings
