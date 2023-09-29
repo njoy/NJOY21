@@ -2,7 +2,7 @@
 Given here are some release notes for NJOY21. Each release is made through a formal [Pull Request](https://github.com/njoy/NJOY21/pulls) made on GitHub. There are links in this document that point to each of those Pull Requests, where you can see in great details the changes that were made. Often the Pull Requests are made in response to an [issue](https://github.com/njoy/NJOY21/issues). In such cases, links to those issues are also given.
 
 ## [NJOY21 1.2.72](https://github.com/njoy/NJOY21/pull/183)
-- Updating NJOY2016 dependency to NJOY2016.71. See [release 2016.71](https://github.com/njoy/NJOY2016/releases/tag/2016.72) for more information
+- Updating NJOY2016 dependency to NJOY2016.71. See [release 2016.72](https://github.com/njoy/NJOY2016/releases/tag/2016.72) for more information
 - Updated test inputs and results from NJOY2016.
 
 ## [NJOY21 1.2.71](https://github.com/njoy/NJOY21/pull/179)
