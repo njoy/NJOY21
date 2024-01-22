@@ -11,6 +11,6 @@ namespace njoy21 {
 // This is not a guarantee, but it should help.
 SCENARIO( "Testing NJOY21 version" ){
 
-  CHECK( "1.2.3" == njoy21::Version::version() );
+  CHECK( "1.2.74" == njoy21::Version::version() );
 
 } // SCENARIO
