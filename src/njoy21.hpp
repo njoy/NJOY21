@@ -11,6 +11,8 @@
 #include <regex>
 #include <cstdlib>
 
+#include "json.hpp"
+
 #include "ENDFtk.hpp"
 #include "dimwits.hpp"
 #include "Log.hpp"
@@ -38,6 +40,7 @@ struct CommandLine;
 #include "njoy21/io.hpp"
 #include "njoy21/interface.hpp"
 #include "njoy21/legacy.hpp"
+#include "njoy21/modern.hpp"
 #include "njoy21/Version.hpp"
 
 }
